@@ -36,7 +36,6 @@
   <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Boston Housing Regression with Meta Optimization" href="boston_housing_meta_optimization.html" />
     <link rel="prev" title="Usage Examples" href="index.html" /> 
 </head>
 
@@ -87,11 +86,10 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../neuraxle.html">Neuraxle Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Neuraxle/README.html">Neuraxle Pipelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">API Documentation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Usage Examples</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Boston Housing Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="boston_housing_meta_optimization.html">Boston Housing Regression with Meta Optimization</a></li>
 </ul>
 </li>
 </ul>
@@ -190,39 +188,28 @@
 </div>
 <div class="sphx-glr-example-title section" id="boston-housing-regression">
 <span id="sphx-glr-examples-boston-housing-regression-with-model-stacking-py"></span><h1>Boston Housing Regression<a class="headerlink" href="#boston-housing-regression" title="Permalink to this headline">¶</a></h1>
-<p>This example solves a regression problem using a pipeline with the following steps:
-- Feature augmentation with PCA and Fast ICA,
-- A Pre-regression using an ensemble containing gradient boosted, and a KMeans clustering for even more features in the stacking,
-- The model stacking using a ridge regression.
-This example also prints the shapes of the objects between the pipeline elements.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copyright 2019, The Neuraxle Authors</span>
-<span class="c1">#</span>
-<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
-<span class="c1"># you may not use this file except in compliance with the License.</span>
-<span class="c1"># You may obtain a copy of the License at</span>
-<span class="c1">#</span>
-<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
-<span class="c1">#</span>
-<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
-<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
-<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
-<span class="c1"># See the License for the specific language governing permissions and</span>
-<span class="c1"># limitations under the License.</span>
-
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<p>This example solves a regression problem using a pipeline with the following steps:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Feature augmentation with PCA and Fast ICA,</p></li>
+<li><p>A Pre-regression using an ensemble containing gradient boosted, and a KMeans clustering for even more features in the stacking,</p></li>
+<li><p>The model stacking using a ridge regression.</p></li>
+</ul>
+</div></blockquote>
+<p>This example also prints the shapes of the objects between the pipeline elements.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="View documentation for sklearn.cluster.KMeans"><span class="n">KMeans</span></a>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html#sklearn.datasets.load_boston" title="View documentation for sklearn.datasets.load_boston"><span class="n">load_boston</span></a>
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="View documentation for sklearn.decomposition.PCA"><span class="n">PCA</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html#sklearn.decomposition.FastICA" title="View documentation for sklearn.decomposition.FastICA"><span class="n">FastICA</span></a>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor" title="View documentation for sklearn.ensemble.GradientBoostingRegressor"><span class="n">GradientBoostingRegressor</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">Ridge</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="View documentation for sklearn.metrics.r2_score"><span class="n">r2_score</span></a>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
 <span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.shuffle.html#sklearn.utils.shuffle" title="View documentation for sklearn.utils.shuffle"><span class="n">shuffle</span></a>
 
 <span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="k">import</span> <a href="../api_base.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a>
-<span class="kn">from</span> <span class="nn">neuraxle.steps.numpy</span> <span class="k">import</span> <span class="n">NumpyTranspose</span><span class="p">,</span> <a href="../api_steps.html#neuraxle.steps.numpy.NumpyShapePrinter" title="View documentation for neuraxle.steps.numpy.NumpyShapePrinter"><span class="n">NumpyShapePrinter</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.steps.numpy</span> <span class="k">import</span> <a href="../api_steps.html#neuraxle.steps.numpy.NumpyShapePrinter" title="View documentation for neuraxle.steps.numpy.NumpyShapePrinter"><span class="n">NumpyShapePrinter</span></a>
 <span class="kn">from</span> <span class="nn">neuraxle.steps.sklearn</span> <span class="k">import</span> <a href="../api_steps.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">,</span> <a href="../api_steps.html#neuraxle.steps.sklearn.RidgeModelStacking" title="View documentation for neuraxle.steps.sklearn.RidgeModelStacking"><span class="n">RidgeModelStacking</span></a>
-<span class="kn">from</span> <span class="nn">neuraxle.union</span> <span class="k">import</span> <a href="../api_base.html#neuraxle.union.AddFeatures" title="View documentation for neuraxle.union.AddFeatures"><span class="n">AddFeatures</span></a><span class="p">,</span> <span class="n">ModelStacking</span>
+<span class="kn">from</span> <span class="nn">neuraxle.union</span> <span class="k">import</span> <a href="../api_base.html#neuraxle.union.AddFeatures" title="View documentation for neuraxle.union.AddFeatures"><span class="n">AddFeatures</span></a>
 
 <span class="n">boston</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html#sklearn.datasets.load_boston" title="View documentation for sklearn.datasets.load_boston"><span class="n">load_boston</span></a><span class="p">()</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.shuffle.html#sklearn.utils.shuffle" title="View documentation for sklearn.utils.shuffle"><span class="n">shuffle</span></a><span class="p">(</span><span class="n">boston</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
@@ -246,7 +233,7 @@ This example also prints the shapes of the objects between the pipeline elements
 <span class="p">])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fitting on train:&quot;</span><span class="p">)</span>
-<span class="n">p</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Transforming train and test:&quot;</span><span class="p">)</span>
@@ -255,7 +242,7 @@ This example also prints the shapes of the objects between the pipeline elements
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluating transformed train:&quot;</span><span class="p">)</span>
-<span class="n">score</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="View documentation for sklearn.metrics.r2_score"><span class="n">r2_score</span></a><span class="p">(</span><span class="n">y_train_predicted</span> <span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="View documentation for sklearn.metrics.r2_score"><span class="n">r2_score</span></a><span class="p">(</span><span class="n">y_train_predicted</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R2 regression score:&#39;</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
@@ -283,8 +270,6 @@ This example also prints the shapes of the objects between the pipeline elements
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="boston_housing_meta_optimization.html" class="btn btn-neutral float-right" title="Boston Housing Regression with Meta Optimization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="Usage Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

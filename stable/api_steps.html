@@ -87,7 +87,7 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="neuraxle.html">Neuraxle Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Neuraxle/README.html">Neuraxle Pipelines</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api.html">API Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="api_base.html">neuraxle</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">pipeline steps</a><ul>
@@ -95,8 +95,14 @@
 <li class="toctree-l4"><a class="reference internal" href="#util-pipeline-steps">Util Pipeline Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#module-neuraxle.steps.numpy">neuraxle.steps.numpy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-neuraxle.steps.sklearn">neuraxle.steps.sklearn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-neuraxle.steps.numpy">neuraxle.steps.numpy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pipeline-steps-based-on-numpy">Pipeline Steps Based on NumPy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-neuraxle.steps.sklearn">neuraxle.steps.sklearn</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pipeline-steps-based-on-scikit-learn">Pipeline Steps Based on Scikit-Learn</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api_hyperparams.html">hyperparameters</a></li>
@@ -200,21 +206,21 @@
 <span id="neuraxle-steps-util"></span><h2>neuraxle.steps.util<a class="headerlink" href="#module-neuraxle.steps.util" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="util-pipeline-steps">
 <h3>Util Pipeline Steps<a class="headerlink" href="#util-pipeline-steps" title="Permalink to this headline">¶</a></h3>
-<p>You can find here misc. pipeline steps, for example, callbacks.</p>
+<p>You can find here misc. pipeline steps, for example, callbacks useful for debugging, and a step cloner.</p>
 <dl class="class">
 <dt id="neuraxle.steps.util.BaseCallbackStep">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.util.</code><code class="descname">BaseCallbackStep</code><span class="sig-paren">(</span><em>callback_function</em>, <em>more_arguments: List = ()</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/steps/util.py#L13"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.BaseCallbackStep" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.util.</code><code class="descname">BaseCallbackStep</code><span class="sig-paren">(</span><em>callback_function</em>, <em>more_arguments: List = ()</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/steps/util.py#L30"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.BaseCallbackStep" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base class for callback steps.</p>
 <dl class="method">
 <dt id="neuraxle.steps.util.BaseCallbackStep.meta_fit">
-<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.BaseCallbackStep.meta_fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.BaseCallbackStep.meta_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uses a meta optimization technique (AutoML) to find the best hyperparameters in the given
 hyperparameter space.</p>
 <dl class="simple">
-<dt>Usage: <a href="#id1"><span class="problematic" id="id2">`</span></a>p = p.meta_fit(X_train, y_train, metastep=RandomSearch(</dt><dd><p>n_iter=10, scoring_function=r2_score, higher_score_is_better=True))`</p>
+<dt>Usage: <a href="#id1"><span class="problematic" id="id2">``</span></a>p = p.meta_fit(X_train, y_train, metastep=RandomSearch(</dt><dd><p>n_iter=10, scoring_function=r2_score, higher_score_is_better=True))``</p>
 </dd>
 </dl>
-<p>Call <cite>.mutate(new_method=”inverse_transform”, method_to_assign_to=”transform”)</cite>, and the
+<p>Call <code class="docutils literal notranslate"><span class="pre">.mutate(new_method=&quot;inverse_transform&quot;,</span> <span class="pre">method_to_assign_to=&quot;transform&quot;)</span></code>, and the
 current estimator will become</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -232,18 +238,18 @@ current estimator will become</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.BaseCallbackStep.mutate">
-<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L105"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.BaseCallbackStep.mutate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L112"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.BaseCallbackStep.mutate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Replace the “method_to_assign_to” method by the “new_method” method, IF the present object has no pending calls to
-<cite>.will_mutate_to()</cite> waiting to be applied. If there is a pending call, the pending call will override the
+<code class="docutils literal notranslate"><span class="pre">.will_mutate_to()</span></code> waiting to be applied. If there is a pending call, the pending call will override the
 methods specified in the present call. If the change fails (such as if the new_method doesn’t exist), then
-a warning is printed (optional). By default, there is no pending <cite>will_mutate_to</cite> call.</p>
-<p>This could for example be useful within a pipeline to apply <cite>inverse_transform</cite> to every pipeline steps, or
-to assign <cite>predict_probas</cite> to <cite>predict</cite>, or to assign “inverse_transform” to “transform” to a reversed pipeline.</p>
+a warning is printed (optional). By default, there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p>
+<p>This could for example be useful within a pipeline to apply <code class="docutils literal notranslate"><span class="pre">inverse_transform</span></code> to every pipeline steps, or
+to assign <code class="docutils literal notranslate"><span class="pre">predict_probas</span></code> to <code class="docutils literal notranslate"><span class="pre">predict</span></code>, or to assign “inverse_transform” to “transform” to a reversed pipeline.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <cite>will_mutate_to</cite> call.</p></li>
-<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <cite>will_mutate_to</cite> call.</p></li>
+<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
+<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
 <li><p><strong>warn</strong> – (verbose) wheter or not to warn about the inexistence of the method.</p></li>
 </ul>
 </dd>
@@ -255,10 +261,10 @@ to assign <cite>predict_probas</cite> to <cite>predict</cite>, or to assign “i
 
 <dl class="method">
 <dt id="neuraxle.steps.util.BaseCallbackStep.reverse">
-<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L237"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.BaseCallbackStep.reverse" title="Permalink to this definition">¶</a></dt>
-<dd><p>The object will mutate itself such that the <cite>.transform</cite> method (and of all its underlying objects
-if applicable) be replaced by the <cite>.inverse_transform</cite> method.</p>
-<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <cite>.will_mutate_to</cite>.</p>
+<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.BaseCallbackStep.reverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>The object will mutate itself such that the <code class="docutils literal notranslate"><span class="pre">.transform</span></code> method (and of all its underlying objects
+if applicable) be replaced by the <code class="docutils literal notranslate"><span class="pre">.inverse_transform</span></code> method.</p>
+<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <code class="docutils literal notranslate"><span class="pre">.will_mutate_to</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>a copy of self, reversed. Each contained object will also have been reversed if self is a pipeline.</p>
@@ -268,35 +274,18 @@ if applicable) be replaced by the <cite>.inverse_transform</cite> method.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.BaseCallbackStep.will_mutate_to">
-<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.BaseCallbackStep.will_mutate_to" title="Permalink to this definition">¶</a></dt>
-<dd><p>This will change the behavior of <cite>self.mutate(&lt;…&gt;)</cite> such that when mutating, it will return the
-presently provided new_base_step BaseStep (can be left to None for self), and the <cite>.mutate</cite> method
-will also apply the <cite>new_method</cite> and the  <cite>method_to_affect</cite>, if they are not None, and after changing
+<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L155"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.BaseCallbackStep.will_mutate_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>This will change the behavior of <code class="docutils literal notranslate"><span class="pre">self.mutate(&lt;...&gt;)</span></code> such that when mutating, it will return the
+presently provided new_base_step BaseStep (can be left to None for self), and the <code class="docutils literal notranslate"><span class="pre">.mutate</span></code> method
+will also apply the <code class="docutils literal notranslate"><span class="pre">new_method</span></code> and the  <code class="docutils literal notranslate"><span class="pre">method_to_affect</span></code>, if they are not None, and after changing
 the object to new_base_step.</p>
 <p>This can be useful if your pipeline requires unsupervised pretraining. For example:</p>
-<p><a href="#id3"><span class="problematic" id="id4">``</span></a>`
-X_pretrain = …
-X_train = …</p>
-<dl class="simple">
-<dt>p = Pipeline(</dt><dd><p>SomePreprocessing(),
-SomePretrainingStep().will_mutate_to(new_base_step=SomeStepThatWillUseThePretrainingStep),
-Identity().will_mutate_to(new_base_step=ClassifierThatWillBeUsedOnlyAfterThePretraining)</p>
-</dd>
-</dl>
-<p>)
-# Pre-train the pipeline
-p.fit(X_pretrain, y=None)</p>
-<p># This will leave <cite>SomePreprocessing()</cite> untouched and will affect the two other steps.
-p.mutate(new_method=”transform”, method_to_affect=”transform”)</p>
-<p># Pre-train the pipeline
-p.fit(X_train, y_train)  # Then fit the classifier and other new things
-<a href="#id5"><span class="problematic" id="id6">``</span></a><a href="#id7"><span class="problematic" id="id8">`</span></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_base_step</strong> – if it is not None, upon calling <cite>mutate</cite>, the object it will mutate to will be this provided new_base_step.</p></li>
-<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <cite>mutate</cite>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
-<li><p><strong>new_method</strong> – if it is not None, upon calling <cite>mutate</cite>, the new_method will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_base_step</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the object it will mutate to will be this provided new_base_step.</p></li>
+<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_method</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the new_method will be the one that is used on the provided new_base_step.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -309,11 +298,11 @@ p.fit(X_train, y_train)  # Then fit the classifier and other new things
 
 <dl class="class">
 <dt id="neuraxle.steps.util.FitCallbackStep">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.util.</code><code class="descname">FitCallbackStep</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/steps/util.py#L38"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.util.</code><code class="descname">FitCallbackStep</code><span class="sig-paren">(</span><em>callback_function</em>, <em>more_arguments: List = ()</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/steps/util.py#L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call a callback method on fit.</p>
 <dl class="method">
 <dt id="neuraxle.steps.util.FitCallbackStep.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/steps/util.py#L41"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.steps.util.FitCallbackStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/steps/util.py#L58"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will call the self._callback() with the data being processed and the extra arguments specified.
 Note that here, the data to process is packed into a tuple of (data_inputs, expected_outputs).
 It has no other effect.</p>
@@ -332,7 +321,7 @@ It has no other effect.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.FitCallbackStep.fit_one">
-<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/steps/util.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep.fit_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.steps.util.FitCallbackStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/steps/util.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep.fit_one" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will call the self._callback() with the data being processed and the extra arguments specified.
 Note that here, the data to process is packed into a tuple of (data_input, expected_output).
 It has no other effect.</p>
@@ -351,42 +340,42 @@ It has no other effect.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.FitCallbackStep.inverse_transform">
-<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L327"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L345"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep.inverse_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do nothing - return the same data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>processed_outputs</strong> – the data to process</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the <cite>processed_outputs</cite>, unchanged.</p>
+<dd class="field-even"><p>the <code class="docutils literal notranslate"><span class="pre">processed_outputs</span></code>, unchanged.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.FitCallbackStep.inverse_transform_one">
-<code class="descname">inverse_transform_one</code><span class="sig-paren">(</span><em>processed_output</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L336"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep.inverse_transform_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse_transform_one</code><span class="sig-paren">(</span><em>processed_output</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L354"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep.inverse_transform_one" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do nothing - return the same data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>processed_output</strong> – the data to process</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the <cite>data_output</cite>, unchanged.</p>
+<dd class="field-even"><p>the <code class="docutils literal notranslate"><span class="pre">data_output</span></code>, unchanged.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.FitCallbackStep.meta_fit">
-<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep.meta_fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep.meta_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uses a meta optimization technique (AutoML) to find the best hyperparameters in the given
 hyperparameter space.</p>
 <dl class="simple">
-<dt>Usage: <a href="#id9"><span class="problematic" id="id10">`</span></a>p = p.meta_fit(X_train, y_train, metastep=RandomSearch(</dt><dd><p>n_iter=10, scoring_function=r2_score, higher_score_is_better=True))`</p>
+<dt>Usage: <a href="#id3"><span class="problematic" id="id4">``</span></a>p = p.meta_fit(X_train, y_train, metastep=RandomSearch(</dt><dd><p>n_iter=10, scoring_function=r2_score, higher_score_is_better=True))``</p>
 </dd>
 </dl>
-<p>Call <cite>.mutate(new_method=”inverse_transform”, method_to_assign_to=”transform”)</cite>, and the
+<p>Call <code class="docutils literal notranslate"><span class="pre">.mutate(new_method=&quot;inverse_transform&quot;,</span> <span class="pre">method_to_assign_to=&quot;transform&quot;)</span></code>, and the
 current estimator will become</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -404,18 +393,18 @@ current estimator will become</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.FitCallbackStep.mutate">
-<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L105"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep.mutate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L112"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep.mutate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Replace the “method_to_assign_to” method by the “new_method” method, IF the present object has no pending calls to
-<cite>.will_mutate_to()</cite> waiting to be applied. If there is a pending call, the pending call will override the
+<code class="docutils literal notranslate"><span class="pre">.will_mutate_to()</span></code> waiting to be applied. If there is a pending call, the pending call will override the
 methods specified in the present call. If the change fails (such as if the new_method doesn’t exist), then
-a warning is printed (optional). By default, there is no pending <cite>will_mutate_to</cite> call.</p>
-<p>This could for example be useful within a pipeline to apply <cite>inverse_transform</cite> to every pipeline steps, or
-to assign <cite>predict_probas</cite> to <cite>predict</cite>, or to assign “inverse_transform” to “transform” to a reversed pipeline.</p>
+a warning is printed (optional). By default, there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p>
+<p>This could for example be useful within a pipeline to apply <code class="docutils literal notranslate"><span class="pre">inverse_transform</span></code> to every pipeline steps, or
+to assign <code class="docutils literal notranslate"><span class="pre">predict_probas</span></code> to <code class="docutils literal notranslate"><span class="pre">predict</span></code>, or to assign “inverse_transform” to “transform” to a reversed pipeline.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <cite>will_mutate_to</cite> call.</p></li>
-<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <cite>will_mutate_to</cite> call.</p></li>
+<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
+<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
 <li><p><strong>warn</strong> – (verbose) wheter or not to warn about the inexistence of the method.</p></li>
 </ul>
 </dd>
@@ -427,10 +416,10 @@ to assign <cite>predict_probas</cite> to <cite>predict</cite>, or to assign “i
 
 <dl class="method">
 <dt id="neuraxle.steps.util.FitCallbackStep.reverse">
-<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L237"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep.reverse" title="Permalink to this definition">¶</a></dt>
-<dd><p>The object will mutate itself such that the <cite>.transform</cite> method (and of all its underlying objects
-if applicable) be replaced by the <cite>.inverse_transform</cite> method.</p>
-<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <cite>.will_mutate_to</cite>.</p>
+<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep.reverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>The object will mutate itself such that the <code class="docutils literal notranslate"><span class="pre">.transform</span></code> method (and of all its underlying objects
+if applicable) be replaced by the <code class="docutils literal notranslate"><span class="pre">.inverse_transform</span></code> method.</p>
+<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <code class="docutils literal notranslate"><span class="pre">.will_mutate_to</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>a copy of self, reversed. Each contained object will also have been reversed if self is a pipeline.</p>
@@ -440,63 +429,46 @@ if applicable) be replaced by the <cite>.inverse_transform</cite> method.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.FitCallbackStep.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L309"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L327"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do nothing - return the same data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>data_inputs</strong> – the data to process</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the <cite>data_inputs</cite>, unchanged.</p>
+<dd class="field-even"><p>the <code class="docutils literal notranslate"><span class="pre">data_inputs</span></code>, unchanged.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.FitCallbackStep.transform_one">
-<code class="descname">transform_one</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L318"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep.transform_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform_one</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L336"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep.transform_one" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do nothing - return the same data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>data_input</strong> – the data to process</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the <cite>data_input</cite>, unchanged.</p>
+<dd class="field-even"><p>the <code class="docutils literal notranslate"><span class="pre">data_input</span></code>, unchanged.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.FitCallbackStep.will_mutate_to">
-<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep.will_mutate_to" title="Permalink to this definition">¶</a></dt>
-<dd><p>This will change the behavior of <cite>self.mutate(&lt;…&gt;)</cite> such that when mutating, it will return the
-presently provided new_base_step BaseStep (can be left to None for self), and the <cite>.mutate</cite> method
-will also apply the <cite>new_method</cite> and the  <cite>method_to_affect</cite>, if they are not None, and after changing
+<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L155"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.FitCallbackStep.will_mutate_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>This will change the behavior of <code class="docutils literal notranslate"><span class="pre">self.mutate(&lt;...&gt;)</span></code> such that when mutating, it will return the
+presently provided new_base_step BaseStep (can be left to None for self), and the <code class="docutils literal notranslate"><span class="pre">.mutate</span></code> method
+will also apply the <code class="docutils literal notranslate"><span class="pre">new_method</span></code> and the  <code class="docutils literal notranslate"><span class="pre">method_to_affect</span></code>, if they are not None, and after changing
 the object to new_base_step.</p>
 <p>This can be useful if your pipeline requires unsupervised pretraining. For example:</p>
-<p><a href="#id11"><span class="problematic" id="id12">``</span></a>`
-X_pretrain = …
-X_train = …</p>
-<dl class="simple">
-<dt>p = Pipeline(</dt><dd><p>SomePreprocessing(),
-SomePretrainingStep().will_mutate_to(new_base_step=SomeStepThatWillUseThePretrainingStep),
-Identity().will_mutate_to(new_base_step=ClassifierThatWillBeUsedOnlyAfterThePretraining)</p>
-</dd>
-</dl>
-<p>)
-# Pre-train the pipeline
-p.fit(X_pretrain, y=None)</p>
-<p># This will leave <cite>SomePreprocessing()</cite> untouched and will affect the two other steps.
-p.mutate(new_method=”transform”, method_to_affect=”transform”)</p>
-<p># Pre-train the pipeline
-p.fit(X_train, y_train)  # Then fit the classifier and other new things
-<a href="#id13"><span class="problematic" id="id14">``</span></a><a href="#id15"><span class="problematic" id="id16">`</span></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_base_step</strong> – if it is not None, upon calling <cite>mutate</cite>, the object it will mutate to will be this provided new_base_step.</p></li>
-<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <cite>mutate</cite>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
-<li><p><strong>new_method</strong> – if it is not None, upon calling <cite>mutate</cite>, the new_method will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_base_step</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the object it will mutate to will be this provided new_base_step.</p></li>
+<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_method</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the new_method will be the one that is used on the provided new_base_step.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -509,17 +481,17 @@ p.fit(X_train, y_train)  # Then fit the classifier and other new things
 
 <dl class="class">
 <dt id="neuraxle.steps.util.StepClonerForEachDataInput">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.util.</code><code class="descname">StepClonerForEachDataInput</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/steps/util.py#L174"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.StepClonerForEachDataInput" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.util.</code><code class="descname">StepClonerForEachDataInput</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em>, <em>copy_op=&lt;function deepcopy&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/steps/util.py#L196"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.StepClonerForEachDataInput" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="neuraxle.steps.util.StepClonerForEachDataInput.meta_fit">
-<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.StepClonerForEachDataInput.meta_fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.StepClonerForEachDataInput.meta_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uses a meta optimization technique (AutoML) to find the best hyperparameters in the given
 hyperparameter space.</p>
 <dl class="simple">
-<dt>Usage: <a href="#id17"><span class="problematic" id="id18">`</span></a>p = p.meta_fit(X_train, y_train, metastep=RandomSearch(</dt><dd><p>n_iter=10, scoring_function=r2_score, higher_score_is_better=True))`</p>
+<dt>Usage: <a href="#id5"><span class="problematic" id="id6">``</span></a>p = p.meta_fit(X_train, y_train, metastep=RandomSearch(</dt><dd><p>n_iter=10, scoring_function=r2_score, higher_score_is_better=True))``</p>
 </dd>
 </dl>
-<p>Call <cite>.mutate(new_method=”inverse_transform”, method_to_assign_to=”transform”)</cite>, and the
+<p>Call <code class="docutils literal notranslate"><span class="pre">.mutate(new_method=&quot;inverse_transform&quot;,</span> <span class="pre">method_to_assign_to=&quot;transform&quot;)</span></code>, and the
 current estimator will become</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -537,18 +509,18 @@ current estimator will become</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.StepClonerForEachDataInput.mutate">
-<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L105"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.StepClonerForEachDataInput.mutate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L112"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.StepClonerForEachDataInput.mutate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Replace the “method_to_assign_to” method by the “new_method” method, IF the present object has no pending calls to
-<cite>.will_mutate_to()</cite> waiting to be applied. If there is a pending call, the pending call will override the
+<code class="docutils literal notranslate"><span class="pre">.will_mutate_to()</span></code> waiting to be applied. If there is a pending call, the pending call will override the
 methods specified in the present call. If the change fails (such as if the new_method doesn’t exist), then
-a warning is printed (optional). By default, there is no pending <cite>will_mutate_to</cite> call.</p>
-<p>This could for example be useful within a pipeline to apply <cite>inverse_transform</cite> to every pipeline steps, or
-to assign <cite>predict_probas</cite> to <cite>predict</cite>, or to assign “inverse_transform” to “transform” to a reversed pipeline.</p>
+a warning is printed (optional). By default, there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p>
+<p>This could for example be useful within a pipeline to apply <code class="docutils literal notranslate"><span class="pre">inverse_transform</span></code> to every pipeline steps, or
+to assign <code class="docutils literal notranslate"><span class="pre">predict_probas</span></code> to <code class="docutils literal notranslate"><span class="pre">predict</span></code>, or to assign “inverse_transform” to “transform” to a reversed pipeline.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <cite>will_mutate_to</cite> call.</p></li>
-<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <cite>will_mutate_to</cite> call.</p></li>
+<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
+<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
 <li><p><strong>warn</strong> – (verbose) wheter or not to warn about the inexistence of the method.</p></li>
 </ul>
 </dd>
@@ -560,10 +532,10 @@ to assign <cite>predict_probas</cite> to <cite>predict</cite>, or to assign “i
 
 <dl class="method">
 <dt id="neuraxle.steps.util.StepClonerForEachDataInput.reverse">
-<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L237"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.StepClonerForEachDataInput.reverse" title="Permalink to this definition">¶</a></dt>
-<dd><p>The object will mutate itself such that the <cite>.transform</cite> method (and of all its underlying objects
-if applicable) be replaced by the <cite>.inverse_transform</cite> method.</p>
-<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <cite>.will_mutate_to</cite>.</p>
+<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.StepClonerForEachDataInput.reverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>The object will mutate itself such that the <code class="docutils literal notranslate"><span class="pre">.transform</span></code> method (and of all its underlying objects
+if applicable) be replaced by the <code class="docutils literal notranslate"><span class="pre">.inverse_transform</span></code> method.</p>
+<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <code class="docutils literal notranslate"><span class="pre">.will_mutate_to</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>a copy of self, reversed. Each contained object will also have been reversed if self is a pipeline.</p>
@@ -573,35 +545,18 @@ if applicable) be replaced by the <cite>.inverse_transform</cite> method.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.StepClonerForEachDataInput.will_mutate_to">
-<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.StepClonerForEachDataInput.will_mutate_to" title="Permalink to this definition">¶</a></dt>
-<dd><p>This will change the behavior of <cite>self.mutate(&lt;…&gt;)</cite> such that when mutating, it will return the
-presently provided new_base_step BaseStep (can be left to None for self), and the <cite>.mutate</cite> method
-will also apply the <cite>new_method</cite> and the  <cite>method_to_affect</cite>, if they are not None, and after changing
+<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L155"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.StepClonerForEachDataInput.will_mutate_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>This will change the behavior of <code class="docutils literal notranslate"><span class="pre">self.mutate(&lt;...&gt;)</span></code> such that when mutating, it will return the
+presently provided new_base_step BaseStep (can be left to None for self), and the <code class="docutils literal notranslate"><span class="pre">.mutate</span></code> method
+will also apply the <code class="docutils literal notranslate"><span class="pre">new_method</span></code> and the  <code class="docutils literal notranslate"><span class="pre">method_to_affect</span></code>, if they are not None, and after changing
 the object to new_base_step.</p>
 <p>This can be useful if your pipeline requires unsupervised pretraining. For example:</p>
-<p><a href="#id19"><span class="problematic" id="id20">``</span></a>`
-X_pretrain = …
-X_train = …</p>
-<dl class="simple">
-<dt>p = Pipeline(</dt><dd><p>SomePreprocessing(),
-SomePretrainingStep().will_mutate_to(new_base_step=SomeStepThatWillUseThePretrainingStep),
-Identity().will_mutate_to(new_base_step=ClassifierThatWillBeUsedOnlyAfterThePretraining)</p>
-</dd>
-</dl>
-<p>)
-# Pre-train the pipeline
-p.fit(X_pretrain, y=None)</p>
-<p># This will leave <cite>SomePreprocessing()</cite> untouched and will affect the two other steps.
-p.mutate(new_method=”transform”, method_to_affect=”transform”)</p>
-<p># Pre-train the pipeline
-p.fit(X_train, y_train)  # Then fit the classifier and other new things
-<a href="#id21"><span class="problematic" id="id22">``</span></a><a href="#id23"><span class="problematic" id="id24">`</span></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_base_step</strong> – if it is not None, upon calling <cite>mutate</cite>, the object it will mutate to will be this provided new_base_step.</p></li>
-<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <cite>mutate</cite>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
-<li><p><strong>new_method</strong> – if it is not None, upon calling <cite>mutate</cite>, the new_method will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_base_step</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the object it will mutate to will be this provided new_base_step.</p></li>
+<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_method</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the new_method will be the one that is used on the provided new_base_step.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -614,34 +569,12 @@ p.fit(X_train, y_train)  # Then fit the classifier and other new things
 
 <dl class="class">
 <dt id="neuraxle.steps.util.TapeCallbackFunction">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.util.</code><code class="descname">TapeCallbackFunction</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/steps/util.py#L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TapeCallbackFunction" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.util.</code><code class="descname">TapeCallbackFunction</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/steps/util.py#L133"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TapeCallbackFunction" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class’s purpose is to be sent to the callback to accumulate information.</p>
 <p>Example usage:</p>
-<p><a href="#id25"><span class="problematic" id="id26">``</span></a>`
-expected_tape = [“1”, “2”, “3”, “a”, “b”, “4”]
-tape = TapeCallbackFunction()</p>
-<dl>
-<dt>p = Pipeline([</dt><dd><p>Identity(),
-TransformCallbackStep(tape.callback, [“1”]),
-TransformCallbackStep(tape.callback, [“2”]),
-TransformCallbackStep(tape.callback, [“3”]),
-AddFeatures([</p>
-<blockquote>
-<div><p>TransformCallbackStep(tape.callback, [“a”]),
-TransformCallbackStep(tape.callback, [“b”]),</p>
-</div></blockquote>
-<p>]),
-TransformCallbackStep(tape.callback, [“4”]),
-Identity()</p>
-</dd>
-</dl>
-<p>])
-p.fit_transform(np.ones((1, 1)))</p>
-<p>assert expected_tape == tape.get_name_tape()
-<a href="#id27"><span class="problematic" id="id28">``</span></a><a href="#id29"><span class="problematic" id="id30">`</span></a></p>
 <dl class="method">
 <dt id="neuraxle.steps.util.TapeCallbackFunction.callback">
-<code class="descname">callback</code><span class="sig-paren">(</span><em>data</em>, <em>name: str</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/steps/util.py#L146"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TapeCallbackFunction.callback" title="Permalink to this definition">¶</a></dt>
+<code class="descname">callback</code><span class="sig-paren">(</span><em>data</em>, <em>name: str = ''</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/steps/util.py#L168"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TapeCallbackFunction.callback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will stick the data and name to the tape.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -658,7 +591,7 @@ p.fit_transform(np.ones((1, 1)))</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.TapeCallbackFunction.get_data">
-<code class="descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/steps/util.py#L157"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TapeCallbackFunction.get_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/steps/util.py#L179"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TapeCallbackFunction.get_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the data tape</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -669,7 +602,7 @@ p.fit_transform(np.ones((1, 1)))</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.TapeCallbackFunction.get_name_tape">
-<code class="descname">get_name_tape</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/steps/util.py#L165"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TapeCallbackFunction.get_name_tape" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_name_tape</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/steps/util.py#L187"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TapeCallbackFunction.get_name_tape" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the data tape</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -682,11 +615,11 @@ p.fit_transform(np.ones((1, 1)))</p>
 
 <dl class="class">
 <dt id="neuraxle.steps.util.TransformCallbackStep">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.util.</code><code class="descname">TransformCallbackStep</code><span class="sig-paren">(</span><em>callback_function</em>, <em>more_arguments: List = ()</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/steps/util.py#L66"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.util.</code><code class="descname">TransformCallbackStep</code><span class="sig-paren">(</span><em>callback_function</em>, <em>more_arguments: List = ()</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/steps/util.py#L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call a callback method on transform and inverse transform.</p>
 <dl class="method">
 <dt id="neuraxle.steps.util.TransformCallbackStep.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L277"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L301"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Don’t fit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -703,7 +636,7 @@ p.fit_transform(np.ones((1, 1)))</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.TransformCallbackStep.fit_one">
-<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L287"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep.fit_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L311"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep.fit_one" title="Permalink to this definition">¶</a></dt>
 <dd><p>Don’t fit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -720,7 +653,7 @@ p.fit_transform(np.ones((1, 1)))</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.TransformCallbackStep.inverse_transform">
-<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/steps/util.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/steps/util.py#L110"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep.inverse_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will call the self._callback() with the data being processed and the extra arguments specified.
 It has no other effect.</p>
 <dl class="field-list simple">
@@ -735,7 +668,7 @@ It has no other effect.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.TransformCallbackStep.inverse_transform_one">
-<code class="descname">inverse_transform_one</code><span class="sig-paren">(</span><em>processed_output</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/steps/util.py#L102"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep.inverse_transform_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse_transform_one</code><span class="sig-paren">(</span><em>processed_output</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/steps/util.py#L121"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep.inverse_transform_one" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will call the self._callback() with the data being processed and the extra arguments specified.
 It has no other effect.</p>
 <dl class="field-list simple">
@@ -750,14 +683,14 @@ It has no other effect.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.TransformCallbackStep.meta_fit">
-<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep.meta_fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep.meta_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uses a meta optimization technique (AutoML) to find the best hyperparameters in the given
 hyperparameter space.</p>
 <dl class="simple">
-<dt>Usage: <a href="#id31"><span class="problematic" id="id32">`</span></a>p = p.meta_fit(X_train, y_train, metastep=RandomSearch(</dt><dd><p>n_iter=10, scoring_function=r2_score, higher_score_is_better=True))`</p>
+<dt>Usage: <a href="#id7"><span class="problematic" id="id8">``</span></a>p = p.meta_fit(X_train, y_train, metastep=RandomSearch(</dt><dd><p>n_iter=10, scoring_function=r2_score, higher_score_is_better=True))``</p>
 </dd>
 </dl>
-<p>Call <cite>.mutate(new_method=”inverse_transform”, method_to_assign_to=”transform”)</cite>, and the
+<p>Call <code class="docutils literal notranslate"><span class="pre">.mutate(new_method=&quot;inverse_transform&quot;,</span> <span class="pre">method_to_assign_to=&quot;transform&quot;)</span></code>, and the
 current estimator will become</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -775,18 +708,18 @@ current estimator will become</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.TransformCallbackStep.mutate">
-<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L105"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep.mutate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L112"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep.mutate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Replace the “method_to_assign_to” method by the “new_method” method, IF the present object has no pending calls to
-<cite>.will_mutate_to()</cite> waiting to be applied. If there is a pending call, the pending call will override the
+<code class="docutils literal notranslate"><span class="pre">.will_mutate_to()</span></code> waiting to be applied. If there is a pending call, the pending call will override the
 methods specified in the present call. If the change fails (such as if the new_method doesn’t exist), then
-a warning is printed (optional). By default, there is no pending <cite>will_mutate_to</cite> call.</p>
-<p>This could for example be useful within a pipeline to apply <cite>inverse_transform</cite> to every pipeline steps, or
-to assign <cite>predict_probas</cite> to <cite>predict</cite>, or to assign “inverse_transform” to “transform” to a reversed pipeline.</p>
+a warning is printed (optional). By default, there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p>
+<p>This could for example be useful within a pipeline to apply <code class="docutils literal notranslate"><span class="pre">inverse_transform</span></code> to every pipeline steps, or
+to assign <code class="docutils literal notranslate"><span class="pre">predict_probas</span></code> to <code class="docutils literal notranslate"><span class="pre">predict</span></code>, or to assign “inverse_transform” to “transform” to a reversed pipeline.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <cite>will_mutate_to</cite> call.</p></li>
-<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <cite>will_mutate_to</cite> call.</p></li>
+<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
+<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
 <li><p><strong>warn</strong> – (verbose) wheter or not to warn about the inexistence of the method.</p></li>
 </ul>
 </dd>
@@ -798,10 +731,10 @@ to assign <cite>predict_probas</cite> to <cite>predict</cite>, or to assign “i
 
 <dl class="method">
 <dt id="neuraxle.steps.util.TransformCallbackStep.reverse">
-<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L237"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep.reverse" title="Permalink to this definition">¶</a></dt>
-<dd><p>The object will mutate itself such that the <cite>.transform</cite> method (and of all its underlying objects
-if applicable) be replaced by the <cite>.inverse_transform</cite> method.</p>
-<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <cite>.will_mutate_to</cite>.</p>
+<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep.reverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>The object will mutate itself such that the <code class="docutils literal notranslate"><span class="pre">.transform</span></code> method (and of all its underlying objects
+if applicable) be replaced by the <code class="docutils literal notranslate"><span class="pre">.inverse_transform</span></code> method.</p>
+<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <code class="docutils literal notranslate"><span class="pre">.will_mutate_to</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>a copy of self, reversed. Each contained object will also have been reversed if self is a pipeline.</p>
@@ -811,7 +744,7 @@ if applicable) be replaced by the <cite>.inverse_transform</cite> method.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.TransformCallbackStep.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/steps/util.py#L69"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/steps/util.py#L88"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will call the self._callback() with the data being processed and the extra arguments specified.
 It has no other effect.</p>
 <dl class="field-list simple">
@@ -826,7 +759,7 @@ It has no other effect.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.TransformCallbackStep.transform_one">
-<code class="descname">transform_one</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/steps/util.py#L80"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep.transform_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform_one</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/steps/util.py#L99"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep.transform_one" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will call the self._callback() with the data being processed and the extra arguments specified.
 It has no other effect.</p>
 <dl class="field-list simple">
@@ -841,35 +774,18 @@ It has no other effect.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.util.TransformCallbackStep.will_mutate_to">
-<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep.will_mutate_to" title="Permalink to this definition">¶</a></dt>
-<dd><p>This will change the behavior of <cite>self.mutate(&lt;…&gt;)</cite> such that when mutating, it will return the
-presently provided new_base_step BaseStep (can be left to None for self), and the <cite>.mutate</cite> method
-will also apply the <cite>new_method</cite> and the  <cite>method_to_affect</cite>, if they are not None, and after changing
+<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L155"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.util.TransformCallbackStep.will_mutate_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>This will change the behavior of <code class="docutils literal notranslate"><span class="pre">self.mutate(&lt;...&gt;)</span></code> such that when mutating, it will return the
+presently provided new_base_step BaseStep (can be left to None for self), and the <code class="docutils literal notranslate"><span class="pre">.mutate</span></code> method
+will also apply the <code class="docutils literal notranslate"><span class="pre">new_method</span></code> and the  <code class="docutils literal notranslate"><span class="pre">method_to_affect</span></code>, if they are not None, and after changing
 the object to new_base_step.</p>
 <p>This can be useful if your pipeline requires unsupervised pretraining. For example:</p>
-<p><a href="#id33"><span class="problematic" id="id34">``</span></a>`
-X_pretrain = …
-X_train = …</p>
-<dl class="simple">
-<dt>p = Pipeline(</dt><dd><p>SomePreprocessing(),
-SomePretrainingStep().will_mutate_to(new_base_step=SomeStepThatWillUseThePretrainingStep),
-Identity().will_mutate_to(new_base_step=ClassifierThatWillBeUsedOnlyAfterThePretraining)</p>
-</dd>
-</dl>
-<p>)
-# Pre-train the pipeline
-p.fit(X_pretrain, y=None)</p>
-<p># This will leave <cite>SomePreprocessing()</cite> untouched and will affect the two other steps.
-p.mutate(new_method=”transform”, method_to_affect=”transform”)</p>
-<p># Pre-train the pipeline
-p.fit(X_train, y_train)  # Then fit the classifier and other new things
-<a href="#id35"><span class="problematic" id="id36">``</span></a><a href="#id37"><span class="problematic" id="id38">`</span></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_base_step</strong> – if it is not None, upon calling <cite>mutate</cite>, the object it will mutate to will be this provided new_base_step.</p></li>
-<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <cite>mutate</cite>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
-<li><p><strong>new_method</strong> – if it is not None, upon calling <cite>mutate</cite>, the new_method will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_base_step</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the object it will mutate to will be this provided new_base_step.</p></li>
+<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_method</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the new_method will be the one that is used on the provided new_base_step.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -884,12 +800,15 @@ p.fit(X_train, y_train)  # Then fit the classifier and other new things
 </div>
 <div class="section" id="module-neuraxle.steps.numpy">
 <span id="neuraxle-steps-numpy"></span><h2>neuraxle.steps.numpy<a class="headerlink" href="#module-neuraxle.steps.numpy" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pipeline-steps-based-on-numpy">
+<h3>Pipeline Steps Based on NumPy<a class="headerlink" href="#pipeline-steps-based-on-numpy" title="Permalink to this headline">¶</a></h3>
+<p>Those steps works with NumPy (np) arrays.</p>
 <dl class="class">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyConcatenateInnerFeatures</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/steps/numpy.py#L18"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyConcatenateInnerFeatures</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/steps/numpy.py#L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L277"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L301"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Don’t fit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -906,7 +825,7 @@ p.fit(X_train, y_train)  # Then fit the classifier and other new things
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.fit_one">
-<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L287"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.fit_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L311"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.fit_one" title="Permalink to this definition">¶</a></dt>
 <dd><p>Don’t fit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -923,14 +842,14 @@ p.fit(X_train, y_train)  # Then fit the classifier and other new things
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.meta_fit">
-<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.meta_fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.meta_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uses a meta optimization technique (AutoML) to find the best hyperparameters in the given
 hyperparameter space.</p>
 <dl class="simple">
-<dt>Usage: <a href="#id39"><span class="problematic" id="id40">`</span></a>p = p.meta_fit(X_train, y_train, metastep=RandomSearch(</dt><dd><p>n_iter=10, scoring_function=r2_score, higher_score_is_better=True))`</p>
+<dt>Usage: <a href="#id9"><span class="problematic" id="id10">``</span></a>p = p.meta_fit(X_train, y_train, metastep=RandomSearch(</dt><dd><p>n_iter=10, scoring_function=r2_score, higher_score_is_better=True))``</p>
 </dd>
 </dl>
-<p>Call <cite>.mutate(new_method=”inverse_transform”, method_to_assign_to=”transform”)</cite>, and the
+<p>Call <code class="docutils literal notranslate"><span class="pre">.mutate(new_method=&quot;inverse_transform&quot;,</span> <span class="pre">method_to_assign_to=&quot;transform&quot;)</span></code>, and the
 current estimator will become</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -948,18 +867,18 @@ current estimator will become</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.mutate">
-<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L105"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.mutate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L112"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.mutate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Replace the “method_to_assign_to” method by the “new_method” method, IF the present object has no pending calls to
-<cite>.will_mutate_to()</cite> waiting to be applied. If there is a pending call, the pending call will override the
+<code class="docutils literal notranslate"><span class="pre">.will_mutate_to()</span></code> waiting to be applied. If there is a pending call, the pending call will override the
 methods specified in the present call. If the change fails (such as if the new_method doesn’t exist), then
-a warning is printed (optional). By default, there is no pending <cite>will_mutate_to</cite> call.</p>
-<p>This could for example be useful within a pipeline to apply <cite>inverse_transform</cite> to every pipeline steps, or
-to assign <cite>predict_probas</cite> to <cite>predict</cite>, or to assign “inverse_transform” to “transform” to a reversed pipeline.</p>
+a warning is printed (optional). By default, there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p>
+<p>This could for example be useful within a pipeline to apply <code class="docutils literal notranslate"><span class="pre">inverse_transform</span></code> to every pipeline steps, or
+to assign <code class="docutils literal notranslate"><span class="pre">predict_probas</span></code> to <code class="docutils literal notranslate"><span class="pre">predict</span></code>, or to assign “inverse_transform” to “transform” to a reversed pipeline.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <cite>will_mutate_to</cite> call.</p></li>
-<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <cite>will_mutate_to</cite> call.</p></li>
+<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
+<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
 <li><p><strong>warn</strong> – (verbose) wheter or not to warn about the inexistence of the method.</p></li>
 </ul>
 </dd>
@@ -971,10 +890,10 @@ to assign <cite>predict_probas</cite> to <cite>predict</cite>, or to assign “i
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.reverse">
-<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L237"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.reverse" title="Permalink to this definition">¶</a></dt>
-<dd><p>The object will mutate itself such that the <cite>.transform</cite> method (and of all its underlying objects
-if applicable) be replaced by the <cite>.inverse_transform</cite> method.</p>
-<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <cite>.will_mutate_to</cite>.</p>
+<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.reverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>The object will mutate itself such that the <code class="docutils literal notranslate"><span class="pre">.transform</span></code> method (and of all its underlying objects
+if applicable) be replaced by the <code class="docutils literal notranslate"><span class="pre">.inverse_transform</span></code> method.</p>
+<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <code class="docutils literal notranslate"><span class="pre">.will_mutate_to</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>a copy of self, reversed. Each contained object will also have been reversed if self is a pipeline.</p>
@@ -984,35 +903,18 @@ if applicable) be replaced by the <cite>.inverse_transform</cite> method.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.will_mutate_to">
-<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.will_mutate_to" title="Permalink to this definition">¶</a></dt>
-<dd><p>This will change the behavior of <cite>self.mutate(&lt;…&gt;)</cite> such that when mutating, it will return the
-presently provided new_base_step BaseStep (can be left to None for self), and the <cite>.mutate</cite> method
-will also apply the <cite>new_method</cite> and the  <cite>method_to_affect</cite>, if they are not None, and after changing
+<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L155"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.will_mutate_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>This will change the behavior of <code class="docutils literal notranslate"><span class="pre">self.mutate(&lt;...&gt;)</span></code> such that when mutating, it will return the
+presently provided new_base_step BaseStep (can be left to None for self), and the <code class="docutils literal notranslate"><span class="pre">.mutate</span></code> method
+will also apply the <code class="docutils literal notranslate"><span class="pre">new_method</span></code> and the  <code class="docutils literal notranslate"><span class="pre">method_to_affect</span></code>, if they are not None, and after changing
 the object to new_base_step.</p>
 <p>This can be useful if your pipeline requires unsupervised pretraining. For example:</p>
-<p><a href="#id41"><span class="problematic" id="id42">``</span></a>`
-X_pretrain = …
-X_train = …</p>
-<dl class="simple">
-<dt>p = Pipeline(</dt><dd><p>SomePreprocessing(),
-SomePretrainingStep().will_mutate_to(new_base_step=SomeStepThatWillUseThePretrainingStep),
-Identity().will_mutate_to(new_base_step=ClassifierThatWillBeUsedOnlyAfterThePretraining)</p>
-</dd>
-</dl>
-<p>)
-# Pre-train the pipeline
-p.fit(X_pretrain, y=None)</p>
-<p># This will leave <cite>SomePreprocessing()</cite> untouched and will affect the two other steps.
-p.mutate(new_method=”transform”, method_to_affect=”transform”)</p>
-<p># Pre-train the pipeline
-p.fit(X_train, y_train)  # Then fit the classifier and other new things
-<a href="#id43"><span class="problematic" id="id44">``</span></a><a href="#id45"><span class="problematic" id="id46">`</span></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_base_step</strong> – if it is not None, upon calling <cite>mutate</cite>, the object it will mutate to will be this provided new_base_step.</p></li>
-<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <cite>mutate</cite>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
-<li><p><strong>new_method</strong> – if it is not None, upon calling <cite>mutate</cite>, the new_method will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_base_step</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the object it will mutate to will be this provided new_base_step.</p></li>
+<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_method</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the new_method will be the one that is used on the provided new_base_step.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1025,10 +927,10 @@ p.fit(X_train, y_train)  # Then fit the classifier and other new things
 
 <dl class="class">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyFlattenDatum</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/steps/numpy.py#L6"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyFlattenDatum</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/steps/numpy.py#L28"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L277"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L301"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Don’t fit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1045,7 +947,7 @@ p.fit(X_train, y_train)  # Then fit the classifier and other new things
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.fit_one">
-<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L287"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.fit_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L311"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.fit_one" title="Permalink to this definition">¶</a></dt>
 <dd><p>Don’t fit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1062,14 +964,14 @@ p.fit(X_train, y_train)  # Then fit the classifier and other new things
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.meta_fit">
-<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.meta_fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.meta_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uses a meta optimization technique (AutoML) to find the best hyperparameters in the given
 hyperparameter space.</p>
 <dl class="simple">
-<dt>Usage: <a href="#id47"><span class="problematic" id="id48">`</span></a>p = p.meta_fit(X_train, y_train, metastep=RandomSearch(</dt><dd><p>n_iter=10, scoring_function=r2_score, higher_score_is_better=True))`</p>
+<dt>Usage: <a href="#id11"><span class="problematic" id="id12">``</span></a>p = p.meta_fit(X_train, y_train, metastep=RandomSearch(</dt><dd><p>n_iter=10, scoring_function=r2_score, higher_score_is_better=True))``</p>
 </dd>
 </dl>
-<p>Call <cite>.mutate(new_method=”inverse_transform”, method_to_assign_to=”transform”)</cite>, and the
+<p>Call <code class="docutils literal notranslate"><span class="pre">.mutate(new_method=&quot;inverse_transform&quot;,</span> <span class="pre">method_to_assign_to=&quot;transform&quot;)</span></code>, and the
 current estimator will become</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1087,18 +989,18 @@ current estimator will become</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.mutate">
-<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L105"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.mutate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L112"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.mutate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Replace the “method_to_assign_to” method by the “new_method” method, IF the present object has no pending calls to
-<cite>.will_mutate_to()</cite> waiting to be applied. If there is a pending call, the pending call will override the
+<code class="docutils literal notranslate"><span class="pre">.will_mutate_to()</span></code> waiting to be applied. If there is a pending call, the pending call will override the
 methods specified in the present call. If the change fails (such as if the new_method doesn’t exist), then
-a warning is printed (optional). By default, there is no pending <cite>will_mutate_to</cite> call.</p>
-<p>This could for example be useful within a pipeline to apply <cite>inverse_transform</cite> to every pipeline steps, or
-to assign <cite>predict_probas</cite> to <cite>predict</cite>, or to assign “inverse_transform” to “transform” to a reversed pipeline.</p>
+a warning is printed (optional). By default, there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p>
+<p>This could for example be useful within a pipeline to apply <code class="docutils literal notranslate"><span class="pre">inverse_transform</span></code> to every pipeline steps, or
+to assign <code class="docutils literal notranslate"><span class="pre">predict_probas</span></code> to <code class="docutils literal notranslate"><span class="pre">predict</span></code>, or to assign “inverse_transform” to “transform” to a reversed pipeline.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <cite>will_mutate_to</cite> call.</p></li>
-<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <cite>will_mutate_to</cite> call.</p></li>
+<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
+<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
 <li><p><strong>warn</strong> – (verbose) wheter or not to warn about the inexistence of the method.</p></li>
 </ul>
 </dd>
@@ -1110,10 +1012,10 @@ to assign <cite>predict_probas</cite> to <cite>predict</cite>, or to assign “i
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.reverse">
-<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L237"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.reverse" title="Permalink to this definition">¶</a></dt>
-<dd><p>The object will mutate itself such that the <cite>.transform</cite> method (and of all its underlying objects
-if applicable) be replaced by the <cite>.inverse_transform</cite> method.</p>
-<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <cite>.will_mutate_to</cite>.</p>
+<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.reverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>The object will mutate itself such that the <code class="docutils literal notranslate"><span class="pre">.transform</span></code> method (and of all its underlying objects
+if applicable) be replaced by the <code class="docutils literal notranslate"><span class="pre">.inverse_transform</span></code> method.</p>
+<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <code class="docutils literal notranslate"><span class="pre">.will_mutate_to</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>a copy of self, reversed. Each contained object will also have been reversed if self is a pipeline.</p>
@@ -1123,35 +1025,18 @@ if applicable) be replaced by the <cite>.inverse_transform</cite> method.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.will_mutate_to">
-<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.will_mutate_to" title="Permalink to this definition">¶</a></dt>
-<dd><p>This will change the behavior of <cite>self.mutate(&lt;…&gt;)</cite> such that when mutating, it will return the
-presently provided new_base_step BaseStep (can be left to None for self), and the <cite>.mutate</cite> method
-will also apply the <cite>new_method</cite> and the  <cite>method_to_affect</cite>, if they are not None, and after changing
+<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L155"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.will_mutate_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>This will change the behavior of <code class="docutils literal notranslate"><span class="pre">self.mutate(&lt;...&gt;)</span></code> such that when mutating, it will return the
+presently provided new_base_step BaseStep (can be left to None for self), and the <code class="docutils literal notranslate"><span class="pre">.mutate</span></code> method
+will also apply the <code class="docutils literal notranslate"><span class="pre">new_method</span></code> and the  <code class="docutils literal notranslate"><span class="pre">method_to_affect</span></code>, if they are not None, and after changing
 the object to new_base_step.</p>
 <p>This can be useful if your pipeline requires unsupervised pretraining. For example:</p>
-<p><a href="#id49"><span class="problematic" id="id50">``</span></a>`
-X_pretrain = …
-X_train = …</p>
-<dl class="simple">
-<dt>p = Pipeline(</dt><dd><p>SomePreprocessing(),
-SomePretrainingStep().will_mutate_to(new_base_step=SomeStepThatWillUseThePretrainingStep),
-Identity().will_mutate_to(new_base_step=ClassifierThatWillBeUsedOnlyAfterThePretraining)</p>
-</dd>
-</dl>
-<p>)
-# Pre-train the pipeline
-p.fit(X_pretrain, y=None)</p>
-<p># This will leave <cite>SomePreprocessing()</cite> untouched and will affect the two other steps.
-p.mutate(new_method=”transform”, method_to_affect=”transform”)</p>
-<p># Pre-train the pipeline
-p.fit(X_train, y_train)  # Then fit the classifier and other new things
-<a href="#id51"><span class="problematic" id="id52">``</span></a><a href="#id53"><span class="problematic" id="id54">`</span></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_base_step</strong> – if it is not None, upon calling <cite>mutate</cite>, the object it will mutate to will be this provided new_base_step.</p></li>
-<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <cite>mutate</cite>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
-<li><p><strong>new_method</strong> – if it is not None, upon calling <cite>mutate</cite>, the new_method will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_base_step</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the object it will mutate to will be this provided new_base_step.</p></li>
+<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_method</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the new_method will be the one that is used on the provided new_base_step.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1164,10 +1049,10 @@ p.fit(X_train, y_train)  # Then fit the classifier and other new things
 
 <dl class="class">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyShapePrinter</code><span class="sig-paren">(</span><em>custom_message: str = ''</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/steps/numpy.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyShapePrinter</code><span class="sig-paren">(</span><em>custom_message: str = ''</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/steps/numpy.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L277"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L301"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Don’t fit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1184,7 +1069,7 @@ p.fit(X_train, y_train)  # Then fit the classifier and other new things
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.fit_one">
-<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L287"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.fit_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L311"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.fit_one" title="Permalink to this definition">¶</a></dt>
 <dd><p>Don’t fit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1201,14 +1086,14 @@ p.fit(X_train, y_train)  # Then fit the classifier and other new things
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.meta_fit">
-<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.meta_fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.meta_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uses a meta optimization technique (AutoML) to find the best hyperparameters in the given
 hyperparameter space.</p>
 <dl class="simple">
-<dt>Usage: <a href="#id55"><span class="problematic" id="id56">`</span></a>p = p.meta_fit(X_train, y_train, metastep=RandomSearch(</dt><dd><p>n_iter=10, scoring_function=r2_score, higher_score_is_better=True))`</p>
+<dt>Usage: <a href="#id13"><span class="problematic" id="id14">``</span></a>p = p.meta_fit(X_train, y_train, metastep=RandomSearch(</dt><dd><p>n_iter=10, scoring_function=r2_score, higher_score_is_better=True))``</p>
 </dd>
 </dl>
-<p>Call <cite>.mutate(new_method=”inverse_transform”, method_to_assign_to=”transform”)</cite>, and the
+<p>Call <code class="docutils literal notranslate"><span class="pre">.mutate(new_method=&quot;inverse_transform&quot;,</span> <span class="pre">method_to_assign_to=&quot;transform&quot;)</span></code>, and the
 current estimator will become</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1226,18 +1111,18 @@ current estimator will become</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.mutate">
-<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L105"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.mutate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L112"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.mutate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Replace the “method_to_assign_to” method by the “new_method” method, IF the present object has no pending calls to
-<cite>.will_mutate_to()</cite> waiting to be applied. If there is a pending call, the pending call will override the
+<code class="docutils literal notranslate"><span class="pre">.will_mutate_to()</span></code> waiting to be applied. If there is a pending call, the pending call will override the
 methods specified in the present call. If the change fails (such as if the new_method doesn’t exist), then
-a warning is printed (optional). By default, there is no pending <cite>will_mutate_to</cite> call.</p>
-<p>This could for example be useful within a pipeline to apply <cite>inverse_transform</cite> to every pipeline steps, or
-to assign <cite>predict_probas</cite> to <cite>predict</cite>, or to assign “inverse_transform” to “transform” to a reversed pipeline.</p>
+a warning is printed (optional). By default, there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p>
+<p>This could for example be useful within a pipeline to apply <code class="docutils literal notranslate"><span class="pre">inverse_transform</span></code> to every pipeline steps, or
+to assign <code class="docutils literal notranslate"><span class="pre">predict_probas</span></code> to <code class="docutils literal notranslate"><span class="pre">predict</span></code>, or to assign “inverse_transform” to “transform” to a reversed pipeline.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <cite>will_mutate_to</cite> call.</p></li>
-<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <cite>will_mutate_to</cite> call.</p></li>
+<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
+<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
 <li><p><strong>warn</strong> – (verbose) wheter or not to warn about the inexistence of the method.</p></li>
 </ul>
 </dd>
@@ -1249,10 +1134,10 @@ to assign <cite>predict_probas</cite> to <cite>predict</cite>, or to assign “i
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.reverse">
-<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L237"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.reverse" title="Permalink to this definition">¶</a></dt>
-<dd><p>The object will mutate itself such that the <cite>.transform</cite> method (and of all its underlying objects
-if applicable) be replaced by the <cite>.inverse_transform</cite> method.</p>
-<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <cite>.will_mutate_to</cite>.</p>
+<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.reverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>The object will mutate itself such that the <code class="docutils literal notranslate"><span class="pre">.transform</span></code> method (and of all its underlying objects
+if applicable) be replaced by the <code class="docutils literal notranslate"><span class="pre">.inverse_transform</span></code> method.</p>
+<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <code class="docutils literal notranslate"><span class="pre">.will_mutate_to</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>a copy of self, reversed. Each contained object will also have been reversed if self is a pipeline.</p>
@@ -1262,35 +1147,18 @@ if applicable) be replaced by the <cite>.inverse_transform</cite> method.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.will_mutate_to">
-<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.will_mutate_to" title="Permalink to this definition">¶</a></dt>
-<dd><p>This will change the behavior of <cite>self.mutate(&lt;…&gt;)</cite> such that when mutating, it will return the
-presently provided new_base_step BaseStep (can be left to None for self), and the <cite>.mutate</cite> method
-will also apply the <cite>new_method</cite> and the  <cite>method_to_affect</cite>, if they are not None, and after changing
+<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L155"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.will_mutate_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>This will change the behavior of <code class="docutils literal notranslate"><span class="pre">self.mutate(&lt;...&gt;)</span></code> such that when mutating, it will return the
+presently provided new_base_step BaseStep (can be left to None for self), and the <code class="docutils literal notranslate"><span class="pre">.mutate</span></code> method
+will also apply the <code class="docutils literal notranslate"><span class="pre">new_method</span></code> and the  <code class="docutils literal notranslate"><span class="pre">method_to_affect</span></code>, if they are not None, and after changing
 the object to new_base_step.</p>
 <p>This can be useful if your pipeline requires unsupervised pretraining. For example:</p>
-<p><a href="#id57"><span class="problematic" id="id58">``</span></a>`
-X_pretrain = …
-X_train = …</p>
-<dl class="simple">
-<dt>p = Pipeline(</dt><dd><p>SomePreprocessing(),
-SomePretrainingStep().will_mutate_to(new_base_step=SomeStepThatWillUseThePretrainingStep),
-Identity().will_mutate_to(new_base_step=ClassifierThatWillBeUsedOnlyAfterThePretraining)</p>
-</dd>
-</dl>
-<p>)
-# Pre-train the pipeline
-p.fit(X_pretrain, y=None)</p>
-<p># This will leave <cite>SomePreprocessing()</cite> untouched and will affect the two other steps.
-p.mutate(new_method=”transform”, method_to_affect=”transform”)</p>
-<p># Pre-train the pipeline
-p.fit(X_train, y_train)  # Then fit the classifier and other new things
-<a href="#id59"><span class="problematic" id="id60">``</span></a><a href="#id61"><span class="problematic" id="id62">`</span></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_base_step</strong> – if it is not None, upon calling <cite>mutate</cite>, the object it will mutate to will be this provided new_base_step.</p></li>
-<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <cite>mutate</cite>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
-<li><p><strong>new_method</strong> – if it is not None, upon calling <cite>mutate</cite>, the new_method will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_base_step</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the object it will mutate to will be this provided new_base_step.</p></li>
+<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_method</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the new_method will be the one that is used on the provided new_base_step.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1303,10 +1171,10 @@ p.fit(X_train, y_train)  # Then fit the classifier and other new things
 
 <dl class="class">
 <dt id="neuraxle.steps.numpy.NumpyTranspose">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyTranspose</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/steps/numpy.py#L33"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyTranspose</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/steps/numpy.py#L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L277"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L301"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Don’t fit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1323,7 +1191,7 @@ p.fit(X_train, y_train)  # Then fit the classifier and other new things
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.fit_one">
-<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L287"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.fit_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L311"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.fit_one" title="Permalink to this definition">¶</a></dt>
 <dd><p>Don’t fit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1340,14 +1208,14 @@ p.fit(X_train, y_train)  # Then fit the classifier and other new things
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.meta_fit">
-<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.meta_fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.meta_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uses a meta optimization technique (AutoML) to find the best hyperparameters in the given
 hyperparameter space.</p>
 <dl class="simple">
-<dt>Usage: <a href="#id63"><span class="problematic" id="id64">`</span></a>p = p.meta_fit(X_train, y_train, metastep=RandomSearch(</dt><dd><p>n_iter=10, scoring_function=r2_score, higher_score_is_better=True))`</p>
+<dt>Usage: <a href="#id15"><span class="problematic" id="id16">``</span></a>p = p.meta_fit(X_train, y_train, metastep=RandomSearch(</dt><dd><p>n_iter=10, scoring_function=r2_score, higher_score_is_better=True))``</p>
 </dd>
 </dl>
-<p>Call <cite>.mutate(new_method=”inverse_transform”, method_to_assign_to=”transform”)</cite>, and the
+<p>Call <code class="docutils literal notranslate"><span class="pre">.mutate(new_method=&quot;inverse_transform&quot;,</span> <span class="pre">method_to_assign_to=&quot;transform&quot;)</span></code>, and the
 current estimator will become</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1365,18 +1233,18 @@ current estimator will become</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.mutate">
-<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L105"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.mutate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L112"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.mutate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Replace the “method_to_assign_to” method by the “new_method” method, IF the present object has no pending calls to
-<cite>.will_mutate_to()</cite> waiting to be applied. If there is a pending call, the pending call will override the
+<code class="docutils literal notranslate"><span class="pre">.will_mutate_to()</span></code> waiting to be applied. If there is a pending call, the pending call will override the
 methods specified in the present call. If the change fails (such as if the new_method doesn’t exist), then
-a warning is printed (optional). By default, there is no pending <cite>will_mutate_to</cite> call.</p>
-<p>This could for example be useful within a pipeline to apply <cite>inverse_transform</cite> to every pipeline steps, or
-to assign <cite>predict_probas</cite> to <cite>predict</cite>, or to assign “inverse_transform” to “transform” to a reversed pipeline.</p>
+a warning is printed (optional). By default, there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p>
+<p>This could for example be useful within a pipeline to apply <code class="docutils literal notranslate"><span class="pre">inverse_transform</span></code> to every pipeline steps, or
+to assign <code class="docutils literal notranslate"><span class="pre">predict_probas</span></code> to <code class="docutils literal notranslate"><span class="pre">predict</span></code>, or to assign “inverse_transform” to “transform” to a reversed pipeline.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <cite>will_mutate_to</cite> call.</p></li>
-<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <cite>will_mutate_to</cite> call.</p></li>
+<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
+<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
 <li><p><strong>warn</strong> – (verbose) wheter or not to warn about the inexistence of the method.</p></li>
 </ul>
 </dd>
@@ -1388,10 +1256,10 @@ to assign <cite>predict_probas</cite> to <cite>predict</cite>, or to assign “i
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.reverse">
-<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L237"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.reverse" title="Permalink to this definition">¶</a></dt>
-<dd><p>The object will mutate itself such that the <cite>.transform</cite> method (and of all its underlying objects
-if applicable) be replaced by the <cite>.inverse_transform</cite> method.</p>
-<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <cite>.will_mutate_to</cite>.</p>
+<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.reverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>The object will mutate itself such that the <code class="docutils literal notranslate"><span class="pre">.transform</span></code> method (and of all its underlying objects
+if applicable) be replaced by the <code class="docutils literal notranslate"><span class="pre">.inverse_transform</span></code> method.</p>
+<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <code class="docutils literal notranslate"><span class="pre">.will_mutate_to</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>a copy of self, reversed. Each contained object will also have been reversed if self is a pipeline.</p>
@@ -1401,35 +1269,18 @@ if applicable) be replaced by the <cite>.inverse_transform</cite> method.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.will_mutate_to">
-<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.will_mutate_to" title="Permalink to this definition">¶</a></dt>
-<dd><p>This will change the behavior of <cite>self.mutate(&lt;…&gt;)</cite> such that when mutating, it will return the
-presently provided new_base_step BaseStep (can be left to None for self), and the <cite>.mutate</cite> method
-will also apply the <cite>new_method</cite> and the  <cite>method_to_affect</cite>, if they are not None, and after changing
+<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L155"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.will_mutate_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>This will change the behavior of <code class="docutils literal notranslate"><span class="pre">self.mutate(&lt;...&gt;)</span></code> such that when mutating, it will return the
+presently provided new_base_step BaseStep (can be left to None for self), and the <code class="docutils literal notranslate"><span class="pre">.mutate</span></code> method
+will also apply the <code class="docutils literal notranslate"><span class="pre">new_method</span></code> and the  <code class="docutils literal notranslate"><span class="pre">method_to_affect</span></code>, if they are not None, and after changing
 the object to new_base_step.</p>
 <p>This can be useful if your pipeline requires unsupervised pretraining. For example:</p>
-<p><a href="#id65"><span class="problematic" id="id66">``</span></a>`
-X_pretrain = …
-X_train = …</p>
-<dl class="simple">
-<dt>p = Pipeline(</dt><dd><p>SomePreprocessing(),
-SomePretrainingStep().will_mutate_to(new_base_step=SomeStepThatWillUseThePretrainingStep),
-Identity().will_mutate_to(new_base_step=ClassifierThatWillBeUsedOnlyAfterThePretraining)</p>
-</dd>
-</dl>
-<p>)
-# Pre-train the pipeline
-p.fit(X_pretrain, y=None)</p>
-<p># This will leave <cite>SomePreprocessing()</cite> untouched and will affect the two other steps.
-p.mutate(new_method=”transform”, method_to_affect=”transform”)</p>
-<p># Pre-train the pipeline
-p.fit(X_train, y_train)  # Then fit the classifier and other new things
-<a href="#id67"><span class="problematic" id="id68">``</span></a><a href="#id69"><span class="problematic" id="id70">`</span></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_base_step</strong> – if it is not None, upon calling <cite>mutate</cite>, the object it will mutate to will be this provided new_base_step.</p></li>
-<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <cite>mutate</cite>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
-<li><p><strong>new_method</strong> – if it is not None, upon calling <cite>mutate</cite>, the new_method will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_base_step</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the object it will mutate to will be this provided new_base_step.</p></li>
+<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_method</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the new_method will be the one that is used on the provided new_base_step.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1441,14 +1292,18 @@ p.fit(X_train, y_train)  # Then fit the classifier and other new things
 </dd></dl>
 
 </div>
+</div>
 <div class="section" id="module-neuraxle.steps.sklearn">
 <span id="neuraxle-steps-sklearn"></span><h2>neuraxle.steps.sklearn<a class="headerlink" href="#module-neuraxle.steps.sklearn" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pipeline-steps-based-on-scikit-learn">
+<h3>Pipeline Steps Based on Scikit-Learn<a class="headerlink" href="#pipeline-steps-based-on-scikit-learn" title="Permalink to this headline">¶</a></h3>
+<p>Those steps works with scikit-learn (sklearn) transformers and estimators.</p>
 <dl class="class">
 <dt id="neuraxle.steps.sklearn.RidgeModelStacking">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.sklearn.</code><code class="descname">RidgeModelStacking</code><span class="sig-paren">(</span><em>brothers</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/steps/sklearn.py#L56"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.RidgeModelStacking" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.sklearn.</code><code class="descname">RidgeModelStacking</code><span class="sig-paren">(</span><em>brothers</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/steps/sklearn.py#L78"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.RidgeModelStacking" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="neuraxle.steps.sklearn.RidgeModelStacking.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/union.py#L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.RidgeModelStacking.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.union.ModelStacking<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/union.py#L146"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.RidgeModelStacking.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit the parallel steps on the data. It will make use of some parallel processing.
 Also, fit the judge on the result of the parallel steps.</p>
 <dl class="field-list simple">
@@ -1466,14 +1321,14 @@ Also, fit the judge on the result of the parallel steps.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.sklearn.RidgeModelStacking.meta_fit">
-<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.RidgeModelStacking.meta_fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.RidgeModelStacking.meta_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uses a meta optimization technique (AutoML) to find the best hyperparameters in the given
 hyperparameter space.</p>
 <dl class="simple">
-<dt>Usage: <a href="#id71"><span class="problematic" id="id72">`</span></a>p = p.meta_fit(X_train, y_train, metastep=RandomSearch(</dt><dd><p>n_iter=10, scoring_function=r2_score, higher_score_is_better=True))`</p>
+<dt>Usage: <a href="#id17"><span class="problematic" id="id18">``</span></a>p = p.meta_fit(X_train, y_train, metastep=RandomSearch(</dt><dd><p>n_iter=10, scoring_function=r2_score, higher_score_is_better=True))``</p>
 </dd>
 </dl>
-<p>Call <cite>.mutate(new_method=”inverse_transform”, method_to_assign_to=”transform”)</cite>, and the
+<p>Call <code class="docutils literal notranslate"><span class="pre">.mutate(new_method=&quot;inverse_transform&quot;,</span> <span class="pre">method_to_assign_to=&quot;transform&quot;)</span></code>, and the
 current estimator will become</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1491,7 +1346,7 @@ current estimator will become</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.sklearn.RidgeModelStacking.mutate">
-<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L451"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.RidgeModelStacking.mutate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L466"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.RidgeModelStacking.mutate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call mutate on every steps the the present truncable step contains.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1509,10 +1364,10 @@ current estimator will become</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.sklearn.RidgeModelStacking.reverse">
-<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L237"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.RidgeModelStacking.reverse" title="Permalink to this definition">¶</a></dt>
-<dd><p>The object will mutate itself such that the <cite>.transform</cite> method (and of all its underlying objects
-if applicable) be replaced by the <cite>.inverse_transform</cite> method.</p>
-<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <cite>.will_mutate_to</cite>.</p>
+<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.RidgeModelStacking.reverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>The object will mutate itself such that the <code class="docutils literal notranslate"><span class="pre">.transform</span></code> method (and of all its underlying objects
+if applicable) be replaced by the <code class="docutils literal notranslate"><span class="pre">.inverse_transform</span></code> method.</p>
+<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <code class="docutils literal notranslate"><span class="pre">.will_mutate_to</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>a copy of self, reversed. Each contained object will also have been reversed if self is a pipeline.</p>
@@ -1522,7 +1377,7 @@ if applicable) be replaced by the <cite>.inverse_transform</cite> method.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.sklearn.RidgeModelStacking.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/union.py#L145"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.RidgeModelStacking.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/union.py#L161"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.RidgeModelStacking.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform the data with the unions. It will make use of some parallel processing.
 Then, use the judge to refine the transformations.</p>
 <dl class="field-list simple">
@@ -1537,35 +1392,18 @@ Then, use the judge to refine the transformations.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.sklearn.RidgeModelStacking.will_mutate_to">
-<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.RidgeModelStacking.will_mutate_to" title="Permalink to this definition">¶</a></dt>
-<dd><p>This will change the behavior of <cite>self.mutate(&lt;…&gt;)</cite> such that when mutating, it will return the
-presently provided new_base_step BaseStep (can be left to None for self), and the <cite>.mutate</cite> method
-will also apply the <cite>new_method</cite> and the  <cite>method_to_affect</cite>, if they are not None, and after changing
+<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L155"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.RidgeModelStacking.will_mutate_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>This will change the behavior of <code class="docutils literal notranslate"><span class="pre">self.mutate(&lt;...&gt;)</span></code> such that when mutating, it will return the
+presently provided new_base_step BaseStep (can be left to None for self), and the <code class="docutils literal notranslate"><span class="pre">.mutate</span></code> method
+will also apply the <code class="docutils literal notranslate"><span class="pre">new_method</span></code> and the  <code class="docutils literal notranslate"><span class="pre">method_to_affect</span></code>, if they are not None, and after changing
 the object to new_base_step.</p>
 <p>This can be useful if your pipeline requires unsupervised pretraining. For example:</p>
-<p><a href="#id73"><span class="problematic" id="id74">``</span></a>`
-X_pretrain = …
-X_train = …</p>
-<dl class="simple">
-<dt>p = Pipeline(</dt><dd><p>SomePreprocessing(),
-SomePretrainingStep().will_mutate_to(new_base_step=SomeStepThatWillUseThePretrainingStep),
-Identity().will_mutate_to(new_base_step=ClassifierThatWillBeUsedOnlyAfterThePretraining)</p>
-</dd>
-</dl>
-<p>)
-# Pre-train the pipeline
-p.fit(X_pretrain, y=None)</p>
-<p># This will leave <cite>SomePreprocessing()</cite> untouched and will affect the two other steps.
-p.mutate(new_method=”transform”, method_to_affect=”transform”)</p>
-<p># Pre-train the pipeline
-p.fit(X_train, y_train)  # Then fit the classifier and other new things
-<a href="#id75"><span class="problematic" id="id76">``</span></a><a href="#id77"><span class="problematic" id="id78">`</span></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_base_step</strong> – if it is not None, upon calling <cite>mutate</cite>, the object it will mutate to will be this provided new_base_step.</p></li>
-<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <cite>mutate</cite>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
-<li><p><strong>new_method</strong> – if it is not None, upon calling <cite>mutate</cite>, the new_method will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_base_step</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the object it will mutate to will be this provided new_base_step.</p></li>
+<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_method</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the new_method will be the one that is used on the provided new_base_step.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1578,17 +1416,17 @@ p.fit(X_train, y_train)  # Then fit the classifier and other new things
 
 <dl class="class">
 <dt id="neuraxle.steps.sklearn.SKLearnWrapper">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.sklearn.</code><code class="descname">SKLearnWrapper</code><span class="sig-paren">(</span><em>wrapped_sklearn_predictor</em>, <em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace = None</em>, <em>return_all_sklearn_default_params_on_get=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/steps/sklearn.py#L11"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.sklearn.</code><code class="descname">SKLearnWrapper</code><span class="sig-paren">(</span><em>wrapped_sklearn_predictor</em>, <em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace = None</em>, <em>return_all_sklearn_default_params_on_get=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/steps/sklearn.py#L33"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="neuraxle.steps.sklearn.SKLearnWrapper.meta_fit">
-<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper.meta_fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper.meta_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uses a meta optimization technique (AutoML) to find the best hyperparameters in the given
 hyperparameter space.</p>
 <dl class="simple">
-<dt>Usage: <a href="#id79"><span class="problematic" id="id80">`</span></a>p = p.meta_fit(X_train, y_train, metastep=RandomSearch(</dt><dd><p>n_iter=10, scoring_function=r2_score, higher_score_is_better=True))`</p>
+<dt>Usage: <a href="#id19"><span class="problematic" id="id20">``</span></a>p = p.meta_fit(X_train, y_train, metastep=RandomSearch(</dt><dd><p>n_iter=10, scoring_function=r2_score, higher_score_is_better=True))``</p>
 </dd>
 </dl>
-<p>Call <cite>.mutate(new_method=”inverse_transform”, method_to_assign_to=”transform”)</cite>, and the
+<p>Call <code class="docutils literal notranslate"><span class="pre">.mutate(new_method=&quot;inverse_transform&quot;,</span> <span class="pre">method_to_assign_to=&quot;transform&quot;)</span></code>, and the
 current estimator will become</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1606,18 +1444,18 @@ current estimator will become</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.sklearn.SKLearnWrapper.mutate">
-<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L105"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper.mutate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L112"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper.mutate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Replace the “method_to_assign_to” method by the “new_method” method, IF the present object has no pending calls to
-<cite>.will_mutate_to()</cite> waiting to be applied. If there is a pending call, the pending call will override the
+<code class="docutils literal notranslate"><span class="pre">.will_mutate_to()</span></code> waiting to be applied. If there is a pending call, the pending call will override the
 methods specified in the present call. If the change fails (such as if the new_method doesn’t exist), then
-a warning is printed (optional). By default, there is no pending <cite>will_mutate_to</cite> call.</p>
-<p>This could for example be useful within a pipeline to apply <cite>inverse_transform</cite> to every pipeline steps, or
-to assign <cite>predict_probas</cite> to <cite>predict</cite>, or to assign “inverse_transform” to “transform” to a reversed pipeline.</p>
+a warning is printed (optional). By default, there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p>
+<p>This could for example be useful within a pipeline to apply <code class="docutils literal notranslate"><span class="pre">inverse_transform</span></code> to every pipeline steps, or
+to assign <code class="docutils literal notranslate"><span class="pre">predict_probas</span></code> to <code class="docutils literal notranslate"><span class="pre">predict</span></code>, or to assign “inverse_transform” to “transform” to a reversed pipeline.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <cite>will_mutate_to</cite> call.</p></li>
-<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <cite>will_mutate_to</cite> call.</p></li>
+<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
+<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
 <li><p><strong>warn</strong> – (verbose) wheter or not to warn about the inexistence of the method.</p></li>
 </ul>
 </dd>
@@ -1629,10 +1467,10 @@ to assign <cite>predict_probas</cite> to <cite>predict</cite>, or to assign “i
 
 <dl class="method">
 <dt id="neuraxle.steps.sklearn.SKLearnWrapper.reverse">
-<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L237"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper.reverse" title="Permalink to this definition">¶</a></dt>
-<dd><p>The object will mutate itself such that the <cite>.transform</cite> method (and of all its underlying objects
-if applicable) be replaced by the <cite>.inverse_transform</cite> method.</p>
-<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <cite>.will_mutate_to</cite>.</p>
+<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper.reverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>The object will mutate itself such that the <code class="docutils literal notranslate"><span class="pre">.transform</span></code> method (and of all its underlying objects
+if applicable) be replaced by the <code class="docutils literal notranslate"><span class="pre">.inverse_transform</span></code> method.</p>
+<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <code class="docutils literal notranslate"><span class="pre">.will_mutate_to</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>a copy of self, reversed. Each contained object will also have been reversed if self is a pipeline.</p>
@@ -1642,35 +1480,18 @@ if applicable) be replaced by the <cite>.inverse_transform</cite> method.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.sklearn.SKLearnWrapper.will_mutate_to">
-<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5c39d07/neuraxle/base.py#L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper.will_mutate_to" title="Permalink to this definition">¶</a></dt>
-<dd><p>This will change the behavior of <cite>self.mutate(&lt;…&gt;)</cite> such that when mutating, it will return the
-presently provided new_base_step BaseStep (can be left to None for self), and the <cite>.mutate</cite> method
-will also apply the <cite>new_method</cite> and the  <cite>method_to_affect</cite>, if they are not None, and after changing
+<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/51c3ad6/neuraxle/base.py#L155"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper.will_mutate_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>This will change the behavior of <code class="docutils literal notranslate"><span class="pre">self.mutate(&lt;...&gt;)</span></code> such that when mutating, it will return the
+presently provided new_base_step BaseStep (can be left to None for self), and the <code class="docutils literal notranslate"><span class="pre">.mutate</span></code> method
+will also apply the <code class="docutils literal notranslate"><span class="pre">new_method</span></code> and the  <code class="docutils literal notranslate"><span class="pre">method_to_affect</span></code>, if they are not None, and after changing
 the object to new_base_step.</p>
 <p>This can be useful if your pipeline requires unsupervised pretraining. For example:</p>
-<p><a href="#id81"><span class="problematic" id="id82">``</span></a>`
-X_pretrain = …
-X_train = …</p>
-<dl class="simple">
-<dt>p = Pipeline(</dt><dd><p>SomePreprocessing(),
-SomePretrainingStep().will_mutate_to(new_base_step=SomeStepThatWillUseThePretrainingStep),
-Identity().will_mutate_to(new_base_step=ClassifierThatWillBeUsedOnlyAfterThePretraining)</p>
-</dd>
-</dl>
-<p>)
-# Pre-train the pipeline
-p.fit(X_pretrain, y=None)</p>
-<p># This will leave <cite>SomePreprocessing()</cite> untouched and will affect the two other steps.
-p.mutate(new_method=”transform”, method_to_affect=”transform”)</p>
-<p># Pre-train the pipeline
-p.fit(X_train, y_train)  # Then fit the classifier and other new things
-<a href="#id83"><span class="problematic" id="id84">``</span></a><a href="#id85"><span class="problematic" id="id86">`</span></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_base_step</strong> – if it is not None, upon calling <cite>mutate</cite>, the object it will mutate to will be this provided new_base_step.</p></li>
-<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <cite>mutate</cite>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
-<li><p><strong>new_method</strong> – if it is not None, upon calling <cite>mutate</cite>, the new_method will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_base_step</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the object it will mutate to will be this provided new_base_step.</p></li>
+<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_method</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the new_method will be the one that is used on the provided new_base_step.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1681,6 +1502,7 @@ p.fit(X_train, y_train)  # Then fit the classifier and other new things
 
 </dd></dl>
 
+</div>
 </div>
 </div>
 
