@@ -1,0 +1,1190 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>neuraxle.hyperparams.distributions &mdash; Neuraxle 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://www.neuraxle.neuraxio.com/stable/api/neuraxle.hyperparams.distributions.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="neuraxle.hyperparams.space" href="neuraxle.hyperparams.space.html" />
+    <link rel="prev" title="neuraxle.steps.sklearn" href="neuraxle.steps.sklearn.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #F80" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Neuraxle
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Neuraxle/README.html">Neuraxle Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#contributors">Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">Complete Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.base.html">neuraxle.base</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.base.html#neuraxle-s-base-classes">Neuraxle’s Base Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.pipeline.html">neuraxle.pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.pipeline.html#neuraxle-s-pipeline-classes">Neuraxle’s Pipeline Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.union.html">neuraxle.union</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.union.html#union-of-features">Union of Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.util.html">neuraxle.steps.util</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.util.html#util-pipeline-steps">Util Pipeline Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.numpy.html">neuraxle.steps.numpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.numpy.html#pipeline-steps-based-on-numpy">Pipeline Steps Based on NumPy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.sklearn.html#pipeline-steps-based-on-scikit-learn">Pipeline Steps Based on Scikit-Learn</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">neuraxle.hyperparams.distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hyperparameter-distributions">Hyperparameter Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.hyperparams.space.html">neuraxle.hyperparams.space</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.hyperparams.space.html#hyperparameter-dictionary-conversions">Hyperparameter Dictionary Conversions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.random.html">neuraxle.metaopt.random</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.random.html#random">Random</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.sklearn.html">neuraxle.metaopt.sklearn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.sklearn.html#scikit-learn-metaoptimizers">Scikit-learn metaoptimizers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.hyperopt.html">neuraxle.metaopt.hyperopt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.hyperopt.html#hyperopt">Hyperopt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/boston_housing_regression_with_model_stacking.html">Boston Housing Regression</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Neuraxle</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">Complete Documentation</a> &raquo;</li>
+        
+      <li>neuraxle.hyperparams.distributions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/neuraxle.hyperparams.distributions.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-neuraxle.hyperparams.distributions">
+<span id="neuraxle-hyperparams-distributions"></span><h1>neuraxle.hyperparams.distributions<a class="headerlink" href="#module-neuraxle.hyperparams.distributions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="hyperparameter-distributions">
+<h2>Hyperparameter Distributions<a class="headerlink" href="#hyperparameter-distributions" title="Permalink to this headline">¶</a></h2>
+<p>Here you’ll find a few hyperparameter distributions. It’s also possible to create yours by inheriting
+from the base class. Each distribution must override the method <code class="docutils literal notranslate"><span class="pre">rvs</span></code>, which will return a sampled value from
+the distribution.</p>
+<p class="rubric">Classes</p>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.hyperparams.distributions.Boolean" title="neuraxle.hyperparams.distributions.Boolean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Boolean</span></code></a>()</p></td>
+<td><p>Get a random boolean hyperparameter.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.hyperparams.distributions.Choice" title="neuraxle.hyperparams.distributions.Choice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Choice</span></code></a>(choice_list)</p></td>
+<td><p>Get a random value from a choice list of possible value for this hyperparameter.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.hyperparams.distributions.FixedHyperparameter" title="neuraxle.hyperparams.distributions.FixedHyperparameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FixedHyperparameter</span></code></a>(value)</p></td>
+<td><p>This is an hyperparameter that won’t change again, but that is still expressed as a distribution.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution" title="neuraxle.hyperparams.distributions.HyperparameterDistribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HyperparameterDistribution</span></code></a>()</p></td>
+<td><p>Base class for other hyperparameter distributions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.hyperparams.distributions.LogNormal" title="neuraxle.hyperparams.distributions.LogNormal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LogNormal</span></code></a>(log2_space_mean, log2_space_std, …)</p></td>
+<td><p>Get a LogNormal distribution.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.hyperparams.distributions.LogUniform" title="neuraxle.hyperparams.distributions.LogUniform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LogUniform</span></code></a>(min_included, max_included)</p></td>
+<td><p>Get a LogUniform distribution.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.hyperparams.distributions.Normal" title="neuraxle.hyperparams.distributions.Normal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Normal</span></code></a>(mean, std, hard_clip_min, hard_clip_max)</p></td>
+<td><p>Get a normal distribution.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.hyperparams.distributions.PriorityChoice" title="neuraxle.hyperparams.distributions.PriorityChoice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PriorityChoice</span></code></a>(choice_list)</p></td>
+<td><p>Get a random value from a choice list of possible value for this hyperparameter.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.hyperparams.distributions.Quantized" title="neuraxle.hyperparams.distributions.Quantized"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quantized</span></code></a>(hd, hds)</p></td>
+<td><p>A quantized wrapper for another distribution: will round() the rvs number.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.hyperparams.distributions.RandInt" title="neuraxle.hyperparams.distributions.RandInt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RandInt</span></code></a>(min_included, max_included)</p></td>
+<td><p>Get a random integer within a range</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.hyperparams.distributions.Uniform" title="neuraxle.hyperparams.distributions.Uniform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Uniform</span></code></a>(min_included, max_included)</p></td>
+<td><p>Get a uniform distribution.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions" title="neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WrappedHyperparameterDistributions</span></code></a>(hd, hds)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="neuraxle.hyperparams.distributions.Boolean">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">Boolean</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L145"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Boolean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a random boolean hyperparameter.</p>
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Boolean.get_current_narrowing_value">
+<code class="descname">get_current_narrowing_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Boolean.get_current_narrowing_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Boolean.narrow_space_from_best_guess">
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.0</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Boolean.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a value that is estimated to be the best one of the space, and restrict the space near that value.
+By default, this function will completely replace the returned value by the new guess if not overriden.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>best_guess</strong> – the value towards which we want to narrow down the space.</p></li>
+<li><p><strong>kept_space_ratio</strong> – what proportion of the space is kept. Should be between 0.0 and 1.0. Default is to keep only the best_guess (0.0).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new HyperparameterDistribution object that has been narrowed down.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Boolean.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Boolean.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a random True or False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True or False (random).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Boolean.unnarrow">
+<code class="descname">unnarrow</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Boolean.unnarrow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the original distribution before narrowing of the distribution. If the distribution was never narrowed,
+will return a copy of self.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the original HyperparameterDistribution before narrowing, or else self if the distribution is virgin.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Boolean.was_narrowed_from">
+<code class="descname">was_narrowed_from</code><span class="sig-paren">(</span><em>kept_space_ratio: float</em>, <em>original_hp: neuraxle.hyperparams.distributions.HyperparameterDistribution</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Boolean.was_narrowed_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keep track of the original distribution to restore it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kept_space_ratio</strong> – the ratio which made the current object narrower than the <code class="docutils literal notranslate"><span class="pre">original_hp</span></code>.</p></li>
+<li><p><strong>original_hp</strong> – The original HyperparameterDistribution, which will be kept in a private variable for an eventual restore.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.distributions.Choice">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">Choice</code><span class="sig-paren">(</span><em>choice_list: List</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L157"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a random value from a choice list of possible value for this hyperparameter.</p>
+<p>When narrowed, the choice will only collapse to a single element when narrowed enough.
+For example, if there are 4 items in the list, only at a narrowing value of 0.25 that
+the first item will be kept alone.</p>
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Choice.get_current_narrowing_value">
+<code class="descname">get_current_narrowing_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice.get_current_narrowing_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Choice.narrow_space_from_best_guess">
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.0</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L182"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will narrow the space. If the cumulative kept_space_ratio gets to be under or equal to 1/len(choice_list),
+then the list is crunched to a single item as a FixedHyperparameter to reflect this narrowing.
+So once a small enough kept_space_ratio is reached, the list becomes a fixed unique item from the best guess.
+Otherwise, a deepcopy of self is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>best_guess</strong> – the best item of the list to keep if truly narrowing.</p></li>
+<li><p><strong>kept_space_ratio</strong> – the ratio of the space to keep.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a deepcopy of self, or else a FixedHyperparameter of the best_guess.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Choice.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L174"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get one of the items randomly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>one of the items of the list.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Choice.unnarrow">
+<code class="descname">unnarrow</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice.unnarrow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the original distribution before narrowing of the distribution. If the distribution was never narrowed,
+will return a copy of self.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the original HyperparameterDistribution before narrowing, or else self if the distribution is virgin.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Choice.was_narrowed_from">
+<code class="descname">was_narrowed_from</code><span class="sig-paren">(</span><em>kept_space_ratio: float</em>, <em>original_hp: neuraxle.hyperparams.distributions.HyperparameterDistribution</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice.was_narrowed_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keep track of the original distribution to restore it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kept_space_ratio</strong> – the ratio which made the current object narrower than the <code class="docutils literal notranslate"><span class="pre">original_hp</span></code>.</p></li>
+<li><p><strong>original_hp</strong> – The original HyperparameterDistribution, which will be kept in a private variable for an eventual restore.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.distributions.FixedHyperparameter">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">FixedHyperparameter</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L102"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.FixedHyperparameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is an hyperparameter that won’t change again, but that is still expressed as a distribution.</p>
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.FixedHyperparameter.get_current_narrowing_value">
+<code class="descname">get_current_narrowing_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.FixedHyperparameter.get_current_narrowing_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.FixedHyperparameter.narrow_space_from_best_guess">
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.0</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.FixedHyperparameter.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a value that is estimated to be the best one of the space, and restrict the space near that value.
+By default, this function will completely replace the returned value by the new guess if not overriden.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>best_guess</strong> – the value towards which we want to narrow down the space.</p></li>
+<li><p><strong>kept_space_ratio</strong> – what proportion of the space is kept. Should be between 0.0 and 1.0. Default is to keep only the best_guess (0.0).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new HyperparameterDistribution object that has been narrowed down.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.FixedHyperparameter.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.FixedHyperparameter.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample the non-random anymore value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the value given at creation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.FixedHyperparameter.unnarrow">
+<code class="descname">unnarrow</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.FixedHyperparameter.unnarrow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the original distribution before narrowing of the distribution. If the distribution was never narrowed,
+will return a copy of self.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the original HyperparameterDistribution before narrowing, or else self if the distribution is virgin.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.FixedHyperparameter.was_narrowed_from">
+<code class="descname">was_narrowed_from</code><span class="sig-paren">(</span><em>kept_space_ratio: float</em>, <em>original_hp: neuraxle.hyperparams.distributions.HyperparameterDistribution</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.FixedHyperparameter.was_narrowed_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keep track of the original distribution to restore it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kept_space_ratio</strong> – the ratio which made the current object narrower than the <code class="docutils literal notranslate"><span class="pre">original_hp</span></code>.</p></li>
+<li><p><strong>original_hp</strong> – The original HyperparameterDistribution, which will be kept in a private variable for an eventual restore.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.distributions.HyperparameterDistribution">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">HyperparameterDistribution</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for other hyperparameter distributions.</p>
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.HyperparameterDistribution.get_current_narrowing_value">
+<code class="descname">get_current_narrowing_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution.get_current_narrowing_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.HyperparameterDistribution.narrow_space_from_best_guess">
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.0</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a value that is estimated to be the best one of the space, and restrict the space near that value.
+By default, this function will completely replace the returned value by the new guess if not overriden.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>best_guess</strong> – the value towards which we want to narrow down the space.</p></li>
+<li><p><strong>kept_space_ratio</strong> – what proportion of the space is kept. Should be between 0.0 and 1.0. Default is to keep only the best_guess (0.0).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new HyperparameterDistribution object that has been narrowed down.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.HyperparameterDistribution.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L44"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample the random variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The randomly sampled value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.HyperparameterDistribution.unnarrow">
+<code class="descname">unnarrow</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution.unnarrow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the original distribution before narrowing of the distribution. If the distribution was never narrowed,
+will return a copy of self.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the original HyperparameterDistribution before narrowing, or else self if the distribution is virgin.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.HyperparameterDistribution.was_narrowed_from">
+<code class="descname">was_narrowed_from</code><span class="sig-paren">(</span><em>kept_space_ratio: float</em>, <em>original_hp: neuraxle.hyperparams.distributions.HyperparameterDistribution</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution.was_narrowed_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keep track of the original distribution to restore it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kept_space_ratio</strong> – the ratio which made the current object narrower than the <code class="docutils literal notranslate"><span class="pre">original_hp</span></code>.</p></li>
+<li><p><strong>original_hp</strong> – The original HyperparameterDistribution, which will be kept in a private variable for an eventual restore.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.distributions.LogNormal">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">LogNormal</code><span class="sig-paren">(</span><em>log2_space_mean: float</em>, <em>log2_space_std: float</em>, <em>hard_clip_min: float = None</em>, <em>hard_clip_max: float = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L494"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a LogNormal distribution.</p>
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.LogNormal.get_current_narrowing_value">
+<code class="descname">get_current_narrowing_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal.get_current_narrowing_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.LogNormal.narrow_space_from_best_guess">
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L529"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will narrow the distribution towards the new best_guess.
+The log2_space_mean (log space mean) will move, in log space, towards the new best guess, and the
+log2_space_std (log space standard deviation) will be multiplied by the kept_space_ratio.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>best_guess</strong> – the value towards which we want to narrow down the space’s mean. Should be between 0.0 and 1.0.</p></li>
+<li><p><strong>kept_space_ratio</strong> – what proportion of the space is kept. Default is to keep half the space (0.5).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new HyperparameterDistribution that has been narrowed down.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.LogNormal.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L513"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will return a float value in the specified range as specified at creation.
+Note: the range at creation was in log space. The return value is after taking an exponent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a float.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.LogNormal.unnarrow">
+<code class="descname">unnarrow</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal.unnarrow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the original distribution before narrowing of the distribution. If the distribution was never narrowed,
+will return a copy of self.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the original HyperparameterDistribution before narrowing, or else self if the distribution is virgin.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.LogNormal.was_narrowed_from">
+<code class="descname">was_narrowed_from</code><span class="sig-paren">(</span><em>kept_space_ratio: float</em>, <em>original_hp: neuraxle.hyperparams.distributions.HyperparameterDistribution</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal.was_narrowed_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keep track of the original distribution to restore it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kept_space_ratio</strong> – the ratio which made the current object narrower than the <code class="docutils literal notranslate"><span class="pre">original_hp</span></code>.</p></li>
+<li><p><strong>original_hp</strong> – The original HyperparameterDistribution, which will be kept in a private variable for an eventual restore.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.distributions.LogUniform">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">LogUniform</code><span class="sig-paren">(</span><em>min_included: float</em>, <em>max_included: float</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L394"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogUniform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a LogUniform distribution.</p>
+<p>For example, this is good for neural networks’ learning rates: that vary exponentially.</p>
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.LogUniform.get_current_narrowing_value">
+<code class="descname">get_current_narrowing_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogUniform.get_current_narrowing_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.LogUniform.narrow_space_from_best_guess">
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L419"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogUniform.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will narrow, in log space, the distribution towards the new best_guess.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>best_guess</strong> – the value towards which we want to narrow down the space. Should be between 0.0 and 1.0.</p></li>
+<li><p><strong>kept_space_ratio</strong> – what proportion of the space is kept. Default is to keep half the space (0.5).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new HyperparameterDistribution that has been narrowed down.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.LogUniform.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L411"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogUniform.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will return a float value in the specified range as specified at creation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a float.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.LogUniform.unnarrow">
+<code class="descname">unnarrow</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogUniform.unnarrow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the original distribution before narrowing of the distribution. If the distribution was never narrowed,
+will return a copy of self.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the original HyperparameterDistribution before narrowing, or else self if the distribution is virgin.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.LogUniform.was_narrowed_from">
+<code class="descname">was_narrowed_from</code><span class="sig-paren">(</span><em>kept_space_ratio: float</em>, <em>original_hp: neuraxle.hyperparams.distributions.HyperparameterDistribution</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogUniform.was_narrowed_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keep track of the original distribution to restore it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kept_space_ratio</strong> – the ratio which made the current object narrower than the <code class="docutils literal notranslate"><span class="pre">original_hp</span></code>.</p></li>
+<li><p><strong>original_hp</strong> – The original HyperparameterDistribution, which will be kept in a private variable for an eventual restore.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.distributions.Normal">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">Normal</code><span class="sig-paren">(</span><em>mean: float</em>, <em>std: float</em>, <em>hard_clip_min: float = None</em>, <em>hard_clip_max: float = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L436"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a normal distribution.</p>
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Normal.get_current_narrowing_value">
+<code class="descname">get_current_narrowing_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal.get_current_narrowing_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Normal.narrow_space_from_best_guess">
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L471"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will narrow the distribution towards the new best_guess.
+The mean will move towards the new best guess, and the standard deviation
+will be multiplied by the kept_space_ratio.
+The hard clip limit is unchanged.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>best_guess</strong> – the value towards which we want to narrow down the space’s mean. Should be between 0.0 and 1.0.</p></li>
+<li><p><strong>kept_space_ratio</strong> – what proportion of the space is kept. Default is to keep half the space (0.5).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new HyperparameterDistribution that has been narrowed down.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Normal.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L455"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will return a float value in the specified range as specified at creation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a float.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Normal.unnarrow">
+<code class="descname">unnarrow</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal.unnarrow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the original distribution before narrowing of the distribution. If the distribution was never narrowed,
+will return a copy of self.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the original HyperparameterDistribution before narrowing, or else self if the distribution is virgin.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Normal.was_narrowed_from">
+<code class="descname">was_narrowed_from</code><span class="sig-paren">(</span><em>kept_space_ratio: float</em>, <em>original_hp: neuraxle.hyperparams.distributions.HyperparameterDistribution</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal.was_narrowed_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keep track of the original distribution to restore it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kept_space_ratio</strong> – the ratio which made the current object narrower than the <code class="docutils literal notranslate"><span class="pre">original_hp</span></code>.</p></li>
+<li><p><strong>original_hp</strong> – The original HyperparameterDistribution, which will be kept in a private variable for an eventual restore.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.distributions.PriorityChoice">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">PriorityChoice</code><span class="sig-paren">(</span><em>choice_list: List</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L209"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a random value from a choice list of possible value for this hyperparameter.</p>
+<p>The first parameters are kept until the end when the list is narrowed (it is narrowed progressively),
+unless there is a best guess that surpasses some of the top choices.</p>
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.PriorityChoice.get_current_narrowing_value">
+<code class="descname">get_current_narrowing_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice.get_current_narrowing_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.PriorityChoice.narrow_space_from_best_guess">
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.0</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L234"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will narrow the space. If the cumulative kept_space_ratio gets to be under or equal to 1-1/len(choice_list),
+then the list is crunched to discard the last items to reflect this narrowing.
+After a few narrowing (or a big one), the list may become a FixedHyperparameter.
+Otherwise if the list is unchanged, a deepcopy of self is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>best_guess</strong> – the best item of the list, which will be brought back as the first item.</p></li>
+<li><p><strong>kept_space_ratio</strong> – the ratio of the space to keep.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a deepcopy of self, or a subchoice of self, or else a FixedHyperparameter of the best_guess.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.PriorityChoice.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L226"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get one of the items randomly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>one of the items of the list.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.PriorityChoice.unnarrow">
+<code class="descname">unnarrow</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice.unnarrow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the original distribution before narrowing of the distribution. If the distribution was never narrowed,
+will return a copy of self.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the original HyperparameterDistribution before narrowing, or else self if the distribution is virgin.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.PriorityChoice.was_narrowed_from">
+<code class="descname">was_narrowed_from</code><span class="sig-paren">(</span><em>kept_space_ratio: float</em>, <em>original_hp: neuraxle.hyperparams.distributions.HyperparameterDistribution</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice.was_narrowed_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keep track of the original distribution to restore it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kept_space_ratio</strong> – the ratio which made the current object narrower than the <code class="docutils literal notranslate"><span class="pre">original_hp</span></code>.</p></li>
+<li><p><strong>original_hp</strong> – The original HyperparameterDistribution, which will be kept in a private variable for an eventual restore.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.distributions.Quantized">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">Quantized</code><span class="sig-paren">(</span><em>hd: neuraxle.hyperparams.distributions.HyperparameterDistribution = None</em>, <em>hds: List[neuraxle.hyperparams.distributions.HyperparameterDistribution] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L292"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized" title="Permalink to this definition">¶</a></dt>
+<dd><p>A quantized wrapper for another distribution: will round() the rvs number.</p>
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Quantized.get_current_narrowing_value">
+<code class="descname">get_current_narrowing_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized.get_current_narrowing_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Quantized.narrow_space_from_best_guess">
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.Quantized<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L303"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will narrow the underlying distribution and re-wrap it under a Quantized.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>best_guess</strong> – the value towards which we want to narrow down the space.</p></li>
+<li><p><strong>kept_space_ratio</strong> – what proportion of the space is kept. Default is to keep half the space (0.5).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Quantized.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L295"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will return an integer, rounded from the output of the previous distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>an integer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Quantized.unnarrow">
+<code class="descname">unnarrow</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized.unnarrow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the original distribution before narrowing of the distribution. If the distribution was never narrowed,
+will return a copy of self.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the original HyperparameterDistribution before narrowing, or else self if the distribution is virgin.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Quantized.was_narrowed_from">
+<code class="descname">was_narrowed_from</code><span class="sig-paren">(</span><em>kept_space_ratio: float</em>, <em>original_hp: neuraxle.hyperparams.distributions.HyperparameterDistribution</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized.was_narrowed_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keep track of the original distribution to restore it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kept_space_ratio</strong> – the ratio which made the current object narrower than the <code class="docutils literal notranslate"><span class="pre">original_hp</span></code>.</p></li>
+<li><p><strong>original_hp</strong> – The original HyperparameterDistribution, which will be kept in a private variable for an eventual restore.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.distributions.RandInt">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">RandInt</code><span class="sig-paren">(</span><em>min_included: int</em>, <em>max_included: int</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L316"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a random integer within a range</p>
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.RandInt.get_current_narrowing_value">
+<code class="descname">get_current_narrowing_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt.get_current_narrowing_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.RandInt.narrow_space_from_best_guess">
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L339"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will narrow the underlying distribution towards the best guess.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>best_guess</strong> – the value towards which we want to narrow down the space. Should be between 0.0 and 1.0.</p></li>
+<li><p><strong>kept_space_ratio</strong> – what proportion of the space is kept. Default is to keep half the space (0.5).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new HyperparameterDistribution that has been narrowed down.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.RandInt.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L331"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will return an integer in the specified range as specified at creation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>an integer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.RandInt.unnarrow">
+<code class="descname">unnarrow</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt.unnarrow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the original distribution before narrowing of the distribution. If the distribution was never narrowed,
+will return a copy of self.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the original HyperparameterDistribution before narrowing, or else self if the distribution is virgin.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.RandInt.was_narrowed_from">
+<code class="descname">was_narrowed_from</code><span class="sig-paren">(</span><em>kept_space_ratio: float</em>, <em>original_hp: neuraxle.hyperparams.distributions.HyperparameterDistribution</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt.was_narrowed_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keep track of the original distribution to restore it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kept_space_ratio</strong> – the ratio which made the current object narrower than the <code class="docutils literal notranslate"><span class="pre">original_hp</span></code>.</p></li>
+<li><p><strong>original_hp</strong> – The original HyperparameterDistribution, which will be kept in a private variable for an eventual restore.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.distributions.Uniform">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">Uniform</code><span class="sig-paren">(</span><em>min_included: int</em>, <em>max_included: int</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L355"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a uniform distribution.</p>
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Uniform.get_current_narrowing_value">
+<code class="descname">get_current_narrowing_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform.get_current_narrowing_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Uniform.narrow_space_from_best_guess">
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L378"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will narrow the underlying distribution towards the best guess.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>best_guess</strong> – the value towards which we want to narrow down the space. Should be between 0.0 and 1.0.</p></li>
+<li><p><strong>kept_space_ratio</strong> – what proportion of the space is kept. Default is to keep half the space (0.5).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new HyperparameterDistribution that has been narrowed down.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Uniform.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L370"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will return a float value in the specified range as specified at creation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a float.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Uniform.unnarrow">
+<code class="descname">unnarrow</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform.unnarrow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the original distribution before narrowing of the distribution. If the distribution was never narrowed,
+will return a copy of self.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the original HyperparameterDistribution before narrowing, or else self if the distribution is virgin.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.Uniform.was_narrowed_from">
+<code class="descname">was_narrowed_from</code><span class="sig-paren">(</span><em>kept_space_ratio: float</em>, <em>original_hp: neuraxle.hyperparams.distributions.HyperparameterDistribution</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform.was_narrowed_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keep track of the original distribution to restore it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kept_space_ratio</strong> – the ratio which made the current object narrower than the <code class="docutils literal notranslate"><span class="pre">original_hp</span></code>.</p></li>
+<li><p><strong>original_hp</strong> – The original HyperparameterDistribution, which will be kept in a private variable for an eventual restore.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">WrappedHyperparameterDistributions</code><span class="sig-paren">(</span><em>hd: neuraxle.hyperparams.distributions.HyperparameterDistribution = None</em>, <em>hds: List[neuraxle.hyperparams.distributions.HyperparameterDistribution] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L272"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions.get_current_narrowing_value">
+<code class="descname">get_current_narrowing_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions.get_current_narrowing_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions.narrow_space_from_best_guess">
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.0</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a value that is estimated to be the best one of the space, and restrict the space near that value.
+By default, this function will completely replace the returned value by the new guess if not overriden.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>best_guess</strong> – the value towards which we want to narrow down the space.</p></li>
+<li><p><strong>kept_space_ratio</strong> – what proportion of the space is kept. Should be between 0.0 and 1.0. Default is to keep only the best_guess (0.0).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new HyperparameterDistribution object that has been narrowed down.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L44"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample the random variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The randomly sampled value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions.unnarrow">
+<code class="descname">unnarrow</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions.unnarrow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the original distribution before narrowing of the distribution. If the distribution was never narrowed,
+will return a copy of self.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the original HyperparameterDistribution before narrowing, or else self if the distribution is virgin.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions.was_narrowed_from">
+<code class="descname">was_narrowed_from</code><span class="sig-paren">(</span><em>kept_space_ratio: float</em>, <em>original_hp: neuraxle.hyperparams.distributions.HyperparameterDistribution</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e749ac1/neuraxle/hyperparams/distributions.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions.was_narrowed_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keep track of the original distribution to restore it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kept_space_ratio</strong> – the ratio which made the current object narrower than the <code class="docutils literal notranslate"><span class="pre">original_hp</span></code>.</p></li>
+<li><p><strong>original_hp</strong> – The original HyperparameterDistribution, which will be kept in a private variable for an eventual restore.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="neuraxle.hyperparams.space.html" class="btn btn-neutral float-right" title="neuraxle.hyperparams.space" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="neuraxle.steps.sklearn.html" class="btn btn-neutral float-left" title="neuraxle.steps.sklearn" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019 The Neuraxle Authors. All rights reserved. Apache License, Version 2.0.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-139527241-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>
