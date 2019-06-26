@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Complete Documentation" href="../api.html" />
+    <link rel="next" title="Introduction to Automatic Hyperparameter Tuning" href="../hyperparameter_tuning.html" />
     <link rel="prev" title="Welcome to Neuraxle’s documentation, examples and tutorials!" href="../index.html" /> 
 </head>
 
@@ -95,6 +95,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#compatibility">Compatibility</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#parallel-computing">Parallel Computing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#time-series-processing">Time Series Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#automatic-machine-learning">Automatic Machine Learning</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#comparison-to-other-machine-learning-pipeline-frameworks">Comparison to Other Machine Learning Pipeline Frameworks</a><ul>
@@ -114,6 +115,17 @@
 <li class="toctree-l3"><a class="reference internal" href="#contributors">Contributors</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hyperparameter_tuning.html">Introduction to Automatic Hyperparameter Tuning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#Continuous-Hyperparameter-Distributions">Continuous Hyperparameter Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#Quantized-Hyperparameter-Distributions">Quantized Hyperparameter Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#Other-Hyperparameter-Distributions">Other Hyperparameter Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html#Narrowing-Hyperparameter-Spaces:-a-Detailed-Example">Narrowing Hyperparameter Spaces: a Detailed Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html#Creating-your-own-distributions">Creating your own distributions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">Complete Documentation</a><ul>
@@ -165,6 +177,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Usage Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../examples/boston_housing_regression_with_model_stacking.html">Boston Housing Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/boston_housing_meta_optimization.html">Boston Housing Regression with Meta Optimization</a></li>
 </ul>
 </li>
 </ul>
@@ -285,6 +298,10 @@
 <p>With the various abstractions that Neuraxle provides, it’s easy to get started building a time-series processing project. Neuraxle is also the backbone of <a class="reference external" href="https://www.neuraxio.com/en/time-series-solution">the Neuraxio Time Series project</a>, which is a premium software package built on top of Neuraxle for business boost their time series machine learning projects by providing out-of-the-box specialized pipeline steps.</p>
 <p>Note: <a class="reference external" href="https://www.neuraxio.com/en/time-series-solution">the Neuraxio Time Series project</a> is different from the Neuraxle project, those are separate projects. Neuraxio is commited to build open-source software, and defines itself as an open-source company. Learn more on <a class="reference external" href="#license">Neuraxle’s license</a>. The Neuraxle library is free and will always stay free, while Neuraxio Time Series is a premium add-on to Neuraxle.</p>
 </div>
+<div class="section" id="automatic-machine-learning">
+<h3>Automatic Machine Learning<a class="headerlink" href="#automatic-machine-learning" title="Permalink to this headline">¶</a></h3>
+<p>One of the core goal of this framework is to enable easy automatic machine learning, and also meta-learning. It should be easy to train a meta-optimizer on many different tasks: the optimizer is a model itself that maps features of datasets and features of the hyperparameter space to a guessed performance score to predict the best hyperparameters. Hyperparameter spaces are easily defined with a range, and are only coupled to their respective pipeline steps, rather than being coupled to the whole pipeline, which enable class reuse and more modularity.</p>
+</div>
 </div>
 <div class="section" id="comparison-to-other-machine-learning-pipeline-frameworks">
 <h2>Comparison to Other Machine Learning Pipeline Frameworks<a class="headerlink" href="#comparison-to-other-machine-learning-pipeline-frameworks" title="Permalink to this headline">¶</a></h2>
@@ -326,18 +343,18 @@ python3 setup.py install
 <p>One of Neuraxle’s most important goals is to make powerful machine learning pipelines easy to build and deploy. Using Neuraxle should be light, painless and obvious, yet without sacrificing powerfulness, performance, nor possibilities.</p>
 <p>For example, you can build a pipeline composed of multiple steps as such:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-    <span class="c1"># A Pipeline is composed of multiple chained steps. Steps </span>
-    <span class="c1"># can alter the data before passing it to the next steps. </span>
+    <span class="c1"># A Pipeline is composed of multiple chained steps. Steps</span>
+    <span class="c1"># can alter the data before passing it to the next steps.</span>
     <span class="n">AddFeatures</span><span class="p">([</span>
-        <span class="c1"># Add (concatenate) features in parallel, that are </span>
+        <span class="c1"># Add (concatenate) features in parallel, that are</span>
         <span class="c1"># themselves derived of the existing features:</span>
         <span class="n">SKLearnWrapper</span><span class="p">(</span><span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)),</span>
         <span class="n">SKLearnWrapper</span><span class="p">(</span><span class="n">FastICA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)),</span>
     <span class="p">]),</span>
     <span class="n">RidgeModelStacking</span><span class="p">([</span>
-        <span class="c1"># Here is an ensemble of 4 models or feature extractors, </span>
+        <span class="c1"># Here is an ensemble of 4 models or feature extractors,</span>
         <span class="c1"># That are themselves then fed to a ridge regression which</span>
-        <span class="c1"># will act as a judge to finalize the prediction. </span>
+        <span class="c1"># will act as a judge to finalize the prediction.</span>
         <span class="n">SKLearnWrapper</span><span class="p">(</span><span class="n">LinearRegression</span><span class="p">()),</span>
         <span class="n">SKLearnWrapper</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">()),</span>
         <span class="n">SKLearnWrapper</span><span class="p">(</span><span class="n">GradientBoostingRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span><span class="p">)),</span>
@@ -345,14 +362,14 @@ python3 setup.py install
         <span class="n">SKLearnWrapper</span><span class="p">(</span><span class="n">KMeans</span><span class="p">()),</span>
     <span class="p">])</span>
 <span class="p">])</span>
-<span class="c1"># Note: here all the steps were imported from scikit-learn, </span>
+<span class="c1"># Note: here all the steps were imported from scikit-learn,</span>
 <span class="c1"># but the goal is that you can also define your own as needed.</span>
 <span class="c1"># Also note that a pipeline is a step itself: you can nest them.</span>
 
-<span class="c1"># The pipeline will learn on the data and acquire state. </span>
+<span class="c1"># The pipeline will learn on the data and acquire state.</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
-<span class="c1"># Once it learned, the pipeline can process new and </span>
+<span class="c1"># Once it learned, the pipeline can process new and</span>
 <span class="c1"># unseen data for making predictions.</span>
 <span class="n">y_train_predicted</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 </pre></div>
@@ -416,7 +433,7 @@ python3 setup.py install
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../api.html" class="btn btn-neutral float-right" title="Complete Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../hyperparameter_tuning.html" class="btn btn-neutral float-right" title="Introduction to Automatic Hyperparameter Tuning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Neuraxle’s documentation, examples and tutorials!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
