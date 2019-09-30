@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Neuraxle Pipelines &mdash; Neuraxle 0.1.0 documentation</title>
+  <title>Neuraxle Pipelines &mdash; Neuraxle 0.1.1 documentation</title>
   
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.1.0
+                0.1.1
               </div>
             
           
@@ -91,6 +91,8 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Neuraxle Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quickstart">Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#why-neuraxle">Why Neuraxle?</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#production-ready">Production-ready</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#compatibility">Compatibility</a></li>
@@ -106,14 +108,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#kubeflow">Kubeflow</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#quickstart">Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#community">Community</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#license">License</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#summary-of-the-license">Summary of the License</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#contributors">Contributors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-by">Supported By</a></li>
 </ul>
 </li>
 </ul>
@@ -178,6 +179,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Usage Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../examples/boston_housing_regression_with_model_stacking.html">Boston Housing Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/easy_rest_api_serving.html">Easy REST API Model Serving with Neuraxle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/boston_housing_meta_optimization.html">Boston Housing Regression with Meta Optimization</a></li>
 </ul>
 </li>
@@ -254,6 +256,65 @@
 <p>Neuraxle is a Machine Learning (ML) library for building neat pipelines,
 providing the right abstractions to both ease research, development, and
 deployment of your ML applications.</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Simply do:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install neuraxle
+</pre></div>
+</div>
+</div>
+<div class="section" id="quickstart">
+<h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
+<p>One of Neuraxle’s most important goals is to make powerful machine
+learning pipelines easy to build and deploy. Using Neuraxle should be
+light, painless and obvious, yet without sacrificing powerfulness,
+performance, nor possibilities.</p>
+<p>For example, you can build a pipeline composed of multiple steps as
+such:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="c1"># A Pipeline is composed of multiple chained steps. Steps</span>
+    <span class="c1"># can alter the data before passing it to the next steps.</span>
+    <span class="n">AddFeatures</span><span class="p">([</span>
+        <span class="c1"># Add (concatenate) features in parallel, that are</span>
+        <span class="c1"># themselves derived of the existing features:</span>
+        <span class="n">SKLearnWrapper</span><span class="p">(</span><span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)),</span>
+        <span class="n">SKLearnWrapper</span><span class="p">(</span><span class="n">FastICA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)),</span>
+    <span class="p">]),</span>
+    <span class="n">RidgeModelStacking</span><span class="p">([</span>
+        <span class="c1"># Here is an ensemble of 4 models or feature extractors,</span>
+        <span class="c1"># That are themselves then fed to a ridge regression which</span>
+        <span class="c1"># will act as a judge to finalize the prediction.</span>
+        <span class="n">SKLearnWrapper</span><span class="p">(</span><span class="n">LinearRegression</span><span class="p">()),</span>
+        <span class="n">SKLearnWrapper</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">()),</span>
+        <span class="n">SKLearnWrapper</span><span class="p">(</span><span class="n">GradientBoostingRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span><span class="p">)),</span>
+        <span class="n">SKLearnWrapper</span><span class="p">(</span><span class="n">GradientBoostingRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)),</span>
+        <span class="n">SKLearnWrapper</span><span class="p">(</span><span class="n">KMeans</span><span class="p">()),</span>
+    <span class="p">])</span>
+<span class="p">])</span>
+<span class="c1"># Note: here all the steps were imported from scikit-learn,</span>
+<span class="c1"># but the goal is that you can also define your own as needed.</span>
+<span class="c1"># Also note that a pipeline is a step itself: you can nest them.</span>
+
+<span class="c1"># The pipeline will learn on the data and acquire state.</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Once it learned, the pipeline can process new and</span>
+<span class="c1"># unseen data for making predictions.</span>
+<span class="n">y_test_predicted</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Easy REST API deployment.</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">FlaskRestApiWrapper</span><span class="p">(</span>
+    <span class="n">json_decoder</span><span class="o">=</span><span class="n">CustomJSONDecoderFor2DArray</span><span class="p">(),</span>
+    <span class="n">wrapped</span><span class="o">=</span><span class="n">p</span><span class="p">,</span>
+    <span class="n">json_encoder</span><span class="o">=</span><span class="n">CustomJSONEncoderOfOutputs</span><span class="p">(),</span>
+<span class="p">)</span><span class="o">.</span><span class="n">get_app</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Visit the
+<a class="reference external" href="https://www.neuraxle.neuraxio.com/stable/examples/index.html">examples</a>
+to get more a feeling of how it works, and inspiration.</p>
+</div>
 <div class="section" id="why-neuraxle">
 <h2>Why Neuraxle?<a class="headerlink" href="#why-neuraxle" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="production-ready">
@@ -376,61 +437,10 @@ project (e.g.: coding yourself a pipeline step that does json conversion
 to accept http requests).</p>
 </div>
 </div>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>Simply do:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install neuraxle
-</pre></div>
-</div>
-</div>
-<div class="section" id="quickstart">
-<h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
-<p>One of Neuraxle’s most important goals is to make powerful machine
-learning pipelines easy to build and deploy. Using Neuraxle should be
-light, painless and obvious, yet without sacrificing powerfulness,
-performance, nor possibilities.</p>
-<p>For example, you can build a pipeline composed of multiple steps as
-such:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-    <span class="c1"># A Pipeline is composed of multiple chained steps. Steps</span>
-    <span class="c1"># can alter the data before passing it to the next steps.</span>
-    <span class="n">AddFeatures</span><span class="p">([</span>
-        <span class="c1"># Add (concatenate) features in parallel, that are</span>
-        <span class="c1"># themselves derived of the existing features:</span>
-        <span class="n">SKLearnWrapper</span><span class="p">(</span><span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)),</span>
-        <span class="n">SKLearnWrapper</span><span class="p">(</span><span class="n">FastICA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)),</span>
-    <span class="p">]),</span>
-    <span class="n">RidgeModelStacking</span><span class="p">([</span>
-        <span class="c1"># Here is an ensemble of 4 models or feature extractors,</span>
-        <span class="c1"># That are themselves then fed to a ridge regression which</span>
-        <span class="c1"># will act as a judge to finalize the prediction.</span>
-        <span class="n">SKLearnWrapper</span><span class="p">(</span><span class="n">LinearRegression</span><span class="p">()),</span>
-        <span class="n">SKLearnWrapper</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">()),</span>
-        <span class="n">SKLearnWrapper</span><span class="p">(</span><span class="n">GradientBoostingRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span><span class="p">)),</span>
-        <span class="n">SKLearnWrapper</span><span class="p">(</span><span class="n">GradientBoostingRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)),</span>
-        <span class="n">SKLearnWrapper</span><span class="p">(</span><span class="n">KMeans</span><span class="p">()),</span>
-    <span class="p">])</span>
-<span class="p">])</span>
-<span class="c1"># Note: here all the steps were imported from scikit-learn,</span>
-<span class="c1"># but the goal is that you can also define your own as needed.</span>
-<span class="c1"># Also note that a pipeline is a step itself: you can nest them.</span>
-
-<span class="c1"># The pipeline will learn on the data and acquire state.</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-
-<span class="c1"># Once it learned, the pipeline can process new and</span>
-<span class="c1"># unseen data for making predictions.</span>
-<span class="n">y_train_predicted</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Visit the
-<a class="reference external" href="https://www.neuraxle.neuraxio.com/stable/examples/index.html">examples</a>
-to get more feel of how it works, and inspiration.</p>
-</div>
 <div class="section" id="community">
 <h2>Community<a class="headerlink" href="#community" title="Permalink to this headline">¶</a></h2>
 <p>Join our <a class="reference external" href="https://join.slack.com/t/neuraxio-open-source/shared_invite/enQtNjc0NzM1NTI5MTczLWUwZmI5NjhkMzRmYzc1MGE5ZTE0YWRkYWI3NWIzZjc1YTRlM2Y1MzRmYzFmM2FiNWNhNGZlZDhhMzkyMTQ1ZTQ">Slack
-workspace</a>!
+workspace</a> and our <a class="reference external" href="https://gitter.im/Neuraxle/community">Gitter</a>!
 We &lt;3 collaborators.</p>
 <p>For <strong>technical questions</strong>, we recommend posting them on
 <a class="reference external" href="https://stackoverflow.com/questions/tagged/machine-learning">StackOverflow</a>
@@ -495,10 +505,21 @@ license</a>.</p>
 </div>
 <div class="section" id="contributors">
 <h3>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h3>
+<p>Thanks to everyone who contributed to the project:</p>
 <ul class="simple">
-<li><p>Neuraxio Inc.: <a class="reference external" href="https://github.com/Neuraxio">https://github.com/Neuraxio</a></p></li>
 <li><p>Guillaume Chevalier: <a class="reference external" href="https://github.com/guillaume-chevalier">https://github.com/guillaume-chevalier</a></p></li>
 <li><p>Alexandre Brillant: <a class="reference external" href="https://github.com/alexbrillant">https://github.com/alexbrillant</a></p></li>
+<li><p>Éric Hamel: <a class="reference external" href="https://github.com/Eric2Hamel">https://github.com/Eric2Hamel</a></p></li>
+<li><p>Jérôme Blanchet: <a class="reference external" href="https://github.com/JeromeBlanchet">https://github.com/JeromeBlanchet</a></p></li>
+<li><p>Michaël Lévesque-Dion: <a class="reference external" href="https://github.com/mlevesquedion">https://github.com/mlevesquedion</a></p></li>
+</ul>
+</div>
+<div class="section" id="supported-by">
+<h3>Supported By<a class="headerlink" href="#supported-by" title="Permalink to this headline">¶</a></h3>
+<p>We thank these organisations for generously supporting the project:</p>
+<ul class="simple">
+<li><p>Neuraxio Inc.: <a class="reference external" href="https://github.com/Neuraxio">https://github.com/Neuraxio</a></p></li>
+<li><p>Umanéo Technologies Inc.: <a class="reference external" href="https://umaneo.com">https://umaneo.com</a></p></li>
 </ul>
 </div>
 </div>

@@ -7,6 +7,72 @@ Neuraxle is a Machine Learning (ML) library for building neat pipelines,
 providing the right abstractions to both ease research, development, and
 deployment of your ML applications.
 
+Installation
+------------
+
+Simply do:
+
+.. code:: bash
+
+    pip install neuraxle
+
+
+Quickstart
+----------
+
+One of Neuraxle's most important goals is to make powerful machine
+learning pipelines easy to build and deploy. Using Neuraxle should be
+light, painless and obvious, yet without sacrificing powerfulness,
+performance, nor possibilities.
+
+For example, you can build a pipeline composed of multiple steps as
+such:
+
+.. code:: python
+
+    p = Pipeline([
+        # A Pipeline is composed of multiple chained steps. Steps
+        # can alter the data before passing it to the next steps.
+        AddFeatures([
+            # Add (concatenate) features in parallel, that are
+            # themselves derived of the existing features:
+            SKLearnWrapper(PCA(n_components=2)),
+            SKLearnWrapper(FastICA(n_components=2)),
+        ]),
+        RidgeModelStacking([
+            # Here is an ensemble of 4 models or feature extractors,
+            # That are themselves then fed to a ridge regression which
+            # will act as a judge to finalize the prediction.
+            SKLearnWrapper(LinearRegression()),
+            SKLearnWrapper(LogisticRegression()),
+            SKLearnWrapper(GradientBoostingRegressor(n_estimators=500)),
+            SKLearnWrapper(GradientBoostingRegressor(max_depth=5)),
+            SKLearnWrapper(KMeans()),
+        ])
+    ])
+    # Note: here all the steps were imported from scikit-learn,
+    # but the goal is that you can also define your own as needed.
+    # Also note that a pipeline is a step itself: you can nest them.
+
+    # The pipeline will learn on the data and acquire state.
+    p = p.fit(X_train, y_train)
+
+    # Once it learned, the pipeline can process new and
+    # unseen data for making predictions.
+    y_test_predicted = p.transform(X_test)
+
+    # Easy REST API deployment.
+    app = FlaskRestApiWrapper(
+        json_decoder=CustomJSONDecoderFor2DArray(),
+        wrapped=p,
+        json_encoder=CustomJSONEncoderOfOutputs(),
+    ).get_app()
+    app.run(debug=False, port=5000)
+
+Visit the
+`examples <https://www.neuraxle.neuraxio.com/stable/examples/index.html>`__
+to get more a feeling of how it works, and inspiration.
+
 Why Neuraxle?
 -------------
 
@@ -150,69 +216,12 @@ environment, and you can fully control and customize how you deploy your
 project (e.g.: coding yourself a pipeline step that does json conversion
 to accept http requests).
 
-Installation
-------------
-
-Simply do: 
-
-.. code:: bash
-
-    pip install neuraxle
-
-
-Quickstart
-----------
-
-One of Neuraxle's most important goals is to make powerful machine
-learning pipelines easy to build and deploy. Using Neuraxle should be
-light, painless and obvious, yet without sacrificing powerfulness,
-performance, nor possibilities.
-
-For example, you can build a pipeline composed of multiple steps as
-such:
-
-.. code:: python
-
-    p = Pipeline([
-        # A Pipeline is composed of multiple chained steps. Steps
-        # can alter the data before passing it to the next steps.
-        AddFeatures([
-            # Add (concatenate) features in parallel, that are
-            # themselves derived of the existing features:
-            SKLearnWrapper(PCA(n_components=2)),
-            SKLearnWrapper(FastICA(n_components=2)),
-        ]),
-        RidgeModelStacking([
-            # Here is an ensemble of 4 models or feature extractors,
-            # That are themselves then fed to a ridge regression which
-            # will act as a judge to finalize the prediction.
-            SKLearnWrapper(LinearRegression()),
-            SKLearnWrapper(LogisticRegression()),
-            SKLearnWrapper(GradientBoostingRegressor(n_estimators=500)),
-            SKLearnWrapper(GradientBoostingRegressor(max_depth=5)),
-            SKLearnWrapper(KMeans()),
-        ])
-    ])
-    # Note: here all the steps were imported from scikit-learn,
-    # but the goal is that you can also define your own as needed.
-    # Also note that a pipeline is a step itself: you can nest them.
-
-    # The pipeline will learn on the data and acquire state.
-    p = p.fit(X_train, y_train)
-
-    # Once it learned, the pipeline can process new and
-    # unseen data for making predictions.
-    y_train_predicted = p.transform(X_train)
-
-Visit the
-`examples <https://www.neuraxle.neuraxio.com/stable/examples/index.html>`__
-to get more feel of how it works, and inspiration.
 
 Community
 ---------
 
 Join our `Slack
-workspace <https://join.slack.com/t/neuraxio-open-source/shared_invite/enQtNjc0NzM1NTI5MTczLWUwZmI5NjhkMzRmYzc1MGE5ZTE0YWRkYWI3NWIzZjc1YTRlM2Y1MzRmYzFmM2FiNWNhNGZlZDhhMzkyMTQ1ZTQ>`__!
+workspace <https://join.slack.com/t/neuraxio-open-source/shared_invite/enQtNjc0NzM1NTI5MTczLWUwZmI5NjhkMzRmYzc1MGE5ZTE0YWRkYWI3NWIzZjc1YTRlM2Y1MzRmYzFmM2FiNWNhNGZlZDhhMzkyMTQ1ZTQ>`__ and our `Gitter <https://gitter.im/Neuraxle/community>`__!
 We <3 collaborators.
 
 For **technical questions**, we recommend posting them on
@@ -282,6 +291,19 @@ license <https://github.com/Neuraxio/Neuraxle/blob/master/LICENSE>`__.
 Contributors
 ~~~~~~~~~~~~
 
--  Neuraxio Inc.: https://github.com/Neuraxio
+Thanks to everyone who contributed to the project:
+
 -  Guillaume Chevalier: https://github.com/guillaume-chevalier
 -  Alexandre Brillant: https://github.com/alexbrillant
+-  Éric Hamel: https://github.com/Eric2Hamel
+-  Jérôme Blanchet: https://github.com/JeromeBlanchet
+-  Michaël Lévesque-Dion: https://github.com/mlevesquedion
+
+Supported By
+~~~~~~~~~~~~
+
+We thank these organisations for generously supporting the project:
+
+-  Neuraxio Inc.: https://github.com/Neuraxio
+-  Umanéo Technologies Inc.: https://umaneo.com
+

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>neuraxle.steps.numpy &mdash; Neuraxle 0.1.0 documentation</title>
+  <title>neuraxle.steps.numpy &mdash; Neuraxle 0.1.1 documentation</title>
   
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.1.0
+                0.1.1
               </div>
             
           
@@ -91,6 +91,8 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Neuraxle/README.html">Neuraxle Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#quickstart">Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#why-neuraxle">Why Neuraxle?</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#production-ready">Production-ready</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#compatibility">Compatibility</a></li>
@@ -106,14 +108,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#kubeflow">Kubeflow</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#quickstart">Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#community">Community</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#license">License</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../Neuraxle/README.html#summary-of-the-license">Summary of the License</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#contributors">Contributors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#supported-by">Supported By</a></li>
 </ul>
 </li>
 </ul>
@@ -178,6 +179,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Usage Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../examples/boston_housing_regression_with_model_stacking.html">Boston Housing Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/easy_rest_api_serving.html">Easy REST API Model Serving with Neuraxle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/boston_housing_meta_optimization.html">Boston Housing Regression with Meta Optimization</a></li>
 </ul>
 </li>
@@ -261,7 +263,13 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures" title="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumpyConcatenateInnerFeatures</span></code></a>()</p></td>
-<td><p></p></td>
+<td><p>Numpy concetenation step where the concatenation is performed along <cite>axis=-1</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis" title="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumpyConcatenateOnCustomAxis</span></code></a>(axis)</p></td>
+<td><p>Numpy concetenation step where the concatenation is performed along the specified custom axis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch" title="neuraxle.steps.numpy.NumpyConcatenateOuterBatch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumpyConcatenateOuterBatch</span></code></a>()</p></td>
+<td><p>Numpy concetenation step where the concatenation is performed along <cite>axis=0</cite>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.steps.numpy.NumpyFlattenDatum" title="neuraxle.steps.numpy.NumpyFlattenDatum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumpyFlattenDatum</span></code></a>()</p></td>
 <td><p></p></td>
@@ -276,10 +284,11 @@
 </table>
 <dl class="class">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyConcatenateInnerFeatures</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/steps/numpy.py#L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyConcatenateInnerFeatures</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L74"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Numpy concetenation step where the concatenation is performed along <cite>axis=-1</cite>.</p>
+<dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L301"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L533"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Don’t fit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -296,7 +305,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.fit_one">
-<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L311"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.fit_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L543"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.fit_one" title="Permalink to this definition">¶</a></dt>
 <dd><p>Don’t fit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -313,37 +322,72 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.fit_transform">
-<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None) -&gt; ('BaseStep'</em>, <em>typing.Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.fit_transform" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.fit_transform_one">
-<code class="descname">fit_transform_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None) -&gt; ('BaseStep'</em>, <em>typing.Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L68"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.fit_transform_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None) -&gt; ('BaseStep'</em>, <em>typing.Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L226"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.get_hyperparams">
-<code class="descname">get_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.get_hyperparams" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L181"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.get_hyperparams" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.get_hyperparams_space">
-<code class="descname">get_hyperparams_space</code><span class="sig-paren">(</span><em>flat=False</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L60"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.get_hyperparams_space" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_hyperparams_space</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L192"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.get_hyperparams_space" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.get_name">
+<code class="descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the name of the pipeline step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the name, a string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.handle_fit_transform">
+<code class="descname">handle_fit_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.base.DataContainer) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.base.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L195"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.handle_fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the data inputs inside DataContainer after fit transform,
+and update its current_ids.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_container</strong> – the data container to transform</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tuple(fitted pipeline, data_container)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.handle_transform">
+<code class="descname">handle_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.base.DataContainer</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L211"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.handle_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the data inputs inside DataContainer after transform.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_container</strong> – the data container to transform</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>transformed data container</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.inverse_transform">
-<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L84"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L245"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.inverse_transform" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.inverse_transform_one">
-<code class="descname">inverse_transform_one</code><span class="sig-paren">(</span><em>data_output</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L204"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.inverse_transform_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse_transform_one</code><span class="sig-paren">(</span><em>data_output</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L257"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.inverse_transform_one" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.meta_fit">
-<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.meta_fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L264"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.meta_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uses a meta optimization technique (AutoML) to find the best hyperparameters in the given
 hyperparameter space.</p>
 <p>Usage: <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">p.meta_fit(X_train,</span> <span class="pre">y_train,</span> <span class="pre">metastep=RandomSearch(n_iter=10,</span> <span class="pre">scoring_function=r2_score,</span> <span class="pre">higher_score_is_better=True))</span></code></p>
@@ -365,7 +409,7 @@ current estimator will become</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.mutate">
-<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L111"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.mutate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L284"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.mutate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Replace the “method_to_assign_to” method by the “new_method” method, IF the present object has no pending calls to
 <code class="docutils literal notranslate"><span class="pre">.will_mutate_to()</span></code> waiting to be applied. If there is a pending call, the pending call will override the
 methods specified in the present call. If the change fails (such as if the new_method doesn’t exist), then
@@ -388,12 +432,12 @@ to assign <code class="docutils literal notranslate"><span class="pre">predict_p
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.predict">
-<code class="descname">predict</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L88"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.predict" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L261"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.predict" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.reverse">
-<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.reverse" title="Permalink to this definition">¶</a></dt>
+<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L408"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.reverse" title="Permalink to this definition">¶</a></dt>
 <dd><p>The object will mutate itself such that the <code class="docutils literal notranslate"><span class="pre">.transform</span></code> method (and of all its underlying objects
 if applicable) be replaced by the <code class="docutils literal notranslate"><span class="pre">.inverse_transform</span></code> method.</p>
 <p>Note: the reverse may fail if there is a pending mutate that was set earlier with <code class="docutils literal notranslate"><span class="pre">.will_mutate_to</span></code>.</p>
@@ -405,33 +449,658 @@ if applicable) be replaced by the <code class="docutils literal notranslate"><sp
 </dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.set_hasher">
+<code class="descname">set_hasher</code><span class="sig-paren">(</span><em>hasher: neuraxle.base.BaseHasher</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L188"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.set_hasher" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.set_hyperparams">
-<code class="descname">set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L49"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.set_hyperparams" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L177"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.set_hyperparams" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.set_hyperparams_space">
-<code class="descname">set_hyperparams_space</code><span class="sig-paren">(</span><em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L56"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.set_hyperparams_space" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_hyperparams_space</code><span class="sig-paren">(</span><em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L184"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.set_hyperparams_space" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.set_name">
+<code class="descname">set_name</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L159"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.set_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the name of the pipeline step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – a string.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.setup">
+<code class="descname">setup</code><span class="sig-paren">(</span><em>step_path: str</em>, <em>setup_arguments: dict</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize step before it runs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>step_path</strong> – pipeline step path ex: pipeline/step_name/</p></li>
+<li><p><strong>setup_arguments</strong> – any setup arguments that need to be passed to the setup method of one of the pipeline step</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.teardown">
+<code class="descname">teardown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L150"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.teardown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Teardown step after program execution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.tosklearn">
-<code class="descname">tosklearn</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; NeuraxleToSKLearnPipelineWrapper<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L208"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.tosklearn" title="Permalink to this definition">¶</a></dt>
+<code class="descname">tosklearn</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; NeuraxleToSKLearnPipelineWrapper<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L369"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.tosklearn" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/steps/numpy.py#L45"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.transform" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the concatenation transformation along the specified axis.
+:param data_inputs:
+:return: Numpy array</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.transform_one">
-<code class="descname">transform_one</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/steps/numpy.py#L48"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.transform_one" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descname">transform_one</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.transform_one" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the concatenation transformation along the specified axis
+:param data_inputs:
+:return: Numpy array</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.will_mutate_to">
-<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L154"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.will_mutate_to" title="Permalink to this definition">¶</a></dt>
+<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L327"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures.will_mutate_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>This will change the behavior of <code class="docutils literal notranslate"><span class="pre">self.mutate(&lt;...&gt;)</span></code> such that when mutating, it will return the
+presently provided new_base_step BaseStep (can be left to None for self), and the <code class="docutils literal notranslate"><span class="pre">.mutate</span></code> method
+will also apply the <code class="docutils literal notranslate"><span class="pre">new_method</span></code> and the  <code class="docutils literal notranslate"><span class="pre">method_to_affect</span></code>, if they are not None, and after changing
+the object to new_base_step.</p>
+<p>This can be useful if your pipeline requires unsupervised pretraining. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X_pretrain</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
+    <span class="n">SomePreprocessing</span><span class="p">(),</span>
+    <span class="n">SomePretrainingStep</span><span class="p">()</span><span class="o">.</span><span class="n">will_mutate_to</span><span class="p">(</span><span class="n">new_base_step</span><span class="o">=</span><span class="n">SomeStepThatWillUseThePretrainingStep</span><span class="p">),</span>
+    <span class="n">Identity</span><span class="p">()</span><span class="o">.</span><span class="n">will_mutate_to</span><span class="p">(</span><span class="n">new_base_step</span><span class="o">=</span><span class="n">ClassifierThatWillBeUsedOnlyAfterThePretraining</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="c1"># Pre-train the pipeline</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_pretrain</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+
+<span class="c1"># This will leave `SomePreprocessing()` untouched and will affect the two other steps.</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">mutate</span><span class="p">(</span><span class="n">new_method</span><span class="o">=</span><span class="s2">&quot;transform&quot;</span><span class="p">,</span> <span class="n">method_to_affect</span><span class="o">=</span><span class="s2">&quot;transform&quot;</span><span class="p">)</span>
+
+<span class="c1"># Pre-train the pipeline</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>  <span class="c1"># Then fit the classifier and other new things</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>new_base_step</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the object it will mutate to will be this provided new_base_step.</p></li>
+<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_method</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the new_method will be the one that is used on the provided new_base_step.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyConcatenateOnCustomAxis</code><span class="sig-paren">(</span><em>axis</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Numpy concetenation step where the concatenation is performed along the specified custom axis.</p>
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L533"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Don’t fit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_inputs</strong> – the data that would normally be fitted on.</p></li>
+<li><p><strong>expected_outputs</strong> – the data that would normally be fitted on.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.fit_one">
+<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L543"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.fit_one" title="Permalink to this definition">¶</a></dt>
+<dd><p>Don’t fit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_input</strong> – the data that would normally be fitted on.</p></li>
+<li><p><strong>expected_output</strong> – the data that would normally be fitted on.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.fit_transform">
+<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None) -&gt; ('BaseStep'</em>, <em>typing.Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L226"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.get_hyperparams">
+<code class="descname">get_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L181"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.get_hyperparams" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.get_hyperparams_space">
+<code class="descname">get_hyperparams_space</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L192"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.get_hyperparams_space" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.get_name">
+<code class="descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the name of the pipeline step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the name, a string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.handle_fit_transform">
+<code class="descname">handle_fit_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.base.DataContainer) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.base.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L195"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.handle_fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the data inputs inside DataContainer after fit transform,
+and update its current_ids.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_container</strong> – the data container to transform</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tuple(fitted pipeline, data_container)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.handle_transform">
+<code class="descname">handle_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.base.DataContainer</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L211"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.handle_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the data inputs inside DataContainer after transform.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_container</strong> – the data container to transform</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>transformed data container</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.inverse_transform">
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L245"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.inverse_transform_one">
+<code class="descname">inverse_transform_one</code><span class="sig-paren">(</span><em>data_output</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L257"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.inverse_transform_one" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.meta_fit">
+<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L264"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.meta_fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses a meta optimization technique (AutoML) to find the best hyperparameters in the given
+hyperparameter space.</p>
+<p>Usage: <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">p.meta_fit(X_train,</span> <span class="pre">y_train,</span> <span class="pre">metastep=RandomSearch(n_iter=10,</span> <span class="pre">scoring_function=r2_score,</span> <span class="pre">higher_score_is_better=True))</span></code></p>
+<p>Call <code class="docutils literal notranslate"><span class="pre">.mutate(new_method=&quot;inverse_transform&quot;,</span> <span class="pre">method_to_assign_to=&quot;transform&quot;)</span></code>, and the
+current estimator will become</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X_train</strong> – data_inputs.</p></li>
+<li><p><strong>y_train</strong> – expected_outputs.</p></li>
+<li><p><strong>metastep</strong> – a metastep, that is, a step that can sift through the hyperparameter space of another estimator.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>your best self.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.mutate">
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L284"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.mutate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace the “method_to_assign_to” method by the “new_method” method, IF the present object has no pending calls to
+<code class="docutils literal notranslate"><span class="pre">.will_mutate_to()</span></code> waiting to be applied. If there is a pending call, the pending call will override the
+methods specified in the present call. If the change fails (such as if the new_method doesn’t exist), then
+a warning is printed (optional). By default, there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p>
+<p>This could for example be useful within a pipeline to apply <code class="docutils literal notranslate"><span class="pre">inverse_transform</span></code> to every pipeline steps, or
+to assign <code class="docutils literal notranslate"><span class="pre">predict_probas</span></code> to <code class="docutils literal notranslate"><span class="pre">predict</span></code>, or to assign “inverse_transform” to “transform” to a reversed pipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
+<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
+<li><p><strong>warn</strong> – (verbose) wheter or not to warn about the inexistence of the method.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self, a copy of self, or even perhaps a new or different BaseStep object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L261"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.reverse">
+<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L408"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.reverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>The object will mutate itself such that the <code class="docutils literal notranslate"><span class="pre">.transform</span></code> method (and of all its underlying objects
+if applicable) be replaced by the <code class="docutils literal notranslate"><span class="pre">.inverse_transform</span></code> method.</p>
+<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <code class="docutils literal notranslate"><span class="pre">.will_mutate_to</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a copy of self, reversed. Each contained object will also have been reversed if self is a pipeline.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.set_hasher">
+<code class="descname">set_hasher</code><span class="sig-paren">(</span><em>hasher: neuraxle.base.BaseHasher</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L188"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.set_hasher" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.set_hyperparams">
+<code class="descname">set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L177"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.set_hyperparams" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.set_hyperparams_space">
+<code class="descname">set_hyperparams_space</code><span class="sig-paren">(</span><em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L184"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.set_hyperparams_space" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.set_name">
+<code class="descname">set_name</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L159"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.set_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the name of the pipeline step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – a string.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.setup">
+<code class="descname">setup</code><span class="sig-paren">(</span><em>step_path: str</em>, <em>setup_arguments: dict</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize step before it runs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>step_path</strong> – pipeline step path ex: pipeline/step_name/</p></li>
+<li><p><strong>setup_arguments</strong> – any setup arguments that need to be passed to the setup method of one of the pipeline step</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.teardown">
+<code class="descname">teardown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L150"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.teardown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Teardown step after program execution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.tosklearn">
+<code class="descname">tosklearn</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; NeuraxleToSKLearnPipelineWrapper<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L369"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.tosklearn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the concatenation transformation along the specified axis.
+:param data_inputs:
+:return: Numpy array</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.transform_one">
+<code class="descname">transform_one</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.transform_one" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the concatenation transformation along the specified axis
+:param data_inputs:
+:return: Numpy array</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.will_mutate_to">
+<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L327"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.will_mutate_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>This will change the behavior of <code class="docutils literal notranslate"><span class="pre">self.mutate(&lt;...&gt;)</span></code> such that when mutating, it will return the
+presently provided new_base_step BaseStep (can be left to None for self), and the <code class="docutils literal notranslate"><span class="pre">.mutate</span></code> method
+will also apply the <code class="docutils literal notranslate"><span class="pre">new_method</span></code> and the  <code class="docutils literal notranslate"><span class="pre">method_to_affect</span></code>, if they are not None, and after changing
+the object to new_base_step.</p>
+<p>This can be useful if your pipeline requires unsupervised pretraining. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X_pretrain</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
+    <span class="n">SomePreprocessing</span><span class="p">(),</span>
+    <span class="n">SomePretrainingStep</span><span class="p">()</span><span class="o">.</span><span class="n">will_mutate_to</span><span class="p">(</span><span class="n">new_base_step</span><span class="o">=</span><span class="n">SomeStepThatWillUseThePretrainingStep</span><span class="p">),</span>
+    <span class="n">Identity</span><span class="p">()</span><span class="o">.</span><span class="n">will_mutate_to</span><span class="p">(</span><span class="n">new_base_step</span><span class="o">=</span><span class="n">ClassifierThatWillBeUsedOnlyAfterThePretraining</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="c1"># Pre-train the pipeline</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_pretrain</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+
+<span class="c1"># This will leave `SomePreprocessing()` untouched and will affect the two other steps.</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">mutate</span><span class="p">(</span><span class="n">new_method</span><span class="o">=</span><span class="s2">&quot;transform&quot;</span><span class="p">,</span> <span class="n">method_to_affect</span><span class="o">=</span><span class="s2">&quot;transform&quot;</span><span class="p">)</span>
+
+<span class="c1"># Pre-train the pipeline</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>  <span class="c1"># Then fit the classifier and other new things</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>new_base_step</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the object it will mutate to will be this provided new_base_step.</p></li>
+<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_method</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the new_method will be the one that is used on the provided new_base_step.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyConcatenateOuterBatch</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Numpy concetenation step where the concatenation is performed along <cite>axis=0</cite>.</p>
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L533"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Don’t fit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_inputs</strong> – the data that would normally be fitted on.</p></li>
+<li><p><strong>expected_outputs</strong> – the data that would normally be fitted on.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.fit_one">
+<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L543"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.fit_one" title="Permalink to this definition">¶</a></dt>
+<dd><p>Don’t fit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_input</strong> – the data that would normally be fitted on.</p></li>
+<li><p><strong>expected_output</strong> – the data that would normally be fitted on.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.fit_transform">
+<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None) -&gt; ('BaseStep'</em>, <em>typing.Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L226"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.get_hyperparams">
+<code class="descname">get_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L181"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.get_hyperparams" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.get_hyperparams_space">
+<code class="descname">get_hyperparams_space</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L192"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.get_hyperparams_space" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.get_name">
+<code class="descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the name of the pipeline step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the name, a string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.handle_fit_transform">
+<code class="descname">handle_fit_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.base.DataContainer) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.base.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L195"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.handle_fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the data inputs inside DataContainer after fit transform,
+and update its current_ids.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_container</strong> – the data container to transform</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tuple(fitted pipeline, data_container)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.handle_transform">
+<code class="descname">handle_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.base.DataContainer</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L211"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.handle_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the data inputs inside DataContainer after transform.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_container</strong> – the data container to transform</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>transformed data container</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.inverse_transform">
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L245"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.inverse_transform_one">
+<code class="descname">inverse_transform_one</code><span class="sig-paren">(</span><em>data_output</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L257"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.inverse_transform_one" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.meta_fit">
+<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L264"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.meta_fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses a meta optimization technique (AutoML) to find the best hyperparameters in the given
+hyperparameter space.</p>
+<p>Usage: <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">p.meta_fit(X_train,</span> <span class="pre">y_train,</span> <span class="pre">metastep=RandomSearch(n_iter=10,</span> <span class="pre">scoring_function=r2_score,</span> <span class="pre">higher_score_is_better=True))</span></code></p>
+<p>Call <code class="docutils literal notranslate"><span class="pre">.mutate(new_method=&quot;inverse_transform&quot;,</span> <span class="pre">method_to_assign_to=&quot;transform&quot;)</span></code>, and the
+current estimator will become</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X_train</strong> – data_inputs.</p></li>
+<li><p><strong>y_train</strong> – expected_outputs.</p></li>
+<li><p><strong>metastep</strong> – a metastep, that is, a step that can sift through the hyperparameter space of another estimator.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>your best self.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.mutate">
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L284"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.mutate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace the “method_to_assign_to” method by the “new_method” method, IF the present object has no pending calls to
+<code class="docutils literal notranslate"><span class="pre">.will_mutate_to()</span></code> waiting to be applied. If there is a pending call, the pending call will override the
+methods specified in the present call. If the change fails (such as if the new_method doesn’t exist), then
+a warning is printed (optional). By default, there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p>
+<p>This could for example be useful within a pipeline to apply <code class="docutils literal notranslate"><span class="pre">inverse_transform</span></code> to every pipeline steps, or
+to assign <code class="docutils literal notranslate"><span class="pre">predict_probas</span></code> to <code class="docutils literal notranslate"><span class="pre">predict</span></code>, or to assign “inverse_transform” to “transform” to a reversed pipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
+<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
+<li><p><strong>warn</strong> – (verbose) wheter or not to warn about the inexistence of the method.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self, a copy of self, or even perhaps a new or different BaseStep object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L261"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.reverse">
+<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L408"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.reverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>The object will mutate itself such that the <code class="docutils literal notranslate"><span class="pre">.transform</span></code> method (and of all its underlying objects
+if applicable) be replaced by the <code class="docutils literal notranslate"><span class="pre">.inverse_transform</span></code> method.</p>
+<p>Note: the reverse may fail if there is a pending mutate that was set earlier with <code class="docutils literal notranslate"><span class="pre">.will_mutate_to</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a copy of self, reversed. Each contained object will also have been reversed if self is a pipeline.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.set_hasher">
+<code class="descname">set_hasher</code><span class="sig-paren">(</span><em>hasher: neuraxle.base.BaseHasher</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L188"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.set_hasher" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.set_hyperparams">
+<code class="descname">set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L177"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.set_hyperparams" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.set_hyperparams_space">
+<code class="descname">set_hyperparams_space</code><span class="sig-paren">(</span><em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L184"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.set_hyperparams_space" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.set_name">
+<code class="descname">set_name</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L159"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.set_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the name of the pipeline step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – a string.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.setup">
+<code class="descname">setup</code><span class="sig-paren">(</span><em>step_path: str</em>, <em>setup_arguments: dict</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize step before it runs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>step_path</strong> – pipeline step path ex: pipeline/step_name/</p></li>
+<li><p><strong>setup_arguments</strong> – any setup arguments that need to be passed to the setup method of one of the pipeline step</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.teardown">
+<code class="descname">teardown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L150"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.teardown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Teardown step after program execution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.tosklearn">
+<code class="descname">tosklearn</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; NeuraxleToSKLearnPipelineWrapper<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L369"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.tosklearn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the concatenation transformation along the specified axis.
+:param data_inputs:
+:return: Numpy array</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.transform_one">
+<code class="descname">transform_one</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.transform_one" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the concatenation transformation along the specified axis
+:param data_inputs:
+:return: Numpy array</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch.will_mutate_to">
+<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L327"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch.will_mutate_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>This will change the behavior of <code class="docutils literal notranslate"><span class="pre">self.mutate(&lt;...&gt;)</span></code> such that when mutating, it will return the
 presently provided new_base_step BaseStep (can be left to None for self), and the <code class="docutils literal notranslate"><span class="pre">.mutate</span></code> method
 will also apply the <code class="docutils literal notranslate"><span class="pre">new_method</span></code> and the  <code class="docutils literal notranslate"><span class="pre">method_to_affect</span></code>, if they are not None, and after changing
@@ -473,10 +1142,10 @@ the object to new_base_step.</p>
 
 <dl class="class">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyFlattenDatum</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/steps/numpy.py#L28"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyFlattenDatum</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L28"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L301"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L533"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Don’t fit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -493,7 +1162,7 @@ the object to new_base_step.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.fit_one">
-<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L311"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.fit_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L543"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.fit_one" title="Permalink to this definition">¶</a></dt>
 <dd><p>Don’t fit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -510,37 +1179,72 @@ the object to new_base_step.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.fit_transform">
-<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None) -&gt; ('BaseStep'</em>, <em>typing.Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.fit_transform" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.numpy.NumpyFlattenDatum.fit_transform_one">
-<code class="descname">fit_transform_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None) -&gt; ('BaseStep'</em>, <em>typing.Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L68"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.fit_transform_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None) -&gt; ('BaseStep'</em>, <em>typing.Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L226"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.get_hyperparams">
-<code class="descname">get_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.get_hyperparams" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L181"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.get_hyperparams" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.get_hyperparams_space">
-<code class="descname">get_hyperparams_space</code><span class="sig-paren">(</span><em>flat=False</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L60"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.get_hyperparams_space" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_hyperparams_space</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L192"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.get_hyperparams_space" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyFlattenDatum.get_name">
+<code class="descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the name of the pipeline step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the name, a string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyFlattenDatum.handle_fit_transform">
+<code class="descname">handle_fit_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.base.DataContainer) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.base.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L195"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.handle_fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the data inputs inside DataContainer after fit transform,
+and update its current_ids.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_container</strong> – the data container to transform</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tuple(fitted pipeline, data_container)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyFlattenDatum.handle_transform">
+<code class="descname">handle_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.base.DataContainer</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L211"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.handle_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the data inputs inside DataContainer after transform.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_container</strong> – the data container to transform</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>transformed data container</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.inverse_transform">
-<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L84"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L245"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.inverse_transform" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.inverse_transform_one">
-<code class="descname">inverse_transform_one</code><span class="sig-paren">(</span><em>data_output</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L204"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.inverse_transform_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse_transform_one</code><span class="sig-paren">(</span><em>data_output</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L257"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.inverse_transform_one" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.meta_fit">
-<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.meta_fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L264"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.meta_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uses a meta optimization technique (AutoML) to find the best hyperparameters in the given
 hyperparameter space.</p>
 <p>Usage: <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">p.meta_fit(X_train,</span> <span class="pre">y_train,</span> <span class="pre">metastep=RandomSearch(n_iter=10,</span> <span class="pre">scoring_function=r2_score,</span> <span class="pre">higher_score_is_better=True))</span></code></p>
@@ -562,7 +1266,7 @@ current estimator will become</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.mutate">
-<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L111"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.mutate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L284"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.mutate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Replace the “method_to_assign_to” method by the “new_method” method, IF the present object has no pending calls to
 <code class="docutils literal notranslate"><span class="pre">.will_mutate_to()</span></code> waiting to be applied. If there is a pending call, the pending call will override the
 methods specified in the present call. If the change fails (such as if the new_method doesn’t exist), then
@@ -585,12 +1289,12 @@ to assign <code class="docutils literal notranslate"><span class="pre">predict_p
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.predict">
-<code class="descname">predict</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L88"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.predict" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L261"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.predict" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.reverse">
-<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.reverse" title="Permalink to this definition">¶</a></dt>
+<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L408"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.reverse" title="Permalink to this definition">¶</a></dt>
 <dd><p>The object will mutate itself such that the <code class="docutils literal notranslate"><span class="pre">.transform</span></code> method (and of all its underlying objects
 if applicable) be replaced by the <code class="docutils literal notranslate"><span class="pre">.inverse_transform</span></code> method.</p>
 <p>Note: the reverse may fail if there is a pending mutate that was set earlier with <code class="docutils literal notranslate"><span class="pre">.will_mutate_to</span></code>.</p>
@@ -602,33 +1306,80 @@ if applicable) be replaced by the <code class="docutils literal notranslate"><sp
 </dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyFlattenDatum.set_hasher">
+<code class="descname">set_hasher</code><span class="sig-paren">(</span><em>hasher: neuraxle.base.BaseHasher</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L188"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.set_hasher" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.set_hyperparams">
-<code class="descname">set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L49"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.set_hyperparams" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L177"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.set_hyperparams" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.set_hyperparams_space">
-<code class="descname">set_hyperparams_space</code><span class="sig-paren">(</span><em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L56"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.set_hyperparams_space" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_hyperparams_space</code><span class="sig-paren">(</span><em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L184"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.set_hyperparams_space" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyFlattenDatum.set_name">
+<code class="descname">set_name</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L159"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.set_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the name of the pipeline step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – a string.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyFlattenDatum.setup">
+<code class="descname">setup</code><span class="sig-paren">(</span><em>step_path: str</em>, <em>setup_arguments: dict</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize step before it runs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>step_path</strong> – pipeline step path ex: pipeline/step_name/</p></li>
+<li><p><strong>setup_arguments</strong> – any setup arguments that need to be passed to the setup method of one of the pipeline step</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyFlattenDatum.teardown">
+<code class="descname">teardown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L150"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.teardown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Teardown step after program execution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.tosklearn">
-<code class="descname">tosklearn</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; NeuraxleToSKLearnPipelineWrapper<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L208"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.tosklearn" title="Permalink to this definition">¶</a></dt>
+<code class="descname">tosklearn</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; NeuraxleToSKLearnPipelineWrapper<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L369"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.tosklearn" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/steps/numpy.py#L33"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L33"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.transform" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.transform_one">
-<code class="descname">transform_one</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/steps/numpy.py#L36"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.transform_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform_one</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L36"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.transform_one" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.will_mutate_to">
-<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L154"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.will_mutate_to" title="Permalink to this definition">¶</a></dt>
+<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L327"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.will_mutate_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>This will change the behavior of <code class="docutils literal notranslate"><span class="pre">self.mutate(&lt;...&gt;)</span></code> such that when mutating, it will return the
 presently provided new_base_step BaseStep (can be left to None for self), and the <code class="docutils literal notranslate"><span class="pre">.mutate</span></code> method
 will also apply the <code class="docutils literal notranslate"><span class="pre">new_method</span></code> and the  <code class="docutils literal notranslate"><span class="pre">method_to_affect</span></code>, if they are not None, and after changing
@@ -670,10 +1421,10 @@ the object to new_base_step.</p>
 
 <dl class="class">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyShapePrinter</code><span class="sig-paren">(</span><em>custom_message: str = ''</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/steps/numpy.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyShapePrinter</code><span class="sig-paren">(</span><em>custom_message: str = ''</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L121"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L301"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L533"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Don’t fit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -690,7 +1441,7 @@ the object to new_base_step.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.fit_one">
-<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L311"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.fit_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L543"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.fit_one" title="Permalink to this definition">¶</a></dt>
 <dd><p>Don’t fit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -707,37 +1458,72 @@ the object to new_base_step.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.fit_transform">
-<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None) -&gt; ('BaseStep'</em>, <em>typing.Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.fit_transform" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.numpy.NumpyShapePrinter.fit_transform_one">
-<code class="descname">fit_transform_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None) -&gt; ('BaseStep'</em>, <em>typing.Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L68"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.fit_transform_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None) -&gt; ('BaseStep'</em>, <em>typing.Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L226"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.get_hyperparams">
-<code class="descname">get_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.get_hyperparams" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L181"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.get_hyperparams" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.get_hyperparams_space">
-<code class="descname">get_hyperparams_space</code><span class="sig-paren">(</span><em>flat=False</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L60"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.get_hyperparams_space" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_hyperparams_space</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L192"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.get_hyperparams_space" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyShapePrinter.get_name">
+<code class="descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the name of the pipeline step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the name, a string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyShapePrinter.handle_fit_transform">
+<code class="descname">handle_fit_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.base.DataContainer) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.base.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L195"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.handle_fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the data inputs inside DataContainer after fit transform,
+and update its current_ids.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_container</strong> – the data container to transform</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tuple(fitted pipeline, data_container)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyShapePrinter.handle_transform">
+<code class="descname">handle_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.base.DataContainer</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L211"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.handle_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the data inputs inside DataContainer after transform.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_container</strong> – the data container to transform</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>transformed data container</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.inverse_transform">
-<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/steps/numpy.py#L90"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L135"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.inverse_transform" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.inverse_transform_one">
-<code class="descname">inverse_transform_one</code><span class="sig-paren">(</span><em>processed_output</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/steps/numpy.py#L94"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.inverse_transform_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse_transform_one</code><span class="sig-paren">(</span><em>processed_output</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.inverse_transform_one" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.meta_fit">
-<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.meta_fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L264"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.meta_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uses a meta optimization technique (AutoML) to find the best hyperparameters in the given
 hyperparameter space.</p>
 <p>Usage: <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">p.meta_fit(X_train,</span> <span class="pre">y_train,</span> <span class="pre">metastep=RandomSearch(n_iter=10,</span> <span class="pre">scoring_function=r2_score,</span> <span class="pre">higher_score_is_better=True))</span></code></p>
@@ -759,7 +1545,7 @@ current estimator will become</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.mutate">
-<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L111"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.mutate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L284"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.mutate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Replace the “method_to_assign_to” method by the “new_method” method, IF the present object has no pending calls to
 <code class="docutils literal notranslate"><span class="pre">.will_mutate_to()</span></code> waiting to be applied. If there is a pending call, the pending call will override the
 methods specified in the present call. If the change fails (such as if the new_method doesn’t exist), then
@@ -782,12 +1568,12 @@ to assign <code class="docutils literal notranslate"><span class="pre">predict_p
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.predict">
-<code class="descname">predict</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L88"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.predict" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L261"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.predict" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.reverse">
-<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.reverse" title="Permalink to this definition">¶</a></dt>
+<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L408"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.reverse" title="Permalink to this definition">¶</a></dt>
 <dd><p>The object will mutate itself such that the <code class="docutils literal notranslate"><span class="pre">.transform</span></code> method (and of all its underlying objects
 if applicable) be replaced by the <code class="docutils literal notranslate"><span class="pre">.inverse_transform</span></code> method.</p>
 <p>Note: the reverse may fail if there is a pending mutate that was set earlier with <code class="docutils literal notranslate"><span class="pre">.will_mutate_to</span></code>.</p>
@@ -799,33 +1585,80 @@ if applicable) be replaced by the <code class="docutils literal notranslate"><sp
 </dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyShapePrinter.set_hasher">
+<code class="descname">set_hasher</code><span class="sig-paren">(</span><em>hasher: neuraxle.base.BaseHasher</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L188"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.set_hasher" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.set_hyperparams">
-<code class="descname">set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L49"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.set_hyperparams" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L177"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.set_hyperparams" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.set_hyperparams_space">
-<code class="descname">set_hyperparams_space</code><span class="sig-paren">(</span><em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L56"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.set_hyperparams_space" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_hyperparams_space</code><span class="sig-paren">(</span><em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L184"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.set_hyperparams_space" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyShapePrinter.set_name">
+<code class="descname">set_name</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L159"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.set_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the name of the pipeline step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – a string.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyShapePrinter.setup">
+<code class="descname">setup</code><span class="sig-paren">(</span><em>step_path: str</em>, <em>setup_arguments: dict</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize step before it runs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>step_path</strong> – pipeline step path ex: pipeline/step_name/</p></li>
+<li><p><strong>setup_arguments</strong> – any setup arguments that need to be passed to the setup method of one of the pipeline step</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyShapePrinter.teardown">
+<code class="descname">teardown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L150"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.teardown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Teardown step after program execution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.tosklearn">
-<code class="descname">tosklearn</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; NeuraxleToSKLearnPipelineWrapper<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L208"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.tosklearn" title="Permalink to this definition">¶</a></dt>
+<code class="descname">tosklearn</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; NeuraxleToSKLearnPipelineWrapper<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L369"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.tosklearn" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/steps/numpy.py#L83"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L128"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.transform" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.transform_one">
-<code class="descname">transform_one</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/steps/numpy.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.transform_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform_one</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L132"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.transform_one" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.will_mutate_to">
-<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L154"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.will_mutate_to" title="Permalink to this definition">¶</a></dt>
+<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L327"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.will_mutate_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>This will change the behavior of <code class="docutils literal notranslate"><span class="pre">self.mutate(&lt;...&gt;)</span></code> such that when mutating, it will return the
 presently provided new_base_step BaseStep (can be left to None for self), and the <code class="docutils literal notranslate"><span class="pre">.mutate</span></code> method
 will also apply the <code class="docutils literal notranslate"><span class="pre">new_method</span></code> and the  <code class="docutils literal notranslate"><span class="pre">method_to_affect</span></code>, if they are not None, and after changing
@@ -867,10 +1700,10 @@ the object to new_base_step.</p>
 
 <dl class="class">
 <dt id="neuraxle.steps.numpy.NumpyTranspose">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyTranspose</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/steps/numpy.py#L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyTranspose</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L301"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L533"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Don’t fit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -887,7 +1720,7 @@ the object to new_base_step.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.fit_one">
-<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L311"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.fit_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L543"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.fit_one" title="Permalink to this definition">¶</a></dt>
 <dd><p>Don’t fit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -904,37 +1737,72 @@ the object to new_base_step.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.fit_transform">
-<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None) -&gt; ('BaseStep'</em>, <em>typing.Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.fit_transform" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.numpy.NumpyTranspose.fit_transform_one">
-<code class="descname">fit_transform_one</code><span class="sig-paren">(</span><em>data_input</em>, <em>expected_output=None) -&gt; ('BaseStep'</em>, <em>typing.Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L68"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.fit_transform_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None) -&gt; ('BaseStep'</em>, <em>typing.Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L226"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.get_hyperparams">
-<code class="descname">get_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.get_hyperparams" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L181"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.get_hyperparams" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.get_hyperparams_space">
-<code class="descname">get_hyperparams_space</code><span class="sig-paren">(</span><em>flat=False</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L60"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.get_hyperparams_space" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_hyperparams_space</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L192"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.get_hyperparams_space" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyTranspose.get_name">
+<code class="descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the name of the pipeline step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the name, a string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyTranspose.handle_fit_transform">
+<code class="descname">handle_fit_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.base.DataContainer) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.base.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L195"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.handle_fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the data inputs inside DataContainer after fit transform,
+and update its current_ids.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_container</strong> – the data container to transform</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tuple(fitted pipeline, data_container)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyTranspose.handle_transform">
+<code class="descname">handle_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.base.DataContainer</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L211"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.handle_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the data inputs inside DataContainer after transform.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_container</strong> – the data container to transform</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>transformed data container</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.inverse_transform">
-<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/steps/numpy.py#L66"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L111"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.inverse_transform" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.inverse_transform_one">
-<code class="descname">inverse_transform_one</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/steps/numpy.py#L69"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.inverse_transform_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse_transform_one</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.inverse_transform_one" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.meta_fit">
-<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.meta_fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L264"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.meta_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uses a meta optimization technique (AutoML) to find the best hyperparameters in the given
 hyperparameter space.</p>
 <p>Usage: <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">p.meta_fit(X_train,</span> <span class="pre">y_train,</span> <span class="pre">metastep=RandomSearch(n_iter=10,</span> <span class="pre">scoring_function=r2_score,</span> <span class="pre">higher_score_is_better=True))</span></code></p>
@@ -956,7 +1824,7 @@ current estimator will become</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.mutate">
-<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L111"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.mutate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L284"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.mutate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Replace the “method_to_assign_to” method by the “new_method” method, IF the present object has no pending calls to
 <code class="docutils literal notranslate"><span class="pre">.will_mutate_to()</span></code> waiting to be applied. If there is a pending call, the pending call will override the
 methods specified in the present call. If the change fails (such as if the new_method doesn’t exist), then
@@ -979,12 +1847,12 @@ to assign <code class="docutils literal notranslate"><span class="pre">predict_p
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.predict">
-<code class="descname">predict</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L88"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.predict" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L261"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.predict" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.reverse">
-<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.reverse" title="Permalink to this definition">¶</a></dt>
+<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L408"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.reverse" title="Permalink to this definition">¶</a></dt>
 <dd><p>The object will mutate itself such that the <code class="docutils literal notranslate"><span class="pre">.transform</span></code> method (and of all its underlying objects
 if applicable) be replaced by the <code class="docutils literal notranslate"><span class="pre">.inverse_transform</span></code> method.</p>
 <p>Note: the reverse may fail if there is a pending mutate that was set earlier with <code class="docutils literal notranslate"><span class="pre">.will_mutate_to</span></code>.</p>
@@ -996,33 +1864,80 @@ if applicable) be replaced by the <code class="docutils literal notranslate"><sp
 </dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyTranspose.set_hasher">
+<code class="descname">set_hasher</code><span class="sig-paren">(</span><em>hasher: neuraxle.base.BaseHasher</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L188"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.set_hasher" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.set_hyperparams">
-<code class="descname">set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L49"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.set_hyperparams" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L177"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.set_hyperparams" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.set_hyperparams_space">
-<code class="descname">set_hyperparams_space</code><span class="sig-paren">(</span><em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L56"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.set_hyperparams_space" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_hyperparams_space</code><span class="sig-paren">(</span><em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L184"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.set_hyperparams_space" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyTranspose.set_name">
+<code class="descname">set_name</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L159"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.set_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the name of the pipeline step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – a string.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyTranspose.setup">
+<code class="descname">setup</code><span class="sig-paren">(</span><em>step_path: str</em>, <em>setup_arguments: dict</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize step before it runs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>step_path</strong> – pipeline step path ex: pipeline/step_name/</p></li>
+<li><p><strong>setup_arguments</strong> – any setup arguments that need to be passed to the setup method of one of the pipeline step</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.numpy.NumpyTranspose.teardown">
+<code class="descname">teardown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L150"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.teardown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Teardown step after program execution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.tosklearn">
-<code class="descname">tosklearn</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; NeuraxleToSKLearnPipelineWrapper<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L208"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.tosklearn" title="Permalink to this definition">¶</a></dt>
+<code class="descname">tosklearn</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; NeuraxleToSKLearnPipelineWrapper<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L369"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.tosklearn" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/steps/numpy.py#L60"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L105"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.transform" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.transform_one">
-<code class="descname">transform_one</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/steps/numpy.py#L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.transform_one" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform_one</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/steps/numpy.py#L108"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.transform_one" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.will_mutate_to">
-<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/f560f21/neuraxle/base.py#L154"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.will_mutate_to" title="Permalink to this definition">¶</a></dt>
+<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a75c2ae/neuraxle/base.py#L327"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.will_mutate_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>This will change the behavior of <code class="docutils literal notranslate"><span class="pre">self.mutate(&lt;...&gt;)</span></code> such that when mutating, it will return the
 presently provided new_base_step BaseStep (can be left to None for self), and the <code class="docutils literal notranslate"><span class="pre">.mutate</span></code> method
 will also apply the <code class="docutils literal notranslate"><span class="pre">new_method</span></code> and the  <code class="docutils literal notranslate"><span class="pre">method_to_affect</span></code>, if they are not None, and after changing

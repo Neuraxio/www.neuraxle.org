@@ -1,22 +1,16 @@
 .. note::
     :class: sphx-glr-download-link-note
 
-    Click :ref:`here <sphx_glr_download_examples_boston_housing_regression_with_model_stacking.py>` to download the full example code
+    Click :ref:`here <sphx_glr_download_examples_easy_rest_api_serving.py>` to download the full example code
 .. rst-class:: sphx-glr-example-title
 
-.. _sphx_glr_examples_boston_housing_regression_with_model_stacking.py:
+.. _sphx_glr_examples_easy_rest_api_serving.py:
 
 
-Boston Housing Regression
-==========================
+Easy REST API Model Serving with Neuraxle
+================================================
 
-This example solves a regression problem using a pipeline with the following steps:
-
- - Feature augmentation with PCA and Fast ICA,
- - A Pre-regression using an ensemble containing gradient boosted, and a KMeans clustering for even more features in the stacking,
- - The model stacking using a ridge regression.
-
-This example also prints the shapes of the objects between the pipeline elements.
+This demonstrates an easy way to deploy your Neuraxle model or pipeline to a REST API.
 
 ..
     Copyright 2019, Neuraxio Inc.
@@ -47,8 +41,8 @@ This example also prints the shapes of the objects between the pipeline elements
     from sklearn.model_selection import train_test_split
     from sklearn.utils import shuffle
 
+    from neuraxle.api.flask import FlaskRestApiWrapper, JSONDataBodyDecoder, JSONDataResponseEncoder
     from neuraxle.pipeline import Pipeline
-    from neuraxle.steps.numpy import NumpyShapePrinter
     from neuraxle.steps.sklearn import SKLearnWrapper, RidgeModelStacking
     from neuraxle.union import AddFeatures
 
@@ -57,29 +51,24 @@ This example also prints the shapes of the objects between the pipeline elements
     X = X.astype(np.float32)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, shuffle=False)
 
-    p = Pipeline([
-        NumpyShapePrinter(),
+    pipeline = Pipeline([
         AddFeatures([
             SKLearnWrapper(PCA(n_components=2)),
             SKLearnWrapper(FastICA(n_components=2)),
         ]),
-        NumpyShapePrinter(),
         RidgeModelStacking([
             SKLearnWrapper(GradientBoostingRegressor()),
-            SKLearnWrapper(GradientBoostingRegressor(n_estimators=500)),
-            SKLearnWrapper(GradientBoostingRegressor(max_depth=5)),
             SKLearnWrapper(KMeans()),
         ]),
-        NumpyShapePrinter(),
     ])
 
     print("Fitting on train:")
-    p = p.fit(X_train, y_train)
+    pipeline = pipeline.fit(X_train, y_train)
     print("")
 
     print("Transforming train and test:")
-    y_train_predicted = p.transform(X_train)
-    y_test_predicted = p.transform(X_test)
+    y_train_predicted = pipeline.transform(X_train)
+    y_test_predicted = pipeline.transform(X_test)
     print("")
 
     print("Evaluating transformed train:")
@@ -91,13 +80,61 @@ This example also prints the shapes of the objects between the pipeline elements
     score = r2_score(y_test_predicted, y_test)
     print('R2 regression score:', score)
 
+    print("Deploying the application by routing data to the transform method:")
+
+
+    class CustomJSONDecoderFor2DArray(JSONDataBodyDecoder):
+        """This is a custom JSON decoder class that precedes the pipeline's transformation."""
+
+        def decode(self, data_inputs):
+            """
+            Transform a JSON list object into an np.array object.
+
+            :param data_inputs: json object
+            :return: np array for data inputs
+            """
+            return np.array(data_inputs)
+
+
+    class CustomJSONEncoderOfOutputs(JSONDataResponseEncoder):
+        """This is a custom JSON response encoder class for converting the pipeline's transformation outputs."""
+
+        def encode(self, data_inputs) -> dict:
+            """
+            Convert predictions to a dict for creating a JSON Response object.
+
+            :param data_inputs:
+            :return:
+            """
+            return {
+                'predictions': list(data_inputs)
+            }
+
+
+    app = FlaskRestApiWrapper(
+        json_decoder=CustomJSONDecoderFor2DArray(),
+        wrapped=pipeline,
+        json_encoder=CustomJSONEncoderOfOutputs()
+    ).get_app()
+
+    print("Finally, run the app by uncommenting this next line of code:")
+    # app.run(debug=False, port=5000)
+
+    print("You can now call your pipeline over HTTP with a (JSON) REST API.")
+    # test_predictictions = requests.post(
+    #     url='http://127.0.0.1:5000/',
+    #     json=X_test.tolist()
+    # )
+    # print(test_predictictions)
+    # print(test_predictictions.content)
+
 
 .. rst-class:: sphx-glr-timing
 
    **Total running time of the script:** ( 0 minutes  0.000 seconds)
 
 
-.. _sphx_glr_download_examples_boston_housing_regression_with_model_stacking.py:
+.. _sphx_glr_download_examples_easy_rest_api_serving.py:
 
 
 .. only :: html
@@ -109,13 +146,13 @@ This example also prints the shapes of the objects between the pipeline elements
 
   .. container:: sphx-glr-download
 
-     :download:`Download Python source code: boston_housing_regression_with_model_stacking.py <boston_housing_regression_with_model_stacking.py>`
+     :download:`Download Python source code: easy_rest_api_serving.py <easy_rest_api_serving.py>`
 
 
 
   .. container:: sphx-glr-download
 
-     :download:`Download Jupyter notebook: boston_housing_regression_with_model_stacking.ipynb <boston_housing_regression_with_model_stacking.ipynb>`
+     :download:`Download Jupyter notebook: easy_rest_api_serving.ipynb <easy_rest_api_serving.ipynb>`
 
 
 .. only:: html

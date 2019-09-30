@@ -8,14 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Boston Housing Regression &mdash; Neuraxle 0.1.1 documentation</title>
+  <title>Easy REST API Model Serving with Neuraxle &mdash; Neuraxle 0.1.1 documentation</title>
   
 
   
   
   
   
-    <link rel="canonical" href="https://www.neuraxle.neuraxio.com/stable/examples/boston_housing_regression_with_model_stacking.html"/>
+    <link rel="canonical" href="https://www.neuraxle.neuraxio.com/stable/examples/easy_rest_api_serving.html"/>
   
 
   
@@ -38,8 +38,8 @@
   <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Easy REST API Model Serving with Neuraxle" href="easy_rest_api_serving.html" />
-    <link rel="prev" title="Usage Examples" href="index.html" /> 
+    <link rel="next" title="Boston Housing Regression with Meta Optimization" href="boston_housing_meta_optimization.html" />
+    <link rel="prev" title="Boston Housing Regression" href="boston_housing_regression_with_model_stacking.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -178,8 +178,8 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Usage Examples</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Boston Housing Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="easy_rest_api_serving.html">Easy REST API Model Serving with Neuraxle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boston_housing_regression_with_model_stacking.html">Boston Housing Regression</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Easy REST API Model Serving with Neuraxle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="boston_housing_meta_optimization.html">Boston Housing Regression with Meta Optimization</a></li>
 </ul>
 </li>
@@ -231,13 +231,13 @@
         
           <li><a href="index.html">Usage Examples</a> &raquo;</li>
         
-      <li>Boston Housing Regression</li>
+      <li>Easy REST API Model Serving with Neuraxle</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/examples/boston_housing_regression_with_model_stacking.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/examples/easy_rest_api_serving.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -252,19 +252,11 @@
             
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-examples-boston-housing-regression-with-model-stacking-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-examples-easy-rest-api-serving-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
-<div class="sphx-glr-example-title section" id="boston-housing-regression">
-<span id="sphx-glr-examples-boston-housing-regression-with-model-stacking-py"></span><h1>Boston Housing Regression<a class="headerlink" href="#boston-housing-regression" title="Permalink to this headline">¶</a></h1>
-<p>This example solves a regression problem using a pipeline with the following steps:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Feature augmentation with PCA and Fast ICA,</p></li>
-<li><p>A Pre-regression using an ensemble containing gradient boosted, and a KMeans clustering for even more features in the stacking,</p></li>
-<li><p>The model stacking using a ridge regression.</p></li>
-</ul>
-</div></blockquote>
-<p>This example also prints the shapes of the objects between the pipeline elements.</p>
+<div class="sphx-glr-example-title section" id="easy-rest-api-model-serving-with-neuraxle">
+<span id="sphx-glr-examples-easy-rest-api-serving-py"></span><h1>Easy REST API Model Serving with Neuraxle<a class="headerlink" href="#easy-rest-api-model-serving-with-neuraxle" title="Permalink to this headline">¶</a></h1>
+<p>This demonstrates an easy way to deploy your Neuraxle model or pipeline to a REST API.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="View documentation for sklearn.cluster.KMeans"><span class="n">KMeans</span></a>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html#sklearn.datasets.load_boston" title="View documentation for sklearn.datasets.load_boston"><span class="n">load_boston</span></a>
@@ -274,8 +266,8 @@
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
 <span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.shuffle.html#sklearn.utils.shuffle" title="View documentation for sklearn.utils.shuffle"><span class="n">shuffle</span></a>
 
+<span class="kn">from</span> <span class="nn">neuraxle.api.flask</span> <span class="k">import</span> <span class="n">FlaskRestApiWrapper</span><span class="p">,</span> <span class="n">JSONDataBodyDecoder</span><span class="p">,</span> <span class="n">JSONDataResponseEncoder</span>
 <span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="k">import</span> <a href="../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a>
-<span class="kn">from</span> <span class="nn">neuraxle.steps.numpy</span> <span class="k">import</span> <a href="../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyShapePrinter" title="View documentation for neuraxle.steps.numpy.NumpyShapePrinter"><span class="n">NumpyShapePrinter</span></a>
 <span class="kn">from</span> <span class="nn">neuraxle.steps.sklearn</span> <span class="k">import</span> <a href="../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">,</span> <a href="../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.RidgeModelStacking" title="View documentation for neuraxle.steps.sklearn.RidgeModelStacking"><span class="n">RidgeModelStacking</span></a>
 <span class="kn">from</span> <span class="nn">neuraxle.union</span> <span class="k">import</span> <a href="../api/neuraxle.union.html#neuraxle.union.AddFeatures" title="View documentation for neuraxle.union.AddFeatures"><span class="n">AddFeatures</span></a>
 
@@ -284,29 +276,24 @@
 <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.shuffle.html#sklearn.utils.shuffle" title="View documentation for sklearn.utils.shuffle"><span class="n">shuffle</span></a><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="n">p</span> <span class="o">=</span> <a href="../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">([</span>
-    <a href="../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyShapePrinter" title="View documentation for neuraxle.steps.numpy.NumpyShapePrinter"><span class="n">NumpyShapePrinter</span></a><span class="p">(),</span>
+<span class="n">pipeline</span> <span class="o">=</span> <a href="../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">([</span>
     <a href="../api/neuraxle.union.html#neuraxle.union.AddFeatures" title="View documentation for neuraxle.union.AddFeatures"><span class="n">AddFeatures</span></a><span class="p">([</span>
         <a href="../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="View documentation for sklearn.decomposition.PCA"><span class="n">PCA</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)),</span>
         <a href="../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html#sklearn.decomposition.FastICA" title="View documentation for sklearn.decomposition.FastICA"><span class="n">FastICA</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)),</span>
     <span class="p">]),</span>
-    <a href="../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyShapePrinter" title="View documentation for neuraxle.steps.numpy.NumpyShapePrinter"><span class="n">NumpyShapePrinter</span></a><span class="p">(),</span>
     <a href="../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.RidgeModelStacking" title="View documentation for neuraxle.steps.sklearn.RidgeModelStacking"><span class="n">RidgeModelStacking</span></a><span class="p">([</span>
         <a href="../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor" title="View documentation for sklearn.ensemble.GradientBoostingRegressor"><span class="n">GradientBoostingRegressor</span></a><span class="p">()),</span>
-        <a href="../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor" title="View documentation for sklearn.ensemble.GradientBoostingRegressor"><span class="n">GradientBoostingRegressor</span></a><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span><span class="p">)),</span>
-        <a href="../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor" title="View documentation for sklearn.ensemble.GradientBoostingRegressor"><span class="n">GradientBoostingRegressor</span></a><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)),</span>
         <a href="../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="View documentation for sklearn.cluster.KMeans"><span class="n">KMeans</span></a><span class="p">()),</span>
     <span class="p">]),</span>
-    <a href="../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyShapePrinter" title="View documentation for neuraxle.steps.numpy.NumpyShapePrinter"><span class="n">NumpyShapePrinter</span></a><span class="p">(),</span>
 <span class="p">])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fitting on train:&quot;</span><span class="p">)</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Transforming train and test:&quot;</span><span class="p">)</span>
-<span class="n">y_train_predicted</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-<span class="n">y_test_predicted</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_train_predicted</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">y_test_predicted</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluating transformed train:&quot;</span><span class="p">)</span>
@@ -317,15 +304,63 @@
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluating transformed test:&quot;</span><span class="p">)</span>
 <span class="n">score</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="View documentation for sklearn.metrics.r2_score"><span class="n">r2_score</span></a><span class="p">(</span><span class="n">y_test_predicted</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R2 regression score:&#39;</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Deploying the application by routing data to the transform method:&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">CustomJSONDecoderFor2DArray</span><span class="p">(</span><span class="n">JSONDataBodyDecoder</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This is a custom JSON decoder class that precedes the pipeline&#39;s transformation.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_inputs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Transform a JSON list object into an np.array object.</span>
+
+<span class="sd">        :param data_inputs: json object</span>
+<span class="sd">        :return: np array for data inputs</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <a href="http://docs.scipy.org/doc/numpy-1.16.1/reference/generated/numpy.array.html#numpy.array" title="View documentation for numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">(</span><span class="n">data_inputs</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">CustomJSONEncoderOfOutputs</span><span class="p">(</span><span class="n">JSONDataResponseEncoder</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This is a custom JSON response encoder class for converting the pipeline&#39;s transformation outputs.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_inputs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convert predictions to a dict for creating a JSON Response object.</span>
+
+<span class="sd">        :param data_inputs:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;predictions&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_inputs</span><span class="p">)</span>
+        <span class="p">}</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FlaskRestApiWrapper</span><span class="p">(</span>
+    <span class="n">json_decoder</span><span class="o">=</span><span class="n">CustomJSONDecoderFor2DArray</span><span class="p">(),</span>
+    <span class="n">wrapped</span><span class="o">=</span><span class="n">pipeline</span><span class="p">,</span>
+    <span class="n">json_encoder</span><span class="o">=</span><span class="n">CustomJSONEncoderOfOutputs</span><span class="p">()</span>
+<span class="p">)</span><span class="o">.</span><span class="n">get_app</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finally, run the app by uncommenting this next line of code:&quot;</span><span class="p">)</span>
+<span class="c1"># app.run(debug=False, port=5000)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You can now call your pipeline over HTTP with a (JSON) REST API.&quot;</span><span class="p">)</span>
+<span class="c1"># test_predictictions = requests.post(</span>
+<span class="c1">#     url=&#39;http://127.0.0.1:5000/&#39;,</span>
+<span class="c1">#     json=X_test.tolist()</span>
+<span class="c1"># )</span>
+<span class="c1"># print(test_predictictions)</span>
+<span class="c1"># print(test_predictictions.content)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-boston-housing-regression-with-model-stacking-py">
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-easy-rest-api-serving-py">
 <div class="sphx-glr-download docutils container">
-<p><a class="reference download internal" download="" href="../_downloads/5e27327160fb03f94132c3116c39c05e/boston_housing_regression_with_model_stacking.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">boston_housing_regression_with_model_stacking.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/3bb7277f66f67e71b6069303cfd796d2/easy_rest_api_serving.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">easy_rest_api_serving.py</span></code></a></p>
 </div>
 <div class="sphx-glr-download docutils container">
-<p><a class="reference download internal" download="" href="../_downloads/5b4b3343f71baf2ee8fdbfbbafcca2b8/boston_housing_regression_with_model_stacking.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">boston_housing_regression_with_model_stacking.ipynb</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/e895f81c474cc3a1494e115374be4aa5/easy_rest_api_serving.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">easy_rest_api_serving.ipynb</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
@@ -339,10 +374,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="easy_rest_api_serving.html" class="btn btn-neutral float-right" title="Easy REST API Model Serving with Neuraxle" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="boston_housing_meta_optimization.html" class="btn btn-neutral float-right" title="Boston Housing Regression with Meta Optimization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="Usage Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="boston_housing_regression_with_model_stacking.html" class="btn btn-neutral float-left" title="Boston Housing Regression" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

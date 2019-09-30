@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Boston Housing Regression with Meta Optimization &mdash; Neuraxle 0.1.0 documentation</title>
+  <title>Boston Housing Regression with Meta Optimization &mdash; Neuraxle 0.1.1 documentation</title>
   
 
   
@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Boston Housing Regression" href="boston_housing_regression_with_model_stacking.html" /> 
+    <link rel="prev" title="Easy REST API Model Serving with Neuraxle" href="easy_rest_api_serving.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.1.0
+                0.1.1
               </div>
             
           
@@ -90,6 +90,8 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Neuraxle/README.html">Neuraxle Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#quickstart">Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#why-neuraxle">Why Neuraxle?</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#production-ready">Production-ready</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#compatibility">Compatibility</a></li>
@@ -105,14 +107,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#kubeflow">Kubeflow</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#quickstart">Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#community">Community</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#license">License</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../Neuraxle/README.html#summary-of-the-license">Summary of the License</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#contributors">Contributors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#supported-by">Supported By</a></li>
 </ul>
 </li>
 </ul>
@@ -177,6 +178,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Usage Examples</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="boston_housing_regression_with_model_stacking.html">Boston Housing Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="easy_rest_api_serving.html">Easy REST API Model Serving with Neuraxle</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Boston Housing Regression with Meta Optimization</a></li>
 </ul>
 </li>
@@ -268,7 +270,7 @@ performed to find the best possible combination of hyperparameters by sampling r
 
 <span class="kn">from</span> <span class="nn">neuraxle.hyperparams.distributions</span> <span class="k">import</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">,</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.LogUniform" title="View documentation for neuraxle.hyperparams.distributions.LogUniform"><span class="n">LogUniform</span></a><span class="p">,</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Boolean" title="View documentation for neuraxle.hyperparams.distributions.Boolean"><span class="n">Boolean</span></a>
 <span class="kn">from</span> <span class="nn">neuraxle.hyperparams.space</span> <span class="k">import</span> <a href="../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a>
-<span class="kn">from</span> <span class="nn">neuraxle.metaopt.random</span> <span class="k">import</span> <a href="../api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.RandomSearch" title="View documentation for neuraxle.metaopt.random.RandomSearch"><span class="n">RandomSearch</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.metaopt.random</span> <span class="k">import</span> <a href="../api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.RandomSearch" title="View documentation for neuraxle.metaopt.random.RandomSearch"><span class="n">RandomSearch</span></a><span class="p">,</span> <a href="../api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.KFoldCrossValidation" title="View documentation for neuraxle.metaopt.random.KFoldCrossValidation"><span class="n">KFoldCrossValidation</span></a>
 <span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="k">import</span> <a href="../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a>
 <span class="kn">from</span> <span class="nn">neuraxle.steps.numpy</span> <span class="k">import</span> <a href="../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyTranspose" title="View documentation for neuraxle.steps.numpy.NumpyTranspose"><span class="n">NumpyTranspose</span></a>
 <span class="kn">from</span> <span class="nn">neuraxle.steps.sklearn</span> <span class="k">import</span> <a href="../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a>
@@ -286,80 +288,81 @@ performed to find the best possible combination of hyperparameters by sampling r
     <a href="../api/neuraxle.union.html#neuraxle.union.AddFeatures" title="View documentation for neuraxle.union.AddFeatures"><span class="n">AddFeatures</span></a><span class="p">([</span>
         <a href="../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span>
             <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="View documentation for sklearn.decomposition.PCA"><span class="n">PCA</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
-            <a href="../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span><span class="s2">&quot;n_components&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)})</span>
+            <a href="../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span><span class="s2">&quot;n_components&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)})</span>
         <span class="p">),</span>
         <a href="../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span>
             <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html#sklearn.decomposition.FastICA" title="View documentation for sklearn.decomposition.FastICA"><span class="n">FastICA</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
-            <a href="../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span><span class="s2">&quot;n_components&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)})</span>
+            <a href="../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span><span class="s2">&quot;n_components&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)})</span>
         <span class="p">),</span>
     <span class="p">]),</span>
     <a href="../api/neuraxle.union.html#neuraxle.union.ModelStacking" title="View documentation for neuraxle.union.ModelStacking"><span class="n">ModelStacking</span></a><span class="p">([</span>
         <a href="../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span>
             <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor" title="View documentation for sklearn.ensemble.GradientBoostingRegressor"><span class="n">GradientBoostingRegressor</span></a><span class="p">(),</span>
             <a href="../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span>
-                <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.LogUniform" title="View documentation for neuraxle.hyperparams.distributions.LogUniform"><span class="n">LogUniform</span></a><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+                <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">600</span><span class="p">),</span> <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.LogUniform" title="View documentation for neuraxle.hyperparams.distributions.LogUniform"><span class="n">LogUniform</span></a><span class="p">(</span><span class="mf">0.07</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
             <span class="p">})</span>
         <span class="p">),</span>
         <a href="../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span>
             <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor" title="View documentation for sklearn.ensemble.GradientBoostingRegressor"><span class="n">GradientBoostingRegressor</span></a><span class="p">(),</span>
             <a href="../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span>
-                <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.LogUniform" title="View documentation for neuraxle.hyperparams.distributions.LogUniform"><span class="n">LogUniform</span></a><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+                <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">600</span><span class="p">),</span> <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.LogUniform" title="View documentation for neuraxle.hyperparams.distributions.LogUniform"><span class="n">LogUniform</span></a><span class="p">(</span><span class="mf">0.07</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
             <span class="p">})</span>
         <span class="p">),</span>
         <a href="../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span>
             <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor" title="View documentation for sklearn.ensemble.GradientBoostingRegressor"><span class="n">GradientBoostingRegressor</span></a><span class="p">(),</span>
             <a href="../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span>
-                <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.LogUniform" title="View documentation for neuraxle.hyperparams.distributions.LogUniform"><span class="n">LogUniform</span></a><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+                <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">600</span><span class="p">),</span> <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.LogUniform" title="View documentation for neuraxle.hyperparams.distributions.LogUniform"><span class="n">LogUniform</span></a><span class="p">(</span><span class="mf">0.07</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
             <span class="p">})</span>
         <span class="p">),</span>
         <a href="../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span>
             <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="View documentation for sklearn.cluster.KMeans"><span class="n">KMeans</span></a><span class="p">(),</span>
-            <a href="../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span><span class="s2">&quot;n_clusters&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">)})</span>
+            <a href="../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span><span class="s2">&quot;n_clusters&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)})</span>
         <span class="p">),</span>
     <span class="p">],</span>
         <span class="n">joiner</span><span class="o">=</span><a href="../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyTranspose" title="View documentation for neuraxle.steps.numpy.NumpyTranspose"><span class="n">NumpyTranspose</span></a><span class="p">(),</span>
         <span class="n">judge</span><span class="o">=</span><a href="../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span>
             <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html#sklearn.linear_model.Ridge" title="View documentation for sklearn.linear_model.Ridge"><span class="n">Ridge</span></a><span class="p">(),</span>
-            <a href="../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.LogUniform" title="View documentation for neuraxle.hyperparams.distributions.LogUniform"><span class="n">LogUniform</span></a><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">),</span> <span class="s2">&quot;fit_intercept&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Boolean" title="View documentation for neuraxle.hyperparams.distributions.Boolean"><span class="n">Boolean</span></a><span class="p">()})</span>
+            <a href="../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.LogUniform" title="View documentation for neuraxle.hyperparams.distributions.LogUniform"><span class="n">LogUniform</span></a><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">),</span> <span class="s2">&quot;fit_intercept&quot;</span><span class="p">:</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Boolean" title="View documentation for neuraxle.hyperparams.distributions.Boolean"><span class="n">Boolean</span></a><span class="p">()})</span>
         <span class="p">),</span>
     <span class="p">)</span>
 <span class="p">])</span>
 
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Meta-fitting on train:&quot;</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">meta_fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">metastep</span><span class="o">=</span><a href="../api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.RandomSearch" title="View documentation for neuraxle.metaopt.random.RandomSearch"><span class="n">RandomSearch</span></a><span class="p">(</span>
+    <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">higher_score_is_better</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">validation_technique</span><span class="o">=</span><a href="../api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.KFoldCrossValidation" title="View documentation for neuraxle.metaopt.random.KFoldCrossValidation"><span class="n">KFoldCrossValidation</span></a><span class="p">(</span><span class="n">scoring_function</span><span class="o">=</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="View documentation for sklearn.metrics.r2_score"><span class="n">r2_score</span></a><span class="p">,</span> <span class="n">k_fold</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="p">))</span>
+<span class="c1"># Here is an alternative way to do it, more &quot;pipeliney&quot;:</span>
+<span class="c1"># p = RandomSearch(</span>
+<span class="c1">#     n_iter=15,</span>
+<span class="c1">#     higher_score_is_better=True,</span>
+<span class="c1">#     validation_technique=KFoldCrossValidation(scoring_function=r2_score, k_fold=3)</span>
+<span class="c1"># ).set_step(p).fit(X_train, y_train).get_best_model()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
-<span class="c1"># TODO: finish cross-validation and add auto ml algorithms below.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Transforming train and test:&quot;</span><span class="p">)</span>
+<span class="n">y_train_predicted</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">y_test_predicted</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">todo</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Meta-fitting on train:&quot;</span><span class="p">)</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">meta_fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">metastep</span><span class="o">=</span><a href="../api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.RandomSearch" title="View documentation for neuraxle.metaopt.random.RandomSearch"><span class="n">RandomSearch</span></a><span class="p">(</span>
-        <span class="n">n_iter</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">scoring_function</span><span class="o">=</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="View documentation for sklearn.metrics.r2_score"><span class="n">r2_score</span></a><span class="p">,</span> <span class="n">higher_score_is_better</span><span class="o">=</span><span class="kc">True</span>
-    <span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluating transformed train:&quot;</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="View documentation for sklearn.metrics.r2_score"><span class="n">r2_score</span></a><span class="p">(</span><span class="n">y_train_predicted</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R2 regression score:&#39;</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Transforming train and test:&quot;</span><span class="p">)</span>
-    <span class="n">y_train_predicted</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-    <span class="n">y_test_predicted</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluating transformed train:&quot;</span><span class="p">)</span>
-    <span class="n">score</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="View documentation for sklearn.metrics.r2_score"><span class="n">r2_score</span></a><span class="p">(</span><span class="n">y_train_predicted</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R2 regression score:&#39;</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluating transformed test:&quot;</span><span class="p">)</span>
-    <span class="n">score</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="View documentation for sklearn.metrics.r2_score"><span class="n">r2_score</span></a><span class="p">(</span><span class="n">y_test_predicted</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R2 regression score:&#39;</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
-
-
-<span class="k">pass</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluating transformed test:&quot;</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="View documentation for sklearn.metrics.r2_score"><span class="n">r2_score</span></a><span class="p">(</span><span class="n">y_test_predicted</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R2 regression score:&#39;</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-boston-housing-meta-optimization-py">
 <div class="sphx-glr-download docutils container">
-<p><a class="reference download internal" download="" href="../_downloads/9653c31fab431e4310d0168d4032a349/boston_housing_meta_optimization.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">boston_housing_meta_optimization.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/aff9a2d17e6671e53f773e2185f89f42/boston_housing_meta_optimization.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">boston_housing_meta_optimization.py</span></code></a></p>
 </div>
 <div class="sphx-glr-download docutils container">
-<p><a class="reference download internal" download="" href="../_downloads/1bf800df0e6713f70fc7822ad12d0f70/boston_housing_meta_optimization.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">boston_housing_meta_optimization.ipynb</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/791165b9aeaab841fc84306894c012c9/boston_housing_meta_optimization.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">boston_housing_meta_optimization.ipynb</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
@@ -374,7 +377,7 @@ performed to find the best possible combination of hyperparameters by sampling r
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="boston_housing_regression_with_model_stacking.html" class="btn btn-neutral float-left" title="Boston Housing Regression" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="easy_rest_api_serving.html" class="btn btn-neutral float-left" title="Easy REST API Model Serving with Neuraxle" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
