@@ -1,0 +1,1113 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>neuraxle.checkpoints &mdash; Neuraxle 0.2.1 documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://www.neuraxio.org/en/neuraxle/stable/api/neuraxle.checkpoints.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="neuraxle.steps.numpy" href="neuraxle.steps.numpy.html" />
+    <link rel="prev" title="neuraxle.union" href="neuraxle.union.html" /> 
+
+  <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #F80" >
+          
+
+          
+            <a href="/en/" class="icon icon-home"> Neuraxio</a>/<a href="../index.html" > Neuraxle
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Neuraxle/README.html">Neuraxle Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#quickstart">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#why-neuraxle">Why Neuraxle?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#production-ready">Production-ready</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#compatibility">Compatibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#parallel-computing">Parallel Computing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#time-series-processing">Time Series Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#automatic-machine-learning">Automatic Machine Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#comparison-to-other-machine-learning-pipeline-frameworks">Comparison to Other Machine Learning Pipeline Frameworks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#scikit-learn">scikit-learn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#apache-beam">Apache Beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#spacy">spaCy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#kubeflow">Kubeflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#community">Community</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#license">License</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Neuraxle/README.html#summary-of-the-license">Summary of the License</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#citation">Citation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#contributors">Contributors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#supported-by">Supported By</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hyperparameter_tuning.html">Introduction to Automatic Hyperparameter Tuning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#Continuous-Hyperparameter-Distributions">Continuous Hyperparameter Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#Quantized-Hyperparameter-Distributions">Quantized Hyperparameter Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#Other-Hyperparameter-Distributions">Other Hyperparameter Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html#Narrowing-Hyperparameter-Spaces:-a-Detailed-Example">Narrowing Hyperparameter Spaces: a Detailed Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html#Creating-your-own-distributions">Creating your own distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../random_distributions.html">Introduction to Random Distributions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../random_distributions.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../random_distributions.html#Discrete-Distributions">Discrete Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#RandInt">RandInt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Boolean">Boolean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Choice">Choice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Priority-Choice">Priority Choice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../random_distributions.html#Continuous-Distributions">Continuous Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Continuous-Uniform">Continuous Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Continuous-Loguniform">Continuous Loguniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Continuous-Normal">Continuous Normal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Continuous-Lognormal">Continuous Lognormal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Continuous-Normal-Clipped">Continuous Normal Clipped</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Continuous-Lognormal-Clipped">Continuous Lognormal Clipped</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../random_distributions.html#Quantized-Hyperparameter-Distributions">Quantized Hyperparameter Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Quantized-Uniform">Quantized Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Repaired-Quantized-Uniform">Repaired Quantized Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Quantized-Log-Uniform">Quantized Log Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Quantized-Normal">Quantized Normal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Quantized-Lognormal">Quantized Lognormal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rest_api_serving.html">REST API Serving</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Import-Packages">Import Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Load-your-Dataset">Load your Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Create-your-Pipeline">Create your Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Let's-Train-and-Test">Let’s Train and Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Deploy-the-Pipeline">Deploy the Pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rest_api_serving.html#Write-a-step-to-decode-the-accepted-JSON-as-data-inputs">Write a step to decode the accepted JSON as data inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rest_api_serving.html#Write-a-step-to-encode-the-returned-JSON-response">Write a step to encode the returned JSON response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rest_api_serving.html#Finally-Serve-Predictions">Finally Serve Predictions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#API-Call-Example">API Call Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Next-Steps">Next Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rest_api_serving.html#Pipeline-Serialization">Pipeline Serialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rest_api_serving.html#Data-Transformation-Caching">Data Transformation Caching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rest_api_serving.html#Checkpoints">Checkpoints</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">Complete API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.base.html">neuraxle.base</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.base.html#neuraxle-s-base-classes">Neuraxle’s Base Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.pipeline.html">neuraxle.pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.pipeline.html#neuraxle-s-pipeline-classes">Neuraxle’s Pipeline Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.union.html">neuraxle.union</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.union.html#union-of-features">Union of Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">neuraxle.checkpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#neuraxle-s-checkpoint-classes">Neuraxle’s Checkpoint Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.numpy.html">neuraxle.steps.numpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.numpy.html#pipeline-steps-based-on-numpy">Pipeline Steps Based on NumPy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.sklearn.html#pipeline-steps-based-on-scikit-learn">Pipeline Steps Based on Scikit-Learn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.loop.html">neuraxle.steps.loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.loop.html#pipeline-steps-for-looping">Pipeline Steps For Looping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.caching.html">neuraxle.steps.caching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.caching.html#pipeline-steps-for-caching">Pipeline Steps For Caching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.output_handlers.html">neuraxle.steps.output_handlers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.output_handlers.html#output-handlers-steps">Output Handlers Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.misc.html">neuraxle.steps.misc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.misc.html#miscelaneous-pipeline-steps">Miscelaneous Pipeline Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.hyperparams.distributions.html">neuraxle.hyperparams.distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.hyperparams.distributions.html#hyperparameter-distributions">Hyperparameter Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.hyperparams.space.html">neuraxle.hyperparams.space</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.hyperparams.space.html#hyperparameter-dictionary-conversions">Hyperparameter Dictionary Conversions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.random.html">neuraxle.metaopt.random</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.random.html#random">Random</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.sklearn.html">neuraxle.metaopt.sklearn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.sklearn.html#scikit-learn-metaoptimizers">Scikit-learn metaoptimizers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.hyperopt.html">neuraxle.metaopt.hyperopt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.hyperopt.html#hyperopt">Hyperopt</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.api.flask.html">neuraxle.api.flask</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.api.flask.html#neuraxle-s-flask-wrapper-classes">Neuraxle’s Flask Wrapper classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/inverse_transform.html">Inverse Transforms in Neuraxle: How to Reverse a Prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/nested_pipelines.html">Create Nested Pipelines in Neuraxle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/hyperparams.html">Manipulate Hyperparameter Spaces for Hyperparameter Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/non_fittable_mixin.html">Create Pipeline Steps in Neuraxle that doesn’t fit or transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/boston_housing_regression_with_model_stacking.html">Boston Housing Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/force_handle_mixin.html">Create Pipeline Steps that require implementing only handler methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/auto_ml_checkpoint.html">Usage of Checkpoints in Automatic Machine Learning (AutoML)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/easy_rest_api_serving.html">Easy REST API Model Serving with Neuraxle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/boston_housing_meta_optimization.html">Boston Housing Regression with Meta Optimization</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="/en/"> Neuraxio</a>/<a href="../index.html">Neuraxle</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+
+        <a href="https://github.com/Neuraxio/Neuraxle"><img style="position: absolute; border: 0; top: 0; right: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">Complete API Documentation</a> &raquo;</li>
+        
+      <li>neuraxle.checkpoints</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <!-- <a href="../_sources/api/neuraxle.checkpoints.rst.txt" rel="nofollow"> View page source</a> -->
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-neuraxle.checkpoints">
+<span id="neuraxle-checkpoints"></span><h1>neuraxle.checkpoints<a class="headerlink" href="#module-neuraxle.checkpoints" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="neuraxle-s-checkpoint-classes">
+<h2>Neuraxle’s Checkpoint Classes<a class="headerlink" href="#neuraxle-s-checkpoint-classes" title="Permalink to this headline">¶</a></h2>
+<p>The checkpoint classes used by the checkpoint pipeline runner</p>
+<p class="rubric">Classes</p>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.checkpoints.BaseCheckpointer" title="neuraxle.checkpoints.BaseCheckpointer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseCheckpointer</span></code></a>(execution_mode)</p></td>
+<td><p>Base class to implement a step checkpoint or data container checkpoint.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.checkpoints.BaseMiniDataCheckpointer" title="neuraxle.checkpoints.BaseMiniDataCheckpointer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseMiniDataCheckpointer</span></code></a></p></td>
+<td><p>Mini Data Checkpoint that uses pickle to create a checkpoint for a current id, and a data input or an expected output.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.checkpoints.Checkpoint" title="neuraxle.checkpoints.Checkpoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Checkpoint</span></code></a>(all_checkpointers)</p></td>
+<td><p>Resumable Checkpoint Step to load, and save both data checkpoints, and step checkpoints.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.checkpoints.DataCheckpointType" title="neuraxle.checkpoints.DataCheckpointType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataCheckpointType</span></code></a></p></td>
+<td><p>An enumeration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.checkpoints.DefaultCheckpoint" title="neuraxle.checkpoints.DefaultCheckpoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DefaultCheckpoint</span></code></a>()</p></td>
+<td><p><a class="reference internal" href="#neuraxle.checkpoints.Checkpoint" title="neuraxle.checkpoints.Checkpoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">Checkpoint</span></code></a> with pickle mini data checkpointers wrapped in a <a class="reference internal" href="#neuraxle.checkpoints.MiniDataCheckpointerWrapper" title="neuraxle.checkpoints.MiniDataCheckpointerWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">MiniDataCheckpointerWrapper</span></code></a>, and the default step saving checkpointer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.checkpoints.MiniDataCheckpointerWrapper" title="neuraxle.checkpoints.MiniDataCheckpointerWrapper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MiniDataCheckpointerWrapper</span></code></a>(…)</p></td>
+<td><p>A <a class="reference internal" href="#neuraxle.checkpoints.BaseCheckpointer" title="neuraxle.checkpoints.BaseCheckpointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCheckpointer</span></code></a> to checkpoint data inputs, and expected outputs with mini data checkpointers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.checkpoints.NullMiniDataCheckpointer" title="neuraxle.checkpoints.NullMiniDataCheckpointer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NullMiniDataCheckpointer</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.checkpoints.PickleMiniDataCheckpointer" title="neuraxle.checkpoints.PickleMiniDataCheckpointer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PickleMiniDataCheckpointer</span></code></a></p></td>
+<td><p>Mini Data Checkpoint that uses pickle to create a pickle checkpoint file for a current id, and a data input or expected output.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.checkpoints.StepSavingCheckpointer" title="neuraxle.checkpoints.StepSavingCheckpointer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StepSavingCheckpointer</span></code></a>(execution_mode)</p></td>
+<td><p>StepCheckpointer is used by the Checkpoint step to save the fitted steps contained in the context of type ExecutionContext.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="neuraxle.checkpoints.BaseCheckpointer">
+<em class="property">class </em><code class="descclassname">neuraxle.checkpoints.</code><code class="descname">BaseCheckpointer</code><span class="sig-paren">(</span><em>execution_mode: neuraxle.base.ExecutionMode</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.BaseCheckpointer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class to implement a step checkpoint or data container checkpoint.</p>
+<p><a class="reference internal" href="#neuraxle.checkpoints.Checkpoint" title="neuraxle.checkpoints.Checkpoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">Checkpoint</span></code></a> uses many BaseCheckpointer to checkpoint both data container checkpoints, and step checkpoints.</p>
+<p>BaseCheckpointer has an execution mode so there could be different checkpoints for each execution mode (fit, fit_transform or transform).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#neuraxle.checkpoints.Checkpoint" title="neuraxle.checkpoints.Checkpoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">Checkpoint</span></code></a></p></li>
+</ul>
+</div>
+<dl class="method">
+<dt id="neuraxle.checkpoints.BaseCheckpointer.is_for_execution_mode">
+<code class="descname">is_for_execution_mode</code><span class="sig-paren">(</span><em>execution_mode: neuraxle.base.ExecutionMode</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L58"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.BaseCheckpointer.is_for_execution_mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true if the checkpointer should be used with the given execution mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>execution_mode</strong> (<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionMode" title="neuraxle.base.ExecutionMode"><em>ExecutionMode</em></a>) – execution mode (fit, fit_transform, or transform)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>if the checkpointer should be used</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.checkpoints.BaseCheckpointer.read_checkpoint">
+<code class="descname">read_checkpoint</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L102"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.BaseCheckpointer.read_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the data container checkpoint with self.data_checkpointer.
+Returns a new data container loaded with all the data inputs,
+and expected outputs for each current id in the given data container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> (<em>neuraxle.data_container.DataContainer</em>) – data container containing the current_ids to read checkpoint for</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><em>ExecutionContext</em></a>) – context to read checkpoint for</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the data container checkpoint</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>neuraxle.data_container.DataContainer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.checkpoints.BaseCheckpointer.save_checkpoint">
+<code class="descname">save_checkpoint</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.BaseCheckpointer.save_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the data container or fitted step checkpoint with the given data container, and context.
+Returns the data container checkpoint, or latest data container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> (<em>neuraxle.data_container.DataContainer</em>) – data container to save data container or fitted steps</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><em>ExecutionContext</em></a>) – context to save data container or fitted steps</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>saved data container</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>neuraxle.data_container.DataContainer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.checkpoints.BaseCheckpointer.should_resume">
+<code class="descname">should_resume</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L118"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.BaseCheckpointer.should_resume" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.checkpoints.BaseMiniDataCheckpointer">
+<em class="property">class </em><code class="descclassname">neuraxle.checkpoints.</code><code class="descname">BaseMiniDataCheckpointer</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L286"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.BaseMiniDataCheckpointer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mini Data Checkpoint that uses pickle to create a checkpoint for a current id, and a data input or an expected output.</p>
+<p>A mini data checkpointer must be wrapped with a <a class="reference internal" href="#neuraxle.checkpoints.MiniDataCheckpointerWrapper" title="neuraxle.checkpoints.MiniDataCheckpointerWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">MiniDataCheckpointerWrapper</span></code></a> to be added to a <a class="reference internal" href="#neuraxle.checkpoints.Checkpoint" title="neuraxle.checkpoints.Checkpoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">Checkpoint</span></code></a>
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">data_checkpointers</span></code> :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Checkpoint</span><span class="p">(</span>
+    <span class="n">all_checkpointers</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">StepSavingCheckpointer</span><span class="p">(),</span>
+        <span class="n">MiniDataCheckpointerWrapper</span><span class="p">(</span>
+            <span class="n">data_input_checkpointer</span><span class="o">=</span><span class="n">PickleMiniDataCheckpointer</span><span class="p">(),</span>
+            <span class="n">expected_output_checkpointer</span><span class="o">=</span><span class="n">PickleMiniDataCheckpointer</span><span class="p">()</span>
+        <span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#neuraxle.checkpoints.BaseMiniDataCheckpointer" title="neuraxle.checkpoints.BaseMiniDataCheckpointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseMiniDataCheckpointer</span></code></a></p></li>
+<li><p><a class="reference internal" href="#neuraxle.checkpoints.MiniDataCheckpointerWrapper" title="neuraxle.checkpoints.MiniDataCheckpointerWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">MiniDataCheckpointerWrapper</span></code></a></p></li>
+<li><p><a class="reference internal" href="#neuraxle.checkpoints.PickleMiniDataCheckpointer" title="neuraxle.checkpoints.PickleMiniDataCheckpointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PickleMiniDataCheckpointer</span></code></a></p></li>
+</ul>
+</div>
+<dl class="method">
+<dt id="neuraxle.checkpoints.BaseMiniDataCheckpointer.checkpoint_exists">
+<code class="descname">checkpoint_exists</code><span class="sig-paren">(</span><em>checkpoint_path</em>, <em>current_id</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L339"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.BaseMiniDataCheckpointer.checkpoint_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns if checkpoint exists with the given path, and current id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkpoint_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – checkpoint path to read</p></li>
+<li><p><strong>current_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – current id to read checkpoint for</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.checkpoints.BaseMiniDataCheckpointer.read_checkpoint">
+<code class="descname">read_checkpoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L326"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.BaseMiniDataCheckpointer.read_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read data checkpoint with the given current_id, and data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkpoint_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – checkpoint path to read</p></li>
+<li><p><strong>current_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – current id to read checkpoint for</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.checkpoints.BaseMiniDataCheckpointer.save_checkpoint">
+<code class="descname">save_checkpoint</code><span class="sig-paren">(</span><em>checkpoint_path</em>, <em>current_id</em>, <em>data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L311"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.BaseMiniDataCheckpointer.save_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save data checkpoint with the given current_id, and data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkpoint_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – checkpoint path for saving</p></li>
+<li><p><strong>current_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – current id to checkpoint</p></li>
+<li><p><strong>data</strong> (<em>Any</em>) – data to checkpoint</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.checkpoints.Checkpoint">
+<em class="property">class </em><code class="descclassname">neuraxle.checkpoints.</code><code class="descname">Checkpoint</code><span class="sig-paren">(</span><em>all_checkpointers: List[neuraxle.checkpoints.BaseCheckpointer] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L163"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.Checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resumable Checkpoint Step to load, and save both data checkpoints, and step checkpoints.
+Checkpoint uses a list of step checkpointers(List[StepCheckpointer]), and data checkpointers(List[BaseCheckpointer]).</p>
+<p>Data Checkpoints save the state of the data container (transformed data inputs, and expected outputs)
+for the current execution mode (fit, fit_transform, or transform).</p>
+<p>Step Checkpoints save the state of the fitted steps before the checkpoint
+for the current execution mode (fit or fit_transform).</p>
+<p>By default(no arguments specified), the Checkpoint step saves the step checkpoints for any fit or fit transform,
+and saves a different data checkpoint with pickle data container checkpointers :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Checkpoint</span><span class="p">(</span>
+    <span class="n">all_checkpointers</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">StepSavingCheckpointer</span><span class="p">(),</span>
+        <span class="n">MiniDataCheckpointerWrapper</span><span class="p">(</span>
+            <span class="n">data_input_checkpointer</span><span class="o">=</span><span class="n">PickleMiniDataCheckpointer</span><span class="p">(),</span>
+            <span class="n">expected_output_checkpointer</span><span class="o">=</span><span class="n">PickleMiniDataCheckpointer</span><span class="p">()</span>
+        <span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">ResumablePipeline._load_checkpoint()</span></code></p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ResumableStepMixin</span></code></p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">NonFittableMixin</span></code></p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">NonTransformableMixin</span></code></p></li>
+</ul>
+</div>
+<dl class="method">
+<dt id="neuraxle.checkpoints.Checkpoint.handle_fit">
+<code class="descname">handle_fit</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[neuraxle.checkpoints.Checkpoint, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L204"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.Checkpoint.handle_fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves step, and data checkpointers for the FIT execution mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> – data container for creating the data checkpoint</p></li>
+<li><p><strong>context</strong> – context for creating the step checkpoint</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>saved data container</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>neuraxle.data_container.DataContainer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.checkpoints.Checkpoint.handle_fit_transform">
+<code class="descname">handle_fit_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[neuraxle.checkpoints.Checkpoint, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L228"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.Checkpoint.handle_fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves step, and data checkpointers for the FIT_TRANSORM execution mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> – data container for creating the data checkpoint</p></li>
+<li><p><strong>context</strong> – context for creating the step checkpoint</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>saved data container</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>neuraxle.data_container.DataContainer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.checkpoints.Checkpoint.handle_transform">
+<code class="descname">handle_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L217"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.Checkpoint.handle_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves step, and data checkpointers for the TRANSORM execution mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> – data container for creating the data checkpoint</p></li>
+<li><p><strong>context</strong> – context for creating the step checkpoint</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>saved data container</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>neuraxle.data_container.DataContainer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.checkpoints.Checkpoint.read_checkpoint">
+<code class="descname">read_checkpoint</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L254"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.Checkpoint.read_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read data checkpoint for the current execution mode using self.data_checkpointers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> – data container to load checkpoint from</p></li>
+<li><p><strong>context</strong> – execution mode to load checkpoint from</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>loaded data container checkpoint</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>neuraxle.data_container.DataContainer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.checkpoints.Checkpoint.save_checkpoint">
+<code class="descname">save_checkpoint</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L240"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.Checkpoint.save_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves step, and data checkpointers for the current execution mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> – data container for creating the data checkpoint</p></li>
+<li><p><strong>context</strong> – context for creating the step checkpoint</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>saved data container</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>neuraxle.data_container.DataContainer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.checkpoints.Checkpoint.should_resume">
+<code class="descname">should_resume</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L269"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.Checkpoint.should_resume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if all of the execution mode data checkpointers can be resumed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_container</strong> – data to resume</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>if we can resume the checkpoint</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.checkpoints.DataCheckpointType">
+<em class="property">class </em><code class="descclassname">neuraxle.checkpoints.</code><code class="descname">DataCheckpointType</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L34"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.DataCheckpointType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="neuraxle.checkpoints.DataCheckpointType.DATA_INPUT">
+<code class="descname">DATA_INPUT</code><em class="property"> = 'di'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.DataCheckpointType.DATA_INPUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.checkpoints.DataCheckpointType.EXPECTED_OUTPUT">
+<code class="descname">EXPECTED_OUTPUT</code><em class="property"> = 'eo'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.DataCheckpointType.EXPECTED_OUTPUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.checkpoints.DefaultCheckpoint">
+<em class="property">class </em><code class="descclassname">neuraxle.checkpoints.</code><code class="descname">DefaultCheckpoint</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L588"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.DefaultCheckpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="#neuraxle.checkpoints.Checkpoint" title="neuraxle.checkpoints.Checkpoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">Checkpoint</span></code></a> with pickle mini data checkpointers wrapped in a <a class="reference internal" href="#neuraxle.checkpoints.MiniDataCheckpointerWrapper" title="neuraxle.checkpoints.MiniDataCheckpointerWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">MiniDataCheckpointerWrapper</span></code></a>, and the default step saving checkpointer.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#neuraxle.checkpoints.Checkpoint" title="neuraxle.checkpoints.Checkpoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">Checkpoint</span></code></a></p></li>
+<li><p><a class="reference internal" href="#neuraxle.checkpoints.MiniDataCheckpointerWrapper" title="neuraxle.checkpoints.MiniDataCheckpointerWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">MiniDataCheckpointerWrapper</span></code></a></p></li>
+</ul>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.checkpoints.MiniDataCheckpointerWrapper">
+<em class="property">class </em><code class="descclassname">neuraxle.checkpoints.</code><code class="descname">MiniDataCheckpointerWrapper</code><span class="sig-paren">(</span><em>data_input_checkpointer: neuraxle.checkpoints.BaseMiniDataCheckpointer</em>, <em>expected_output_checkpointer: neuraxle.checkpoints.BaseMiniDataCheckpointer = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L462"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.MiniDataCheckpointerWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="#neuraxle.checkpoints.BaseCheckpointer" title="neuraxle.checkpoints.BaseCheckpointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCheckpointer</span></code></a> to checkpoint data inputs, and expected outputs with mini data checkpointers.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">MiniDataCheckpointerWrapper</span><span class="p">(</span>
+    <span class="n">data_input_checkpointer</span><span class="o">=</span><span class="n">PickleMiniDataCheckpointer</span><span class="p">(),</span>
+    <span class="n">expected_output_checkpointer</span><span class="o">=</span><span class="n">PickleMiniDataCheckpointer</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#neuraxle.checkpoints.BaseMiniDataCheckpointer" title="neuraxle.checkpoints.BaseMiniDataCheckpointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseMiniDataCheckpointer</span></code></a></p></li>
+<li><p><a class="reference internal" href="#neuraxle.checkpoints.BaseCheckpointer" title="neuraxle.checkpoints.BaseCheckpointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCheckpointer</span></code></a></p></li>
+</ul>
+</div>
+<dl class="method">
+<dt id="neuraxle.checkpoints.MiniDataCheckpointerWrapper.read_checkpoint">
+<code class="descname">read_checkpoint</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L522"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.MiniDataCheckpointerWrapper.read_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read data container data inputs checkpoint with <code class="xref py py-attr docutils literal notranslate"><span class="pre">data_input_checkpointer</span></code>.
+Read data container expected outputs checkpoint with <code class="xref py py-attr docutils literal notranslate"><span class="pre">expected_output_checkpointer</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> (<em>neuraxle.data_container.DataContainer</em>) – data container to read checkpoint for</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><em>ExecutionContext</em></a>) – execution context to read checkpoint from</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>data container checkpoint</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>neuraxle.data_container.DataContainer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.checkpoints.MiniDataCheckpointerWrapper.save_checkpoint">
+<code class="descname">save_checkpoint</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L493"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.MiniDataCheckpointerWrapper.save_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save data container data inputs with <code class="xref py py-attr docutils literal notranslate"><span class="pre">data_input_checkpointer</span></code>.
+Save data container expected outputs with <code class="xref py py-attr docutils literal notranslate"><span class="pre">expected_output_checkpointer</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> (<em>neuraxle.data_container.DataContainer</em>) – data container to checkpoint</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><em>ExecutionContext</em></a>) – execution context to checkpoint from</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.checkpoints.MiniDataCheckpointerWrapper.should_resume">
+<code class="descname">should_resume</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L555"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.MiniDataCheckpointerWrapper.should_resume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns if the whole data container has been checkpointed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> (<em>neuraxle.data_container.DataContainer</em>) – data container to read checkpoint for</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><em>ExecutionContext</em></a>) – execution context to read checkpoint from</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>data container checkpoint</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>neuraxle.data_container.DataContainer</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.checkpoints.NullMiniDataCheckpointer">
+<em class="property">class </em><code class="descclassname">neuraxle.checkpoints.</code><code class="descname">NullMiniDataCheckpointer</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L353"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.NullMiniDataCheckpointer" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="neuraxle.checkpoints.NullMiniDataCheckpointer.checkpoint_exists">
+<code class="descname">checkpoint_exists</code><span class="sig-paren">(</span><em>checkpoint_path</em>, <em>current_id</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L363"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.NullMiniDataCheckpointer.checkpoint_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns if checkpoint exists with the given path, and current id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkpoint_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – checkpoint path to read</p></li>
+<li><p><strong>current_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – current id to read checkpoint for</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.checkpoints.NullMiniDataCheckpointer.read_checkpoint">
+<code class="descname">read_checkpoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L360"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.NullMiniDataCheckpointer.read_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read data checkpoint with the given current_id, and data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkpoint_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – checkpoint path to read</p></li>
+<li><p><strong>current_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – current id to read checkpoint for</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.checkpoints.NullMiniDataCheckpointer.save_checkpoint">
+<code class="descname">save_checkpoint</code><span class="sig-paren">(</span><em>checkpoint_path</em>, <em>current_id</em>, <em>data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L357"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.NullMiniDataCheckpointer.save_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save data checkpoint with the given current_id, and data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkpoint_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – checkpoint path for saving</p></li>
+<li><p><strong>current_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – current id to checkpoint</p></li>
+<li><p><strong>data</strong> (<em>Any</em>) – data to checkpoint</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.checkpoints.NullMiniDataCheckpointer.set_checkpoint_type">
+<code class="descname">set_checkpoint_type</code><span class="sig-paren">(</span><em>checkpoint_type: neuraxle.checkpoints.DataCheckpointType</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L354"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.NullMiniDataCheckpointer.set_checkpoint_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.checkpoints.PickleMiniDataCheckpointer">
+<em class="property">class </em><code class="descclassname">neuraxle.checkpoints.</code><code class="descname">PickleMiniDataCheckpointer</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L367"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.PickleMiniDataCheckpointer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mini Data Checkpoint that uses pickle to create a pickle checkpoint file for a current id, and a data input or expected output.</p>
+<p>A mini data checkpointer must be wrapped with a <a class="reference internal" href="#neuraxle.checkpoints.MiniDataCheckpointerWrapper" title="neuraxle.checkpoints.MiniDataCheckpointerWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">MiniDataCheckpointerWrapper</span></code></a> to be added to a <a class="reference internal" href="#neuraxle.checkpoints.Checkpoint" title="neuraxle.checkpoints.Checkpoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">Checkpoint</span></code></a>
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">data_checkpointers</span></code> :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Checkpoint</span><span class="p">(</span>
+    <span class="n">all_checkpointers</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">StepSavingCheckpointer</span><span class="p">(),</span>
+        <span class="n">MiniDataCheckpointerWrapper</span><span class="p">(</span>
+            <span class="n">data_input_checkpointer</span><span class="o">=</span><span class="n">PickleMiniDataCheckpointer</span><span class="p">(),</span>
+            <span class="n">expected_output_checkpointer</span><span class="o">=</span><span class="n">PickleMiniDataCheckpointer</span><span class="p">()</span>
+        <span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#neuraxle.checkpoints.BaseMiniDataCheckpointer" title="neuraxle.checkpoints.BaseMiniDataCheckpointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseMiniDataCheckpointer</span></code></a></p></li>
+<li><p><a class="reference internal" href="#neuraxle.checkpoints.MiniDataCheckpointerWrapper" title="neuraxle.checkpoints.MiniDataCheckpointerWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">MiniDataCheckpointerWrapper</span></code></a></p></li>
+</ul>
+</div>
+<dl class="method">
+<dt id="neuraxle.checkpoints.PickleMiniDataCheckpointer.checkpoint_exists">
+<code class="descname">checkpoint_exists</code><span class="sig-paren">(</span><em>checkpoint_path: str</em>, <em>current_id: str</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L446"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.PickleMiniDataCheckpointer.checkpoint_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the checkpoint file path for a data input id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkpoint_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – checkpoint folder path</p></li>
+<li><p><strong>current_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – checkpoint current id</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>path</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.checkpoints.PickleMiniDataCheckpointer.get_checkpoint_filename_path_for_current_id">
+<code class="descname">get_checkpoint_filename_path_for_current_id</code><span class="sig-paren">(</span><em>checkpoint_path: str</em>, <em>current_id: str</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L433"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.PickleMiniDataCheckpointer.get_checkpoint_filename_path_for_current_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the checkpoint file path for a data input id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkpoint_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – checkpoint folder path</p></li>
+<li><p><strong>current_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – checkpoint current id</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>path</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.checkpoints.PickleMiniDataCheckpointer.read_checkpoint">
+<code class="descname">read_checkpoint</code><span class="sig-paren">(</span><em>checkpoint_path: str</em>, <em>current_id</em><span class="sig-paren">)</span> &#x2192; Any<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L419"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.PickleMiniDataCheckpointer.read_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the data inputs, and expected outputs for the given current id using pickle.load.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkpoint_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – checkpoint folder path</p></li>
+<li><p><strong>current_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – checkpoint current id</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tuple(current_id, checkpoint_data_input, checkpoint_expected_output)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.checkpoints.PickleMiniDataCheckpointer.save_checkpoint">
+<code class="descname">save_checkpoint</code><span class="sig-paren">(</span><em>checkpoint_path: str</em>, <em>current_id</em>, <em>data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L401"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.PickleMiniDataCheckpointer.save_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the given current id, data input, and expected output using pickle.dump.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkpoint_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – checkpoint path</p></li>
+<li><p><strong>current_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – checkpoint current id</p></li>
+<li><p><strong>data</strong> (<em>Any</em>) – data to checkpoint</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.checkpoints.PickleMiniDataCheckpointer.set_checkpoint_type">
+<code class="descname">set_checkpoint_type</code><span class="sig-paren">(</span><em>checkpoint_type: neuraxle.checkpoints.DataCheckpointType</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L391"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.PickleMiniDataCheckpointer.set_checkpoint_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set file name suffix for checkpoint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>checkpoint_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – checkpoint file name suffix</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.checkpoints.StepSavingCheckpointer">
+<em class="property">class </em><code class="descclassname">neuraxle.checkpoints.</code><code class="descname">StepSavingCheckpointer</code><span class="sig-paren">(</span><em>execution_mode: neuraxle.base.ExecutionMode = &lt;ExecutionMode.FIT_OR_FIT_TRANSFORM: 'fit_or_fit_transform'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L123"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.StepSavingCheckpointer" title="Permalink to this definition">¶</a></dt>
+<dd><p>StepCheckpointer is used by the Checkpoint step to save the fitted steps contained in the context of type ExecutionContext.</p>
+<p>By default, StepCheckpointer saves the fitted steps when the execution mode is either FIT, or FIT_TRANSFORM :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">StepCheckpointer</span><span class="p">(</span><span class="n">ExecutionMode</span><span class="o">.</span><span class="n">FIT_OR_FIT_TRANSFORM</span><span class="p">)</span>
+<span class="c1"># is equivalent to :</span>
+<span class="n">StepCheckpointer</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="neuraxle.checkpoints.StepSavingCheckpointer.read_checkpoint">
+<code class="descname">read_checkpoint</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L143"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.StepSavingCheckpointer.read_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the data container checkpoint with self.data_checkpointer.
+Returns a new data container loaded with all the data inputs,
+and expected outputs for each current id in the given data container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> (<em>neuraxle.data_container.DataContainer</em>) – data container containing the current_ids to read checkpoint for</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><em>ExecutionContext</em></a>) – context to read checkpoint for</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the data container checkpoint</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>neuraxle.data_container.DataContainer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.checkpoints.StepSavingCheckpointer.save_checkpoint">
+<code class="descname">save_checkpoint</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L147"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.StepSavingCheckpointer.save_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the data container or fitted step checkpoint with the given data container, and context.
+Returns the data container checkpoint, or latest data container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> (<em>neuraxle.data_container.DataContainer</em>) – data container to save data container or fitted steps</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><em>ExecutionContext</em></a>) – context to save data container or fitted steps</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>saved data container</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>neuraxle.data_container.DataContainer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.checkpoints.StepSavingCheckpointer.should_resume">
+<code class="descname">should_resume</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/checkpoints.py#L158"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.checkpoints.StepSavingCheckpointer.should_resume" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="neuraxle.steps.numpy.html" class="btn btn-neutral float-right" title="neuraxle.steps.numpy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="neuraxle.union.html" class="btn btn-neutral float-left" title="neuraxle.union" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <!-- Begin Mailchimp Signup Form -->
+  <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+  <div id="mc_embed_signup">
+  <form action="https://neuraxio.us18.list-manage.com/subscribe/post?u=75b15e094bec4736090d7588c&amp;id=461343efc0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <div id="mc_embed_signup_scroll">
+      <label for="mce-EMAIL">Stay Tuned, Keep in Touch!</label>
+      <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75b15e094bec4736090d7588c_461343efc0" tabindex="-1" value=""></div>
+      <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+      </div>
+      <br/>
+      <a href="/en/blog/index.html">Visit Blog</a>
+  </form>
+  </div>
+  <!--End mc_embed_signup-->
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019 The Neuraxle Authors. All rights reserved. Apache License, Version 2.0.
+
+    </p>
+  </div>
+   
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-119883439-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

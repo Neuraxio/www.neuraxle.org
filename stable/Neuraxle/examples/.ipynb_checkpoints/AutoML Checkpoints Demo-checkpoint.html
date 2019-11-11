@@ -1,0 +1,990 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction to Automatic Hyperparameter Tuning &mdash; Neuraxle 0.2.1 documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://www.neuraxio.org/en/neuraxle/stable/Neuraxle/examples/.ipynb_checkpoints/AutoML Checkpoints Demo-checkpoint.html"/>
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+
+  <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #F80" >
+          
+
+          
+            <a href="/en/" class="icon icon-home"> Neuraxio</a>/<a href="../../../index.html" > Neuraxle
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">Neuraxle Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../README.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../README.html#quickstart">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../README.html#why-neuraxle">Why Neuraxle?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../README.html#production-ready">Production-ready</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../README.html#compatibility">Compatibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../README.html#parallel-computing">Parallel Computing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../README.html#time-series-processing">Time Series Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../README.html#automatic-machine-learning">Automatic Machine Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../README.html#comparison-to-other-machine-learning-pipeline-frameworks">Comparison to Other Machine Learning Pipeline Frameworks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../README.html#scikit-learn">scikit-learn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../README.html#apache-beam">Apache Beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../README.html#spacy">spaCy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../README.html#kubeflow">Kubeflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../README.html#community">Community</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../README.html#license">License</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../README.html#summary-of-the-license">Summary of the License</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../README.html#citation">Citation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../README.html#contributors">Contributors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../README.html#supported-by">Supported By</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hyperparameter_tuning.html">Introduction to Automatic Hyperparameter Tuning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../hyperparameter_tuning.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../hyperparameter_tuning.html#Continuous-Hyperparameter-Distributions">Continuous Hyperparameter Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../hyperparameter_tuning.html#Quantized-Hyperparameter-Distributions">Quantized Hyperparameter Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../hyperparameter_tuning.html#Other-Hyperparameter-Distributions">Other Hyperparameter Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../hyperparameter_tuning.html#Narrowing-Hyperparameter-Spaces:-a-Detailed-Example">Narrowing Hyperparameter Spaces: a Detailed Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../hyperparameter_tuning.html#Creating-your-own-distributions">Creating your own distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../random_distributions.html">Introduction to Random Distributions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../random_distributions.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../random_distributions.html#Discrete-Distributions">Discrete Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#RandInt">RandInt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#Boolean">Boolean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#Choice">Choice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#Priority-Choice">Priority Choice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../random_distributions.html#Continuous-Distributions">Continuous Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#Continuous-Uniform">Continuous Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#Continuous-Loguniform">Continuous Loguniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#Continuous-Normal">Continuous Normal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#Continuous-Lognormal">Continuous Lognormal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#Continuous-Normal-Clipped">Continuous Normal Clipped</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#Continuous-Lognormal-Clipped">Continuous Lognormal Clipped</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../random_distributions.html#Quantized-Hyperparameter-Distributions">Quantized Hyperparameter Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#Quantized-Uniform">Quantized Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#Repaired-Quantized-Uniform">Repaired Quantized Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#Quantized-Log-Uniform">Quantized Log Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#Quantized-Normal">Quantized Normal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#Quantized-Lognormal">Quantized Lognormal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rest_api_serving.html">REST API Serving</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../rest_api_serving.html#Import-Packages">Import Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../rest_api_serving.html#Load-your-Dataset">Load your Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../rest_api_serving.html#Create-your-Pipeline">Create your Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../rest_api_serving.html#Let's-Train-and-Test">Let’s Train and Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../rest_api_serving.html#Deploy-the-Pipeline">Deploy the Pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../rest_api_serving.html#Write-a-step-to-decode-the-accepted-JSON-as-data-inputs">Write a step to decode the accepted JSON as data inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../rest_api_serving.html#Write-a-step-to-encode-the-returned-JSON-response">Write a step to encode the returned JSON response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../rest_api_serving.html#Finally-Serve-Predictions">Finally Serve Predictions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../rest_api_serving.html#API-Call-Example">API Call Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../rest_api_serving.html#Next-Steps">Next Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../rest_api_serving.html#Pipeline-Serialization">Pipeline Serialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../rest_api_serving.html#Data-Transformation-Caching">Data Transformation Caching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../rest_api_serving.html#Checkpoints">Checkpoints</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">Complete API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/neuraxle.base.html">neuraxle.base</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/neuraxle.base.html#neuraxle-s-base-classes">Neuraxle’s Base Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/neuraxle.pipeline.html">neuraxle.pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/neuraxle.pipeline.html#neuraxle-s-pipeline-classes">Neuraxle’s Pipeline Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/neuraxle.union.html">neuraxle.union</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/neuraxle.union.html#union-of-features">Union of Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/neuraxle.checkpoints.html">neuraxle.checkpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/neuraxle.checkpoints.html#neuraxle-s-checkpoint-classes">Neuraxle’s Checkpoint Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/neuraxle.steps.numpy.html">neuraxle.steps.numpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/neuraxle.steps.numpy.html#pipeline-steps-based-on-numpy">Pipeline Steps Based on NumPy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/neuraxle.steps.sklearn.html#pipeline-steps-based-on-scikit-learn">Pipeline Steps Based on Scikit-Learn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/neuraxle.steps.loop.html">neuraxle.steps.loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/neuraxle.steps.loop.html#pipeline-steps-for-looping">Pipeline Steps For Looping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/neuraxle.steps.caching.html">neuraxle.steps.caching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/neuraxle.steps.caching.html#pipeline-steps-for-caching">Pipeline Steps For Caching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/neuraxle.steps.output_handlers.html">neuraxle.steps.output_handlers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/neuraxle.steps.output_handlers.html#output-handlers-steps">Output Handlers Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/neuraxle.steps.misc.html">neuraxle.steps.misc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/neuraxle.steps.misc.html#miscelaneous-pipeline-steps">Miscelaneous Pipeline Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/neuraxle.hyperparams.distributions.html">neuraxle.hyperparams.distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/neuraxle.hyperparams.distributions.html#hyperparameter-distributions">Hyperparameter Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/neuraxle.hyperparams.space.html">neuraxle.hyperparams.space</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/neuraxle.hyperparams.space.html#hyperparameter-dictionary-conversions">Hyperparameter Dictionary Conversions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/neuraxle.metaopt.random.html">neuraxle.metaopt.random</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/neuraxle.metaopt.random.html#random">Random</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/neuraxle.metaopt.sklearn.html">neuraxle.metaopt.sklearn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/neuraxle.metaopt.sklearn.html#scikit-learn-metaoptimizers">Scikit-learn metaoptimizers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/neuraxle.metaopt.hyperopt.html">neuraxle.metaopt.hyperopt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/neuraxle.metaopt.hyperopt.html#hyperopt">Hyperopt</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/neuraxle.api.flask.html">neuraxle.api.flask</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/neuraxle.api.flask.html#neuraxle-s-flask-wrapper-classes">Neuraxle’s Flask Wrapper classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/index.html">Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/inverse_transform.html">Inverse Transforms in Neuraxle: How to Reverse a Prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/nested_pipelines.html">Create Nested Pipelines in Neuraxle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/hyperparams.html">Manipulate Hyperparameter Spaces for Hyperparameter Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/non_fittable_mixin.html">Create Pipeline Steps in Neuraxle that doesn’t fit or transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/boston_housing_regression_with_model_stacking.html">Boston Housing Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/force_handle_mixin.html">Create Pipeline Steps that require implementing only handler methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/auto_ml_checkpoint.html">Usage of Checkpoints in Automatic Machine Learning (AutoML)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/easy_rest_api_serving.html">Easy REST API Model Serving with Neuraxle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/boston_housing_meta_optimization.html">Boston Housing Regression with Meta Optimization</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="/en/"> Neuraxio</a>/<a href="../../../index.html">Neuraxle</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+
+        <a href="https://github.com/Neuraxio/Neuraxle"><img style="position: absolute; border: 0; top: 0; right: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Introduction to Automatic Hyperparameter Tuning</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <!-- <a href="../../../_sources/Neuraxle/examples/.ipynb_checkpoints/AutoML Checkpoints Demo-checkpoint.ipynb.txt" rel="nofollow"> View page source</a> -->
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 7ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="Introduction-to-Automatic-Hyperparameter-Tuning">
+<h1>Introduction to Automatic Hyperparameter Tuning<a class="headerlink" href="#Introduction-to-Automatic-Hyperparameter-Tuning" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>Also known as AutoML, Automatic Machine Learning, Meta-optimization, Meta-learning, and so on.</p>
+</div></blockquote>
+<p>So not only you want to build neural networks and other machine learning algorithms, but also you want to find the best hyperparameters for them automatically. We’ll here demonstrate how it’s possible with Neuraxle.</p>
+<p>Let’s first explore the hyperparameter distributions that are available by plotting them, then let’s see how we can narrow hyperparameter spaces and define new statistical hyperparameter distributions.</p>
+<div class="section" id="Plotting-Each-Hyperparameter-Distribution">
+<h2>Plotting Each Hyperparameter Distribution<a class="headerlink" href="#Plotting-Each-Hyperparameter-Distribution" title="Permalink to this headline">¶</a></h2>
+<p>Let’s first define a few functions to then plot them each.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Note: some of the code in the present code block is derived from another project licensed under The MIT License (MIT), Copyright (c) 2017 Vooban Inc. For the full information, see:</span>
+<span class="c1">#     https://github.com/guillaume-chevalier/Hyperopt-Keras-CNN-CIFAR-100/blob/Vooban/LICENSE</span>
+
+<span class="kn">from</span> <span class="nn">neuraxle.hyperparams.distributions</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">neuraxle.hyperparams.space</span> <span class="k">import</span> <span class="n">HyperparameterSpace</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.stats.kde</span> <span class="k">import</span> <span class="n">gaussian_kde</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">NUM_TRIALS</span> <span class="o">=</span> <span class="mi">10000</span>
+
+
+<span class="k">def</span> <span class="nf">plot_distribution</span><span class="p">(</span><span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">distribution</span><span class="p">:</span> <span class="n">HyperparameterDistribution</span><span class="p">):</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+        <span class="n">distribution</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NUM_TRIALS</span><span class="p">)</span>
+    <span class="p">])</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+    <span class="n">x_domain</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">samples</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">samples</span><span class="p">),</span> <span class="n">NUM_TRIALS</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+    <span class="n">hist</span> <span class="o">=</span> <span class="n">gaussian_kde</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_domain</span><span class="p">,</span> <span class="n">hist</span><span class="p">(</span><span class="n">x_domain</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;True Histogram&quot;</span><span class="p">)</span>
+
+    <span class="n">blurred_hist</span> <span class="o">=</span> <span class="n">gaussian_kde</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_domain</span><span class="p">,</span> <span class="n">blurred_hist</span><span class="p">(</span><span class="n">x_domain</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Smoothed Histogram&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Histogram (pdf) for a </span><span class="si">{}</span><span class="s2"> distribution&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">title</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">plot_hyperparameter_space</span><span class="p">(</span><span class="n">hyperparameter_space</span><span class="p">:</span> <span class="n">HyperparameterSpace</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">title</span><span class="p">,</span> <span class="n">distribution</span> <span class="ow">in</span> <span class="n">hyperparameter_space</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">plot_distribution</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">distribution</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="Continuous-Hyperparameter-Distributions">
+<h3>Continuous Hyperparameter Distributions<a class="headerlink" href="#Continuous-Hyperparameter-Distributions" title="Permalink to this headline">¶</a></h3>
+<p>Here are a usage example of the continuous hyperparameter distributions, as well as charts. Those are probably the ones you’ll most use.</p>
+<p>Note: the orange lines are blurred averages of the blue lines to see the overall trend. You can ignore the weird border effect at the left and right of the distributions, which in fact just blurs to zero.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">continuous_hyperparameter_space</span> <span class="o">=</span> <span class="n">HyperparameterSpace</span><span class="p">({</span>
+    <span class="s2">&quot;uniform&quot;</span><span class="p">:</span> <span class="n">Uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+    <span class="s2">&quot;loguniform&quot;</span><span class="p">:</span> <span class="n">LogUniform</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="s2">&quot;normal&quot;</span><span class="p">:</span> <span class="n">Normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">hard_clip_min</span><span class="o">=-</span><span class="mi">4</span><span class="p">,</span> <span class="n">hard_clip_max</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
+    <span class="s2">&quot;lognormal&quot;</span><span class="p">:</span> <span class="n">LogNormal</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">hard_clip_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">hard_clip_max</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="n">plot_hyperparameter_space</span><span class="p">(</span><span class="n">continuous_hyperparameter_space</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_3_0.png" src="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_3_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_3_1.png" src="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_3_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_3_2.png" src="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_3_2.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_3_3.png" src="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_3_3.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Quantized-Hyperparameter-Distributions">
+<h3>Quantized Hyperparameter Distributions<a class="headerlink" href="#Quantized-Hyperparameter-Distributions" title="Permalink to this headline">¶</a></h3>
+<p>Here are now the quantized hyperparameter distributions. Those are distributions that yield integers or other precise specific values.</p>
+<p>Also, notice how there are border effects to the left and right of the charts when we use <code class="docutils literal notranslate"><span class="pre">Quantized(...)</span></code> as a distribution wrapper to round the numbers. Those weird border effect wouldn’t appear if you’d limit the distribution to half numbers instead of plain number. Let’s say you have a <code class="docutils literal notranslate"><span class="pre">Quantized(Uniform(-10,</span> <span class="pre">10))</span></code>: then the samples from approximately -9.5 to -8.5 are rounded to the bin of the number -9, but the values from -10 to -9.5 are rounder to the bin -10 and a half is missing, so
+the -10 bin sees its values sampled half as often as -9. That explains the border effect, and you could fix it easily by taking the uniform range from -10.49999 to 10.49999.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">quantized_hyperparameter_space</span> <span class="o">=</span> <span class="n">HyperparameterSpace</span><span class="p">({</span>
+    <span class="s2">&quot;randint&quot;</span><span class="p">:</span> <span class="n">RandInt</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+    <span class="s2">&quot;quantized uniform&quot;</span><span class="p">:</span> <span class="n">Quantized</span><span class="p">(</span><span class="n">Uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)),</span>
+    <span class="s2">&quot;repaired quantized uniform&quot;</span><span class="p">:</span> <span class="n">Quantized</span><span class="p">(</span><span class="n">Uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">10.49999</span><span class="p">,</span> <span class="mf">10.49999</span><span class="p">)),</span>
+    <span class="s2">&quot;quantized loguniform&quot;</span><span class="p">:</span> <span class="n">Quantized</span><span class="p">(</span><span class="n">LogUniform</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)),</span>
+    <span class="s2">&quot;quantized normal&quot;</span><span class="p">:</span> <span class="n">Quantized</span><span class="p">(</span><span class="n">Normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">hard_clip_min</span><span class="o">=-</span><span class="mi">4</span><span class="p">,</span> <span class="n">hard_clip_max</span><span class="o">=</span><span class="mi">4</span><span class="p">)),</span>
+    <span class="s2">&quot;quantized lognormal&quot;</span><span class="p">:</span> <span class="n">Quantized</span><span class="p">(</span><span class="n">LogNormal</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">hard_clip_min</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span> <span class="n">hard_clip_max</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+<span class="p">})</span>
+<span class="n">plot_hyperparameter_space</span><span class="p">(</span><span class="n">quantized_hyperparameter_space</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_5_0.png" src="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_5_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_5_1.png" src="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_5_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_5_2.png" src="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_5_2.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_5_3.png" src="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_5_3.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_5_4.png" src="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_5_4.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_5_5.png" src="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_5_5.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Other-Hyperparameter-Distributions">
+<h3>Other Hyperparameter Distributions<a class="headerlink" href="#Other-Hyperparameter-Distributions" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">other_hyperparameter_space</span> <span class="o">=</span> <span class="n">HyperparameterSpace</span><span class="p">({</span>
+    <span class="s2">&quot;boolean&quot;</span><span class="p">:</span> <span class="n">Boolean</span><span class="p">(),</span>
+    <span class="s2">&quot;choice&quot;</span><span class="p">:</span> <span class="n">Choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span>
+    <span class="s2">&quot;priority_choice&quot;</span><span class="p">:</span> <span class="n">PriorityChoice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="p">})</span>
+<span class="n">plot_hyperparameter_space</span><span class="p">(</span><span class="n">other_hyperparameter_space</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_7_0.png" src="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_7_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_7_1.png" src="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_7_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_7_2.png" src="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_7_2.png" />
+</div>
+</div>
+<p>There is finally also the FixedHyperparameter distribution, which you can create to return always the same value. For example, <code class="docutils literal notranslate"><span class="pre">FixedHyperparameter(42)</span></code>. Althought using the number 42 directly would do the job, some of the above hyperparameter distributions may return FixedHyperparameter distributions when narrowed.</p>
+</div>
+</div>
+<div class="section" id="Narrowing-Hyperparameter-Spaces:-a-Detailed-Example">
+<h2>Narrowing Hyperparameter Spaces: a Detailed Example<a class="headerlink" href="#Narrowing-Hyperparameter-Spaces:-a-Detailed-Example" title="Permalink to this headline">¶</a></h2>
+<p>You now took a look at the basic hyperparameter distributions available in Neuraxle. For each of them, it’s possible to narrow them down to a smaller range as the hyperparameter search progresses and converges towards best guesses.</p>
+<p>It’s possible to take a sample from the distribution and to send them to the space and to ask to narrow down the space towards this sample. Each distributions behave differently.</p>
+<p>For example, the Choice will take the best guess instantly when being narrowed but IF the narrowing ratio is small enough for only one item to be kept, proportionally. You could instead use the PriorityChoice which would remove each options by keeping the ones at the beginning of the list, and also bringing back to the beginning the best guess every time. Let’s look at a concrete example below.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+
+<span></span><span class="n">hyperparameter_space_to_narrow</span> <span class="o">=</span> <span class="n">HyperparameterSpace</span><span class="p">({</span>
+    <span class="s2">&quot;uniform&quot;</span><span class="p">:</span> <span class="n">Uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+    <span class="s2">&quot;loguniform&quot;</span><span class="p">:</span> <span class="n">LogUniform</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+    <span class="s2">&quot;choice&quot;</span><span class="p">:</span> <span class="n">Choice</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span>
+    <span class="s2">&quot;priority choice&quot;</span><span class="p">:</span> <span class="n">PriorityChoice</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Here is the hyperparameter space BEFORE narrowing:&quot;</span><span class="p">)</span>
+<span class="n">plot_hyperparameter_space</span><span class="p">(</span><span class="n">hyperparameter_space_to_narrow</span><span class="p">)</span>
+
+<span class="n">sample</span> <span class="o">=</span> <span class="n">hyperparameter_space_to_narrow</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Here is a sample from the hyperparameter space towards which we&#39;ll narrow the space:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Note that we&#39;ll narrow the space towards that, and by &quot;</span>
+      <span class="s2">&quot;also using `kept_space_ratio=0.5` which will split the space in half.&quot;</span><span class="p">)</span>
+
+<span class="n">hyperparameter_space_to_narrow</span> <span class="o">=</span> <span class="n">hyperparameter_space_to_narrow</span><span class="o">.</span><span class="n">narrow_space_from_best_guess</span><span class="p">(</span>
+    <span class="n">sample</span><span class="p">,</span> <span class="n">kept_space_ratio</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Here is the hyperparameter space AFTER narrowing:&quot;</span><span class="p">)</span>
+<span class="n">plot_hyperparameter_space</span><span class="p">(</span><span class="n">hyperparameter_space_to_narrow</span><span class="p">)</span>
+
+<span class="n">sample</span> <span class="o">=</span> <span class="n">hyperparameter_space_to_narrow</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Here is a sample from the NARROWED hyperparameter space:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Note that you could narrow the space as many times in a row as you want, and also restore &quot;</span>
+      <span class="s2">&quot;it to its default with a call to `.unnarow()` to restore it to non-narrowed settings.&quot;</span><span class="p">)</span>
+
+<span class="n">hyperparameter_space_to_narrow</span> <span class="o">=</span> <span class="n">hyperparameter_space_to_narrow</span><span class="o">.</span><span class="n">unnarrow</span><span class="p">()</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Here is the hyperparameter space BEFORE narrowing:
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_9_1.png" src="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_9_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_9_2.png" src="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_9_2.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_9_3.png" src="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_9_3.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_9_4.png" src="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_9_4.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Here is a sample from the hyperparameter space towards which we&#39;ll narrow the space:
+HyperparameterSpace([(&#39;uniform&#39;, -1.7456722300162077), (&#39;loguniform&#39;, 89.12350621501227), (&#39;choice&#39;, 2), (&#39;priority choice&#39;, 2)])
+Note that we&#39;ll narrow the space towards that, and by also using `kept_space_ratio=0.5` which will split the space in half.
+Here is the hyperparameter space AFTER narrowing:
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_9_6.png" src="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_9_6.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_9_7.png" src="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_9_7.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_9_8.png" src="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_9_8.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_9_9.png" src="../../../_images/Neuraxle_examples_.ipynb_checkpoints_AutoML_Checkpoints_Demo-checkpoint_9_9.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Here is a sample from the NARROWED hyperparameter space:
+HyperparameterSpace([(&#39;uniform&#39;, 3.5066179759945335), (&#39;loguniform&#39;, 91.37111758300118), (&#39;choice&#39;, 0), (&#39;priority choice&#39;, 2)])
+Note that you could narrow the space as many times in a row as you want, and also restore it to its default with a call to `.unnarow()` to restore it to non-narrowed settings.
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Creating-your-own-distributions">
+<h2>Creating your own distributions<a class="headerlink" href="#Creating-your-own-distributions" title="Permalink to this headline">¶</a></h2>
+<p>Why would we limit our users to use just the pre-made distributions?!</p>
+<p>Each distribution inherits and implements a base distribution class named HyperparameterDistribution which you can inherit and implement as needed. The most important is to define the <code class="docutils literal notranslate"><span class="pre">.rvs()</span></code> function that will sample a random value from the distribution, and also to implement the method <code class="docutils literal notranslate"><span class="pre">narrow_space_from_best_guess(...)</span></code> so as to tell the distribution how to be narrowed. Finally, the call to <code class="docutils literal notranslate"><span class="pre">super(...).__init__()</span></code> needs to be done in the <code class="docutils literal notranslate"><span class="pre">__init__</span></code>.</p>
+<p>It’s easier than it looks! Here is for example how the RandInt distribution is coded:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+
+<span></span><span class="k">class</span> <span class="nc">RandInt</span><span class="p">(</span><span class="n">HyperparameterDistribution</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get a random integer within a range&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_included</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">max_included</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a quantized random uniform distribution.</span>
+<span class="sd">        A random integer between the two values inclusively will be returned.</span>
+
+<span class="sd">        :param min_included: minimum integer, included.</span>
+<span class="sd">        :param max_included: maximum integer, included.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_included</span> <span class="o">=</span> <span class="n">min_included</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_included</span> <span class="o">=</span> <span class="n">max_included</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RandInt</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">rvs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Will return an integer in the specified range as specified at creation.</span>
+
+<span class="sd">        :return: an integer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">min_included</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_included</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">narrow_space_from_best_guess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">best_guess</span><span class="p">,</span> <span class="n">kept_space_ratio</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HyperparameterDistribution</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Will narrow the underlying distribution towards the best guess.</span>
+
+<span class="sd">        :param best_guess: the value towards which we want to narrow down the space. Should be between 0.0 and 1.0.</span>
+<span class="sd">        :param kept_space_ratio: what proportion of the space is kept. Default is to keep half the space (0.5).</span>
+<span class="sd">        :return: a new HyperparameterDistribution that has been narrowed down.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">lost_space_ratio</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">kept_space_ratio</span>
+        <span class="n">new_min_included</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">min_included</span> <span class="o">*</span> <span class="n">kept_space_ratio</span> <span class="o">+</span> <span class="n">best_guess</span> <span class="o">*</span> <span class="n">lost_space_ratio</span><span class="p">)</span>
+        <span class="n">new_max_included</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_included</span> <span class="o">*</span> <span class="n">kept_space_ratio</span> <span class="o">+</span> <span class="n">best_guess</span> <span class="o">*</span> <span class="n">lost_space_ratio</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">new_max_included</span> <span class="o">&lt;=</span> <span class="n">new_min_included</span> <span class="ow">or</span> <span class="n">kept_space_ratio</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">FixedHyperparameter</span><span class="p">(</span><span class="n">best_guess</span><span class="p">)</span><span class="o">.</span><span class="n">was_narrowed_from</span><span class="p">(</span><span class="n">kept_space_ratio</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">RandInt</span><span class="p">(</span><span class="n">new_min_included</span><span class="p">,</span> <span class="n">new_max_included</span><span class="p">)</span><span class="o">.</span><span class="n">was_narrowed_from</span><span class="p">(</span><span class="n">kept_space_ratio</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<p>If you ever add new distributions, we’d be glad that you open a pull request to add them.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <!-- Begin Mailchimp Signup Form -->
+  <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+  <div id="mc_embed_signup">
+  <form action="https://neuraxio.us18.list-manage.com/subscribe/post?u=75b15e094bec4736090d7588c&amp;id=461343efc0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <div id="mc_embed_signup_scroll">
+      <label for="mce-EMAIL">Stay Tuned, Keep in Touch!</label>
+      <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75b15e094bec4736090d7588c_461343efc0" tabindex="-1" value=""></div>
+      <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+      </div>
+      <br/>
+      <a href="/en/blog/index.html">Visit Blog</a>
+  </form>
+  </div>
+  <!--End mc_embed_signup-->
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019 The Neuraxle Authors. All rights reserved. Apache License, Version 2.0.
+
+    </p>
+  </div>
+   
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-119883439-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

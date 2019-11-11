@@ -1,0 +1,1213 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction to Random Distributions &mdash; Neuraxle 0.2.1 documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://www.neuraxio.org/en/neuraxle/stable/Neuraxle/examples/Introduction to Random Distributions.html"/>
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #F80" >
+          
+
+          
+            <a href="/en/" class="icon icon-home"> Neuraxio</a>/<a href="../../index.html" > Neuraxle
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">Neuraxle Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#quickstart">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#why-neuraxle">Why Neuraxle?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#production-ready">Production-ready</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#compatibility">Compatibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#parallel-computing">Parallel Computing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#time-series-processing">Time Series Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#automatic-machine-learning">Automatic Machine Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#comparison-to-other-machine-learning-pipeline-frameworks">Comparison to Other Machine Learning Pipeline Frameworks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#scikit-learn">scikit-learn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#apache-beam">Apache Beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#spacy">spaCy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#kubeflow">Kubeflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#community">Community</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#license">License</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../README.html#summary-of-the-license">Summary of the License</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#citation">Citation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#contributors">Contributors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#supported-by">Supported By</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../hyperparameter_tuning.html">Introduction to Automatic Hyperparameter Tuning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#Continuous-Hyperparameter-Distributions">Continuous Hyperparameter Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#Quantized-Hyperparameter-Distributions">Quantized Hyperparameter Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#Other-Hyperparameter-Distributions">Other Hyperparameter Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html#Narrowing-Hyperparameter-Spaces:-a-Detailed-Example">Narrowing Hyperparameter Spaces: a Detailed Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html#Creating-your-own-distributions">Creating your own distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../random_distributions.html">Introduction to Random Distributions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html#Discrete-Distributions">Discrete Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#RandInt">RandInt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Boolean">Boolean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Choice">Choice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Priority-Choice">Priority Choice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html#Continuous-Distributions">Continuous Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Uniform">Continuous Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Loguniform">Continuous Loguniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Normal">Continuous Normal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Lognormal">Continuous Lognormal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Normal-Clipped">Continuous Normal Clipped</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Lognormal-Clipped">Continuous Lognormal Clipped</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html#Quantized-Hyperparameter-Distributions">Quantized Hyperparameter Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Quantized-Uniform">Quantized Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Repaired-Quantized-Uniform">Repaired Quantized Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Quantized-Log-Uniform">Quantized Log Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Quantized-Normal">Quantized Normal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Quantized-Lognormal">Quantized Lognormal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rest_api_serving.html">REST API Serving</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Import-Packages">Import Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Load-your-Dataset">Load your Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Create-your-Pipeline">Create your Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Let's-Train-and-Test">Let’s Train and Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Deploy-the-Pipeline">Deploy the Pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Write-a-step-to-decode-the-accepted-JSON-as-data-inputs">Write a step to decode the accepted JSON as data inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Write-a-step-to-encode-the-returned-JSON-response">Write a step to encode the returned JSON response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Finally-Serve-Predictions">Finally Serve Predictions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#API-Call-Example">API Call Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Next-Steps">Next Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Pipeline-Serialization">Pipeline Serialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Data-Transformation-Caching">Data Transformation Caching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Checkpoints">Checkpoints</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">Complete API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.base.html">neuraxle.base</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.base.html#neuraxle-s-base-classes">Neuraxle’s Base Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.pipeline.html">neuraxle.pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.pipeline.html#neuraxle-s-pipeline-classes">Neuraxle’s Pipeline Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.union.html">neuraxle.union</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.union.html#union-of-features">Union of Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.checkpoints.html">neuraxle.checkpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.checkpoints.html#neuraxle-s-checkpoint-classes">Neuraxle’s Checkpoint Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.numpy.html">neuraxle.steps.numpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.numpy.html#pipeline-steps-based-on-numpy">Pipeline Steps Based on NumPy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.sklearn.html#pipeline-steps-based-on-scikit-learn">Pipeline Steps Based on Scikit-Learn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.loop.html">neuraxle.steps.loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.loop.html#pipeline-steps-for-looping">Pipeline Steps For Looping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.caching.html">neuraxle.steps.caching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.caching.html#pipeline-steps-for-caching">Pipeline Steps For Caching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.output_handlers.html">neuraxle.steps.output_handlers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.output_handlers.html#output-handlers-steps">Output Handlers Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.misc.html">neuraxle.steps.misc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.misc.html#miscelaneous-pipeline-steps">Miscelaneous Pipeline Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.hyperparams.distributions.html">neuraxle.hyperparams.distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.hyperparams.distributions.html#hyperparameter-distributions">Hyperparameter Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.hyperparams.space.html">neuraxle.hyperparams.space</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.hyperparams.space.html#hyperparameter-dictionary-conversions">Hyperparameter Dictionary Conversions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.random.html">neuraxle.metaopt.random</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.random.html#random">Random</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.sklearn.html">neuraxle.metaopt.sklearn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.sklearn.html#scikit-learn-metaoptimizers">Scikit-learn metaoptimizers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.hyperopt.html">neuraxle.metaopt.hyperopt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.hyperopt.html#hyperopt">Hyperopt</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.api.flask.html">neuraxle.api.flask</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.api.flask.html#neuraxle-s-flask-wrapper-classes">Neuraxle’s Flask Wrapper classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/inverse_transform.html">Inverse Transforms in Neuraxle: How to Reverse a Prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/nested_pipelines.html">Create Nested Pipelines in Neuraxle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/hyperparams.html">Manipulate Hyperparameter Spaces for Hyperparameter Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/non_fittable_mixin.html">Create Pipeline Steps in Neuraxle that doesn’t fit or transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/boston_housing_regression_with_model_stacking.html">Boston Housing Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/force_handle_mixin.html">Create Pipeline Steps that require implementing only handler methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/auto_ml_checkpoint.html">Usage of Checkpoints in Automatic Machine Learning (AutoML)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/easy_rest_api_serving.html">Easy REST API Model Serving with Neuraxle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/boston_housing_meta_optimization.html">Boston Housing Regression with Meta Optimization</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="/en/"> Neuraxio</a>/<a href="../../index.html">Neuraxle</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+
+        <a href="https://github.com/Neuraxio/Neuraxle"><img style="position: absolute; border: 0; top: 0; right: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Introduction to Random Distributions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <!-- <a href="../../_sources/Neuraxle/examples/Introduction to Random Distributions.ipynb.txt" rel="nofollow"> View page source</a> -->
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 7ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="Introduction-to-Random-Distributions">
+<h1>Introduction to Random Distributions<a class="headerlink" href="#Introduction-to-Random-Distributions" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>Correctly called random variable, these random variable are usefull in hyperparameter tuning.</p>
+</div></blockquote>
+<p>For each hyperparmeter, a range can be defined, that is, a statistical distribution, which makes the hyperparameter a random variable. This random variable will defined what value the hyperparameter is likely to take.</p>
+<p>Let’s explore the hyperparameter distributions, by plotting the following graph : - Probability distribution function (pdf) or probability mass function (pmf) - Cumulative distribution function (cdf) - Histogram of sampling.</p>
+<div class="section" id="Plotting-Each-Hyperparameter-Distribution">
+<h2>Plotting Each Hyperparameter Distribution<a class="headerlink" href="#Plotting-Each-Hyperparameter-Distribution" title="Permalink to this headline">¶</a></h2>
+<p>Let’s import plotting functions, and neuraxle hyperparameter classes.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">neuraxle.hyperparams.distributions</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">neuraxle.hyperparams.space</span> <span class="k">import</span> <span class="n">HyperparameterSpace</span>
+<span class="kn">from</span> <span class="nn">neuraxle.plotting</span> <span class="k">import</span> <span class="n">plot_histogram</span><span class="p">,</span> <span class="n">plot_pdf_cdf</span><span class="p">,</span> <span class="n">plot_distribution_space</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">DISCRETE_NUM_BINS</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">CONTINUOUS_NUM_BINS</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">NUM_TRIALS</span> <span class="o">=</span> <span class="mi">100000</span>
+<span class="n">X_DOMAIN</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">600</span><span class="p">))</span> <span class="o">/</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Discrete-Distributions">
+<h2>Discrete Distributions<a class="headerlink" href="#Discrete-Distributions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Here are now the discrete standard distributions, which sample discrete value or categories.</p></li>
+<li><p>For example, Boolean distribution gives either true or false.</p></li>
+</ul>
+<div class="section" id="RandInt">
+<h3>RandInt<a class="headerlink" href="#RandInt" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">discrete_hyperparameter_space</span> <span class="o">=</span> <span class="n">HyperparameterSpace</span><span class="p">({</span>
+    <span class="s2">&quot;randint&quot;</span><span class="p">:</span> <span class="n">RandInt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="n">plot_distribution_space</span><span class="p">(</span><span class="n">discrete_hyperparameter_space</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="n">DISCRETE_NUM_BINS</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+randint:
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_4_1.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_4_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_4_2.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_4_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Boolean">
+<h3>Boolean<a class="headerlink" href="#Boolean" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">discrete_hyperparameter_space</span> <span class="o">=</span> <span class="n">HyperparameterSpace</span><span class="p">({</span>
+    <span class="s2">&quot;boolean&quot;</span><span class="p">:</span> <span class="n">Boolean</span><span class="p">()</span>
+<span class="p">})</span>
+<span class="n">plot_distribution_space</span><span class="p">(</span><span class="n">discrete_hyperparameter_space</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="n">DISCRETE_NUM_BINS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+boolean:
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_6_1.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_6_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_6_2.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_6_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Choice">
+<h3>Choice<a class="headerlink" href="#Choice" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">discrete_hyperparameter_space</span> <span class="o">=</span> <span class="n">HyperparameterSpace</span><span class="p">({</span>
+    <span class="s2">&quot;choice&quot;</span><span class="p">:</span> <span class="n">Choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="p">})</span>
+<span class="n">plot_distribution_space</span><span class="p">(</span><span class="n">discrete_hyperparameter_space</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="n">DISCRETE_NUM_BINS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+choice:
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_8_1.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_8_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_8_2.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_8_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Priority-Choice">
+<h3>Priority Choice<a class="headerlink" href="#Priority-Choice" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">discrete_hyperparameter_space</span> <span class="o">=</span> <span class="n">HyperparameterSpace</span><span class="p">({</span>
+    <span class="s2">&quot;priority_choice&quot;</span><span class="p">:</span> <span class="n">PriorityChoice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="p">})</span>
+<span class="n">plot_distribution_space</span><span class="p">(</span><span class="n">discrete_hyperparameter_space</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="n">DISCRETE_NUM_BINS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+priority_choice:
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_10_1.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_10_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_10_2.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_10_2.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Continuous-Distributions">
+<h2>Continuous Distributions<a class="headerlink" href="#Continuous-Distributions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Here are now the continuous distributions, which sample a continuous range of values. Those are probably the ones you’ll most use.</p></li>
+</ul>
+<div class="section" id="Continuous-Uniform">
+<h3>Continuous Uniform<a class="headerlink" href="#Continuous-Uniform" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">continuous_hyperparameter_space</span> <span class="o">=</span> <span class="n">HyperparameterSpace</span><span class="p">({</span>
+    <span class="s2">&quot;uniform&quot;</span><span class="p">:</span> <span class="n">Uniform</span><span class="p">(</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="n">plot_distribution_space</span><span class="p">(</span><span class="n">continuous_hyperparameter_space</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="n">CONTINUOUS_NUM_BINS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+uniform:
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_13_1.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_13_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_13_2.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_13_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Continuous-Loguniform">
+<h3>Continuous Loguniform<a class="headerlink" href="#Continuous-Loguniform" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">continuous_hyperparameter_space</span> <span class="o">=</span> <span class="n">HyperparameterSpace</span><span class="p">({</span>
+    <span class="s2">&quot;loguniform&quot;</span><span class="p">:</span> <span class="n">LogUniform</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="n">plot_distribution_space</span><span class="p">(</span><span class="n">continuous_hyperparameter_space</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="n">CONTINUOUS_NUM_BINS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+loguniform:
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_15_1.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_15_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_15_2.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_15_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Continuous-Normal">
+<h3>Continuous Normal<a class="headerlink" href="#Continuous-Normal" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">continuous_hyperparameter_space</span> <span class="o">=</span> <span class="n">HyperparameterSpace</span><span class="p">({</span>
+    <span class="s2">&quot;normal&quot;</span><span class="p">:</span> <span class="n">Normal</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="n">plot_distribution_space</span><span class="p">(</span><span class="n">continuous_hyperparameter_space</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="n">CONTINUOUS_NUM_BINS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+normal:
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_17_1.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_17_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_17_2.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_17_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Continuous-Lognormal">
+<h3>Continuous Lognormal<a class="headerlink" href="#Continuous-Lognormal" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">continuous_hyperparameter_space</span> <span class="o">=</span> <span class="n">HyperparameterSpace</span><span class="p">({</span>
+    <span class="s2">&quot;lognormal&quot;</span><span class="p">:</span> <span class="n">LogNormal</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="n">plot_distribution_space</span><span class="p">(</span><span class="n">continuous_hyperparameter_space</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="n">CONTINUOUS_NUM_BINS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+lognormal:
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_19_1.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_19_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_19_2.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_19_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Continuous-Normal-Clipped">
+<h3>Continuous Normal Clipped<a class="headerlink" href="#Continuous-Normal-Clipped" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">continuous_hyperparameter_space</span> <span class="o">=</span> <span class="n">HyperparameterSpace</span><span class="p">({</span>
+    <span class="s2">&quot;normal_clipped&quot;</span><span class="p">:</span> <span class="n">Normal</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">hard_clip_min</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">hard_clip_max</span><span class="o">=</span><span class="mf">5.</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="n">plot_distribution_space</span><span class="p">(</span><span class="n">continuous_hyperparameter_space</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="n">CONTINUOUS_NUM_BINS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+normal_clipped:
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_21_1.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_21_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_21_2.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_21_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Continuous-Lognormal-Clipped">
+<h3>Continuous Lognormal Clipped<a class="headerlink" href="#Continuous-Lognormal-Clipped" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">continuous_hyperparameter_space</span> <span class="o">=</span> <span class="n">HyperparameterSpace</span><span class="p">({</span>
+    <span class="s2">&quot;lognormal_clipped&quot;</span><span class="p">:</span> <span class="n">LogNormal</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">hard_clip_min</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span> <span class="n">hard_clip_max</span><span class="o">=</span><span class="mf">4.</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="n">plot_distribution_space</span><span class="p">(</span><span class="n">continuous_hyperparameter_space</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="n">CONTINUOUS_NUM_BINS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+lognormal_clipped:
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_23_1.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_23_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_23_2.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_23_2.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Quantized-Hyperparameter-Distributions">
+<h2>Quantized Hyperparameter Distributions<a class="headerlink" href="#Quantized-Hyperparameter-Distributions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Here are now the quantized hyperparameter distributions. Those are distributions that yield integers or other precise specific values.</p></li>
+<li><p>Also, notice how there are border effects to the left and right of the charts when we use <code class="docutils literal notranslate"><span class="pre">Quantized(...)</span></code> as a distribution wrapper to round the numbers.</p></li>
+<li><p>Those weird border effect wouldn’t appear if you’d limit the distribution to half numbers instead of plain number.</p></li>
+<li><p>Let’s say you have a <code class="docutils literal notranslate"><span class="pre">Quantized(Uniform(-10,</span> <span class="pre">10))</span></code>: then the samples from approximately -9.5 to -8.5 are rounded to</p></li>
+<li><p>The bin of the number -9, but the values from -10 to -9.5 are rounder to the bin -10 and a half is missing, so the -10</p></li>
+<li><p>bin sees its values sampled half as often as -9. That explains the border effect, and you could fix it easily by taking the uniform range from -10.49999 to 10.49999.</p></li>
+</ul>
+<div class="section" id="Quantized-Uniform">
+<h3>Quantized Uniform<a class="headerlink" href="#Quantized-Uniform" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">quantized_hyperparameter_space</span> <span class="o">=</span> <span class="n">HyperparameterSpace</span><span class="p">({</span>
+    <span class="s2">&quot;quantized uniform&quot;</span><span class="p">:</span> <span class="n">Quantized</span><span class="p">(</span><span class="n">Uniform</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">))</span>
+<span class="p">})</span>
+<span class="n">plot_distribution_space</span><span class="p">(</span><span class="n">quantized_hyperparameter_space</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="n">DISCRETE_NUM_BINS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+quantized uniform:
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_26_1.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_26_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_26_2.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_26_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Repaired-Quantized-Uniform">
+<h3>Repaired Quantized Uniform<a class="headerlink" href="#Repaired-Quantized-Uniform" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">quantized_hyperparameter_space</span> <span class="o">=</span> <span class="n">HyperparameterSpace</span><span class="p">({</span>
+    <span class="s2">&quot;repaired quantized uniform&quot;</span><span class="p">:</span> <span class="n">Quantized</span><span class="p">(</span><span class="n">Uniform</span><span class="p">(</span><span class="mf">0.49999</span><span class="p">,</span> <span class="mf">5.49999</span><span class="p">))</span>
+<span class="p">})</span>
+
+<span class="n">plot_distribution_space</span><span class="p">(</span><span class="n">quantized_hyperparameter_space</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="n">DISCRETE_NUM_BINS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+repaired quantized uniform:
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_28_1.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_28_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_28_2.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_28_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Quantized-Log-Uniform">
+<h3>Quantized Log Uniform<a class="headerlink" href="#Quantized-Log-Uniform" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">quantized_hyperparameter_space</span> <span class="o">=</span> <span class="n">HyperparameterSpace</span><span class="p">({</span>
+    <span class="s2">&quot;quantized loguniform&quot;</span><span class="p">:</span> <span class="n">Quantized</span><span class="p">(</span><span class="n">LogUniform</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">))</span>
+<span class="p">})</span>
+
+<span class="n">plot_distribution_space</span><span class="p">(</span><span class="n">quantized_hyperparameter_space</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="n">DISCRETE_NUM_BINS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+quantized loguniform:
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_30_1.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_30_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_30_2.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_30_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Quantized-Normal">
+<h3>Quantized Normal<a class="headerlink" href="#Quantized-Normal" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">quantized_hyperparameter_space</span> <span class="o">=</span> <span class="n">HyperparameterSpace</span><span class="p">({</span>
+    <span class="s2">&quot;quantized normal&quot;</span><span class="p">:</span> <span class="n">Quantized</span><span class="p">(</span><span class="n">Normal</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+<span class="p">})</span>
+
+<span class="n">plot_distribution_space</span><span class="p">(</span><span class="n">quantized_hyperparameter_space</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="n">DISCRETE_NUM_BINS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+quantized normal:
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_32_1.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_32_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_32_2.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_32_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Quantized-Lognormal">
+<h3>Quantized Lognormal<a class="headerlink" href="#Quantized-Lognormal" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">quantized_hyperparameter_space</span> <span class="o">=</span> <span class="n">HyperparameterSpace</span><span class="p">({</span>
+    <span class="s2">&quot;quantized lognormal&quot;</span><span class="p">:</span> <span class="n">Quantized</span><span class="p">(</span><span class="n">LogNormal</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+<span class="p">})</span>
+<span class="n">plot_distribution_space</span><span class="p">(</span><span class="n">quantized_hyperparameter_space</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="n">DISCRETE_NUM_BINS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+quantized lognormal:
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_34_1.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_34_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_34_2.png" src="../../_images/Neuraxle_examples_Introduction_to_Random_Distributions_34_2.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <!-- Begin Mailchimp Signup Form -->
+  <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+  <div id="mc_embed_signup">
+  <form action="https://neuraxio.us18.list-manage.com/subscribe/post?u=75b15e094bec4736090d7588c&amp;id=461343efc0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <div id="mc_embed_signup_scroll">
+      <label for="mce-EMAIL">Stay Tuned, Keep in Touch!</label>
+      <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75b15e094bec4736090d7588c_461343efc0" tabindex="-1" value=""></div>
+      <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+      </div>
+      <br/>
+      <a href="/en/blog/index.html">Visit Blog</a>
+  </form>
+  </div>
+  <!--End mc_embed_signup-->
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019 The Neuraxle Authors. All rights reserved. Apache License, Version 2.0.
+
+    </p>
+  </div>
+   
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-119883439-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>
