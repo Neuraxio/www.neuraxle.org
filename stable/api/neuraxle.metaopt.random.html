@@ -15,7 +15,7 @@
   
   
   
-    <link rel="canonical" href="https://www.neuraxio.org/en/neuraxle/stable/api/neuraxle.metaopt.random.html"/>
+    <link rel="canonical" href="https://www.neuraxle.org/api/neuraxle.metaopt.random.html"/>
   
 
   
@@ -361,7 +361,7 @@
 </table>
 <dl class="class">
 <dt id="neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidation">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.random.</code><code class="descname">AnchoredWalkForwardTimeSeriesCrossValidation</code><span class="sig-paren">(</span><em>minimum_training_size</em>, <em>validation_window_size=None</em>, <em>padding_between_training_and_validation=0</em>, <em>drop_remainder=False</em>, <em>scoring_function=&lt;function r2_score&gt;</em>, <em>joiner=NumpyConcatenateOnCustomAxis( 	name=NumpyConcatenateOnCustomAxis</em>, <em>hyperparameters=HyperparameterSamples() )</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/metaopt/random.py#L121"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidation" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.random.</code><code class="descname">AnchoredWalkForwardTimeSeriesCrossValidation</code><span class="sig-paren">(</span><em>minimum_training_size</em>, <em>validation_window_size=None</em>, <em>padding_between_training_and_validation=0</em>, <em>drop_remainder=False</em>, <em>scoring_function=&lt;function r2_score&gt;</em>, <em>joiner=NumpyConcatenateOnCustomAxis( 	name=NumpyConcatenateOnCustomAxis</em>, <em>hyperparameters=HyperparameterSamples() )</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/metaopt/random.py#L121"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prform an anchored walk forward cross validation by performing a forward rolling split.
 All training splits start at the beginning of the time series, but finish at different time. The finish time
 increase toward the end at each forward split.</p>
@@ -371,7 +371,7 @@ after their corresponding training split.</p>
 The array can have an arbitrary number of dimension, but the time series axis is currently limited to <cite>axis=1</cite>.</p>
 <dl class="method">
 <dt id="neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidation.split">
-<code class="descname">split</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/metaopt/random.py#L162"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidation.split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">split</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/metaopt/random.py#L162"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidation.split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Split the data into train inputs, train expected outputs, validation inputs, validation expected outputs.</p>
 <p>Notes: The data supported by this cross validation is nd.array of shape [batch_size, total_time_steps, n_features].
 The array can have an arbitrary number of dimension, but the time series axis is currently limited to <cite>axis=1</cite>.</p>
@@ -390,7 +390,7 @@ The array can have an arbitrary number of dimension, but the time series axis is
 
 <dl class="method">
 <dt id="neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidation.train_split">
-<code class="descname">train_split</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None) -&gt; (typing.List</em>, <em>typing.List</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/metaopt/random.py#L181"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidation.train_split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">train_split</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None) -&gt; (typing.List</em>, <em>typing.List</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/metaopt/random.py#L181"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidation.train_split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Split the data into train inputs, train expected outputs</p>
 <p>Notes: The data supported by this cross validation is nd.array of shape [batch_size, total_time_steps, n_features].
 The array can have an arbitrary number of dimension, but the time series axis is currently limited to <cite>axis=1</cite>.</p>
@@ -409,7 +409,7 @@ The array can have an arbitrary number of dimension, but the time series axis is
 
 <dl class="method">
 <dt id="neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidation.validation_split">
-<code class="descname">validation_split</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; List<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/metaopt/random.py#L197"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidation.validation_split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">validation_split</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; List<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/metaopt/random.py#L197"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidation.validation_split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Split the data into validation inputs, validation expected outputs.</p>
 <p>Notes: The data supported by this cross validation is nd.array of shape [batch_size, total_time_steps, n_features].
 The array can have an arbitrary number of dimension, but the time series axis is currently limited to <cite>axis=1</cite>.</p>
@@ -430,10 +430,10 @@ The array can have an arbitrary number of dimension, but the time series axis is
 
 <dl class="class">
 <dt id="neuraxle.metaopt.random.BaseCrossValidation">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.random.</code><code class="descname">BaseCrossValidation</code><span class="sig-paren">(</span><em>scoring_function=&lt;function r2_score&gt;</em>, <em>joiner=NumpyConcatenateOuterBatch( 	name=NumpyConcatenateOuterBatch</em>, <em>hyperparameters=HyperparameterSamples() )</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/metaopt/random.py#L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.BaseCrossValidation" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.random.</code><code class="descname">BaseCrossValidation</code><span class="sig-paren">(</span><em>scoring_function=&lt;function r2_score&gt;</em>, <em>joiner=NumpyConcatenateOuterBatch( 	name=NumpyConcatenateOuterBatch</em>, <em>hyperparameters=HyperparameterSamples() )</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/metaopt/random.py#L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.BaseCrossValidation" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="neuraxle.metaopt.random.BaseCrossValidation.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.random.BaseCrossValidation<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/metaopt/random.py#L44"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.BaseCrossValidation.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.random.BaseCrossValidation<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/metaopt/random.py#L44"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.BaseCrossValidation.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit step with the given data inputs, and expected outputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -453,12 +453,12 @@ The array can have an arbitrary number of dimension, but the time series axis is
 
 <dl class="method">
 <dt id="neuraxle.metaopt.random.BaseCrossValidation.split">
-<code class="descname">split</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/metaopt/random.py#L58"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.BaseCrossValidation.split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">split</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/metaopt/random.py#L58"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.BaseCrossValidation.split" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.random.BaseCrossValidation.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/metaopt/random.py#L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.BaseCrossValidation.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/metaopt/random.py#L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.BaseCrossValidation.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform given data inputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -477,31 +477,31 @@ The array can have an arbitrary number of dimension, but the time series axis is
 
 <dl class="class">
 <dt id="neuraxle.metaopt.random.KFoldCrossValidation">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.random.</code><code class="descname">KFoldCrossValidation</code><span class="sig-paren">(</span><em>scoring_function=&lt;function r2_score&gt;</em>, <em>k_fold=3</em>, <em>joiner=NumpyConcatenateOuterBatch( 	name=NumpyConcatenateOuterBatch</em>, <em>hyperparameters=HyperparameterSamples() )</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/metaopt/random.py#L70"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.KFoldCrossValidation" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.random.</code><code class="descname">KFoldCrossValidation</code><span class="sig-paren">(</span><em>scoring_function=&lt;function r2_score&gt;</em>, <em>k_fold=3</em>, <em>joiner=NumpyConcatenateOuterBatch( 	name=NumpyConcatenateOuterBatch</em>, <em>hyperparameters=HyperparameterSamples() )</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/metaopt/random.py#L70"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.KFoldCrossValidation" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="neuraxle.metaopt.random.KFoldCrossValidation.split">
-<code class="descname">split</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/metaopt/random.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.KFoldCrossValidation.split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">split</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/metaopt/random.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.KFoldCrossValidation.split" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.random.KFoldCrossValidation.train_split">
-<code class="descname">train_split</code><span class="sig-paren">(</span><em>validation_data_inputs</em>, <em>validation_expected_outputs) -&gt; (typing.List</em>, <em>typing.List</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/metaopt/random.py#L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.KFoldCrossValidation.train_split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">train_split</code><span class="sig-paren">(</span><em>validation_data_inputs</em>, <em>validation_expected_outputs) -&gt; (typing.List</em>, <em>typing.List</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/metaopt/random.py#L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.KFoldCrossValidation.train_split" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.random.KFoldCrossValidation.validation_split">
-<code class="descname">validation_split</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; List<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/metaopt/random.py#L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.KFoldCrossValidation.validation_split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">validation_split</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; List<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/metaopt/random.py#L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.KFoldCrossValidation.validation_split" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="neuraxle.metaopt.random.RandomSearch">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.random.</code><code class="descname">RandomSearch</code><span class="sig-paren">(</span><em>wrapped=None</em>, <em>n_iter: int = 10</em>, <em>higher_score_is_better: bool = True</em>, <em>validation_technique: neuraxle.metaopt.random.BaseCrossValidation = KFoldCrossValidation( 	wrapped=None</em>, <em>hyperparameters=HyperparameterSamples() )</em>, <em>refit=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/metaopt/random.py#L316"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.RandomSearch" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.random.</code><code class="descname">RandomSearch</code><span class="sig-paren">(</span><em>wrapped=None</em>, <em>n_iter: int = 10</em>, <em>higher_score_is_better: bool = True</em>, <em>validation_technique: neuraxle.metaopt.random.BaseCrossValidation = KFoldCrossValidation( 	wrapped=None</em>, <em>hyperparameters=HyperparameterSamples() )</em>, <em>refit=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/metaopt/random.py#L316"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.RandomSearch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform a random hyperparameter search.</p>
 <dl class="method">
 <dt id="neuraxle.metaopt.random.RandomSearch.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/metaopt/random.py#L337"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.RandomSearch.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/metaopt/random.py#L337"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.RandomSearch.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit step with the given data inputs, and expected outputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -521,12 +521,12 @@ The array can have an arbitrary number of dimension, but the time series axis is
 
 <dl class="method">
 <dt id="neuraxle.metaopt.random.RandomSearch.get_best_model">
-<code class="descname">get_best_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/metaopt/random.py#L369"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.RandomSearch.get_best_model" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_best_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/metaopt/random.py#L369"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.RandomSearch.get_best_model" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.random.RandomSearch.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/metaopt/random.py#L372"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.RandomSearch.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/metaopt/random.py#L372"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.RandomSearch.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform given data inputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -545,7 +545,7 @@ The array can have an arbitrary number of dimension, but the time series axis is
 
 <dl class="class">
 <dt id="neuraxle.metaopt.random.WalkForwardTimeSeriesCrossValidation">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.random.</code><code class="descname">WalkForwardTimeSeriesCrossValidation</code><span class="sig-paren">(</span><em>training_window_size</em>, <em>validation_window_size=None</em>, <em>padding_between_training_and_validation=0</em>, <em>drop_remainder=False</em>, <em>scoring_function=&lt;function r2_score&gt;</em>, <em>joiner=NumpyConcatenateOnCustomAxis( 	name=NumpyConcatenateOnCustomAxis</em>, <em>hyperparameters=HyperparameterSamples() )</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/metaopt/random.py#L258"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.WalkForwardTimeSeriesCrossValidation" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.random.</code><code class="descname">WalkForwardTimeSeriesCrossValidation</code><span class="sig-paren">(</span><em>training_window_size</em>, <em>validation_window_size=None</em>, <em>padding_between_training_and_validation=0</em>, <em>drop_remainder=False</em>, <em>scoring_function=&lt;function r2_score&gt;</em>, <em>joiner=NumpyConcatenateOnCustomAxis( 	name=NumpyConcatenateOnCustomAxis</em>, <em>hyperparameters=HyperparameterSamples() )</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/metaopt/random.py#L258"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.WalkForwardTimeSeriesCrossValidation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform a classic walk forward cross validation by performing a forward rolling split.</p>
 <p>All the training split have the same <cite>validation_window_size</cite> size. The start time and end time of each training
 split will increase identically toward the end at each forward split. Same principle apply with the validation
@@ -627,7 +627,7 @@ The array can have an arbitrary number of dimension, but the time series axis is
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-119883439-1', 'auto');
+    ga('create', 'UA-139527241-1', 'auto');
     ga('send', 'pageview');
     </script>
 

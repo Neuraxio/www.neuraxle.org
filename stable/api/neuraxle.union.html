@@ -15,7 +15,7 @@
   
   
   
-    <link rel="canonical" href="https://www.neuraxio.org/en/neuraxle/stable/api/neuraxle.union.html"/>
+    <link rel="canonical" href="https://www.neuraxle.org/api/neuraxle.union.html"/>
   
 
   
@@ -355,17 +355,17 @@
 </table>
 <dl class="class">
 <dt id="neuraxle.union.AddFeatures">
-<em class="property">class </em><code class="descclassname">neuraxle.union.</code><code class="descname">AddFeatures</code><span class="sig-paren">(</span><em>steps_as_tuple: List[Union[Tuple[str, BaseStep], BaseStep]], **kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/union.py#L101"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.AddFeatures" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.union.</code><code class="descname">AddFeatures</code><span class="sig-paren">(</span><em>steps_as_tuple: List[Union[Tuple[str, BaseStep], BaseStep]], **kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/union.py#L101"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.AddFeatures" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parallelize the union of many pipeline steps AND concatenate the new features to the received inputs using Identity.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="neuraxle.union.FeatureUnion">
-<em class="property">class </em><code class="descclassname">neuraxle.union.</code><code class="descname">FeatureUnion</code><span class="sig-paren">(</span><em>steps_as_tuple: List[Union[Tuple[str, BaseStep], BaseStep]], joiner: neuraxle.base.NonFittableMixin = NumpyConcatenateInnerFeatures( 	name=NumpyConcatenateInnerFeatures, 	hyperparameters=HyperparameterSamples() ), n_jobs: int = None, backend: str = 'threading'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/union.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.FeatureUnion" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.union.</code><code class="descname">FeatureUnion</code><span class="sig-paren">(</span><em>steps_as_tuple: List[Union[Tuple[str, BaseStep], BaseStep]], joiner: neuraxle.base.NonFittableMixin = NumpyConcatenateInnerFeatures( 	name=NumpyConcatenateInnerFeatures, 	hyperparameters=HyperparameterSamples() ), n_jobs: int = None, backend: str = 'threading'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/union.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.FeatureUnion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parallelize the union of many pipeline steps.</p>
 <dl class="method">
 <dt id="neuraxle.union.FeatureUnion.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.union.FeatureUnion<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/union.py#L52"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.FeatureUnion.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.union.FeatureUnion<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/union.py#L52"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.FeatureUnion.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit the parallel steps on the data. It will make use of some parallel processing.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -382,7 +382,7 @@
 
 <dl class="method">
 <dt id="neuraxle.union.FeatureUnion.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/union.py#L79"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.FeatureUnion.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/union.py#L79"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.FeatureUnion.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform the data with the unions. It will make use of some parallel processing.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -398,11 +398,11 @@
 
 <dl class="class">
 <dt id="neuraxle.union.ModelStacking">
-<em class="property">class </em><code class="descclassname">neuraxle.union.</code><code class="descname">ModelStacking</code><span class="sig-paren">(</span><em>steps_as_tuple: List[Union[Tuple[str, BaseStep], BaseStep]], judge: neuraxle.base.BaseStep, **kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/union.py#L115"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ModelStacking" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.union.</code><code class="descname">ModelStacking</code><span class="sig-paren">(</span><em>steps_as_tuple: List[Union[Tuple[str, BaseStep], BaseStep]], judge: neuraxle.base.BaseStep, **kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/union.py#L115"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ModelStacking" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs a <code class="docutils literal notranslate"><span class="pre">FeatureUnion</span></code> of steps, and then send the joined result to the above judge step.</p>
 <dl class="method">
 <dt id="neuraxle.union.ModelStacking.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.union.ModelStacking<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/union.py#L135"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ModelStacking.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.union.ModelStacking<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/union.py#L135"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ModelStacking.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit the parallel steps on the data. It will make use of some parallel processing.
 Also, fit the judge on the result of the parallel steps.</p>
 <dl class="field-list simple">
@@ -420,7 +420,7 @@ Also, fit the judge on the result of the parallel steps.</p>
 
 <dl class="method">
 <dt id="neuraxle.union.ModelStacking.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9fe7df2/neuraxle/union.py#L150"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ModelStacking.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/union.py#L150"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ModelStacking.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform the data with the unions. It will make use of some parallel processing.
 Then, use the judge to refine the transformations.</p>
 <dl class="field-list simple">
@@ -507,7 +507,7 @@ Then, use the judge to refine the transformations.</p>
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-119883439-1', 'auto');
+    ga('create', 'UA-139527241-1', 'auto');
     ga('send', 'pageview');
     </script>
 
