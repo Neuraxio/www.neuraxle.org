@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>neuraxle.steps.caching &mdash; Neuraxle 0.2.1 documentation</title>
+  <title>neuraxle.steps.caching &mdash; Neuraxle 0.2.2 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -191,6 +191,10 @@
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.pipeline.html#neuraxle-s-pipeline-classes">Neuraxle’s Pipeline Classes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.data_container.html">neuraxle.data_container</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.data_container.html#neuraxle-s-datacontainer-classes">Neuraxle’s DataContainer classes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="neuraxle.union.html">neuraxle.union</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.union.html#union-of-features">Union of Features</a></li>
 </ul>
@@ -201,6 +205,18 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.numpy.html">neuraxle.steps.numpy</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.numpy.html#pipeline-steps-based-on-numpy">Pipeline Steps Based on NumPy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.flow.html">neuraxle.steps.flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.flow.html#neuraxle-s-flow-steps">Neuraxle’s Flow Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.data.html">neuraxle.steps.data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.data.html#data-steps">Data Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.column_transformer.html">neuraxle.steps.column_transformer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.column_transformer.html#neuraxle-s-column-transformer-steps">Neuraxle’s Column Transformer Steps</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
@@ -341,6 +357,12 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.steps.caching.BaseValueHasher" title="neuraxle.steps.caching.BaseValueHasher"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseValueHasher</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.steps.caching.Md5Hasher" title="neuraxle.steps.caching.Md5Hasher"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Md5Hasher</span></code></a></p></td>
+<td><p></p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.steps.caching.PickleValueCachingWrapper" title="neuraxle.steps.caching.PickleValueCachingWrapper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PickleValueCachingWrapper</span></code></a>(wrapped, …)</p></td>
 <td><p>Value Caching Wrapper class that caches the wrapped step transformed data inputs using python <code class="docutils literal notranslate"><span class="pre">pickle</span></code> library.</p></td>
 </tr>
@@ -350,12 +372,32 @@
 </tbody>
 </table>
 <dl class="class">
+<dt id="neuraxle.steps.caching.BaseValueHasher">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.caching.</code><code class="descname">BaseValueHasher</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/caching.py#L220"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.BaseValueHasher" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="neuraxle.steps.caching.BaseValueHasher.hash">
+<code class="descname">hash</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/caching.py#L221"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.BaseValueHasher.hash" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.steps.caching.Md5Hasher">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.caching.</code><code class="descname">Md5Hasher</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/caching.py#L226"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.Md5Hasher" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="neuraxle.steps.caching.Md5Hasher.hash">
+<code class="descname">hash</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/caching.py#L227"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.Md5Hasher.hash" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="neuraxle.steps.caching.PickleValueCachingWrapper">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.caching.</code><code class="descname">PickleValueCachingWrapper</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em>, <em>cache_folder: str = 'cache'</em>, <em>value_hasher: neuraxle.steps.misc.BaseValueHasher = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/caching.py#L186"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.PickleValueCachingWrapper" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.caching.</code><code class="descname">PickleValueCachingWrapper</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em>, <em>cache_folder: str = 'cache'</em>, <em>value_hasher: Optional[neuraxle.steps.caching.BaseValueHasher] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/caching.py#L184"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.PickleValueCachingWrapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Value Caching Wrapper class that caches the wrapped step transformed data inputs using python <code class="docutils literal notranslate"><span class="pre">pickle</span></code> library.</p>
 <dl class="method">
 <dt id="neuraxle.steps.caching.PickleValueCachingWrapper.contains_cache_for">
-<code class="descname">contains_cache_for</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/caching.py#L214"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.PickleValueCachingWrapper.contains_cache_for" title="Permalink to this definition">¶</a></dt>
+<code class="descname">contains_cache_for</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/caching.py#L212"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.PickleValueCachingWrapper.contains_cache_for" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns true if the data input transform output is cached.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -369,7 +411,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.caching.PickleValueCachingWrapper.create_checkpoint_path">
-<code class="descname">create_checkpoint_path</code><span class="sig-paren">(</span><em>step_path: str</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/caching.py#L194"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.PickleValueCachingWrapper.create_checkpoint_path" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_checkpoint_path</code><span class="sig-paren">(</span><em>step_path: str</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/caching.py#L192"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.PickleValueCachingWrapper.create_checkpoint_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create checkpoint path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -383,14 +425,14 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.caching.PickleValueCachingWrapper.flush_cache">
-<code class="descname">flush_cache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/caching.py#L202"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.PickleValueCachingWrapper.flush_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">flush_cache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/caching.py#L200"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.PickleValueCachingWrapper.flush_cache" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flush all cached values
 :return:</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.caching.PickleValueCachingWrapper.get_cache_path_for">
-<code class="descname">get_cache_path_for</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/caching.py#L217"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.PickleValueCachingWrapper.get_cache_path_for" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_cache_path_for</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/caching.py#L215"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.PickleValueCachingWrapper.get_cache_path_for" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the cache path for the given data input.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -404,7 +446,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.caching.PickleValueCachingWrapper.read_cache">
-<code class="descname">read_cache</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/caching.py#L206"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.PickleValueCachingWrapper.read_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">read_cache</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/caching.py#L204"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.PickleValueCachingWrapper.read_cache" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read cache for a given data input.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -418,7 +460,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.caching.PickleValueCachingWrapper.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/caching.py#L191"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.PickleValueCachingWrapper.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/caching.py#L189"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.PickleValueCachingWrapper.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do nothing - return the same data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -432,7 +474,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.caching.PickleValueCachingWrapper.write_cache">
-<code class="descname">write_cache</code><span class="sig-paren">(</span><em>data_input</em>, <em>output</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/caching.py#L210"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.PickleValueCachingWrapper.write_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">write_cache</code><span class="sig-paren">(</span><em>data_input</em>, <em>output</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/caching.py#L208"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.PickleValueCachingWrapper.write_cache" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write cache for a given data input and output.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -451,11 +493,11 @@
 
 <dl class="class">
 <dt id="neuraxle.steps.caching.ValueCachingWrapper">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.caching.</code><code class="descname">ValueCachingWrapper</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em>, <em>cache_folder: str = 'cache'</em>, <em>value_hasher: neuraxle.steps.misc.BaseValueHasher = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/caching.py#L34"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.ValueCachingWrapper" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.caching.</code><code class="descname">ValueCachingWrapper</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em>, <em>cache_folder: str = 'cache'</em>, <em>value_hasher: Optional[neuraxle.steps.caching.BaseValueHasher] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/caching.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.ValueCachingWrapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Value caching wrapper wraps a step to cache the values.</p>
 <dl class="method">
 <dt id="neuraxle.steps.caching.ValueCachingWrapper.contains_cache_for">
-<code class="descname">contains_cache_for</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/caching.py#L165"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.ValueCachingWrapper.contains_cache_for" title="Permalink to this definition">¶</a></dt>
+<code class="descname">contains_cache_for</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/caching.py#L163"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.ValueCachingWrapper.contains_cache_for" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns true if the data input transform output is cached.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -469,7 +511,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.caching.ValueCachingWrapper.create_checkpoint_path">
-<code class="descname">create_checkpoint_path</code><span class="sig-paren">(</span><em>step_path: str</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/caching.py#L118"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.ValueCachingWrapper.create_checkpoint_path" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_checkpoint_path</code><span class="sig-paren">(</span><em>step_path: str</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/caching.py#L116"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.ValueCachingWrapper.create_checkpoint_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create checkpoint path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -483,14 +525,14 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.caching.ValueCachingWrapper.flush_cache">
-<code class="descname">flush_cache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/caching.py#L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.ValueCachingWrapper.flush_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">flush_cache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/caching.py#L128"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.ValueCachingWrapper.flush_cache" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flush all cached values
 :return:</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.caching.ValueCachingWrapper.get_cache_path_for">
-<code class="descname">get_cache_path_for</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/caching.py#L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.ValueCachingWrapper.get_cache_path_for" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_cache_path_for</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/caching.py#L173"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.ValueCachingWrapper.get_cache_path_for" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the cache path for the given data input.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -503,42 +545,8 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.steps.caching.ValueCachingWrapper.handle_fit_transform">
-<code class="descname">handle_fit_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/caching.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.ValueCachingWrapper.handle_fit_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fit transform data container.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>context</strong> – execution context</p></li>
-<li><p><strong>data_container</strong> (<em>neuraxle.data_container.DataContainer</em>) – the data container to transform</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>tuple(fitted pipeline, data_container)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.caching.ValueCachingWrapper.handle_transform">
-<code class="descname">handle_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/caching.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.ValueCachingWrapper.handle_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Transform data container.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>context</strong> – execution context</p></li>
-<li><p><strong>data_container</strong> (<em>neuraxle.data_container.DataContainer</em>) – the data container to transform</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>transformed data container</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
 <dt id="neuraxle.steps.caching.ValueCachingWrapper.read_cache">
-<code class="descname">read_cache</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span> &#x2192; Any<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/caching.py#L138"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.ValueCachingWrapper.read_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">read_cache</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span> &#x2192; Any<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/caching.py#L136"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.ValueCachingWrapper.read_cache" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read cache for a given data input.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -552,7 +560,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.caching.ValueCachingWrapper.write_cache">
-<code class="descname">write_cache</code><span class="sig-paren">(</span><em>data_input</em>, <em>output</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/caching.py#L150"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.ValueCachingWrapper.write_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">write_cache</code><span class="sig-paren">(</span><em>data_input</em>, <em>output</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/caching.py#L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.ValueCachingWrapper.write_cache" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write cache for a given data input and output.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

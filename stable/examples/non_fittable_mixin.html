@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Create Pipeline Steps in Neuraxle that doesn’t fit or transform &mdash; Neuraxle 0.2.1 documentation</title>
+  <title>Create Pipeline Steps in Neuraxle that doesn’t fit or transform &mdash; Neuraxle 0.2.2 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -191,6 +191,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.pipeline.html#neuraxle-s-pipeline-classes">Neuraxle’s Pipeline Classes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.data_container.html">neuraxle.data_container</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.data_container.html#neuraxle-s-datacontainer-classes">Neuraxle’s DataContainer classes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.union.html">neuraxle.union</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.union.html#union-of-features">Union of Features</a></li>
 </ul>
@@ -201,6 +205,18 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.steps.numpy.html">neuraxle.steps.numpy</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.steps.numpy.html#pipeline-steps-based-on-numpy">Pipeline Steps Based on NumPy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.steps.flow.html">neuraxle.steps.flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.steps.flow.html#neuraxle-s-flow-steps">Neuraxle’s Flow Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.steps.data.html">neuraxle.steps.data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.steps.data.html#data-steps">Data Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.steps.column_transformer.html">neuraxle.steps.column_transformer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.steps.column_transformer.html#neuraxle-s-column-transformer-steps">Neuraxle’s Column Transformer Steps</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
@@ -348,8 +364,8 @@ suppose that the object that inherits from the mixin also inherits from it’s b
 BaseStep class.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">neuraxle.base</span> <span class="k">import</span> <a href="../api/neuraxle.base.html#neuraxle.base.NonTransformableMixin" title="View documentation for neuraxle.base.NonTransformableMixin"><span class="n">NonTransformableMixin</span></a><span class="p">,</span> <a href="../api/neuraxle.base.html#neuraxle.base.NonFittableMixin" title="View documentation for neuraxle.base.NonFittableMixin"><span class="n">NonFittableMixin</span></a><span class="p">,</span> <a href="../api/neuraxle.base.html#neuraxle.base.Identity" title="View documentation for neuraxle.base.Identity"><span class="n">Identity</span></a><span class="p">,</span> <a href="../api/neuraxle.base.html#neuraxle.base.BaseStep" title="View documentation for neuraxle.base.BaseStep"><span class="n">BaseStep</span></a>
-<span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="k">import</span> <a href="../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.base</span> <span class="kn">import</span> <a href="../api/neuraxle.base.html#neuraxle.base.NonTransformableMixin" title="View documentation for neuraxle.base.NonTransformableMixin"><span class="n">NonTransformableMixin</span></a><span class="p">,</span> <a href="../api/neuraxle.base.html#neuraxle.base.NonFittableMixin" title="View documentation for neuraxle.base.NonFittableMixin"><span class="n">NonFittableMixin</span></a><span class="p">,</span> <a href="../api/neuraxle.base.html#neuraxle.base.Identity" title="View documentation for neuraxle.base.Identity"><span class="n">Identity</span></a><span class="p">,</span> <a href="../api/neuraxle.base.html#neuraxle.base.BaseStep" title="View documentation for neuraxle.base.BaseStep"><span class="n">BaseStep</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="kn">import</span> <a href="../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a>
 
 
 <span class="k">class</span> <span class="nc">NonFittableStep</span><span class="p">(</span><a href="../api/neuraxle.base.html#neuraxle.base.NonFittableMixin" title="View documentation for neuraxle.base.NonFittableMixin"><span class="n">NonFittableMixin</span></a><span class="p">,</span> <a href="../api/neuraxle.base.html#neuraxle.base.BaseStep" title="View documentation for neuraxle.base.BaseStep"><span class="n">BaseStep</span></a><span class="p">):</span>
@@ -402,10 +418,10 @@ BaseStep class.</p>
 <p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-non-fittable-mixin-py">
 <div class="sphx-glr-download docutils container">
-<p><a class="reference download internal" download="" href="../_downloads/072dcc6c513c7006678f1f44afae1564/non_fittable_mixin.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">non_fittable_mixin.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/feb7b5a9589033fe28906a6940eec29b/non_fittable_mixin.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">non_fittable_mixin.py</span></code></a></p>
 </div>
 <div class="sphx-glr-download docutils container">
-<p><a class="reference download internal" download="" href="../_downloads/058b378c87a1804cb6fd679a057be049/non_fittable_mixin.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">non_fittable_mixin.ipynb</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/901e97a04b7d3954bc50243108d54967/non_fittable_mixin.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">non_fittable_mixin.ipynb</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>

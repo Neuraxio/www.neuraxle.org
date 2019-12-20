@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; Neuraxle 0.2.1 documentation</title>
+  <title>Index &mdash; Neuraxle 0.2.2 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -190,6 +190,10 @@
 <li class="toctree-l3"><a class="reference internal" href="api/neuraxle.pipeline.html#neuraxle-s-pipeline-classes">Neuraxle’s Pipeline Classes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="api/neuraxle.data_container.html">neuraxle.data_container</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/neuraxle.data_container.html#neuraxle-s-datacontainer-classes">Neuraxle’s DataContainer classes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="api/neuraxle.union.html">neuraxle.union</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="api/neuraxle.union.html#union-of-features">Union of Features</a></li>
 </ul>
@@ -200,6 +204,18 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api/neuraxle.steps.numpy.html">neuraxle.steps.numpy</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="api/neuraxle.steps.numpy.html#pipeline-steps-based-on-numpy">Pipeline Steps Based on NumPy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/neuraxle.steps.flow.html">neuraxle.steps.flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/neuraxle.steps.flow.html#neuraxle-s-flow-steps">Neuraxle’s Flow Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/neuraxle.steps.data.html">neuraxle.steps.data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/neuraxle.steps.data.html#data-steps">Data Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/neuraxle.steps.column_transformer.html">neuraxle.steps.column_transformer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/neuraxle.steps.column_transformer.html#neuraxle-s-column-transformer-steps">Neuraxle’s Column Transformer Steps</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api/neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
@@ -359,12 +375,34 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/neuraxle.union.html#neuraxle.union.AddFeatures">AddFeatures (class in neuraxle.union)</a>
 </li>
-      <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidation">AnchoredWalkForwardTimeSeriesCrossValidation (class in neuraxle.metaopt.random)</a>
+      <li><a href="api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.AddN">AddN (class in neuraxle.steps.numpy)</a>
 </li>
+      <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidationWrapper">AnchoredWalkForwardTimeSeriesCrossValidationWrapper (class in neuraxle.metaopt.random)</a>
+</li>
+      <li><a href="api/neuraxle.base.html#neuraxle.base.TruncableSteps.append">append() (neuraxle.base.TruncableSteps method)</a>
+
+      <ul>
+        <li><a href="api/neuraxle.data_container.html#neuraxle.data_container.ListDataContainer.append">(neuraxle.data_container.ListDataContainer method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep.apply">apply() (neuraxle.base.BaseStep method)</a>
+
+      <ul>
+        <li><a href="api/neuraxle.base.html#neuraxle.base.MetaStepMixin.apply">(neuraxle.base.MetaStepMixin method)</a>
+</li>
+        <li><a href="api/neuraxle.base.html#neuraxle.base.TruncableSteps.apply">(neuraxle.base.TruncableSteps method)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/neuraxle.base.html#neuraxle.base.TruncableSteps.append">append() (neuraxle.base.TruncableSteps method)</a>
+      <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep.apply_method">apply_method() (neuraxle.base.BaseStep method)</a>
+
+      <ul>
+        <li><a href="api/neuraxle.base.html#neuraxle.base.MetaStepMixin.apply_method">(neuraxle.base.MetaStepMixin method)</a>
 </li>
+        <li><a href="api/neuraxle.base.html#neuraxle.base.TruncableSteps.apply_method">(neuraxle.base.TruncableSteps method)</a>
+</li>
+      </ul></li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.TruncableSteps.are_steps_before_index_the_same">are_steps_before_index_the_same() (neuraxle.base.TruncableSteps method)</a>
 </li>
   </ul></td>
@@ -379,21 +417,25 @@
 </li>
       <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.BaseCheckpointer">BaseCheckpointer (class in neuraxle.checkpoints)</a>
 </li>
-      <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.BaseCrossValidation">BaseCrossValidation (class in neuraxle.metaopt.random)</a>
+      <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.BaseCrossValidationWrapper">BaseCrossValidationWrapper (class in neuraxle.metaopt.random)</a>
 </li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.BaseHasher">BaseHasher (class in neuraxle.base)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.BaseMiniDataCheckpointer">BaseMiniDataCheckpointer (class in neuraxle.checkpoints)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/neuraxle.pipeline.html#neuraxle.pipeline.BasePipeline">BasePipeline (class in neuraxle.pipeline)</a>
 </li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.BaseSaver">BaseSaver (class in neuraxle.base)</a>
 </li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep">BaseStep (class in neuraxle.base)</a>
 </li>
-      <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.BaseValueHasher">BaseValueHasher (class in neuraxle.steps.misc)</a>
+      <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.BaseSummaryCheckpointer">BaseSummaryCheckpointer (class in neuraxle.checkpoints)</a>
+</li>
+      <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.BaseValidation">BaseValidation (class in neuraxle.metaopt.random)</a>
+</li>
+      <li><a href="api/neuraxle.steps.caching.html#neuraxle.steps.caching.BaseValueHasher">BaseValueHasher (class in neuraxle.steps.caching)</a>
 </li>
       <li><a href="api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Boolean">Boolean (class in neuraxle.hyperparams.distributions)</a>
 </li>
@@ -404,6 +446,8 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.TapeCallbackFunction.callback">callback() (neuraxle.steps.misc.TapeCallbackFunction method)</a>
+</li>
+      <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.CallbackWrapper">CallbackWrapper (class in neuraxle.steps.misc)</a>
 </li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.BaseSaver.can_load">can_load() (neuraxle.base.BaseSaver method)</a>
 
@@ -435,19 +479,35 @@
         <li><a href="api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Uniform.cdf">(neuraxle.hyperparams.distributions.Uniform method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.Checkpoint">Checkpoint (class in neuraxle.checkpoints)</a>
 </li>
       <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.BaseMiniDataCheckpointer.checkpoint_exists">checkpoint_exists() (neuraxle.checkpoints.BaseMiniDataCheckpointer method)</a>
 
       <ul>
+        <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.BaseSummaryCheckpointer.checkpoint_exists">(neuraxle.checkpoints.BaseSummaryCheckpointer method)</a>
+</li>
         <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.NullMiniDataCheckpointer.checkpoint_exists">(neuraxle.checkpoints.NullMiniDataCheckpointer method)</a>
 </li>
         <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.PickleMiniDataCheckpointer.checkpoint_exists">(neuraxle.checkpoints.PickleMiniDataCheckpointer method)</a>
 </li>
+        <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.TextFileSummaryCheckpointer.checkpoint_exists">(neuraxle.checkpoints.TextFileSummaryCheckpointer method)</a>
+</li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Choice">Choice (class in neuraxle.hyperparams.distributions)</a>
+</li>
+      <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.ChooseOneOrManyStepsOf">ChooseOneOrManyStepsOf (class in neuraxle.steps.flow)</a>
+</li>
+      <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.ChooseOneStepOf">ChooseOneStepOf (class in neuraxle.steps.flow)</a>
+</li>
+      <li><a href="api/neuraxle.steps.column_transformer.html#neuraxle.steps.column_transformer.ColumnSelector2D">ColumnSelector2D (class in neuraxle.steps.column_transformer)</a>
+</li>
+      <li><a href="api/neuraxle.steps.column_transformer.html#neuraxle.steps.column_transformer.ColumnsSelectorND">ColumnsSelectorND (class in neuraxle.steps.column_transformer)</a>
+</li>
+      <li><a href="api/neuraxle.steps.column_transformer.html#neuraxle.steps.column_transformer.ColumnTransformer">ColumnTransformer (class in neuraxle.steps.column_transformer)</a>
+</li>
+      <li><a href="api/neuraxle.data_container.html#neuraxle.data_container.ListDataContainer.concat">concat() (neuraxle.data_container.ListDataContainer method)</a>
 </li>
       <li><a href="api/neuraxle.steps.caching.html#neuraxle.steps.caching.PickleValueCachingWrapper.contains_cache_for">contains_cache_for() (neuraxle.steps.caching.PickleValueCachingWrapper method)</a>
 
@@ -455,15 +515,21 @@
         <li><a href="api/neuraxle.steps.caching.html#neuraxle.steps.caching.ValueCachingWrapper.contains_cache_for">(neuraxle.steps.caching.ValueCachingWrapper method)</a>
 </li>
       </ul></li>
-      <li><a href="api/neuraxle.base.html#neuraxle.base.ExecutionContext.copy">copy() (neuraxle.base.ExecutionContext method)</a>
+      <li><a href="api/neuraxle.data_container.html#neuraxle.data_container.DataContainer.convolved_1d">convolved_1d() (neuraxle.data_container.DataContainer method)</a>
 </li>
+      <li><a href="api/neuraxle.base.html#neuraxle.base.ExecutionContext.copy">copy() (neuraxle.base.ExecutionContext method)</a>
+
+      <ul>
+        <li><a href="api/neuraxle.data_container.html#neuraxle.data_container.DataContainer.copy">(neuraxle.data_container.DataContainer method)</a>
+</li>
+      </ul></li>
       <li><a href="api/neuraxle.steps.caching.html#neuraxle.steps.caching.PickleValueCachingWrapper.create_checkpoint_path">create_checkpoint_path() (neuraxle.steps.caching.PickleValueCachingWrapper method)</a>
 
       <ul>
         <li><a href="api/neuraxle.steps.caching.html#neuraxle.steps.caching.ValueCachingWrapper.create_checkpoint_path">(neuraxle.steps.caching.ValueCachingWrapper method)</a>
 </li>
       </ul></li>
-      <li><a href="api/neuraxle.base.html#neuraxle.base.ExecutionContext.create_from_root">create_from_root() (neuraxle.base.ExecutionContext static method)</a>
+      <li><a href="api/neuraxle.data_container.html#neuraxle.data_container.ExpandedDataContainer.create_from">create_from() (neuraxle.data_container.ExpandedDataContainer static method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -475,9 +541,11 @@
 </li>
       <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.DataCheckpointType">DataCheckpointType (class in neuraxle.checkpoints)</a>
 </li>
+      <li><a href="api/neuraxle.data_container.html#neuraxle.data_container.DataContainer">DataContainer (class in neuraxle.data_container)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.DataShuffler">DataShuffler (class in neuraxle.steps.misc)</a>
+      <li><a href="api/neuraxle.steps.data.html#neuraxle.steps.data.DataShuffler">DataShuffler (class in neuraxle.steps.data)</a>
 </li>
       <li><a href="api/neuraxle.api.flask.html#neuraxle.api.flask.JSONDataBodyDecoder.decode">decode() (neuraxle.api.flask.JSONDataBodyDecoder method)</a>
 </li>
@@ -490,16 +558,26 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/neuraxle.base.html#neuraxle.base.ExecutionContext.empty">empty() (neuraxle.base.ExecutionContext method)</a>
+
+      <ul>
+        <li><a href="api/neuraxle.data_container.html#neuraxle.data_container.ListDataContainer.empty">(neuraxle.data_container.ListDataContainer static method)</a>
 </li>
+      </ul></li>
       <li><a href="api/neuraxle.api.flask.html#neuraxle.api.flask.JSONDataResponseEncoder.encode">encode() (neuraxle.api.flask.JSONDataResponseEncoder method)</a>
 </li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.TruncableSteps.ends_with">ends_with() (neuraxle.base.TruncableSteps method)</a>
+</li>
+      <li><a href="api/neuraxle.steps.data.html#neuraxle.steps.data.EpochRepeater">EpochRepeater (class in neuraxle.steps.data)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/neuraxle.base.html#neuraxle.base.ExecutionContext">ExecutionContext (class in neuraxle.base)</a>
 </li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.ExecutionMode">ExecutionMode (class in neuraxle.base)</a>
+</li>
+      <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.ExpandDim">ExpandDim (class in neuraxle.steps.flow)</a>
+</li>
+      <li><a href="api/neuraxle.data_container.html#neuraxle.data_container.ExpandedDataContainer">ExpandedDataContainer (class in neuraxle.data_container)</a>
 </li>
       <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.DataCheckpointType.EXPECTED_OUTPUT">EXPECTED_OUTPUT (neuraxle.checkpoints.DataCheckpointType attribute)</a>
 </li>
@@ -518,13 +596,15 @@
       <ul>
         <li><a href="api/neuraxle.base.html#neuraxle.base.ForceAlwaysHandleMixin.fit">(neuraxle.base.ForceAlwaysHandleMixin method)</a>
 </li>
-        <li><a href="api/neuraxle.base.html#neuraxle.base.ForceHandleMixin.fit">(neuraxle.base.ForceHandleMixin method)</a>
+        <li><a href="api/neuraxle.base.html#neuraxle.base.MetaStepMixin.fit">(neuraxle.base.MetaStepMixin method)</a>
 </li>
         <li><a href="api/neuraxle.base.html#neuraxle.base.NonFittableMixin.fit">(neuraxle.base.NonFittableMixin method)</a>
 </li>
-        <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.BaseCrossValidation.fit">(neuraxle.metaopt.random.BaseCrossValidation method)</a>
+        <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.BaseCrossValidationWrapper.fit">(neuraxle.metaopt.random.BaseCrossValidationWrapper method)</a>
 </li>
         <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.RandomSearch.fit">(neuraxle.metaopt.random.RandomSearch method)</a>
+</li>
+        <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.ValidationSplitWrapper.fit">(neuraxle.metaopt.random.ValidationSplitWrapper method)</a>
 </li>
         <li><a href="api/neuraxle.metaopt.sklearn.html#neuraxle.metaopt.sklearn.MetaSKLearnWrapper.fit">(neuraxle.metaopt.sklearn.MetaSKLearnWrapper method)</a>
 </li>
@@ -534,6 +614,12 @@
 </li>
         <li><a href="api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline.fit">(neuraxle.pipeline.Pipeline method)</a>
 </li>
+        <li><a href="api/neuraxle.steps.column_transformer.html#neuraxle.steps.column_transformer.ColumnsSelectorND.fit">(neuraxle.steps.column_transformer.ColumnsSelectorND method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.data.html#neuraxle.steps.data.EpochRepeater.fit">(neuraxle.steps.data.EpochRepeater method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.ForceMustHandleMixin.fit">(neuraxle.steps.flow.ForceMustHandleMixin method)</a>
+</li>
         <li><a href="api/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEachDataInput.fit">(neuraxle.steps.loop.ForEachDataInput method)</a>
 </li>
         <li><a href="api/neuraxle.steps.loop.html#neuraxle.steps.loop.StepClonerForEachDataInput.fit">(neuraxle.steps.loop.StepClonerForEachDataInput method)</a>
@@ -541,6 +627,8 @@
         <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.FitCallbackStep.fit">(neuraxle.steps.misc.FitCallbackStep method)</a>
 </li>
         <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.FitTransformCallbackStep.fit">(neuraxle.steps.misc.FitTransformCallbackStep method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.InputAndOutputTransformerMixin.fit">(neuraxle.steps.output_handlers.InputAndOutputTransformerMixin method)</a>
 </li>
         <li><a href="api/neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.OutputTransformerWrapper.fit">(neuraxle.steps.output_handlers.OutputTransformerWrapper method)</a>
 </li>
@@ -555,22 +643,30 @@
 </li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.ExecutionMode.FIT_OR_FIT_TRANSFORM_OR_TRANSFORM">FIT_OR_FIT_TRANSFORM_OR_TRANSFORM (neuraxle.base.ExecutionMode attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/neuraxle.base.html#neuraxle.base.ExecutionMode.FIT_TRANSFORM">FIT_TRANSFORM (neuraxle.base.ExecutionMode attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep.fit_transform">fit_transform() (neuraxle.base.BaseStep method)</a>
 
       <ul>
         <li><a href="api/neuraxle.base.html#neuraxle.base.ForceAlwaysHandleMixin.fit_transform">(neuraxle.base.ForceAlwaysHandleMixin method)</a>
 </li>
-        <li><a href="api/neuraxle.base.html#neuraxle.base.ForceHandleMixin.fit_transform">(neuraxle.base.ForceHandleMixin method)</a>
+        <li><a href="api/neuraxle.base.html#neuraxle.base.MetaStepMixin.fit_transform">(neuraxle.base.MetaStepMixin method)</a>
+</li>
+        <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.RandomSearch.fit_transform">(neuraxle.metaopt.random.RandomSearch method)</a>
+</li>
+        <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.ValidationSplitWrapper.fit_transform">(neuraxle.metaopt.random.ValidationSplitWrapper method)</a>
 </li>
         <li><a href="api/neuraxle.pipeline.html#neuraxle.pipeline.BasePipeline.fit_transform">(neuraxle.pipeline.BasePipeline method)</a>
 </li>
         <li><a href="api/neuraxle.pipeline.html#neuraxle.pipeline.MiniBatchSequentialPipeline.fit_transform">(neuraxle.pipeline.MiniBatchSequentialPipeline method)</a>
 </li>
         <li><a href="api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline.fit_transform">(neuraxle.pipeline.Pipeline method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.data.html#neuraxle.steps.data.EpochRepeater.fit_transform">(neuraxle.steps.data.EpochRepeater method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.ForceMustHandleMixin.fit_transform">(neuraxle.steps.flow.ForceMustHandleMixin method)</a>
 </li>
         <li><a href="api/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEachDataInput.fit_transform">(neuraxle.steps.loop.ForEachDataInput method)</a>
 </li>
@@ -579,6 +675,10 @@
         <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.FitTransformCallbackStep.fit_transform">(neuraxle.steps.misc.FitTransformCallbackStep method)</a>
 </li>
         <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.TransformCallbackStep.fit_transform">(neuraxle.steps.misc.TransformCallbackStep method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.InputAndOutputTransformerMixin.fit_transform">(neuraxle.steps.output_handlers.InputAndOutputTransformerMixin method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.OutputTransformerWrapper.fit_transform">(neuraxle.steps.output_handlers.OutputTransformerWrapper method)</a>
 </li>
         <li><a href="api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper.fit_transform">(neuraxle.steps.sklearn.SKLearnWrapper method)</a>
 </li>
@@ -603,7 +703,7 @@
       </ul></li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.ForceAlwaysHandleMixin">ForceAlwaysHandleMixin (class in neuraxle.base)</a>
 </li>
-      <li><a href="api/neuraxle.base.html#neuraxle.base.ForceHandleMixin">ForceHandleMixin (class in neuraxle.base)</a>
+      <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.ForceMustHandleMixin">ForceMustHandleMixin (class in neuraxle.steps.flow)</a>
 </li>
       <li><a href="api/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEachDataInput">ForEachDataInput (class in neuraxle.steps.loop)</a>
 </li>
@@ -667,6 +767,8 @@
 </li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep.get_savers">get_savers() (neuraxle.base.BaseStep method)</a>
 </li>
+      <li><a href="api/neuraxle.base.html#neuraxle.base.MetaStepMixin.get_step">get_step() (neuraxle.base.MetaStepMixin method)</a>
+</li>
       <li><a href="api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper.get_wrapped_sklearn_predictor">get_wrapped_sklearn_predictor() (neuraxle.steps.sklearn.SKLearnWrapper method)</a>
 </li>
   </ul></td>
@@ -680,19 +782,21 @@
       <ul>
         <li><a href="api/neuraxle.base.html#neuraxle.base.ForceAlwaysHandleMixin.handle_fit">(neuraxle.base.ForceAlwaysHandleMixin method)</a>
 </li>
-        <li><a href="api/neuraxle.base.html#neuraxle.base.ForceHandleMixin.handle_fit">(neuraxle.base.ForceHandleMixin method)</a>
-</li>
-        <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.Checkpoint.handle_fit">(neuraxle.checkpoints.Checkpoint method)</a>
-</li>
         <li><a href="api/neuraxle.pipeline.html#neuraxle.pipeline.MiniBatchSequentialPipeline.handle_fit">(neuraxle.pipeline.MiniBatchSequentialPipeline method)</a>
 </li>
-        <li><a href="api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline.handle_fit">(neuraxle.pipeline.Pipeline method)</a>
+        <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.ForceMustHandleMixin.handle_fit">(neuraxle.steps.flow.ForceMustHandleMixin method)</a>
 </li>
-        <li><a href="api/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEachDataInput.handle_fit">(neuraxle.steps.loop.ForEachDataInput method)</a>
+        <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.Optional.handle_fit">(neuraxle.steps.flow.Optional method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.ReversiblePreprocessingWrapper.handle_fit">(neuraxle.steps.flow.ReversiblePreprocessingWrapper method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.TrainOrTestOnlyWrapper.handle_fit">(neuraxle.steps.flow.TrainOrTestOnlyWrapper method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.CallbackWrapper.handle_fit">(neuraxle.steps.misc.CallbackWrapper method)</a>
 </li>
         <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.HandleCallbackStep.handle_fit">(neuraxle.steps.misc.HandleCallbackStep method)</a>
 </li>
-        <li><a href="api/neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.OutputTransformerWrapper.handle_fit">(neuraxle.steps.output_handlers.OutputTransformerWrapper method)</a>
+        <li><a href="api/neuraxle.union.html#neuraxle.union.ModelStacking.handle_fit">(neuraxle.union.ModelStacking method)</a>
 </li>
       </ul></li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep.handle_fit_transform">handle_fit_transform() (neuraxle.base.BaseStep method)</a>
@@ -700,25 +804,29 @@
       <ul>
         <li><a href="api/neuraxle.base.html#neuraxle.base.ForceAlwaysHandleMixin.handle_fit_transform">(neuraxle.base.ForceAlwaysHandleMixin method)</a>
 </li>
-        <li><a href="api/neuraxle.base.html#neuraxle.base.ForceHandleMixin.handle_fit_transform">(neuraxle.base.ForceHandleMixin method)</a>
-</li>
-        <li><a href="api/neuraxle.base.html#neuraxle.base.NonFittableMixin.handle_fit_transform">(neuraxle.base.NonFittableMixin method)</a>
-</li>
-        <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.Checkpoint.handle_fit_transform">(neuraxle.checkpoints.Checkpoint method)</a>
-</li>
         <li><a href="api/neuraxle.pipeline.html#neuraxle.pipeline.MiniBatchSequentialPipeline.handle_fit_transform">(neuraxle.pipeline.MiniBatchSequentialPipeline method)</a>
 </li>
-        <li><a href="api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline.handle_fit_transform">(neuraxle.pipeline.Pipeline method)</a>
+        <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.ForceMustHandleMixin.handle_fit_transform">(neuraxle.steps.flow.ForceMustHandleMixin method)</a>
 </li>
-        <li><a href="api/neuraxle.steps.caching.html#neuraxle.steps.caching.ValueCachingWrapper.handle_fit_transform">(neuraxle.steps.caching.ValueCachingWrapper method)</a>
+        <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.Optional.handle_fit_transform">(neuraxle.steps.flow.Optional method)</a>
 </li>
-        <li><a href="api/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEachDataInput.handle_fit_transform">(neuraxle.steps.loop.ForEachDataInput method)</a>
+        <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.ReversiblePreprocessingWrapper.handle_fit_transform">(neuraxle.steps.flow.ReversiblePreprocessingWrapper method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.TrainOrTestOnlyWrapper.handle_fit_transform">(neuraxle.steps.flow.TrainOrTestOnlyWrapper method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.CallbackWrapper.handle_fit_transform">(neuraxle.steps.misc.CallbackWrapper method)</a>
 </li>
         <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.HandleCallbackStep.handle_fit_transform">(neuraxle.steps.misc.HandleCallbackStep method)</a>
 </li>
-        <li><a href="api/neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.InputAndOutputTransformerMixin.handle_fit_transform">(neuraxle.steps.output_handlers.InputAndOutputTransformerMixin method)</a>
+        <li><a href="api/neuraxle.union.html#neuraxle.union.ModelStacking.handle_fit_transform">(neuraxle.union.ModelStacking method)</a>
 </li>
-        <li><a href="api/neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.OutputTransformerWrapper.handle_fit_transform">(neuraxle.steps.output_handlers.OutputTransformerWrapper method)</a>
+      </ul></li>
+      <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep.handle_inverse_transform">handle_inverse_transform() (neuraxle.base.BaseStep method)</a>
+
+      <ul>
+        <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.CallbackWrapper.handle_inverse_transform">(neuraxle.steps.misc.CallbackWrapper method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.OutputTransformerWrapper.handle_inverse_transform">(neuraxle.steps.output_handlers.OutputTransformerWrapper method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -728,23 +836,21 @@
       <ul>
         <li><a href="api/neuraxle.base.html#neuraxle.base.ForceAlwaysHandleMixin.handle_transform">(neuraxle.base.ForceAlwaysHandleMixin method)</a>
 </li>
-        <li><a href="api/neuraxle.base.html#neuraxle.base.ForceHandleMixin.handle_transform">(neuraxle.base.ForceHandleMixin method)</a>
-</li>
-        <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.Checkpoint.handle_transform">(neuraxle.checkpoints.Checkpoint method)</a>
-</li>
         <li><a href="api/neuraxle.pipeline.html#neuraxle.pipeline.MiniBatchSequentialPipeline.handle_transform">(neuraxle.pipeline.MiniBatchSequentialPipeline method)</a>
 </li>
-        <li><a href="api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline.handle_transform">(neuraxle.pipeline.Pipeline method)</a>
+        <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.ForceMustHandleMixin.handle_transform">(neuraxle.steps.flow.ForceMustHandleMixin method)</a>
 </li>
-        <li><a href="api/neuraxle.steps.caching.html#neuraxle.steps.caching.ValueCachingWrapper.handle_transform">(neuraxle.steps.caching.ValueCachingWrapper method)</a>
+        <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.Optional.handle_transform">(neuraxle.steps.flow.Optional method)</a>
 </li>
-        <li><a href="api/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEachDataInput.handle_transform">(neuraxle.steps.loop.ForEachDataInput method)</a>
+        <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.ReversiblePreprocessingWrapper.handle_transform">(neuraxle.steps.flow.ReversiblePreprocessingWrapper method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.TrainOrTestOnlyWrapper.handle_transform">(neuraxle.steps.flow.TrainOrTestOnlyWrapper method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.CallbackWrapper.handle_transform">(neuraxle.steps.misc.CallbackWrapper method)</a>
 </li>
         <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.HandleCallbackStep.handle_transform">(neuraxle.steps.misc.HandleCallbackStep method)</a>
 </li>
-        <li><a href="api/neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.InputAndOutputTransformerMixin.handle_transform">(neuraxle.steps.output_handlers.InputAndOutputTransformerMixin method)</a>
-</li>
-        <li><a href="api/neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.OutputTransformerWrapper.handle_transform">(neuraxle.steps.output_handlers.OutputTransformerWrapper method)</a>
+        <li><a href="api/neuraxle.union.html#neuraxle.union.ModelStacking.handle_transform">(neuraxle.union.ModelStacking method)</a>
 </li>
       </ul></li>
       <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.HandleCallbackStep">HandleCallbackStep (class in neuraxle.steps.misc)</a>
@@ -756,11 +862,19 @@
 </li>
         <li><a href="api/neuraxle.base.html#neuraxle.base.HashlibMd5Hasher.hash">(neuraxle.base.HashlibMd5Hasher method)</a>
 </li>
-        <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.BaseValueHasher.hash">(neuraxle.steps.misc.BaseValueHasher method)</a>
+        <li><a href="api/neuraxle.steps.caching.html#neuraxle.steps.caching.BaseValueHasher.hash">(neuraxle.steps.caching.BaseValueHasher method)</a>
 </li>
-        <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.Md5Hasher.hash">(neuraxle.steps.misc.Md5Hasher method)</a>
+        <li><a href="api/neuraxle.steps.caching.html#neuraxle.steps.caching.Md5Hasher.hash">(neuraxle.steps.caching.Md5Hasher method)</a>
 </li>
       </ul></li>
+      <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep.hash_data_container">hash_data_container() (neuraxle.base.BaseStep method)</a>
+
+      <ul>
+        <li><a href="api/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEachDataInput.hash_data_container">(neuraxle.steps.loop.ForEachDataInput method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/neuraxle.data_container.html#neuraxle.data_container.DataContainer.hash_summary">hash_summary() (neuraxle.data_container.DataContainer method)</a>
+</li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.HashlibMd5Hasher">HashlibMd5Hasher (class in neuraxle.base)</a>
 </li>
       <li><a href="api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.HyperparameterDistribution">HyperparameterDistribution (class in neuraxle.hyperparams.distributions)</a>
@@ -788,13 +902,21 @@
 </li>
         <li><a href="api/neuraxle.steps.loop.html#neuraxle.steps.loop.StepClonerForEachDataInput.inverse_transform">(neuraxle.steps.loop.StepClonerForEachDataInput method)</a>
 </li>
+        <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.FitTransformCallbackStep.inverse_transform">(neuraxle.steps.misc.FitTransformCallbackStep method)</a>
+</li>
         <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.TransformCallbackStep.inverse_transform">(neuraxle.steps.misc.TransformCallbackStep method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.AddN.inverse_transform">(neuraxle.steps.numpy.AddN method)</a>
 </li>
         <li><a href="api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN.inverse_transform">(neuraxle.steps.numpy.MultiplyByN method)</a>
 </li>
         <li><a href="api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyShapePrinter.inverse_transform">(neuraxle.steps.numpy.NumpyShapePrinter method)</a>
 </li>
         <li><a href="api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyTranspose.inverse_transform">(neuraxle.steps.numpy.NumpyTranspose method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.InputAndOutputTransformerMixin.inverse_transform">(neuraxle.steps.output_handlers.InputAndOutputTransformerMixin method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.OutputTransformerWrapper.inverse_transform">(neuraxle.steps.output_handlers.OutputTransformerWrapper method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -841,7 +963,7 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.KFoldCrossValidation">KFoldCrossValidation (class in neuraxle.metaopt.random)</a>
+      <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.KFoldCrossValidationWrapper">KFoldCrossValidationWrapper (class in neuraxle.metaopt.random)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -849,12 +971,10 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep.load">load() (neuraxle.base.BaseStep method)</a>
-
-      <ul>
-        <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.DataShuffler.load">(neuraxle.steps.misc.DataShuffler method)</a>
+      <li><a href="api/neuraxle.data_container.html#neuraxle.data_container.ListDataContainer">ListDataContainer (class in neuraxle.data_container)</a>
 </li>
-      </ul></li>
+      <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep.load">load() (neuraxle.base.BaseStep method)</a>
+</li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.BaseSaver.load_step">load_step() (neuraxle.base.BaseSaver method)</a>
 
       <ul>
@@ -875,7 +995,7 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.Md5Hasher">Md5Hasher (class in neuraxle.steps.misc)</a>
+      <li><a href="api/neuraxle.steps.caching.html#neuraxle.steps.caching.Md5Hasher">Md5Hasher (class in neuraxle.steps.caching)</a>
 </li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep.meta_fit">meta_fit() (neuraxle.base.BaseStep method)</a>
 </li>
@@ -885,10 +1005,10 @@
 </li>
       <li><a href="api/neuraxle.pipeline.html#neuraxle.pipeline.MiniBatchSequentialPipeline">MiniBatchSequentialPipeline (class in neuraxle.pipeline)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.MiniDataCheckpointerWrapper">MiniDataCheckpointerWrapper (class in neuraxle.checkpoints)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/neuraxle.base.html#neuraxle.base.ExecutionContext.mkdir">mkdir() (neuraxle.base.ExecutionContext method)</a>
 </li>
       <li><a href="api/neuraxle.union.html#neuraxle.union.ModelStacking">ModelStacking (class in neuraxle.union)</a>
@@ -898,6 +1018,8 @@
       <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep.mutate">mutate() (neuraxle.base.BaseStep method)</a>
 
       <ul>
+        <li><a href="api/neuraxle.base.html#neuraxle.base.MetaStepMixin.mutate">(neuraxle.base.MetaStepMixin method)</a>
+</li>
         <li><a href="api/neuraxle.base.html#neuraxle.base.TruncableSteps.mutate">(neuraxle.base.TruncableSteps method)</a>
 </li>
       </ul></li>
@@ -937,6 +1059,8 @@
 </li>
       <li><a href="api/neuraxle.checkpoints.html#module-neuraxle.checkpoints">neuraxle.checkpoints (module)</a>
 </li>
+      <li><a href="api/neuraxle.data_container.html#module-neuraxle.data_container">neuraxle.data_container (module)</a>
+</li>
       <li><a href="api/neuraxle.hyperparams.distributions.html#module-neuraxle.hyperparams.distributions">neuraxle.hyperparams.distributions (module)</a>
 </li>
       <li><a href="api/neuraxle.hyperparams.space.html#module-neuraxle.hyperparams.space">neuraxle.hyperparams.space (module)</a>
@@ -945,13 +1069,19 @@
 </li>
       <li><a href="api/neuraxle.metaopt.random.html#module-neuraxle.metaopt.random">neuraxle.metaopt.random (module)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/neuraxle.metaopt.sklearn.html#module-neuraxle.metaopt.sklearn">neuraxle.metaopt.sklearn (module)</a>
 </li>
       <li><a href="api/neuraxle.pipeline.html#module-neuraxle.pipeline">neuraxle.pipeline (module)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/neuraxle.steps.caching.html#module-neuraxle.steps.caching">neuraxle.steps.caching (module)</a>
+</li>
+      <li><a href="api/neuraxle.steps.column_transformer.html#module-neuraxle.steps.column_transformer">neuraxle.steps.column_transformer (module)</a>
+</li>
+      <li><a href="api/neuraxle.steps.data.html#module-neuraxle.steps.data">neuraxle.steps.data (module)</a>
+</li>
+      <li><a href="api/neuraxle.steps.flow.html#module-neuraxle.steps.flow">neuraxle.steps.flow (module)</a>
 </li>
       <li><a href="api/neuraxle.steps.loop.html#module-neuraxle.steps.loop">neuraxle.steps.loop (module)</a>
 </li>
@@ -971,6 +1101,12 @@
 </li>
       <li><a href="api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Normal">Normal (class in neuraxle.hyperparams.distributions)</a>
 </li>
+      <li><a href="api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.HyperparameterDistribution.nullify">nullify() (neuraxle.hyperparams.distributions.HyperparameterDistribution method)</a>
+
+      <ul>
+        <li><a href="api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace.nullify">(neuraxle.hyperparams.space.HyperparameterSpace method)</a>
+</li>
+      </ul></li>
       <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.NullMiniDataCheckpointer">NullMiniDataCheckpointer (class in neuraxle.checkpoints)</a>
 </li>
       <li><a href="api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures">NumpyConcatenateInnerFeatures (class in neuraxle.steps.numpy)</a>
@@ -995,6 +1131,8 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.Optional">Optional (class in neuraxle.steps.flow)</a>
+</li>
       <li><a href="api/neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.OutputTransformerWrapper">OutputTransformerWrapper (class in neuraxle.steps.output_handlers)</a>
 </li>
   </ul></td>
@@ -1097,13 +1235,25 @@
         <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.StepSavingCheckpointer.read_checkpoint">(neuraxle.checkpoints.StepSavingCheckpointer method)</a>
 </li>
       </ul></li>
-      <li><a href="api/neuraxle.pipeline.html#neuraxle.pipeline.ResumablePipeline">ResumablePipeline (class in neuraxle.pipeline)</a>
+      <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.BaseSummaryCheckpointer.read_summary">read_summary() (neuraxle.checkpoints.BaseSummaryCheckpointer method)</a>
+
+      <ul>
+        <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.TextFileSummaryCheckpointer.read_summary">(neuraxle.checkpoints.TextFileSummaryCheckpointer method)</a>
 </li>
-      <li><a href="api/neuraxle.base.html#neuraxle.base.ResumableStepMixin">ResumableStepMixin (class in neuraxle.base)</a>
+      </ul></li>
+      <li><a href="api/neuraxle.data_container.html#neuraxle.data_container.ExpandedDataContainer.reduce_dim">reduce_dim() (neuraxle.data_container.ExpandedDataContainer method)</a>
+</li>
+      <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.TapeCallbackFunction.reset">reset() (neuraxle.steps.misc.TapeCallbackFunction method)</a>
+</li>
+      <li><a href="api/neuraxle.pipeline.html#neuraxle.pipeline.ResumablePipeline">ResumablePipeline (class in neuraxle.pipeline)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/neuraxle.base.html#neuraxle.base.ResumableStepMixin">ResumableStepMixin (class in neuraxle.base)</a>
+</li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep.reverse">reverse() (neuraxle.base.BaseStep method)</a>
+</li>
+      <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.ReversiblePreprocessingWrapper">ReversiblePreprocessingWrapper (class in neuraxle.steps.flow)</a>
 </li>
       <li><a href="api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.RidgeModelStacking">RidgeModelStacking (class in neuraxle.steps.sklearn)</a>
 </li>
@@ -1167,18 +1317,32 @@
         <li><a href="api/neuraxle.base.html#neuraxle.base.TruncableJoblibStepSaver.save_step">(neuraxle.base.TruncableJoblibStepSaver method)</a>
 </li>
       </ul></li>
+      <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.BaseSummaryCheckpointer.save_summary">save_summary() (neuraxle.checkpoints.BaseSummaryCheckpointer method)</a>
+
+      <ul>
+        <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.TextFileSummaryCheckpointer.save_summary">(neuraxle.checkpoints.TextFileSummaryCheckpointer method)</a>
+</li>
+      </ul></li>
       <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.NullMiniDataCheckpointer.set_checkpoint_type">set_checkpoint_type() (neuraxle.checkpoints.NullMiniDataCheckpointer method)</a>
 
       <ul>
         <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.PickleMiniDataCheckpointer.set_checkpoint_type">(neuraxle.checkpoints.PickleMiniDataCheckpointer method)</a>
 </li>
       </ul></li>
+      <li><a href="api/neuraxle.data_container.html#neuraxle.data_container.DataContainer.set_current_ids">set_current_ids() (neuraxle.data_container.DataContainer method)</a>
+</li>
+      <li><a href="api/neuraxle.data_container.html#neuraxle.data_container.DataContainer.set_data_inputs">set_data_inputs() (neuraxle.data_container.DataContainer method)</a>
+</li>
+      <li><a href="api/neuraxle.data_container.html#neuraxle.data_container.DataContainer.set_expected_outputs">set_expected_outputs() (neuraxle.data_container.DataContainer method)</a>
+</li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep.set_hyperparams">set_hyperparams() (neuraxle.base.BaseStep method)</a>
 
       <ul>
         <li><a href="api/neuraxle.base.html#neuraxle.base.MetaStepMixin.set_hyperparams">(neuraxle.base.MetaStepMixin method)</a>
 </li>
         <li><a href="api/neuraxle.base.html#neuraxle.base.TruncableSteps.set_hyperparams">(neuraxle.base.TruncableSteps method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.ChooseOneStepOf.set_hyperparams">(neuraxle.steps.flow.ChooseOneStepOf method)</a>
 </li>
         <li><a href="api/neuraxle.steps.loop.html#neuraxle.steps.loop.StepClonerForEachDataInput.set_hyperparams">(neuraxle.steps.loop.StepClonerForEachDataInput method)</a>
 </li>
@@ -1199,13 +1363,15 @@
 </li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep.set_params">set_params() (neuraxle.base.BaseStep method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep.set_savers">set_savers() (neuraxle.base.BaseStep method)</a>
 </li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.MetaStepMixin.set_step">set_step() (neuraxle.base.MetaStepMixin method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/neuraxle.base.html#neuraxle.base.TruncableSteps.set_steps">set_steps() (neuraxle.base.TruncableSteps method)</a>
+</li>
+      <li><a href="api/neuraxle.data_container.html#neuraxle.data_container.DataContainer.set_summary_id">set_summary_id() (neuraxle.data_container.DataContainer method)</a>
 </li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep.set_train">set_train() (neuraxle.base.BaseStep method)</a>
 
@@ -1223,9 +1389,11 @@
         <li><a href="api/neuraxle.base.html#neuraxle.base.TruncableSteps.setup">(neuraxle.base.TruncableSteps method)</a>
 </li>
       </ul></li>
-      <li><a href="api/neuraxle.base.html#neuraxle.base.ResumableStepMixin.should_resume">should_resume() (neuraxle.base.ResumableStepMixin method)</a>
+      <li><a href="api/neuraxle.base.html#neuraxle.base.MetaStepMixin.should_resume">should_resume() (neuraxle.base.MetaStepMixin method)</a>
 
       <ul>
+        <li><a href="api/neuraxle.base.html#neuraxle.base.ResumableStepMixin.should_resume">(neuraxle.base.ResumableStepMixin method)</a>
+</li>
         <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.BaseCheckpointer.should_resume">(neuraxle.checkpoints.BaseCheckpointer method)</a>
 </li>
         <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.Checkpoint.should_resume">(neuraxle.checkpoints.Checkpoint method)</a>
@@ -1236,6 +1404,10 @@
 </li>
         <li><a href="api/neuraxle.pipeline.html#neuraxle.pipeline.ResumablePipeline.should_resume">(neuraxle.pipeline.ResumablePipeline method)</a>
 </li>
+        <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.ExpandDim.should_resume">(neuraxle.steps.flow.ExpandDim method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEachDataInput.should_resume">(neuraxle.steps.loop.ForEachDataInput method)</a>
+</li>
       </ul></li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep.should_save">should_save() (neuraxle.base.BaseStep method)</a>
 
@@ -1245,6 +1417,12 @@
       </ul></li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.ExecutionContext.should_save_last_step">should_save_last_step() (neuraxle.base.ExecutionContext method)</a>
 </li>
+      <li><a href="api/neuraxle.base.html#neuraxle.base.BaseHasher.single_hash">single_hash() (neuraxle.base.BaseHasher method)</a>
+
+      <ul>
+        <li><a href="api/neuraxle.base.html#neuraxle.base.HashlibMd5Hasher.single_hash">(neuraxle.base.HashlibMd5Hasher method)</a>
+</li>
+      </ul></li>
       <li><a href="api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper">SKLearnWrapper (class in neuraxle.steps.sklearn)</a>
 </li>
       <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.Sleep">Sleep (class in neuraxle.steps.misc)</a>
@@ -1252,16 +1430,22 @@
       <li><a href="api/neuraxle.base.html#neuraxle.base.TruncableSteps.split">split() (neuraxle.base.TruncableSteps method)</a>
 
       <ul>
-        <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidation.split">(neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidation method)</a>
+        <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidationWrapper.split">(neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidationWrapper method)</a>
 </li>
-        <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.BaseCrossValidation.split">(neuraxle.metaopt.random.BaseCrossValidation method)</a>
+        <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.BaseCrossValidationWrapper.split">(neuraxle.metaopt.random.BaseCrossValidationWrapper method)</a>
 </li>
-        <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.KFoldCrossValidation.split">(neuraxle.metaopt.random.KFoldCrossValidation method)</a>
+        <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.KFoldCrossValidationWrapper.split">(neuraxle.metaopt.random.KFoldCrossValidationWrapper method)</a>
+</li>
+        <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.ValidationSplitWrapper.split">(neuraxle.metaopt.random.ValidationSplitWrapper method)</a>
 </li>
       </ul></li>
+      <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.ValidationSplitWrapper.split_data_container">split_data_container() (neuraxle.metaopt.random.ValidationSplitWrapper method)</a>
+</li>
       <li><a href="api/neuraxle.steps.loop.html#neuraxle.steps.loop.StepClonerForEachDataInput">StepClonerForEachDataInput (class in neuraxle.steps.loop)</a>
 </li>
       <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.StepSavingCheckpointer">StepSavingCheckpointer (class in neuraxle.checkpoints)</a>
+</li>
+      <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep.summary_hash">summary_hash() (neuraxle.base.BaseStep method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1277,6 +1461,10 @@
         <li><a href="api/neuraxle.base.html#neuraxle.base.TruncableSteps.teardown">(neuraxle.base.TruncableSteps method)</a>
 </li>
       </ul></li>
+      <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.TestOnlyWrapper">TestOnlyWrapper (class in neuraxle.steps.flow)</a>
+</li>
+      <li><a href="api/neuraxle.checkpoints.html#neuraxle.checkpoints.TextFileSummaryCheckpointer">TextFileSummaryCheckpointer (class in neuraxle.checkpoints)</a>
+</li>
       <li><a href="api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples.to_flat">to_flat() (neuraxle.hyperparams.space.HyperparameterSamples method)</a>
 
       <ul>
@@ -1299,12 +1487,18 @@
 </li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep.tosklearn">tosklearn() (neuraxle.base.BaseStep method)</a>
 </li>
-      <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidation.train_split">train_split() (neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidation method)</a>
+      <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidationWrapper.train_split">train_split() (neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidationWrapper method)</a>
 
       <ul>
-        <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.KFoldCrossValidation.train_split">(neuraxle.metaopt.random.KFoldCrossValidation method)</a>
+        <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.KFoldCrossValidationWrapper.train_split">(neuraxle.metaopt.random.KFoldCrossValidationWrapper method)</a>
+</li>
+        <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.ValidationSplitWrapper.train_split">(neuraxle.metaopt.random.ValidationSplitWrapper method)</a>
 </li>
       </ul></li>
+      <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.TrainOnlyWrapper">TrainOnlyWrapper (class in neuraxle.steps.flow)</a>
+</li>
+      <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.TrainOrTestOnlyWrapper">TrainOrTestOnlyWrapper (class in neuraxle.steps.flow)</a>
+</li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.ExecutionMode.TRANSFORM">TRANSFORM (neuraxle.base.ExecutionMode attribute)</a>
 </li>
       <li><a href="api/neuraxle.api.flask.html#neuraxle.api.flask.JSONDataBodyDecoder.transform">transform() (neuraxle.api.flask.JSONDataBodyDecoder method)</a>
@@ -1316,11 +1510,11 @@
 </li>
         <li><a href="api/neuraxle.base.html#neuraxle.base.ForceAlwaysHandleMixin.transform">(neuraxle.base.ForceAlwaysHandleMixin method)</a>
 </li>
-        <li><a href="api/neuraxle.base.html#neuraxle.base.ForceHandleMixin.transform">(neuraxle.base.ForceHandleMixin method)</a>
+        <li><a href="api/neuraxle.base.html#neuraxle.base.MetaStepMixin.transform">(neuraxle.base.MetaStepMixin method)</a>
 </li>
         <li><a href="api/neuraxle.base.html#neuraxle.base.NonTransformableMixin.transform">(neuraxle.base.NonTransformableMixin method)</a>
 </li>
-        <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.BaseCrossValidation.transform">(neuraxle.metaopt.random.BaseCrossValidation method)</a>
+        <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.BaseCrossValidationWrapper.transform">(neuraxle.metaopt.random.BaseCrossValidationWrapper method)</a>
 </li>
         <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.RandomSearch.transform">(neuraxle.metaopt.random.RandomSearch method)</a>
 </li>
@@ -1334,6 +1528,14 @@
 </li>
         <li><a href="api/neuraxle.steps.caching.html#neuraxle.steps.caching.PickleValueCachingWrapper.transform">(neuraxle.steps.caching.PickleValueCachingWrapper method)</a>
 </li>
+        <li><a href="api/neuraxle.steps.column_transformer.html#neuraxle.steps.column_transformer.ColumnSelector2D.transform">(neuraxle.steps.column_transformer.ColumnSelector2D method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.column_transformer.html#neuraxle.steps.column_transformer.ColumnsSelectorND.transform">(neuraxle.steps.column_transformer.ColumnsSelectorND method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.data.html#neuraxle.steps.data.DataShuffler.transform">(neuraxle.steps.data.DataShuffler method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.ForceMustHandleMixin.transform">(neuraxle.steps.flow.ForceMustHandleMixin method)</a>
+</li>
         <li><a href="api/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEachDataInput.transform">(neuraxle.steps.loop.ForEachDataInput method)</a>
 </li>
         <li><a href="api/neuraxle.steps.loop.html#neuraxle.steps.loop.StepClonerForEachDataInput.transform">(neuraxle.steps.loop.StepClonerForEachDataInput method)</a>
@@ -1343,6 +1545,8 @@
         <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.Sleep.transform">(neuraxle.steps.misc.Sleep method)</a>
 </li>
         <li><a href="api/neuraxle.steps.misc.html#neuraxle.steps.misc.TransformCallbackStep.transform">(neuraxle.steps.misc.TransformCallbackStep method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.AddN.transform">(neuraxle.steps.numpy.AddN method)</a>
 </li>
         <li><a href="api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN.transform">(neuraxle.steps.numpy.MultiplyByN method)</a>
 </li>
@@ -1355,6 +1559,8 @@
         <li><a href="api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyTranspose.transform">(neuraxle.steps.numpy.NumpyTranspose method)</a>
 </li>
         <li><a href="api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.OneHotEncoder.transform">(neuraxle.steps.numpy.OneHotEncoder method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.InputAndOutputTransformerMixin.transform">(neuraxle.steps.output_handlers.InputAndOutputTransformerMixin method)</a>
 </li>
         <li><a href="api/neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.OutputTransformerWrapper.transform">(neuraxle.steps.output_handlers.OutputTransformerWrapper method)</a>
 </li>
@@ -1381,12 +1587,22 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Uniform">Uniform (class in neuraxle.hyperparams.distributions)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.HyperparameterDistribution.unnarrow">unnarrow() (neuraxle.hyperparams.distributions.HyperparameterDistribution method)</a>
 
       <ul>
         <li><a href="api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace.unnarrow">(neuraxle.hyperparams.space.HyperparameterSpace method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep.update_hyperparams">update_hyperparams() (neuraxle.base.BaseStep method)</a>
+
+      <ul>
+        <li><a href="api/neuraxle.base.html#neuraxle.base.MetaStepMixin.update_hyperparams">(neuraxle.base.MetaStepMixin method)</a>
+</li>
+        <li><a href="api/neuraxle.base.html#neuraxle.base.TruncableSteps.update_hyperparams">(neuraxle.base.TruncableSteps method)</a>
+</li>
+        <li><a href="api/neuraxle.steps.loop.html#neuraxle.steps.loop.StepClonerForEachDataInput.update_hyperparams">(neuraxle.steps.loop.StepClonerForEachDataInput method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -1395,14 +1611,18 @@
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidation.validation_split">validation_split() (neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidation method)</a>
+      <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidationWrapper.validation_split">validation_split() (neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidationWrapper method)</a>
 
       <ul>
-        <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.KFoldCrossValidation.validation_split">(neuraxle.metaopt.random.KFoldCrossValidation method)</a>
+        <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.KFoldCrossValidationWrapper.validation_split">(neuraxle.metaopt.random.KFoldCrossValidationWrapper method)</a>
+</li>
+        <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.ValidationSplitWrapper.validation_split">(neuraxle.metaopt.random.ValidationSplitWrapper method)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.ValidationSplitWrapper">ValidationSplitWrapper (class in neuraxle.metaopt.random)</a>
+</li>
       <li><a href="api/neuraxle.steps.caching.html#neuraxle.steps.caching.ValueCachingWrapper">ValueCachingWrapper (class in neuraxle.steps.caching)</a>
 </li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.TruncableSteps.values">values() (neuraxle.base.TruncableSteps method)</a>
@@ -1413,12 +1633,16 @@
 <h2 id="W">W</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.WalkForwardTimeSeriesCrossValidation">WalkForwardTimeSeriesCrossValidation (class in neuraxle.metaopt.random)</a>
+      <li><a href="api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.WalkForwardTimeSeriesCrossValidationWrapper">WalkForwardTimeSeriesCrossValidationWrapper (class in neuraxle.metaopt.random)</a>
 </li>
       <li><a href="api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.HyperparameterDistribution.was_narrowed_from">was_narrowed_from() (neuraxle.hyperparams.distributions.HyperparameterDistribution method)</a>
 </li>
       <li><a href="api/neuraxle.base.html#neuraxle.base.BaseStep.will_mutate_to">will_mutate_to() (neuraxle.base.BaseStep method)</a>
+
+      <ul>
+        <li><a href="api/neuraxle.base.html#neuraxle.base.MetaStepMixin.will_mutate_to">(neuraxle.base.MetaStepMixin method)</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions">WrappedHyperparameterDistributions (class in neuraxle.hyperparams.distributions)</a>

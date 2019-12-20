@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>neuraxle.base &mdash; Neuraxle 0.2.1 documentation</title>
+  <title>neuraxle.base &mdash; Neuraxle 0.2.2 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -191,6 +191,10 @@
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.pipeline.html#neuraxle-s-pipeline-classes">Neuraxle’s Pipeline Classes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.data_container.html">neuraxle.data_container</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.data_container.html#neuraxle-s-datacontainer-classes">Neuraxle’s DataContainer classes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="neuraxle.union.html">neuraxle.union</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.union.html#union-of-features">Union of Features</a></li>
 </ul>
@@ -201,6 +205,18 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.numpy.html">neuraxle.steps.numpy</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.numpy.html#pipeline-steps-based-on-numpy">Pipeline Steps Based on NumPy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.flow.html">neuraxle.steps.flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.flow.html#neuraxle-s-flow-steps">Neuraxle’s Flow Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.data.html">neuraxle.steps.data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.data.html#data-steps">Data Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.column_transformer.html">neuraxle.steps.column_transformer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.column_transformer.html#neuraxle-s-column-transformer-steps">Neuraxle’s Column Transformer Steps</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
@@ -351,50 +367,47 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseStep</span></code></a>(hyperparams, hyperparams_space, …)</p></td>
 <td><p>Base class for a pipeline step.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>(execution_mode, root, …)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>(root, execution_mode, …)</p></td>
 <td><p>Execution context object containing all of the pipeline hierarchy steps.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.base.ExecutionMode" title="neuraxle.base.ExecutionMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExecutionMode</span></code></a></p></td>
 <td><p>An enumeration.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.base.ForceAlwaysHandleMixin" title="neuraxle.base.ForceAlwaysHandleMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ForceAlwaysHandleMixin</span></code></a></p></td>
-<td><p>A pipeline step that only requires the implementation of handler methods :</p></td>
+<td><p>A pipeline step that requires the implementation only of handler methods :</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.base.ForceHandleMixin" title="neuraxle.base.ForceHandleMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ForceHandleMixin</span></code></a></p></td>
-<td><p>A pipeline step that only requires the implementation of handler methods :</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.base.HashlibMd5Hasher" title="neuraxle.base.HashlibMd5Hasher"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HashlibMd5Hasher</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.base.HashlibMd5Hasher" title="neuraxle.base.HashlibMd5Hasher"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HashlibMd5Hasher</span></code></a></p></td>
 <td><p>Class to hash hyperparamters, and data input ids together using md5 algorithm from hashlib : <a class="reference external" href="https://docs.python.org/3/library/hashlib.html">https://docs.python.org/3/library/hashlib.html</a></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.base.Identity" title="neuraxle.base.Identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Identity</span></code></a>([savers, name])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.base.Identity" title="neuraxle.base.Identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Identity</span></code></a>([savers, name])</p></td>
 <td><p>A pipeline step that has no effect at all but to return the same data without changes.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.base.JoblibStepSaver" title="neuraxle.base.JoblibStepSaver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">JoblibStepSaver</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.base.JoblibStepSaver" title="neuraxle.base.JoblibStepSaver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">JoblibStepSaver</span></code></a></p></td>
 <td><p>Saver that can save, or load a step with <a class="reference external" href="https://joblib.readthedocs.io/en/latest/generated/joblib.load.html">joblib.load</a>, and <a class="reference external" href="https://joblib.readthedocs.io/en/latest/generated/joblib.dump.html">joblib.dump</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.base.MetaStepMixin" title="neuraxle.base.MetaStepMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MetaStepMixin</span></code></a>(wrapped)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.base.MetaStepMixin" title="neuraxle.base.MetaStepMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MetaStepMixin</span></code></a>(wrapped)</p></td>
 <td><p>A class to represent a step that wraps another step.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.base.NonFittableMixin" title="neuraxle.base.NonFittableMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonFittableMixin</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.base.NonFittableMixin" title="neuraxle.base.NonFittableMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonFittableMixin</span></code></a></p></td>
 <td><p>A pipeline step that requires no fitting: fitting just returns self when called to do no action.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.base.NonTransformableMixin" title="neuraxle.base.NonTransformableMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonTransformableMixin</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.base.NonTransformableMixin" title="neuraxle.base.NonTransformableMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonTransformableMixin</span></code></a></p></td>
 <td><p>A pipeline step that has no effect at all but to return the same data without changes.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.base.ResumableStepMixin" title="neuraxle.base.ResumableStepMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ResumableStepMixin</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.base.ResumableStepMixin" title="neuraxle.base.ResumableStepMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ResumableStepMixin</span></code></a></p></td>
 <td><p>Mixin to add resumable function to a step, or a class that can be resumed, for example a checkpoint on disk.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.base.TruncableJoblibStepSaver" title="neuraxle.base.TruncableJoblibStepSaver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TruncableJoblibStepSaver</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.base.TruncableJoblibStepSaver" title="neuraxle.base.TruncableJoblibStepSaver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TruncableJoblibStepSaver</span></code></a>()</p></td>
 <td><p>Step saver for a TruncableSteps.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.base.TruncableSteps" title="neuraxle.base.TruncableSteps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TruncableSteps</span></code></a>(steps_as_tuple, BaseStep], …)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.base.TruncableSteps" title="neuraxle.base.TruncableSteps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TruncableSteps</span></code></a>(steps_as_tuple, BaseStep], …)</p></td>
 <td><p>Step that contains multiple steps.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="class">
 <dt id="neuraxle.base.BaseHasher">
-<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">BaseHasher</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L47"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseHasher" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">BaseHasher</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L47"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseHasher" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base class to hash hyperparamters, and data input ids together.
 The <code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code> class uses the hashed values for its current ids.
 <a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a> uses many <a class="reference internal" href="#neuraxle.base.BaseHasher" title="neuraxle.base.BaseHasher"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHasher</span></code></a> objects
@@ -405,7 +418,7 @@ to hash hyperparameters, and data inputs ids together after each transform.</p>
 </div>
 <dl class="method">
 <dt id="neuraxle.base.BaseHasher.hash">
-<code class="descname">hash</code><span class="sig-paren">(</span><em>current_ids: List[str], hyperparameters: neuraxle.hyperparams.space.HyperparameterSamples, data_inputs: Iterable</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L60"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseHasher.hash" title="Permalink to this definition">¶</a></dt>
+<code class="descname">hash</code><span class="sig-paren">(</span><em>current_ids: List[str], hyperparameters: neuraxle.hyperparams.space.HyperparameterSamples, data_inputs: Iterable</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L72"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseHasher.hash" title="Permalink to this definition">¶</a></dt>
 <dd><p>Hash <code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code>.current_ids, data inputs, and hyperparameters together.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -424,11 +437,31 @@ to hash hyperparameters, and data inputs ids together after each transform.</p>
 </dl>
 </dd></dl>
 
+<dl class="method">
+<dt id="neuraxle.base.BaseHasher.single_hash">
+<code class="descname">single_hash</code><span class="sig-paren">(</span><em>current_id: str</em>, <em>hyperparameters: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseHasher.single_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hash summary id, and hyperparameters together.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>current_id</strong> – current hashed id</p></li>
+<li><p><strong>hyperparameters</strong> (<a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><em>HyperparameterSamples</em></a>) – step hyperparameters to hash with current ids</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the new hashed current id</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
 <dt id="neuraxle.base.BaseSaver">
-<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">BaseSaver</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L128"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseSaver" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">BaseSaver</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L161"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseSaver" title="Permalink to this definition">¶</a></dt>
 <dd><p>Any saver must inherit from this one. Some savers just save parts of objects, some save it all or what remains.
 Each :class`BaseStep` can potentially have multiple savers to make serialization possible.</p>
 <div class="admonition seealso">
@@ -438,7 +471,7 @@ Each :class`BaseStep` can potentially have multiple savers to make serialization
 </div>
 <dl class="method">
 <dt id="neuraxle.base.BaseSaver.can_load">
-<code class="descname">can_load</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseStep</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L151"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseSaver.can_load" title="Permalink to this definition">¶</a></dt>
+<code class="descname">can_load</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseStep</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L184"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseSaver.can_load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns true if we can load the given step with the given execution context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -455,7 +488,7 @@ Each :class`BaseStep` can potentially have multiple savers to make serialization
 
 <dl class="method">
 <dt id="neuraxle.base.BaseSaver.load_step">
-<code class="descname">load_step</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseStep</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L164"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseSaver.load_step" title="Permalink to this definition">¶</a></dt>
+<code class="descname">load_step</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseStep</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L197"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseSaver.load_step" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load step with execution context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -472,7 +505,7 @@ Each :class`BaseStep` can potentially have multiple savers to make serialization
 
 <dl class="method">
 <dt id="neuraxle.base.BaseSaver.save_step">
-<code class="descname">save_step</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseStep</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L138"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseSaver.save_step" title="Permalink to this definition">¶</a></dt>
+<code class="descname">save_step</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseStep</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L171"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseSaver.save_step" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save step with execution context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -491,7 +524,7 @@ Each :class`BaseStep` can potentially have multiple savers to make serialization
 
 <dl class="class">
 <dt id="neuraxle.base.BaseStep">
-<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">BaseStep</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples = None</em>, <em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace = None</em>, <em>name: str = None</em>, <em>savers: List[neuraxle.base.BaseSaver] = None</em>, <em>hashers: List[neuraxle.base.BaseHasher] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L427"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">BaseStep</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples = None</em>, <em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace = None</em>, <em>name: str = None</em>, <em>savers: List[neuraxle.base.BaseSaver] = None</em>, <em>hashers: List[neuraxle.base.BaseHasher] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L449"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base class for a pipeline step.</p>
 <dl class="simple">
 <dt>Every step must implement :</dt><dd><ul class="simple">
@@ -557,8 +590,50 @@ Hyperparameters can not only be passed in the constructor, but also be set by th
 <code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></p>
 </div>
 <dl class="method">
+<dt id="neuraxle.base.BaseStep.apply">
+<code class="descname">apply</code><span class="sig-paren">(</span><em>method_name: str</em>, <em>*kargs</em>, <em>**kwargs</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L869"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a method to a step and its children.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method_name</strong> – method name that need to be called on all steps</p></li>
+<li><p><strong>kargs</strong> – any additional arguments to be passed to the method</p></li>
+<li><p><strong>kwargs</strong> – any additional positional arguments to be passed to the method</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self (not a new step)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep">BaseStep</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.base.BaseStep.apply_method">
+<code class="descname">apply_method</code><span class="sig-paren">(</span><em>method: Callable</em>, <em>*kargs</em>, <em>**kwargs</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L856"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.apply_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a method to a step and its children.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method</strong> – method to call with self</p></li>
+<li><p><strong>kargs</strong> – any additional arguments to be passed to the method</p></li>
+<li><p><strong>kwargs</strong> – any additional positional arguments to be passed to the method</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self (not a new step)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep">BaseStep</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.base.BaseStep.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L831"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1113"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit step with the given data inputs, and expected outputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -578,7 +653,7 @@ Hyperparameters can not only be passed in the constructor, but also be set by th
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.fit_transform">
-<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None) -&gt; ('BaseStep'</em>, <em>typing.Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L815"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.fit_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None) -&gt; ('BaseStep'</em>, <em>typing.Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1097"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit, and transform step with the given data inputs, and expected outputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -598,7 +673,7 @@ Hyperparameters can not only be passed in the constructor, but also be set by th
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.get_hyperparams">
-<code class="descname">get_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L659"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.get_hyperparams" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L737"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.get_hyperparams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get step hyperparameters as <a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.hyperparams.space.HyperparameterSamples</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -618,7 +693,7 @@ Hyperparameters can not only be passed in the constructor, but also be set by th
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.get_hyperparams_space">
-<code class="descname">get_hyperparams_space</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L736"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.get_hyperparams_space" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_hyperparams_space</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L814"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.get_hyperparams_space" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get step hyperparameters space.</p>
 <p>Example :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">step</span><span class="o">.</span><span class="n">get_hyperparams_space</span><span class="p">()</span>
@@ -641,7 +716,7 @@ Hyperparameters can not only be passed in the constructor, but also be set by th
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.get_name">
-<code class="descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L600"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.get_name" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L644"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.get_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the name of the pipeline step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -653,13 +728,13 @@ Hyperparameters can not only be passed in the constructor, but also be set by th
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>A step name is the same value as the one in the keys of <code class="xref any docutils literal notranslate"><span class="pre">~neuraxle.pipeline.Pipeline.steps_as_tuple</span></code></p>
+<p>A step name is the same value as the one in the keys of <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>.steps_as_tuple</p>
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.get_params">
-<code class="descname">get_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; dict<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L691"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.get_params" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; dict<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L769"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get step hyperparameters as a flat primitive dict.</p>
 <p>Example :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
@@ -683,7 +758,7 @@ Hyperparameters can not only be passed in the constructor, but also be set by th
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.get_savers">
-<code class="descname">get_savers</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[neuraxle.base.BaseSaver]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L611"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.get_savers" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_savers</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[neuraxle.base.BaseSaver]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L655"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.get_savers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the step savers of a pipeline step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -701,7 +776,7 @@ Hyperparameters can not only be passed in the constructor, but also be set by th
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.handle_fit">
-<code class="descname">handle_fit</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L756"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.handle_fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">handle_fit</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L884"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.handle_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Override this to add side effects or change the execution flow before (or after) calling <a class="reference internal" href="#neuraxle.base.BaseStep.fit" title="neuraxle.base.BaseStep.fit"><code class="xref py py-func docutils literal notranslate"><span class="pre">fit()</span></code></a>.
 The default behavior is to rehash current ids with the step hyperparameters.</p>
 <dl class="field-list simple">
@@ -724,7 +799,7 @@ The default behavior is to rehash current ids with the step hyperparameters.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.handle_fit_transform">
-<code class="descname">handle_fit_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L778"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.handle_fit_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">handle_fit_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L904"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.handle_fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Override this to add side effects or change the execution flow before (or after) calling * <a class="reference internal" href="#neuraxle.base.BaseStep.fit_transform" title="neuraxle.base.BaseStep.fit_transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">fit_transform()</span></code></a>.
 The default behavior is to rehash current ids with the step hyperparameters.</p>
 <dl class="field-list simple">
@@ -741,8 +816,31 @@ The default behavior is to rehash current ids with the step hyperparameters.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.base.BaseStep.handle_inverse_transform">
+<code class="descname">handle_inverse_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L833"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.handle_inverse_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this to add side effects or change the execution flow before (or after) calling <a class="reference internal" href="#neuraxle.base.BaseStep.inverse_transform" title="neuraxle.base.BaseStep.inverse_transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">inverse_transform()</span></code></a>.
+The default behavior is to rehash current ids with the step hyperparameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> – the data container to inverse transform</p></li>
+<li><p><strong>context</strong> – execution context</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>data_container</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code>,
+<a class="reference internal" href="neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.pipeline.Pipeline</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.base.BaseStep.handle_transform">
-<code class="descname">handle_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L798"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.handle_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">handle_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L923"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.handle_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Override this to add side effects or change the execution flow before (or after) calling * <a class="reference internal" href="#neuraxle.base.BaseStep.transform" title="neuraxle.base.BaseStep.transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">transform()</span></code></a>.
 The default behavior is to rehash current ids with the step hyperparameters.</p>
 <dl class="field-list simple">
@@ -760,12 +858,12 @@ The default behavior is to rehash current ids with the step hyperparameters.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.hash">
-<code class="descname">hash</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L526"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.hash" title="Permalink to this definition">¶</a></dt>
+<code class="descname">hash</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L570"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.hash" title="Permalink to this definition">¶</a></dt>
 <dd><p>Hash data inputs, current ids, and hyperparameters together using self.hashers.
 This is used to create unique ids for the data checkpoints.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data_container</strong> (<em>DataContainer</em>) – data container</p>
+<dd class="field-odd"><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><em>DataContainer</em></a>) – data container</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>hashed current ids</p>
@@ -781,8 +879,29 @@ This is used to create unique ids for the data checkpoints.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.base.BaseStep.hash_data_container">
+<code class="descname">hash_data_container</code><span class="sig-paren">(</span><em>data_container</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1072"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.hash_data_container" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hash data container using self.hashers.</p>
+<ol class="arabic simple">
+<li><p>Hash current ids with hyperparams.</p></li>
+<li><p>Hash summary id with hyperparams.</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><em>DataContainer</em></a>) – the data container to transform</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>transformed data container</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer">DataContainer</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.base.BaseStep.inverse_transform">
-<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L858"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1140"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.inverse_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse Transform the given transformed data inputs.</p>
 <p><a class="reference internal" href="#neuraxle.base.BaseStep.mutate" title="neuraxle.base.BaseStep.mutate"><code class="xref py py-func docutils literal notranslate"><span class="pre">mutate()</span></code></a> or <a class="reference internal" href="#neuraxle.base.BaseStep.reverse" title="neuraxle.base.BaseStep.reverse"><code class="xref py py-func docutils literal notranslate"><span class="pre">reverse()</span></code></a> can be called to change the default transform behavior :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span><span class="n">MultiplyBy</span><span class="p">()])</span>
@@ -811,7 +930,7 @@ This is used to create unique ids for the data checkpoints.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.load">
-<code class="descname">load</code><span class="sig-paren">(</span><em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L947"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.load" title="Permalink to this definition">¶</a></dt>
+<code class="descname">load</code><span class="sig-paren">(</span><em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1231"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load step using the execution context to create the directory of the saved step.
 Warning:</p>
 <dl class="field-list simple">
@@ -836,7 +955,7 @@ step that will load whatever step you coded.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.meta_fit">
-<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L980"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.meta_fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">meta_fit</code><span class="sig-paren">(</span><em>X_train</em>, <em>y_train</em>, <em>metastep: neuraxle.base.MetaStepMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1266"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.meta_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uses a meta optimization technique (AutoML) to find the best hyperparameters in the given
 hyperparameter space.</p>
 <p>Usage: <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">p.meta_fit(X_train,</span> <span class="pre">y_train,</span> <span class="pre">metastep=RandomSearch(n_iter=10,</span> <span class="pre">scoring_function=r2_score,</span> <span class="pre">higher_score_is_better=True))</span></code></p>
@@ -858,7 +977,7 @@ current estimator will become</p>
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.mutate">
-<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1000"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.mutate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1286"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.mutate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Replace the “method_to_assign_to” method by the “new_method” method, IF the present object has no pending calls to
 <code class="docutils literal notranslate"><span class="pre">.will_mutate_to()</span></code> waiting to be applied. If there is a pending call, the pending call will override the
 methods specified in the present call. If the change fails (such as if the new_method doesn’t exist), then
@@ -881,7 +1000,7 @@ to assign <code class="docutils literal notranslate"><span class="pre">predict_p
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.predict">
-<code class="descname">predict</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L882"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.predict" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict</code><span class="sig-paren">(</span><em>data_input</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1164"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict data input expected output using transform method.
 This is simply a shorthand method that does the same thing as func:<cite>~.transform</cite>.</p>
 <dl class="field-list simple">
@@ -899,7 +1018,7 @@ This is simply a shorthand method that does the same thing as func:<cite>~.trans
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.reverse">
-<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1136"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.reverse" title="Permalink to this definition">¶</a></dt>
+<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1422"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.reverse" title="Permalink to this definition">¶</a></dt>
 <dd><p>The object will mutate itself such that the <code class="docutils literal notranslate"><span class="pre">.transform</span></code> method (and of all its underlying objects
 if applicable) be replaced by the <code class="docutils literal notranslate"><span class="pre">.inverse_transform</span></code> method.</p>
 <p>Note: the reverse may fail if there is a pending mutate that was set earlier with <code class="docutils literal notranslate"><span class="pre">.will_mutate_to</span></code>.</p>
@@ -917,11 +1036,11 @@ if applicable) be replaced by the <code class="docutils literal notranslate"><sp
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L911"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.save" title="Permalink to this definition">¶</a></dt>
+<code class="descname">save</code><span class="sig-paren">(</span><em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1193"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save step using the execution context to create the directory to save the step into.
 The saving happens by looping through all of the step savers in the reversed order.</p>
 <p>Some savers just save parts of objects, some save it all or what remains.
-The <code class="xref any docutils literal notranslate"><span class="pre">~neuraxle.base.ExecutionContext.stripped_saver</span></code> has to be called last because it needs a
+The <a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>.stripped_saver has to be called last because it needs a
 stripped version of the step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -943,7 +1062,7 @@ stripped version of the step.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.set_hyperparams">
-<code class="descname">set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L636"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.set_hyperparams" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L680"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.set_hyperparams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the step hyperparameters.</p>
 <p>Example :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">step</span><span class="o">.</span><span class="n">set_hyperparams</span><span class="p">(</span><span class="n">HyperparameterSamples</span><span class="p">({</span>
@@ -970,7 +1089,7 @@ stripped version of the step.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.set_hyperparams_space">
-<code class="descname">set_hyperparams_space</code><span class="sig-paren">(</span><em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L711"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.set_hyperparams_space" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_hyperparams_space</code><span class="sig-paren">(</span><em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L789"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.set_hyperparams_space" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set step hyperparameters space.</p>
 <p>Example :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">step</span><span class="o">.</span><span class="n">set_hyperparams_space</span><span class="p">(</span><span class="n">HyperparameterSpace</span><span class="p">({</span>
@@ -998,7 +1117,7 @@ stripped version of the step.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.set_name">
-<code class="descname">set_name</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L585"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.set_name" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_name</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L629"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.set_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the name of the pipeline step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1016,7 +1135,7 @@ stripped version of the step.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.set_params">
-<code class="descname">set_params</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L671"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.set_params" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_params</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L749"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set step hyperparameters with a dictionary.</p>
 <p>Example :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
@@ -1041,7 +1160,7 @@ stripped version of the step.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.set_savers">
-<code class="descname">set_savers</code><span class="sig-paren">(</span><em>savers: List[neuraxle.base.BaseSaver]</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L623"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.set_savers" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_savers</code><span class="sig-paren">(</span><em>savers: List[neuraxle.base.BaseSaver]</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L667"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.set_savers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the step savers of a pipeline step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1059,7 +1178,7 @@ stripped version of the step.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.set_train">
-<code class="descname">set_train</code><span class="sig-paren">(</span><em>is_train: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L570"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.set_train" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_train</code><span class="sig-paren">(</span><em>is_train: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L614"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.set_train" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method overrides the method of BaseStep to also consider the wrapped step as well as self.
 Set pipeline step mode to train or test.</p>
 <dl class="field-list simple">
@@ -1078,7 +1197,7 @@ Set pipeline step mode to train or test.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.setup">
-<code class="descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L545"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.setup" title="Permalink to this definition">¶</a></dt>
+<code class="descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L589"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize the step before it runs. Only from here and not before that heavy things should be created
 (e.g.: things inside GPU), and NOT in the constructor.</p>
 <p>The setup method is called for each step before any fit, or fit_transform.</p>
@@ -1094,7 +1213,7 @@ Set pipeline step mode to train or test.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.should_save">
-<code class="descname">should_save</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L893"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.should_save" title="Permalink to this definition">¶</a></dt>
+<code class="descname">should_save</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.should_save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns true if the step should be saved.
 If the step has been initialized and invalidated, then it must be saved.</p>
 <dl class="simple">
@@ -1104,7 +1223,7 @@ If the step has been initialized and invalidated, then it must be saved.</p>
 <li><p>an hyperparameter space has changed func:<cite>~.set_hyperparams_space</cite></p></li>
 <li><p>a call to the fit method func:<cite>~.handle_fit</cite></p></li>
 <li><p>a call to the fit_transform method func:<cite>~.handle_fit_transform</cite></p></li>
-<li><p>the step name has changed func:<cite>~.set_name</cite></p></li>
+<li><p>the step name has changed func:<cite>~neuraxle.base.BaseStep.set_name</cite></p></li>
 </ul>
 </dd>
 </dl>
@@ -1119,8 +1238,30 @@ If the step has been initialized and invalidated, then it must be saved.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.base.BaseStep.summary_hash">
+<code class="descname">summary_hash</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L548"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.summary_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hash data inputs, current ids, and hyperparameters together using self.hashers.
+This is used to create unique ids for the data checkpoints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><em>DataContainer</em></a>) – data container</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>hashed current ids</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a>]</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="neuraxle.checkpoints.html#neuraxle.checkpoints.Checkpoint" title="neuraxle.checkpoints.Checkpoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.checkpoints.Checkpoint</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.base.BaseStep.teardown">
-<code class="descname">teardown</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L559"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.teardown" title="Permalink to this definition">¶</a></dt>
+<code class="descname">teardown</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L603"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.teardown" title="Permalink to this definition">¶</a></dt>
 <dd><p>Teardown step after program execution. Inverse of setup, and it should clear memory.
 Override this method if you need to clear memory.</p>
 <dl class="field-list simple">
@@ -1135,12 +1276,12 @@ Override this method if you need to clear memory.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.tosklearn">
-<code class="descname">tosklearn</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1093"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.tosklearn" title="Permalink to this definition">¶</a></dt>
+<code class="descname">tosklearn</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1379"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.tosklearn" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.base.BaseStep.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L845"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1127"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform given data inputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1156,8 +1297,45 @@ Override this method if you need to clear memory.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.base.BaseStep.update_hyperparams">
+<code class="descname">update_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L703"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.update_hyperparams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the step hyperparameters without removing the already-set hyperparameters.
+This can be useful to add more hyperparameters to the existing ones without flushing the ones that were already set.</p>
+<p>Example :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">step</span><span class="o">.</span><span class="n">set_hyperparams</span><span class="p">(</span><span class="n">HyperparameterSamples</span><span class="p">({</span>
+    <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.10</span>
+    <span class="s1">&#39;weight_decay&#39;</span><span class="p">:</span> <span class="mf">0.001</span>
+<span class="p">}))</span>
+
+<span class="n">step</span><span class="o">.</span><span class="n">update_hyperparams</span><span class="p">(</span><span class="n">HyperparameterSamples</span><span class="p">({</span>
+    <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.01</span>
+<span class="p">}))</span>
+
+<span class="k">assert</span> <span class="n">step</span><span class="o">.</span><span class="n">get_hyperparams</span><span class="p">()[</span><span class="s1">&#39;learning_rate&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.01</span>
+<span class="k">assert</span> <span class="n">step</span><span class="o">.</span><span class="n">get_hyperparams</span><span class="p">()[</span><span class="s1">&#39;weight_decay&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.001</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>hyperparams</strong> (<a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><em>HyperparameterSamples</em></a>) – hyperparameters</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep">BaseStep</a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#neuraxle.base.BaseStep.update_hyperparams" title="neuraxle.base.BaseStep.update_hyperparams"><code class="xref py py-func docutils literal notranslate"><span class="pre">update_hyperparams()</span></code></a>,
+<a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.hyperparams.space.HyperparameterSamples</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.base.BaseStep.will_mutate_to">
-<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1045"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.will_mutate_to" title="Permalink to this definition">¶</a></dt>
+<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1331"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep.will_mutate_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>This will change the behavior of <code class="docutils literal notranslate"><span class="pre">self.mutate(&lt;...&gt;)</span></code> such that when mutating, it will return the
 presently provided new_base_step BaseStep (can be left to None for self), and the <code class="docutils literal notranslate"><span class="pre">.mutate</span></code> method
 will also apply the <code class="docutils literal notranslate"><span class="pre">new_method</span></code> and the  <code class="docutils literal notranslate"><span class="pre">method_to_affect</span></code>, if they are not None, and after changing
@@ -1172,7 +1350,7 @@ the object to new_base_step.</p>
     <span class="n">Identity</span><span class="p">()</span><span class="o">.</span><span class="n">will_mutate_to</span><span class="p">(</span><span class="n">new_base_step</span><span class="o">=</span><span class="n">ClassifierThatWillBeUsedOnlyAfterThePretraining</span><span class="p">)</span>
 <span class="p">)</span>
 <span class="c1"># Pre-train the pipeline</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_pretrain</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_pretrain</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 
 <span class="c1"># This will leave `SomePreprocessing()` untouched and will affect the two other steps.</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">mutate</span><span class="p">(</span><span class="n">new_method</span><span class="o">=</span><span class="s2">&quot;transform&quot;</span><span class="p">,</span> <span class="n">method_to_affect</span><span class="o">=</span><span class="s2">&quot;transform&quot;</span><span class="p">)</span>
@@ -1202,15 +1380,15 @@ the object to new_base_step.</p>
 
 <dl class="class">
 <dt id="neuraxle.base.ExecutionContext">
-<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">ExecutionContext</code><span class="sig-paren">(</span><em>execution_mode: neuraxle.base.ExecutionMode</em>, <em>root: str = '/home/gui/Documents/GIT/www.neuraxio.com-en-neuraxle/docs/cache'</em>, <em>stripped_saver: neuraxle.base.BaseSaver = None</em>, <em>parents=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L266"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">ExecutionContext</code><span class="sig-paren">(</span><em>root: str = '/home/alexandre/Documents/www.neuraxle.org-builder/docs/cache'</em>, <em>execution_mode: neuraxle.base.ExecutionMode = None</em>, <em>stripped_saver: neuraxle.base.BaseSaver = None</em>, <em>parents=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L299"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execution context object containing all of the pipeline hierarchy steps.
 First item in execution context parents is root, second is nested, and so on. This is like a stack.</p>
 <dl class="simple">
 <dt>The execution context is used for fitted step saving, and caching :</dt><dd><ul class="simple">
 <li><p><a class="reference internal" href="#neuraxle.base.BaseStep.save" title="neuraxle.base.BaseStep.save"><code class="xref py py-func docutils literal notranslate"><span class="pre">save()</span></code></a></p></li>
 <li><p><a class="reference internal" href="#neuraxle.base.BaseStep.load" title="neuraxle.base.BaseStep.load"><code class="xref py py-func docutils literal notranslate"><span class="pre">load()</span></code></a></p></li>
-<li><p><a class="reference internal" href="neuraxle.steps.caching.html#neuraxle.steps.caching.ValueCachingWrapper.handle_transform" title="neuraxle.steps.caching.ValueCachingWrapper.handle_transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">handle_transform()</span></code></a></p></li>
-<li><p><a class="reference internal" href="neuraxle.steps.caching.html#neuraxle.steps.caching.ValueCachingWrapper.handle_fit_transform" title="neuraxle.steps.caching.ValueCachingWrapper.handle_fit_transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">handle_fit_transform()</span></code></a></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">handle_transform()</span></code></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">handle_fit_transform()</span></code></p></li>
 </ul>
 </dd>
 </dl>
@@ -1221,17 +1399,12 @@ First item in execution context parents is root, second is nested, and so on. Th
 </div>
 <dl class="method">
 <dt id="neuraxle.base.ExecutionContext.copy">
-<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L369"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.copy" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="staticmethod">
-<dt id="neuraxle.base.ExecutionContext.create_from_root">
-<em class="property">static </em><code class="descname">create_from_root</code><span class="sig-paren">(</span><em>root_step: neuraxle.base.BaseStep</em>, <em>execution_mode</em>, <em>root_path</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.ExecutionContext<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L302"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.create_from_root" title="Permalink to this definition">¶</a></dt>
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L395"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.copy" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.base.ExecutionContext.empty">
-<code class="descname">empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L414"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.empty" title="Permalink to this definition">¶</a></dt>
+<code class="descname">empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L436"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.empty" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return True if the context has parent steps.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1245,12 +1418,12 @@ First item in execution context parents is root, second is nested, and so on. Th
 
 <dl class="method">
 <dt id="neuraxle.base.ExecutionContext.get_execution_mode">
-<code class="descname">get_execution_mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.ExecutionMode<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L299"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.get_execution_mode" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_execution_mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.ExecutionMode<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L335"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.get_execution_mode" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.base.ExecutionContext.get_names">
-<code class="descname">get_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L405"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.get_names" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L427"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.get_names" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of the parent names.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1264,7 +1437,7 @@ First item in execution context parents is root, second is nested, and so on. Th
 
 <dl class="method">
 <dt id="neuraxle.base.ExecutionContext.get_path">
-<code class="descname">get_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L395"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.get_path" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L417"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.get_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates the directory path for the current execution context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1278,7 +1451,7 @@ First item in execution context parents is root, second is nested, and so on. Th
 
 <dl class="method">
 <dt id="neuraxle.base.ExecutionContext.mkdir">
-<code class="descname">mkdir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L385"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.mkdir" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mkdir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L407"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.mkdir" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates the directory to save the last parent step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1289,7 +1462,7 @@ First item in execution context parents is root, second is nested, and so on. Th
 
 <dl class="method">
 <dt id="neuraxle.base.ExecutionContext.peek">
-<code class="descname">peek</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L376"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.peek" title="Permalink to this definition">¶</a></dt>
+<code class="descname">peek</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L398"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.peek" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get last parent.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1303,7 +1476,7 @@ First item in execution context parents is root, second is nested, and so on. Th
 
 <dl class="method">
 <dt id="neuraxle.base.ExecutionContext.pop">
-<code class="descname">pop</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L342"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.pop" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pop</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L372"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.pop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pop the context. Returns True if it successfully popped an item from the parents list.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1317,7 +1490,7 @@ First item in execution context parents is root, second is nested, and so on. Th
 
 <dl class="method">
 <dt id="neuraxle.base.ExecutionContext.pop_item">
-<code class="descname">pop_item</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L334"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.pop_item" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pop_item</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L364"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.pop_item" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change the execution context to be the same as the latest parent context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1328,7 +1501,7 @@ First item in execution context parents is root, second is nested, and so on. Th
 
 <dl class="method">
 <dt id="neuraxle.base.ExecutionContext.push">
-<code class="descname">push</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseStep</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.ExecutionContext<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L354"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.push" title="Permalink to this definition">¶</a></dt>
+<code class="descname">push</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseStep</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.ExecutionContext<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L384"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.push" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pushes a step in the parents of the execution context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1345,7 +1518,7 @@ First item in execution context parents is root, second is nested, and so on. Th
 
 <dl class="method">
 <dt id="neuraxle.base.ExecutionContext.save_all_unsaved">
-<code class="descname">save_all_unsaved</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L310"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.save_all_unsaved" title="Permalink to this definition">¶</a></dt>
+<code class="descname">save_all_unsaved</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L338"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.save_all_unsaved" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save all unsaved steps in the parents of the execution context using <a class="reference internal" href="#neuraxle.base.BaseStep.save" title="neuraxle.base.BaseStep.save"><code class="xref py py-func docutils literal notranslate"><span class="pre">save()</span></code></a>.
 This method is called from a step checkpointer inside a <code class="xref py py-class docutils literal notranslate"><span class="pre">Checkpoint</span></code>.</p>
 <dl class="field-list simple">
@@ -1357,7 +1530,7 @@ This method is called from a step checkpointer inside a <code class="xref py py-
 
 <dl class="method">
 <dt id="neuraxle.base.ExecutionContext.should_save_last_step">
-<code class="descname">should_save_last_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L323"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.should_save_last_step" title="Permalink to this definition">¶</a></dt>
+<code class="descname">should_save_last_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L353"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.should_save_last_step" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns True if the last step should be saved.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1373,39 +1546,39 @@ This method is called from a step checkpointer inside a <code class="xref py py-
 
 <dl class="class">
 <dt id="neuraxle.base.ExecutionMode">
-<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">ExecutionMode</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L258"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionMode" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">ExecutionMode</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L291"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionMode" title="Permalink to this definition">¶</a></dt>
 <dd><p>An enumeration.</p>
 <dl class="attribute">
 <dt id="neuraxle.base.ExecutionMode.FIT">
-<code class="descname">FIT</code><em class="property"> = 'fit'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionMode.FIT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">FIT</code><em class="property"> = 'fit'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionMode.FIT" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="neuraxle.base.ExecutionMode.FIT_OR_FIT_TRANSFORM">
-<code class="descname">FIT_OR_FIT_TRANSFORM</code><em class="property"> = 'fit_or_fit_transform'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionMode.FIT_OR_FIT_TRANSFORM" title="Permalink to this definition">¶</a></dt>
+<code class="descname">FIT_OR_FIT_TRANSFORM</code><em class="property"> = 'fit_or_fit_transform'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionMode.FIT_OR_FIT_TRANSFORM" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="neuraxle.base.ExecutionMode.FIT_OR_FIT_TRANSFORM_OR_TRANSFORM">
-<code class="descname">FIT_OR_FIT_TRANSFORM_OR_TRANSFORM</code><em class="property"> = 'fit_or_fit_transform_or_transform'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionMode.FIT_OR_FIT_TRANSFORM_OR_TRANSFORM" title="Permalink to this definition">¶</a></dt>
+<code class="descname">FIT_OR_FIT_TRANSFORM_OR_TRANSFORM</code><em class="property"> = 'fit_or_fit_transform_or_transform'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionMode.FIT_OR_FIT_TRANSFORM_OR_TRANSFORM" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="neuraxle.base.ExecutionMode.FIT_TRANSFORM">
-<code class="descname">FIT_TRANSFORM</code><em class="property"> = 'fit_transform'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionMode.FIT_TRANSFORM" title="Permalink to this definition">¶</a></dt>
+<code class="descname">FIT_TRANSFORM</code><em class="property"> = 'fit_transform'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionMode.FIT_TRANSFORM" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="neuraxle.base.ExecutionMode.TRANSFORM">
-<code class="descname">TRANSFORM</code><em class="property"> = 'transform'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionMode.TRANSFORM" title="Permalink to this definition">¶</a></dt>
+<code class="descname">TRANSFORM</code><em class="property"> = 'transform'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionMode.TRANSFORM" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="neuraxle.base.ForceAlwaysHandleMixin">
-<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">ForceAlwaysHandleMixin</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1387"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceAlwaysHandleMixin" title="Permalink to this definition">¶</a></dt>
-<dd><p>A pipeline step that only requires the implementation of handler methods :</p>
+<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">ForceAlwaysHandleMixin</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1798"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceAlwaysHandleMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>A pipeline step that requires the implementation only of handler methods :</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>handle_transform</p></li>
@@ -1419,86 +1592,39 @@ This method is called from a step checkpointer inside a <code class="xref py py-
 </div>
 <dl class="method">
 <dt id="neuraxle.base.ForceAlwaysHandleMixin.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.ForceAlwaysHandleMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1414"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceAlwaysHandleMixin.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.ForceAlwaysHandleMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1825"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceAlwaysHandleMixin.fit" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.base.ForceAlwaysHandleMixin.fit_transform">
-<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.ForceAlwaysHandleMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1417"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceAlwaysHandleMixin.fit_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.ForceAlwaysHandleMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1828"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceAlwaysHandleMixin.fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.base.ForceAlwaysHandleMixin.handle_fit">
-<code class="descname">handle_fit</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1399"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceAlwaysHandleMixin.handle_fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">handle_fit</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1810"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceAlwaysHandleMixin.handle_fit" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.base.ForceAlwaysHandleMixin.handle_fit_transform">
-<code class="descname">handle_fit_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1407"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceAlwaysHandleMixin.handle_fit_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">handle_fit_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1818"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceAlwaysHandleMixin.handle_fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.base.ForceAlwaysHandleMixin.handle_transform">
-<code class="descname">handle_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1403"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceAlwaysHandleMixin.handle_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">handle_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1814"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceAlwaysHandleMixin.handle_transform" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.base.ForceAlwaysHandleMixin.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.ForceAlwaysHandleMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1411"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceAlwaysHandleMixin.transform" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="neuraxle.base.ForceHandleMixin">
-<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">ForceHandleMixin</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1479"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceHandleMixin" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="simple">
-<dt>A pipeline step that only requires the implementation of handler methods :</dt><dd><ul class="simple">
-<li><p>handle_transform</p></li>
-<li><p>handle_fit_transform</p></li>
-<li><p>handle_fit</p></li>
-</ul>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p>
-</div>
-<dl class="method">
-<dt id="neuraxle.base.ForceHandleMixin.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.ForceHandleMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1504"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceHandleMixin.fit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.base.ForceHandleMixin.fit_transform">
-<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.ForceHandleMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1507"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceHandleMixin.fit_transform" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.base.ForceHandleMixin.handle_fit">
-<code class="descname">handle_fit</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1489"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceHandleMixin.handle_fit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.base.ForceHandleMixin.handle_fit_transform">
-<code class="descname">handle_fit_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1497"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceHandleMixin.handle_fit_transform" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.base.ForceHandleMixin.handle_transform">
-<code class="descname">handle_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1493"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceHandleMixin.handle_transform" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.base.ForceHandleMixin.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.ForceHandleMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1501"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceHandleMixin.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.ForceAlwaysHandleMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1822"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceAlwaysHandleMixin.transform" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="neuraxle.base.HashlibMd5Hasher">
-<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">HashlibMd5Hasher</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.HashlibMd5Hasher" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">HashlibMd5Hasher</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L89"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.HashlibMd5Hasher" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class to hash hyperparamters, and data input ids together using md5 algorithm from hashlib :
 <a class="reference external" href="https://docs.python.org/3/library/hashlib.html">https://docs.python.org/3/library/hashlib.html</a></p>
 <p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code> class uses the hashed values for its current ids.
@@ -1511,7 +1637,7 @@ to hash hyperparameters, and data inputs ids together after each transform.</p>
 </div>
 <dl class="method">
 <dt id="neuraxle.base.HashlibMd5Hasher.hash">
-<code class="descname">hash</code><span class="sig-paren">(</span><em>current_ids</em>, <em>hyperparameters</em>, <em>data_inputs: Any = None</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L92"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.HashlibMd5Hasher.hash" title="Permalink to this definition">¶</a></dt>
+<code class="descname">hash</code><span class="sig-paren">(</span><em>current_ids</em>, <em>hyperparameters</em>, <em>data_inputs: Any = None</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L125"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.HashlibMd5Hasher.hash" title="Permalink to this definition">¶</a></dt>
 <dd><p>Hash <code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code>.current_ids, data inputs, and hyperparameters together
 using  <a class="reference external" href="https://docs.python.org/3/library/hashlib.html">hashlib.md5</a></p>
 <dl class="field-list simple">
@@ -1531,11 +1657,31 @@ using  <a class="reference external" href="https://docs.python.org/3/library/has
 </dl>
 </dd></dl>
 
+<dl class="method">
+<dt id="neuraxle.base.HashlibMd5Hasher.single_hash">
+<code class="descname">single_hash</code><span class="sig-paren">(</span><em>current_id: str</em>, <em>hyperparameters: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L104"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.HashlibMd5Hasher.single_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hash summary id, and hyperparameters together.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>current_id</strong> – current hashed id</p></li>
+<li><p><strong>hyperparameters</strong> (<a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><em>HyperparameterSamples</em></a>) – step hyperparameters to hash with current ids</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the new hashed current id</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
 <dt id="neuraxle.base.Identity">
-<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">Identity</code><span class="sig-paren">(</span><em>savers=None</em>, <em>name=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L2290"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.Identity" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">Identity</code><span class="sig-paren">(</span><em>savers=None</em>, <em>name=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2747"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.Identity" title="Permalink to this definition">¶</a></dt>
 <dd><p>A pipeline step that has no effect at all but to return the same data without changes.</p>
 <p>This can be useful to concatenate new features to existing features, such as what AddFeatures do.</p>
 <p>Identity inherits from <a class="reference internal" href="#neuraxle.base.NonTransformableMixin" title="neuraxle.base.NonTransformableMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">NonTransformableMixin</span></code></a> and from <a class="reference internal" href="#neuraxle.base.NonFittableMixin" title="neuraxle.base.NonFittableMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">NonFittableMixin</span></code></a> which makes it a class that has no
@@ -1550,7 +1696,7 @@ effect in the pipeline: it doesn’t require fitting, and at transform-time, it 
 
 <dl class="class">
 <dt id="neuraxle.base.JoblibStepSaver">
-<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">JoblibStepSaver</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L176"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.JoblibStepSaver" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">JoblibStepSaver</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L209"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.JoblibStepSaver" title="Permalink to this definition">¶</a></dt>
 <dd><p>Saver that can save, or load a step with <a class="reference external" href="https://joblib.readthedocs.io/en/latest/generated/joblib.load.html">joblib.load</a>,
 and <a class="reference external" href="https://joblib.readthedocs.io/en/latest/generated/joblib.dump.html">joblib.dump</a>.</p>
 <p>This saver is a good default saver when the object is
@@ -1565,7 +1711,7 @@ The saver receives a <em>stripped</em> version of the step so that it can be sav
 </div>
 <dl class="method">
 <dt id="neuraxle.base.JoblibStepSaver.can_load">
-<code class="descname">can_load</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseStep</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L193"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.JoblibStepSaver.can_load" title="Permalink to this definition">¶</a></dt>
+<code class="descname">can_load</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseStep</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L226"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.JoblibStepSaver.can_load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns true if the given step has been saved with the given execution context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1585,7 +1731,7 @@ The saver receives a <em>stripped</em> version of the step so that it can be sav
 
 <dl class="method">
 <dt id="neuraxle.base.JoblibStepSaver.load_step">
-<code class="descname">load_step</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseStep</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L238"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.JoblibStepSaver.load_step" title="Permalink to this definition">¶</a></dt>
+<code class="descname">load_step</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseStep</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L271"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.JoblibStepSaver.load_step" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load stripped step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1602,7 +1748,7 @@ The saver receives a <em>stripped</em> version of the step so that it can be sav
 
 <dl class="method">
 <dt id="neuraxle.base.JoblibStepSaver.save_step">
-<code class="descname">save_step</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseStep</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L221"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.JoblibStepSaver.save_step" title="Permalink to this definition">¶</a></dt>
+<code class="descname">save_step</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseStep</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L254"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.JoblibStepSaver.save_step" title="Permalink to this definition">¶</a></dt>
 <dd><p>Saved step stripped out of things that would make it unserializable.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1621,7 +1767,7 @@ The saver receives a <em>stripped</em> version of the step so that it can be sav
 
 <dl class="class">
 <dt id="neuraxle.base.MetaStepMixin">
-<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">MetaStepMixin</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1172"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">MetaStepMixin</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1458"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin" title="Permalink to this definition">¶</a></dt>
 <dd><p>A class to represent a step that wraps another step. It can be used for many things.</p>
 <p>For example, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForEachDataInputs</span></code> adds a loop before any calls to the wrapped step :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ForEachDataInputs</span><span class="p">(</span><span class="n">MetaStepMixin</span><span class="p">,</span> <span class="n">BaseStep</span><span class="p">):</span>
@@ -1632,9 +1778,9 @@ The saver receives a <em>stripped</em> version of the step so that it can be sav
         <span class="n">BaseStep</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">MetaStepMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wrapped</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_inputs</span><span class="p">,</span> <span class="n">expected_outputs</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">expected_outputs</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">expected_outputs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_inputs</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_inputs</span><span class="p">,</span> <span class="n">expected_outputs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">expected_outputs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">expected_outputs</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_inputs</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">di</span><span class="p">,</span> <span class="n">eo</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data_inputs</span><span class="p">,</span> <span class="n">expected_outputs</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">wrapped</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapped</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">di</span><span class="p">,</span> <span class="n">eo</span><span class="p">)</span>
@@ -1649,9 +1795,9 @@ The saver receives a <em>stripped</em> version of the step so that it can be sav
 
     <span class="k">return</span> <span class="n">outputs</span>
 
-    <span class="k">def</span> <span class="nf">fit_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_inputs</span><span class="p">,</span> <span class="n">expected_outputs</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">expected_outputs</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">expected_outputs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_inputs</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">fit_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_inputs</span><span class="p">,</span> <span class="n">expected_outputs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">expected_outputs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">expected_outputs</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_inputs</span><span class="p">)</span>
 
         <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">di</span><span class="p">,</span> <span class="n">eo</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data_inputs</span><span class="p">,</span> <span class="n">expected_outputs</span><span class="p">):</span>
@@ -1671,13 +1817,65 @@ The saver receives a <em>stripped</em> version of the step so that it can be sav
 <code class="xref py py-class docutils literal notranslate"><span class="pre">StepClonerForEachDataInput</span></code></p>
 </div>
 <dl class="method">
+<dt id="neuraxle.base.MetaStepMixin.apply">
+<code class="descname">apply</code><span class="sig-paren">(</span><em>method_name: str</em>, <em>*kargs</em>, <em>**kwargs</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1727"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the method name to the meta step and its wrapped step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method_name</strong> – method name that need to be called on all steps</p></li>
+<li><p><strong>kargs</strong> – any additional arguments to be passed to the method</p></li>
+<li><p><strong>kwargs</strong> – any additional positional arguments to be passed to the method</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self (not a new step)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep">BaseStep</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.base.MetaStepMixin.apply_method">
+<code class="descname">apply_method</code><span class="sig-paren">(</span><em>method: Callable</em>, <em>*kargs</em>, <em>**kwargs</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1741"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.apply_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply method to the meta step and its wrapped step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method</strong> – method to call with self</p></li>
+<li><p><strong>kargs</strong> – any additional arguments to be passed to the method</p></li>
+<li><p><strong>kwargs</strong> – any additional positional arguments to be passed to the method</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self (not a new step)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep">BaseStep</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.base.MetaStepMixin.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1713"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.fit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.base.MetaStepMixin.fit_transform">
+<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1709"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.base.MetaStepMixin.get_best_model">
-<code class="descname">get_best_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1370"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.get_best_model" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_best_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1694"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.get_best_model" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.base.MetaStepMixin.get_hyperparams">
-<code class="descname">get_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1306"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.get_hyperparams" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1621"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.get_hyperparams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get step hyperparameters as <code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code> with flattened hyperparams.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1695,7 +1893,7 @@ The saver receives a <em>stripped</em> version of the step so that it can be sav
 
 <dl class="method">
 <dt id="neuraxle.base.MetaStepMixin.get_hyperparams_space">
-<code class="descname">get_hyperparams_space</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1345"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.get_hyperparams_space" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_hyperparams_space</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1660"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.get_hyperparams_space" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get meta step and wrapped step hyperparams as a flat hyperparameter space</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1708,8 +1906,40 @@ The saver receives a <em>stripped</em> version of the step so that it can be sav
 </dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.base.MetaStepMixin.get_step">
+<code class="descname">get_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1685"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.get_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get wrapped step</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>self.wrapped</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep">BaseStep</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.base.MetaStepMixin.mutate">
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1756"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.mutate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mutate self, and self.wrapped. Please refer to <a class="reference internal" href="#neuraxle.base.BaseStep.mutate" title="neuraxle.base.BaseStep.mutate"><code class="xref py py-func docutils literal notranslate"><span class="pre">mutate()</span></code></a> for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
+<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
+<li><p><strong>warn</strong> – (verbose) wheter or not to warn about the inexistence of the method.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self, a copy of self, or even perhaps a new or different BaseStep object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.base.MetaStepMixin.set_hyperparams">
-<code class="descname">set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1270"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.set_hyperparams" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1556"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.set_hyperparams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set step hyperparameters, and wrapped step hyperparams with the given hyperparams.</p>
 <p>Example :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">step</span><span class="o">.</span><span class="n">set_hyperparams</span><span class="p">(</span><span class="n">HyperparameterSamples</span><span class="p">({</span>
@@ -1737,7 +1967,7 @@ The saver receives a <em>stripped</em> version of the step so that it can be sav
 
 <dl class="method">
 <dt id="neuraxle.base.MetaStepMixin.set_hyperparams_space">
-<code class="descname">set_hyperparams_space</code><span class="sig-paren">(</span><em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1321"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.set_hyperparams_space" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_hyperparams_space</code><span class="sig-paren">(</span><em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1636"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.set_hyperparams_space" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set meta step and wrapped step hyperparams space using the given hyperparams space.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1751,7 +1981,7 @@ The saver receives a <em>stripped</em> version of the step so that it can be sav
 
 <dl class="method">
 <dt id="neuraxle.base.MetaStepMixin.set_step">
-<code class="descname">set_step</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseStep</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1357"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.set_step" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_step</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseStep</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1672"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.set_step" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set wrapped step to the given step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1768,7 +1998,7 @@ The saver receives a <em>stripped</em> version of the step so that it can be sav
 
 <dl class="method">
 <dt id="neuraxle.base.MetaStepMixin.set_train">
-<code class="descname">set_train</code><span class="sig-paren">(</span><em>is_train: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1243"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.set_train" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_train</code><span class="sig-paren">(</span><em>is_train: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1529"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.set_train" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set pipeline step mode to train or test. Also set wrapped step mode to train or test.</p>
 <p>For instance, you can add a simple if statement to direct to the right implementation:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_inputs</span><span class="p">):</span>
@@ -1796,7 +2026,7 @@ The saver receives a <em>stripped</em> version of the step so that it can be sav
 
 <dl class="method">
 <dt id="neuraxle.base.MetaStepMixin.setup">
-<code class="descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1231"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.setup" title="Permalink to this definition">¶</a></dt>
+<code class="descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1517"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize step before it runs. Also initialize the wrapped step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1808,16 +2038,70 @@ The saver receives a <em>stripped</em> version of the step so that it can be sav
 </dl>
 </dd></dl>
 
+<dl class="method">
+<dt id="neuraxle.base.MetaStepMixin.should_resume">
+<code class="descname">should_resume</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1721"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.should_resume" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.base.MetaStepMixin.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1717"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.base.MetaStepMixin.update_hyperparams">
+<code class="descname">update_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1592"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.update_hyperparams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the step, and the wrapped step hyperparams without removing the already set hyperparameters.
+Please refer to <a class="reference internal" href="#neuraxle.base.BaseStep.update_hyperparams" title="neuraxle.base.BaseStep.update_hyperparams"><code class="xref py py-func docutils literal notranslate"><span class="pre">update_hyperparams()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>hyperparams</strong> (<a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><em>HyperparameterSamples</em></a>) – hyperparameters</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep">BaseStep</a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#neuraxle.base.BaseStep.update_hyperparams" title="neuraxle.base.BaseStep.update_hyperparams"><code class="xref py py-func docutils literal notranslate"><span class="pre">update_hyperparams()</span></code></a>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code></p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.base.MetaStepMixin.will_mutate_to">
+<code class="descname">will_mutate_to</code><span class="sig-paren">(</span><em>new_base_step: Optional[neuraxle.base.BaseStep] = None</em>, <em>new_method: str = None</em>, <em>method_to_assign_to: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1770"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.will_mutate_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add pending mutate self, self.wrapped. Please refer to <a class="reference internal" href="#neuraxle.base.BaseStep.will_mutate_to" title="neuraxle.base.BaseStep.will_mutate_to"><code class="xref py py-func docutils literal notranslate"><span class="pre">will_mutate_to()</span></code></a> for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>new_base_step</strong> (<a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><em>BaseStep</em></a>) – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the object it will mutate to will be this provided new_base_step.</p></li>
+<li><p><strong>method_to_assign_to</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the new_method will be the one that is used on the provided new_base_step.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep">BaseStep</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
 <dt id="neuraxle.base.NonFittableMixin">
-<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">NonFittableMixin</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1421"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.NonFittableMixin" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">NonFittableMixin</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1832"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.NonFittableMixin" title="Permalink to this definition">¶</a></dt>
 <dd><p>A pipeline step that requires no fitting: fitting just returns self when called to do no action.
 Note: fit methods are not implemented</p>
 <dl class="method">
 <dt id="neuraxle.base.NonFittableMixin.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1430"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.NonFittableMixin.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.NonFittableMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1841"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.NonFittableMixin.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Don’t fit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1832,16 +2116,11 @@ Note: fit methods are not implemented</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="neuraxle.base.NonFittableMixin.handle_fit_transform">
-<code class="descname">handle_fit_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1427"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.NonFittableMixin.handle_fit_transform" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="class">
 <dt id="neuraxle.base.NonTransformableMixin">
-<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">NonTransformableMixin</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1440"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.NonTransformableMixin" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">NonTransformableMixin</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1852"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.NonTransformableMixin" title="Permalink to this definition">¶</a></dt>
 <dd><p>A pipeline step that has no effect at all but to return the same data without changes.
 Transform method is automatically implemented as changing nothing.</p>
 <p>Example :</p>
@@ -1849,8 +2128,8 @@ Transform method is automatically implemented as changing nothing.</p>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">BaseStep</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_inputs</span><span class="p">,</span> <span class="n">expected_outputs</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;FitCallbackStep&#39;</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">((</span><span class="n">data_inputs</span><span class="p">,</span> <span class="n">expected_outputs</span><span class="p">))</span>
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_inputs</span><span class="p">,</span> <span class="n">expected_outputs</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;FitCallbackStep&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">((</span><span class="n">data_inputs</span><span class="p">,</span> <span class="n">expected_outputs</span><span class="p">))</span>
         <span class="k">return</span> <span class="bp">self</span>
 </pre></div>
 </div>
@@ -1860,7 +2139,7 @@ Transform method is automatically implemented as changing nothing.</p>
 </div>
 <dl class="method">
 <dt id="neuraxle.base.NonTransformableMixin.inverse_transform">
-<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1470"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.NonTransformableMixin.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1882"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.NonTransformableMixin.inverse_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do nothing - return the same data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1874,7 +2153,7 @@ Transform method is automatically implemented as changing nothing.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.NonTransformableMixin.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1461"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.NonTransformableMixin.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1873"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.NonTransformableMixin.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do nothing - return the same data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1890,11 +2169,11 @@ Transform method is automatically implemented as changing nothing.</p>
 
 <dl class="class">
 <dt id="neuraxle.base.ResumableStepMixin">
-<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">ResumableStepMixin</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L2268"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ResumableStepMixin" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">ResumableStepMixin</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2725"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ResumableStepMixin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mixin to add resumable function to a step, or a class that can be resumed, for example a checkpoint on disk.</p>
 <dl class="method">
 <dt id="neuraxle.base.ResumableStepMixin.should_resume">
-<code class="descname">should_resume</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L2273"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ResumableStepMixin.should_resume" title="Permalink to this definition">¶</a></dt>
+<code class="descname">should_resume</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2730"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ResumableStepMixin.should_resume" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns True if a step can be resumed with the given the data container, and execution context.
 See Checkpoint class documentation for more details on how a resumable checkpoint works.</p>
 <dl class="field-list simple">
@@ -1917,7 +2196,7 @@ See Checkpoint class documentation for more details on how a resumable checkpoin
 
 <dl class="class">
 <dt id="neuraxle.base.TruncableJoblibStepSaver">
-<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">TruncableJoblibStepSaver</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1511"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableJoblibStepSaver" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">TruncableJoblibStepSaver</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1892"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableJoblibStepSaver" title="Permalink to this definition">¶</a></dt>
 <dd><p>Step saver for a TruncableSteps.
 TruncableJoblibStepSaver saves, and loads all of the sub steps using their savers.</p>
 <div class="admonition seealso">
@@ -1928,7 +2207,7 @@ TruncableJoblibStepSaver saves, and loads all of the sub steps using their saver
 </div>
 <dl class="method">
 <dt id="neuraxle.base.TruncableJoblibStepSaver.load_step">
-<code class="descname">load_step</code><span class="sig-paren">(</span><em>step: neuraxle.base.TruncableSteps</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.TruncableSteps<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1555"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableJoblibStepSaver.load_step" title="Permalink to this definition">¶</a></dt>
+<code class="descname">load_step</code><span class="sig-paren">(</span><em>step: neuraxle.base.TruncableSteps</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.TruncableSteps<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1937"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableJoblibStepSaver.load_step" title="Permalink to this definition">¶</a></dt>
 <dd><ol class="arabic simple">
 <li><p>Loop through all of the sub steps savers, and only load the sub steps that have been saved.</p></li>
 <li><p>Refresh steps</p></li>
@@ -1951,7 +2230,7 @@ TruncableJoblibStepSaver saves, and loads all of the sub steps using their saver
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableJoblibStepSaver.save_step">
-<code class="descname">save_step</code><span class="sig-paren">(</span><em>step: neuraxle.base.TruncableSteps</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1525"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableJoblibStepSaver.save_step" title="Permalink to this definition">¶</a></dt>
+<code class="descname">save_step</code><span class="sig-paren">(</span><em>step: neuraxle.base.TruncableSteps</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1906"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableJoblibStepSaver.save_step" title="Permalink to this definition">¶</a></dt>
 <dd><ol class="arabic simple">
 <li><p>Loop through all the steps, and save the ones that need to be saved.</p></li>
 <li><p>Add a new property called sub step savers inside truncable steps to be able to load sub steps when loading.</p></li>
@@ -1974,7 +2253,7 @@ TruncableJoblibStepSaver saves, and loads all of the sub steps using their saver
 
 <dl class="class">
 <dt id="neuraxle.base.TruncableSteps">
-<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">TruncableSteps</code><span class="sig-paren">(</span><em>steps_as_tuple: List[Union[Tuple[str, BaseStep], BaseStep]], hyperparams: neuraxle.hyperparams.space.HyperparameterSamples = {}, hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace = {}</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1586"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">TruncableSteps</code><span class="sig-paren">(</span><em>steps_as_tuple: List[Union[Tuple[str, BaseStep], BaseStep]], hyperparams: neuraxle.hyperparams.space.HyperparameterSamples = {}, hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace = {}</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1966"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps" title="Permalink to this definition">¶</a></dt>
 <dd><p>Step that contains multiple steps. <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code> inherits form this class.
 It is possible to truncate this step * <code class="xref py py-func docutils literal notranslate"><span class="pre">__getitem__()</span></code></p>
 <ul class="simple">
@@ -1988,7 +2267,7 @@ It is possible to truncate this step * <code class="xref py py-func docutils lit
 </div>
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.append">
-<code class="descname">append</code><span class="sig-paren">(</span><em>item: Tuple[str, BaseStep]</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.TruncableSteps<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L2103"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.append" title="Permalink to this definition">¶</a></dt>
+<code class="descname">append</code><span class="sig-paren">(</span><em>item: Tuple[str, BaseStep]</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.TruncableSteps<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2560"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.append" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add an item to steps as tuple.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2004,8 +2283,50 @@ It is possible to truncate this step * <code class="xref py py-func docutils lit
 </dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.base.TruncableSteps.apply">
+<code class="descname">apply</code><span class="sig-paren">(</span><em>method_name: str</em>, <em>*kargs</em>, <em>**kwargs</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2068"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the method name to the pipeline step and all of its children.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method_name</strong> – method name that need to be called on all steps</p></li>
+<li><p><strong>kargs</strong> – any additional arguments to be passed to the method</p></li>
+<li><p><strong>kwargs</strong> – any additional positional arguments to be passed to the method</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self (not a new step)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep">BaseStep</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.base.TruncableSteps.apply_method">
+<code class="descname">apply_method</code><span class="sig-paren">(</span><em>method: Callable</em>, <em>*kargs</em>, <em>**kwargs</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2083"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.apply_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a method to the pipeline step and all of its children.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method</strong> – method to call with self</p></li>
+<li><p><strong>kargs</strong> – any additional arguments to be passed to the method</p></li>
+<li><p><strong>kwargs</strong> – any additional positional arguments to be passed to the method</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self (not a new step)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep">BaseStep</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.base.TruncableSteps.are_steps_before_index_the_same">
-<code class="descname">are_steps_before_index_the_same</code><span class="sig-paren">(</span><em>other: neuraxle.base.TruncableSteps</em>, <em>index: int</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1610"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.are_steps_before_index_the_same" title="Permalink to this definition">¶</a></dt>
+<code class="descname">are_steps_before_index_the_same</code><span class="sig-paren">(</span><em>other: neuraxle.base.TruncableSteps</em>, <em>index: int</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L1990"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.are_steps_before_index_the_same" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns true if self.steps before index are the same as other.steps before index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2025,7 +2346,7 @@ It is possible to truncate this step * <code class="xref py py-func docutils lit
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.ends_with">
-<code class="descname">ends_with</code><span class="sig-paren">(</span><em>step_type: type</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L2213"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.ends_with" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ends_with</code><span class="sig-paren">(</span><em>step_type: type</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2670"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.ends_with" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns true if truncable steps end with a step of the given type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2042,7 +2363,7 @@ It is possible to truncate this step * <code class="xref py py-func docutils lit
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.get_hyperparams">
-<code class="descname">get_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1775"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.get_hyperparams" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2186"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.get_hyperparams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get step hyperparameters as <code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code>.</p>
 <p>Example :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span><span class="n">SomeStep</span><span class="p">()])</span>
@@ -2071,7 +2392,7 @@ It is possible to truncate this step * <code class="xref py py-func docutils lit
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.get_hyperparams_space">
-<code class="descname">get_hyperparams_space</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1849"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.get_hyperparams_space" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_hyperparams_space</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2288"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.get_hyperparams_space" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get step hyperparameters space as <code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSpace</span></code>.</p>
 <p>Example :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span><span class="n">SomeStep</span><span class="p">()])</span>
@@ -2100,7 +2421,7 @@ It is possible to truncate this step * <code class="xref py py-func docutils lit
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.items">
-<code class="descname">items</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; ItemsView<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L2076"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.items" title="Permalink to this definition">¶</a></dt>
+<code class="descname">items</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; ItemsView<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2533"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.items" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns all of the steps as tuples items (step_name, step).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -2114,7 +2435,7 @@ It is possible to truncate this step * <code class="xref py py-func docutils lit
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.keys">
-<code class="descname">keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; KeysView<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L2085"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.keys" title="Permalink to this definition">¶</a></dt>
+<code class="descname">keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; KeysView<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2542"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.keys" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the step names.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -2128,7 +2449,7 @@ It is possible to truncate this step * <code class="xref py py-func docutils lit
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.mutate">
-<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1937"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.mutate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mutate</code><span class="sig-paren">(</span><em>new_method='inverse_transform'</em>, <em>method_to_assign_to='transform'</em>, <em>warn=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2376"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.mutate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call mutate on every steps the the present truncable step contains.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2151,7 +2472,7 @@ It is possible to truncate this step * <code class="xref py py-func docutils lit
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.pop">
-<code class="descname">pop</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L2116"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.pop" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pop</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2573"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.pop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pop the last step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -2165,7 +2486,7 @@ It is possible to truncate this step * <code class="xref py py-func docutils lit
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.popfront">
-<code class="descname">popfront</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L2143"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.popfront" title="Permalink to this definition">¶</a></dt>
+<code class="descname">popfront</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2600"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.popfront" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pop the first step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -2179,7 +2500,7 @@ It is possible to truncate this step * <code class="xref py py-func docutils lit
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.popfrontitem">
-<code class="descname">popfrontitem</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Tuple[str, neuraxle.base.BaseStep]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L2152"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.popfrontitem" title="Permalink to this definition">¶</a></dt>
+<code class="descname">popfrontitem</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Tuple[str, neuraxle.base.BaseStep]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2609"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.popfrontitem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pop the first step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -2193,7 +2514,7 @@ It is possible to truncate this step * <code class="xref py py-func docutils lit
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.popitem">
-<code class="descname">popitem</code><span class="sig-paren">(</span><em>key=None</em><span class="sig-paren">)</span> &#x2192; Tuple[str, neuraxle.base.BaseStep]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L2125"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.popitem" title="Permalink to this definition">¶</a></dt>
+<code class="descname">popitem</code><span class="sig-paren">(</span><em>key=None</em><span class="sig-paren">)</span> &#x2192; Tuple[str, neuraxle.base.BaseStep]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2582"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.popitem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pop the last step, or the step with the given key</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2210,7 +2531,7 @@ It is possible to truncate this step * <code class="xref py py-func docutils lit
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.set_hyperparams">
-<code class="descname">set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: dict</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1815"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.set_hyperparams" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: dict</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2226"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.set_hyperparams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set step hyperparameters to the given <code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code>.</p>
 <p>Example :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span><span class="n">SomeStep</span><span class="p">()])</span>
@@ -2236,7 +2557,7 @@ It is possible to truncate this step * <code class="xref py py-func docutils lit
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.set_hyperparams_space">
-<code class="descname">set_hyperparams_space</code><span class="sig-paren">(</span><em>hyperparams_space: dict</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1884"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.set_hyperparams_space" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_hyperparams_space</code><span class="sig-paren">(</span><em>hyperparams_space: dict</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2323"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.set_hyperparams_space" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set step hyperparameters space as <code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSpace</span></code>.</p>
 <p>Example :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span><span class="n">SomeStep</span><span class="p">()])</span>
@@ -2265,7 +2586,7 @@ It is possible to truncate this step * <code class="xref py py-func docutils lit
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.set_steps">
-<code class="descname">set_steps</code><span class="sig-paren">(</span><em>steps_as_tuple: List[Union[Tuple[str, BaseStep], BaseStep]]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1649"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.set_steps" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_steps</code><span class="sig-paren">(</span><em>steps_as_tuple: List[Union[Tuple[str, BaseStep], BaseStep]]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2029"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.set_steps" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set steps as tuple.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2279,7 +2600,7 @@ It is possible to truncate this step * <code class="xref py py-func docutils lit
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.set_train">
-<code class="descname">set_train</code><span class="sig-paren">(</span><em>is_train: bool = True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L2225"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.set_train" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_train</code><span class="sig-paren">(</span><em>is_train: bool = True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2682"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.set_train" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set pipeline step mode to train or test.</p>
 <p>In the pipeline steps functions, you can add a simple if statement to direct to the right implementation:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_inputs</span><span class="p">):</span>
@@ -2307,7 +2628,7 @@ It is possible to truncate this step * <code class="xref py py-func docutils lit
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.setup">
-<code class="descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1661"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.setup" title="Permalink to this definition">¶</a></dt>
+<code class="descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2041"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize step before it runs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -2321,7 +2642,7 @@ It is possible to truncate this step * <code class="xref py py-func docutils lit
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.should_save">
-<code class="descname">should_save</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1920"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.should_save" title="Permalink to this definition">¶</a></dt>
+<code class="descname">should_save</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2359"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.should_save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns if the step needs to be saved or not.
 If self should be saved or any of his sub steps, return True.</p>
 <dl class="field-list simple">
@@ -2337,7 +2658,7 @@ If self should be saved or any of his sub steps, return True.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.split">
-<code class="descname">split</code><span class="sig-paren">(</span><em>step_type: type</em><span class="sig-paren">)</span> &#x2192; List[neuraxle.base.TruncableSteps]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L2188"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">split</code><span class="sig-paren">(</span><em>step_type: type</em><span class="sig-paren">)</span> &#x2192; List[neuraxle.base.TruncableSteps]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2645"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Split truncable steps by a step class name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2351,7 +2672,7 @@ If self should be saved or any of his sub steps, return True.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.teardown">
-<code class="descname">teardown</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L1675"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.teardown" title="Permalink to this definition">¶</a></dt>
+<code class="descname">teardown</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2055"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.teardown" title="Permalink to this definition">¶</a></dt>
 <dd><p>Teardown step after program execution.
 Teardowns all of the sub steps as well.</p>
 <dl class="field-list simple">
@@ -2365,8 +2686,31 @@ Teardowns all of the sub steps as well.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.base.TruncableSteps.update_hyperparams">
+<code class="descname">update_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: dict</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2260"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.update_hyperparams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the steps hyperparameters without removing the already-set hyperparameters.
+Please refer to <a class="reference internal" href="#neuraxle.base.BaseStep.update_hyperparams" title="neuraxle.base.BaseStep.update_hyperparams"><code class="xref py py-func docutils literal notranslate"><span class="pre">update_hyperparams()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>hyperparams</strong> (<a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><em>HyperparameterSamples</em></a>) – hyperparams to update</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>step</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep">BaseStep</a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#neuraxle.base.BaseStep.update_hyperparams" title="neuraxle.base.BaseStep.update_hyperparams"><code class="xref py py-func docutils literal notranslate"><span class="pre">update_hyperparams()</span></code></a>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code></p>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.base.TruncableSteps.values">
-<code class="descname">values</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; ValuesView<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/base.py#L2094"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.values" title="Permalink to this definition">¶</a></dt>
+<code class="descname">values</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; ValuesView<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/base.py#L2551"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.values" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get step values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>

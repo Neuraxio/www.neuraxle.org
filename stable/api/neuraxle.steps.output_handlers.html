@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>neuraxle.steps.output_handlers &mdash; Neuraxle 0.2.1 documentation</title>
+  <title>neuraxle.steps.output_handlers &mdash; Neuraxle 0.2.2 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -191,6 +191,10 @@
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.pipeline.html#neuraxle-s-pipeline-classes">Neuraxle’s Pipeline Classes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.data_container.html">neuraxle.data_container</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.data_container.html#neuraxle-s-datacontainer-classes">Neuraxle’s DataContainer classes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="neuraxle.union.html">neuraxle.union</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.union.html#union-of-features">Union of Features</a></li>
 </ul>
@@ -201,6 +205,18 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.numpy.html">neuraxle.steps.numpy</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.numpy.html#pipeline-steps-based-on-numpy">Pipeline Steps Based on NumPy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.flow.html">neuraxle.steps.flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.flow.html#neuraxle-s-flow-steps">Neuraxle’s Flow Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.data.html">neuraxle.steps.data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.data.html#data-steps">Data Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.column_transformer.html">neuraxle.steps.column_transformer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.column_transformer.html#neuraxle-s-column-transformer-steps">Neuraxle’s Column Transformer Steps</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
@@ -352,53 +368,38 @@
 </table>
 <dl class="class">
 <dt id="neuraxle.steps.output_handlers.InputAndOutputTransformerMixin">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.output_handlers.</code><code class="descname">InputAndOutputTransformerMixin</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/output_handlers.py#L93"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.output_handlers.InputAndOutputTransformerMixin" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.output_handlers.</code><code class="descname">InputAndOutputTransformerMixin</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/output_handlers.py#L147"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.output_handlers.InputAndOutputTransformerMixin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base output transformer step that can modify data inputs, and expected_outputs at the same time.</p>
 <dl class="method">
-<dt id="neuraxle.steps.output_handlers.InputAndOutputTransformerMixin.handle_fit_transform">
-<code class="descname">handle_fit_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/output_handlers.py#L117"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.output_handlers.InputAndOutputTransformerMixin.handle_fit_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Handle transform by fitting the step,
-and updating the data inputs, and expected outputs inside the data container.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>context</strong> – execution context</p></li>
-<li><p><strong>data_container</strong> – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-</dl>
-</dd></dl>
+<dt id="neuraxle.steps.output_handlers.InputAndOutputTransformerMixin.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/output_handlers.py#L197"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.output_handlers.InputAndOutputTransformerMixin.fit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.steps.output_handlers.InputAndOutputTransformerMixin.handle_transform">
-<code class="descname">handle_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/output_handlers.py#L98"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.output_handlers.InputAndOutputTransformerMixin.handle_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Handle transform by updating the data inputs, and expected outputs inside the data container.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>context</strong> – execution context</p></li>
-<li><p><strong>data_container</strong> – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-</dl>
-</dd></dl>
+<dt id="neuraxle.steps.output_handlers.InputAndOutputTransformerMixin.fit_transform">
+<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/output_handlers.py#L200"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.output_handlers.InputAndOutputTransformerMixin.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.output_handlers.InputAndOutputTransformerMixin.inverse_transform">
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/output_handlers.py#L206"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.output_handlers.InputAndOutputTransformerMixin.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.output_handlers.InputAndOutputTransformerMixin.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/output_handlers.py#L203"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.output_handlers.InputAndOutputTransformerMixin.transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="neuraxle.steps.output_handlers.OutputTransformerWrapper">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.output_handlers.</code><code class="descname">OutputTransformerWrapper</code><span class="sig-paren">(</span><em>wrapped</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/output_handlers.py#L26"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.output_handlers.OutputTransformerWrapper" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.output_handlers.</code><code class="descname">OutputTransformerWrapper</code><span class="sig-paren">(</span><em>wrapped</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/output_handlers.py#L30"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.output_handlers.OutputTransformerWrapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform expected output wrapper step that can sends the expected_outputs to the wrapped step
 so that it can transform the expected outputs.</p>
 <dl class="method">
 <dt id="neuraxle.steps.output_handlers.OutputTransformerWrapper.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/output_handlers.py#L86"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.output_handlers.OutputTransformerWrapper.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/output_handlers.py#L134"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.output_handlers.OutputTransformerWrapper.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit step with the given data inputs, and expected outputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -417,67 +418,78 @@ so that it can transform the expected outputs.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.steps.output_handlers.OutputTransformerWrapper.handle_fit">
-<code class="descname">handle_fit</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; (&lt;class 'neuraxle.base.BaseStep'&gt;</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/output_handlers.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.output_handlers.OutputTransformerWrapper.handle_fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Override this to add side effects or change the execution flow before (or after) calling <a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep.fit" title="neuraxle.base.BaseStep.fit"><code class="xref py py-func docutils literal notranslate"><span class="pre">fit()</span></code></a>.
-The default behavior is to rehash current ids with the step hyperparameters.</p>
+<dt id="neuraxle.steps.output_handlers.OutputTransformerWrapper.fit_transform">
+<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/output_handlers.py#L137"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.output_handlers.OutputTransformerWrapper.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit, and transform step with the given data inputs, and expected outputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – the data container to transform</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_inputs</strong> – data inputs</p></li>
+<li><p><strong>expected_outputs</strong> – expected outputs to fit on</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>tuple(fitted pipeline, data_container)</p>
+<dd class="field-even"><p>(fitted self, tranformed data inputs)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tuple[<a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep">BaseStep</a>, Any]</p>
 </dd>
 </dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code>,
-<a class="reference internal" href="neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.pipeline.Pipeline</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.output_handlers.OutputTransformerWrapper.handle_inverse_transform">
+<code class="descname">handle_inverse_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/output_handlers.py#L108"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.output_handlers.OutputTransformerWrapper.handle_inverse_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle inverse transform by passing expected outputs to the wrapped step inverse transform method.
+Update the expected outputs with the outputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_container</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>data container</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer">DataContainer</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.output_handlers.OutputTransformerWrapper.inverse_transform">
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/output_handlers.py#L143"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.output_handlers.OutputTransformerWrapper.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inverse Transform the given transformed data inputs.</p>
+<p><a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep.mutate" title="neuraxle.base.BaseStep.mutate"><code class="xref py py-func docutils literal notranslate"><span class="pre">mutate()</span></code></a> or <a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep.reverse" title="neuraxle.base.BaseStep.reverse"><code class="xref py py-func docutils literal notranslate"><span class="pre">reverse()</span></code></a> can be called to change the default transform behavior :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span><span class="n">MultiplyBy</span><span class="p">()])</span>
+
+<span class="n">_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="n">_out</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">_in</span><span class="p">)</span>
+
+<span class="n">_regenerated_in</span> <span class="o">=</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">_out</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">_regenerated_in</span><span class="p">,</span> <span class="n">_in</span><span class="p">)</span>
+</pre></div>
 </div>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.output_handlers.OutputTransformerWrapper.handle_fit_transform">
-<code class="descname">handle_fit_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; (&lt;class 'neuraxle.base.BaseStep'&gt;</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/output_handlers.py#L68"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.output_handlers.OutputTransformerWrapper.handle_fit_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Override this to add side effects or change the execution flow before (or after) calling * <a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep.fit_transform" title="neuraxle.base.BaseStep.fit_transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">fit_transform()</span></code></a>.
-The default behavior is to rehash current ids with the step hyperparameters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – the data container to transform</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
-</ul>
+<dd class="field-odd"><p><strong>processed_outputs</strong> – processed data inputs</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>tuple(fitted pipeline, data_container)</p>
+<dd class="field-even"><p>inverse transformed processed outputs</p>
 </dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.output_handlers.OutputTransformerWrapper.handle_transform">
-<code class="descname">handle_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/output_handlers.py#L36"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.output_handlers.OutputTransformerWrapper.handle_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Override this to add side effects or change the execution flow before (or after) calling * <a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep.transform" title="neuraxle.base.BaseStep.transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">transform()</span></code></a>.
-The default behavior is to rehash current ids with the step hyperparameters.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – the data container to transform</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>transformed data container</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Any</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.output_handlers.OutputTransformerWrapper.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6aa0dd7/neuraxle/steps/output_handlers.py#L89"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.output_handlers.OutputTransformerWrapper.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/output_handlers.py#L140"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.output_handlers.OutputTransformerWrapper.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform given data inputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

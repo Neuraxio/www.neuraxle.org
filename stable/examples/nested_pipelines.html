@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Create Nested Pipelines in Neuraxle &mdash; Neuraxle 0.2.1 documentation</title>
+  <title>Create Nested Pipelines in Neuraxle &mdash; Neuraxle 0.2.2 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -191,6 +191,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.pipeline.html#neuraxle-s-pipeline-classes">Neuraxle’s Pipeline Classes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.data_container.html">neuraxle.data_container</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.data_container.html#neuraxle-s-datacontainer-classes">Neuraxle’s DataContainer classes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.union.html">neuraxle.union</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.union.html#union-of-features">Union of Features</a></li>
 </ul>
@@ -201,6 +205,18 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.steps.numpy.html">neuraxle.steps.numpy</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.steps.numpy.html#pipeline-steps-based-on-numpy">Pipeline Steps Based on NumPy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.steps.flow.html">neuraxle.steps.flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.steps.flow.html#neuraxle-s-flow-steps">Neuraxle’s Flow Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.steps.data.html">neuraxle.steps.data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.steps.data.html#data-steps">Data Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.steps.column_transformer.html">neuraxle.steps.column_transformer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.steps.column_transformer.html#neuraxle-s-column-transformer-steps">Neuraxle’s Column Transformer Steps</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
@@ -341,11 +357,11 @@
 attributes in the nested pipelines.</p>
 <p>For more info, see the <a class="reference external" href="https://stackoverflow.com/questions/28822756/getting-model-attributes-from-scikit-learn-pipeline/58359509#58359509">thread here</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="View documentation for sklearn.decomposition.PCA"><span class="n">PCA</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="View documentation for sklearn.preprocessing.StandardScaler"><span class="n">StandardScaler</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="View documentation for sklearn.decomposition.PCA"><span class="n">PCA</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" title="View documentation for sklearn.preprocessing.StandardScaler"><span class="n">StandardScaler</span></a>
 
-<span class="kn">from</span> <span class="nn">neuraxle.base</span> <span class="k">import</span> <a href="../api/neuraxle.base.html#neuraxle.base.Identity" title="View documentation for neuraxle.base.Identity"><span class="n">Identity</span></a>
-<span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="k">import</span> <a href="../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.base</span> <span class="kn">import</span> <a href="../api/neuraxle.base.html#neuraxle.base.Identity" title="View documentation for neuraxle.base.Identity"><span class="n">Identity</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="kn">import</span> <a href="../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a>
 
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
@@ -383,10 +399,10 @@ attributes in the nested pipelines.</p>
 <p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-nested-pipelines-py">
 <div class="sphx-glr-download docutils container">
-<p><a class="reference download internal" download="" href="../_downloads/c5cd2cb06383677123e8d919904a6a97/nested_pipelines.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">nested_pipelines.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/79fa5df5274e66dffa929208dba46609/nested_pipelines.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">nested_pipelines.py</span></code></a></p>
 </div>
 <div class="sphx-glr-download docutils container">
-<p><a class="reference download internal" download="" href="../_downloads/06f1af508c006ebf51547fcd18eff6d3/nested_pipelines.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">nested_pipelines.ipynb</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/2e8c611e30a42b2ff185018886d92d5c/nested_pipelines.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">nested_pipelines.ipynb</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>

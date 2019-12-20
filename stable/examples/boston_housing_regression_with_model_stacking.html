@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Boston Housing Regression &mdash; Neuraxle 0.2.1 documentation</title>
+  <title>Boston Housing Regression &mdash; Neuraxle 0.2.2 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -191,6 +191,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.pipeline.html#neuraxle-s-pipeline-classes">Neuraxle’s Pipeline Classes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.data_container.html">neuraxle.data_container</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.data_container.html#neuraxle-s-datacontainer-classes">Neuraxle’s DataContainer classes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.union.html">neuraxle.union</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.union.html#union-of-features">Union of Features</a></li>
 </ul>
@@ -201,6 +205,18 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.steps.numpy.html">neuraxle.steps.numpy</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.steps.numpy.html#pipeline-steps-based-on-numpy">Pipeline Steps Based on NumPy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.steps.flow.html">neuraxle.steps.flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.steps.flow.html#neuraxle-s-flow-steps">Neuraxle’s Flow Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.steps.data.html">neuraxle.steps.data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.steps.data.html#data-steps">Data Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.steps.column_transformer.html">neuraxle.steps.column_transformer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.steps.column_transformer.html#neuraxle-s-column-transformer-steps">Neuraxle’s Column Transformer Steps</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
@@ -346,18 +362,18 @@
 </div></blockquote>
 <p>This example also prints the shapes of the objects between the pipeline elements.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="View documentation for sklearn.cluster.KMeans"><span class="n">KMeans</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html#sklearn.datasets.load_boston" title="View documentation for sklearn.datasets.load_boston"><span class="n">load_boston</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="View documentation for sklearn.decomposition.PCA"><span class="n">PCA</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html#sklearn.decomposition.FastICA" title="View documentation for sklearn.decomposition.FastICA"><span class="n">FastICA</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor" title="View documentation for sklearn.ensemble.GradientBoostingRegressor"><span class="n">GradientBoostingRegressor</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="View documentation for sklearn.metrics.r2_score"><span class="n">r2_score</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.shuffle.html#sklearn.utils.shuffle" title="View documentation for sklearn.utils.shuffle"><span class="n">shuffle</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="View documentation for sklearn.cluster.KMeans"><span class="n">KMeans</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html#sklearn.datasets.load_boston" title="View documentation for sklearn.datasets.load_boston"><span class="n">load_boston</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="View documentation for sklearn.decomposition.PCA"><span class="n">PCA</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html#sklearn.decomposition.FastICA" title="View documentation for sklearn.decomposition.FastICA"><span class="n">FastICA</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor" title="View documentation for sklearn.ensemble.GradientBoostingRegressor"><span class="n">GradientBoostingRegressor</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="View documentation for sklearn.metrics.r2_score"><span class="n">r2_score</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.shuffle.html#sklearn.utils.shuffle" title="View documentation for sklearn.utils.shuffle"><span class="n">shuffle</span></a>
 
-<span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="k">import</span> <a href="../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a>
-<span class="kn">from</span> <span class="nn">neuraxle.steps.numpy</span> <span class="k">import</span> <a href="../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyShapePrinter" title="View documentation for neuraxle.steps.numpy.NumpyShapePrinter"><span class="n">NumpyShapePrinter</span></a>
-<span class="kn">from</span> <span class="nn">neuraxle.steps.sklearn</span> <span class="k">import</span> <a href="../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.RidgeModelStacking" title="View documentation for neuraxle.steps.sklearn.RidgeModelStacking"><span class="n">RidgeModelStacking</span></a>
-<span class="kn">from</span> <span class="nn">neuraxle.union</span> <span class="k">import</span> <a href="../api/neuraxle.union.html#neuraxle.union.AddFeatures" title="View documentation for neuraxle.union.AddFeatures"><span class="n">AddFeatures</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="kn">import</span> <a href="../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.steps.numpy</span> <span class="kn">import</span> <a href="../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyShapePrinter" title="View documentation for neuraxle.steps.numpy.NumpyShapePrinter"><span class="n">NumpyShapePrinter</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.steps.sklearn</span> <span class="kn">import</span> <a href="../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.RidgeModelStacking" title="View documentation for neuraxle.steps.sklearn.RidgeModelStacking"><span class="n">RidgeModelStacking</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.union</span> <span class="kn">import</span> <a href="../api/neuraxle.union.html#neuraxle.union.AddFeatures" title="View documentation for neuraxle.union.AddFeatures"><span class="n">AddFeatures</span></a>
 
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
@@ -412,10 +428,10 @@
 <p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-boston-housing-regression-with-model-stacking-py">
 <div class="sphx-glr-download docutils container">
-<p><a class="reference download internal" download="" href="../_downloads/0381abd095887e9ff0998997935a57d8/boston_housing_regression_with_model_stacking.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">boston_housing_regression_with_model_stacking.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/1c21c56f166c0e1c6fef7cc63636a729/boston_housing_regression_with_model_stacking.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">boston_housing_regression_with_model_stacking.py</span></code></a></p>
 </div>
 <div class="sphx-glr-download docutils container">
-<p><a class="reference download internal" download="" href="../_downloads/1a1ea8807af05366e6d41063e691898a/boston_housing_regression_with_model_stacking.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">boston_housing_regression_with_model_stacking.ipynb</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/8e266d0163089366e9eaa62464820ea7/boston_housing_regression_with_model_stacking.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">boston_housing_regression_with_model_stacking.ipynb</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>

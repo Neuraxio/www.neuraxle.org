@@ -1,0 +1,543 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>neuraxle.steps.column_transformer &mdash; Neuraxle 0.2.2 documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://www.neuraxle.org/api/neuraxle.steps.column_transformer.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="neuraxle.steps.sklearn" href="neuraxle.steps.sklearn.html" />
+    <link rel="prev" title="neuraxle.steps.data" href="neuraxle.steps.data.html" /> 
+
+  <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #F80" >
+          
+
+          
+            <a href="/en/" class="icon icon-home"> Neuraxio</a>/<a href="../index.html" > Neuraxle
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Neuraxle/README.html">Neuraxle Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#quickstart">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#why-neuraxle">Why Neuraxle?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#production-ready">Production-ready</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#compatibility">Compatibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#parallel-computing">Parallel Computing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#time-series-processing">Time Series Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#automatic-machine-learning">Automatic Machine Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#comparison-to-other-machine-learning-pipeline-frameworks">Comparison to Other Machine Learning Pipeline Frameworks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#scikit-learn">scikit-learn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#apache-beam">Apache Beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#spacy">spaCy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#kubeflow">Kubeflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#community">Community</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#license">License</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Neuraxle/README.html#summary-of-the-license">Summary of the License</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#citation">Citation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#contributors">Contributors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#supported-by">Supported By</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hyperparameter_tuning.html">Introduction to Automatic Hyperparameter Tuning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#Continuous-Hyperparameter-Distributions">Continuous Hyperparameter Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#Quantized-Hyperparameter-Distributions">Quantized Hyperparameter Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#Other-Hyperparameter-Distributions">Other Hyperparameter Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html#Narrowing-Hyperparameter-Spaces:-a-Detailed-Example">Narrowing Hyperparameter Spaces: a Detailed Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html#Creating-your-own-distributions">Creating your own distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../random_distributions.html">Introduction to Random Distributions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../random_distributions.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../random_distributions.html#Discrete-Distributions">Discrete Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#RandInt">RandInt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Boolean">Boolean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Choice">Choice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Priority-Choice">Priority Choice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../random_distributions.html#Continuous-Distributions">Continuous Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Continuous-Uniform">Continuous Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Continuous-Loguniform">Continuous Loguniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Continuous-Normal">Continuous Normal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Continuous-Lognormal">Continuous Lognormal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Continuous-Normal-Clipped">Continuous Normal Clipped</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Continuous-Lognormal-Clipped">Continuous Lognormal Clipped</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../random_distributions.html#Quantized-Hyperparameter-Distributions">Quantized Hyperparameter Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Quantized-Uniform">Quantized Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Repaired-Quantized-Uniform">Repaired Quantized Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Quantized-Log-Uniform">Quantized Log Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Quantized-Normal">Quantized Normal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Quantized-Lognormal">Quantized Lognormal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rest_api_serving.html">REST API Serving</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Import-Packages">Import Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Load-your-Dataset">Load your Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Create-your-Pipeline">Create your Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Let's-Train-and-Test">Let’s Train and Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Deploy-the-Pipeline">Deploy the Pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rest_api_serving.html#Write-a-step-to-decode-the-accepted-JSON-as-data-inputs">Write a step to decode the accepted JSON as data inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rest_api_serving.html#Write-a-step-to-encode-the-returned-JSON-response">Write a step to encode the returned JSON response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rest_api_serving.html#Finally-Serve-Predictions">Finally Serve Predictions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#API-Call-Example">API Call Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Next-Steps">Next Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rest_api_serving.html#Pipeline-Serialization">Pipeline Serialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rest_api_serving.html#Data-Transformation-Caching">Data Transformation Caching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rest_api_serving.html#Checkpoints">Checkpoints</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">Complete API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.base.html">neuraxle.base</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.base.html#neuraxle-s-base-classes">Neuraxle’s Base Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.pipeline.html">neuraxle.pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.pipeline.html#neuraxle-s-pipeline-classes">Neuraxle’s Pipeline Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.data_container.html">neuraxle.data_container</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.data_container.html#neuraxle-s-datacontainer-classes">Neuraxle’s DataContainer classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.union.html">neuraxle.union</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.union.html#union-of-features">Union of Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.checkpoints.html">neuraxle.checkpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.checkpoints.html#neuraxle-s-checkpoint-classes">Neuraxle’s Checkpoint Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.numpy.html">neuraxle.steps.numpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.numpy.html#pipeline-steps-based-on-numpy">Pipeline Steps Based on NumPy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.flow.html">neuraxle.steps.flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.flow.html#neuraxle-s-flow-steps">Neuraxle’s Flow Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.data.html">neuraxle.steps.data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.data.html#data-steps">Data Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">neuraxle.steps.column_transformer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#neuraxle-s-column-transformer-steps">Neuraxle’s Column Transformer Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.sklearn.html#pipeline-steps-based-on-scikit-learn">Pipeline Steps Based on Scikit-Learn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.loop.html">neuraxle.steps.loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.loop.html#pipeline-steps-for-looping">Pipeline Steps For Looping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.caching.html">neuraxle.steps.caching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.caching.html#pipeline-steps-for-caching">Pipeline Steps For Caching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.output_handlers.html">neuraxle.steps.output_handlers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.output_handlers.html#output-handlers-steps">Output Handlers Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.misc.html">neuraxle.steps.misc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.misc.html#miscelaneous-pipeline-steps">Miscelaneous Pipeline Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.hyperparams.distributions.html">neuraxle.hyperparams.distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.hyperparams.distributions.html#hyperparameter-distributions">Hyperparameter Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.hyperparams.space.html">neuraxle.hyperparams.space</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.hyperparams.space.html#hyperparameter-dictionary-conversions">Hyperparameter Dictionary Conversions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.random.html">neuraxle.metaopt.random</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.random.html#random">Random</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.sklearn.html">neuraxle.metaopt.sklearn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.sklearn.html#scikit-learn-metaoptimizers">Scikit-learn metaoptimizers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.hyperopt.html">neuraxle.metaopt.hyperopt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.hyperopt.html#hyperopt">Hyperopt</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.api.flask.html">neuraxle.api.flask</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.api.flask.html#neuraxle-s-flask-wrapper-classes">Neuraxle’s Flask Wrapper classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/inverse_transform.html">Inverse Transforms in Neuraxle: How to Reverse a Prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/nested_pipelines.html">Create Nested Pipelines in Neuraxle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/hyperparams.html">Manipulate Hyperparameter Spaces for Hyperparameter Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/non_fittable_mixin.html">Create Pipeline Steps in Neuraxle that doesn’t fit or transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/boston_housing_regression_with_model_stacking.html">Boston Housing Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/force_handle_mixin.html">Create Pipeline Steps that require implementing only handler methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/auto_ml_checkpoint.html">Usage of Checkpoints in Automatic Machine Learning (AutoML)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/easy_rest_api_serving.html">Easy REST API Model Serving with Neuraxle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/boston_housing_meta_optimization.html">Boston Housing Regression with Meta Optimization</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="/en/"> Neuraxio</a>/<a href="../index.html">Neuraxle</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+
+        <a href="https://github.com/Neuraxio/Neuraxle"><img style="position: absolute; border: 0; top: 0; right: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">Complete API Documentation</a> &raquo;</li>
+        
+      <li>neuraxle.steps.column_transformer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <!-- <a href="../_sources/api/neuraxle.steps.column_transformer.rst.txt" rel="nofollow"> View page source</a> -->
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-neuraxle.steps.column_transformer">
+<span id="neuraxle-steps-column-transformer"></span><h1>neuraxle.steps.column_transformer<a class="headerlink" href="#module-neuraxle.steps.column_transformer" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="neuraxle-s-column-transformer-steps">
+<h2>Neuraxle’s Column Transformer Steps<a class="headerlink" href="#neuraxle-s-column-transformer-steps" title="Permalink to this headline">¶</a></h2>
+<p>Pipeline steps to apply N-Dimensional column transformations to different columns.</p>
+<p class="rubric">Classes</p>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.steps.column_transformer.ColumnSelector2D" title="neuraxle.steps.column_transformer.ColumnSelector2D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ColumnSelector2D</span></code></a>(columns_selection, …)</p></td>
+<td><p>A ColumnSelector2D selects column in a sequence.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.steps.column_transformer.ColumnTransformer" title="neuraxle.steps.column_transformer.ColumnTransformer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ColumnTransformer</span></code></a>(…)</p></td>
+<td><p>A ColumnChooser can apply custom transformations to different columns.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.steps.column_transformer.ColumnsSelectorND" title="neuraxle.steps.column_transformer.ColumnsSelectorND"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ColumnsSelectorND</span></code></a>(columns_selection[, …])</p></td>
+<td><p>ColumnSelectorND wraps a ColumnSelector2D by as many ForEachDataInput step as needed to select the last dimension.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="neuraxle.steps.column_transformer.ColumnSelector2D">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.column_transformer.</code><code class="descname">ColumnSelector2D</code><span class="sig-paren">(</span><em>columns_selection: Union[Tuple[int, neuraxle.base.BaseStep], Tuple[List[int], neuraxle.base.BaseStep], Tuple[slice, neuraxle.base.BaseStep]]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/column_transformer.py#L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.column_transformer.ColumnSelector2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>A ColumnSelector2D selects column in a sequence.</p>
+<dl class="method">
+<dt id="neuraxle.steps.column_transformer.ColumnSelector2D.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/column_transformer.py#L49"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.column_transformer.ColumnSelector2D.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform given data inputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_inputs</strong> – data inputs</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>transformed data inputs</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.steps.column_transformer.ColumnTransformer">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.column_transformer.</code><code class="descname">ColumnTransformer</code><span class="sig-paren">(</span><em>column_chooser_steps_as_tuple: List[Union[Tuple[int, neuraxle.base.BaseStep], Tuple[List[int], neuraxle.base.BaseStep], Tuple[slice, neuraxle.base.BaseStep]]], n_dimension: int = 3</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/column_transformer.py#L104"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.column_transformer.ColumnTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>A ColumnChooser can apply custom transformations to different columns.
+The ColumnChooser accepts a list of tuples for the transformations,
+and will name the steps accordingly (because of the TruncableSteps’ constructor)
+by converting each indexer object to a string. Indexer objects can be ranges, an int, or a list of ints.
+The input data can be <cite>N</cite>-dimensionnal (ND), in which case the axis must be specified. The columns
+data passed to the sub-steps will still be ND.</p>
+<p>Usage example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ColumnChooser</span><span class="p">([</span>
+    <span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">CyclicTimes</span><span class="p">()),</span>
+    <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">CategoricalEnum</span><span class="p">(</span><span class="n">categories_count</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">starts_at_zero</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span>
+    <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">CategoricalEnum</span><span class="p">(</span><span class="n">categories_count</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">starts_at_zero</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span>
+    <span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">CategoricalEnum</span><span class="p">(</span><span class="n">categories_count</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">starts_at_zero</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureUnion</span></code>,</p>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.steps.column_transformer.ColumnsSelectorND">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.column_transformer.</code><code class="descname">ColumnsSelectorND</code><span class="sig-paren">(</span><em>columns_selection</em>, <em>n_dimension=3</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/column_transformer.py#L80"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.column_transformer.ColumnsSelectorND" title="Permalink to this definition">¶</a></dt>
+<dd><p>ColumnSelectorND wraps a ColumnSelector2D by as many ForEachDataInput step
+as needed to select the last dimension.</p>
+<dl class="method">
+<dt id="neuraxle.steps.column_transformer.ColumnsSelectorND.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/column_transformer.py#L96"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.column_transformer.ColumnsSelectorND.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit step with the given data inputs, and expected outputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_inputs</strong> – data inputs</p></li>
+<li><p><strong>expected_outputs</strong> – expected outputs to fit on</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>fitted self</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep">BaseStep</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.column_transformer.ColumnsSelectorND.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/column_transformer.py#L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.column_transformer.ColumnsSelectorND.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform given data inputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_inputs</strong> – data inputs</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>transformed data inputs</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="neuraxle.steps.sklearn.html" class="btn btn-neutral float-right" title="neuraxle.steps.sklearn" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="neuraxle.steps.data.html" class="btn btn-neutral float-left" title="neuraxle.steps.data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <!-- Begin Mailchimp Signup Form -->
+  <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+  <div id="mc_embed_signup">
+  <form action="https://neuraxio.us18.list-manage.com/subscribe/post?u=75b15e094bec4736090d7588c&amp;id=461343efc0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <div id="mc_embed_signup_scroll">
+      <label for="mce-EMAIL">Stay Tuned, Keep in Touch!</label>
+      <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75b15e094bec4736090d7588c_461343efc0" tabindex="-1" value=""></div>
+      <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+      </div>
+      <br/>
+      <a href="/en/blog/index.html">Visit Blog</a>
+  </form>
+  </div>
+  <!--End mc_embed_signup-->
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019 The Neuraxle Authors. All rights reserved. Apache License, Version 2.0.
+
+    </p>
+  </div>
+   
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-139527241-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>
