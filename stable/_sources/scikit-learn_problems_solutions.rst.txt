@@ -1,0 +1,582 @@
+Solutions to Scikit-Learn's Biggest Problems
+============================================
+
+Here is a list of problems of scikit-learn, and how Neuraxle solves
+them. In a sense, Neuraxle is a redesign of scikit-learn to solve those
+problems. So it doesn't kill scikit-learn: it rather empowers it by
+staying compatible with it and providing solutions. Neuraxle's API will
+feel familiar to scikit-learn's users.
+
+Definitions
+-----------
+
+Understanding the following terms is key for properly understanding the
+rest:
+
+-  **Hyperparameter**: that is a gene-like characteristic of your machine
+   learning algorithm, such as the number of neurons, the number of
+   layers of neurons, the learning rate, and so forth. 
+
+-  **Hyperparameter space**: that is a set of statistical distribution -
+   one for each hyperparameter. 
+
+-  **Step**: a programming object in machine learning which can fit the
+   data in the first place, and then process new data. For instance, a
+   neural network is a step. A data normalizer or scaler is also a step.
+   A step ( :class:`~neuraxle.base.BaseStep` ) could as well just :func:`~neuraxle.base.BaseStep.transform` the data without learning from
+   it, for instance, `changing a int label to a one-hot
+   label <https://stackoverflow.com/a/59262363/2476920>`__. A step is an
+   estimator or a transformer in scikit-learn's original vocabulary. A
+   step is a filter in the pipe and filter design pattern. 
+
+-  **Pipeline**: a way to chain one after another some machine learning
+   steps. It implements the pipe and filter design pattern. You may want
+   to search on this design pattern and come back here. A Pipeline is a
+   Meta Step (or in the specific case of Neuraxle, a
+   :class:`~neuraxle.base.Pipeline` is a :class:`~neuraxle.base.TruncableSteps` ). 
+
+-  **Meta Step**: a step that contain another step or other steps. For
+   instance, a Cross Validation algorithm contain the step it needs to
+   optimize. That step may itself be a meta step, such as a pipeline,
+   containing other steps. A Meta Step ( :class:`~neuraxle.base.MetaStepMixin` ) can also be called a
+   `Metaestimator <https://github.com/scikit-learn/scikit-learn/blob/master/sklearn/utils/metaestimators.py>`__. 
+
+-  **Automatic Machine Learning (AutoML)**: a loop to try different
+   hyperparameters derived from the hyperparameter space, and a scoring
+   function to pick the best model on validation data. 
+
+-  **Trial**: a pipeline that was trained inside an AutoML loop, plus the
+   hyperparameters it had and the result obtained. From past trials, an
+   AutoML algorithm can predict the next best hyperparameters to try
+   (bonus genius hint: an AutoML algorithm can thus itself be thought
+   of as a time series forecasting pipeline or as a RL agent).
+
+Let's now dive into the heart of it.
+
+Inability to Reasonably do Automatic Machine Learning (AutoML)
+--------------------------------------------------------------
+
+Problem: Defining the Search Space (Hyperparameter Distributions)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The search space of the model is awkwardly defined. Consider the
+following example in scikit-learn:
+
+1. You define a pipeline. 
+
+2. You define a grid search or a random search to automatically find the
+   best hyperparameters.
+
+3. You need to pass to the grid search the hyperparameter space and with
+   that you find the best space.
+
+Problems arise when working with big pipelines including lots and lots
+of steps. Drawbacks of the above method are that: 
+
+-  If you change one step of the whole pipeline, you need to come back
+   to the file where you define hyperparameters and change them there. 
+
+-  If you reuse parts of a pipeline in another pipeline later on to then
+   perform a new hyperparameter, you can't simply just copy the code of
+   the pipeline step you defined
+
+Solution: Define Hyperparameter Spaces Within the Steps
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Let's not only have :func:`~neuraxle.base.BaseStep.get_hyperparams` and :func:`~neuraxle.base.BaseStep.set_hyperparams`, but
+also :func:`~neuraxle.base.BaseStep.get_hyperparams_space` and :func:`~neuraxle.base.BaseStep.set_hyperparams_space`. Plus, have
+default hyperparams and a default space of those hyperparams available
+in your object as a static object constant.
+
+Now, your hyperparameter space can be defined **within** the same class
+than your step object **rather than outside**, and not in another file,
+respecting the `Open-Closed Principle
+(OCP) <https://medium.com/@severinperez/maintainable-code-and-the-open-closed-principle-b088c737262>`__
+fundamental SOLID OOP principles of programming. Plus, it's not defined
+directly the constructor (see next problem on "Defining
+Hyperparameters").
+
+Therefore, what you should seek is to define your hyperparameters in
+your model itself! That is: in the code of each steps themselves, and
+not elsewhere. This way, maintaining your code and reusing parts from it
+in your future projects will be a breeze. And in case you want to
+customize your project more, nothing refrain you from redefining the
+space (or the best params that you've found) elsewhere. 
+
+Problem: Defining Hyperparameters in the Constructor is Limiting
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Hyperparameters' definition is less broken than hyperparameters space's
+definition in scikit-learn. But still, it is. The problem is that the
+constructor method of the steps has each constructor arguments tied with
+their ``get_params`` method.
+
+Scikit-Learn's ``__init__`` method is strongly coupled to their
+``set_params`` method. This **causes sklearn to disallow constructor
+arguments that aren't hyperparameters**. Ugh! Even worse: in a machine
+learning pipeline, constructor arguments are the pipeline steps and
+perhaps (often) even nested pipelines! This makes it a hell to specify
+an hyperparameter space, or to call ``get_params`` in the hope to obtain
+simple values as hyperparams. You now end up with objects upon calling
+``pipeline.get_params``. Uh-oh. You can't add non-hyperparameter
+arguments, or doing so is clumsy. You're stuck!
+
+Solution: Separate Steps's Constructors From the ``get_params`` Method
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+There isn't much more to say. To counter the limitations of
+scikit-learn, decoupling the definition of hyperparameters from the
+constructor is a must. Neuraxle's :class:`~neuraxle.base.BaseStep` 's
+__init__ method is fine.
+
+Problem: Different Train and Test Behavior
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+So your machine learning pipeline uses techniques that needs to be
+disabled at test time's inference (transform) pass, but not at training
+time's inference (transform) pass.
+
+For instance, some steps will be in train mode only or in test mode
+only. An :class:`~neuraxle.steps.data.EpochRepeater` and a :class:`~neuraxle.steps.data.DataShuffler` often are required in
+train mode only. Your neural network step might also know if it should
+deactivate dropout in the inference at test time. 
+
+Solution: use the Set Train Special Method and use Step Wrappers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Good news: with Neuraxle, you can enable train or disable train mode
+with :func:`~neuraxle.base.BaseStep.set_train`. That could affect how you code your steps.
+
+In the case of the :class:`~neuraxle.steps.data.EpochRepeater` and :class:`~neuraxle.steps.data.DataShuffler`, they should not always be
+activated: for instance, surround them like :class:`~neuraxle.steps.flow.TrainOnlyWrapper` ( :class:`~neuraxle.steps.data.DataShuffler` )
+in the pipeline. That is the `decorator design
+pattern <https://en.wikipedia.org/wiki/Decorator_pattern#Python>`__
+applied to our pipe and filter software architectural style to change
+the behavior of the wrapped object but just from the outside.
+
+We have other wrappers in Neuraxle, such as also the
+:class:`~neuraxle.steps.caching.ValueCachingWrapper` that can cache precomputed values if the step
+sees the same things twice or more (this can be cool for putting things
+in production and getting a speedup). 
+
+Problem: You trained a Pipeline and You Want Feedback Statistics on its Learning
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+What's the mean and STD of each weight in each of your neural network's
+layers? What was the train and validation curve (time series) looking
+like already? Do your neural net has a `dead
+ReLU <https://www.quora.com/What-are-the-advantages-of-using-Leaky-Rectified-Linear-Units-Leaky-ReLU-over-normal-ReLU-in-deep-learning/answer/Guillaume-Chevalier-2>`__
+problem or other sorts of vanishing gradient problem?
+
+Solution: the Introspect Special Method
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Well, if you call the method introspect on your pipeline, it'll
+aggregate statistics from all you steps, if your steps define the
+introspect method. This can be useful to featurize a pipeline for
+improving the accuracy of your AutoML algorithm (this is deep stuff
+right here). In other words: your AutoML algorithm can now see the
+discrepancy between the train and validation loss, and possible issues
+in the training, to learn to judge if he's underfitting or overfitting
+in meta-learning scenarios.
+
+This :func:`~neuraxle.base.BaseStep.introspect` method is not yet ready in Neuraxle, but is coming
+very soon. Moreover, the information returned by this method could be
+used as features for an AutoML algorithm to generate better
+recommendations of the next hyperparameters to explore.
+
+Inability to Reasonably do Deep Learning Pipelines
+--------------------------------------------------
+
+Problem: Scikit-Learn Hardly Allows for Mini-Batch Gradient Descent (Incremental Fit)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+That is the essence of Deep Learning (DL). An "Epoch Repeater" and a
+"Batch Data Shuffler" often are required (in train mode only) within a
+pipeline.
+
+In Scikit-Learn, it is ambiguous whether a step will reset upon each
+calls to fit, or if it'll continue to train. Each mini-batch Stochastic
+Gradient Descent (SGD) update should ideally correspond to one call to
+``fit`` on a subset of the data within the pipeline's fit method call. 
+
+Solution: Minibatch Pipeline Class and the Ability to Incrementally Fit Pipeline Steps
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Simple: make :func:`~neuraxle.base.BaseStep.fit` callable many times in a row **without resetting
+the initialization of the step**. Also create a pipeline class that
+takes the dataset and loops on small batches of it to fit, transform,
+and/or predict the given data. Done. Don't you feel relieved to finally
+have this now? You already see the next problem don't you? The way the
+initialization is done. 
+
+Problem: Initializing the Pipeline and Deallocating Resources
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Doesn't it feel like there is a missing method for preparing the steps
+between the moment they are initialized and the moment they start to
+fit. There are some limitations caused because of this: 
+
+-  You need to keep all your hyperparameter **spaces** for your steps
+   **in a separate file** than your steps. This means that each time you
+   change a step, you need to change another file (as the hyperparameter
+   space isn't in the step itself).
+
+-  For your steps, it'll be **hard to allocate special resources** that
+   may be costly in memory or time. This needs to be in the constructor
+   or at the beginning of the fit method. That means: if you have some
+   special initialization to do such as allocating (hogging) all your
+   GPU's memory (think TensorFlow), then you may be tempted to do this
+   at the construction of your object instead of later during fit!
+
+-  Worse, now you want to do AutoML to find your best hyperparameters.
+   In scikit-learn, you need to pass your pipeline as a constructor
+   argument of your search strategy (e.g.: grid search or random
+   search). Then your search strategy will loop on different params, and
+   perform a copy of your step. But your step shouldn't be copied if it
+   already has initialized (with :func:`~neuraxle.base.BaseStep.setup` )! You want to delay to later costly things and
+   make copying your pipeline **very fast** and without weird Python
+   memory copy bugs until the moment it is further initialized. 
+
+Solution: Add Setup and Teardown Lifecycle Methods to Your Steps
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This also has the side effect to allow for resource management and
+parallelism.
+
+Who said that only having :func:`~neuraxle.base.BaseStep.__init__`, :func:`~neuraxle.base.BaseStep.fit` and :func:`~neuraxle.base.BaseStep.transform` was
+enough? We need :func:`~neuraxle.base.BaseStep.setup` and :func:`~neuraxle.base.BaseStep.teardown`, too. This way, we can
+prepare a pipeline (and recursively, all its steps), to fit.
+
+Facts: 
+
+1. On one side, we want :class:`~neuraxle.base.BaseStep` 's __init__ method to create a lightweight version of
+   the object, allowing it to be copied in the AutoML training loop
+   before each fit. It must not already allow memory there. This aligns
+   with the clean code principle that objects shouldn't have complex
+   behavior in their constructor for them to be easily testable.
+
+2. On the other side, we want :func:`~neuraxle.base.BaseStep.fit` to be called multiple times in a
+   row, and it shouldn't reset the object between each fit. 
+
+Conclusion: to keep a small object constructor, and to respect the
+`Single Responsibility Principle
+(SRP) <https://medium.com/@severinperez/writing-flexible-code-with-the-single-responsibility-principle-b71c4f3f883f>`__
+fundamental principle of SOLID OOP, we need a new method which we called
+:func:`~neuraxle.base.BaseStep.setup`. The same logic applies for a :func:`~neuraxle.base.BaseStep.teardown` method.
+
+So you'll then be able to serialize your step (or whole pipeline) and
+copy it before it is initialized, as there should be no weird memory
+allocation until a step is initialized.
+
+After :func:`~neuraxle.base.BaseStep.teardown`, a step should be reset as if it was not initialized yet,
+too, clearing memory for the next iteration of the AutoML loop!
+
+For deep neural networks pipelines to work, we need to send data in
+minibatches, so it's handy to have :class:`~neuraxle.pipeline.MiniBatchSequentialPipeline`, parallel data
+streaming pipelines (coming soon), cluster-computing pipelines (coming soon: :class:`~neuraxle.distributed.ClusteringWrapper` ), and so forth.
+
+You might still be asking: "Rlly. Why add a :func:`~neuraxle.base.BaseStep.setup` and :func:`~neuraxle.base.BaseStep.teardown`
+methods?" Well, it all comes down to using GPUs, TPUs, and other
+hardware resources that needs careful allocation and deallocation.
+Sometimes, it also comes down to importing python libraries written in
+other weird languages, which makes some objects unable to be copied,
+serialized, nor parallelized. Having the option to :func:`~neuraxle.base.BaseStep.setup` and
+:func:`~neuraxle.base.BaseStep.teardown` makes things safe in the AutoML algorithm's main loop when
+copying the pipeline before each trial. Moreover, with clean :func:`~neuraxle.base.BaseStep.setup`
+and :func:`~neuraxle.base.BaseStep.teardown` methods, it's possible to remove the ambiguity in
+re-fitting the objects and (most of the time) to be able to really
+specify when to reset.
+
+Problem: It is Difficult to Use Other Deep Learning (DL) Libraries in Scikit-Learn 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+It's difficult to build big, complex pipelines using scikit-learn (e.g.:
+an ensemble of classifiers).
+
+Scikit-learn, first released in 2007, was born before the deep learning
+era. As of now, a typical pipeline step in scikit-learn needs to define
+the following methods, but it isn't enough: 
+
+-  ``__init__`` (tied with the ``set_params`` and ``get_params``
+   methods)
+
+-  ``fit``
+
+-  ``transform``
+
+Solution: Moar Steps Lifecycle Methods
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The thing is: a machine learning pipeline and its steps needs more
+methods to be flexible enough to consider AutoML a viable option. We
+determined that a step should be able to use of all of the following, if
+needed, to expand the possibilities: 
+
+-  :class:`~neuraxle.base.BaseStep` 's __init__ method for pipeline definition and nesting high-level steps,
+   that reads like a book but without the hyperparameters being here
+
+-  :func:`~neuraxle.base.BaseStep.get_hyperparams` and :func:`~neuraxle.base.BaseStep.set_hyperparams` to assign hyperparams
+
+-  :func:`~neuraxle.base.BaseStep.get_hyperparams_space` and :func:`~neuraxle.base.BaseStep.set_hyperparams_space` to assign new
+   spaces
+
+-  :func:`~neuraxle.base.BaseStep.setup` and :func:`~neuraxle.base.BaseStep.teardown` to manage the life of the steps
+
+-  :func:`~neuraxle.base.BaseStep.fit`, :func:`~neuraxle.base.BaseStep.transform`, and :func:`~neuraxle.base.BaseStep.fit_transform` as in scikit-learn, as
+   usual
+
+-  :func:`~neuraxle.base.BaseStep.handle_fit`, :func:`~neuraxle.base.BaseStep.handle_transform` and :func:`~neuraxle.base.BaseStep.handle_fit_transform` to
+   manage more funky things not even explained in this article, but for
+   instance: allowing data caching and pipeline checkpoints easily
+
+-  :func:`~neuraxle.base.BaseStep.set_train` to change the mode to train or test
+
+-  :func:`~neuraxle.base.BaseStep.introspect` to return custom stats after fitting, useful for
+   AutoML featurization of a trial
+
+-  :func:`~neuraxle.base.BaseStep.mutate` and :func:`~neuraxle.base.BaseStep.will_mutate_to`, to replace steps or change
+   pipeline along the way such as predicting only logits after fitting,
+   or allowing unsupervised pre-training, fine-tuning, and so forth
+
+-  :func:`~neuraxle.base.BaseStep.apply` and :func:`~neuraxle.base.BaseStep.apply_method` to apply recursively any other funky
+   changes that mutate couldn't already do to the steps
+
+Note that all those methods are implemented in our Neuraxle open-source
+framework! Most are detailed in the present article. Some others are
+discussed in our other article on `neat machine learning (ML)
+pipelines <https://www.neuraxio.com/en/blog/neuraxle/2019/10/26/neat-machine-learning-pipelines.html>`__.
+You could finally scrutinize `Neuraxle's BaseStep
+Documentation <https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.BaseStep>`__
+to learn technical details on all those lifecycle methods when needed.
+
+Problem: The Ability to Transform Output Labels
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In your pipeline, you may want steps that can process output labels
+furthermore throughout fitting. For instance, you may want a
+:class:`~neuraxle.steps.numpy.OneHotEncoder` to only
+process output labels ("y"). At first, Scikit-Learn pipelines looks like
+they could process labels, but they don't.
+
+Solution: OutputTransformerWrapper and InputAndOutputTransformerMixin
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Yes, Neuraxle has it all.
+
+You can use what we refer to as `output
+handlers <https://www.neuraxle.org/stable/api/neuraxle.steps.output_handlers.html>`__,
+such as the :class:`~neuraxle.steps.output_handlers.OutputTransformerWrapper` and the
+:class:`~neuraxle.steps.output_handlers.InputAndOutputTransformerMixin`. 
+
+-  The :class:`~neuraxle.steps.output_handlers.OutputTransformerWrapper` will wrap a step,
+   such as a :class:`~neuraxle.steps.numpy.OneHotEncoder`
+   to make it transform labels ("y") instead of data inputs ("X"), like
+   :class:`~neuraxle.steps.output_handlers.OutputTransformerWrapper` ( :class:`~neuraxle.steps.numpy.OneHotEncoder` ). 
+
+-  Inherit from a :class:`~neuraxle.steps.output_handlers.InputAndOutputTransformerMixin` class to process both
+   data inputs and labels ("X" and "y"). Inputs of the step will be
+   packed into a tuple of ``(X, y)`` instead of having just ``X`` as a ``data_input``. For instance, in an
+   `autoregressive
+   seq2seq <https://github.com/guillaume-chevalier/seq2seq-signal-prediction>`__
+   that processes text or time series, you may want to have a
+   preprocessing step that takes some data in X and places it in y.
+   Autoregression is to learn to predict the future of a time series or
+   of a phrase.
+
+Not ready for Production nor for Complex Pipelines
+--------------------------------------------------
+
+Scikit-learn lacks a few methods to code complex machine learning
+pipelines. For instance, `scikit-learn's metaestimators <https://github.com/scikit-learn/scikit-learn/blob/master/sklearn/utils/metaestimators.py>`__ lack a few
+abstractions, and scikit-learn estimators are made for mostly 2D tabular
+data. Moreover, parallelism and serialization is hard with
+scikit-learn. 
+
+Problem: Processing 3D, 4D, or ND Data in your Pipeline with Steps Made for Lower-Dimensionnal Data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Let's face it: sklearn is built for 2D tabular data. You can extend the
+framework by inheriting from their base classes by yourself, but that's
+limited. Not only that, but there is the problem that you may want to
+reuse your low-dimensional steps in different contexts of data
+dimensions. 
+
+Solution: use a ForEachDataInputs Wrapper to Loop from ND Data to N(D-1) Data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Simple! If your step is made for processing 2D data, but that the data
+you have at hand is 3D, use a :class:`~neuraxle.steps.loop.ForEachDataInput` wrapper. You could
+even make that work for steps that work with 1D data by using two
+:class:`~neuraxle.steps.loop.ForEachDataInput` wrappers nested (wrapped) within themselves for processing 3D data
+inputs. Yay. There is also the :class:`~neuraxle.steps.loop.StepClonerForEachDataInput` in case
+you need each outermost item to have a clone of the step before fitting.
+
+From there, note that it's also possible to have steps to reshape,
+transpose, flatten, expand dim, and to do more things on your data, as
+well as steps that converts it to other formats (e.g.: list to :mod:`~neuraxle.steps.numpy` ),
+or to debug (e.g.: print shape with :class:`~neuraxle.steps.numpy.NumpyShapePrinter` ) or do actions (e.g.: send an email under
+some conditions) or do wicked things (e.g.: run the data in a step via a
+distant super-computer/worker over network using a :class:`~neuraxle.distributed.ClusteringWrapper` and/or a :class:`~neuraxle.api.flask.FlaskRestApiWrapper` ),
+and so forth.
+
+Problem: Modify a Pipeline Along the Way, such as for Pre-Training or Fine-Tuning
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+So you do unsupervised pre-training and then supervised training on top of that.
+First, you have an autoencoder training setup, then a supervised learning setup.
+And you want to reuse the same pipeline.
+
+Solution: the Mutate Special Method
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Change a pipeline's steps on the fly (hotswap)
+
+The :func:`~neuraxle.base.BaseStep.mutate` and :func:`~neuraxle.base.BaseStep.will_mutate_to`
+method are cool for that. Imagine a pipeline where you need an
+unsupervised pre-training phase. You need to dynamically change the
+pipeline's steps between the pre-training phase and the training phases.
+This means you may for instance have an autoencoder at first, and then
+tell it that it'll later mutate to just an encoder with a classifier
+(without the decoder part of the autoencoder) for instance. Then you can
+pre-train :func:`~neuraxle.base.BaseStep.fit`, :func:`~neuraxle.base.BaseStep.mutate`,
+and then :func:`~neuraxle.base.BaseStep.fit` again the pipeline on different data
+types post-mutation. This allow for slick pre-trainings or fine-tunings,
+opening up the possibilities. This is almost required in recent Computer
+Vision, Time Series Processing, and NLP work. For instance, in NLP with
+BERT, training needs many autoencoding loss functions, and where
+prediction (transforming) for results doesn't require those
+autoregressive nor word masking steps used in training. 
+
+Another Solution: the Apply Special Method
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Just apply anything on each steps of a pipeline recursively.
+
+The generic :func:`~neuraxle.base.TruncableSteps.apply_method` can apply any lambda on each nested
+pipeline steps, which can allow for doing custom funky things in the
+pipelines as wished. This can include defining a special method in a
+pipeline step, and calling apply to find that step and calling this
+method if it exists, which can restructure the pipeline. 
+
+There is also the :func:`~neuraxle.base.TruncableSteps.apply` method accepting a string
+in case the method to apply is already defined in one or many objects of the :class:`~neuraxle.pipeline.Pipeline`.
+
+Problem: Getting Model Attributes from Scikit-Learn Pipeline
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As highlighted in this `StackOverflow sklearn
+question <https://stackoverflow.com/questions/28822756/getting-model-attributes-from-scikit-learn-pipeline/58359509#58359509>`__,
+one may want to access the elements of a pipeline to get information.
+With Scikit-Learn, the syntax is somewhat clumsy. 
+
+Solution: Simpler Nested Pipelines ``__getitem__`` Methods
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You should be able to more easily access estimators' attributes inside
+your pipeline objects from outside the pipeline by getting the objects by their string name or
+by their int index in the pipeline, using the :class:`~neuraxle.base.Pipeline`'s :class:`~neuraxle.base.TruncableSteps` 's ``__getitem__`` (square
+bracket ``[ ]`` accessor) method of the pipeline (As a :class:`~neuraxle.base.Pipeline` inherits from :class:`~neuraxle.base.TruncableSteps` ).
+
+See our `Nested estimator example <https://www.neuraxle.org/stable/examples/nested_pipelines.html#sphx-glr-examples-nested-pipelines-py>`__.
+
+Problem: You can't Parallelize nor Save Pipelines Using Steps that Can't be Serialized "as-is" by Joblib
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This problem will only surface past some point of using Scikit-Learn.
+This is the point of no-return: you've coded your entire production
+pipeline, but once you trained it and selected the best model, you
+realize that what you've just coded can't be serialized.
+
+This means once trained, your pipeline can't be saved to disks because
+one of its steps imports things from a weird python library coded in
+another language and/or uses GPU resources. Your code smells weird and
+you start panicking over what was a full year of research development.
+
+Hopefully, you're nice enough to start coding your own open-source
+framework on the side because you'll live this same situation in your
+next 100 coding projects, and you have other clients who will be in the
+same situation soon, and this sh\*\* is critical.
+
+Well, that's out of shared need that Neuraxle was created.
+
+Solution: Use a Chain of Savers in each Step
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Each step is responsible for saving itself, and you should define one or
+many custom saver objects for your weird object. The saver should: 
+
+1. Save what's important in the step using a Saver (See: :class:`~neuraxle.base.Saver` )
+
+2. Delete that from the step (to make it serializable). The step is now
+   stripped by the Saver. 
+
+3. Then the default :class:`~neuraxle.base.JoblibStepSaver` will execute (in chain) past that point by
+   saving all what's left of the stripped object and deleting the object
+   from your code's RAM. This means you can have many partial savers before
+   the final default :class:`~neuraxle.base.JoblibStepSaver` .
+
+For instance, a Pipeline will do the following upon having the :func:`~neuraxle.base.BaseStep.save` method
+called, as it has its own :class:`~neuraxle.base.TruncableJoblibStepSaver` : 
+
+1. Save all its substeps in relative subfolders to the pipeline's
+   serialization's subfolder 
+
+2. Delete them from the pipeline object, except for their names to find
+   them later when loading. The pipeline is now stripped. 
+
+3. Let the default saver save the stripped pipeline.
+
+You don't want to do dirty code. Don't break the `Law of
+Demeter <https://en.wikipedia.org/wiki/Law_of_Demeter>`__, they say.
+This is one of the most important (and easily overlooked) laws of
+programming, in my opinion. Google it, I dare you. Breaking this law is
+the root of most evil in your codebase.
+
+I've come to the conclusion that the neatest way to not break this law
+here is by having a chain of Savers. It makes each object responsible
+for having special savers if it isn't serializable with joblib. Neat. So
+just when things break, you have the option of creating your own
+serializer just for the object that breaks, this way you won't need to
+break encapsulation at save-time to dig into your objects manually,
+which would break the Law of Demeter.
+
+Note that the savers also need to be able to reload the object when
+loading the save, too. We already wrote a `TensorFlow Neuraxle
+saver <https://github.com/Neuraxio/Neuraxle-TensorFlow>`__ which will
+soon be released (or which may be already released as of reading).
+
+    TL;DR: You can call the :func:`~neuraxle.base.BaseStep.save` method on any pipeline,
+    and if some steps define a custom :class:`~neuraxle.base.Saver`, then
+    the step will use that saver before using the default :class:`~neuraxle.base.JoblibStepSaver`.
+
+About Cluster Computing and Parallelism in Python
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This is known to be hard in Python. It is. We wouldn't have written any
+of those Savers otherwise.
+
+Well, for an object to be parallelizable in Python, it needs to be
+serializable. If using Neuraxle, this means you can serialize any
+objects to a folder or to RAM (e.g.: a folder mounted in RAM - a
+ramdisk) given that you have the proper saver for your unserializable
+object. To start a thread, you can save and reload the pipeline in the
+other thread.
+
+Magic: this is the same for cluster computing. Suppose you have 5
+computers. The master can dispatch a step of its pipeline to workers.
+Workers are listening over the network for the master's orders. This
+means that the workers can receive any data folder and load it. This
+means that the workers can load and use any pipeline without having the
+full code of the project running : they just need the good versions of
+the library and to have started to listen to the master by running a
+command. And voilà: you've got parallel computing over Python by
+avoiding all of python's limitations, and having to write a saver just
+for the step that fails to serialize.
+
+Cluster computing (such as using a :class:`~neuraxle.distributed.ClusteringWrapper` )
+is powerful for doing AutoML in parallel, or for
+processing quickly some jobs for your pipeline deployed in productions
+that needs to run fast (e.g.: splitting your matrix across many
+computers and having a step or sub-pipeline process the parts to then
+send them back).

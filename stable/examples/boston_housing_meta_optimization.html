@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Boston Housing Regression with Meta Optimization &mdash; Neuraxle 0.2.2 documentation</title>
+  <title>Boston Housing Regression with Meta Optimization &mdash; Neuraxle 0.3.0 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.3.0
               </div>
             
           
@@ -95,10 +95,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../Neuraxle/README.html">Neuraxle Pipelines</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#quickstart">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#deep-learning-pipelines">Deep Learning Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#deep-learning-pipeline-definition">Deep Learning Pipeline Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#deep-learning-pipeline-training-and-evaluation">Deep Learning Pipeline Training and Evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#deep-learning-production-pipeline">Deep Learning Production Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#calling-a-deployed-pipeline">Calling a Deployed Pipeline</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#why-neuraxle">Why Neuraxle?</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#production-ready">Production-ready</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#compatibility">Compatibility</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#parallel-computing">Parallel Computing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#parallel-computing-and-serialization">Parallel Computing and Serialization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#time-series-processing">Time Series Processing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#automatic-machine-learning">Automatic Machine Learning</a></li>
 </ul>
@@ -118,6 +125,70 @@
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#citation">Citation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#contributors">Contributors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#supported-by">Supported By</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#support-us">Support Us</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../scikit-learn_problems_solutions.html">Solutions to Scikit-Learn’s Biggest Problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../scikit-learn_problems_solutions.html#definitions">Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scikit-learn_problems_solutions.html#inability-to-reasonably-do-automatic-machine-learning-automl">Inability to Reasonably do Automatic Machine Learning (AutoML)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-defining-the-search-space-hyperparameter-distributions">Problem: Defining the Search Space (Hyperparameter Distributions)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-define-hyperparameter-spaces-within-the-steps">Solution: Define Hyperparameter Spaces Within the Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-defining-hyperparameters-in-the-constructor-is-limiting">Problem: Defining Hyperparameters in the Constructor is Limiting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-separate-steps-s-constructors-from-the-get-params-method">Solution: Separate Steps’s Constructors From the <code class="docutils literal notranslate"><span class="pre">get_params</span></code> Method</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-different-train-and-test-behavior">Problem: Different Train and Test Behavior</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-use-the-set-train-special-method-and-use-step-wrappers">Solution: use the Set Train Special Method and use Step Wrappers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-you-trained-a-pipeline-and-you-want-feedback-statistics-on-its-learning">Problem: You trained a Pipeline and You Want Feedback Statistics on its Learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-the-introspect-special-method">Solution: the Introspect Special Method</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../scikit-learn_problems_solutions.html#inability-to-reasonably-do-deep-learning-pipelines">Inability to Reasonably do Deep Learning Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-scikit-learn-hardly-allows-for-mini-batch-gradient-descent-incremental-fit">Problem: Scikit-Learn Hardly Allows for Mini-Batch Gradient Descent (Incremental Fit)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-minibatch-pipeline-class-and-the-ability-to-incrementally-fit-pipeline-steps">Solution: Minibatch Pipeline Class and the Ability to Incrementally Fit Pipeline Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-initializing-the-pipeline-and-deallocating-resources">Problem: Initializing the Pipeline and Deallocating Resources</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-add-setup-and-teardown-lifecycle-methods-to-your-steps">Solution: Add Setup and Teardown Lifecycle Methods to Your Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-it-is-difficult-to-use-other-deep-learning-dl-libraries-in-scikit-learn">Problem: It is Difficult to Use Other Deep Learning (DL) Libraries in Scikit-Learn</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-moar-steps-lifecycle-methods">Solution: Moar Steps Lifecycle Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-the-ability-to-transform-output-labels">Problem: The Ability to Transform Output Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-outputtransformerwrapper-and-inputandoutputtransformermixin">Solution: OutputTransformerWrapper and InputAndOutputTransformerMixin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../scikit-learn_problems_solutions.html#not-ready-for-production-nor-for-complex-pipelines">Not ready for Production nor for Complex Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-processing-3d-4d-or-nd-data-in-your-pipeline-with-steps-made-for-lower-dimensionnal-data">Problem: Processing 3D, 4D, or ND Data in your Pipeline with Steps Made for Lower-Dimensionnal Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-use-a-foreachdatainputs-wrapper-to-loop-from-nd-data-to-n-d-1-data">Solution: use a ForEachDataInputs Wrapper to Loop from ND Data to N(D-1) Data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-modify-a-pipeline-along-the-way-such-as-for-pre-training-or-fine-tuning">Problem: Modify a Pipeline Along the Way, such as for Pre-Training or Fine-Tuning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-the-mutate-special-method">Solution: the Mutate Special Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#another-solution-the-apply-special-method">Another Solution: the Apply Special Method</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-getting-model-attributes-from-scikit-learn-pipeline">Problem: Getting Model Attributes from Scikit-Learn Pipeline</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-simpler-nested-pipelines-getitem-methods">Solution: Simpler Nested Pipelines <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-you-can-t-parallelize-nor-save-pipelines-using-steps-that-can-t-be-serialized-as-is-by-joblib">Problem: You can’t Parallelize nor Save Pipelines Using Steps that Can’t be Serialized “as-is” by Joblib</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-use-a-chain-of-savers-in-each-step">Solution: Use a Chain of Savers in each Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#about-cluster-computing-and-parallelism-in-python">About Cluster Computing and Parallelism in Python</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -366,7 +437,8 @@ performed to find the best possible combination of hyperparameters by sampling r
 
 <span class="kn">from</span> <span class="nn">neuraxle.hyperparams.distributions</span> <span class="kn">import</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">,</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.LogUniform" title="View documentation for neuraxle.hyperparams.distributions.LogUniform"><span class="n">LogUniform</span></a><span class="p">,</span> <a href="../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Boolean" title="View documentation for neuraxle.hyperparams.distributions.Boolean"><span class="n">Boolean</span></a>
 <span class="kn">from</span> <span class="nn">neuraxle.hyperparams.space</span> <span class="kn">import</span> <a href="../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a>
-<span class="kn">from</span> <span class="nn">neuraxle.metaopt.random</span> <span class="kn">import</span> <a href="../api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.RandomSearch" title="View documentation for neuraxle.metaopt.random.RandomSearch"><span class="n">RandomSearch</span></a><span class="p">,</span> <a href="../api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.KFoldCrossValidationWrapper" title="View documentation for neuraxle.metaopt.random.KFoldCrossValidationWrapper"><span class="n">KFoldCrossValidationWrapper</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.metaopt.auto_ml</span> <span class="kn">import</span> <span class="n">RandomSearch</span>
+<span class="kn">from</span> <span class="nn">neuraxle.metaopt.random</span> <span class="kn">import</span> <a href="../api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.KFoldCrossValidationWrapper" title="View documentation for neuraxle.metaopt.random.KFoldCrossValidationWrapper"><span class="n">KFoldCrossValidationWrapper</span></a>
 <span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="kn">import</span> <a href="../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a>
 <span class="kn">from</span> <span class="nn">neuraxle.steps.numpy</span> <span class="kn">import</span> <a href="../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyTranspose" title="View documentation for neuraxle.steps.numpy.NumpyTranspose"><span class="n">NumpyTranspose</span></a>
 <span class="kn">from</span> <span class="nn">neuraxle.steps.sklearn</span> <span class="kn">import</span> <a href="../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a>
@@ -415,7 +487,7 @@ performed to find the best possible combination of hyperparameters by sampling r
         <span class="p">)</span>
     <span class="p">])</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Meta-fitting on train:&quot;</span><span class="p">)</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">meta_fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">metastep</span><span class="o">=</span><a href="../api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.RandomSearch" title="View documentation for neuraxle.metaopt.random.RandomSearch"><span class="n">RandomSearch</span></a><span class="p">(</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">meta_fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">metastep</span><span class="o">=</span><span class="n">RandomSearch</span><span class="p">(</span>
         <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
         <span class="n">higher_score_is_better</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">validation_technique</span><span class="o">=</span><a href="../api/neuraxle.metaopt.random.html#neuraxle.metaopt.random.KFoldCrossValidationWrapper" title="View documentation for neuraxle.metaopt.random.KFoldCrossValidationWrapper"><span class="n">KFoldCrossValidationWrapper</span></a><span class="p">(</span><span class="n">scoring_function</span><span class="o">=</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="View documentation for sklearn.metrics.r2_score"><span class="n">r2_score</span></a><span class="p">,</span> <span class="n">k_fold</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -431,8 +503,8 @@ performed to find the best possible combination of hyperparameters by sampling r
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Transforming train and test:&quot;</span><span class="p">)</span>
-    <span class="n">y_train_predicted</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-    <span class="n">y_test_predicted</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">y_train_predicted</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+    <span class="n">y_test_predicted</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
@@ -454,10 +526,10 @@ performed to find the best possible combination of hyperparameters by sampling r
 <p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-boston-housing-meta-optimization-py">
 <div class="sphx-glr-download docutils container">
-<p><a class="reference download internal" download="" href="../_downloads/fe11b6329ab93b66cf25aad799c0c955/boston_housing_meta_optimization.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">boston_housing_meta_optimization.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/332745983d3bb535a88372c5cc4217b6/boston_housing_meta_optimization.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">boston_housing_meta_optimization.py</span></code></a></p>
 </div>
 <div class="sphx-glr-download docutils container">
-<p><a class="reference download internal" download="" href="../_downloads/b32c60bcf2a0aa03fb4b05aeceb2c186/boston_housing_meta_optimization.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">boston_housing_meta_optimization.ipynb</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/57a38ddf92bb6baf415b6c192dc3f346/boston_housing_meta_optimization.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">boston_housing_meta_optimization.ipynb</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>

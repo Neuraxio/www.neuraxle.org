@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Neuraxle Pipelines &mdash; Neuraxle 0.2.2 documentation</title>
+  <title>Neuraxle Pipelines &mdash; Neuraxle 0.3.0 documentation</title>
   
 
   
@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Introduction to Automatic Hyperparameter Tuning" href="../hyperparameter_tuning.html" />
+    <link rel="next" title="Solutions to Scikit-Learn’s Biggest Problems" href="../scikit-learn_problems_solutions.html" />
     <link rel="prev" title="Welcome to Neuraxle’s documentation, examples and tutorials!" href="../index.html" /> 
 
   <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.3.0
               </div>
             
           
@@ -96,10 +96,17 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Neuraxle Pipelines</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#quickstart">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deep-learning-pipelines">Deep Learning Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#deep-learning-pipeline-definition">Deep Learning Pipeline Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deep-learning-pipeline-training-and-evaluation">Deep Learning Pipeline Training and Evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deep-learning-production-pipeline">Deep Learning Production Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calling-a-deployed-pipeline">Calling a Deployed Pipeline</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#why-neuraxle">Why Neuraxle?</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#production-ready">Production-ready</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#compatibility">Compatibility</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#parallel-computing">Parallel Computing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parallel-computing-and-serialization">Parallel Computing and Serialization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#time-series-processing">Time Series Processing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#automatic-machine-learning">Automatic Machine Learning</a></li>
 </ul>
@@ -119,6 +126,70 @@
 <li class="toctree-l3"><a class="reference internal" href="#citation">Citation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contributors">Contributors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#supported-by">Supported By</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#support-us">Support Us</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../scikit-learn_problems_solutions.html">Solutions to Scikit-Learn’s Biggest Problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../scikit-learn_problems_solutions.html#definitions">Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scikit-learn_problems_solutions.html#inability-to-reasonably-do-automatic-machine-learning-automl">Inability to Reasonably do Automatic Machine Learning (AutoML)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-defining-the-search-space-hyperparameter-distributions">Problem: Defining the Search Space (Hyperparameter Distributions)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-define-hyperparameter-spaces-within-the-steps">Solution: Define Hyperparameter Spaces Within the Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-defining-hyperparameters-in-the-constructor-is-limiting">Problem: Defining Hyperparameters in the Constructor is Limiting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-separate-steps-s-constructors-from-the-get-params-method">Solution: Separate Steps’s Constructors From the <code class="docutils literal notranslate"><span class="pre">get_params</span></code> Method</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-different-train-and-test-behavior">Problem: Different Train and Test Behavior</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-use-the-set-train-special-method-and-use-step-wrappers">Solution: use the Set Train Special Method and use Step Wrappers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-you-trained-a-pipeline-and-you-want-feedback-statistics-on-its-learning">Problem: You trained a Pipeline and You Want Feedback Statistics on its Learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-the-introspect-special-method">Solution: the Introspect Special Method</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../scikit-learn_problems_solutions.html#inability-to-reasonably-do-deep-learning-pipelines">Inability to Reasonably do Deep Learning Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-scikit-learn-hardly-allows-for-mini-batch-gradient-descent-incremental-fit">Problem: Scikit-Learn Hardly Allows for Mini-Batch Gradient Descent (Incremental Fit)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-minibatch-pipeline-class-and-the-ability-to-incrementally-fit-pipeline-steps">Solution: Minibatch Pipeline Class and the Ability to Incrementally Fit Pipeline Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-initializing-the-pipeline-and-deallocating-resources">Problem: Initializing the Pipeline and Deallocating Resources</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-add-setup-and-teardown-lifecycle-methods-to-your-steps">Solution: Add Setup and Teardown Lifecycle Methods to Your Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-it-is-difficult-to-use-other-deep-learning-dl-libraries-in-scikit-learn">Problem: It is Difficult to Use Other Deep Learning (DL) Libraries in Scikit-Learn</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-moar-steps-lifecycle-methods">Solution: Moar Steps Lifecycle Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-the-ability-to-transform-output-labels">Problem: The Ability to Transform Output Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-outputtransformerwrapper-and-inputandoutputtransformermixin">Solution: OutputTransformerWrapper and InputAndOutputTransformerMixin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../scikit-learn_problems_solutions.html#not-ready-for-production-nor-for-complex-pipelines">Not ready for Production nor for Complex Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-processing-3d-4d-or-nd-data-in-your-pipeline-with-steps-made-for-lower-dimensionnal-data">Problem: Processing 3D, 4D, or ND Data in your Pipeline with Steps Made for Lower-Dimensionnal Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-use-a-foreachdatainputs-wrapper-to-loop-from-nd-data-to-n-d-1-data">Solution: use a ForEachDataInputs Wrapper to Loop from ND Data to N(D-1) Data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-modify-a-pipeline-along-the-way-such-as-for-pre-training-or-fine-tuning">Problem: Modify a Pipeline Along the Way, such as for Pre-Training or Fine-Tuning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-the-mutate-special-method">Solution: the Mutate Special Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#another-solution-the-apply-special-method">Another Solution: the Apply Special Method</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-getting-model-attributes-from-scikit-learn-pipeline">Problem: Getting Model Attributes from Scikit-Learn Pipeline</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-simpler-nested-pipelines-getitem-methods">Solution: Simpler Nested Pipelines <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-you-can-t-parallelize-nor-save-pipelines-using-steps-that-can-t-be-serialized-as-is-by-joblib">Problem: You can’t Parallelize nor Save Pipelines Using Steps that Can’t be Serialized “as-is” by Joblib</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-use-a-chain-of-savers-in-each-step">Solution: Use a Chain of Savers in each Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#about-cluster-computing-and-parallelism-in-python">About Cluster Computing and Parallelism in Python</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -349,6 +420,12 @@
 <blockquote>
 <div><p>Code Machine Learning Pipelines - The Right Way.</p>
 </div></blockquote>
+<a class="reference external image-reference" href="https://github.com/Neuraxio/Neuraxle"><img alt="https://img.shields.io/github/workflow/status/Neuraxio/Neuraxle/Test%20Python%20Package/master?:alt:Build" src="https://img.shields.io/github/workflow/status/Neuraxio/Neuraxle/Test%20Python%20Package/master?:alt:Build" /></a>
+<a class="reference external image-reference" href="https://gitter.im/Neuraxle/community"><img alt="https://img.shields.io/gitter/room/Neuraxio/Neuraxle?:alt:Gitter" src="https://img.shields.io/gitter/room/Neuraxio/Neuraxle?:alt:Gitter" /></a>
+<a class="reference external image-reference" href="https://www.neuraxle.org/stable/Neuraxle/README.html#license"><img alt="https://img.shields.io/pypi/l/neuraxle?:alt:PyPI-License" src="https://img.shields.io/pypi/l/neuraxle?:alt:PyPI-License" /></a>
+<a class="reference external image-reference" href="https://pypi.org/project/neuraxle/"><img alt="https://img.shields.io/pypi/dm/neuraxle?:alt:PyPI-Downloads" src="https://img.shields.io/pypi/dm/neuraxle?:alt:PyPI-Downloads" /></a>
+<a class="reference external image-reference" href="https://github.com/Neuraxio/Neuraxle"><img alt="https://img.shields.io/github/commit-activity/m/neuraxio/neuraxle?:alt:GitHubcommitactivity" src="https://img.shields.io/github/commit-activity/m/neuraxio/neuraxle?:alt:GitHubcommitactivity" /></a>
+<a class="reference external image-reference" href="https://pypi.org/project/neuraxle/"><img alt="https://img.shields.io/github/v/release/neuraxio/neuraxle?:alt:GitHubrelease(latestbydate)" src="https://img.shields.io/github/v/release/neuraxio/neuraxle?:alt:GitHubrelease(latestbydate)" /></a>
 <img alt="https://www.neuraxio.com/en/blog/assets/pipeline_1_small.jpg" src="https://www.neuraxio.com/en/blog/assets/pipeline_1_small.jpg" />
 <p>Neuraxle is a Machine Learning (ML) library for building neat pipelines,
 providing the right abstractions to both ease research, development, and
@@ -397,20 +474,151 @@ such:</p>
 
 <span class="c1"># Once it learned, the pipeline can process new and</span>
 <span class="c1"># unseen data for making predictions.</span>
-<span class="n">y_test_predicted</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-<span class="c1"># Easy REST API deployment.</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">FlaskRestApiWrapper</span><span class="p">(</span>
-    <span class="n">json_decoder</span><span class="o">=</span><span class="n">CustomJSONDecoderFor2DArray</span><span class="p">(),</span>
-    <span class="n">wrapped</span><span class="o">=</span><span class="n">p</span><span class="p">,</span>
-    <span class="n">json_encoder</span><span class="o">=</span><span class="n">CustomJSONEncoderOfOutputs</span><span class="p">(),</span>
-<span class="p">)</span><span class="o">.</span><span class="n">get_app</span><span class="p">()</span>
-<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+<span class="n">y_test_predicted</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Visit the
 <a class="reference external" href="https://www.neuraxle.org/stable/examples/index.html">examples</a>
 to get more a feeling of how it works, and inspiration.</p>
+</div>
+<div class="section" id="deep-learning-pipelines">
+<h2>Deep Learning Pipelines<a class="headerlink" href="#deep-learning-pipelines" title="Permalink to this headline">¶</a></h2>
+<p>Here is how to use deep learning algorithms within a Neuraxle Pipeline.</p>
+<div class="section" id="deep-learning-pipeline-definition">
+<h3>Deep Learning Pipeline Definition<a class="headerlink" href="#deep-learning-pipeline-definition" title="Permalink to this headline">¶</a></h3>
+<p>Defining a Deep Learning pipeline is more complex.
+It needs a composition of many steps to:</p>
+<ul class="simple">
+<li><p>Loop on data for many epochs, but just during training.</p></li>
+<li><p>Shuffle the data, just during training.</p></li>
+<li><p>Use minibatches to process the data, which avoids to blow RAM. Your steps will fit incrementally.</p></li>
+<li><p>Process data that is 2D, 3D, 4D, or even 5D or ND, with transformers made for 2D data slices.</p></li>
+<li><p>Actually use your Deep Learning algorithm within your pipeline for it to learn and predict.</p></li>
+</ul>
+<p>Below, we define a pipeline for time series classification using
+a LSTM RNN. It includes data preprocessing steps as well as the
+data flow management. <a class="reference external" href="https://qr.ae/TZjoMb">Time Series data is 3D</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">deep_learning_seq_classif_pipeline</span> <span class="o">=</span> <span class="n">EpochRepeater</span><span class="p">(</span><span class="n">Pipeline</span><span class="p">([</span>
+    <span class="c1"># X data shape: (batch, different_lengths, n_feature_columns)</span>
+    <span class="c1"># y data shape: (batch, different_lengths)</span>
+    <span class="c1"># Split X and Y into windows using</span>
+    <span class="c1"># an InputAndOutputTransformerMixin</span>
+    <span class="c1"># abstraction to transform y too:</span>
+    <span class="n">SliceTimeSeries</span><span class="p">(</span><span class="n">window_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">last_label_as_seq_label</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="c1"># X data shape: (more_than_batch, 128, n_feature_columns)</span>
+    <span class="c1"># y data shape: (more_than_batch, 128)</span>
+    <span class="n">TrainOnlyWrapper</span><span class="p">(</span><span class="n">DataShuffler</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)),</span>
+    <span class="n">MiniBatchSequentialPipeline</span><span class="p">([</span>
+        <span class="c1"># X data shape: (batch_size, 128, n_feature_columns)</span>
+        <span class="c1"># y data shape: (batch_size, 128)</span>
+        <span class="c1"># Loop on 2D slices of the batch&#39;s 3D time series</span>
+        <span class="c1"># data cube to apply 2D transformers:</span>
+        <span class="n">ForEachDataInput</span><span class="p">(</span><span class="n">Pipeline</span><span class="p">([</span>
+            <span class="c1"># X data shape: (128, n_feature_columns)</span>
+            <span class="c1"># y data shape: (128)</span>
+            <span class="c1"># This step will load the lazy-loadable data</span>
+            <span class="c1"># into a brick:</span>
+            <span class="n">ToNumpy</span><span class="p">(</span><span class="n">np_dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
+            <span class="c1"># Fill nan and inf values with 0:</span>
+            <span class="n">DefaultValuesFiller</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span>
+            <span class="c1"># Transform the columns (that is the innermost</span>
+            <span class="c1"># axis/dim of data named `n_feature_columns`):</span>
+            <span class="n">ColumnTransformer</span><span class="p">([</span>
+                <span class="c1"># Columns 0, 1, 2, 3 and 4 needs to be</span>
+                <span class="c1"># normalized by mean and variance (std):</span>
+                <span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">MeanVarianceNormalizer</span><span class="p">()),</span>
+                <span class="c1"># Column 5 needs to have it&#39;s `log plus 1`</span>
+                <span class="c1"># value taken before normalization.</span>
+                <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">Pipeline</span><span class="p">([</span>
+                    <span class="n">Log1P</span><span class="p">(),</span>
+                    <span class="n">MeanVarianceNormalizer</span><span class="p">()</span>
+                <span class="p">]))</span>
+                <span class="c1"># Note that omited columns are discarded.</span>
+                <span class="c1"># Also, multiple transformers on a column will</span>
+                <span class="c1"># concatenate the results.</span>
+            <span class="p">]),</span>
+            <span class="c1"># Transform the labels&#39; indices to one-hot vectors.</span>
+            <span class="n">OutputTransformerWrapper</span><span class="p">(</span>
+                <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">nb_columns</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;labels&#39;</span><span class="p">))</span>
+            <span class="c1"># X data shape: (128, n_feature_columns)</span>
+            <span class="c1"># y data shape: (128, 6)</span>
+        <span class="p">])),</span>
+        <span class="c1"># X data shape: (batch_size, 128, n_feature_columns)</span>
+        <span class="c1"># y data shape: (batch_size, 128, 6)</span>
+        <span class="c1"># Classification with a deep neural network,</span>
+        <span class="c1"># using the Neuraxle-TensorFlow and/or</span>
+        <span class="c1"># Neuraxle-PyTorch extensions:</span>
+        <span class="n">ClassificationLSTM</span><span class="p">(</span><span class="n">n_stacked</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_residual</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
+        <span class="c1"># X data shape: (batch_size, 128, 6)</span>
+        <span class="c1"># y data shape: (batch_size, 128, 6)</span>
+    <span class="p">],</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">),</span>
+    <span class="c1"># X data shape: (batch_size, 128, 6)</span>
+<span class="p">]),</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">fit_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deep-learning-pipeline-training-and-evaluation">
+<h3>Deep Learning Pipeline Training and Evaluation<a class="headerlink" href="#deep-learning-pipeline-training-and-evaluation" title="Permalink to this headline">¶</a></h3>
+<p>Here we train and evaluate with a train-validation split. Note that
+automatic hyperparameter tuning would require only a few more lines
+of code: see our
+<a class="reference external" href="https://www.neuraxle.org/stable/examples/boston_housing_meta_optimization.html#sphx-glr-examples-boston-housing-meta-optimization-py">hyperparameter tuning example</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wrap the pipeline by a validation strategy,</span>
+<span class="c1"># this could have been Cross Validation as well:</span>
+<span class="n">training_pipeline</span> <span class="o">=</span> <span class="n">ValidationSplitWrapper</span><span class="p">(</span>
+    <span class="n">deep_learning_seq_classif_pipeline</span><span class="p">,</span>
+    <span class="n">val_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">scoring_function</span><span class="o">=</span><span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span>
+<span class="p">)</span>
+
+<span class="c1"># Fitting and evaluating the pipeline.</span>
+<span class="c1"># X_train data shape: (batch, different_lengths, n_feature_columns)</span>
+<span class="c1"># y_train data shape: (batch, different_lengths)</span>
+<span class="n">training_pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="c1"># Note that X_train and y_train can be lazy loaders.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Train accuracy: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="n">training_pipeline</span><span class="o">.</span><span class="n">scores_train_mean</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Validation accuracy: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="n">training_pipeline</span><span class="o">.</span><span class="n">scores_validation_mean</span><span class="p">))</span>
+
+<span class="c1"># Recover the pipeline in test mode:</span>
+<span class="n">production_pipeline</span> <span class="o">=</span> <span class="n">training_pipeline</span><span class="o">.</span><span class="n">get_step</span><span class="p">()</span>
+<span class="n">production_pipeline</span><span class="o">.</span><span class="n">set_train</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deep-learning-production-pipeline">
+<h3>Deep Learning Production Pipeline<a class="headerlink" href="#deep-learning-production-pipeline" title="Permalink to this headline">¶</a></h3>
+<p>Deploying your deep learning app to a JSON REST API. Refer
+to <a class="reference external" href="https://flask.palletsprojects.com/en/1.1.x/tutorial/deploy/">Flask’s deployment documentation</a>
+for more info on deployment servers and security.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Will now serve the pipeline to a REST API as an example:</span>
+<span class="c1"># Note that having saved the pipeline to disk</span>
+<span class="c1"># (for reloading this in another file) would be easy, too, using savers.</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">FlaskRestApiWrapper</span><span class="p">(</span>
+    <span class="n">json_decoder</span><span class="o">=</span><span class="n">YourCustomJSONDecoderFor2DArray</span><span class="p">(),</span>
+    <span class="n">wrapped</span><span class="o">=</span><span class="n">production_pipeline</span><span class="p">,</span>
+    <span class="n">json_encoder</span><span class="o">=</span><span class="n">YourCustomJSONEncoderOfOutputs</span><span class="p">()</span>
+<span class="p">)</span><span class="o">.</span><span class="n">get_app</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="calling-a-deployed-pipeline">
+<h3>Calling a Deployed Pipeline<a class="headerlink" href="#calling-a-deployed-pipeline" title="Permalink to this headline">¶</a></h3>
+<p>This could be ran from another distant computer to call your app:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">APICaller</span><span class="p">(</span>
+    <span class="n">json_encoder</span><span class="o">=</span><span class="n">YourCustomJSONEncoderOfInputs</span><span class="p">(),</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://127.0.0.1:5000/&quot;</span><span class="p">,</span>
+    <span class="n">json_decoder</span><span class="o">=</span><span class="n">YourCustomJSONDecoderOfOutputs</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that we’ll soon have better remote proxy design patterns for distant
+pipelines, and distant parallel processing and distant parallel training.</p>
+</div>
 </div>
 <div class="section" id="why-neuraxle">
 <h2>Why Neuraxle?<a class="headerlink" href="#why-neuraxle" title="Permalink to this headline">¶</a></h2>
@@ -441,31 +649,41 @@ pipeline steps.</p>
 and/or <strong>any other machine learning library</strong> you like within and
 throughout your Neuraxle pipelines.</p>
 </div>
-<div class="section" id="parallel-computing">
-<h3>Parallel Computing<a class="headerlink" href="#parallel-computing" title="Permalink to this headline">¶</a></h3>
-<p>Neuraxle offer multiple parallel processing features using
-<a class="reference external" href="https://joblib.readthedocs.io/en/latest/parallel.html">joblib</a>. Most
-parallel processing in Neuraxle happens in the
-<a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.pipeline.html">pipeline</a>
-and
-<a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.union.html">union</a>
-modules, and as such, neuraxle can be easily parallelized on a cluster
-of computers using <a class="reference external" href="https://ml.dask.org/joblib.html">distributed</a> as
-its <a class="reference external" href="https://ml.dask.org/joblib.html">joblib backend</a>.</p>
+<div class="section" id="parallel-computing-and-serialization">
+<h3>Parallel Computing and Serialization<a class="headerlink" href="#parallel-computing-and-serialization" title="Permalink to this headline">¶</a></h3>
+<p>Neuraxle offer multiple parallel processing features. One magical thing
+that we did are Savers. Savers allow you to define how a step can be
+serialized. This way, it’s possible to avoid Python’s parallel
+processing limitations and pitfalls.</p>
+<p>Let’s suppose that your pipeline has a step that imports code from
+another library and that this code isn’t serializable (e.g.: some
+code written in C++ and interacting with the GPUs or anything funky).
+To make this step serializable, just define a saver which will tell
+the step how to dump itself to disk and reload itself. This will
+allow the step to be sent to a remote computer or to be threadable
+by reloading the save. The save can be dumped to a RAM disk for
+more performance and avoid truly writing to disks.</p>
+<p>Neuraxle is compatible with most other ML and DL libraries. We’re
+currently already writing savers for PyTorch and TensorFlow in the
+<a class="reference external" href="https://github.com/Neuraxio/Neuraxle-PyTorch">Neuraxle-PyTorch</a>
+and <a href="#id1"><span class="problematic" id="id2">`Neuraxle-TensorFlow&lt;https://github.com/Neuraxio/Neuraxle-TensorFlow&gt;`__</span></a>
+extensions of this project.</p>
 </div>
 <div class="section" id="time-series-processing">
 <h3>Time Series Processing<a class="headerlink" href="#time-series-processing" title="Permalink to this headline">¶</a></h3>
 <p>Although Neuraxle is not limited to just time series processing
 projects, it’s especially good for those projects, as one of the goals
 of Neuraxle is to provides a few abstractions that are useful for time
-series projects.</p>
+series projects, as
+<a class="reference external" href="https://qr.ae/TZjoMb">Time Series data is often 3D</a> or even ND.</p>
 <p>With the various abstractions that Neuraxle provides, it’s easy to get
 started building a time-series processing project. Neuraxle is also the
 backbone of <a class="reference external" href="https://www.neuraxio.com/en/time-series-solution">the Neuraxio Time Series
 project</a>, which is
 a premium software package built on top of Neuraxle for business boost
 their time series machine learning projects by providing out-of-the-box
-specialized pipeline steps.</p>
+specialized pipeline steps. Some of those specialized steps are featured
+in the <a class="reference external" href="#deep-learning-pipelines">Deep Learning Pipelines</a> section above.</p>
 <p>Note: <a class="reference external" href="https://www.neuraxio.com/en/time-series-solution">the Neuraxio Time Series
 project</a> is
 different from the Neuraxle project, those are separate projects.
@@ -645,6 +863,15 @@ license</a>.</p>
 <li><p>La Cité, LP: <a class="reference external" href="http://www.lacitelp.com/">http://www.lacitelp.com/</a></p></li>
 </ul>
 <img src="https://www.neuraxio.com/images/La-Cite-LP.png" width="260"></div>
+<div class="section" id="support-us">
+<h3>Support Us<a class="headerlink" href="#support-us" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://gitter.im/Neuraxle/community">Get in touch with us</a>.</p></li>
+<li><p><a class="reference external" href="https://www.neuraxio.com/en/">Be a sponsor</a>.</p></li>
+<li><p>Save this for later:</p></li>
+</ul>
+<a class="reference external image-reference" href="https://github.com/Neuraxio/Neuraxle/watchers"><img alt="https://img.shields.io/github/watchers/Neuraxio/Neuraxle?style=social&amp;:alt:GitHubwatchers" src="https://img.shields.io/github/watchers/Neuraxio/Neuraxle?style=social&amp;:alt:GitHubwatchers" /></a>
+</div>
 </div>
 </div>
 
@@ -656,7 +883,7 @@ license</a>.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../hyperparameter_tuning.html" class="btn btn-neutral float-right" title="Introduction to Automatic Hyperparameter Tuning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../scikit-learn_problems_solutions.html" class="btn btn-neutral float-right" title="Solutions to Scikit-Learn’s Biggest Problems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to Neuraxle’s documentation, examples and tutorials!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

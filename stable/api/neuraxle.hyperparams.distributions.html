@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>neuraxle.hyperparams.distributions &mdash; Neuraxle 0.2.2 documentation</title>
+  <title>neuraxle.hyperparams.distributions &mdash; Neuraxle 0.3.0 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.3.0
               </div>
             
           
@@ -96,10 +96,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../Neuraxle/README.html">Neuraxle Pipelines</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#quickstart">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#deep-learning-pipelines">Deep Learning Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#deep-learning-pipeline-definition">Deep Learning Pipeline Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#deep-learning-pipeline-training-and-evaluation">Deep Learning Pipeline Training and Evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#deep-learning-production-pipeline">Deep Learning Production Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#calling-a-deployed-pipeline">Calling a Deployed Pipeline</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#why-neuraxle">Why Neuraxle?</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#production-ready">Production-ready</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#compatibility">Compatibility</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#parallel-computing">Parallel Computing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#parallel-computing-and-serialization">Parallel Computing and Serialization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#time-series-processing">Time Series Processing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#automatic-machine-learning">Automatic Machine Learning</a></li>
 </ul>
@@ -119,6 +126,70 @@
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#citation">Citation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#contributors">Contributors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#supported-by">Supported By</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#support-us">Support Us</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../scikit-learn_problems_solutions.html">Solutions to Scikit-Learn’s Biggest Problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../scikit-learn_problems_solutions.html#definitions">Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scikit-learn_problems_solutions.html#inability-to-reasonably-do-automatic-machine-learning-automl">Inability to Reasonably do Automatic Machine Learning (AutoML)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-defining-the-search-space-hyperparameter-distributions">Problem: Defining the Search Space (Hyperparameter Distributions)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-define-hyperparameter-spaces-within-the-steps">Solution: Define Hyperparameter Spaces Within the Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-defining-hyperparameters-in-the-constructor-is-limiting">Problem: Defining Hyperparameters in the Constructor is Limiting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-separate-steps-s-constructors-from-the-get-params-method">Solution: Separate Steps’s Constructors From the <code class="docutils literal notranslate"><span class="pre">get_params</span></code> Method</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-different-train-and-test-behavior">Problem: Different Train and Test Behavior</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-use-the-set-train-special-method-and-use-step-wrappers">Solution: use the Set Train Special Method and use Step Wrappers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-you-trained-a-pipeline-and-you-want-feedback-statistics-on-its-learning">Problem: You trained a Pipeline and You Want Feedback Statistics on its Learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-the-introspect-special-method">Solution: the Introspect Special Method</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../scikit-learn_problems_solutions.html#inability-to-reasonably-do-deep-learning-pipelines">Inability to Reasonably do Deep Learning Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-scikit-learn-hardly-allows-for-mini-batch-gradient-descent-incremental-fit">Problem: Scikit-Learn Hardly Allows for Mini-Batch Gradient Descent (Incremental Fit)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-minibatch-pipeline-class-and-the-ability-to-incrementally-fit-pipeline-steps">Solution: Minibatch Pipeline Class and the Ability to Incrementally Fit Pipeline Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-initializing-the-pipeline-and-deallocating-resources">Problem: Initializing the Pipeline and Deallocating Resources</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-add-setup-and-teardown-lifecycle-methods-to-your-steps">Solution: Add Setup and Teardown Lifecycle Methods to Your Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-it-is-difficult-to-use-other-deep-learning-dl-libraries-in-scikit-learn">Problem: It is Difficult to Use Other Deep Learning (DL) Libraries in Scikit-Learn</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-moar-steps-lifecycle-methods">Solution: Moar Steps Lifecycle Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-the-ability-to-transform-output-labels">Problem: The Ability to Transform Output Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-outputtransformerwrapper-and-inputandoutputtransformermixin">Solution: OutputTransformerWrapper and InputAndOutputTransformerMixin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../scikit-learn_problems_solutions.html#not-ready-for-production-nor-for-complex-pipelines">Not ready for Production nor for Complex Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-processing-3d-4d-or-nd-data-in-your-pipeline-with-steps-made-for-lower-dimensionnal-data">Problem: Processing 3D, 4D, or ND Data in your Pipeline with Steps Made for Lower-Dimensionnal Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-use-a-foreachdatainputs-wrapper-to-loop-from-nd-data-to-n-d-1-data">Solution: use a ForEachDataInputs Wrapper to Loop from ND Data to N(D-1) Data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-modify-a-pipeline-along-the-way-such-as-for-pre-training-or-fine-tuning">Problem: Modify a Pipeline Along the Way, such as for Pre-Training or Fine-Tuning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-the-mutate-special-method">Solution: the Mutate Special Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#another-solution-the-apply-special-method">Another Solution: the Apply Special Method</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-getting-model-attributes-from-scikit-learn-pipeline">Problem: Getting Model Attributes from Scikit-Learn Pipeline</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-simpler-nested-pipelines-getitem-methods">Solution: Simpler Nested Pipelines <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-you-can-t-parallelize-nor-save-pipelines-using-steps-that-can-t-be-serialized-as-is-by-joblib">Problem: You can’t Parallelize nor Save Pipelines Using Steps that Can’t be Serialized “as-is” by Joblib</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-use-a-chain-of-savers-in-each-step">Solution: Use a Chain of Savers in each Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#about-cluster-computing-and-parallelism-in-python">About Cluster Computing and Parallelism in Python</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -400,11 +471,11 @@ the distribution.</p>
 </table>
 <dl class="class">
 <dt id="neuraxle.hyperparams.distributions.Boolean">
-<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">Boolean</code><span class="sig-paren">(</span><em>null_default_value=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L204"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Boolean" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">Boolean</code><span class="sig-paren">(</span><em>null_default_value=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L204"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Boolean" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a random boolean hyperparameter.</p>
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.Boolean.cdf">
-<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L229"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Boolean.cdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L229"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Boolean.cdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the boolean cumulative distribution function value at position <cite>x</cite>.
 :param x: value where the cumulative distribution function is evaluated.
 :return: value of the cumulative distribution function.</p>
@@ -412,7 +483,7 @@ the distribution.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.Boolean.pdf">
-<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L218"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Boolean.pdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L218"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Boolean.pdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the boolean probability mass function value at position <cite>x</cite>.
 :param x: value where the probability mass function is evaluated.
 :return: value of the probability mass function.</p>
@@ -420,7 +491,7 @@ the distribution.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.Boolean.rvs">
-<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L210"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Boolean.rvs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L210"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Boolean.rvs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a random True or False.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -433,14 +504,14 @@ the distribution.</p>
 
 <dl class="class">
 <dt id="neuraxle.hyperparams.distributions.Choice">
-<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">Choice</code><span class="sig-paren">(</span><em>choice_list: List</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">Choice</code><span class="sig-paren">(</span><em>choice_list: List</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a random value from a choice list of possible value for this hyperparameter.</p>
 <p>When narrowed, the choice will only collapse to a single element when narrowed enough.
 For example, if there are 4 items in the list, only at a narrowing value of 0.25 that
 the first item will be kept alone.</p>
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.Choice.cdf">
-<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L298"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice.cdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L298"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice.cdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the choice probability cumulative distribution function value at position <cite>x</cite>.
 The index in the list is used to know how the choice is performed.
 :param x: value where the cumulative distribution function is evaluated.
@@ -449,7 +520,7 @@ The index in the list is used to know how the choice is performed.
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.Choice.narrow_space_from_best_guess">
-<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.0</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L317"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.0</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L317"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will narrow the space. If the cumulative kept_space_ratio gets to be under or equal to 1/len(choice_list),
 then the list is crunched to a single item as a FixedHyperparameter to reflect this narrowing.
 So once a small enough kept_space_ratio is reached, the list becomes a fixed unique item from the best guess.
@@ -469,7 +540,7 @@ Otherwise, a deepcopy of self is returned.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.Choice.pdf">
-<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L281"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice.pdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L281"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice.pdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the choice probability mass function value at position <cite>x</cite>.
 :param x: value where the probability mass function is evaluated.
 :return: value of the probability mass function.</p>
@@ -477,7 +548,7 @@ Otherwise, a deepcopy of self is returned.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.Choice.rvs">
-<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L273"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice.rvs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L273"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice.rvs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get one of the items randomly.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -490,11 +561,11 @@ Otherwise, a deepcopy of self is returned.</p>
 
 <dl class="class">
 <dt id="neuraxle.hyperparams.distributions.FixedHyperparameter">
-<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">FixedHyperparameter</code><span class="sig-paren">(</span><em>value</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L134"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.FixedHyperparameter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">FixedHyperparameter</code><span class="sig-paren">(</span><em>value</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L134"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.FixedHyperparameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is an hyperparameter that won’t change again, but that is still expressed as a distribution.</p>
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.FixedHyperparameter.cdf">
-<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L167"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.FixedHyperparameter.cdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L167"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.FixedHyperparameter.cdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Cumulative distribution function value at <cite>x</cite>.
 Since the parameter is fixed, the value return is 1 if x&gt;= value and 0 otherwise.</p>
 <dl class="field-list simple">
@@ -509,7 +580,7 @@ Since the parameter is fixed, the value return is 1 if x&gt;= value and 0 otherw
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.FixedHyperparameter.pdf">
-<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L154"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.FixedHyperparameter.pdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L154"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.FixedHyperparameter.pdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Probability distribution function value at <cite>x</cite>.
 Since the parameter is fixed, the value return is 1 when x == value and 0 otherwise.</p>
 <dl class="field-list simple">
@@ -524,7 +595,7 @@ Since the parameter is fixed, the value return is 1 when x == value and 0 otherw
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.FixedHyperparameter.rvs">
-<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L146"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.FixedHyperparameter.rvs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L146"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.FixedHyperparameter.rvs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample the non-random anymore value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -537,11 +608,11 @@ Since the parameter is fixed, the value return is 1 when x == value and 0 otherw
 
 <dl class="class">
 <dt id="neuraxle.hyperparams.distributions.HyperparameterDistribution">
-<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">HyperparameterDistribution</code><span class="sig-paren">(</span><em>null_default_value</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L41"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">HyperparameterDistribution</code><span class="sig-paren">(</span><em>null_default_value</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L41"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base class for other hyperparameter distributions.</p>
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.HyperparameterDistribution.cdf">
-<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L74"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution.cdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L74"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution.cdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Abstract method for cumulative distribution function value at <cite>x</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -555,12 +626,12 @@ Since the parameter is fixed, the value return is 1 when x == value and 0 otherw
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.HyperparameterDistribution.get_current_narrowing_value">
-<code class="descname">get_current_narrowing_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution.get_current_narrowing_value" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_current_narrowing_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution.get_current_narrowing_value" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.HyperparameterDistribution.narrow_space_from_best_guess">
-<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.0</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.0</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes a value that is estimated to be the best one of the space, and restrict the space near that value.
 By default, this function will completely replace the returned value by the new guess if not overriden.</p>
 <dl class="field-list simple">
@@ -578,12 +649,12 @@ By default, this function will completely replace the returned value by the new 
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.HyperparameterDistribution.nullify">
-<code class="descname">nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L60"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution.nullify" title="Permalink to this definition">¶</a></dt>
+<code class="descname">nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L60"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution.nullify" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.HyperparameterDistribution.pdf">
-<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution.pdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution.pdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Abstract method for probability distribution function value at <cite>x</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -597,7 +668,7 @@ By default, this function will completely replace the returned value by the new 
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.HyperparameterDistribution.rvs">
-<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L51"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution.rvs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L51"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution.rvs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample the random variable.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -608,7 +679,7 @@ By default, this function will completely replace the returned value by the new 
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.HyperparameterDistribution.unnarrow">
-<code class="descname">unnarrow</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L119"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution.unnarrow" title="Permalink to this definition">¶</a></dt>
+<code class="descname">unnarrow</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L119"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution.unnarrow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the original distribution before narrowing of the distribution. If the distribution was never narrowed,
 will return a copy of self.</p>
 <dl class="field-list simple">
@@ -620,7 +691,7 @@ will return a copy of self.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.HyperparameterDistribution.was_narrowed_from">
-<code class="descname">was_narrowed_from</code><span class="sig-paren">(</span><em>kept_space_ratio: float</em>, <em>original_hp: neuraxle.hyperparams.distributions.HyperparameterDistribution</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L96"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution.was_narrowed_from" title="Permalink to this definition">¶</a></dt>
+<code class="descname">was_narrowed_from</code><span class="sig-paren">(</span><em>kept_space_ratio: float</em>, <em>original_hp: neuraxle.hyperparams.distributions.HyperparameterDistribution</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L96"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution.was_narrowed_from" title="Permalink to this definition">¶</a></dt>
 <dd><p>Keep track of the original distribution to restore it.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -639,11 +710,11 @@ will return a copy of self.</p>
 
 <dl class="class">
 <dt id="neuraxle.hyperparams.distributions.LogNormal">
-<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">LogNormal</code><span class="sig-paren">(</span><em>log2_space_mean: float</em>, <em>log2_space_std: float</em>, <em>hard_clip_min: float = None</em>, <em>hard_clip_max: float = None</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L885"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">LogNormal</code><span class="sig-paren">(</span><em>log2_space_mean: float</em>, <em>log2_space_std: float</em>, <em>hard_clip_min: float = None</em>, <em>hard_clip_max: float = None</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L885"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a LogNormal distribution.</p>
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.LogNormal.cdf">
-<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L964"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal.cdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L964"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal.cdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the LogNormal cumulative distribution value at position <cite>x</cite>.
 :param x: value where the cumulative distribution function is evaluated.
 :return: value of the cumulative distribution function.</p>
@@ -651,7 +722,7 @@ will return a copy of self.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.LogNormal.narrow_space_from_best_guess">
-<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L991"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L991"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will narrow the distribution towards the new best_guess.
 The log2_space_mean (log space mean) will move, in log space, towards the new best guess, and the
 log2_space_std (log space standard deviation) will be multiplied by the kept_space_ratio.</p>
@@ -670,7 +741,7 @@ log2_space_std (log space standard deviation) will be multiplied by the kept_spa
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.LogNormal.pdf">
-<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L935"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal.pdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L935"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal.pdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the LogNormal probability distribution value at position <cite>x</cite>.
 :param x: value where the probability distribution function is evaluated.
 :return: value of the probability distribution function.</p>
@@ -678,7 +749,7 @@ log2_space_std (log space standard deviation) will be multiplied by the kept_spa
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.LogNormal.rvs">
-<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L909"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal.rvs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L909"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal.rvs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will return a float value in the specified range as specified at creation.
 Note: the range at creation was in log space. The return value is after taking an exponent.</p>
 <dl class="field-list simple">
@@ -692,12 +763,12 @@ Note: the range at creation was in log space. The return value is after taking a
 
 <dl class="class">
 <dt id="neuraxle.hyperparams.distributions.LogUniform">
-<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">LogUniform</code><span class="sig-paren">(</span><em>min_included: float</em>, <em>max_included: float</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L674"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogUniform" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">LogUniform</code><span class="sig-paren">(</span><em>min_included: float</em>, <em>max_included: float</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L674"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogUniform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a LogUniform distribution.</p>
 <p>For example, this is good for neural networks’ learning rates: that vary exponentially.</p>
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.LogUniform.cdf">
-<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L721"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogUniform.cdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L721"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogUniform.cdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the logUniform cumulative distribution value at position <cite>x</cite>.
 :param x: value where the cumulative distribution function is evaluated.
 :return: value of the cumulative distribution function.</p>
@@ -705,7 +776,7 @@ Note: the range at creation was in log space. The return value is after taking a
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.LogUniform.narrow_space_from_best_guess">
-<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L739"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogUniform.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L739"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogUniform.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will narrow, in log space, the distribution towards the new best_guess.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -722,7 +793,7 @@ Note: the range at creation was in log space. The return value is after taking a
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.LogUniform.pdf">
-<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L707"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogUniform.pdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L707"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogUniform.pdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the logUniform probability distribution value at position <cite>x</cite>.
 :param x: value where the probability distribution function is evaluated.
 :return: value of the probability distribution function.</p>
@@ -730,7 +801,7 @@ Note: the range at creation was in log space. The return value is after taking a
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.LogUniform.rvs">
-<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L699"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogUniform.rvs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L699"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogUniform.rvs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will return a float value in the specified range as specified at creation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -743,11 +814,11 @@ Note: the range at creation was in log space. The return value is after taking a
 
 <dl class="class">
 <dt id="neuraxle.hyperparams.distributions.Normal">
-<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">Normal</code><span class="sig-paren">(</span><em>mean: float</em>, <em>std: float</em>, <em>hard_clip_min: float = None</em>, <em>hard_clip_max: float = None</em>, <em>null_default_value: float = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L756"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">Normal</code><span class="sig-paren">(</span><em>mean: float</em>, <em>std: float</em>, <em>hard_clip_min: float = None</em>, <em>hard_clip_max: float = None</em>, <em>null_default_value: float = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L756"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a normal distribution.</p>
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.Normal.cdf">
-<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L836"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal.cdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L836"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal.cdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the Normal cumulative distribution value at position <cite>x</cite>.
 :param x: value where the cumulative distribution function is evaluated.
 :return: value of the cumulative distribution function.</p>
@@ -755,7 +826,7 @@ Note: the range at creation was in log space. The return value is after taking a
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.Normal.narrow_space_from_best_guess">
-<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L862"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L862"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will narrow the distribution towards the new best_guess.
 The mean will move towards the new best guess, and the standard deviation
 will be multiplied by the kept_space_ratio.
@@ -775,7 +846,7 @@ The hard clip limit is unchanged.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.Normal.pdf">
-<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L809"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal.pdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L809"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal.pdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the Normal probability distribution value at position <cite>x</cite>.
 :param x: value where the probability distribution function is evaluated.
 :return: value of the probability distribution function.</p>
@@ -783,7 +854,7 @@ The hard clip limit is unchanged.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.Normal.rvs">
-<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L785"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal.rvs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L785"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal.rvs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will return a float value in the specified range as specified at creation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -796,13 +867,13 @@ The hard clip limit is unchanged.</p>
 
 <dl class="class">
 <dt id="neuraxle.hyperparams.distributions.PriorityChoice">
-<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">PriorityChoice</code><span class="sig-paren">(</span><em>choice_list: List</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L344"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">PriorityChoice</code><span class="sig-paren">(</span><em>choice_list: List</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L344"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a random value from a choice list of possible value for this hyperparameter.</p>
 <p>The first parameters are kept until the end when the list is narrowed (it is narrowed progressively),
 unless there is a best guess that surpasses some of the top choices.</p>
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.PriorityChoice.cdf">
-<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L396"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice.cdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L396"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice.cdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the choice probability cumulative distribution function value at position <cite>x</cite>.
 The index in the list is used to know how the choice is performed.
 :param x: value where the cumulative distribution function is evaluated.
@@ -811,7 +882,7 @@ The index in the list is used to know how the choice is performed.
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.PriorityChoice.narrow_space_from_best_guess">
-<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.0</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L415"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.0</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L415"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will narrow the space. If the cumulative kept_space_ratio gets to be under or equal to 1-1/len(choice_list),
 then the list is crunched to discard the last items to reflect this narrowing.
 After a few narrowing (or a big one), the list may become a FixedHyperparameter.
@@ -831,7 +902,7 @@ Otherwise if the list is unchanged, a deepcopy of self is returned.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.PriorityChoice.pdf">
-<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L379"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice.pdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L379"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice.pdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the choice probability mass function value at position <cite>x</cite>.
 :param x: value where the probability mass function is evaluated.
 :return: value of the probability mass function.</p>
@@ -839,7 +910,7 @@ Otherwise if the list is unchanged, a deepcopy of self is returned.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.PriorityChoice.rvs">
-<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L371"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice.rvs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L371"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice.rvs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get one of the items randomly.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -852,11 +923,11 @@ Otherwise if the list is unchanged, a deepcopy of self is returned.</p>
 
 <dl class="class">
 <dt id="neuraxle.hyperparams.distributions.Quantized">
-<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">Quantized</code><span class="sig-paren">(</span><em>hd: neuraxle.hyperparams.distributions.HyperparameterDistribution = None</em>, <em>hds: List[neuraxle.hyperparams.distributions.HyperparameterDistribution] = None</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L473"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">Quantized</code><span class="sig-paren">(</span><em>hd: neuraxle.hyperparams.distributions.HyperparameterDistribution = None</em>, <em>hds: List[neuraxle.hyperparams.distributions.HyperparameterDistribution] = None</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L473"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized" title="Permalink to this definition">¶</a></dt>
 <dd><p>A quantized wrapper for another distribution: will round() the rvs number.</p>
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.Quantized.cdf">
-<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L496"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized.cdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L496"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized.cdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the Quantized cumulative distribution function at position <cite>x</cite> of a continuous distribution.
 :param x: value where the cumulative distribution function is evaluated.
 :return: value of the cumulative distribution function.</p>
@@ -864,7 +935,7 @@ Otherwise if the list is unchanged, a deepcopy of self is returned.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.Quantized.narrow_space_from_best_guess">
-<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.Quantized<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L505"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.Quantized<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L505"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will narrow the underlying distribution and re-wrap it under a Quantized.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -881,7 +952,7 @@ Otherwise if the list is unchanged, a deepcopy of self is returned.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.Quantized.pdf">
-<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L484"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized.pdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L484"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized.pdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the Quantized probability mass function value at position <cite>x</cite> of a continuous distribution.
 :param x: value where the probability mass function is evaluated.
 :return: value of the probability mass function.</p>
@@ -889,7 +960,7 @@ Otherwise if the list is unchanged, a deepcopy of self is returned.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.Quantized.rvs">
-<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L476"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized.rvs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L476"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized.rvs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will return an integer, rounded from the output of the previous distribution.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -902,11 +973,11 @@ Otherwise if the list is unchanged, a deepcopy of self is returned.</p>
 
 <dl class="class">
 <dt id="neuraxle.hyperparams.distributions.RandInt">
-<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">RandInt</code><span class="sig-paren">(</span><em>min_included: int</em>, <em>max_included: int</em>, <em>null_default_value: int = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L519"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">RandInt</code><span class="sig-paren">(</span><em>min_included: int</em>, <em>max_included: int</em>, <em>null_default_value: int = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L519"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a random integer within a range</p>
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.RandInt.cdf">
-<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L561"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt.cdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L561"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt.cdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the random int cumulative distribution function value at position <cite>x</cite>.
 :param x: value where the cumulative distribution function is evaluated.
 :return: value of the cumulative distribution function.</p>
@@ -914,7 +985,7 @@ Otherwise if the list is unchanged, a deepcopy of self is returned.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.RandInt.narrow_space_from_best_guess">
-<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L575"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L575"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will narrow the underlying distribution towards the best guess.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -931,7 +1002,7 @@ Otherwise if the list is unchanged, a deepcopy of self is returned.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.RandInt.pdf">
-<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L548"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt.pdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L548"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt.pdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the random int mass function value at position <cite>x</cite>.
 :param x: value where the probability mass function is evaluated.
 :return: value of the probability mass function.</p>
@@ -939,7 +1010,7 @@ Otherwise if the list is unchanged, a deepcopy of self is returned.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.RandInt.rvs">
-<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L540"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt.rvs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L540"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt.rvs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will return an integer in the specified range as specified at creation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -952,11 +1023,11 @@ Otherwise if the list is unchanged, a deepcopy of self is returned.</p>
 
 <dl class="class">
 <dt id="neuraxle.hyperparams.distributions.Uniform">
-<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">Uniform</code><span class="sig-paren">(</span><em>min_included: float</em>, <em>max_included: float</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L591"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">Uniform</code><span class="sig-paren">(</span><em>min_included: float</em>, <em>max_included: float</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L591"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a uniform distribution.</p>
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.Uniform.cdf">
-<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L639"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform.cdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L639"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform.cdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the Uniform cumulative distribution value at position <cite>x</cite>.
 :param x: value where the cumulative distribution function is evaluated.
 :return: value of the cumulative distribution function.</p>
@@ -964,7 +1035,7 @@ Otherwise if the list is unchanged, a deepcopy of self is returned.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.Uniform.narrow_space_from_best_guess">
-<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L658"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guess</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.HyperparameterDistribution<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L658"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will narrow the underlying distribution towards the best guess.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -981,7 +1052,7 @@ Otherwise if the list is unchanged, a deepcopy of self is returned.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.Uniform.pdf">
-<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L622"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform.pdf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L622"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform.pdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the Uniform probability distribution value at position <cite>x</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -995,7 +1066,7 @@ Otherwise if the list is unchanged, a deepcopy of self is returned.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.distributions.Uniform.rvs">
-<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L614"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform.rvs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L614"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform.rvs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will return a float value in the specified range as specified at creation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1008,7 +1079,7 @@ Otherwise if the list is unchanged, a deepcopy of self is returned.</p>
 
 <dl class="class">
 <dt id="neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions">
-<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">WrappedHyperparameterDistributions</code><span class="sig-paren">(</span><em>hd: neuraxle.hyperparams.distributions.HyperparameterDistribution = None</em>, <em>hds: List[neuraxle.hyperparams.distributions.HyperparameterDistribution] = None</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/hyperparams/distributions.py#L453"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">WrappedHyperparameterDistributions</code><span class="sig-paren">(</span><em>hd: neuraxle.hyperparams.distributions.HyperparameterDistribution = None</em>, <em>hds: List[neuraxle.hyperparams.distributions.HyperparameterDistribution] = None</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/hyperparams/distributions.py#L453"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>

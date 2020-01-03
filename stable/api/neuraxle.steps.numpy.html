@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>neuraxle.steps.numpy &mdash; Neuraxle 0.2.2 documentation</title>
+  <title>neuraxle.steps.numpy &mdash; Neuraxle 0.3.0 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.3.0
               </div>
             
           
@@ -96,10 +96,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../Neuraxle/README.html">Neuraxle Pipelines</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#quickstart">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#deep-learning-pipelines">Deep Learning Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#deep-learning-pipeline-definition">Deep Learning Pipeline Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#deep-learning-pipeline-training-and-evaluation">Deep Learning Pipeline Training and Evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#deep-learning-production-pipeline">Deep Learning Production Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#calling-a-deployed-pipeline">Calling a Deployed Pipeline</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#why-neuraxle">Why Neuraxle?</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#production-ready">Production-ready</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#compatibility">Compatibility</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#parallel-computing">Parallel Computing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#parallel-computing-and-serialization">Parallel Computing and Serialization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#time-series-processing">Time Series Processing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#automatic-machine-learning">Automatic Machine Learning</a></li>
 </ul>
@@ -119,6 +126,70 @@
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#citation">Citation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#contributors">Contributors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#supported-by">Supported By</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#support-us">Support Us</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../scikit-learn_problems_solutions.html">Solutions to Scikit-Learn’s Biggest Problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../scikit-learn_problems_solutions.html#definitions">Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scikit-learn_problems_solutions.html#inability-to-reasonably-do-automatic-machine-learning-automl">Inability to Reasonably do Automatic Machine Learning (AutoML)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-defining-the-search-space-hyperparameter-distributions">Problem: Defining the Search Space (Hyperparameter Distributions)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-define-hyperparameter-spaces-within-the-steps">Solution: Define Hyperparameter Spaces Within the Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-defining-hyperparameters-in-the-constructor-is-limiting">Problem: Defining Hyperparameters in the Constructor is Limiting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-separate-steps-s-constructors-from-the-get-params-method">Solution: Separate Steps’s Constructors From the <code class="docutils literal notranslate"><span class="pre">get_params</span></code> Method</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-different-train-and-test-behavior">Problem: Different Train and Test Behavior</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-use-the-set-train-special-method-and-use-step-wrappers">Solution: use the Set Train Special Method and use Step Wrappers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-you-trained-a-pipeline-and-you-want-feedback-statistics-on-its-learning">Problem: You trained a Pipeline and You Want Feedback Statistics on its Learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-the-introspect-special-method">Solution: the Introspect Special Method</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../scikit-learn_problems_solutions.html#inability-to-reasonably-do-deep-learning-pipelines">Inability to Reasonably do Deep Learning Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-scikit-learn-hardly-allows-for-mini-batch-gradient-descent-incremental-fit">Problem: Scikit-Learn Hardly Allows for Mini-Batch Gradient Descent (Incremental Fit)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-minibatch-pipeline-class-and-the-ability-to-incrementally-fit-pipeline-steps">Solution: Minibatch Pipeline Class and the Ability to Incrementally Fit Pipeline Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-initializing-the-pipeline-and-deallocating-resources">Problem: Initializing the Pipeline and Deallocating Resources</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-add-setup-and-teardown-lifecycle-methods-to-your-steps">Solution: Add Setup and Teardown Lifecycle Methods to Your Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-it-is-difficult-to-use-other-deep-learning-dl-libraries-in-scikit-learn">Problem: It is Difficult to Use Other Deep Learning (DL) Libraries in Scikit-Learn</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-moar-steps-lifecycle-methods">Solution: Moar Steps Lifecycle Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-the-ability-to-transform-output-labels">Problem: The Ability to Transform Output Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-outputtransformerwrapper-and-inputandoutputtransformermixin">Solution: OutputTransformerWrapper and InputAndOutputTransformerMixin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../scikit-learn_problems_solutions.html#not-ready-for-production-nor-for-complex-pipelines">Not ready for Production nor for Complex Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-processing-3d-4d-or-nd-data-in-your-pipeline-with-steps-made-for-lower-dimensionnal-data">Problem: Processing 3D, 4D, or ND Data in your Pipeline with Steps Made for Lower-Dimensionnal Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-use-a-foreachdatainputs-wrapper-to-loop-from-nd-data-to-n-d-1-data">Solution: use a ForEachDataInputs Wrapper to Loop from ND Data to N(D-1) Data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-modify-a-pipeline-along-the-way-such-as-for-pre-training-or-fine-tuning">Problem: Modify a Pipeline Along the Way, such as for Pre-Training or Fine-Tuning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-the-mutate-special-method">Solution: the Mutate Special Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#another-solution-the-apply-special-method">Another Solution: the Apply Special Method</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-getting-model-attributes-from-scikit-learn-pipeline">Problem: Getting Model Attributes from Scikit-Learn Pipeline</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-simpler-nested-pipelines-getitem-methods">Solution: Simpler Nested Pipelines <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-you-can-t-parallelize-nor-save-pipelines-using-steps-that-can-t-be-serialized-as-is-by-joblib">Problem: You can’t Parallelize nor Save Pipelines Using Steps that Can’t be Serialized “as-is” by Joblib</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-use-a-chain-of-savers-in-each-step">Solution: Use a Chain of Savers in each Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#about-cluster-computing-and-parallelism-in-python">About Cluster Computing and Parallelism in Python</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -389,7 +460,7 @@
 </table>
 <dl class="class">
 <dt id="neuraxle.steps.numpy.AddN">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">AddN</code><span class="sig-paren">(</span><em>add=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/numpy.py#L210"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.AddN" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">AddN</code><span class="sig-paren">(</span><em>add=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/steps/numpy.py#L210"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.AddN" title="Permalink to this definition">¶</a></dt>
 <dd><p>Step to add a scalar to a numpy array.
 Accepts an integer for the number to add to every data inputs.</p>
 <p>Example usage:</p>
@@ -407,7 +478,7 @@ Accepts an integer for the number to add to every data inputs.</p>
 </div>
 <dl class="method">
 <dt id="neuraxle.steps.numpy.AddN.inverse_transform">
-<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/numpy.py#L244"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.AddN.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/steps/numpy.py#L244"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.AddN.inverse_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse Transform the given transformed data inputs.</p>
 <p><a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep.mutate" title="neuraxle.base.BaseStep.mutate"><code class="xref py py-func docutils literal notranslate"><span class="pre">mutate()</span></code></a> or <a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep.reverse" title="neuraxle.base.BaseStep.reverse"><code class="xref py py-func docutils literal notranslate"><span class="pre">reverse()</span></code></a> can be called to change the default transform behavior :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span><span class="n">MultiplyBy</span><span class="p">()])</span>
@@ -436,7 +507,7 @@ Accepts an integer for the number to add to every data inputs.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.AddN.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/numpy.py#L238"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.AddN.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/steps/numpy.py#L238"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.AddN.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform given data inputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -455,7 +526,7 @@ Accepts an integer for the number to add to every data inputs.</p>
 
 <dl class="class">
 <dt id="neuraxle.steps.numpy.MultiplyByN">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">MultiplyByN</code><span class="sig-paren">(</span><em>multiply_by=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/numpy.py#L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.MultiplyByN" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">MultiplyByN</code><span class="sig-paren">(</span><em>multiply_by=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/steps/numpy.py#L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.MultiplyByN" title="Permalink to this definition">¶</a></dt>
 <dd><p>Step to multiply a numpy array.
 Accepts an integer for the number to multiply by.</p>
 <p>Example usage:</p>
@@ -473,7 +544,7 @@ Accepts an integer for the number to multiply by.</p>
 </div>
 <dl class="method">
 <dt id="neuraxle.steps.numpy.MultiplyByN.inverse_transform">
-<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/numpy.py#L203"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.MultiplyByN.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/steps/numpy.py#L203"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.MultiplyByN.inverse_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse Transform the given transformed data inputs.</p>
 <p><a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep.mutate" title="neuraxle.base.BaseStep.mutate"><code class="xref py py-func docutils literal notranslate"><span class="pre">mutate()</span></code></a> or <a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep.reverse" title="neuraxle.base.BaseStep.reverse"><code class="xref py py-func docutils literal notranslate"><span class="pre">reverse()</span></code></a> can be called to change the default transform behavior :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span><span class="n">MultiplyBy</span><span class="p">()])</span>
@@ -502,7 +573,7 @@ Accepts an integer for the number to multiply by.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.MultiplyByN.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/numpy.py#L197"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.MultiplyByN.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/steps/numpy.py#L197"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.MultiplyByN.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform given data inputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -521,17 +592,17 @@ Accepts an integer for the number to multiply by.</p>
 
 <dl class="class">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyConcatenateInnerFeatures</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/numpy.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyConcatenateInnerFeatures</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/steps/numpy.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures" title="Permalink to this definition">¶</a></dt>
 <dd><p>Numpy concatenation step where the concatenation is performed along <cite>axis=-1</cite>.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyConcatenateOnCustomAxis</code><span class="sig-paren">(</span><em>axis</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/numpy.py#L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyConcatenateOnCustomAxis</code><span class="sig-paren">(</span><em>axis</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/steps/numpy.py#L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis" title="Permalink to this definition">¶</a></dt>
 <dd><p>Numpy concetenation step where the concatenation is performed along the specified custom axis.</p>
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/numpy.py#L75"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/steps/numpy.py#L75"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOnCustomAxis.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply the concatenation transformation along the specified axis.
 :param data_inputs:
 :return: Numpy array</p>
@@ -541,16 +612,16 @@ Accepts an integer for the number to multiply by.</p>
 
 <dl class="class">
 <dt id="neuraxle.steps.numpy.NumpyConcatenateOuterBatch">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyConcatenateOuterBatch</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/numpy.py#L101"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyConcatenateOuterBatch</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/steps/numpy.py#L101"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyConcatenateOuterBatch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Numpy concetenation step where the concatenation is performed along <cite>axis=0</cite>.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyFlattenDatum</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/numpy.py#L33"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyFlattenDatum</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/steps/numpy.py#L33"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyFlattenDatum.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/numpy.py#L38"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/steps/numpy.py#L38"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyFlattenDatum.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform given data inputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -569,10 +640,10 @@ Accepts an integer for the number to multiply by.</p>
 
 <dl class="class">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyShapePrinter</code><span class="sig-paren">(</span><em>custom_message: str = ''</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/numpy.py#L147"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyShapePrinter</code><span class="sig-paren">(</span><em>custom_message: str = ''</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/steps/numpy.py#L147"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.inverse_transform">
-<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/numpy.py#L158"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/steps/numpy.py#L158"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.inverse_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse Transform the given transformed data inputs.</p>
 <p><a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep.mutate" title="neuraxle.base.BaseStep.mutate"><code class="xref py py-func docutils literal notranslate"><span class="pre">mutate()</span></code></a> or <a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep.reverse" title="neuraxle.base.BaseStep.reverse"><code class="xref py py-func docutils literal notranslate"><span class="pre">reverse()</span></code></a> can be called to change the default transform behavior :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span><span class="n">MultiplyBy</span><span class="p">()])</span>
@@ -601,7 +672,7 @@ Accepts an integer for the number to multiply by.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyShapePrinter.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/numpy.py#L154"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/steps/numpy.py#L154"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyShapePrinter.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform given data inputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -620,10 +691,10 @@ Accepts an integer for the number to multiply by.</p>
 
 <dl class="class">
 <dt id="neuraxle.steps.numpy.NumpyTranspose">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyTranspose</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/numpy.py#L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">NumpyTranspose</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/steps/numpy.py#L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.inverse_transform">
-<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/numpy.py#L140"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/steps/numpy.py#L140"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.inverse_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse Transform the given transformed data inputs.</p>
 <p><a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep.mutate" title="neuraxle.base.BaseStep.mutate"><code class="xref py py-func docutils literal notranslate"><span class="pre">mutate()</span></code></a> or <a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep.reverse" title="neuraxle.base.BaseStep.reverse"><code class="xref py py-func docutils literal notranslate"><span class="pre">reverse()</span></code></a> can be called to change the default transform behavior :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span><span class="n">MultiplyBy</span><span class="p">()])</span>
@@ -652,7 +723,7 @@ Accepts an integer for the number to multiply by.</p>
 
 <dl class="method">
 <dt id="neuraxle.steps.numpy.NumpyTranspose.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/numpy.py#L137"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/steps/numpy.py#L137"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.NumpyTranspose.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform given data inputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -671,13 +742,40 @@ Accepts an integer for the number to multiply by.</p>
 
 <dl class="class">
 <dt id="neuraxle.steps.numpy.OneHotEncoder">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">OneHotEncoder</code><span class="sig-paren">(</span><em>nb_columns</em>, <em>name</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/numpy.py#L251"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.OneHotEncoder" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.numpy.</code><code class="descname">OneHotEncoder</code><span class="sig-paren">(</span><em>nb_columns</em>, <em>name</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/steps/numpy.py#L251"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.OneHotEncoder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Step to one hot a set of columns.
 Accepts Integer Columns and converts it ot a one_hot.
 Rounds floats  to integer for safety in the transform.</p>
+<p>Example usage:</p>
+<ol class="arabic simple">
+<li><p>Set up data</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Do the actual conversion</strong></p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">neuraxle.steps.numpy</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
+<span class="n">encoder</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">nb_columns</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">b_pred</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Assert it works</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">b_pred</span> <span class="o">==</span> <span class="n">b</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://stackoverflow.com/a/59262363/2476920">StackOverflow answer about one hot encoding</a></p>
+</div>
 <dl class="method">
 <dt id="neuraxle.steps.numpy.OneHotEncoder.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/b6c9635/neuraxle/steps/numpy.py#L262"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.OneHotEncoder.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/05b12db/neuraxle/steps/numpy.py#L290"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.numpy.OneHotEncoder.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform data inputs using one hot encoding, adding no_columns to the -1 axis.
 :param data_inputs: data inputs to encode
 :return: one hot encoded data inputs</p>
