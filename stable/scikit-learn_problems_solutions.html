@@ -490,7 +490,7 @@ step is a filter in the pipe and filter design pattern.</p></li>
 steps. It implements the pipe and filter design pattern. You may want
 to search on this design pattern and come back here. A Pipeline is a
 Meta Step (or in the specific case of Neuraxle, a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code> is a <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.TruncableSteps" title="neuraxle.base.TruncableSteps"><code class="xref py py-class docutils literal notranslate"><span class="pre">TruncableSteps</span></code></a> ).</p></li>
+<a class="reference internal" href="api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a> is a <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.TruncableSteps" title="neuraxle.base.TruncableSteps"><code class="xref py py-class docutils literal notranslate"><span class="pre">TruncableSteps</span></code></a> ).</p></li>
 <li><p><strong>Meta Step</strong>: a step that contain another step or other steps. For
 instance, a Cross Validation algorithm contain the step it needs to
 optimize. That step may itself be a meta step, such as a pipeline,
@@ -626,9 +626,10 @@ recommendations of the next hyperparameters to explore.</p>
 <h2>Inability to Reasonably do Deep Learning Pipelines<a class="headerlink" href="#inability-to-reasonably-do-deep-learning-pipelines" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="problem-scikit-learn-hardly-allows-for-mini-batch-gradient-descent-incremental-fit">
 <h3>Problem: Scikit-Learn Hardly Allows for Mini-Batch Gradient Descent (Incremental Fit)<a class="headerlink" href="#problem-scikit-learn-hardly-allows-for-mini-batch-gradient-descent-incremental-fit" title="Permalink to this headline">¶</a></h3>
-<p>That is the essence of Deep Learning (DL). An “Epoch Repeater” and a
-“Batch Data Shuffler” often are required (in train mode only) within a
-pipeline.</p>
+<p>That is the essence of Deep Learning (DL).
+An <a class="reference internal" href="api/neuraxle.steps.data.html#neuraxle.steps.data.EpochRepeater" title="neuraxle.steps.data.EpochRepeater"><code class="xref py py-class docutils literal notranslate"><span class="pre">EpochRepeater</span></code></a> and a
+<a class="reference internal" href="api/neuraxle.steps.data.html#neuraxle.steps.data.DataShuffler" title="neuraxle.steps.data.DataShuffler"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataShuffler</span></code></a> often are required
+(in train mode only) within a <a class="reference internal" href="api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>.</p>
 <p>In Scikit-Learn, it is ambiguous whether a step will reset upon each
 calls to fit, or if it’ll continue to train. Each mini-batch Stochastic
 Gradient Descent (SGD) update should ideally correspond to one call to

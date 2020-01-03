@@ -74,7 +74,7 @@ rest:
    steps. It implements the pipe and filter design pattern. You may want
    to search on this design pattern and come back here. A Pipeline is a
    Meta Step (or in the specific case of Neuraxle, a
-   :class:`~neuraxle.base.Pipeline` is a :class:`~neuraxle.base.TruncableSteps` ). 
+   :class:`~neuraxle.pipeline.Pipeline` is a :class:`~neuraxle.base.TruncableSteps` ). 
 
 -  **Meta Step**: a step that contain another step or other steps. For
    instance, a Cross Validation algorithm contain the step it needs to
@@ -232,9 +232,10 @@ Inability to Reasonably do Deep Learning Pipelines
 Problem: Scikit-Learn Hardly Allows for Mini-Batch Gradient Descent (Incremental Fit)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-That is the essence of Deep Learning (DL). An "Epoch Repeater" and a
-"Batch Data Shuffler" often are required (in train mode only) within a
-pipeline.
+That is the essence of Deep Learning (DL).
+An :class:`~neuraxle.steps.data.EpochRepeater` and a
+:class:`~neuraxle.steps.data.DataShuffler` often are required
+(in train mode only) within a :class:`~neuraxle.pipeline.Pipeline`.
 
 In Scikit-Learn, it is ambiguous whether a step will reset upon each
 calls to fit, or if it'll continue to train. Each mini-batch Stochastic
