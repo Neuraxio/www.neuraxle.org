@@ -1,0 +1,983 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>neuraxle.metaopt.trial &mdash; Neuraxle 0.4.0 documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://www.neuraxle.org/api/neuraxle.metaopt.trial.html"/>
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="neuraxle.metaopt.callbacks" href="neuraxle.metaopt.callbacks.html" />
+    <link rel="prev" title="neuraxle.metaopt.auto_ml" href="neuraxle.metaopt.auto_ml.html" /> 
+
+  <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #F80" >
+          
+
+          
+            <a href="/en/" class="icon icon-home"> Neuraxio</a>/<a href="../index.html" > Neuraxle
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.4.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Neuraxle/README.html">Neuraxle Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#quickstart">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#deep-learning-pipelines">Deep Learning Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#deep-learning-pipeline-definition">Deep Learning Pipeline Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#deep-learning-pipeline-training-and-evaluation">Deep Learning Pipeline Training and Evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#deep-learning-production-pipeline">Deep Learning Production Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#calling-a-deployed-pipeline">Calling a Deployed Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#why-neuraxle">Why Neuraxle?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#production-ready">Production-ready</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#compatibility">Compatibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#parallel-computing-and-serialization">Parallel Computing and Serialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#time-series-processing">Time Series Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#automatic-machine-learning">Automatic Machine Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#comparison-to-other-machine-learning-pipeline-frameworks">Comparison to Other Machine Learning Pipeline Frameworks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#scikit-learn">scikit-learn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#apache-beam">Apache Beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#spacy">spaCy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#kubeflow">Kubeflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Neuraxle/README.html#community">Community</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#license">License</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#citation">Citation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#contributors">Contributors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Neuraxle/README.html#supported-by">Supported By</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../scikit-learn_problems_solutions.html">Solutions to Scikit-Learn’s Biggest Problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../scikit-learn_problems_solutions.html#definitions">Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scikit-learn_problems_solutions.html#inability-to-reasonably-do-automatic-machine-learning-automl">Inability to Reasonably do Automatic Machine Learning (AutoML)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-defining-the-search-space-hyperparameter-distributions">Problem: Defining the Search Space (Hyperparameter Distributions)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-define-hyperparameter-spaces-within-the-steps">Solution: Define Hyperparameter Spaces Within the Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-defining-hyperparameters-in-the-constructor-is-limiting">Problem: Defining Hyperparameters in the Constructor is Limiting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-separate-steps-s-constructors-from-the-get-params-method">Solution: Separate Steps’s Constructors From the <code class="docutils literal notranslate"><span class="pre">get_params</span></code> Method</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-different-train-and-test-behavior">Problem: Different Train and Test Behavior</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-use-the-set-train-special-method-and-use-step-wrappers">Solution: use the Set Train Special Method and use Step Wrappers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-you-trained-a-pipeline-and-you-want-feedback-statistics-on-its-learning">Problem: You trained a Pipeline and You Want Feedback Statistics on its Learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-the-introspect-special-method">Solution: the Introspect Special Method</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../scikit-learn_problems_solutions.html#inability-to-reasonably-do-deep-learning-pipelines">Inability to Reasonably do Deep Learning Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-scikit-learn-hardly-allows-for-mini-batch-gradient-descent-incremental-fit">Problem: Scikit-Learn Hardly Allows for Mini-Batch Gradient Descent (Incremental Fit)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-minibatch-pipeline-class-and-the-ability-to-incrementally-fit-pipeline-steps">Solution: Minibatch Pipeline Class and the Ability to Incrementally Fit Pipeline Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-initializing-the-pipeline-and-deallocating-resources">Problem: Initializing the Pipeline and Deallocating Resources</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-add-setup-and-teardown-lifecycle-methods-to-your-steps">Solution: Add Setup and Teardown Lifecycle Methods to Your Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-it-is-difficult-to-use-other-deep-learning-dl-libraries-in-scikit-learn">Problem: It is Difficult to Use Other Deep Learning (DL) Libraries in Scikit-Learn</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-moar-steps-lifecycle-methods">Solution: Moar Steps Lifecycle Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-the-ability-to-transform-output-labels">Problem: The Ability to Transform Output Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-outputtransformerwrapper-and-inputandoutputtransformermixin">Solution: OutputTransformerWrapper and InputAndOutputTransformerMixin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../scikit-learn_problems_solutions.html#not-ready-for-production-nor-for-complex-pipelines">Not ready for Production nor for Complex Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-processing-3d-4d-or-nd-data-in-your-pipeline-with-steps-made-for-lower-dimensionnal-data">Problem: Processing 3D, 4D, or ND Data in your Pipeline with Steps Made for Lower-Dimensionnal Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-use-a-foreachdatainputs-wrapper-to-loop-from-nd-data-to-n-d-1-data">Solution: use a ForEachDataInputs Wrapper to Loop from ND Data to N(D-1) Data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-modify-a-pipeline-along-the-way-such-as-for-pre-training-or-fine-tuning">Problem: Modify a Pipeline Along the Way, such as for Pre-Training or Fine-Tuning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-the-mutate-special-method">Solution: the Mutate Special Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#another-solution-the-apply-special-method">Another Solution: the Apply Special Method</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-getting-model-attributes-from-scikit-learn-pipeline">Problem: Getting Model Attributes from Scikit-Learn Pipeline</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-simpler-nested-pipelines-getitem-methods">Solution: Simpler Nested Pipelines <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../scikit-learn_problems_solutions.html#problem-you-can-t-parallelize-nor-save-pipelines-using-steps-that-can-t-be-serialized-as-is-by-joblib">Problem: You can’t Parallelize nor Save Pipelines Using Steps that Can’t be Serialized “as-is” by Joblib</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#solution-use-a-chain-of-savers-in-each-step">Solution: Use a Chain of Savers in each Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../scikit-learn_problems_solutions.html#about-cluster-computing-and-parallelism-in-python">About Cluster Computing and Parallelism in Python</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hyperparameter_tuning.html">Introduction to Automatic Hyperparameter Tuning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#Continuous-Hyperparameter-Distributions">Continuous Hyperparameter Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#Quantized-Hyperparameter-Distributions">Quantized Hyperparameter Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#Other-Hyperparameter-Distributions">Other Hyperparameter Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html#Narrowing-Hyperparameter-Spaces:-a-Detailed-Example">Narrowing Hyperparameter Spaces: a Detailed Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html#Creating-your-own-distributions">Creating your own distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../random_distributions.html">Introduction to Random Distributions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../random_distributions.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../random_distributions.html#Discrete-Distributions">Discrete Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#RandInt">RandInt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Boolean">Boolean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Choice">Choice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Priority-Choice">Priority Choice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../random_distributions.html#Continuous-Distributions">Continuous Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Continuous-Uniform">Continuous Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Continuous-Loguniform">Continuous Loguniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Continuous-Normal">Continuous Normal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Continuous-Lognormal">Continuous Lognormal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Continuous-Normal-Clipped">Continuous Normal Clipped</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Continuous-Lognormal-Clipped">Continuous Lognormal Clipped</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../random_distributions.html#Quantized-Hyperparameter-Distributions">Quantized Hyperparameter Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Quantized-Uniform">Quantized Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Repaired-Quantized-Uniform">Repaired Quantized Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Quantized-Log-Uniform">Quantized Log Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Quantized-Normal">Quantized Normal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Quantized-Lognormal">Quantized Lognormal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rest_api_serving.html">REST API Serving</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Import-Packages">Import Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Load-your-Dataset">Load your Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Create-your-Pipeline">Create your Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Let’s-Train-and-Test">Let’s Train and Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Deploy-the-Pipeline">Deploy the Pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rest_api_serving.html#Write-a-step-to-decode-the-accepted-JSON-as-data-inputs">Write a step to decode the accepted JSON as data inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rest_api_serving.html#Write-a-step-to-encode-the-returned-JSON-response">Write a step to encode the returned JSON response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rest_api_serving.html#Finally-Serve-Predictions">Finally Serve Predictions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#API-Call-Example">API Call Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Next-Steps">Next Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rest_api_serving.html#Pipeline-Serialization">Pipeline Serialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rest_api_serving.html#Data-Transformation-Caching">Data Transformation Caching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rest_api_serving.html#Checkpoints">Checkpoints</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">Complete API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.base.html">neuraxle.base</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.base.html#neuraxle-s-base-classes">Neuraxle’s Base Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.pipeline.html">neuraxle.pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.pipeline.html#neuraxle-s-pipeline-classes">Neuraxle’s Pipeline Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.data_container.html">neuraxle.data_container</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.data_container.html#neuraxle-s-datacontainer-classes">Neuraxle’s DataContainer classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.union.html">neuraxle.union</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.union.html#union-of-features">Union of Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.checkpoints.html">neuraxle.checkpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.checkpoints.html#neuraxle-s-checkpoint-classes">Neuraxle’s Checkpoint Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.api.html">neuraxle.api</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.api.html#neuraxle-s-api-classes">Neuraxle’s API classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metrics.html">neuraxle.metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metrics.html#neuraxle-s-metrics-classes">Neuraxle’s metrics classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.numpy.html">neuraxle.steps.numpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.numpy.html#pipeline-steps-based-on-numpy">Pipeline Steps Based on NumPy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.flow.html">neuraxle.steps.flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.flow.html#neuraxle-s-flow-steps">Neuraxle’s Flow Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.data.html">neuraxle.steps.data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.data.html#data-steps">Data Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.column_transformer.html">neuraxle.steps.column_transformer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.column_transformer.html#neuraxle-s-column-transformer-steps">Neuraxle’s Column Transformer Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.sklearn.html#pipeline-steps-based-on-scikit-learn">Pipeline Steps Based on Scikit-Learn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.loop.html">neuraxle.steps.loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.loop.html#pipeline-steps-for-looping">Pipeline Steps For Looping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.caching.html">neuraxle.steps.caching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.caching.html#pipeline-steps-for-caching">Pipeline Steps For Caching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.output_handlers.html">neuraxle.steps.output_handlers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.output_handlers.html#output-handlers-steps">Output Handlers Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.misc.html">neuraxle.steps.misc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.misc.html#miscelaneous-pipeline-steps">Miscelaneous Pipeline Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.hyperparams.distributions.html">neuraxle.hyperparams.distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.hyperparams.distributions.html#hyperparameter-distributions">Hyperparameter Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.hyperparams.space.html">neuraxle.hyperparams.space</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.hyperparams.space.html#hyperparameter-dictionary-conversions">Hyperparameter Dictionary Conversions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.auto_ml.html">neuraxle.metaopt.auto_ml</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle-s-automl-classes">Neuraxle’s AutoML Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">neuraxle.metaopt.trial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#neuraxle-s-trial-classes">Neuraxle’s Trial Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.callbacks.html">neuraxle.metaopt.callbacks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.callbacks.html#neuraxle-s-training-callbacks-classes">Neuraxle’s training callbacks classes.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.random.html">neuraxle.metaopt.random</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.random.html#random">Random</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.sklearn.html">neuraxle.metaopt.sklearn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.sklearn.html#scikit-learn-metaoptimizers">Scikit-learn metaoptimizers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.hyperopt.html">neuraxle.metaopt.hyperopt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.hyperopt.html#hyperopt">Hyperopt</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.deprecated.html">neuraxle.metaopt.deprecated</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.deprecated.html#neuraxle-s-automatic-machine-learning-classes">Neuraxle’s Automatic Machine Learning Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.distributed.streaming.html">neuraxle.distributed.streaming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.distributed.streaming.html#streaming-parallel-data-processing">Streaming Parallel Data Processing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.rest.flask.html">neuraxle.rest.flask</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.rest.flask.html#neuraxle-s-flask-wrapper-classes">Neuraxle’s Flask Wrapper classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#caching">Caching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples/caching/plot_value_caching.html">Usage of ValueCachingWrapper in Neuraxle.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/caching/plot_auto_ml_checkpoint.html">Usage of Checkpoints in Automatic Machine Learning (AutoML)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#rest-api-model-serving">REST API Model Serving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples/deployment/plot_easy_rest_api_serving.html">Easy REST API Model Serving with Neuraxle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#getting-started">Getting started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples/getting_started/plot_inverse_transform.html">Inverse Transforms in Neuraxle: How to Reverse a Prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/getting_started/plot_nested_pipelines.html">Create Nested Pipelines in Neuraxle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/getting_started/plot_non_fittable_mixin.html">Create Pipeline Steps in Neuraxle that doesn’t fit or transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/getting_started/plot_label_encoder_across_multiple_columns.html">Create label encoder across multiple columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/getting_started/plot_force_handle_mixin.html">Create Pipeline Steps that require implementing only handler methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#hyperparameters">Hyperparameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples/hyperparams/plot_hyperparams.html">Manipulate Hyperparameter Spaces for Hyperparameter Tuning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#parallel">Parallel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples/parallel/plot_streaming_pipeline.html">Parallel processing in Neuraxle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#neuraxle-hyperparameter-examples">Neuraxle hyperparameter examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples/sklearn/plot_boston_housing_regression_with_model_stacking.html">Boston Housing Regression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/sklearn/plot_boston_housing_meta_optimization.html">Boston Housing Regression with Meta Optimization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="/en/"> Neuraxio</a>/<a href="../index.html">Neuraxle</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+
+        <a href="https://github.com/Neuraxio/Neuraxle"><img style="position: absolute; border: 0; top: 0; right: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">Complete API Documentation</a> &raquo;</li>
+        
+      <li>neuraxle.metaopt.trial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <!-- <a href="../_sources/api/neuraxle.metaopt.trial.rst.txt" rel="nofollow"> View page source</a> -->
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-neuraxle.metaopt.trial">
+<span id="neuraxle-metaopt-trial"></span><h1>neuraxle.metaopt.trial<a class="headerlink" href="#module-neuraxle.metaopt.trial" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="neuraxle-s-trial-classes">
+<h2>Neuraxle’s Trial Classes<a class="headerlink" href="#neuraxle-s-trial-classes" title="Permalink to this headline">¶</a></h2>
+<p>Trial objects used by AutoML algorithm classes.</p>
+<p class="rubric">Classes</p>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.metaopt.trial.TRIAL_STATUS" title="neuraxle.metaopt.trial.TRIAL_STATUS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TRIAL_STATUS</span></code></a></p></td>
+<td><p>Trial status.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.metaopt.trial.Trial" title="neuraxle.metaopt.trial.Trial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Trial</span></code></a>(hyperparams, main_metric_name, status, …)</p></td>
+<td><p>Trial data container for <code class="xref py py-class docutils literal notranslate"><span class="pre">AutoML</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.metaopt.trial.TrialSplit" title="neuraxle.metaopt.trial.TrialSplit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrialSplit</span></code></a>(split_number, main_metric_name, …)</p></td>
+<td><p>One split of a trial.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.metaopt.trial.Trials" title="neuraxle.metaopt.trial.Trials"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Trials</span></code></a>(trials)</p></td>
+<td><p>Data object containing auto ml trials.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="neuraxle.metaopt.trial.TRIAL_STATUS">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.trial.</code><code class="descname">TRIAL_STATUS</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L501"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TRIAL_STATUS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trial status.</p>
+<dl class="attribute">
+<dt id="neuraxle.metaopt.trial.TRIAL_STATUS.FAILED">
+<code class="descname">FAILED</code><em class="property"> = 'failed'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TRIAL_STATUS.FAILED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.trial.TRIAL_STATUS.PLANNED">
+<code class="descname">PLANNED</code><em class="property"> = 'planned'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TRIAL_STATUS.PLANNED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.trial.TRIAL_STATUS.STARTED">
+<code class="descname">STARTED</code><em class="property"> = 'started'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TRIAL_STATUS.STARTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.trial.TRIAL_STATUS.SUCCESS">
+<code class="descname">SUCCESS</code><em class="property"> = 'success'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TRIAL_STATUS.SUCCESS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.trial.Trial">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.trial.</code><code class="descname">Trial</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em>, <em>main_metric_name: str</em>, <em>status: Optional[neuraxle.metaopt.trial.TRIAL_STATUS] = None</em>, <em>pipeline: neuraxle.base.BaseStep = None</em>, <em>validation_splits: List[TrialSplit] = None</em>, <em>cache_folder: str = None</em>, <em>error: str = None</em>, <em>error_traceback: str = None</em>, <em>start_time: datetime.datetime = None</em>, <em>end_time: datetime.datetime = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L37"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trial data container for <code class="xref py py-class docutils literal notranslate"><span class="pre">AutoML</span></code>.
+A Trial contains the results for each validation split.
+Each trial split contains both the training set results, and the validation set results.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">AutoML</span></code>,
+<a class="reference internal" href="#neuraxle.metaopt.trial.TrialSplit" title="neuraxle.metaopt.trial.TrialSplit"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrialSplit</span></code></a>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparamsRepository</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHyperparameterSelectionStrategy</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">RandomSearchHyperparameterSelectionStrategy</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></p>
+</div>
+<dl class="staticmethod">
+<dt id="neuraxle.metaopt.trial.Trial.from_json">
+<em class="property">static </em><code class="descname">from_json</code><span class="sig-paren">(</span><em>trial_json: Dict[KT, VT]</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.Trial<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L206"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.from_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trial.get_validation_score">
+<code class="descname">get_validation_score</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L131"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.get_validation_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the latest validation score for the main scoring metric.
+Returns the average score for all validation splits.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>validation score</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trial.is_higher_score_better">
+<code class="descname">is_higher_score_better</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L123"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.is_higher_score_better" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if higher scores are better for the main metric.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>if higher score is better</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trial.new_validation_split">
+<code class="descname">new_validation_split</code><span class="sig-paren">(</span><em>pipeline: neuraxle.base.BaseStep</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.TrialSplit<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L81"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.new_validation_split" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new trial split.
+A trial has one split when the validation splitter function is validation split.
+A trial has one or many split when the validation splitter function is kfold_cross_validation_split.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>one trial split</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trial.save_model">
+<code class="descname">save_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L95"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.save_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save fitted model in the trial hash folder.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trial.set_failed">
+<code class="descname">set_failed</code><span class="sig-paren">(</span><em>error: Exception</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.Trial<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L171"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.set_failed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set failed trial with exception.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>error</strong> – catched exception</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trial.set_hyperparams">
+<code class="descname">set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.Trial<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L112"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.set_hyperparams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set trial hyperparams.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>hyperparams</strong> – trial hyperparams</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trial.set_main_metric_name">
+<code class="descname">set_main_metric_name</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.Trial<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L103"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.set_main_metric_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set trial main metric name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trial.set_success">
+<code class="descname">set_success</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.Trial<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L147"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.set_success" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set trial status to success.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trial.to_json">
+<code class="descname">to_json</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L194"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.to_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trial.update_final_trial_status">
+<code class="descname">update_final_trial_status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L157"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.update_final_trial_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set trial status to success.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.trial.TrialSplit">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.trial.</code><code class="descname">TrialSplit</code><span class="sig-paren">(</span><em>split_number</em>, <em>main_metric_name: str</em>, <em>status: Optional[neuraxle.metaopt.trial.TRIAL_STATUS] = None</em>, <em>error: Exception = None</em>, <em>error_traceback: str = None</em>, <em>metrics_results: Dict[KT</em>, <em>VT] = None</em>, <em>start_time: datetime.datetime = None</em>, <em>end_time: datetime.datetime = None</em>, <em>pipeline: neuraxle.base.BaseStep = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit" title="Permalink to this definition">¶</a></dt>
+<dd><p>One split of a trial.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">AutoML</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparamsRepository</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHyperparameterSelectionStrategy</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">RandomSearchHyperparameterSelectionStrategy</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></p>
+</div>
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.add_metric_results_train">
+<code class="descname">add_metric_results_train</code><span class="sig-paren">(</span><em>name: str</em>, <em>score: float</em>, <em>higher_score_is_better: bool</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L318"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.add_metric_results_train" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a train metric result in the metric results dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – name of the metric</p></li>
+<li><p><strong>score</strong> – score</p></li>
+<li><p><strong>higher_score_is_better</strong> – if higher score is better or not for this metric</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.add_metric_results_validation">
+<code class="descname">add_metric_results_validation</code><span class="sig-paren">(</span><em>name: str</em>, <em>score: float</em>, <em>higher_score_is_better: bool</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L336"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.add_metric_results_validation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a validation metric result in the metric results dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – name of the metric</p></li>
+<li><p><strong>score</strong> – score</p></li>
+<li><p><strong>higher_score_is_better</strong> – if higher score is better or not for this metric</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.fit_trial_split">
+<code class="descname">fit_trial_split</code><span class="sig-paren">(</span><em>train_data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.TrialSplit<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L286"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.fit_trial_split" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the trial split pipeline with the training data container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_data_container</strong> – training data container</p></li>
+<li><p><strong>context</strong> – execution context</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>trial split with its fitted pipeline.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="neuraxle.metaopt.trial.TrialSplit.from_json">
+<em class="property">static </em><code class="descname">from_json</code><span class="sig-paren">(</span><em>trial_json: Dict[KT, VT]</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.TrialSplit<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L422"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.from_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a trial split object from json.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>trial_json</strong> – trial json</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.get_metric_train_results">
+<code class="descname">get_metric_train_results</code><span class="sig-paren">(</span><em>metric_name</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L402"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.get_metric_train_results" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.get_metric_validation_results">
+<code class="descname">get_metric_validation_results</code><span class="sig-paren">(</span><em>metric_name</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L399"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.get_metric_validation_results" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.get_validation_score">
+<code class="descname">get_validation_score</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L362"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.get_validation_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the latest validation score for the main scoring metric.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.get_validation_scores">
+<code class="descname">get_validation_scores</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L354"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.get_validation_scores" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the validation scores for the main scoring metric.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.is_higher_score_better">
+<code class="descname">is_higher_score_better</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L370"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.is_higher_score_better" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if higher scores are better for the main metric.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.is_new_best_score">
+<code class="descname">is_new_best_score</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L378"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.is_new_best_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the latest validation score is the new best score.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.is_success">
+<code class="descname">is_success</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L450"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.is_success" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set trial status to success.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.predict_with_pipeline">
+<code class="descname">predict_with_pipeline</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L297"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.predict_with_pipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict data with the fitted trial split pipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> – data container to predict</p></li>
+<li><p><strong>context</strong> – execution context</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>predicted data container</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.set_failed">
+<code class="descname">set_failed</code><span class="sig-paren">(</span><em>error: Exception</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.TrialSplit<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L456"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.set_failed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set failed trial with exception.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>error</strong> – catched exception</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.set_main_metric_name">
+<code class="descname">set_main_metric_name</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.TrialSplit<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L307"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.set_main_metric_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set main metric name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – main metric name.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.set_success">
+<code class="descname">set_success</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.TrialSplit<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L441"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.set_success" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set trial status to success.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.to_json">
+<code class="descname">to_json</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; dict<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L405"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trial in a json format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.trial.Trials">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.trial.</code><code class="descname">Trials</code><span class="sig-paren">(</span><em>trials: List[neuraxle.metaopt.trial.Trial] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L511"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trials" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data object containing auto ml trials.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">AutoMLSequentialWrapper</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">RandomSearch</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparamsRepository</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">MetaStepMixin</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></p>
+</div>
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trials.append">
+<code class="descname">append</code><span class="sig-paren">(</span><em>trial: neuraxle.metaopt.trial.Trial</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L553"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trials.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new trial.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>trial</strong> – new trial</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trials.filter">
+<code class="descname">filter</code><span class="sig-paren">(</span><em>status: neuraxle.metaopt.trial.TRIAL_STATUS</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.Trials<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L562"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trials.filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all the trials with the given trial status.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>status</strong> – trial status</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trials.get_best_hyperparams">
+<code class="descname">get_best_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/metaopt/trial.py#L531"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trials.get_best_hyperparams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get best hyperparams from all trials.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="neuraxle.metaopt.callbacks.html" class="btn btn-neutral float-right" title="neuraxle.metaopt.callbacks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="neuraxle.metaopt.auto_ml.html" class="btn btn-neutral float-left" title="neuraxle.metaopt.auto_ml" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <!-- Begin Mailchimp Signup Form -->
+  <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+  <div id="mc_embed_signup">
+  <form action="https://neuraxio.us18.list-manage.com/subscribe/post?u=75b15e094bec4736090d7588c&amp;id=461343efc0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <div id="mc_embed_signup_scroll">
+      <label for="mce-EMAIL">Stay Tuned, Keep in Touch!</label>
+      <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75b15e094bec4736090d7588c_461343efc0" tabindex="-1" value=""></div>
+      <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+      </div>
+      <br/>
+      <a href="/en/blog/index.html">Visit Blog</a>
+  </form>
+  </div>
+  <!--End mc_embed_signup-->
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019 The Neuraxle Authors. All rights reserved. Apache License, Version 2.0.
+
+    </p>
+  </div>
+   
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-139527241-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

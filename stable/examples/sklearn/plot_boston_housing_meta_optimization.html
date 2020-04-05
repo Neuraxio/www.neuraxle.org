@@ -1,0 +1,2661 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Boston Housing Regression with Meta Optimization &mdash; Neuraxle 0.4.0 documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://www.neuraxle.org/examples/sklearn/plot_boston_housing_meta_optimization.html"/>
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Boston Housing Regression" href="plot_boston_housing_regression_with_model_stacking.html" /> 
+
+  <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #F80" >
+          
+
+          
+            <a href="/en/" class="icon icon-home"> Neuraxio</a>/<a href="../../index.html" > Neuraxle
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.4.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Neuraxle/README.html">Neuraxle Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Neuraxle/README.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Neuraxle/README.html#quickstart">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Neuraxle/README.html#deep-learning-pipelines">Deep Learning Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Neuraxle/README.html#deep-learning-pipeline-definition">Deep Learning Pipeline Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Neuraxle/README.html#deep-learning-pipeline-training-and-evaluation">Deep Learning Pipeline Training and Evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Neuraxle/README.html#deep-learning-production-pipeline">Deep Learning Production Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Neuraxle/README.html#calling-a-deployed-pipeline">Calling a Deployed Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Neuraxle/README.html#why-neuraxle">Why Neuraxle?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Neuraxle/README.html#production-ready">Production-ready</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Neuraxle/README.html#compatibility">Compatibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Neuraxle/README.html#parallel-computing-and-serialization">Parallel Computing and Serialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Neuraxle/README.html#time-series-processing">Time Series Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Neuraxle/README.html#automatic-machine-learning">Automatic Machine Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Neuraxle/README.html#comparison-to-other-machine-learning-pipeline-frameworks">Comparison to Other Machine Learning Pipeline Frameworks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Neuraxle/README.html#scikit-learn">scikit-learn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Neuraxle/README.html#apache-beam">Apache Beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Neuraxle/README.html#spacy">spaCy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Neuraxle/README.html#kubeflow">Kubeflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Neuraxle/README.html#community">Community</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Neuraxle/README.html#license">License</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Neuraxle/README.html#citation">Citation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Neuraxle/README.html#contributors">Contributors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Neuraxle/README.html#supported-by">Supported By</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../scikit-learn_problems_solutions.html">Solutions to Scikit-Learn’s Biggest Problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#definitions">Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#inability-to-reasonably-do-automatic-machine-learning-automl">Inability to Reasonably do Automatic Machine Learning (AutoML)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-defining-the-search-space-hyperparameter-distributions">Problem: Defining the Search Space (Hyperparameter Distributions)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-define-hyperparameter-spaces-within-the-steps">Solution: Define Hyperparameter Spaces Within the Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-defining-hyperparameters-in-the-constructor-is-limiting">Problem: Defining Hyperparameters in the Constructor is Limiting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-separate-steps-s-constructors-from-the-get-params-method">Solution: Separate Steps’s Constructors From the <code class="docutils literal notranslate"><span class="pre">get_params</span></code> Method</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-different-train-and-test-behavior">Problem: Different Train and Test Behavior</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-use-the-set-train-special-method-and-use-step-wrappers">Solution: use the Set Train Special Method and use Step Wrappers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-you-trained-a-pipeline-and-you-want-feedback-statistics-on-its-learning">Problem: You trained a Pipeline and You Want Feedback Statistics on its Learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-the-introspect-special-method">Solution: the Introspect Special Method</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#inability-to-reasonably-do-deep-learning-pipelines">Inability to Reasonably do Deep Learning Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-scikit-learn-hardly-allows-for-mini-batch-gradient-descent-incremental-fit">Problem: Scikit-Learn Hardly Allows for Mini-Batch Gradient Descent (Incremental Fit)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-minibatch-pipeline-class-and-the-ability-to-incrementally-fit-pipeline-steps">Solution: Minibatch Pipeline Class and the Ability to Incrementally Fit Pipeline Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-initializing-the-pipeline-and-deallocating-resources">Problem: Initializing the Pipeline and Deallocating Resources</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-add-setup-and-teardown-lifecycle-methods-to-your-steps">Solution: Add Setup and Teardown Lifecycle Methods to Your Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-it-is-difficult-to-use-other-deep-learning-dl-libraries-in-scikit-learn">Problem: It is Difficult to Use Other Deep Learning (DL) Libraries in Scikit-Learn</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-moar-steps-lifecycle-methods">Solution: Moar Steps Lifecycle Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-the-ability-to-transform-output-labels">Problem: The Ability to Transform Output Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-outputtransformerwrapper-and-inputandoutputtransformermixin">Solution: OutputTransformerWrapper and InputAndOutputTransformerMixin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#not-ready-for-production-nor-for-complex-pipelines">Not ready for Production nor for Complex Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-processing-3d-4d-or-nd-data-in-your-pipeline-with-steps-made-for-lower-dimensionnal-data">Problem: Processing 3D, 4D, or ND Data in your Pipeline with Steps Made for Lower-Dimensionnal Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-use-a-foreachdatainputs-wrapper-to-loop-from-nd-data-to-n-d-1-data">Solution: use a ForEachDataInputs Wrapper to Loop from ND Data to N(D-1) Data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-modify-a-pipeline-along-the-way-such-as-for-pre-training-or-fine-tuning">Problem: Modify a Pipeline Along the Way, such as for Pre-Training or Fine-Tuning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-the-mutate-special-method">Solution: the Mutate Special Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#another-solution-the-apply-special-method">Another Solution: the Apply Special Method</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-getting-model-attributes-from-scikit-learn-pipeline">Problem: Getting Model Attributes from Scikit-Learn Pipeline</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-simpler-nested-pipelines-getitem-methods">Solution: Simpler Nested Pipelines <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-you-can-t-parallelize-nor-save-pipelines-using-steps-that-can-t-be-serialized-as-is-by-joblib">Problem: You can’t Parallelize nor Save Pipelines Using Steps that Can’t be Serialized “as-is” by Joblib</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-use-a-chain-of-savers-in-each-step">Solution: Use a Chain of Savers in each Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#about-cluster-computing-and-parallelism-in-python">About Cluster Computing and Parallelism in Python</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../hyperparameter_tuning.html">Introduction to Automatic Hyperparameter Tuning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#Continuous-Hyperparameter-Distributions">Continuous Hyperparameter Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#Quantized-Hyperparameter-Distributions">Quantized Hyperparameter Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#Other-Hyperparameter-Distributions">Other Hyperparameter Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html#Narrowing-Hyperparameter-Spaces:-a-Detailed-Example">Narrowing Hyperparameter Spaces: a Detailed Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html#Creating-your-own-distributions">Creating your own distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../random_distributions.html">Introduction to Random Distributions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html#Discrete-Distributions">Discrete Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#RandInt">RandInt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Boolean">Boolean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Choice">Choice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Priority-Choice">Priority Choice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html#Continuous-Distributions">Continuous Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Uniform">Continuous Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Loguniform">Continuous Loguniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Normal">Continuous Normal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Lognormal">Continuous Lognormal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Normal-Clipped">Continuous Normal Clipped</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Lognormal-Clipped">Continuous Lognormal Clipped</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html#Quantized-Hyperparameter-Distributions">Quantized Hyperparameter Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Quantized-Uniform">Quantized Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Repaired-Quantized-Uniform">Repaired Quantized Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Quantized-Log-Uniform">Quantized Log Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Quantized-Normal">Quantized Normal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Quantized-Lognormal">Quantized Lognormal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rest_api_serving.html">REST API Serving</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Import-Packages">Import Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Load-your-Dataset">Load your Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Create-your-Pipeline">Create your Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Let’s-Train-and-Test">Let’s Train and Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Deploy-the-Pipeline">Deploy the Pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Write-a-step-to-decode-the-accepted-JSON-as-data-inputs">Write a step to decode the accepted JSON as data inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Write-a-step-to-encode-the-returned-JSON-response">Write a step to encode the returned JSON response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Finally-Serve-Predictions">Finally Serve Predictions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#API-Call-Example">API Call Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Next-Steps">Next Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Pipeline-Serialization">Pipeline Serialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Data-Transformation-Caching">Data Transformation Caching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Checkpoints">Checkpoints</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">Complete API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.base.html">neuraxle.base</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.base.html#neuraxle-s-base-classes">Neuraxle’s Base Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.pipeline.html">neuraxle.pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.pipeline.html#neuraxle-s-pipeline-classes">Neuraxle’s Pipeline Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.data_container.html">neuraxle.data_container</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.data_container.html#neuraxle-s-datacontainer-classes">Neuraxle’s DataContainer classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.union.html">neuraxle.union</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.union.html#union-of-features">Union of Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.checkpoints.html">neuraxle.checkpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.checkpoints.html#neuraxle-s-checkpoint-classes">Neuraxle’s Checkpoint Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.api.html">neuraxle.api</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.api.html#neuraxle-s-api-classes">Neuraxle’s API classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metrics.html">neuraxle.metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metrics.html#neuraxle-s-metrics-classes">Neuraxle’s metrics classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.numpy.html">neuraxle.steps.numpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.numpy.html#pipeline-steps-based-on-numpy">Pipeline Steps Based on NumPy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.flow.html">neuraxle.steps.flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.flow.html#neuraxle-s-flow-steps">Neuraxle’s Flow Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.data.html">neuraxle.steps.data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.data.html#data-steps">Data Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.column_transformer.html">neuraxle.steps.column_transformer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.column_transformer.html#neuraxle-s-column-transformer-steps">Neuraxle’s Column Transformer Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.sklearn.html#pipeline-steps-based-on-scikit-learn">Pipeline Steps Based on Scikit-Learn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.loop.html">neuraxle.steps.loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.loop.html#pipeline-steps-for-looping">Pipeline Steps For Looping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.caching.html">neuraxle.steps.caching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.caching.html#pipeline-steps-for-caching">Pipeline Steps For Caching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.output_handlers.html">neuraxle.steps.output_handlers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.output_handlers.html#output-handlers-steps">Output Handlers Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.misc.html">neuraxle.steps.misc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.misc.html#miscelaneous-pipeline-steps">Miscelaneous Pipeline Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.hyperparams.distributions.html">neuraxle.hyperparams.distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.hyperparams.distributions.html#hyperparameter-distributions">Hyperparameter Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.hyperparams.space.html">neuraxle.hyperparams.space</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.hyperparams.space.html#hyperparameter-dictionary-conversions">Hyperparameter Dictionary Conversions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.auto_ml.html">neuraxle.metaopt.auto_ml</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.auto_ml.html#neuraxle-s-automl-classes">Neuraxle’s AutoML Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.trial.html">neuraxle.metaopt.trial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.trial.html#neuraxle-s-trial-classes">Neuraxle’s Trial Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.callbacks.html">neuraxle.metaopt.callbacks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.callbacks.html#neuraxle-s-training-callbacks-classes">Neuraxle’s training callbacks classes.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.random.html">neuraxle.metaopt.random</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.random.html#random">Random</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.sklearn.html">neuraxle.metaopt.sklearn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.sklearn.html#scikit-learn-metaoptimizers">Scikit-learn metaoptimizers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.hyperopt.html">neuraxle.metaopt.hyperopt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.hyperopt.html#hyperopt">Hyperopt</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.deprecated.html">neuraxle.metaopt.deprecated</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.deprecated.html#neuraxle-s-automatic-machine-learning-classes">Neuraxle’s Automatic Machine Learning Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.distributed.streaming.html">neuraxle.distributed.streaming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.distributed.streaming.html#streaming-parallel-data-processing">Streaming Parallel Data Processing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.rest.flask.html">neuraxle.rest.flask</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.rest.flask.html#neuraxle-s-flask-wrapper-classes">Neuraxle’s Flask Wrapper classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Usage Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#caching">Caching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../caching/plot_value_caching.html">Usage of ValueCachingWrapper in Neuraxle.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../caching/plot_auto_ml_checkpoint.html">Usage of Checkpoints in Automatic Machine Learning (AutoML)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#rest-api-model-serving">REST API Model Serving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deployment/plot_easy_rest_api_serving.html">Easy REST API Model Serving with Neuraxle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#getting-started">Getting started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/plot_inverse_transform.html">Inverse Transforms in Neuraxle: How to Reverse a Prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/plot_nested_pipelines.html">Create Nested Pipelines in Neuraxle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/plot_non_fittable_mixin.html">Create Pipeline Steps in Neuraxle that doesn’t fit or transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/plot_label_encoder_across_multiple_columns.html">Create label encoder across multiple columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/plot_force_handle_mixin.html">Create Pipeline Steps that require implementing only handler methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#hyperparameters">Hyperparameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparams/plot_hyperparams.html">Manipulate Hyperparameter Spaces for Hyperparameter Tuning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#parallel">Parallel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../parallel/plot_streaming_pipeline.html">Parallel processing in Neuraxle</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#neuraxle-hyperparameter-examples">Neuraxle hyperparameter examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="plot_boston_housing_regression_with_model_stacking.html">Boston Housing Regression</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Boston Housing Regression with Meta Optimization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="/en/"> Neuraxio</a>/<a href="../../index.html">Neuraxle</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+
+        <a href="https://github.com/Neuraxio/Neuraxle"><img style="position: absolute; border: 0; top: 0; right: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Usage Examples</a> &raquo;</li>
+        
+      <li>Boston Housing Regression with Meta Optimization</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <!-- <a href="../../_sources/examples/sklearn/plot_boston_housing_meta_optimization.rst.txt" rel="nofollow"> View page source</a> -->
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-examples-sklearn-plot-boston-housing-meta-optimization-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="boston-housing-regression-with-meta-optimization">
+<span id="sphx-glr-examples-sklearn-plot-boston-housing-meta-optimization-py"></span><h1>Boston Housing Regression with Meta Optimization<a class="headerlink" href="#boston-housing-regression-with-meta-optimization" title="Permalink to this headline">¶</a></h1>
+<p>This is an automatic machine learning example. It is more sophisticated than the other simple regression example.
+Not only a pipeline is defined, but also an hyperparameter space is defined for the pipeline. Then, a random search is
+performed to find the best possible combination of hyperparameters by sampling randomly in the hyperparameter space.</p>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Meta-fitting on train:
+new trial:
+{
+    &quot;AddFeatures&quot;: {
+        &quot;SKLearnWrapper_FastICA&quot;: {
+            &quot;n_components&quot;: 2
+        },
+        &quot;SKLearnWrapper_PCA&quot;: {
+            &quot;n_components&quot;: 1
+        }
+    },
+    &quot;ModelStacking&quot;: {
+        &quot;SKLearnWrapper_GradientBoostingRegressor&quot;: {
+            &quot;learning_rate&quot;: 0.1708475302819303,
+            &quot;max_depth&quot;: 6,
+            &quot;n_estimators&quot;: 287
+        },
+        &quot;SKLearnWrapper_KMeans&quot;: {
+            &quot;n_clusters&quot;: 9
+        }
+    }
+}
+
+trial 1/10
+fitting trial 1/10 split 1/1
+hyperparams: {
+    &quot;AddFeatures__SKLearnWrapper_FastICA__algorithm&quot;: &quot;parallel&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun&quot;: &quot;logcosh&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun_args&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__max_iter&quot;: 200,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__n_components&quot;: 2,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__tol&quot;: 0.0001,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__w_init&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__whiten&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__copy&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__iterated_power&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__n_components&quot;: 1,
+    &quot;AddFeatures__SKLearnWrapper_PCA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_PCA__svd_solver&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__tol&quot;: 0.0,
+    &quot;AddFeatures__SKLearnWrapper_PCA__whiten&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__alpha&quot;: 0.9,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__ccp_alpha&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__criterion&quot;: &quot;friedman_mse&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__init&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__learning_rate&quot;: 0.1708475302819303,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__loss&quot;: &quot;ls&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_depth&quot;: 6,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_features&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_leaf_nodes&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_decrease&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_split&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_leaf&quot;: 1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_split&quot;: 2,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_weight_fraction_leaf&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_estimators&quot;: 287,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_iter_no_change&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__presort&quot;: &quot;deprecated&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__subsample&quot;: 1.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__validation_fraction&quot;: 0.1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__verbose&quot;: 0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__warm_start&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__algorithm&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__copy_x&quot;: true,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__init&quot;: &quot;k-means++&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__max_iter&quot;: 300,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_clusters&quot;: 9,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_init&quot;: 10,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_jobs&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__precompute_distances&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__verbose&quot;: 0
+}
+
+
+epoch 1/10
+main train: 1.2327113172575288
+main validation: 13.258551491603978
+mse train: 1.2327113172575288
+mse validation: 13.258551491603978
+
+epoch 2/10
+main train: 1.2318597614043338
+main validation: 13.498807466026147
+mse train: 1.2318597614043338
+mse validation: 13.498807466026147
+
+epoch 3/10
+main train: 1.233213803556296
+main validation: 13.322724795879145
+mse train: 1.233213803556296
+mse validation: 13.322724795879145
+
+epoch 4/10
+main train: 1.233253539233387
+main validation: 13.315215948644253
+mse train: 1.233253539233387
+mse validation: 13.315215948644253
+
+epoch 5/10
+main train: 1.2315739765321836
+main validation: 13.200454365047833
+mse train: 1.2315739765321836
+mse validation: 13.200454365047833
+
+epoch 6/10
+main train: 1.2326226851455604
+main validation: 13.352391549814017
+mse train: 1.2326226851455604
+mse validation: 13.352391549814017
+
+epoch 7/10
+main train: 1.2332492007507843
+main validation: 13.374147825944798
+mse train: 1.2332492007507843
+mse validation: 13.374147825944798
+
+epoch 8/10
+main train: 1.2332100023496368
+main validation: 13.314387140996416
+mse train: 1.2332100023496368
+mse validation: 13.314387140996416
+
+epoch 9/10
+main train: 1.2331525188466423
+main validation: 13.171966760488218
+mse train: 1.2331525188466423
+mse validation: 13.171966760488218
+
+epoch 10/10
+main train: 1.2332617375976762
+main validation: 13.353600792399412
+mse train: 1.2332617375976762
+mse validation: 13.353600792399412
+success trial 1/10 split 1/1
+hyperparams: {
+    &quot;AddFeatures__SKLearnWrapper_FastICA__algorithm&quot;: &quot;parallel&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun&quot;: &quot;logcosh&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun_args&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__max_iter&quot;: 200,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__n_components&quot;: 2,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__tol&quot;: 0.0001,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__w_init&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__whiten&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__copy&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__iterated_power&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__n_components&quot;: 1,
+    &quot;AddFeatures__SKLearnWrapper_PCA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_PCA__svd_solver&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__tol&quot;: 0.0,
+    &quot;AddFeatures__SKLearnWrapper_PCA__whiten&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__alpha&quot;: 0.9,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__ccp_alpha&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__criterion&quot;: &quot;friedman_mse&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__init&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__learning_rate&quot;: 0.1708475302819303,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__loss&quot;: &quot;ls&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_depth&quot;: 6,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_features&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_leaf_nodes&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_decrease&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_split&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_leaf&quot;: 1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_split&quot;: 2,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_weight_fraction_leaf&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_estimators&quot;: 287,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_iter_no_change&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__presort&quot;: &quot;deprecated&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__subsample&quot;: 1.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__validation_fraction&quot;: 0.1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__verbose&quot;: 0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__warm_start&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__algorithm&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__copy_x&quot;: true,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__init&quot;: &quot;k-means++&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__max_iter&quot;: 300,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_clusters&quot;: 9,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_init&quot;: 10,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_jobs&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__precompute_distances&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__verbose&quot;: 0
+}
+ score: 13.353600792399412
+&lt;neuraxle.metaopt.trial.Trial object at 0x12841a410&gt;
+new trial:
+{
+    &quot;AddFeatures&quot;: {
+        &quot;SKLearnWrapper_FastICA&quot;: {
+            &quot;n_components&quot;: 3
+        },
+        &quot;SKLearnWrapper_PCA&quot;: {
+            &quot;n_components&quot;: 3
+        }
+    },
+    &quot;ModelStacking&quot;: {
+        &quot;SKLearnWrapper_GradientBoostingRegressor&quot;: {
+            &quot;learning_rate&quot;: 0.42840221493369435,
+            &quot;max_depth&quot;: 4,
+            &quot;n_estimators&quot;: 289
+        },
+        &quot;SKLearnWrapper_KMeans&quot;: {
+            &quot;n_clusters&quot;: 6
+        }
+    }
+}
+
+trial 2/10
+fitting trial 2/10 split 1/1
+hyperparams: {
+    &quot;AddFeatures__SKLearnWrapper_FastICA__algorithm&quot;: &quot;parallel&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun&quot;: &quot;logcosh&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun_args&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__max_iter&quot;: 200,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__n_components&quot;: 3,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__tol&quot;: 0.0001,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__w_init&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__whiten&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__copy&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__iterated_power&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__n_components&quot;: 3,
+    &quot;AddFeatures__SKLearnWrapper_PCA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_PCA__svd_solver&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__tol&quot;: 0.0,
+    &quot;AddFeatures__SKLearnWrapper_PCA__whiten&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__alpha&quot;: 0.9,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__ccp_alpha&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__criterion&quot;: &quot;friedman_mse&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__init&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__learning_rate&quot;: 0.42840221493369435,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__loss&quot;: &quot;ls&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_depth&quot;: 4,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_features&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_leaf_nodes&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_decrease&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_split&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_leaf&quot;: 1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_split&quot;: 2,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_weight_fraction_leaf&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_estimators&quot;: 289,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_iter_no_change&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__presort&quot;: &quot;deprecated&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__subsample&quot;: 1.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__validation_fraction&quot;: 0.1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__verbose&quot;: 0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__warm_start&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__algorithm&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__copy_x&quot;: true,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__init&quot;: &quot;k-means++&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__max_iter&quot;: 300,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_clusters&quot;: 6,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_init&quot;: 10,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_jobs&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__precompute_distances&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__verbose&quot;: 0
+}
+
+
+epoch 1/10
+main train: 1.2329950286455047
+main validation: 13.239568419400962
+mse train: 1.2329950286455047
+mse validation: 13.239568419400962
+
+epoch 2/10
+main train: 1.2328760550457403
+main validation: 13.391929049842213
+mse train: 1.2328760550457403
+mse validation: 13.391929049842213
+
+epoch 3/10
+main train: 1.2332502803739254
+main validation: 13.287519409446617
+mse train: 1.2332502803739254
+mse validation: 13.287519409446617
+
+epoch 4/10
+main train: 1.233002057718499
+main validation: 13.235545721259927
+mse train: 1.233002057718499
+mse validation: 13.235545721259927
+
+epoch 5/10
+main train: 1.2328637104454598
+main validation: 13.323017880884933
+mse train: 1.2328637104454598
+mse validation: 13.323017880884933
+
+epoch 6/10
+main train: 1.2327295471132282
+main validation: 13.416554003316886
+mse train: 1.2327295471132282
+mse validation: 13.416554003316886
+
+epoch 7/10
+main train: 1.2329443203520052
+main validation: 13.306715376442037
+mse train: 1.2329443203520052
+mse validation: 13.306715376442037
+
+epoch 8/10
+main train: 1.2292581695358409
+main validation: 13.146698270804183
+mse train: 1.2292581695358409
+mse validation: 13.146698270804183
+
+epoch 9/10
+main train: 1.2327652607048523
+main validation: 13.287509382887327
+mse train: 1.2327652607048523
+mse validation: 13.287509382887327
+
+epoch 10/10
+main train: 1.2287187210535875
+main validation: 13.366262059912167
+mse train: 1.2287187210535875
+mse validation: 13.366262059912167
+success trial 2/10 split 1/1
+hyperparams: {
+    &quot;AddFeatures__SKLearnWrapper_FastICA__algorithm&quot;: &quot;parallel&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun&quot;: &quot;logcosh&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun_args&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__max_iter&quot;: 200,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__n_components&quot;: 3,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__tol&quot;: 0.0001,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__w_init&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__whiten&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__copy&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__iterated_power&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__n_components&quot;: 3,
+    &quot;AddFeatures__SKLearnWrapper_PCA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_PCA__svd_solver&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__tol&quot;: 0.0,
+    &quot;AddFeatures__SKLearnWrapper_PCA__whiten&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__alpha&quot;: 0.9,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__ccp_alpha&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__criterion&quot;: &quot;friedman_mse&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__init&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__learning_rate&quot;: 0.42840221493369435,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__loss&quot;: &quot;ls&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_depth&quot;: 4,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_features&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_leaf_nodes&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_decrease&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_split&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_leaf&quot;: 1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_split&quot;: 2,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_weight_fraction_leaf&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_estimators&quot;: 289,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_iter_no_change&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__presort&quot;: &quot;deprecated&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__subsample&quot;: 1.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__validation_fraction&quot;: 0.1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__verbose&quot;: 0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__warm_start&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__algorithm&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__copy_x&quot;: true,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__init&quot;: &quot;k-means++&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__max_iter&quot;: 300,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_clusters&quot;: 6,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_init&quot;: 10,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_jobs&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__precompute_distances&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__verbose&quot;: 0
+}
+ score: 13.366262059912167
+&lt;neuraxle.metaopt.trial.Trial object at 0x128430ad0&gt;
+new trial:
+{
+    &quot;AddFeatures&quot;: {
+        &quot;SKLearnWrapper_FastICA&quot;: {
+            &quot;n_components&quot;: 1
+        },
+        &quot;SKLearnWrapper_PCA&quot;: {
+            &quot;n_components&quot;: 2
+        }
+    },
+    &quot;ModelStacking&quot;: {
+        &quot;SKLearnWrapper_GradientBoostingRegressor&quot;: {
+            &quot;learning_rate&quot;: 0.11253336943822471,
+            &quot;max_depth&quot;: 6,
+            &quot;n_estimators&quot;: 407
+        },
+        &quot;SKLearnWrapper_KMeans&quot;: {
+            &quot;n_clusters&quot;: 9
+        }
+    }
+}
+
+trial 3/10
+fitting trial 3/10 split 1/1
+hyperparams: {
+    &quot;AddFeatures__SKLearnWrapper_FastICA__algorithm&quot;: &quot;parallel&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun&quot;: &quot;logcosh&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun_args&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__max_iter&quot;: 200,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__n_components&quot;: 1,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__tol&quot;: 0.0001,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__w_init&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__whiten&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__copy&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__iterated_power&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__n_components&quot;: 2,
+    &quot;AddFeatures__SKLearnWrapper_PCA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_PCA__svd_solver&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__tol&quot;: 0.0,
+    &quot;AddFeatures__SKLearnWrapper_PCA__whiten&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__alpha&quot;: 0.9,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__ccp_alpha&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__criterion&quot;: &quot;friedman_mse&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__init&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__learning_rate&quot;: 0.11253336943822471,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__loss&quot;: &quot;ls&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_depth&quot;: 6,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_features&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_leaf_nodes&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_decrease&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_split&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_leaf&quot;: 1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_split&quot;: 2,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_weight_fraction_leaf&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_estimators&quot;: 407,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_iter_no_change&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__presort&quot;: &quot;deprecated&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__subsample&quot;: 1.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__validation_fraction&quot;: 0.1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__verbose&quot;: 0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__warm_start&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__algorithm&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__copy_x&quot;: true,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__init&quot;: &quot;k-means++&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__max_iter&quot;: 300,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_clusters&quot;: 9,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_init&quot;: 10,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_jobs&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__precompute_distances&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__verbose&quot;: 0
+}
+
+
+epoch 1/10
+main train: 1.233162800395683
+main validation: 13.217350594098471
+mse train: 1.233162800395683
+mse validation: 13.217350594098471
+
+epoch 2/10
+main train: 1.233052449125803
+main validation: 13.26806796321355
+mse train: 1.233052449125803
+mse validation: 13.26806796321355
+
+epoch 3/10
+main train: 1.2330035633131886
+main validation: 13.283456547148504
+mse train: 1.2330035633131886
+mse validation: 13.283456547148504
+
+epoch 4/10
+main train: 1.233261534455076
+main validation: 13.476369592428362
+mse train: 1.233261534455076
+mse validation: 13.476369592428362
+
+epoch 5/10
+main train: 1.2321125992566793
+main validation: 13.172278379878929
+mse train: 1.2321125992566793
+mse validation: 13.172278379878929
+
+epoch 6/10
+main train: 1.232707458074511
+main validation: 13.324236683482145
+mse train: 1.232707458074511
+mse validation: 13.324236683482145
+
+epoch 7/10
+main train: 1.2332207405487048
+main validation: 13.228823476571707
+mse train: 1.2332207405487048
+mse validation: 13.228823476571707
+
+epoch 8/10
+main train: 1.231721622501971
+main validation: 13.324859492521083
+mse train: 1.231721622501971
+mse validation: 13.324859492521083
+
+epoch 9/10
+main train: 1.2280141704242904
+main validation: 13.305390449793755
+mse train: 1.2280141704242904
+mse validation: 13.305390449793755
+
+epoch 10/10
+main train: 1.232555000778683
+main validation: 13.329958533969602
+mse train: 1.232555000778683
+mse validation: 13.329958533969602
+success trial 3/10 split 1/1
+hyperparams: {
+    &quot;AddFeatures__SKLearnWrapper_FastICA__algorithm&quot;: &quot;parallel&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun&quot;: &quot;logcosh&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun_args&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__max_iter&quot;: 200,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__n_components&quot;: 1,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__tol&quot;: 0.0001,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__w_init&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__whiten&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__copy&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__iterated_power&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__n_components&quot;: 2,
+    &quot;AddFeatures__SKLearnWrapper_PCA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_PCA__svd_solver&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__tol&quot;: 0.0,
+    &quot;AddFeatures__SKLearnWrapper_PCA__whiten&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__alpha&quot;: 0.9,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__ccp_alpha&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__criterion&quot;: &quot;friedman_mse&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__init&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__learning_rate&quot;: 0.11253336943822471,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__loss&quot;: &quot;ls&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_depth&quot;: 6,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_features&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_leaf_nodes&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_decrease&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_split&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_leaf&quot;: 1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_split&quot;: 2,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_weight_fraction_leaf&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_estimators&quot;: 407,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_iter_no_change&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__presort&quot;: &quot;deprecated&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__subsample&quot;: 1.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__validation_fraction&quot;: 0.1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__verbose&quot;: 0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__warm_start&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__algorithm&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__copy_x&quot;: true,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__init&quot;: &quot;k-means++&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__max_iter&quot;: 300,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_clusters&quot;: 9,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_init&quot;: 10,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_jobs&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__precompute_distances&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__verbose&quot;: 0
+}
+ score: 13.329958533969602
+&lt;neuraxle.metaopt.trial.Trial object at 0x12846a110&gt;
+new trial:
+{
+    &quot;AddFeatures&quot;: {
+        &quot;SKLearnWrapper_FastICA&quot;: {
+            &quot;n_components&quot;: 2
+        },
+        &quot;SKLearnWrapper_PCA&quot;: {
+            &quot;n_components&quot;: 1
+        }
+    },
+    &quot;ModelStacking&quot;: {
+        &quot;SKLearnWrapper_GradientBoostingRegressor&quot;: {
+            &quot;learning_rate&quot;: 0.5008235470866984,
+            &quot;max_depth&quot;: 5,
+            &quot;n_estimators&quot;: 573
+        },
+        &quot;SKLearnWrapper_KMeans&quot;: {
+            &quot;n_clusters&quot;: 9
+        }
+    }
+}
+
+trial 4/10
+fitting trial 4/10 split 1/1
+hyperparams: {
+    &quot;AddFeatures__SKLearnWrapper_FastICA__algorithm&quot;: &quot;parallel&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun&quot;: &quot;logcosh&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun_args&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__max_iter&quot;: 200,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__n_components&quot;: 2,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__tol&quot;: 0.0001,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__w_init&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__whiten&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__copy&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__iterated_power&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__n_components&quot;: 1,
+    &quot;AddFeatures__SKLearnWrapper_PCA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_PCA__svd_solver&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__tol&quot;: 0.0,
+    &quot;AddFeatures__SKLearnWrapper_PCA__whiten&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__alpha&quot;: 0.9,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__ccp_alpha&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__criterion&quot;: &quot;friedman_mse&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__init&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__learning_rate&quot;: 0.5008235470866984,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__loss&quot;: &quot;ls&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_depth&quot;: 5,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_features&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_leaf_nodes&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_decrease&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_split&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_leaf&quot;: 1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_split&quot;: 2,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_weight_fraction_leaf&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_estimators&quot;: 573,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_iter_no_change&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__presort&quot;: &quot;deprecated&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__subsample&quot;: 1.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__validation_fraction&quot;: 0.1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__verbose&quot;: 0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__warm_start&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__algorithm&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__copy_x&quot;: true,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__init&quot;: &quot;k-means++&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__max_iter&quot;: 300,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_clusters&quot;: 9,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_init&quot;: 10,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_jobs&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__precompute_distances&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__verbose&quot;: 0
+}
+
+
+epoch 1/10
+main train: 1.2329233263692827
+main validation: 13.525366800460077
+mse train: 1.2329233263692827
+mse validation: 13.525366800460077
+
+epoch 2/10
+main train: 1.2330530065244267
+main validation: 13.274198929831494
+mse train: 1.2330530065244267
+mse validation: 13.274198929831494
+
+epoch 3/10
+main train: 1.2332072094450246
+main validation: 13.232859775391574
+mse train: 1.2332072094450246
+mse validation: 13.232859775391574
+
+epoch 4/10
+main train: 1.2329320234918542
+main validation: 13.477609263947517
+mse train: 1.2329320234918542
+mse validation: 13.477609263947517
+
+epoch 5/10
+main train: 1.2332596341605926
+main validation: 13.25484891738313
+mse train: 1.2332596341605926
+mse validation: 13.25484891738313
+
+epoch 6/10
+main train: 1.2332545575503084
+main validation: 13.326328906992524
+mse train: 1.2332545575503084
+mse validation: 13.326328906992524
+
+epoch 7/10
+main train: 1.2332002880015591
+main validation: 13.170628005247863
+mse train: 1.2332002880015591
+mse validation: 13.170628005247863
+
+epoch 8/10
+main train: 1.2330787657093223
+main validation: 13.34817042512105
+mse train: 1.2330787657093223
+mse validation: 13.34817042512105
+
+epoch 9/10
+main train: 1.2331429919678825
+main validation: 13.245516567293414
+mse train: 1.2331429919678825
+mse validation: 13.245516567293414
+
+epoch 10/10
+main train: 1.2288295771168416
+main validation: 13.173407076198266
+mse train: 1.2288295771168416
+mse validation: 13.173407076198266
+success trial 4/10 split 1/1
+hyperparams: {
+    &quot;AddFeatures__SKLearnWrapper_FastICA__algorithm&quot;: &quot;parallel&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun&quot;: &quot;logcosh&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun_args&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__max_iter&quot;: 200,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__n_components&quot;: 2,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__tol&quot;: 0.0001,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__w_init&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__whiten&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__copy&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__iterated_power&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__n_components&quot;: 1,
+    &quot;AddFeatures__SKLearnWrapper_PCA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_PCA__svd_solver&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__tol&quot;: 0.0,
+    &quot;AddFeatures__SKLearnWrapper_PCA__whiten&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__alpha&quot;: 0.9,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__ccp_alpha&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__criterion&quot;: &quot;friedman_mse&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__init&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__learning_rate&quot;: 0.5008235470866984,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__loss&quot;: &quot;ls&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_depth&quot;: 5,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_features&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_leaf_nodes&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_decrease&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_split&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_leaf&quot;: 1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_split&quot;: 2,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_weight_fraction_leaf&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_estimators&quot;: 573,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_iter_no_change&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__presort&quot;: &quot;deprecated&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__subsample&quot;: 1.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__validation_fraction&quot;: 0.1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__verbose&quot;: 0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__warm_start&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__algorithm&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__copy_x&quot;: true,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__init&quot;: &quot;k-means++&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__max_iter&quot;: 300,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_clusters&quot;: 9,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_init&quot;: 10,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_jobs&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__precompute_distances&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__verbose&quot;: 0
+}
+ score: 13.173407076198266
+&lt;neuraxle.metaopt.trial.Trial object at 0x128412550&gt;
+new trial:
+{
+    &quot;AddFeatures&quot;: {
+        &quot;SKLearnWrapper_FastICA&quot;: {
+            &quot;n_components&quot;: 3
+        },
+        &quot;SKLearnWrapper_PCA&quot;: {
+            &quot;n_components&quot;: 3
+        }
+    },
+    &quot;ModelStacking&quot;: {
+        &quot;SKLearnWrapper_GradientBoostingRegressor&quot;: {
+            &quot;learning_rate&quot;: 0.08645862997777952,
+            &quot;max_depth&quot;: 5,
+            &quot;n_estimators&quot;: 93
+        },
+        &quot;SKLearnWrapper_KMeans&quot;: {
+            &quot;n_clusters&quot;: 9
+        }
+    }
+}
+
+trial 5/10
+fitting trial 5/10 split 1/1
+hyperparams: {
+    &quot;AddFeatures__SKLearnWrapper_FastICA__algorithm&quot;: &quot;parallel&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun&quot;: &quot;logcosh&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun_args&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__max_iter&quot;: 200,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__n_components&quot;: 3,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__tol&quot;: 0.0001,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__w_init&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__whiten&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__copy&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__iterated_power&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__n_components&quot;: 3,
+    &quot;AddFeatures__SKLearnWrapper_PCA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_PCA__svd_solver&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__tol&quot;: 0.0,
+    &quot;AddFeatures__SKLearnWrapper_PCA__whiten&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__alpha&quot;: 0.9,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__ccp_alpha&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__criterion&quot;: &quot;friedman_mse&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__init&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__learning_rate&quot;: 0.08645862997777952,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__loss&quot;: &quot;ls&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_depth&quot;: 5,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_features&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_leaf_nodes&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_decrease&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_split&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_leaf&quot;: 1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_split&quot;: 2,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_weight_fraction_leaf&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_estimators&quot;: 93,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_iter_no_change&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__presort&quot;: &quot;deprecated&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__subsample&quot;: 1.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__validation_fraction&quot;: 0.1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__verbose&quot;: 0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__warm_start&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__algorithm&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__copy_x&quot;: true,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__init&quot;: &quot;k-means++&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__max_iter&quot;: 300,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_clusters&quot;: 9,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_init&quot;: 10,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_jobs&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__precompute_distances&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__verbose&quot;: 0
+}
+
+
+epoch 1/10
+main train: 1.2329742785579945
+main validation: 13.411201525059026
+mse train: 1.2329742785579945
+mse validation: 13.411201525059026
+
+epoch 2/10
+main train: 1.233258997029772
+main validation: 13.231881307302828
+mse train: 1.233258997029772
+mse validation: 13.231881307302828
+
+epoch 3/10
+main train: 1.2329805467538566
+main validation: 13.312767357463196
+mse train: 1.2329805467538566
+mse validation: 13.312767357463196
+
+epoch 4/10
+main train: 1.2325623429002865
+main validation: 13.259466706107254
+mse train: 1.2325623429002865
+mse validation: 13.259466706107254
+
+epoch 5/10
+main train: 1.2319786668747932
+main validation: 13.228833967813953
+mse train: 1.2319786668747932
+mse validation: 13.228833967813953
+
+epoch 6/10
+main train: 1.2332550448021364
+main validation: 13.36629858016598
+mse train: 1.2332550448021364
+mse validation: 13.36629858016598
+
+epoch 7/10
+main train: 1.2326017840964443
+main validation: 13.405569070083184
+mse train: 1.2326017840964443
+mse validation: 13.405569070083184
+
+epoch 8/10
+main train: 1.2332616572617665
+main validation: 13.386127260007077
+mse train: 1.2332616572617665
+mse validation: 13.386127260007077
+
+epoch 9/10
+main train: 1.2330705894812395
+main validation: 13.486786466061224
+mse train: 1.2330705894812395
+mse validation: 13.486786466061224
+
+epoch 10/10
+main train: 1.2325671557912758
+main validation: 13.254425957605099
+mse train: 1.2325671557912758
+mse validation: 13.254425957605099
+success trial 5/10 split 1/1
+hyperparams: {
+    &quot;AddFeatures__SKLearnWrapper_FastICA__algorithm&quot;: &quot;parallel&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun&quot;: &quot;logcosh&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun_args&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__max_iter&quot;: 200,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__n_components&quot;: 3,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__tol&quot;: 0.0001,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__w_init&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__whiten&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__copy&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__iterated_power&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__n_components&quot;: 3,
+    &quot;AddFeatures__SKLearnWrapper_PCA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_PCA__svd_solver&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__tol&quot;: 0.0,
+    &quot;AddFeatures__SKLearnWrapper_PCA__whiten&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__alpha&quot;: 0.9,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__ccp_alpha&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__criterion&quot;: &quot;friedman_mse&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__init&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__learning_rate&quot;: 0.08645862997777952,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__loss&quot;: &quot;ls&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_depth&quot;: 5,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_features&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_leaf_nodes&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_decrease&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_split&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_leaf&quot;: 1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_split&quot;: 2,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_weight_fraction_leaf&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_estimators&quot;: 93,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_iter_no_change&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__presort&quot;: &quot;deprecated&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__subsample&quot;: 1.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__validation_fraction&quot;: 0.1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__verbose&quot;: 0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__warm_start&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__algorithm&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__copy_x&quot;: true,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__init&quot;: &quot;k-means++&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__max_iter&quot;: 300,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_clusters&quot;: 9,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_init&quot;: 10,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_jobs&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__precompute_distances&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__verbose&quot;: 0
+}
+ score: 13.254425957605099
+&lt;neuraxle.metaopt.trial.Trial object at 0x128411050&gt;
+new trial:
+{
+    &quot;AddFeatures&quot;: {
+        &quot;SKLearnWrapper_FastICA&quot;: {
+            &quot;n_components&quot;: 1
+        },
+        &quot;SKLearnWrapper_PCA&quot;: {
+            &quot;n_components&quot;: 1
+        }
+    },
+    &quot;ModelStacking&quot;: {
+        &quot;SKLearnWrapper_GradientBoostingRegressor&quot;: {
+            &quot;learning_rate&quot;: 0.1986005477921359,
+            &quot;max_depth&quot;: 6,
+            &quot;n_estimators&quot;: 101
+        },
+        &quot;SKLearnWrapper_KMeans&quot;: {
+            &quot;n_clusters&quot;: 7
+        }
+    }
+}
+
+trial 6/10
+fitting trial 6/10 split 1/1
+hyperparams: {
+    &quot;AddFeatures__SKLearnWrapper_FastICA__algorithm&quot;: &quot;parallel&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun&quot;: &quot;logcosh&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun_args&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__max_iter&quot;: 200,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__n_components&quot;: 1,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__tol&quot;: 0.0001,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__w_init&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__whiten&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__copy&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__iterated_power&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__n_components&quot;: 1,
+    &quot;AddFeatures__SKLearnWrapper_PCA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_PCA__svd_solver&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__tol&quot;: 0.0,
+    &quot;AddFeatures__SKLearnWrapper_PCA__whiten&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__alpha&quot;: 0.9,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__ccp_alpha&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__criterion&quot;: &quot;friedman_mse&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__init&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__learning_rate&quot;: 0.1986005477921359,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__loss&quot;: &quot;ls&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_depth&quot;: 6,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_features&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_leaf_nodes&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_decrease&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_split&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_leaf&quot;: 1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_split&quot;: 2,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_weight_fraction_leaf&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_estimators&quot;: 101,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_iter_no_change&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__presort&quot;: &quot;deprecated&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__subsample&quot;: 1.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__validation_fraction&quot;: 0.1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__verbose&quot;: 0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__warm_start&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__algorithm&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__copy_x&quot;: true,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__init&quot;: &quot;k-means++&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__max_iter&quot;: 300,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_clusters&quot;: 7,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_init&quot;: 10,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_jobs&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__precompute_distances&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__verbose&quot;: 0
+}
+
+
+epoch 1/10
+main train: 1.2325029998499866
+main validation: 13.380605316379276
+mse train: 1.2325029998499866
+mse validation: 13.380605316379276
+
+epoch 2/10
+main train: 1.2331678310375618
+main validation: 13.307032592034185
+mse train: 1.2331678310375618
+mse validation: 13.307032592034185
+
+epoch 3/10
+main train: 1.2332047976663425
+main validation: 13.24902450842006
+mse train: 1.2332047976663425
+mse validation: 13.24902450842006
+
+epoch 4/10
+main train: 1.2331936842578133
+main validation: 13.383235573096801
+mse train: 1.2331936842578133
+mse validation: 13.383235573096801
+
+epoch 5/10
+main train: 1.2321913747606321
+main validation: 13.245755691037909
+mse train: 1.2321913747606321
+mse validation: 13.245755691037909
+
+epoch 6/10
+main train: 1.2312241102019348
+main validation: 13.201075747853588
+mse train: 1.2312241102019348
+mse validation: 13.201075747853588
+
+epoch 7/10
+main train: 1.2332619863224994
+main validation: 13.204735566934179
+mse train: 1.2332619863224994
+mse validation: 13.204735566934179
+
+epoch 8/10
+main train: 1.2329503570965972
+main validation: 13.340498230876811
+mse train: 1.2329503570965972
+mse validation: 13.340498230876811
+
+epoch 9/10
+main train: 1.2326541022349977
+main validation: 13.139205272469628
+mse train: 1.2326541022349977
+mse validation: 13.139205272469628
+
+epoch 10/10
+main train: 1.2330430156942922
+main validation: 13.324084072965402
+mse train: 1.2330430156942922
+mse validation: 13.324084072965402
+success trial 6/10 split 1/1
+hyperparams: {
+    &quot;AddFeatures__SKLearnWrapper_FastICA__algorithm&quot;: &quot;parallel&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun&quot;: &quot;logcosh&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun_args&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__max_iter&quot;: 200,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__n_components&quot;: 1,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__tol&quot;: 0.0001,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__w_init&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__whiten&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__copy&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__iterated_power&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__n_components&quot;: 1,
+    &quot;AddFeatures__SKLearnWrapper_PCA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_PCA__svd_solver&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__tol&quot;: 0.0,
+    &quot;AddFeatures__SKLearnWrapper_PCA__whiten&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__alpha&quot;: 0.9,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__ccp_alpha&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__criterion&quot;: &quot;friedman_mse&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__init&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__learning_rate&quot;: 0.1986005477921359,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__loss&quot;: &quot;ls&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_depth&quot;: 6,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_features&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_leaf_nodes&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_decrease&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_split&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_leaf&quot;: 1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_split&quot;: 2,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_weight_fraction_leaf&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_estimators&quot;: 101,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_iter_no_change&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__presort&quot;: &quot;deprecated&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__subsample&quot;: 1.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__validation_fraction&quot;: 0.1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__verbose&quot;: 0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__warm_start&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__algorithm&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__copy_x&quot;: true,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__init&quot;: &quot;k-means++&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__max_iter&quot;: 300,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_clusters&quot;: 7,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_init&quot;: 10,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_jobs&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__precompute_distances&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__verbose&quot;: 0
+}
+ score: 13.324084072965402
+&lt;neuraxle.metaopt.trial.Trial object at 0x12841a350&gt;
+new trial:
+{
+    &quot;AddFeatures&quot;: {
+        &quot;SKLearnWrapper_FastICA&quot;: {
+            &quot;n_components&quot;: 2
+        },
+        &quot;SKLearnWrapper_PCA&quot;: {
+            &quot;n_components&quot;: 3
+        }
+    },
+    &quot;ModelStacking&quot;: {
+        &quot;SKLearnWrapper_GradientBoostingRegressor&quot;: {
+            &quot;learning_rate&quot;: 0.12155931160534089,
+            &quot;max_depth&quot;: 4,
+            &quot;n_estimators&quot;: 416
+        },
+        &quot;SKLearnWrapper_KMeans&quot;: {
+            &quot;n_clusters&quot;: 5
+        }
+    }
+}
+
+trial 7/10
+fitting trial 7/10 split 1/1
+hyperparams: {
+    &quot;AddFeatures__SKLearnWrapper_FastICA__algorithm&quot;: &quot;parallel&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun&quot;: &quot;logcosh&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun_args&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__max_iter&quot;: 200,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__n_components&quot;: 2,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__tol&quot;: 0.0001,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__w_init&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__whiten&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__copy&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__iterated_power&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__n_components&quot;: 3,
+    &quot;AddFeatures__SKLearnWrapper_PCA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_PCA__svd_solver&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__tol&quot;: 0.0,
+    &quot;AddFeatures__SKLearnWrapper_PCA__whiten&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__alpha&quot;: 0.9,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__ccp_alpha&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__criterion&quot;: &quot;friedman_mse&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__init&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__learning_rate&quot;: 0.12155931160534089,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__loss&quot;: &quot;ls&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_depth&quot;: 4,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_features&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_leaf_nodes&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_decrease&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_split&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_leaf&quot;: 1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_split&quot;: 2,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_weight_fraction_leaf&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_estimators&quot;: 416,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_iter_no_change&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__presort&quot;: &quot;deprecated&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__subsample&quot;: 1.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__validation_fraction&quot;: 0.1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__verbose&quot;: 0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__warm_start&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__algorithm&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__copy_x&quot;: true,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__init&quot;: &quot;k-means++&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__max_iter&quot;: 300,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_clusters&quot;: 5,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_init&quot;: 10,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_jobs&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__precompute_distances&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__verbose&quot;: 0
+}
+
+
+epoch 1/10
+main train: 1.2331758803558868
+main validation: 13.21351396348681
+mse train: 1.2331758803558868
+mse validation: 13.21351396348681
+
+epoch 2/10
+main train: 1.2263471884974682
+main validation: 13.333611500000812
+mse train: 1.2263471884974682
+mse validation: 13.333611500000812
+
+epoch 3/10
+main train: 1.2331826223907583
+main validation: 13.2665564566691
+mse train: 1.2331826223907583
+mse validation: 13.2665564566691
+
+epoch 4/10
+main train: 1.2305577304762143
+main validation: 13.313810802773563
+mse train: 1.2305577304762143
+mse validation: 13.313810802773563
+
+epoch 5/10
+main train: 1.2332010941198097
+main validation: 13.307524946708519
+mse train: 1.2332010941198097
+mse validation: 13.307524946708519
+
+epoch 6/10
+main train: 1.2293299577384542
+main validation: 13.18449638272589
+mse train: 1.2293299577384542
+mse validation: 13.18449638272589
+
+epoch 7/10
+main train: 1.2331914368747405
+main validation: 13.329935658099714
+mse train: 1.2331914368747405
+mse validation: 13.329935658099714
+
+epoch 8/10
+main train: 1.2330037763355488
+main validation: 13.357908117648222
+mse train: 1.2330037763355488
+mse validation: 13.357908117648222
+
+epoch 9/10
+main train: 1.2324099652258123
+main validation: 13.194795658175753
+mse train: 1.2324099652258123
+mse validation: 13.194795658175753
+
+epoch 10/10
+main train: 1.2281544993832563
+main validation: 13.31845740566982
+mse train: 1.2281544993832563
+mse validation: 13.31845740566982
+success trial 7/10 split 1/1
+hyperparams: {
+    &quot;AddFeatures__SKLearnWrapper_FastICA__algorithm&quot;: &quot;parallel&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun&quot;: &quot;logcosh&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun_args&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__max_iter&quot;: 200,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__n_components&quot;: 2,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__tol&quot;: 0.0001,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__w_init&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__whiten&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__copy&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__iterated_power&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__n_components&quot;: 3,
+    &quot;AddFeatures__SKLearnWrapper_PCA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_PCA__svd_solver&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__tol&quot;: 0.0,
+    &quot;AddFeatures__SKLearnWrapper_PCA__whiten&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__alpha&quot;: 0.9,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__ccp_alpha&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__criterion&quot;: &quot;friedman_mse&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__init&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__learning_rate&quot;: 0.12155931160534089,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__loss&quot;: &quot;ls&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_depth&quot;: 4,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_features&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_leaf_nodes&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_decrease&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_split&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_leaf&quot;: 1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_split&quot;: 2,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_weight_fraction_leaf&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_estimators&quot;: 416,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_iter_no_change&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__presort&quot;: &quot;deprecated&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__subsample&quot;: 1.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__validation_fraction&quot;: 0.1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__verbose&quot;: 0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__warm_start&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__algorithm&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__copy_x&quot;: true,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__init&quot;: &quot;k-means++&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__max_iter&quot;: 300,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_clusters&quot;: 5,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_init&quot;: 10,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_jobs&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__precompute_distances&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__verbose&quot;: 0
+}
+ score: 13.31845740566982
+&lt;neuraxle.metaopt.trial.Trial object at 0x128412c90&gt;
+new trial:
+{
+    &quot;AddFeatures&quot;: {
+        &quot;SKLearnWrapper_FastICA&quot;: {
+            &quot;n_components&quot;: 2
+        },
+        &quot;SKLearnWrapper_PCA&quot;: {
+            &quot;n_components&quot;: 2
+        }
+    },
+    &quot;ModelStacking&quot;: {
+        &quot;SKLearnWrapper_GradientBoostingRegressor&quot;: {
+            &quot;learning_rate&quot;: 0.40608321637370265,
+            &quot;max_depth&quot;: 5,
+            &quot;n_estimators&quot;: 194
+        },
+        &quot;SKLearnWrapper_KMeans&quot;: {
+            &quot;n_clusters&quot;: 7
+        }
+    }
+}
+
+trial 8/10
+fitting trial 8/10 split 1/1
+hyperparams: {
+    &quot;AddFeatures__SKLearnWrapper_FastICA__algorithm&quot;: &quot;parallel&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun&quot;: &quot;logcosh&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun_args&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__max_iter&quot;: 200,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__n_components&quot;: 2,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__tol&quot;: 0.0001,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__w_init&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__whiten&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__copy&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__iterated_power&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__n_components&quot;: 2,
+    &quot;AddFeatures__SKLearnWrapper_PCA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_PCA__svd_solver&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__tol&quot;: 0.0,
+    &quot;AddFeatures__SKLearnWrapper_PCA__whiten&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__alpha&quot;: 0.9,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__ccp_alpha&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__criterion&quot;: &quot;friedman_mse&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__init&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__learning_rate&quot;: 0.40608321637370265,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__loss&quot;: &quot;ls&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_depth&quot;: 5,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_features&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_leaf_nodes&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_decrease&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_split&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_leaf&quot;: 1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_split&quot;: 2,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_weight_fraction_leaf&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_estimators&quot;: 194,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_iter_no_change&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__presort&quot;: &quot;deprecated&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__subsample&quot;: 1.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__validation_fraction&quot;: 0.1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__verbose&quot;: 0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__warm_start&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__algorithm&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__copy_x&quot;: true,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__init&quot;: &quot;k-means++&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__max_iter&quot;: 300,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_clusters&quot;: 7,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_init&quot;: 10,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_jobs&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__precompute_distances&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__verbose&quot;: 0
+}
+
+
+epoch 1/10
+main train: 1.2244214931833992
+main validation: 13.113672836378276
+mse train: 1.2244214931833992
+mse validation: 13.113672836378276
+
+epoch 2/10
+main train: 1.2298950700082991
+main validation: 13.460049946728384
+mse train: 1.2298950700082991
+mse validation: 13.460049946728384
+
+epoch 3/10
+main train: 1.2317139553090868
+main validation: 13.3875076758794
+mse train: 1.2317139553090868
+mse validation: 13.3875076758794
+
+epoch 4/10
+main train: 1.2302352608353375
+main validation: 13.413728931147523
+mse train: 1.2302352608353375
+mse validation: 13.413728931147523
+
+epoch 5/10
+main train: 1.2330020577184992
+main validation: 13.423042663010325
+mse train: 1.2330020577184992
+mse validation: 13.423042663010325
+
+epoch 6/10
+main train: 1.2286167668576702
+main validation: 13.32371003118697
+mse train: 1.2286167668576702
+mse validation: 13.32371003118697
+
+epoch 7/10
+main train: 1.2324923024089631
+main validation: 13.319851023970495
+mse train: 1.2324923024089631
+mse validation: 13.319851023970495
+
+epoch 8/10
+main train: 1.2278244764886779
+main validation: 13.17219864813976
+mse train: 1.2278244764886779
+mse validation: 13.17219864813976
+
+epoch 9/10
+main train: 1.2307754626970653
+main validation: 13.217147091275898
+mse train: 1.2307754626970653
+mse validation: 13.217147091275898
+
+epoch 10/10
+main train: 1.2311699569646044
+main validation: 13.299099514503562
+mse train: 1.2311699569646044
+mse validation: 13.299099514503562
+success trial 8/10 split 1/1
+hyperparams: {
+    &quot;AddFeatures__SKLearnWrapper_FastICA__algorithm&quot;: &quot;parallel&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun&quot;: &quot;logcosh&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun_args&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__max_iter&quot;: 200,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__n_components&quot;: 2,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__tol&quot;: 0.0001,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__w_init&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__whiten&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__copy&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__iterated_power&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__n_components&quot;: 2,
+    &quot;AddFeatures__SKLearnWrapper_PCA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_PCA__svd_solver&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__tol&quot;: 0.0,
+    &quot;AddFeatures__SKLearnWrapper_PCA__whiten&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__alpha&quot;: 0.9,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__ccp_alpha&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__criterion&quot;: &quot;friedman_mse&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__init&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__learning_rate&quot;: 0.40608321637370265,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__loss&quot;: &quot;ls&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_depth&quot;: 5,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_features&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_leaf_nodes&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_decrease&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_split&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_leaf&quot;: 1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_split&quot;: 2,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_weight_fraction_leaf&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_estimators&quot;: 194,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_iter_no_change&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__presort&quot;: &quot;deprecated&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__subsample&quot;: 1.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__validation_fraction&quot;: 0.1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__verbose&quot;: 0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__warm_start&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__algorithm&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__copy_x&quot;: true,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__init&quot;: &quot;k-means++&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__max_iter&quot;: 300,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_clusters&quot;: 7,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_init&quot;: 10,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_jobs&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__precompute_distances&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__verbose&quot;: 0
+}
+ score: 13.299099514503562
+&lt;neuraxle.metaopt.trial.Trial object at 0x128411c50&gt;
+new trial:
+{
+    &quot;AddFeatures&quot;: {
+        &quot;SKLearnWrapper_FastICA&quot;: {
+            &quot;n_components&quot;: 2
+        },
+        &quot;SKLearnWrapper_PCA&quot;: {
+            &quot;n_components&quot;: 2
+        }
+    },
+    &quot;ModelStacking&quot;: {
+        &quot;SKLearnWrapper_GradientBoostingRegressor&quot;: {
+            &quot;learning_rate&quot;: 0.23666174346261623,
+            &quot;max_depth&quot;: 5,
+            &quot;n_estimators&quot;: 542
+        },
+        &quot;SKLearnWrapper_KMeans&quot;: {
+            &quot;n_clusters&quot;: 6
+        }
+    }
+}
+
+trial 9/10
+fitting trial 9/10 split 1/1
+hyperparams: {
+    &quot;AddFeatures__SKLearnWrapper_FastICA__algorithm&quot;: &quot;parallel&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun&quot;: &quot;logcosh&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun_args&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__max_iter&quot;: 200,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__n_components&quot;: 2,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__tol&quot;: 0.0001,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__w_init&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__whiten&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__copy&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__iterated_power&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__n_components&quot;: 2,
+    &quot;AddFeatures__SKLearnWrapper_PCA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_PCA__svd_solver&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__tol&quot;: 0.0,
+    &quot;AddFeatures__SKLearnWrapper_PCA__whiten&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__alpha&quot;: 0.9,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__ccp_alpha&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__criterion&quot;: &quot;friedman_mse&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__init&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__learning_rate&quot;: 0.23666174346261623,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__loss&quot;: &quot;ls&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_depth&quot;: 5,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_features&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_leaf_nodes&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_decrease&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_split&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_leaf&quot;: 1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_split&quot;: 2,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_weight_fraction_leaf&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_estimators&quot;: 542,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_iter_no_change&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__presort&quot;: &quot;deprecated&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__subsample&quot;: 1.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__validation_fraction&quot;: 0.1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__verbose&quot;: 0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__warm_start&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__algorithm&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__copy_x&quot;: true,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__init&quot;: &quot;k-means++&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__max_iter&quot;: 300,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_clusters&quot;: 6,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_init&quot;: 10,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_jobs&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__precompute_distances&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__verbose&quot;: 0
+}
+
+
+epoch 1/10
+main train: 1.2331170663984121
+main validation: 13.20899721113191
+mse train: 1.2331170663984121
+mse validation: 13.20899721113191
+
+epoch 2/10
+main train: 1.2325623429002863
+main validation: 13.23724528373159
+mse train: 1.2325623429002863
+mse validation: 13.23724528373159
+
+epoch 3/10
+main train: 1.2331426227147668
+main validation: 13.3700573787727
+mse train: 1.2331426227147668
+mse validation: 13.3700573787727
+
+epoch 4/10
+main train: 1.232364873150145
+main validation: 13.301137985467426
+mse train: 1.232364873150145
+mse validation: 13.301137985467426
+
+epoch 5/10
+main train: 1.2303541811270473
+main validation: 13.28290100813625
+mse train: 1.2303541811270473
+mse validation: 13.28290100813625
+
+epoch 6/10
+main train: 1.23308477065785
+main validation: 13.404356971453275
+mse train: 1.23308477065785
+mse validation: 13.404356971453275
+
+epoch 7/10
+main train: 1.2332514518660755
+main validation: 13.389602307672936
+mse train: 1.2332514518660755
+mse validation: 13.389602307672936
+
+epoch 8/10
+main train: 1.2325234961616223
+main validation: 13.316341686955502
+mse train: 1.2325234961616223
+mse validation: 13.316341686955502
+
+epoch 9/10
+main train: 1.2330287689348913
+main validation: 13.222319465341252
+mse train: 1.2330287689348913
+mse validation: 13.222319465341252
+
+epoch 10/10
+main train: 1.232697394277466
+main validation: 13.253655338027635
+mse train: 1.232697394277466
+mse validation: 13.253655338027635
+success trial 9/10 split 1/1
+hyperparams: {
+    &quot;AddFeatures__SKLearnWrapper_FastICA__algorithm&quot;: &quot;parallel&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun&quot;: &quot;logcosh&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun_args&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__max_iter&quot;: 200,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__n_components&quot;: 2,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__tol&quot;: 0.0001,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__w_init&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__whiten&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__copy&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__iterated_power&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__n_components&quot;: 2,
+    &quot;AddFeatures__SKLearnWrapper_PCA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_PCA__svd_solver&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__tol&quot;: 0.0,
+    &quot;AddFeatures__SKLearnWrapper_PCA__whiten&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__alpha&quot;: 0.9,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__ccp_alpha&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__criterion&quot;: &quot;friedman_mse&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__init&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__learning_rate&quot;: 0.23666174346261623,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__loss&quot;: &quot;ls&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_depth&quot;: 5,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_features&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_leaf_nodes&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_decrease&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_split&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_leaf&quot;: 1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_split&quot;: 2,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_weight_fraction_leaf&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_estimators&quot;: 542,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_iter_no_change&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__presort&quot;: &quot;deprecated&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__subsample&quot;: 1.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__validation_fraction&quot;: 0.1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__verbose&quot;: 0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__warm_start&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__algorithm&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__copy_x&quot;: true,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__init&quot;: &quot;k-means++&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__max_iter&quot;: 300,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_clusters&quot;: 6,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_init&quot;: 10,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_jobs&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__precompute_distances&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__verbose&quot;: 0
+}
+ score: 13.253655338027635
+&lt;neuraxle.metaopt.trial.Trial object at 0x128460b50&gt;
+new trial:
+{
+    &quot;AddFeatures&quot;: {
+        &quot;SKLearnWrapper_FastICA&quot;: {
+            &quot;n_components&quot;: 1
+        },
+        &quot;SKLearnWrapper_PCA&quot;: {
+            &quot;n_components&quot;: 3
+        }
+    },
+    &quot;ModelStacking&quot;: {
+        &quot;SKLearnWrapper_GradientBoostingRegressor&quot;: {
+            &quot;learning_rate&quot;: 0.4684341593885452,
+            &quot;max_depth&quot;: 3,
+            &quot;n_estimators&quot;: 399
+        },
+        &quot;SKLearnWrapper_KMeans&quot;: {
+            &quot;n_clusters&quot;: 6
+        }
+    }
+}
+
+trial 10/10
+fitting trial 10/10 split 1/1
+hyperparams: {
+    &quot;AddFeatures__SKLearnWrapper_FastICA__algorithm&quot;: &quot;parallel&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun&quot;: &quot;logcosh&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun_args&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__max_iter&quot;: 200,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__n_components&quot;: 1,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__tol&quot;: 0.0001,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__w_init&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__whiten&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__copy&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__iterated_power&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__n_components&quot;: 3,
+    &quot;AddFeatures__SKLearnWrapper_PCA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_PCA__svd_solver&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__tol&quot;: 0.0,
+    &quot;AddFeatures__SKLearnWrapper_PCA__whiten&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__alpha&quot;: 0.9,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__ccp_alpha&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__criterion&quot;: &quot;friedman_mse&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__init&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__learning_rate&quot;: 0.4684341593885452,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__loss&quot;: &quot;ls&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_depth&quot;: 3,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_features&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_leaf_nodes&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_decrease&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_split&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_leaf&quot;: 1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_split&quot;: 2,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_weight_fraction_leaf&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_estimators&quot;: 399,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_iter_no_change&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__presort&quot;: &quot;deprecated&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__subsample&quot;: 1.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__validation_fraction&quot;: 0.1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__verbose&quot;: 0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__warm_start&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__algorithm&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__copy_x&quot;: true,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__init&quot;: &quot;k-means++&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__max_iter&quot;: 300,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_clusters&quot;: 6,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_init&quot;: 10,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_jobs&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__precompute_distances&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__verbose&quot;: 0
+}
+
+
+epoch 1/10
+main train: 1.2318294050981549
+main validation: 13.323565344062251
+mse train: 1.2318294050981549
+mse validation: 13.323565344062251
+
+epoch 2/10
+main train: 1.2330374462623284
+main validation: 13.237991673124256
+mse train: 1.2330374462623284
+mse validation: 13.237991673124256
+
+epoch 3/10
+main train: 1.2332430388349707
+main validation: 13.247622076082175
+mse train: 1.2332430388349707
+mse validation: 13.247622076082175
+
+epoch 4/10
+main train: 1.2323203383322714
+main validation: 13.387542897096882
+mse train: 1.2323203383322714
+mse validation: 13.387542897096882
+
+epoch 5/10
+main train: 1.231479710114306
+main validation: 13.312665371521172
+mse train: 1.231479710114306
+mse validation: 13.312665371521172
+
+epoch 6/10
+main train: 1.2330931797707503
+main validation: 13.151948172053523
+mse train: 1.2330931797707503
+mse validation: 13.151948172053523
+
+epoch 7/10
+main train: 1.232953727026434
+main validation: 13.2169030712567
+mse train: 1.232953727026434
+mse validation: 13.2169030712567
+
+epoch 8/10
+main train: 1.2331423599513702
+main validation: 13.20959502415854
+mse train: 1.2331423599513702
+mse validation: 13.20959502415854
+
+epoch 9/10
+main train: 1.2329218823428052
+main validation: 13.245010305799157
+mse train: 1.2329218823428052
+mse validation: 13.245010305799157
+
+epoch 10/10
+main train: 1.2332620018050355
+main validation: 13.298830761460527
+mse train: 1.2332620018050355
+mse validation: 13.298830761460527
+success trial 10/10 split 1/1
+hyperparams: {
+    &quot;AddFeatures__SKLearnWrapper_FastICA__algorithm&quot;: &quot;parallel&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun&quot;: &quot;logcosh&quot;,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__fun_args&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__max_iter&quot;: 200,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__n_components&quot;: 1,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__tol&quot;: 0.0001,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__w_init&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_FastICA__whiten&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__copy&quot;: true,
+    &quot;AddFeatures__SKLearnWrapper_PCA__iterated_power&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__n_components&quot;: 3,
+    &quot;AddFeatures__SKLearnWrapper_PCA__random_state&quot;: null,
+    &quot;AddFeatures__SKLearnWrapper_PCA__svd_solver&quot;: &quot;auto&quot;,
+    &quot;AddFeatures__SKLearnWrapper_PCA__tol&quot;: 0.0,
+    &quot;AddFeatures__SKLearnWrapper_PCA__whiten&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__alpha&quot;: 0.9,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__ccp_alpha&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__criterion&quot;: &quot;friedman_mse&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__init&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__learning_rate&quot;: 0.4684341593885452,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__loss&quot;: &quot;ls&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_depth&quot;: 3,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_features&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__max_leaf_nodes&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_decrease&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_impurity_split&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_leaf&quot;: 1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_samples_split&quot;: 2,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__min_weight_fraction_leaf&quot;: 0.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_estimators&quot;: 399,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__n_iter_no_change&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__presort&quot;: &quot;deprecated&quot;,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__subsample&quot;: 1.0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__validation_fraction&quot;: 0.1,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__verbose&quot;: 0,
+    &quot;ModelStacking__SKLearnWrapper_GradientBoostingRegressor__warm_start&quot;: false,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__algorithm&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__copy_x&quot;: true,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__init&quot;: &quot;k-means++&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__max_iter&quot;: 300,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_clusters&quot;: 6,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_init&quot;: 10,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__n_jobs&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__precompute_distances&quot;: &quot;auto&quot;,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__random_state&quot;: null,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__tol&quot;: 0.0001,
+    &quot;ModelStacking__SKLearnWrapper_KMeans__verbose&quot;: 0
+}
+ score: 13.298830761460527
+&lt;neuraxle.metaopt.trial.Trial object at 0x1284782d0&gt;
+best hyperparams:
+{
+    &quot;AddFeatures&quot;: {
+        &quot;SKLearnWrapper_FastICA&quot;: {
+            &quot;algorithm&quot;: &quot;parallel&quot;,
+            &quot;fun&quot;: &quot;logcosh&quot;,
+            &quot;fun_args&quot;: null,
+            &quot;max_iter&quot;: 200,
+            &quot;n_components&quot;: 2,
+            &quot;random_state&quot;: null,
+            &quot;tol&quot;: 0.0001,
+            &quot;w_init&quot;: null,
+            &quot;whiten&quot;: true
+        },
+        &quot;SKLearnWrapper_PCA&quot;: {
+            &quot;copy&quot;: true,
+            &quot;iterated_power&quot;: &quot;auto&quot;,
+            &quot;n_components&quot;: 1,
+            &quot;random_state&quot;: null,
+            &quot;svd_solver&quot;: &quot;auto&quot;,
+            &quot;tol&quot;: 0.0,
+            &quot;whiten&quot;: false
+        }
+    },
+    &quot;ModelStacking&quot;: {
+        &quot;SKLearnWrapper_GradientBoostingRegressor&quot;: {
+            &quot;alpha&quot;: 0.9,
+            &quot;ccp_alpha&quot;: 0.0,
+            &quot;criterion&quot;: &quot;friedman_mse&quot;,
+            &quot;init&quot;: null,
+            &quot;learning_rate&quot;: 0.5008235470866984,
+            &quot;loss&quot;: &quot;ls&quot;,
+            &quot;max_depth&quot;: 5,
+            &quot;max_features&quot;: null,
+            &quot;max_leaf_nodes&quot;: null,
+            &quot;min_impurity_decrease&quot;: 0.0,
+            &quot;min_impurity_split&quot;: null,
+            &quot;min_samples_leaf&quot;: 1,
+            &quot;min_samples_split&quot;: 2,
+            &quot;min_weight_fraction_leaf&quot;: 0.0,
+            &quot;n_estimators&quot;: 573,
+            &quot;n_iter_no_change&quot;: null,
+            &quot;presort&quot;: &quot;deprecated&quot;,
+            &quot;random_state&quot;: null,
+            &quot;subsample&quot;: 1.0,
+            &quot;tol&quot;: 0.0001,
+            &quot;validation_fraction&quot;: 0.1,
+            &quot;verbose&quot;: 0,
+            &quot;warm_start&quot;: false
+        },
+        &quot;SKLearnWrapper_KMeans&quot;: {
+            &quot;algorithm&quot;: &quot;auto&quot;,
+            &quot;copy_x&quot;: true,
+            &quot;init&quot;: &quot;k-means++&quot;,
+            &quot;max_iter&quot;: 300,
+            &quot;n_clusters&quot;: 9,
+            &quot;n_init&quot;: 10,
+            &quot;n_jobs&quot;: null,
+            &quot;precompute_distances&quot;: &quot;auto&quot;,
+            &quot;random_state&quot;: null,
+            &quot;tol&quot;: 0.0001,
+            &quot;verbose&quot;: 0
+        }
+    }
+}
+
+Transforming train and test:
+
+Evaluating transformed train:
+R2 regression score: 0.9800754568199255
+
+Evaluating transformed test:
+R2 regression score: 0.9276767359177656
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">py._path.local</span> <span class="kn">import</span> <span class="n">LocalPath</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="View documentation for sklearn.cluster.KMeans"><span class="n">KMeans</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html#sklearn.datasets.load_boston" title="View documentation for sklearn.datasets.load_boston"><span class="n">load_boston</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="View documentation for sklearn.decomposition.PCA"><span class="n">PCA</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html#sklearn.decomposition.FastICA" title="View documentation for sklearn.decomposition.FastICA"><span class="n">FastICA</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor" title="View documentation for sklearn.ensemble.GradientBoostingRegressor"><span class="n">GradientBoostingRegressor</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html#sklearn.linear_model.Ridge" title="View documentation for sklearn.linear_model.Ridge"><span class="n">Ridge</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="View documentation for sklearn.metrics.r2_score"><span class="n">r2_score</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html#sklearn.metrics.mean_squared_error" title="View documentation for sklearn.metrics.mean_squared_error"><span class="n">mean_squared_error</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.shuffle.html#sklearn.utils.shuffle" title="View documentation for sklearn.utils.shuffle"><span class="n">shuffle</span></a>
+
+<span class="kn">from</span> <span class="nn">neuraxle.hyperparams.distributions</span> <span class="kn">import</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">,</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.LogUniform" title="View documentation for neuraxle.hyperparams.distributions.LogUniform"><span class="n">LogUniform</span></a><span class="p">,</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Boolean" title="View documentation for neuraxle.hyperparams.distributions.Boolean"><span class="n">Boolean</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.hyperparams.space</span> <span class="kn">import</span> <a href="../../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.metaopt.auto_ml</span> <span class="kn">import</span> <a href="../../api/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML" title="View documentation for neuraxle.metaopt.auto_ml.AutoML"><span class="n">AutoML</span></a><span class="p">,</span> <a href="../../api/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.InMemoryHyperparamsRepository" title="View documentation for neuraxle.metaopt.auto_ml.InMemoryHyperparamsRepository"><span class="n">InMemoryHyperparamsRepository</span></a><span class="p">,</span> <a href="../../api/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.ValidationSplitter" title="View documentation for neuraxle.metaopt.auto_ml.ValidationSplitter"><span class="n">ValidationSplitter</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.metaopt.callbacks</span> <span class="kn">import</span> <a href="../../api/neuraxle.metaopt.callbacks.html#neuraxle.metaopt.callbacks.MetricCallback" title="View documentation for neuraxle.metaopt.callbacks.MetricCallback"><span class="n">MetricCallback</span></a><span class="p">,</span> <a href="../../api/neuraxle.metaopt.callbacks.html#neuraxle.metaopt.callbacks.ScoringCallback" title="View documentation for neuraxle.metaopt.callbacks.ScoringCallback"><span class="n">ScoringCallback</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="kn">import</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.steps.numpy</span> <span class="kn">import</span> <a href="../../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyTranspose" title="View documentation for neuraxle.steps.numpy.NumpyTranspose"><span class="n">NumpyTranspose</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.steps.sklearn</span> <span class="kn">import</span> <a href="../../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.union</span> <span class="kn">import</span> <a href="../../api/neuraxle.union.html#neuraxle.union.AddFeatures" title="View documentation for neuraxle.union.AddFeatures"><span class="n">AddFeatures</span></a><span class="p">,</span> <a href="../../api/neuraxle.union.html#neuraxle.union.ModelStacking" title="View documentation for neuraxle.union.ModelStacking"><span class="n">ModelStacking</span></a>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">:</span> <span class="n">LocalPath</span><span class="p">):</span>
+    <span class="n">boston</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html#sklearn.datasets.load_boston" title="View documentation for sklearn.datasets.load_boston"><span class="n">load_boston</span></a><span class="p">()</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.shuffle.html#sklearn.utils.shuffle" title="View documentation for sklearn.utils.shuffle"><span class="n">shuffle</span></a><span class="p">(</span><span class="n">boston</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.shuffle.html#sklearn.utils.shuffle" title="View documentation for sklearn.utils.shuffle"><span class="n">shuffle</span></a><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Note that the hyperparameter spaces are defined here during the pipeline definition, but it could be already set</span>
+    <span class="c1"># within the classes ar their definition if using custom classes, or also it could be defined after declaring the</span>
+    <span class="c1"># pipeline using a flat dict or a nested dict.</span>
+
+    <span class="n">p</span> <span class="o">=</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">([</span>
+        <a href="../../api/neuraxle.union.html#neuraxle.union.AddFeatures" title="View documentation for neuraxle.union.AddFeatures"><span class="n">AddFeatures</span></a><span class="p">([</span>
+            <a href="../../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span>
+                <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="View documentation for sklearn.decomposition.PCA"><span class="n">PCA</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+                <a href="../../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span><span class="s2">&quot;n_components&quot;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)})</span>
+            <span class="p">),</span>
+            <a href="../../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span>
+                <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html#sklearn.decomposition.FastICA" title="View documentation for sklearn.decomposition.FastICA"><span class="n">FastICA</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+                <a href="../../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span><span class="s2">&quot;n_components&quot;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)})</span>
+            <span class="p">),</span>
+        <span class="p">]),</span>
+        <a href="../../api/neuraxle.union.html#neuraxle.union.ModelStacking" title="View documentation for neuraxle.union.ModelStacking"><span class="n">ModelStacking</span></a><span class="p">([</span>
+            <a href="../../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span>
+                <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor" title="View documentation for sklearn.ensemble.GradientBoostingRegressor"><span class="n">GradientBoostingRegressor</span></a><span class="p">(),</span>
+                <a href="../../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span>
+                    <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">600</span><span class="p">),</span> <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+                    <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.LogUniform" title="View documentation for neuraxle.hyperparams.distributions.LogUniform"><span class="n">LogUniform</span></a><span class="p">(</span><span class="mf">0.07</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
+                <span class="p">})</span>
+            <span class="p">),</span>
+            <a href="../../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span>
+                <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="View documentation for sklearn.cluster.KMeans"><span class="n">KMeans</span></a><span class="p">(),</span>
+                <a href="../../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span><span class="s2">&quot;n_clusters&quot;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)})</span>
+            <span class="p">),</span>
+        <span class="p">],</span>
+            <span class="n">joiner</span><span class="o">=</span><a href="../../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyTranspose" title="View documentation for neuraxle.steps.numpy.NumpyTranspose"><span class="n">NumpyTranspose</span></a><span class="p">(),</span>
+            <span class="n">judge</span><span class="o">=</span><a href="../../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span>
+                <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html#sklearn.linear_model.Ridge" title="View documentation for sklearn.linear_model.Ridge"><span class="n">Ridge</span></a><span class="p">(),</span>
+                <a href="../../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.LogUniform" title="View documentation for neuraxle.hyperparams.distributions.LogUniform"><span class="n">LogUniform</span></a><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">),</span> <span class="s2">&quot;fit_intercept&quot;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Boolean" title="View documentation for neuraxle.hyperparams.distributions.Boolean"><span class="n">Boolean</span></a><span class="p">()})</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+    <span class="p">])</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Meta-fitting on train:&quot;</span><span class="p">)</span>
+    <span class="n">auto_ml</span> <span class="o">=</span> <a href="../../api/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML" title="View documentation for neuraxle.metaopt.auto_ml.AutoML"><span class="n">AutoML</span></a><span class="p">(</span>
+        <span class="n">p</span><span class="p">,</span>
+        <span class="n">validation_splitter</span><span class="o">=</span><a href="../../api/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.ValidationSplitter" title="View documentation for neuraxle.metaopt.auto_ml.ValidationSplitter"><span class="n">ValidationSplitter</span></a><span class="p">(</span><span class="mf">0.20</span><span class="p">),</span>
+        <span class="n">refit_trial</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">n_trials</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">cache_folder_when_no_handle</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">),</span>
+        <span class="n">scoring_callback</span><span class="o">=</span><a href="../../api/neuraxle.metaopt.callbacks.html#neuraxle.metaopt.callbacks.ScoringCallback" title="View documentation for neuraxle.metaopt.callbacks.ScoringCallback"><span class="n">ScoringCallback</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html#sklearn.metrics.mean_squared_error" title="View documentation for sklearn.metrics.mean_squared_error"><span class="n">mean_squared_error</span></a><span class="p">,</span> <span class="n">higher_score_is_better</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+        <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><a href="../../api/neuraxle.metaopt.callbacks.html#neuraxle.metaopt.callbacks.MetricCallback" title="View documentation for neuraxle.metaopt.callbacks.MetricCallback"><span class="n">MetricCallback</span></a><span class="p">(</span><span class="s1">&#39;mse&#39;</span><span class="p">,</span> <span class="n">metric_function</span><span class="o">=</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html#sklearn.metrics.mean_squared_error" title="View documentation for sklearn.metrics.mean_squared_error"><span class="n">mean_squared_error</span></a><span class="p">,</span> <span class="n">higher_score_is_better</span><span class="o">=</span><span class="kc">False</span><span class="p">)],</span>
+        <span class="n">hyperparams_repository</span><span class="o">=</span><a href="../../api/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.InMemoryHyperparamsRepository" title="View documentation for neuraxle.metaopt.auto_ml.InMemoryHyperparamsRepository"><span class="n">InMemoryHyperparamsRepository</span></a><span class="p">(</span><span class="n">cache_folder</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">))</span>
+    <span class="p">)</span>
+
+    <span class="n">random_search</span> <span class="o">=</span> <span class="n">auto_ml</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">random_search</span><span class="o">.</span><span class="n">get_best_model</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Transforming train and test:&quot;</span><span class="p">)</span>
+    <span class="n">y_train_predicted</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+    <span class="n">y_test_predicted</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluating transformed train:&quot;</span><span class="p">)</span>
+    <span class="n">score_transform</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="View documentation for sklearn.metrics.r2_score"><span class="n">r2_score</span></a><span class="p">(</span><span class="n">y_train_predicted</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R2 regression score:&#39;</span><span class="p">,</span> <span class="n">score_transform</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluating transformed test:&quot;</span><span class="p">)</span>
+    <span class="n">score_test</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="View documentation for sklearn.metrics.r2_score"><span class="n">r2_score</span></a><span class="p">(</span><span class="n">y_test_predicted</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R2 regression score:&#39;</span><span class="p">,</span> <span class="n">score_test</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">(</span><span class="s1">&#39;cache&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  18.104 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-sklearn-plot-boston-housing-meta-optimization-py">
+<div class="sphx-glr-download docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/315c08083624afa12cb52eed67d0d00e/plot_boston_housing_meta_optimization.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_boston_housing_meta_optimization.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/abf63cfda3d000465eb33df05441e00c/plot_boston_housing_meta_optimization.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_boston_housing_meta_optimization.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="plot_boston_housing_regression_with_model_stacking.html" class="btn btn-neutral float-left" title="Boston Housing Regression" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <!-- Begin Mailchimp Signup Form -->
+  <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+  <div id="mc_embed_signup">
+  <form action="https://neuraxio.us18.list-manage.com/subscribe/post?u=75b15e094bec4736090d7588c&amp;id=461343efc0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <div id="mc_embed_signup_scroll">
+      <label for="mce-EMAIL">Stay Tuned, Keep in Touch!</label>
+      <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75b15e094bec4736090d7588c_461343efc0" tabindex="-1" value=""></div>
+      <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+      </div>
+      <br/>
+      <a href="/en/blog/index.html">Visit Blog</a>
+  </form>
+  </div>
+  <!--End mc_embed_signup-->
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019 The Neuraxle Authors. All rights reserved. Apache License, Version 2.0.
+
+    </p>
+  </div>
+   
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-139527241-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>
