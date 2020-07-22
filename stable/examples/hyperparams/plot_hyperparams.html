@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Manipulate Hyperparameter Spaces for Hyperparameter Tuning &mdash; Neuraxle 0.4.0 documentation</title>
+  <title>Manipulate Hyperparameter Spaces for Hyperparameter Tuning &mdash; Neuraxle 0.5.2 documentation</title>
   
 
   
@@ -27,6 +27,8 @@
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -66,7 +68,7 @@
             
             
               <div class="version">
-                0.4.0
+                0.5.2
               </div>
             
           
@@ -190,6 +192,24 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../handler_methods.html">Handler Methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#handle_fit_transform">handle_fit_transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#handle_fit">handle_fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#handle_transform">handle_transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#When-to-use-handler-methods-?">When to use handler methods ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#HandleOnlyMixin">HandleOnlyMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#ForceHandleMixin">ForceHandleMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#ForceHandleOnlyMixin">ForceHandleOnlyMixin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../handler_methods.html#Examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#ForEachDataInput">ForEachDataInput</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#ToNumpy">ToNumpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#Transform-Expected-Outputs">Transform Expected Outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#Expand-The-DataContainer">Expand The DataContainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#Reversible-Pipeline">Reversible Pipeline</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../hyperparameter_tuning.html">Introduction to Automatic Hyperparameter Tuning</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#Continuous-Hyperparameter-Distributions">Continuous Hyperparameter Distributions</a></li>
@@ -227,6 +247,21 @@
 <li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Quantized-Lognormal">Quantized Lognormal</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../step_saving_and_lifecycle.html">Step Saving And Lifecycle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Lifecycle">Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Step-Saving">Step Saving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Saver">Saver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Custom-Saver-Example">Custom Saver Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Saving-Example">Saving Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Pipeline">Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Full-Dump-Saving">Full Dump Saving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Full-Dump-Loading">Full Dump Loading</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../rest_api_serving.html">REST API Serving</a><ul>
@@ -292,6 +327,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.column_transformer.html">neuraxle.steps.column_transformer</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.column_transformer.html#neuraxle-s-column-transformer-steps">Neuraxle’s Column Transformer Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.features.html">neuraxle.steps.features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.features.html#featurization-steps">Featurization Steps</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
@@ -361,6 +400,10 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Usage Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#automl">AutoML</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../auto_ml/plot_automl_loop_clean_kata.html">Usage of AutoML loop, and hyperparams with sklearn models.</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#caching">Caching</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../caching/plot_value_caching.html">Usage of ValueCachingWrapper in Neuraxle.</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../caching/plot_auto_ml_checkpoint.html">Usage of Checkpoints in Automatic Machine Learning (AutoML)</a></li>
@@ -473,7 +516,7 @@
 
 <span class="kn">from</span> <span class="nn">neuraxle.base</span> <span class="kn">import</span> <a href="../../api/neuraxle.base.html#neuraxle.base.Identity" title="View documentation for neuraxle.base.Identity"><span class="n">Identity</span></a>
 <span class="kn">from</span> <span class="nn">neuraxle.hyperparams.distributions</span> <span class="kn">import</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a>
-<span class="kn">from</span> <span class="nn">neuraxle.hyperparams.space</span> <span class="kn">import</span> <a href="../../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.hyperparams.space</span> <span class="kn">import</span> <span class="n">HyperparameterSpace</span>
 <span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="kn">import</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a>
 <span class="kn">from</span> <span class="nn">neuraxle.steps.numpy</span> <span class="kn">import</span> <a href="../../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="View documentation for neuraxle.steps.numpy.MultiplyByN"><span class="n">MultiplyByN</span></a>
 
@@ -489,16 +532,16 @@
         <span class="p">])</span>
     <span class="p">])</span>
 
-    <span class="n">p</span><span class="o">.</span><span class="n">set_hyperparams_space</span><span class="p">(</span><a href="../../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">set_hyperparams_space</span><span class="p">({</span>
         <span class="s1">&#39;step1__multiply_by&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
         <span class="s1">&#39;step2__multiply_by&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
         <span class="s1">&#39;Pipeline__PCA__n_components&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-    <span class="p">}))</span>
+    <span class="p">})</span>
 
     <span class="n">samples</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_hyperparams_space</span><span class="p">()</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span>
     <span class="n">p</span><span class="o">.</span><span class="n">set_hyperparams</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
 
-    <span class="n">samples</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_hyperparams</span><span class="p">()</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_hyperparams</span><span class="p">()</span><span class="o">.</span><span class="n">to_flat_as_dict_primitive</span><span class="p">()</span>
     <span class="k">assert</span> <span class="mi">42</span> <span class="o">&lt;=</span> <span class="n">samples</span><span class="p">[</span><span class="s1">&#39;step1__multiply_by&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">50</span>
     <span class="k">assert</span> <span class="o">-</span><span class="mi">10</span> <span class="o">&lt;=</span> <span class="n">samples</span><span class="p">[</span><span class="s1">&#39;step2__multiply_by&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span>
     <span class="k">assert</span> <span class="n">samples</span><span class="p">[</span><span class="s1">&#39;Pipeline__PCA__n_components&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
@@ -509,7 +552,7 @@
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.058 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.053 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-hyperparams-plot-hyperparams-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/14fbd8d8badfd793d0db32d67ea71494/plot_hyperparams.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_hyperparams.py</span></code></a></p>

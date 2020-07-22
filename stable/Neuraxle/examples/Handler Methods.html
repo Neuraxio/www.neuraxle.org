@@ -1,0 +1,1388 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Handler Methods &mdash; Neuraxle 0.5.2 documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://www.neuraxle.org/Neuraxle/examples/Handler Methods.html"/>
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #F80" >
+          
+
+          
+            <a href="/en/" class="icon icon-home"> Neuraxio</a>/<a href="../../index.html" > Neuraxle
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">Neuraxle Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#quickstart">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#deep-learning-pipelines">Deep Learning Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#deep-learning-pipeline-definition">Deep Learning Pipeline Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#deep-learning-pipeline-training-and-evaluation">Deep Learning Pipeline Training and Evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#deep-learning-production-pipeline">Deep Learning Production Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#calling-a-deployed-pipeline">Calling a Deployed Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#why-neuraxle">Why Neuraxle?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#production-ready">Production-ready</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#compatibility">Compatibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#parallel-computing-and-serialization">Parallel Computing and Serialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#time-series-processing">Time Series Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#automatic-machine-learning">Automatic Machine Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#comparison-to-other-machine-learning-pipeline-frameworks">Comparison to Other Machine Learning Pipeline Frameworks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#scikit-learn">scikit-learn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#apache-beam">Apache Beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#spacy">spaCy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#kubeflow">Kubeflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#community">Community</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#license">License</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#citation">Citation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#contributors">Contributors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#supported-by">Supported By</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../scikit-learn_problems_solutions.html">Solutions to Scikit-Learn’s Biggest Problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#definitions">Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#inability-to-reasonably-do-automatic-machine-learning-automl">Inability to Reasonably do Automatic Machine Learning (AutoML)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-defining-the-search-space-hyperparameter-distributions">Problem: Defining the Search Space (Hyperparameter Distributions)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-define-hyperparameter-spaces-within-the-steps">Solution: Define Hyperparameter Spaces Within the Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-defining-hyperparameters-in-the-constructor-is-limiting">Problem: Defining Hyperparameters in the Constructor is Limiting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-separate-steps-s-constructors-from-the-get-params-method">Solution: Separate Steps’s Constructors From the <code class="docutils literal notranslate"><span class="pre">get_params</span></code> Method</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-different-train-and-test-behavior">Problem: Different Train and Test Behavior</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-use-the-set-train-special-method-and-use-step-wrappers">Solution: use the Set Train Special Method and use Step Wrappers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-you-trained-a-pipeline-and-you-want-feedback-statistics-on-its-learning">Problem: You trained a Pipeline and You Want Feedback Statistics on its Learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-the-introspect-special-method">Solution: the Introspect Special Method</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#inability-to-reasonably-do-deep-learning-pipelines">Inability to Reasonably do Deep Learning Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-scikit-learn-hardly-allows-for-mini-batch-gradient-descent-incremental-fit">Problem: Scikit-Learn Hardly Allows for Mini-Batch Gradient Descent (Incremental Fit)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-minibatch-pipeline-class-and-the-ability-to-incrementally-fit-pipeline-steps">Solution: Minibatch Pipeline Class and the Ability to Incrementally Fit Pipeline Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-initializing-the-pipeline-and-deallocating-resources">Problem: Initializing the Pipeline and Deallocating Resources</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-add-setup-and-teardown-lifecycle-methods-to-your-steps">Solution: Add Setup and Teardown Lifecycle Methods to Your Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-it-is-difficult-to-use-other-deep-learning-dl-libraries-in-scikit-learn">Problem: It is Difficult to Use Other Deep Learning (DL) Libraries in Scikit-Learn</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-moar-steps-lifecycle-methods">Solution: Moar Steps Lifecycle Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-the-ability-to-transform-output-labels">Problem: The Ability to Transform Output Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-outputtransformerwrapper-and-inputandoutputtransformermixin">Solution: OutputTransformerWrapper and InputAndOutputTransformerMixin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#not-ready-for-production-nor-for-complex-pipelines">Not ready for Production nor for Complex Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-processing-3d-4d-or-nd-data-in-your-pipeline-with-steps-made-for-lower-dimensionnal-data">Problem: Processing 3D, 4D, or ND Data in your Pipeline with Steps Made for Lower-Dimensionnal Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-use-a-foreachdatainputs-wrapper-to-loop-from-nd-data-to-n-d-1-data">Solution: use a ForEachDataInputs Wrapper to Loop from ND Data to N(D-1) Data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-modify-a-pipeline-along-the-way-such-as-for-pre-training-or-fine-tuning">Problem: Modify a Pipeline Along the Way, such as for Pre-Training or Fine-Tuning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-the-mutate-special-method">Solution: the Mutate Special Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#another-solution-the-apply-special-method">Another Solution: the Apply Special Method</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-getting-model-attributes-from-scikit-learn-pipeline">Problem: Getting Model Attributes from Scikit-Learn Pipeline</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-simpler-nested-pipelines-getitem-methods">Solution: Simpler Nested Pipelines <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-you-can-t-parallelize-nor-save-pipelines-using-steps-that-can-t-be-serialized-as-is-by-joblib">Problem: You can’t Parallelize nor Save Pipelines Using Steps that Can’t be Serialized “as-is” by Joblib</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-use-a-chain-of-savers-in-each-step">Solution: Use a Chain of Savers in each Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#about-cluster-computing-and-parallelism-in-python">About Cluster Computing and Parallelism in Python</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../handler_methods.html">Handler Methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#handle_fit_transform">handle_fit_transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#handle_fit">handle_fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#handle_transform">handle_transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#When-to-use-handler-methods-?">When to use handler methods ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#HandleOnlyMixin">HandleOnlyMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#ForceHandleMixin">ForceHandleMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#ForceHandleOnlyMixin">ForceHandleOnlyMixin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../handler_methods.html#Examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#ForEachDataInput">ForEachDataInput</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#ToNumpy">ToNumpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#Transform-Expected-Outputs">Transform Expected Outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#Expand-The-DataContainer">Expand The DataContainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#Reversible-Pipeline">Reversible Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../hyperparameter_tuning.html">Introduction to Automatic Hyperparameter Tuning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#Continuous-Hyperparameter-Distributions">Continuous Hyperparameter Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#Quantized-Hyperparameter-Distributions">Quantized Hyperparameter Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#Other-Hyperparameter-Distributions">Other Hyperparameter Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html#Narrowing-Hyperparameter-Spaces:-a-Detailed-Example">Narrowing Hyperparameter Spaces: a Detailed Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html#Creating-your-own-distributions">Creating your own distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../random_distributions.html">Introduction to Random Distributions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html#Discrete-Distributions">Discrete Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#RandInt">RandInt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Boolean">Boolean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Choice">Choice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Priority-Choice">Priority Choice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html#Continuous-Distributions">Continuous Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Uniform">Continuous Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Loguniform">Continuous Loguniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Normal">Continuous Normal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Lognormal">Continuous Lognormal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Normal-Clipped">Continuous Normal Clipped</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Lognormal-Clipped">Continuous Lognormal Clipped</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html#Quantized-Hyperparameter-Distributions">Quantized Hyperparameter Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Quantized-Uniform">Quantized Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Repaired-Quantized-Uniform">Repaired Quantized Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Quantized-Log-Uniform">Quantized Log Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Quantized-Normal">Quantized Normal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Quantized-Lognormal">Quantized Lognormal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../step_saving_and_lifecycle.html">Step Saving And Lifecycle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Lifecycle">Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Step-Saving">Step Saving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Saver">Saver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Custom-Saver-Example">Custom Saver Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Saving-Example">Saving Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Pipeline">Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Full-Dump-Saving">Full Dump Saving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Full-Dump-Loading">Full Dump Loading</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rest_api_serving.html">REST API Serving</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Import-Packages">Import Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Load-your-Dataset">Load your Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Create-your-Pipeline">Create your Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Let’s-Train-and-Test">Let’s Train and Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Deploy-the-Pipeline">Deploy the Pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Write-a-step-to-decode-the-accepted-JSON-as-data-inputs">Write a step to decode the accepted JSON as data inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Write-a-step-to-encode-the-returned-JSON-response">Write a step to encode the returned JSON response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Finally-Serve-Predictions">Finally Serve Predictions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#API-Call-Example">API Call Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Next-Steps">Next Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Pipeline-Serialization">Pipeline Serialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Data-Transformation-Caching">Data Transformation Caching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Checkpoints">Checkpoints</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">Complete API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.base.html">neuraxle.base</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.base.html#neuraxle-s-base-classes">Neuraxle’s Base Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.pipeline.html">neuraxle.pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.pipeline.html#neuraxle-s-pipeline-classes">Neuraxle’s Pipeline Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.data_container.html">neuraxle.data_container</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.data_container.html#neuraxle-s-datacontainer-classes">Neuraxle’s DataContainer classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.union.html">neuraxle.union</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.union.html#union-of-features">Union of Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.checkpoints.html">neuraxle.checkpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.checkpoints.html#neuraxle-s-checkpoint-classes">Neuraxle’s Checkpoint Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.api.html">neuraxle.api</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.api.html#neuraxle-s-api-classes">Neuraxle’s API classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metrics.html">neuraxle.metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metrics.html#neuraxle-s-metrics-classes">Neuraxle’s metrics classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.numpy.html">neuraxle.steps.numpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.numpy.html#pipeline-steps-based-on-numpy">Pipeline Steps Based on NumPy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.flow.html">neuraxle.steps.flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.flow.html#neuraxle-s-flow-steps">Neuraxle’s Flow Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.data.html">neuraxle.steps.data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.data.html#data-steps">Data Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.column_transformer.html">neuraxle.steps.column_transformer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.column_transformer.html#neuraxle-s-column-transformer-steps">Neuraxle’s Column Transformer Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.features.html">neuraxle.steps.features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.features.html#featurization-steps">Featurization Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.sklearn.html#pipeline-steps-based-on-scikit-learn">Pipeline Steps Based on Scikit-Learn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.loop.html">neuraxle.steps.loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.loop.html#pipeline-steps-for-looping">Pipeline Steps For Looping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.caching.html">neuraxle.steps.caching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.caching.html#pipeline-steps-for-caching">Pipeline Steps For Caching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.output_handlers.html">neuraxle.steps.output_handlers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.output_handlers.html#output-handlers-steps">Output Handlers Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.misc.html">neuraxle.steps.misc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.misc.html#miscelaneous-pipeline-steps">Miscelaneous Pipeline Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.hyperparams.distributions.html">neuraxle.hyperparams.distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.hyperparams.distributions.html#hyperparameter-distributions">Hyperparameter Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.hyperparams.space.html">neuraxle.hyperparams.space</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.hyperparams.space.html#hyperparameter-dictionary-conversions">Hyperparameter Dictionary Conversions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.auto_ml.html">neuraxle.metaopt.auto_ml</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.auto_ml.html#neuraxle-s-automl-classes">Neuraxle’s AutoML Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.trial.html">neuraxle.metaopt.trial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.trial.html#neuraxle-s-trial-classes">Neuraxle’s Trial Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.callbacks.html">neuraxle.metaopt.callbacks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.callbacks.html#neuraxle-s-training-callbacks-classes">Neuraxle’s training callbacks classes.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.random.html">neuraxle.metaopt.random</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.random.html#random">Random</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.sklearn.html">neuraxle.metaopt.sklearn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.sklearn.html#scikit-learn-metaoptimizers">Scikit-learn metaoptimizers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.hyperopt.html">neuraxle.metaopt.hyperopt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.hyperopt.html#hyperopt">Hyperopt</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.deprecated.html">neuraxle.metaopt.deprecated</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.deprecated.html#neuraxle-s-automatic-machine-learning-classes">Neuraxle’s Automatic Machine Learning Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.distributed.streaming.html">neuraxle.distributed.streaming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.distributed.streaming.html#streaming-parallel-data-processing">Streaming Parallel Data Processing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.rest.flask.html">neuraxle.rest.flask</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.rest.flask.html#neuraxle-s-flask-wrapper-classes">Neuraxle’s Flask Wrapper classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html#automl">AutoML</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/auto_ml/plot_automl_loop_clean_kata.html">Usage of AutoML loop, and hyperparams with sklearn models.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html#caching">Caching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/caching/plot_value_caching.html">Usage of ValueCachingWrapper in Neuraxle.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/caching/plot_auto_ml_checkpoint.html">Usage of Checkpoints in Automatic Machine Learning (AutoML)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html#rest-api-model-serving">REST API Model Serving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/deployment/plot_easy_rest_api_serving.html">Easy REST API Model Serving with Neuraxle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html#getting-started">Getting started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/getting_started/plot_inverse_transform.html">Inverse Transforms in Neuraxle: How to Reverse a Prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/getting_started/plot_nested_pipelines.html">Create Nested Pipelines in Neuraxle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/getting_started/plot_non_fittable_mixin.html">Create Pipeline Steps in Neuraxle that doesn’t fit or transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/getting_started/plot_label_encoder_across_multiple_columns.html">Create label encoder across multiple columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/getting_started/plot_force_handle_mixin.html">Create Pipeline Steps that require implementing only handler methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html#hyperparameters">Hyperparameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/hyperparams/plot_hyperparams.html">Manipulate Hyperparameter Spaces for Hyperparameter Tuning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html#parallel">Parallel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/parallel/plot_streaming_pipeline.html">Parallel processing in Neuraxle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html#neuraxle-hyperparameter-examples">Neuraxle hyperparameter examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/sklearn/plot_boston_housing_regression_with_model_stacking.html">Boston Housing Regression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/sklearn/plot_boston_housing_meta_optimization.html">Boston Housing Regression with Meta Optimization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="/en/"> Neuraxio</a>/<a href="../../index.html">Neuraxle</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+
+        <a href="https://github.com/Neuraxio/Neuraxle"><img style="position: absolute; border: 0; top: 0; right: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Handler Methods</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <!-- <a href="../../_sources/Neuraxle/examples/Handler Methods.ipynb.txt" rel="nofollow"> View page source</a> -->
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 7ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="Handler-Methods">
+<h1>Handler Methods<a class="headerlink" href="#Handler-Methods" title="Permalink to this headline">¶</a></h1>
+<p style="font-size:18px"><p>Handler methods structure how to handle the flow of data from one step to another. Steps can override this algorithm inherited from BaseStep to change the behavior of the flow of data. It makes it possible to build really powerful steps that can edit and change the execution flow, and in multiple dimensions. Here is the detailed reference.</p>
+</p><p><img alt="Neuraxle Handler Methods" src="../../_images/neuraxle_handler_methods.png" /></p>
+<p>The following handle methods are available for each step:</p>
+<div class="section" id="handle_fit_transform">
+<h2><a class="reference external" href="www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._FittableStep.handle_fit_transform">handle_fit_transform</a><a class="headerlink" href="#handle_fit_transform" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._TransformerStep._will_process">_will_process(data_container, context)</a>: Apply side effects before any step method.</p></li>
+<li><p><a class="reference external" href="www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._FittableStep._will_fit_transform">_will_fit_transform(data_container, context)</a>: Apply side effects before fit_transform</p></li>
+<li><p><a class="reference external" href="www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._FittableStep._fit_transform_data_container">_fit_transform_data_container(data_container, context)</a>: Fit transform data container.</p></li>
+<li><p><a class="reference external" href="www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._FittableStep._did_fit_transform">_did_fit_transform(data_container, context)</a>: Apply side effects after fit_transform.</p></li>
+<li><p><a class="reference external" href="www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._TransformerStep._did_process">_did_process(data_container, context)</a>: Apply side effects after any step method.</p></li>
+</ol>
+</div>
+<div class="section" id="handle_fit">
+<h2><a class="reference external" href="www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._FittableStep.handle_fit">handle_fit</a><a class="headerlink" href="#handle_fit" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._TransformerStep._will_process">_will_process(data_container, context)</a>: Apply side effects before any step method.</p></li>
+<li><p><a class="reference external" href="www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._FittableStep._will_fit">_will_fit_transform(data_container, context)</a>: Apply side effects before fit.</p></li>
+<li><p><a class="reference external" href="www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._FittableStep._fit_data_container">_fit_data_container(data_container, context)</a>: Fit data container.</p></li>
+<li><p><a class="reference external" href="www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._FittableStep._did_fit">_did_fit(data_container, context)</a>: Apply side effects after fit.</p></li>
+</ol>
+</div>
+<div class="section" id="handle_transform">
+<h2><a class="reference external" href="www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._TransformerStep.handle_transform">handle_transform</a><a class="headerlink" href="#handle_transform" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._TransformerStep._will_process">_will_process(data_container, context)</a>: Apply side effects before any step method</p></li>
+<li><p><a class="reference external" href="www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._TransformerStep._will_transform_data_container">_will_transform(data_container, context)</a>: Apply side effects before transform.</p></li>
+<li><p><a class="reference external" href="www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._TransformerStep._transform_data_container">_transform_data_container(data_container, context)</a>: Fit transform data container.</p></li>
+<li><p><a class="reference external" href="www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._TransformerStep._did_transform">_did_transform(data_container, context)</a>: Apply side effects after transform.</p></li>
+<li><p><a class="reference external" href="www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._TransformerStep._did_process">_did_process(data_container, context)</a>: Apply side effects after any step method.</p></li>
+</ol>
+</div>
+<div class="section" id="When-to-use-handler-methods-?">
+<h2>When to use handler methods ?<a class="headerlink" href="#When-to-use-handler-methods-?" title="Permalink to this headline">¶</a></h2>
+<p>When you need to apply side effects, or change the execution flow:</p>
+<ul class="simple">
+<li><p>Edit the <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.data_container.html#neuraxle.data_container.DataContainer">DataContainer</a></p></li>
+<li><p>Call a method on a step</p></li>
+<li><p>Mini-Batching (see <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.pipeline.html#neuraxle.pipeline.MiniBatchSequentialPipeline">MiniBatchSequentialPipeline</a>)</p></li>
+<li><p>Caching (see <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.checkpoints.html">neuraxle.checkpoint</a> package)</p></li>
+<li><p>etc.</p></li>
+</ul>
+</div>
+<div class="section" id="HandleOnlyMixin">
+<h2><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.HandleOnlyMixin">HandleOnlyMixin</a><a class="headerlink" href="#HandleOnlyMixin" title="Permalink to this headline">¶</a></h2>
+<p>Inherit from <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.HandleOnlyMixin">HandleOnlyMixin</a>, to only implement the handler methods, and forbid implementing fit or transform or fit_transform without the handles.</p>
+</div>
+<div class="section" id="ForceHandleMixin">
+<h2><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.ForceHandleMixin">ForceHandleMixin</a><a class="headerlink" href="#ForceHandleMixin" title="Permalink to this headline">¶</a></h2>
+<p>Inherit from <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.ForceHandleMixin">ForceHandleMixin</a>, to automatically calls handle methods in the transform, fit, and fit_transform methods. A step might have to be forced to pass through the lifecycle methods. This is true for all of the steps that can be called from the outside world. For example, you might want to transform all of the data inside the data container.</p>
+</div>
+<div class="section" id="ForceHandleOnlyMixin">
+<h2><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.ForceHandleOnlyMixin">ForceHandleOnlyMixin</a><a class="headerlink" href="#ForceHandleOnlyMixin" title="Permalink to this headline">¶</a></h2>
+<p>Inherit from <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.ForceHandleOnlyMixin">ForceHandleOnlyMixin</a> to require the implementation of handler methods, AND automatically call handle methods in the transform, fit, and fit_transform methods.</p>
+<div class="section" id="Examples">
+<h3>Examples<a class="headerlink" href="#Examples" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="ForEachDataInput">
+<h2><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEachDataInput">ForEachDataInput</a><a class="headerlink" href="#ForEachDataInput" title="Permalink to this headline">¶</a></h2>
+<p>Consider a wrapper step that would loop through each data input, and transform each item with the wrapped step. One could create such a step by inheriting from <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.MetaStepMixin">MetaStepMixin</a>, and implementing each of the necessary handler methods : _transform_data_container, _fit_data_container, fit_transform_data_container.</p>
+<p>Here is the implementation of the _transform_data_container for the <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEachDataInput">ForEachDataInput</a> step</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">neuraxle.base</span> <span class="kn">import</span> <span class="n">BaseStep</span><span class="p">,</span> <span class="n">ExecutionContext</span><span class="p">,</span> <span class="n">ForceHandleMixin</span><span class="p">,</span> <span class="n">HandleOnlyMixin</span><span class="p">,</span> <span class="n">TruncableSteps</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">neuraxle.data_container</span> <span class="kn">import</span> <span class="n">DataContainer</span>
+
+<span class="k">def</span> <span class="nf">_transform_data_container</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">:</span> <span class="n">DataContainer</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">ExecutionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataContainer</span><span class="p">:</span>
+    <span class="n">output_data_container</span><span class="p">:</span> <span class="n">ListDataContainer</span> <span class="o">=</span> <span class="n">ListDataContainer</span><span class="o">.</span><span class="n">empty</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">current_id</span><span class="p">,</span> <span class="n">di</span><span class="p">,</span> <span class="n">eo</span> <span class="ow">in</span> <span class="n">data_container</span><span class="p">:</span>
+        <span class="n">output</span><span class="p">:</span> <span class="n">DataContainer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapped</span><span class="o">.</span><span class="n">handle_transform</span><span class="p">(</span>
+            <span class="n">DataContainer</span><span class="p">(</span><span class="n">summary_id</span><span class="o">=</span><span class="n">data_container</span><span class="o">.</span><span class="n">summary_id</span><span class="p">,</span> <span class="n">current_ids</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data_inputs</span><span class="o">=</span><span class="n">di</span><span class="p">,</span>  <span class="n">expected_outputs</span><span class="o">=</span><span class="n">eo</span><span class="p">),</span>
+            <span class="n">context</span>
+        <span class="p">)</span>
+
+        <span class="n">output_data_container</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_id</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">data_inputs</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">expected_outputs</span><span class="p">)</span>
+        <span class="n">output_data_container</span><span class="o">.</span><span class="n">summary_id</span> <span class="o">=</span> <span class="n">data_container</span><span class="o">.</span><span class="n">summary_id</span>
+
+    <span class="k">return</span> <span class="n">output_data_container</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ToNumpy">
+<h2>ToNumpy<a class="headerlink" href="#ToNumpy" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">neuraxle.base</span> <span class="kn">import</span> <span class="n">BaseStep</span><span class="p">,</span> <span class="n">DataContainer</span><span class="p">,</span> <span class="n">ExecutionContext</span><span class="p">,</span> <span class="n">ForceHandleMixin</span><span class="p">,</span> <span class="n">HandleOnlyMixin</span><span class="p">,</span> <span class="n">TruncableSteps</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">neuraxle.data_container</span> <span class="kn">import</span> <span class="n">DataContainer</span>
+
+<span class="k">class</span> <span class="nc">ToNumpy</span><span class="p">(</span><span class="n">ForceHandleMixin</span><span class="p">,</span> <span class="n">BaseStep</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert data inputs, and expected outputs to a numpy array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_will_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">:</span> <span class="n">DataContainer</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">ExecutionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">DataContainer</span><span class="p">,</span> <span class="n">ExecutionContext</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">data_container</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">context</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Transform-Expected-Outputs">
+<h2>Transform Expected Outputs<a class="headerlink" href="#Transform-Expected-Outputs" title="Permalink to this headline">¶</a></h2>
+<p>Consider a wrapper step that would transform the expected outputs instead of the data inputs.</p>
+<p>Create such a step in 4 easy steps (toudoum tish) :</p>
+<ul class="simple">
+<li><p>Create a step that inherits from <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.ForceHandleOnlyMixin">ForceHandleOnlyMixin</a>, and <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.MetaStepMixin">MetaStepMixin</a>.</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">neuraxle.base</span> <span class="kn">import</span> <span class="n">ExecutionContext</span><span class="p">,</span> <span class="n">BaseStep</span><span class="p">,</span> <span class="n">MetaStepMixin</span><span class="p">,</span> <span class="n">ForceHandleOnlyMixin</span>
+<span class="kn">from</span> <span class="nn">neuraxle.data_container</span> <span class="kn">import</span> <span class="n">DataContainer</span>
+<span class="kn">from</span> <span class="nn">neuraxle.steps.numpy</span> <span class="kn">import</span> <span class="n">MultiplyByN</span>
+
+
+<span class="k">class</span> <span class="nc">OutputTransformerWrapper</span><span class="p">(</span><span class="n">ForceHandleOnlyMixin</span><span class="p">,</span> <span class="n">MetaStepMixin</span><span class="p">,</span> <span class="n">BaseStep</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wrapped</span><span class="p">,</span> <span class="n">cache_folder_when_no_handle</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">BaseStep</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">MetaStepMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wrapped</span><span class="p">)</span>
+        <span class="n">ForceHandleOnlyMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cache_folder_when_no_handle</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Implement <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._TransformerStep._transform_data_container">_transform_data_container</a>:</p></li>
+</ol>
+<p>Pass expected outputs to the wrapped step <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.BaseStep.handle_transform">handle_transform</a> method. Update the data container expected outputs with the outputs.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">_transform_data_container</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">:</span> <span class="n">DataContainer</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">ExecutionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataContainer</span><span class="p">:</span>
+    <span class="n">new_expected_outputs_data_container</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapped</span><span class="o">.</span><span class="n">handle_transform</span><span class="p">(</span>
+        <span class="n">DataContainer</span><span class="p">(</span>
+            <span class="n">data_inputs</span><span class="o">=</span><span class="n">data_container</span><span class="o">.</span><span class="n">expected_outputs</span><span class="p">,</span>
+            <span class="n">current_ids</span><span class="o">=</span><span class="n">data_container</span><span class="o">.</span><span class="n">current_ids</span><span class="p">,</span>
+            <span class="n">expected_outputs</span><span class="o">=</span><span class="kc">None</span>
+        <span class="p">),</span>
+        <span class="n">context</span>
+    <span class="p">)</span>
+    <span class="n">data_container</span><span class="o">.</span><span class="n">set_expected_outputs</span><span class="p">(</span><span class="n">new_expected_outputs_data_container</span><span class="o">.</span><span class="n">data_inputs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data_container</span>
+</pre></div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Implement <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._FittableStep._fit_data_container">_fit_data_container</a>:</p></li>
+</ol>
+<p>Pass expected outputs to the wrapped step <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._FittableStep.handle_fit">handle_fit</a> method. Update the data container expected outputs with the outputs.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">_fit_data_container</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">:</span> <span class="n">DataContainer</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">ExecutionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">BaseStep</span><span class="p">,</span> <span class="n">DataContainer</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">wrapped</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapped</span><span class="o">.</span><span class="n">handle_fit</span><span class="p">(</span>
+        <span class="n">DataContainer</span><span class="p">(</span>
+            <span class="n">data_inputs</span><span class="o">=</span><span class="n">data_container</span><span class="o">.</span><span class="n">expected_outputs</span><span class="p">,</span>
+            <span class="n">current_ids</span><span class="o">=</span><span class="n">data_container</span><span class="o">.</span><span class="n">current_ids</span><span class="p">,</span>
+            <span class="n">expected_outputs</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
+        <span class="n">context</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span>
+</pre></div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Implement <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._FittableStep._fit_transform_data_container">_fit_transform_data_container</a>:</p></li>
+</ol>
+<p>Pass expected outputs to the wrapped step <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._FittableStep.handle_fit_transform">handle_fit_transform</a> method. Update the data container expected outputs with the outputs.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">_fit_transform_data_container</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">:</span> <span class="n">DataContainer</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">ExecutionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">BaseStep</span><span class="p">,</span> <span class="n">DataContainer</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">wrapped</span><span class="p">,</span> <span class="n">new_expected_outputs_data_container</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapped</span><span class="o">.</span><span class="n">handle_fit_transform</span><span class="p">(</span>
+        <span class="n">DataContainer</span><span class="p">(</span>
+            <span class="n">data_inputs</span><span class="o">=</span><span class="n">data_container</span><span class="o">.</span><span class="n">expected_outputs</span><span class="p">,</span>
+            <span class="n">current_ids</span><span class="o">=</span><span class="n">data_container</span><span class="o">.</span><span class="n">current_ids</span><span class="p">,</span>
+            <span class="n">expected_outputs</span><span class="o">=</span><span class="kc">None</span>
+        <span class="p">),</span>
+        <span class="n">context</span>
+    <span class="p">)</span>
+    <span class="n">data_container</span><span class="o">.</span><span class="n">set_expected_outputs</span><span class="p">(</span><span class="n">new_expected_outputs_data_container</span><span class="o">.</span><span class="n">data_inputs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span>
+</pre></div>
+</div>
+</div>
+<p>The results looks like this:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">neuraxle.base</span> <span class="kn">import</span> <span class="n">ExecutionContext</span><span class="p">,</span> <span class="n">BaseStep</span><span class="p">,</span> <span class="n">MetaStepMixin</span><span class="p">,</span> <span class="n">ForceHandleOnlyMixin</span>
+<span class="kn">from</span> <span class="nn">neuraxle.data_container</span> <span class="kn">import</span> <span class="n">DataContainer</span>
+
+
+<span class="k">class</span> <span class="nc">OutputTransformerWrapper</span><span class="p">(</span><span class="n">ForceHandleOnlyMixin</span><span class="p">,</span> <span class="n">MetaStepMixin</span><span class="p">,</span> <span class="n">BaseStep</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wrapped</span><span class="p">,</span> <span class="n">cache_folder_when_no_handle</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">BaseStep</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">MetaStepMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wrapped</span><span class="p">)</span>
+        <span class="n">ForceHandleOnlyMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cache_folder_when_no_handle</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_transform_data_container</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">:</span> <span class="n">DataContainer</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">ExecutionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataContainer</span><span class="p">:</span>
+        <span class="n">new_expected_outputs_data_container</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapped</span><span class="o">.</span><span class="n">handle_transform</span><span class="p">(</span>
+            <span class="n">DataContainer</span><span class="p">(</span><span class="n">data_inputs</span><span class="o">=</span><span class="n">data_container</span><span class="o">.</span><span class="n">expected_outputs</span><span class="p">,</span> <span class="n">current_ids</span><span class="o">=</span><span class="n">data_container</span><span class="o">.</span><span class="n">current_ids</span><span class="p">,</span>
+                          <span class="n">expected_outputs</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
+            <span class="n">context</span>
+        <span class="p">)</span>
+        <span class="n">data_container</span><span class="o">.</span><span class="n">set_expected_outputs</span><span class="p">(</span><span class="n">new_expected_outputs_data_container</span><span class="o">.</span><span class="n">data_inputs</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">data_container</span>
+
+    <span class="k">def</span> <span class="nf">_fit_data_container</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">:</span> <span class="n">DataContainer</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">ExecutionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">BaseStep</span><span class="p">,</span> <span class="n">DataContainer</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wrapped</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapped</span><span class="o">.</span><span class="n">handle_fit</span><span class="p">(</span>
+            <span class="n">DataContainer</span><span class="p">(</span><span class="n">data_inputs</span><span class="o">=</span><span class="n">data_container</span><span class="o">.</span><span class="n">expected_outputs</span><span class="p">,</span> <span class="n">current_ids</span><span class="o">=</span><span class="n">data_container</span><span class="o">.</span><span class="n">current_ids</span><span class="p">,</span>
+                          <span class="n">expected_outputs</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
+            <span class="n">context</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span>
+
+    <span class="k">def</span> <span class="nf">_fit_transform_data_container</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">:</span> <span class="n">DataContainer</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">ExecutionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">BaseStep</span><span class="p">,</span> <span class="n">DataContainer</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wrapped</span><span class="p">,</span> <span class="n">new_expected_outputs_data_container</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapped</span><span class="o">.</span><span class="n">handle_fit_transform</span><span class="p">(</span>
+            <span class="n">DataContainer</span><span class="p">(</span><span class="n">data_inputs</span><span class="o">=</span><span class="n">data_container</span><span class="o">.</span><span class="n">expected_outputs</span><span class="p">,</span> <span class="n">current_ids</span><span class="o">=</span><span class="n">data_container</span><span class="o">.</span><span class="n">current_ids</span><span class="p">,</span> <span class="n">expected_outputs</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
+            <span class="n">context</span>
+        <span class="p">)</span>
+        <span class="n">data_container</span><span class="o">.</span><span class="n">set_expected_outputs</span><span class="p">(</span><span class="n">new_expected_outputs_data_container</span><span class="o">.</span><span class="n">data_inputs</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">data_inputs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">expected_outputs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;data_inputs before: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data_inputs</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;expected_outputs before: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">expected_outputs</span><span class="p">))</span>
+
+<span class="n">step</span> <span class="o">=</span> <span class="n">OutputTransformerWrapper</span><span class="p">(</span><span class="n">MultiplyByN</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">output_data_container</span> <span class="o">=</span> <span class="n">step</span><span class="o">.</span><span class="n">handle_transform</span><span class="p">(</span>
+    <span class="n">DataContainer</span><span class="p">(</span><span class="n">data_inputs</span><span class="o">=</span><span class="n">data_inputs</span><span class="p">,</span> <span class="n">expected_outputs</span><span class="o">=</span><span class="n">expected_outputs</span><span class="p">),</span>
+    <span class="n">ExecutionContext</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;data_inputs after: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">output_data_container</span><span class="o">.</span><span class="n">data_inputs</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;expected_outputs after: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">output_data_container</span><span class="o">.</span><span class="n">expected_outputs</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+data_inputs before: [0 1]
+expected_outputs before: [1 2]
+data_inputs after: [0 1]
+expected_outputs after: [2 4]
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Expand-The-DataContainer">
+<h2>Expand The DataContainer<a class="headerlink" href="#Expand-The-DataContainer" title="Permalink to this headline">¶</a></h2>
+<p>Consider a typical step that expands the dimension of all the data inside the data container. <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.steps.flow.html#neuraxle.steps.flow.ExpandDim">ExpandDim</a> sends the expanded data container to the wrapped step. <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.steps.flow.html#neuraxle.steps.flow.ExpandDim">ExpandDim</a> returns the transformed expanded dim reduced to its original shape.</p>
+<p>This can be easily done in Neuraxle:</p>
+<ol class="arabic simple">
+<li><p>Create a step that inherits from <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html?highlight=metastepmixin#neuraxle.base.MetaStepMixin">MetaStepMixin</a>, and <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html?highlight=metastepmixin#neuraxle.base.BaseStep">BaseStep</a>.</p></li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">neuraxle.base</span> <span class="kn">import</span> <span class="n">BaseStep</span><span class="p">,</span> <span class="n">MetaStepMixin</span><span class="p">,</span> <span class="n">DataContainer</span><span class="p">,</span> <span class="n">ExecutionContext</span><span class="p">,</span> <span class="n">Identity</span>
+<span class="kn">from</span> <span class="nn">neuraxle.data_container</span> <span class="kn">import</span> <span class="n">ExpandedDataContainer</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">class</span> <span class="nc">ExpandDim</span><span class="p">(</span><span class="n">MetaStepMixin</span><span class="p">,</span> <span class="n">BaseStep</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wrapped</span><span class="p">:</span> <span class="n">BaseStep</span><span class="p">):</span>
+        <span class="n">BaseStep</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">MetaStepMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wrapped</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Implement the <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._TransformerStep._will_process">_will_process</a> lifecycle method to expand the data inside the data container.</p></li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">_will_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">data_container</span><span class="p">,</span> <span class="n">context</span> <span class="o">=</span> <span class="n">BaseStep</span><span class="o">.</span><span class="n">_will_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ExpandedDataContainer</span><span class="o">.</span><span class="n">create_from</span><span class="p">(</span><span class="n">data_container</span><span class="p">),</span> <span class="n">context</span>
+</pre></div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Implement the <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._TransformerStep._did_process">_did_process</a> lifecycle method to reduce the dimension of the data inside the data container.</p></li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">_did_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">data_container</span> <span class="o">=</span> <span class="n">BaseStep</span><span class="o">.</span><span class="n">_did_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data_container</span><span class="o">.</span><span class="n">reduce_dim</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>The result looks like this:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">class</span> <span class="nc">ExpandDim</span><span class="p">(</span><span class="n">MetaStepMixin</span><span class="p">,</span> <span class="n">BaseStep</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wrapped</span><span class="p">:</span> <span class="n">BaseStep</span><span class="p">):</span>
+        <span class="n">BaseStep</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">MetaStepMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wrapped</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_will_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="n">data_container</span><span class="p">,</span> <span class="n">context</span> <span class="o">=</span> <span class="n">BaseStep</span><span class="o">.</span><span class="n">_will_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ExpandedDataContainer</span><span class="o">.</span><span class="n">create_from</span><span class="p">(</span><span class="n">data_container</span><span class="p">),</span> <span class="n">context</span>
+
+    <span class="k">def</span> <span class="nf">_did_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="n">data_container</span> <span class="o">=</span> <span class="n">BaseStep</span><span class="o">.</span><span class="n">_did_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data_container</span><span class="o">.</span><span class="n">reduce_dim</span><span class="p">()</span>
+
+</pre></div>
+</div>
+</div>
+<p>Before testing the step, let’s define a quick utility class to print data for this example, and the ones after :</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">class</span> <span class="nc">PrintData</span><span class="p">(</span><span class="n">Identity</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="n">message</span>
+
+    <span class="k">def</span> <span class="nf">_did_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;data_inputs </span><span class="si">{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">,</span> <span class="n">data_container</span><span class="o">.</span><span class="n">data_inputs</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;expected_outputs </span><span class="si">{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">,</span> <span class="n">data_container</span><span class="o">.</span><span class="n">expected_outputs</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data_container</span>
+</pre></div>
+</div>
+</div>
+<p>Now let’s transform our step :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">data_inputs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">expected_outputs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;data_inputs before: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data_inputs</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;expected_outputs before: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">expected_outputs</span><span class="p">))</span>
+
+<span class="n">step</span> <span class="o">=</span> <span class="n">ExpandDim</span><span class="p">(</span><span class="n">PrintData</span><span class="p">(</span><span class="s1">&#39;inside&#39;</span><span class="p">))</span>
+<span class="n">output_data_container</span> <span class="o">=</span> <span class="n">step</span><span class="o">.</span><span class="n">handle_transform</span><span class="p">(</span>
+    <span class="n">DataContainer</span><span class="p">(</span><span class="n">data_inputs</span><span class="o">=</span><span class="n">data_inputs</span><span class="p">,</span> <span class="n">expected_outputs</span><span class="o">=</span><span class="n">expected_outputs</span><span class="p">),</span>
+    <span class="n">ExecutionContext</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+data_inputs before: [0, 1]
+expected_outputs before: [1, 2]
+data_inputs inside: [[0, 1]]
+expected_outputs inside: [[1, 2]]
+
+
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Reversible-Pipeline">
+<h2>Reversible Pipeline<a class="headerlink" href="#Reversible-Pipeline" title="Permalink to this headline">¶</a></h2>
+<p>Consider a step that can be reversible. For example, you might want to unnormalize predictions. This can be easily done with a step that inherits from <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html?highlight=truncablesteps#neuraxle.base.TruncableSteps">TruncableSteps</a>, and <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html?highlight=handleonlymixin#neuraxle.base.HandleOnlyMixin">HandleOnlyMixin</a>.</p>
+<ol class="arabic simple">
+<li><p>Create a step that inherits from <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html?highlight=handleonlymixin#neuraxle.base.HandleOnlyMixin">HandleOnlyMixin</a>, and <a href="#id1"><span class="problematic" id="id2">`TruncableSteps &lt;&gt;`__</span></a>. Initialize TruncableSteps with a preprocessing, and a postprocessing step.</p></li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">class</span> <span class="nc">ReversiblePreprocessingWrapper</span><span class="p">(</span><span class="n">HandleOnlyMixin</span><span class="p">,</span> <span class="n">TruncableSteps</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preprocessing_step</span><span class="p">,</span> <span class="n">postprocessing_step</span><span class="p">):</span>
+        <span class="n">HandleOnlyMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">TruncableSteps</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">,</span> <span class="n">preprocessing_step</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;postprocessing_step&quot;</span><span class="p">,</span> <span class="n">postprocessing_step</span><span class="p">)</span>
+        <span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Implement <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._FittableStep._fit_data_container">_fit_data_container</a>:</p></li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">_fit_data_container</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">:</span> <span class="n">DataContainer</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">ExecutionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;ReversiblePreprocessingWrapper&#39;</span><span class="p">:</span>
+    <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">],</span> <span class="n">data_container</span> <span class="o">=</span> \
+        <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">handle_fit_transform</span><span class="p">(</span><span class="n">data_container</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+    <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;postprocessing_step&quot;</span><span class="p">]</span> <span class="o">=</span> \
+        <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;postprocessing_step&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">handle_fit</span><span class="p">(</span><span class="n">data_container</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="bp">self</span>
+</pre></div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Implement <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._TransformerStep._transform_data_container">_transform_data_container</a>:</p></li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">_transform_data_container</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">:</span> <span class="n">DataContainer</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">ExecutionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataContainer</span><span class="p">:</span>
+    <span class="n">data_container</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">handle_transform</span><span class="p">(</span>
+        <span class="n">data_container</span><span class="p">,</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="n">data_container</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;postprocessing_step&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">handle_transform</span><span class="p">(</span>
+        <span class="n">data_container</span><span class="p">,</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s2">&quot;postprocessing_step&quot;</span><span class="p">])</span>
+    <span class="p">)</span>
+
+    <span class="n">data_container</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">handle_inverse_transform</span><span class="p">(</span>
+        <span class="n">data_container</span><span class="p">,</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">])</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data_container</span>
+
+
+</pre></div>
+</div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Implement <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._FittableStep._fit_transform_data_container">_fit_transform_data_container</a>:</p></li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">_fit_transform_data_container</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">:</span> <span class="n">DataContainer</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">ExecutionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="s1">&#39;BaseStep&#39;</span><span class="p">,</span> <span class="n">DataContainer</span><span class="p">):</span>
+    <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">],</span> <span class="n">data_container</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">handle_fit_transform</span><span class="p">(</span>
+        <span class="n">data_container</span><span class="p">,</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;postprocessing_step&quot;</span><span class="p">],</span> <span class="n">data_container</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;postprocessing_step&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">handle_fit_transform</span><span class="p">(</span>
+        <span class="n">data_container</span><span class="p">,</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s2">&quot;postprocessing_step&quot;</span><span class="p">])</span>
+    <span class="p">)</span>
+
+    <span class="n">data_container</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">handle_inverse_transform</span><span class="p">(</span>
+        <span class="n">data_container</span><span class="p">,</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">])</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span>
+</pre></div>
+</div>
+</div>
+<p>The results look like this:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">neuraxle.steps.numpy</span> <span class="kn">import</span> <span class="n">MultiplyByN</span>
+
+
+<span class="k">class</span> <span class="nc">ReversiblePreprocessingWrapper</span><span class="p">(</span><span class="n">HandleOnlyMixin</span><span class="p">,</span> <span class="n">TruncableSteps</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preprocessing_step</span><span class="p">,</span> <span class="n">postprocessing_step</span><span class="p">):</span>
+        <span class="n">HandleOnlyMixin</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">TruncableSteps</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">,</span> <span class="n">preprocessing_step</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;postprocessing_step&quot;</span><span class="p">,</span> <span class="n">postprocessing_step</span><span class="p">)</span>
+        <span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">_fit_transform_data_container</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">:</span> <span class="n">DataContainer</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">ExecutionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="s1">&#39;BaseStep&#39;</span><span class="p">,</span> <span class="n">DataContainer</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">],</span> <span class="n">data_container</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">handle_fit_transform</span><span class="p">(</span>
+            <span class="n">data_container</span><span class="p">,</span>
+            <span class="n">context</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">])</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;postprocessing_step&quot;</span><span class="p">],</span> <span class="n">data_container</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;postprocessing_step&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">handle_fit_transform</span><span class="p">(</span>
+            <span class="n">data_container</span><span class="p">,</span>
+            <span class="n">context</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s2">&quot;postprocessing_step&quot;</span><span class="p">])</span>
+        <span class="p">)</span>
+
+        <span class="n">data_container</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">handle_inverse_transform</span><span class="p">(</span>
+            <span class="n">data_container</span><span class="p">,</span>
+            <span class="n">context</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">])</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span>
+
+    <span class="k">def</span> <span class="nf">_transform_data_container</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">:</span> <span class="n">DataContainer</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">ExecutionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataContainer</span><span class="p">:</span>
+        <span class="n">data_container</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">handle_transform</span><span class="p">(</span>
+            <span class="n">data_container</span><span class="p">,</span>
+            <span class="n">context</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">])</span>
+        <span class="p">)</span>
+        <span class="n">data_container</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;postprocessing_step&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">handle_transform</span><span class="p">(</span>
+            <span class="n">data_container</span><span class="p">,</span>
+            <span class="n">context</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s2">&quot;postprocessing_step&quot;</span><span class="p">])</span>
+        <span class="p">)</span>
+
+        <span class="n">data_container</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">handle_inverse_transform</span><span class="p">(</span>
+            <span class="n">data_container</span><span class="p">,</span>
+            <span class="n">context</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">])</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">data_container</span>
+
+    <span class="k">def</span> <span class="nf">_fit_data_container</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_container</span><span class="p">:</span> <span class="n">DataContainer</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">ExecutionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;ReversiblePreprocessingWrapper&#39;</span><span class="p">:</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">],</span> <span class="n">data_container</span> <span class="o">=</span> \
+            <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;preprocessing_step&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">handle_fit_transform</span><span class="p">(</span><span class="n">data_container</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;postprocessing_step&quot;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;postprocessing_step&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">handle_fit</span><span class="p">(</span><span class="n">data_container</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+
+
+
+<span class="n">data_inputs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="n">PrintData</span><span class="p">(</span><span class="s1">&#39;before reversible preprocessing wrapper&#39;</span><span class="p">),</span>
+    <span class="n">ReversiblePreprocessingWrapper</span><span class="p">(</span>
+        <span class="n">preprocessing_step</span><span class="o">=</span><span class="n">Pipeline</span><span class="p">([</span>
+            <span class="n">MultiplyByN</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+            <span class="n">PrintData</span><span class="p">(</span><span class="s1">&#39;after preprocessing&#39;</span><span class="p">)</span>
+        <span class="p">]),</span>
+        <span class="n">postprocessing_step</span><span class="o">=</span><span class="n">Pipeline</span><span class="p">([</span>
+            <span class="n">MultiplyByN</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+            <span class="n">PrintData</span><span class="p">(</span><span class="s1">&#39;after postprocessing&#39;</span><span class="p">)</span>
+        <span class="p">])</span>
+    <span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data_inputs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;data inputs after inverse transform preprocessing: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">outputs</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+data_inputs before reversible preprocessing wrapper: [1 2]
+expected_outputs before reversible preprocessing wrapper: [None, None]
+
+
+data_inputs after preprocessing: [2 4]
+expected_outputs after preprocessing: [None, None]
+
+
+data_inputs after postprocessing: [ 6 12]
+expected_outputs after postprocessing: [None, None]
+
+
+data_inputs after preprocessing: [ 6 12]
+expected_outputs after preprocessing: [None, None]
+
+
+data inputs after inverse transform preprocessing: [3. 6.]
+</pre></div></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <!-- Begin Mailchimp Signup Form -->
+  <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+  <div id="mc_embed_signup">
+  <form action="https://neuraxio.us18.list-manage.com/subscribe/post?u=75b15e094bec4736090d7588c&amp;id=461343efc0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <div id="mc_embed_signup_scroll">
+      <label for="mce-EMAIL">Stay Tuned, Keep in Touch!</label>
+      <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75b15e094bec4736090d7588c_461343efc0" tabindex="-1" value=""></div>
+      <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+      </div>
+      <br/>
+      <a href="/en/blog/index.html">Visit Blog</a>
+  </form>
+  </div>
+  <!--End mc_embed_signup-->
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019 The Neuraxle Authors. All rights reserved. Apache License, Version 2.0.
+
+    </p>
+  </div>
+   
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-139527241-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

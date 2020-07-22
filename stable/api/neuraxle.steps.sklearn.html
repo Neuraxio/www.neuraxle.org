@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>neuraxle.steps.sklearn &mdash; Neuraxle 0.4.0 documentation</title>
+  <title>neuraxle.steps.sklearn &mdash; Neuraxle 0.5.2 documentation</title>
   
 
   
@@ -27,6 +27,8 @@
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -39,7 +41,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="neuraxle.steps.loop" href="neuraxle.steps.loop.html" />
-    <link rel="prev" title="neuraxle.steps.column_transformer" href="neuraxle.steps.column_transformer.html" /> 
+    <link rel="prev" title="neuraxle.steps.features" href="neuraxle.steps.features.html" /> 
 
   <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
 
@@ -66,7 +68,7 @@
             
             
               <div class="version">
-                0.4.0
+                0.5.2
               </div>
             
           
@@ -190,6 +192,24 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../handler_methods.html">Handler Methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#handle_fit_transform">handle_fit_transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#handle_fit">handle_fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#handle_transform">handle_transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#When-to-use-handler-methods-?">When to use handler methods ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#HandleOnlyMixin">HandleOnlyMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#ForceHandleMixin">ForceHandleMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#ForceHandleOnlyMixin">ForceHandleOnlyMixin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../handler_methods.html#Examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#ForEachDataInput">ForEachDataInput</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#ToNumpy">ToNumpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#Transform-Expected-Outputs">Transform Expected Outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#Expand-The-DataContainer">Expand The DataContainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#Reversible-Pipeline">Reversible Pipeline</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../hyperparameter_tuning.html">Introduction to Automatic Hyperparameter Tuning</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#Continuous-Hyperparameter-Distributions">Continuous Hyperparameter Distributions</a></li>
@@ -227,6 +247,21 @@
 <li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Quantized-Lognormal">Quantized Lognormal</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../step_saving_and_lifecycle.html">Step Saving And Lifecycle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../step_saving_and_lifecycle.html#Lifecycle">Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../step_saving_and_lifecycle.html#Step-Saving">Step Saving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../step_saving_and_lifecycle.html#Saver">Saver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../step_saving_and_lifecycle.html#Custom-Saver-Example">Custom Saver Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../step_saving_and_lifecycle.html#Saving-Example">Saving Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../step_saving_and_lifecycle.html#Pipeline">Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../step_saving_and_lifecycle.html#Full-Dump-Saving">Full Dump Saving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../step_saving_and_lifecycle.html#Full-Dump-Loading">Full Dump Loading</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rest_api_serving.html">REST API Serving</a><ul>
@@ -292,6 +327,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.column_transformer.html">neuraxle.steps.column_transformer</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.column_transformer.html#neuraxle-s-column-transformer-steps">Neuraxle’s Column Transformer Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.features.html">neuraxle.steps.features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.steps.features.html#featurization-steps">Featurization Steps</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">neuraxle.steps.sklearn</a><ul>
@@ -361,6 +400,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#automl">AutoML</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples/auto_ml/plot_automl_loop_clean_kata.html">Usage of AutoML loop, and hyperparams with sklearn models.</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/index.html#caching">Caching</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../examples/caching/plot_value_caching.html">Usage of ValueCachingWrapper in Neuraxle.</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../examples/caching/plot_auto_ml_checkpoint.html">Usage of Checkpoints in Automatic Machine Learning (AutoML)</a></li>
@@ -484,32 +527,81 @@
 </table>
 <dl class="class">
 <dt id="neuraxle.steps.sklearn.RidgeModelStacking">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.sklearn.</code><code class="descname">RidgeModelStacking</code><span class="sig-paren">(</span><em>brothers</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/steps/sklearn.py#L106"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.RidgeModelStacking" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.sklearn.</code><code class="descname">RidgeModelStacking</code><span class="sig-paren">(</span><em>brothers</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6e30414/neuraxle/steps/sklearn.py#L147"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.RidgeModelStacking" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="neuraxle.steps.sklearn.RidgeModelStacking._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.steps.sklearn.RidgeModelStacking._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+</dd></dl>
 
 <dl class="class">
 <dt id="neuraxle.steps.sklearn.SKLearnWrapper">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.sklearn.</code><code class="descname">SKLearnWrapper</code><span class="sig-paren">(</span><em>wrapped_sklearn_predictor</em>, <em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace = None</em>, <em>return_all_sklearn_default_params_on_get=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/steps/sklearn.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.sklearn.</code><code class="descname">SKLearnWrapper</code><span class="sig-paren">(</span><em>wrapped_sklearn_predictor</em>, <em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace = None</em>, <em>return_all_sklearn_default_params_on_get: bool = False</em>, <em>use_partial_fit: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6e30414/neuraxle/steps/sklearn.py#L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="neuraxle.steps.sklearn.SKLearnWrapper._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper._abc_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.sklearn.SKLearnWrapper._get_hyperparams">
+<code class="descname">_get_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6e30414/neuraxle/steps/sklearn.py#L127"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper._get_hyperparams" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.sklearn.SKLearnWrapper._set_hyperparams">
+<code class="descname">_set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6e30414/neuraxle/steps/sklearn.py#L111"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper._set_hyperparams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set hyperparams for base step, and the wrapped sklearn_predictor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>hyperparams</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.sklearn.SKLearnWrapper._sklearn_fit_transform_with_expected_outputs">
+<code class="descname">_sklearn_fit_transform_with_expected_outputs</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6e30414/neuraxle/steps/sklearn.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper._sklearn_fit_transform_with_expected_outputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.sklearn.SKLearnWrapper._sklearn_fit_transform_without_expected_outputs">
+<code class="descname">_sklearn_fit_transform_without_expected_outputs</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6e30414/neuraxle/steps/sklearn.py#L79"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper._sklearn_fit_transform_without_expected_outputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.sklearn.SKLearnWrapper._sklearn_fit_with_expected_outputs">
+<code class="descname">_sklearn_fit_with_expected_outputs</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6e30414/neuraxle/steps/sklearn.py#L94"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper._sklearn_fit_with_expected_outputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.sklearn.SKLearnWrapper._sklearn_fit_without_expected_outputs">
+<code class="descname">_sklearn_fit_without_expected_outputs</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6e30414/neuraxle/steps/sklearn.py#L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper._sklearn_fit_without_expected_outputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.steps.sklearn.SKLearnWrapper.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.steps.sklearn.SKLearnWrapper<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/steps/sklearn.py#L69"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fit step with the given data inputs, and expected outputs.</p>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.steps.sklearn.SKLearnWrapper<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6e30414/neuraxle/steps/sklearn.py#L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit data inputs on the given expected outputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>data_inputs</strong> – data inputs</p></li>
-<li><p><strong>expected_outputs</strong> – expected outputs to fit on</p></li>
+<li><p><strong>expected_outputs</strong> – expected outputs to fit on.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>fitted self</p>
+<dd class="field-even"><p>self</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.sklearn.SKLearnWrapper.fit_transform">
-<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None) -&gt; ('BaseStep'</em>, <em>typing.Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/steps/sklearn.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper.fit_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None) -&gt; ('BaseStep'</em>, <em>typing.Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6e30414/neuraxle/steps/sklearn.py#L56"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper.fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit, and transform step with the given data inputs, and expected outputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -525,54 +617,13 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.steps.sklearn.SKLearnWrapper.get_hyperparams">
-<code class="descname">get_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/steps/sklearn.py#L86"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper.get_hyperparams" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get step hyperparameters as <a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code></a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>step hyperparameters</p>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code></a></p></li>
-</ul>
-</div>
-</dd></dl>
-
-<dl class="method">
 <dt id="neuraxle.steps.sklearn.SKLearnWrapper.get_wrapped_sklearn_predictor">
-<code class="descname">get_wrapped_sklearn_predictor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/steps/sklearn.py#L92"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper.get_wrapped_sklearn_predictor" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_wrapped_sklearn_predictor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6e30414/neuraxle/steps/sklearn.py#L133"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper.get_wrapped_sklearn_predictor" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.steps.sklearn.SKLearnWrapper.set_hyperparams">
-<code class="descname">set_hyperparams</code><span class="sig-paren">(</span><em>flat_hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/steps/sklearn.py#L81"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper.set_hyperparams" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the step hyperparameters.</p>
-<p>Example :</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">step</span><span class="o">.</span><span class="n">set_hyperparams</span><span class="p">(</span><span class="n">HyperparameterSamples</span><span class="p">({</span>
-    <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.10</span>
-<span class="p">}))</span>
-</pre></div>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>hyperparams</strong> – hyperparameters</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>self</p>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code></a></p>
-</div>
-</dd></dl>
-
-<dl class="method">
 <dt id="neuraxle.steps.sklearn.SKLearnWrapper.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ae9769a/neuraxle/steps/sklearn.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/6e30414/neuraxle/steps/sklearn.py#L106"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform given data inputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -600,7 +651,7 @@
         <a href="neuraxle.steps.loop.html" class="btn btn-neutral float-right" title="neuraxle.steps.loop" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="neuraxle.steps.column_transformer.html" class="btn btn-neutral float-left" title="neuraxle.steps.column_transformer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="neuraxle.steps.features.html" class="btn btn-neutral float-left" title="neuraxle.steps.features" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

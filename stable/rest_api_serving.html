@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>REST API Serving &mdash; Neuraxle 0.4.0 documentation</title>
+  <title>REST API Serving &mdash; Neuraxle 0.5.2 documentation</title>
   
 
   
@@ -27,6 +27,8 @@
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -39,7 +41,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Complete API Documentation" href="api.html" />
-    <link rel="prev" title="Introduction to Random Distributions" href="random_distributions.html" /> 
+    <link rel="prev" title="Step Saving And Lifecycle" href="step_saving_and_lifecycle.html" /> 
 
   <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
 
@@ -66,7 +68,7 @@
             
             
               <div class="version">
-                0.4.0
+                0.5.2
               </div>
             
           
@@ -190,6 +192,24 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="handler_methods.html">Handler Methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#handle_fit_transform">handle_fit_transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#handle_fit">handle_fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#handle_transform">handle_transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#When-to-use-handler-methods-?">When to use handler methods ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#HandleOnlyMixin">HandleOnlyMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#ForceHandleMixin">ForceHandleMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#ForceHandleOnlyMixin">ForceHandleOnlyMixin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="handler_methods.html#Examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#ForEachDataInput">ForEachDataInput</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#ToNumpy">ToNumpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#Transform-Expected-Outputs">Transform Expected Outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#Expand-The-DataContainer">Expand The DataContainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#Reversible-Pipeline">Reversible Pipeline</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="hyperparameter_tuning.html">Introduction to Automatic Hyperparameter Tuning</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="hyperparameter_tuning.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#Continuous-Hyperparameter-Distributions">Continuous Hyperparameter Distributions</a></li>
@@ -227,6 +247,21 @@
 <li class="toctree-l3"><a class="reference internal" href="random_distributions.html#Quantized-Lognormal">Quantized Lognormal</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="step_saving_and_lifecycle.html">Step Saving And Lifecycle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="step_saving_and_lifecycle.html#Lifecycle">Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="step_saving_and_lifecycle.html#Step-Saving">Step Saving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="step_saving_and_lifecycle.html#Saver">Saver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="step_saving_and_lifecycle.html#Custom-Saver-Example">Custom Saver Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="step_saving_and_lifecycle.html#Saving-Example">Saving Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="step_saving_and_lifecycle.html#Pipeline">Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="step_saving_and_lifecycle.html#Full-Dump-Saving">Full Dump Saving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="step_saving_and_lifecycle.html#Full-Dump-Loading">Full Dump Loading</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">REST API Serving</a><ul>
@@ -292,6 +327,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api/neuraxle.steps.column_transformer.html">neuraxle.steps.column_transformer</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="api/neuraxle.steps.column_transformer.html#neuraxle-s-column-transformer-steps">Neuraxle’s Column Transformer Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/neuraxle.steps.features.html">neuraxle.steps.features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/neuraxle.steps.features.html#featurization-steps">Featurization Steps</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api/neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
@@ -361,6 +400,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="examples/index.html">Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/index.html#automl">AutoML</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/auto_ml/plot_automl_loop_clean_kata.html">Usage of AutoML loop, and hyperparams with sklearn models.</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="examples/index.html#caching">Caching</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="examples/caching/plot_value_caching.html">Usage of ValueCachingWrapper in Neuraxle.</a></li>
 <li class="toctree-l3"><a class="reference internal" href="examples/caching/plot_auto_ml_checkpoint.html">Usage of Checkpoints in Automatic Machine Learning (AutoML)</a></li>
@@ -929,7 +972,7 @@ R2 regression score: 0.9214823389806873
         <a href="api.html" class="btn btn-neutral float-right" title="Complete API Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="random_distributions.html" class="btn btn-neutral float-left" title="Introduction to Random Distributions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="step_saving_and_lifecycle.html" class="btn btn-neutral float-left" title="Step Saving And Lifecycle" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

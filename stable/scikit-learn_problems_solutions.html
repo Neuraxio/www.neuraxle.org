@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Solutions to Scikit-Learn’s Biggest Problems &mdash; Neuraxle 0.4.0 documentation</title>
+  <title>Solutions to Scikit-Learn’s Biggest Problems &mdash; Neuraxle 0.5.2 documentation</title>
   
 
   
@@ -27,6 +27,8 @@
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -38,7 +40,7 @@
   <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Introduction to Automatic Hyperparameter Tuning" href="hyperparameter_tuning.html" />
+    <link rel="next" title="Handler Methods" href="handler_methods.html" />
     <link rel="prev" title="Neuraxle Pipelines" href="Neuraxle/README.html" /> 
 
   <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
@@ -66,7 +68,7 @@
             
             
               <div class="version">
-                0.4.0
+                0.5.2
               </div>
             
           
@@ -190,6 +192,24 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="handler_methods.html">Handler Methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#handle_fit_transform">handle_fit_transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#handle_fit">handle_fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#handle_transform">handle_transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#When-to-use-handler-methods-?">When to use handler methods ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#HandleOnlyMixin">HandleOnlyMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#ForceHandleMixin">ForceHandleMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#ForceHandleOnlyMixin">ForceHandleOnlyMixin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="handler_methods.html#Examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#ForEachDataInput">ForEachDataInput</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#ToNumpy">ToNumpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#Transform-Expected-Outputs">Transform Expected Outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#Expand-The-DataContainer">Expand The DataContainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handler_methods.html#Reversible-Pipeline">Reversible Pipeline</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="hyperparameter_tuning.html">Introduction to Automatic Hyperparameter Tuning</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="hyperparameter_tuning.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#Continuous-Hyperparameter-Distributions">Continuous Hyperparameter Distributions</a></li>
@@ -227,6 +247,21 @@
 <li class="toctree-l3"><a class="reference internal" href="random_distributions.html#Quantized-Lognormal">Quantized Lognormal</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="step_saving_and_lifecycle.html">Step Saving And Lifecycle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="step_saving_and_lifecycle.html#Lifecycle">Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="step_saving_and_lifecycle.html#Step-Saving">Step Saving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="step_saving_and_lifecycle.html#Saver">Saver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="step_saving_and_lifecycle.html#Custom-Saver-Example">Custom Saver Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="step_saving_and_lifecycle.html#Saving-Example">Saving Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="step_saving_and_lifecycle.html#Pipeline">Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="step_saving_and_lifecycle.html#Full-Dump-Saving">Full Dump Saving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="step_saving_and_lifecycle.html#Full-Dump-Loading">Full Dump Loading</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="rest_api_serving.html">REST API Serving</a><ul>
@@ -292,6 +327,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api/neuraxle.steps.column_transformer.html">neuraxle.steps.column_transformer</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="api/neuraxle.steps.column_transformer.html#neuraxle-s-column-transformer-steps">Neuraxle’s Column Transformer Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/neuraxle.steps.features.html">neuraxle.steps.features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/neuraxle.steps.features.html#featurization-steps">Featurization Steps</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api/neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
@@ -361,6 +400,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="examples/index.html">Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/index.html#automl">AutoML</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/auto_ml/plot_automl_loop_clean_kata.html">Usage of AutoML loop, and hyperparams with sklearn models.</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="examples/index.html#caching">Caching</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="examples/caching/plot_value_caching.html">Usage of ValueCachingWrapper in Neuraxle.</a></li>
 <li class="toctree-l3"><a class="reference internal" href="examples/caching/plot_auto_ml_checkpoint.html">Usage of Checkpoints in Automatic Machine Learning (AutoML)</a></li>
@@ -526,7 +569,7 @@ one for each hyperparameter.</p></li>
 <li><p><strong>Step</strong>: a programming object in machine learning which can fit the
 data in the first place, and then process new data. For instance, a
 neural network is a step. A data normalizer or scaler is also a step.
-A step ( <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a> ) could as well just <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.transform" title="neuraxle.base.BaseStep.transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">transform()</span></code></a> the data without learning from
+A step ( <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a> ) could as well just <code class="xref py py-func docutils literal notranslate"><span class="pre">transform()</span></code> the data without learning from
 it, for instance, <a class="reference external" href="https://stackoverflow.com/a/59262363/2476920">changing a int label to a one-hot
 label</a>. A step is an
 estimator or a transformer in scikit-learn’s original vocabulary. A
@@ -576,8 +619,8 @@ the pipeline step you defined</p></li>
 </ul>
 <div class="section" id="solution-define-hyperparameter-spaces-within-the-steps">
 <h4>Solution: Define Hyperparameter Spaces Within the Steps<a class="headerlink" href="#solution-define-hyperparameter-spaces-within-the-steps" title="Permalink to this headline">¶</a></h4>
-<p>Let’s not only have <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.get_hyperparams" title="neuraxle.base.BaseStep.get_hyperparams"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_hyperparams()</span></code></a> and <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.set_hyperparams" title="neuraxle.base.BaseStep.set_hyperparams"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_hyperparams()</span></code></a>, but
-also <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.get_hyperparams_space" title="neuraxle.base.BaseStep.get_hyperparams_space"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_hyperparams_space()</span></code></a> and <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.set_hyperparams_space" title="neuraxle.base.BaseStep.set_hyperparams_space"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_hyperparams_space()</span></code></a>. Plus, have
+<p>Let’s not only have <code class="xref py py-func docutils literal notranslate"><span class="pre">get_hyperparams()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">set_hyperparams()</span></code>, but
+also <code class="xref py py-func docutils literal notranslate"><span class="pre">get_hyperparams_space()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">set_hyperparams_space()</span></code>. Plus, have
 default hyperparams and a default space of those hyperparams available
 in your object as a static object constant.</p>
 <p>Now, your hyperparameter space can be defined <strong>within</strong> the same class
@@ -630,7 +673,7 @@ deactivate dropout in the inference at test time.</p>
 <div class="section" id="solution-use-the-set-train-special-method-and-use-step-wrappers">
 <h4>Solution: use the Set Train Special Method and use Step Wrappers<a class="headerlink" href="#solution-use-the-set-train-special-method-and-use-step-wrappers" title="Permalink to this headline">¶</a></h4>
 <p>Good news: with Neuraxle, you can enable train or disable train mode
-with <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.set_train" title="neuraxle.base.BaseStep.set_train"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_train()</span></code></a>. That could affect how you code your steps.</p>
+with <code class="xref py py-func docutils literal notranslate"><span class="pre">set_train()</span></code>. That could affect how you code your steps.</p>
 <p>In the case of the <a class="reference internal" href="api/neuraxle.steps.data.html#neuraxle.steps.data.EpochRepeater" title="neuraxle.steps.data.EpochRepeater"><code class="xref py py-class docutils literal notranslate"><span class="pre">EpochRepeater</span></code></a> and <a class="reference internal" href="api/neuraxle.steps.data.html#neuraxle.steps.data.DataShuffler" title="neuraxle.steps.data.DataShuffler"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataShuffler</span></code></a>, they should not always be
 activated: for instance, surround them like <a class="reference internal" href="api/neuraxle.steps.flow.html#neuraxle.steps.flow.TrainOnlyWrapper" title="neuraxle.steps.flow.TrainOnlyWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrainOnlyWrapper</span></code></a> ( <a class="reference internal" href="api/neuraxle.steps.data.html#neuraxle.steps.data.DataShuffler" title="neuraxle.steps.data.DataShuffler"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataShuffler</span></code></a> )
 in the pipeline. That is the <a class="reference external" href="https://en.wikipedia.org/wiki/Decorator_pattern#Python">decorator design
@@ -681,7 +724,7 @@ Gradient Descent (SGD) update should ideally correspond to one call to
 <code class="docutils literal notranslate"><span class="pre">fit</span></code> on a subset of the data within the pipeline’s fit method call.</p>
 <div class="section" id="solution-minibatch-pipeline-class-and-the-ability-to-incrementally-fit-pipeline-steps">
 <h4>Solution: Minibatch Pipeline Class and the Ability to Incrementally Fit Pipeline Steps<a class="headerlink" href="#solution-minibatch-pipeline-class-and-the-ability-to-incrementally-fit-pipeline-steps" title="Permalink to this headline">¶</a></h4>
-<p>Simple: make <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.fit" title="neuraxle.base.BaseStep.fit"><code class="xref py py-func docutils literal notranslate"><span class="pre">fit()</span></code></a> callable many times in a row <strong>without resetting
+<p>Simple: make <code class="xref py py-func docutils literal notranslate"><span class="pre">fit()</span></code> callable many times in a row <strong>without resetting
 the initialization of the step</strong>. Also create a pipeline class that
 takes the dataset and loops on small batches of it to fit, transform,
 and/or predict the given data. Done. Don’t you feel relieved to finally
@@ -710,7 +753,7 @@ In scikit-learn, you need to pass your pipeline as a constructor
 argument of your search strategy (e.g.: grid search or random
 search). Then your search strategy will loop on different params, and
 perform a copy of your step. But your step shouldn’t be copied if it
-already has initialized (with <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.setup" title="neuraxle.base.BaseStep.setup"><code class="xref py py-func docutils literal notranslate"><span class="pre">setup()</span></code></a> )! You want to delay to later costly things and
+already has initialized (with <code class="xref py py-func docutils literal notranslate"><span class="pre">setup()</span></code> )! You want to delay to later costly things and
 make copying your pipeline <strong>very fast</strong> and without weird Python
 memory copy bugs until the moment it is further initialized.</p></li>
 </ul>
@@ -718,8 +761,8 @@ memory copy bugs until the moment it is further initialized.</p></li>
 <h4>Solution: Add Setup and Teardown Lifecycle Methods to Your Steps<a class="headerlink" href="#solution-add-setup-and-teardown-lifecycle-methods-to-your-steps" title="Permalink to this headline">¶</a></h4>
 <p>This also has the side effect to allow for resource management and
 parallelism.</p>
-<p>Who said that only having <code class="xref py py-func docutils literal notranslate"><span class="pre">__init__()</span></code>, <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.fit" title="neuraxle.base.BaseStep.fit"><code class="xref py py-func docutils literal notranslate"><span class="pre">fit()</span></code></a> and <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.transform" title="neuraxle.base.BaseStep.transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">transform()</span></code></a> was
-enough? We need <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.setup" title="neuraxle.base.BaseStep.setup"><code class="xref py py-func docutils literal notranslate"><span class="pre">setup()</span></code></a> and <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.teardown" title="neuraxle.base.BaseStep.teardown"><code class="xref py py-func docutils literal notranslate"><span class="pre">teardown()</span></code></a>, too. This way, we can
+<p>Who said that only having <code class="xref py py-func docutils literal notranslate"><span class="pre">__init__()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">fit()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">transform()</span></code> was
+enough? We need <code class="xref py py-func docutils literal notranslate"><span class="pre">setup()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">teardown()</span></code>, too. This way, we can
 prepare a pipeline (and recursively, all its steps), to fit.</p>
 <p>Facts:</p>
 <ol class="arabic simple">
@@ -728,31 +771,31 @@ the object, allowing it to be copied in the AutoML training loop
 before each fit. It must not already allow memory there. This aligns
 with the clean code principle that objects shouldn’t have complex
 behavior in their constructor for them to be easily testable.</p></li>
-<li><p>On the other side, we want <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.fit" title="neuraxle.base.BaseStep.fit"><code class="xref py py-func docutils literal notranslate"><span class="pre">fit()</span></code></a> to be called multiple times in a
+<li><p>On the other side, we want <code class="xref py py-func docutils literal notranslate"><span class="pre">fit()</span></code> to be called multiple times in a
 row, and it shouldn’t reset the object between each fit.</p></li>
 </ol>
 <p>Conclusion: to keep a small object constructor, and to respect the
 <a class="reference external" href="https://medium.com/&#64;severinperez/writing-flexible-code-with-the-single-responsibility-principle-b71c4f3f883f">Single Responsibility Principle
 (SRP)</a>
 fundamental principle of SOLID OOP, we need a new method which we called
-<a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.setup" title="neuraxle.base.BaseStep.setup"><code class="xref py py-func docutils literal notranslate"><span class="pre">setup()</span></code></a>. The same logic applies for a <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.teardown" title="neuraxle.base.BaseStep.teardown"><code class="xref py py-func docutils literal notranslate"><span class="pre">teardown()</span></code></a> method.</p>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">setup()</span></code>. The same logic applies for a <code class="xref py py-func docutils literal notranslate"><span class="pre">teardown()</span></code> method.</p>
 <p>So you’ll then be able to serialize your step (or whole pipeline) and
 copy it before it is initialized, as there should be no weird memory
 allocation until a step is initialized.</p>
-<p>After <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.teardown" title="neuraxle.base.BaseStep.teardown"><code class="xref py py-func docutils literal notranslate"><span class="pre">teardown()</span></code></a>, a step should be reset as if it was not initialized yet,
+<p>After <code class="xref py py-func docutils literal notranslate"><span class="pre">teardown()</span></code>, a step should be reset as if it was not initialized yet,
 too, clearing memory for the next iteration of the AutoML loop!</p>
 <p>For deep neural networks pipelines to work, we need to send data in
 minibatches, so it’s handy to have <a class="reference internal" href="api/neuraxle.pipeline.html#neuraxle.pipeline.MiniBatchSequentialPipeline" title="neuraxle.pipeline.MiniBatchSequentialPipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">MiniBatchSequentialPipeline</span></code></a>, parallel data
 streaming pipelines (coming soon), cluster-computing pipelines (coming soon: <code class="xref py py-class docutils literal notranslate"><span class="pre">ClusteringWrapper</span></code> ), and so forth.</p>
-<p>You might still be asking: “Rlly. Why add a <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.setup" title="neuraxle.base.BaseStep.setup"><code class="xref py py-func docutils literal notranslate"><span class="pre">setup()</span></code></a> and <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.teardown" title="neuraxle.base.BaseStep.teardown"><code class="xref py py-func docutils literal notranslate"><span class="pre">teardown()</span></code></a>
+<p>You might still be asking: “Rlly. Why add a <code class="xref py py-func docutils literal notranslate"><span class="pre">setup()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">teardown()</span></code>
 methods?” Well, it all comes down to using GPUs, TPUs, and other
 hardware resources that needs careful allocation and deallocation.
 Sometimes, it also comes down to importing python libraries written in
 other weird languages, which makes some objects unable to be copied,
-serialized, nor parallelized. Having the option to <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.setup" title="neuraxle.base.BaseStep.setup"><code class="xref py py-func docutils literal notranslate"><span class="pre">setup()</span></code></a> and
-<a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.teardown" title="neuraxle.base.BaseStep.teardown"><code class="xref py py-func docutils literal notranslate"><span class="pre">teardown()</span></code></a> makes things safe in the AutoML algorithm’s main loop when
-copying the pipeline before each trial. Moreover, with clean <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.setup" title="neuraxle.base.BaseStep.setup"><code class="xref py py-func docutils literal notranslate"><span class="pre">setup()</span></code></a>
-and <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.teardown" title="neuraxle.base.BaseStep.teardown"><code class="xref py py-func docutils literal notranslate"><span class="pre">teardown()</span></code></a> methods, it’s possible to remove the ambiguity in
+serialized, nor parallelized. Having the option to <code class="xref py py-func docutils literal notranslate"><span class="pre">setup()</span></code> and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">teardown()</span></code> makes things safe in the AutoML algorithm’s main loop when
+copying the pipeline before each trial. Moreover, with clean <code class="xref py py-func docutils literal notranslate"><span class="pre">setup()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">teardown()</span></code> methods, it’s possible to remove the ambiguity in
 re-fitting the objects and (most of the time) to be able to really
 specify when to reset.</p>
 </div>
@@ -779,22 +822,22 @@ needed, to expand the possibilities:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a> ‘s __init__ method for pipeline definition and nesting high-level steps,
 that reads like a book but without the hyperparameters being here</p></li>
-<li><p><a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.get_hyperparams" title="neuraxle.base.BaseStep.get_hyperparams"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_hyperparams()</span></code></a> and <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.set_hyperparams" title="neuraxle.base.BaseStep.set_hyperparams"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_hyperparams()</span></code></a> to assign hyperparams</p></li>
-<li><p><a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.get_hyperparams_space" title="neuraxle.base.BaseStep.get_hyperparams_space"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_hyperparams_space()</span></code></a> and <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.set_hyperparams_space" title="neuraxle.base.BaseStep.set_hyperparams_space"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_hyperparams_space()</span></code></a> to assign new
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">get_hyperparams()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">set_hyperparams()</span></code> to assign hyperparams</p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">get_hyperparams_space()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">set_hyperparams_space()</span></code> to assign new
 spaces</p></li>
-<li><p><a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.setup" title="neuraxle.base.BaseStep.setup"><code class="xref py py-func docutils literal notranslate"><span class="pre">setup()</span></code></a> and <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.teardown" title="neuraxle.base.BaseStep.teardown"><code class="xref py py-func docutils literal notranslate"><span class="pre">teardown()</span></code></a> to manage the life of the steps</p></li>
-<li><p><a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.fit" title="neuraxle.base.BaseStep.fit"><code class="xref py py-func docutils literal notranslate"><span class="pre">fit()</span></code></a>, <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.transform" title="neuraxle.base.BaseStep.transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">transform()</span></code></a>, and <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.fit_transform" title="neuraxle.base.BaseStep.fit_transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">fit_transform()</span></code></a> as in scikit-learn, as
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">setup()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">teardown()</span></code> to manage the life of the steps</p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">fit()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">transform()</span></code>, and <code class="xref py py-func docutils literal notranslate"><span class="pre">fit_transform()</span></code> as in scikit-learn, as
 usual</p></li>
-<li><p><a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.handle_fit" title="neuraxle.base.BaseStep.handle_fit"><code class="xref py py-func docutils literal notranslate"><span class="pre">handle_fit()</span></code></a>, <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.handle_transform" title="neuraxle.base.BaseStep.handle_transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">handle_transform()</span></code></a> and <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.handle_fit_transform" title="neuraxle.base.BaseStep.handle_fit_transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">handle_fit_transform()</span></code></a> to
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">handle_fit()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">handle_transform()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">handle_fit_transform()</span></code> to
 manage more funky things not even explained in this article, but for
 instance: allowing data caching and pipeline checkpoints easily</p></li>
-<li><p><a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.set_train" title="neuraxle.base.BaseStep.set_train"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_train()</span></code></a> to change the mode to train or test</p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">set_train()</span></code> to change the mode to train or test</p></li>
 <li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">introspect()</span></code> to return custom stats after fitting, useful for
 AutoML featurization of a trial</p></li>
-<li><p><a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.mutate" title="neuraxle.base.BaseStep.mutate"><code class="xref py py-func docutils literal notranslate"><span class="pre">mutate()</span></code></a> and <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.will_mutate_to" title="neuraxle.base.BaseStep.will_mutate_to"><code class="xref py py-func docutils literal notranslate"><span class="pre">will_mutate_to()</span></code></a>, to replace steps or change
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">mutate()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">will_mutate_to()</span></code>, to replace steps or change
 pipeline along the way such as predicting only logits after fitting,
 or allowing unsupervised pre-training, fine-tuning, and so forth</p></li>
-<li><p><a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.apply" title="neuraxle.base.BaseStep.apply"><code class="xref py py-func docutils literal notranslate"><span class="pre">apply()</span></code></a> and <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.apply_method" title="neuraxle.base.BaseStep.apply_method"><code class="xref py py-func docutils literal notranslate"><span class="pre">apply_method()</span></code></a> to apply recursively any other funky
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">apply()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">apply_method()</span></code> to apply recursively any other funky
 changes that mutate couldn’t already do to the steps</p></li>
 </ul>
 <p>Note that all those methods are implemented in our Neuraxle open-source
@@ -877,15 +920,15 @@ And you want to reuse the same pipeline.</p>
 <div class="section" id="solution-the-mutate-special-method">
 <h4>Solution: the Mutate Special Method<a class="headerlink" href="#solution-the-mutate-special-method" title="Permalink to this headline">¶</a></h4>
 <p>Change a pipeline’s steps on the fly (hotswap)</p>
-<p>The <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.mutate" title="neuraxle.base.BaseStep.mutate"><code class="xref py py-func docutils literal notranslate"><span class="pre">mutate()</span></code></a> and <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.will_mutate_to" title="neuraxle.base.BaseStep.will_mutate_to"><code class="xref py py-func docutils literal notranslate"><span class="pre">will_mutate_to()</span></code></a>
+<p>The <code class="xref py py-func docutils literal notranslate"><span class="pre">mutate()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">will_mutate_to()</span></code>
 method are cool for that. Imagine a pipeline where you need an
 unsupervised pre-training phase. You need to dynamically change the
 pipeline’s steps between the pre-training phase and the training phases.
 This means you may for instance have an autoencoder at first, and then
 tell it that it’ll later mutate to just an encoder with a classifier
 (without the decoder part of the autoencoder) for instance. Then you can
-pre-train <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.fit" title="neuraxle.base.BaseStep.fit"><code class="xref py py-func docutils literal notranslate"><span class="pre">fit()</span></code></a>, <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.mutate" title="neuraxle.base.BaseStep.mutate"><code class="xref py py-func docutils literal notranslate"><span class="pre">mutate()</span></code></a>,
-and then <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.fit" title="neuraxle.base.BaseStep.fit"><code class="xref py py-func docutils literal notranslate"><span class="pre">fit()</span></code></a> again the pipeline on different data
+pre-train <code class="xref py py-func docutils literal notranslate"><span class="pre">fit()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">mutate()</span></code>,
+and then <code class="xref py py-func docutils literal notranslate"><span class="pre">fit()</span></code> again the pipeline on different data
 types post-mutation. This allow for slick pre-trainings or fine-tunings,
 opening up the possibilities. This is almost required in recent Computer
 Vision, Time Series Processing, and NLP work. For instance, in NLP with
@@ -896,12 +939,12 @@ autoregressive nor word masking steps used in training.</p>
 <div class="section" id="another-solution-the-apply-special-method">
 <h4>Another Solution: the Apply Special Method<a class="headerlink" href="#another-solution-the-apply-special-method" title="Permalink to this headline">¶</a></h4>
 <p>Just apply anything on each steps of a pipeline recursively.</p>
-<p>The generic <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.TruncableSteps.apply_method" title="neuraxle.base.TruncableSteps.apply_method"><code class="xref py py-func docutils literal notranslate"><span class="pre">apply_method()</span></code></a> can apply any lambda on each nested
+<p>The generic <code class="xref py py-func docutils literal notranslate"><span class="pre">apply_method()</span></code> can apply any lambda on each nested
 pipeline steps, which can allow for doing custom funky things in the
 pipelines as wished. This can include defining a special method in a
 pipeline step, and calling apply to find that step and calling this
 method if it exists, which can restructure the pipeline.</p>
-<p>There is also the <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.TruncableSteps.apply" title="neuraxle.base.TruncableSteps.apply"><code class="xref py py-func docutils literal notranslate"><span class="pre">apply()</span></code></a> method accepting a string
+<p>There is also the <code class="xref py py-func docutils literal notranslate"><span class="pre">apply()</span></code> method accepting a string
 in case the method to apply is already defined in one or many objects of the <a class="reference internal" href="api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>.</p>
 </div>
 </div>
@@ -948,7 +991,7 @@ saving all what’s left of the stripped object and deleting the object
 from your code’s RAM. This means you can have many partial savers before
 the final default <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.JoblibStepSaver" title="neuraxle.base.JoblibStepSaver"><code class="xref py py-class docutils literal notranslate"><span class="pre">JoblibStepSaver</span></code></a> .</p></li>
 </ol>
-<p>For instance, a Pipeline will do the following upon having the <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.save" title="neuraxle.base.BaseStep.save"><code class="xref py py-func docutils literal notranslate"><span class="pre">save()</span></code></a> method
+<p>For instance, a Pipeline will do the following upon having the <code class="xref py py-func docutils literal notranslate"><span class="pre">save()</span></code> method
 called, as it has its own <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.TruncableJoblibStepSaver" title="neuraxle.base.TruncableJoblibStepSaver"><code class="xref py py-class docutils literal notranslate"><span class="pre">TruncableJoblibStepSaver</span></code></a> :</p>
 <ol class="arabic simple">
 <li><p>Save all its substeps in relative subfolders to the pipeline’s
@@ -974,7 +1017,7 @@ loading the save, too. We already wrote a <a class="reference external" href="ht
 saver</a> which will
 soon be released (or which may be already released as of reading).</p>
 <blockquote>
-<div><p>TL;DR: You can call the <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep.save" title="neuraxle.base.BaseStep.save"><code class="xref py py-func docutils literal notranslate"><span class="pre">save()</span></code></a> method on any pipeline,
+<div><p>TL;DR: You can call the <code class="xref py py-func docutils literal notranslate"><span class="pre">save()</span></code> method on any pipeline,
 and if some steps define a custom <code class="xref py py-class docutils literal notranslate"><span class="pre">Saver</span></code>, then
 the step will use that saver before using the default <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.JoblibStepSaver" title="neuraxle.base.JoblibStepSaver"><code class="xref py py-class docutils literal notranslate"><span class="pre">JoblibStepSaver</span></code></a>.</p>
 </div></blockquote>
@@ -1018,7 +1061,7 @@ send them back).</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="hyperparameter_tuning.html" class="btn btn-neutral float-right" title="Introduction to Automatic Hyperparameter Tuning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="handler_methods.html" class="btn btn-neutral float-right" title="Handler Methods" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="Neuraxle/README.html" class="btn btn-neutral float-left" title="Neuraxle Pipelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

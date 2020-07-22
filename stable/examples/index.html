@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage Examples &mdash; Neuraxle 0.4.0 documentation</title>
+  <title>Usage Examples &mdash; Neuraxle 0.5.2 documentation</title>
   
 
   
@@ -27,6 +27,8 @@
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -38,7 +40,7 @@
   <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Usage of ValueCachingWrapper in Neuraxle." href="caching/plot_value_caching.html" />
+    <link rel="next" title="Usage of AutoML loop, and hyperparams with sklearn models." href="auto_ml/plot_automl_loop_clean_kata.html" />
     <link rel="prev" title="neuraxle.rest.flask" href="../api/neuraxle.rest.flask.html" /> 
 
   <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
@@ -66,7 +68,7 @@
             
             
               <div class="version">
-                0.4.0
+                0.5.2
               </div>
             
           
@@ -190,6 +192,24 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../handler_methods.html">Handler Methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#handle_fit_transform">handle_fit_transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#handle_fit">handle_fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#handle_transform">handle_transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#When-to-use-handler-methods-?">When to use handler methods ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#HandleOnlyMixin">HandleOnlyMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#ForceHandleMixin">ForceHandleMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#ForceHandleOnlyMixin">ForceHandleOnlyMixin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../handler_methods.html#Examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#ForEachDataInput">ForEachDataInput</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#ToNumpy">ToNumpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#Transform-Expected-Outputs">Transform Expected Outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#Expand-The-DataContainer">Expand The DataContainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../handler_methods.html#Reversible-Pipeline">Reversible Pipeline</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../hyperparameter_tuning.html">Introduction to Automatic Hyperparameter Tuning</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#Continuous-Hyperparameter-Distributions">Continuous Hyperparameter Distributions</a></li>
@@ -227,6 +247,21 @@
 <li class="toctree-l3"><a class="reference internal" href="../random_distributions.html#Quantized-Lognormal">Quantized Lognormal</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../step_saving_and_lifecycle.html">Step Saving And Lifecycle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../step_saving_and_lifecycle.html#Lifecycle">Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../step_saving_and_lifecycle.html#Step-Saving">Step Saving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../step_saving_and_lifecycle.html#Saver">Saver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../step_saving_and_lifecycle.html#Custom-Saver-Example">Custom Saver Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../step_saving_and_lifecycle.html#Saving-Example">Saving Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../step_saving_and_lifecycle.html#Pipeline">Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../step_saving_and_lifecycle.html#Full-Dump-Saving">Full Dump Saving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../step_saving_and_lifecycle.html#Full-Dump-Loading">Full Dump Loading</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rest_api_serving.html">REST API Serving</a><ul>
@@ -292,6 +327,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.steps.column_transformer.html">neuraxle.steps.column_transformer</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.steps.column_transformer.html#neuraxle-s-column-transformer-steps">Neuraxle’s Column Transformer Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.steps.features.html">neuraxle.steps.features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.steps.features.html#featurization-steps">Featurization Steps</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
@@ -361,6 +400,10 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#automl">AutoML</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="auto_ml/plot_automl_loop_clean_kata.html">Usage of AutoML loop, and hyperparams with sklearn models.</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#caching">Caching</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="caching/plot_value_caching.html">Usage of ValueCachingWrapper in Neuraxle.</a></li>
 <li class="toctree-l3"><a class="reference internal" href="caching/plot_auto_ml_checkpoint.html">Usage of Checkpoints in Automatic Machine Learning (AutoML)</a></li>
@@ -463,98 +506,108 @@
   <div class="section" id="usage-examples">
 <span id="sphx-glr-examples"></span><h1>Usage Examples<a class="headerlink" href="#usage-examples" title="Permalink to this headline">¶</a></h1>
 <p>Navigate the examples.</p>
-<div style='clear:both'></div><div class="section" id="caching">
-<span id="realworld-examples"></span><span id="sphx-glr-examples-caching"></span><h2>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">¶</a></h2>
-<p>This demonstrates how to use checkpoints in Neuraxle.</p>
-<div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how you can use value caching in a Neuraxle pipeline."><div class="figure align-center" id="id6">
-<img alt="../_images/sphx_glr_plot_value_caching_thumb.png" src="../_images/sphx_glr_plot_value_caching_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="caching/plot_value_caching.html#sphx-glr-examples-caching-plot-value-caching-py"><span class="std std-ref">Usage of ValueCachingWrapper in Neuraxle.</span></a></span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+<div style='clear:both'></div><div class="section" id="automl">
+<span id="real-world-examples"></span><span id="sphx-glr-examples-auto-ml"></span><h2>AutoML<a class="headerlink" href="#automl" title="Permalink to this headline">¶</a></h2>
+<p>This demonstrates how to use the AutoML loop, and the auto ml steps that are available in Neuraxle.</p>
+<div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how you can build an AutoML loop that finds the best possible sklearn classif..."><div class="figure align-center" id="id7">
+<img alt="../_images/sphx_glr_plot_automl_loop_clean_kata_thumb.png" src="../_images/sphx_glr_plot_automl_loop_clean_kata_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_ml/plot_automl_loop_clean_kata.html#sphx-glr-examples-auto-ml-plot-automl-loop-clean-kata-py"><span class="std std-ref">Usage of AutoML loop, and hyperparams with sklearn models.</span></a></span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how you can use checkpoints in a pipeline to save computing time when doing a..."><div class="figure align-center" id="id7">
+<div style='clear:both'></div></div>
+<div class="section" id="caching">
+<span id="id1"></span><h2>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">¶</a></h2>
+<p>This demonstrates how to use checkpoints in Neuraxle.</p>
+<div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how you can use value caching in a Neuraxle pipeline."><div class="figure align-center" id="id8">
+<img alt="../_images/sphx_glr_plot_value_caching_thumb.png" src="../_images/sphx_glr_plot_value_caching_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="caching/plot_value_caching.html#sphx-glr-examples-caching-plot-value-caching-py"><span class="std std-ref">Usage of ValueCachingWrapper in Neuraxle.</span></a></span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how you can use checkpoints in a pipeline to save computing time when doing a..."><div class="figure align-center" id="id9">
 <img alt="../_images/sphx_glr_plot_auto_ml_checkpoint_thumb.png" src="../_images/sphx_glr_plot_auto_ml_checkpoint_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="caching/plot_auto_ml_checkpoint.html#sphx-glr-examples-caching-plot-auto-ml-checkpoint-py"><span class="std std-ref">Usage of Checkpoints in Automatic Machine Learning (AutoML)</span></a></span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="caching/plot_auto_ml_checkpoint.html#sphx-glr-examples-caching-plot-auto-ml-checkpoint-py"><span class="std std-ref">Usage of Checkpoints in Automatic Machine Learning (AutoML)</span></a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
 <div style='clear:both'></div></div>
 <div class="section" id="rest-api-model-serving">
-<span id="id1"></span><h2>REST API Model Serving<a class="headerlink" href="#rest-api-model-serving" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>REST API Model Serving<a class="headerlink" href="#rest-api-model-serving" title="Permalink to this headline">¶</a></h2>
 <p>This demonstrates an easy way to deploy your Neuraxle model or pipeline to a REST API.</p>
-<div class="sphx-glr-thumbcontainer" tooltip="This demonstrates an easy way to deploy your Neuraxle model or pipeline to a REST API."><div class="figure align-center" id="id8">
+<div class="sphx-glr-thumbcontainer" tooltip="This demonstrates an easy way to deploy your Neuraxle model or pipeline to a REST API."><div class="figure align-center" id="id10">
 <img alt="../_images/sphx_glr_plot_easy_rest_api_serving_thumb.png" src="../_images/sphx_glr_plot_easy_rest_api_serving_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="deployment/plot_easy_rest_api_serving.html#sphx-glr-examples-deployment-plot-easy-rest-api-serving-py"><span class="std std-ref">Easy REST API Model Serving with Neuraxle</span></a></span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="deployment/plot_easy_rest_api_serving.html#sphx-glr-examples-deployment-plot-easy-rest-api-serving-py"><span class="std std-ref">Easy REST API Model Serving with Neuraxle</span></a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
 <div style='clear:both'></div></div>
 <div class="section" id="getting-started">
-<span id="id2"></span><h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <p>This demonstrates how to build basic pipelines with Neuraxle.</p>
-<div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how to make a prediction, and then to undo the prediction to get back the ori..."><div class="figure align-center" id="id9">
+<div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how to make a prediction, and then to undo the prediction to get back the ori..."><div class="figure align-center" id="id11">
 <img alt="../_images/sphx_glr_plot_inverse_transform_thumb.png" src="../_images/sphx_glr_plot_inverse_transform_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="getting_started/plot_inverse_transform.html#sphx-glr-examples-getting-started-plot-inverse-transform-py"><span class="std std-ref">Inverse Transforms in Neuraxle: How to Reverse a Prediction</span></a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="getting_started/plot_inverse_transform.html#sphx-glr-examples-getting-started-plot-inverse-transform-py"><span class="std std-ref">Inverse Transforms in Neuraxle: How to Reverse a Prediction</span></a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="You can create pipelines within pipelines using the composition design pattern."><div class="figure align-center" id="id10">
+<div class="sphx-glr-thumbcontainer" tooltip="You can create pipelines within pipelines using the composition design pattern."><div class="figure align-center" id="id12">
 <img alt="../_images/sphx_glr_plot_nested_pipelines_thumb.png" src="../_images/sphx_glr_plot_nested_pipelines_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="getting_started/plot_nested_pipelines.html#sphx-glr-examples-getting-started-plot-nested-pipelines-py"><span class="std std-ref">Create Nested Pipelines in Neuraxle</span></a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="getting_started/plot_nested_pipelines.html#sphx-glr-examples-getting-started-plot-nested-pipelines-py"><span class="std std-ref">Create Nested Pipelines in Neuraxle</span></a></span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="If a pipeline step doesn&#x27;t need to be fitted and only transforms data (e.g.: taking the logarit..."><div class="figure align-center" id="id11">
+<div class="sphx-glr-thumbcontainer" tooltip="If a pipeline step doesn&#x27;t need to be fitted and only transforms data (e.g.: taking the logarit..."><div class="figure align-center" id="id13">
 <img alt="../_images/sphx_glr_plot_non_fittable_mixin_thumb.png" src="../_images/sphx_glr_plot_non_fittable_mixin_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="getting_started/plot_non_fittable_mixin.html#sphx-glr-examples-getting-started-plot-non-fittable-mixin-py"><span class="std std-ref">Create Pipeline Steps in Neuraxle that doesn’t fit or transform</span></a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="getting_started/plot_non_fittable_mixin.html#sphx-glr-examples-getting-started-plot-non-fittable-mixin-py"><span class="std std-ref">Create Pipeline Steps in Neuraxle that doesn’t fit or transform</span></a></span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="You can apply label encoder to all columns using the ColumnTransformer step."><div class="figure align-center" id="id12">
+<div class="sphx-glr-thumbcontainer" tooltip="You can apply label encoder to all columns using the ColumnTransformer step."><div class="figure align-center" id="id14">
 <img alt="../_images/sphx_glr_plot_label_encoder_across_multiple_columns_thumb.png" src="../_images/sphx_glr_plot_label_encoder_across_multiple_columns_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="getting_started/plot_label_encoder_across_multiple_columns.html#sphx-glr-examples-getting-started-plot-label-encoder-across-multiple-columns-py"><span class="std std-ref">Create label encoder across multiple columns</span></a></span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="getting_started/plot_label_encoder_across_multiple_columns.html#sphx-glr-examples-getting-started-plot-label-encoder-across-multiple-columns-py"><span class="std std-ref">Create label encoder across multiple columns</span></a></span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="If a pipeline step only needs to implement handler methods, then you can inherit from the Force..."><div class="figure align-center" id="id13">
+<div class="sphx-glr-thumbcontainer" tooltip="If a pipeline step only needs to implement handler methods, then you can inherit from the Force..."><div class="figure align-center" id="id15">
 <img alt="../_images/sphx_glr_plot_force_handle_mixin_thumb.png" src="../_images/sphx_glr_plot_force_handle_mixin_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="getting_started/plot_force_handle_mixin.html#sphx-glr-examples-getting-started-plot-force-handle-mixin-py"><span class="std std-ref">Create Pipeline Steps that require implementing only handler methods</span></a></span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="getting_started/plot_force_handle_mixin.html#sphx-glr-examples-getting-started-plot-force-handle-mixin-py"><span class="std std-ref">Create Pipeline Steps that require implementing only handler methods</span></a></span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
 <div style='clear:both'></div></div>
 <div class="section" id="hyperparameters">
-<span id="id3"></span><h2>Hyperparameters<a class="headerlink" href="#hyperparameters" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>Hyperparameters<a class="headerlink" href="#hyperparameters" title="Permalink to this headline">¶</a></h2>
 <p>This demonstrates how to add hyperparameters to Neuraxle pipelines.</p>
-<div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how to manipulate hyperparameters and hyperparameter spaces."><div class="figure align-center" id="id14">
+<div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how to manipulate hyperparameters and hyperparameter spaces."><div class="figure align-center" id="id16">
 <img alt="../_images/sphx_glr_plot_hyperparams_thumb.png" src="../_images/sphx_glr_plot_hyperparams_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="hyperparams/plot_hyperparams.html#sphx-glr-examples-hyperparams-plot-hyperparams-py"><span class="std std-ref">Manipulate Hyperparameter Spaces for Hyperparameter Tuning</span></a></span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="hyperparams/plot_hyperparams.html#sphx-glr-examples-hyperparams-plot-hyperparams-py"><span class="std std-ref">Manipulate Hyperparameter Spaces for Hyperparameter Tuning</span></a></span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
 <div style='clear:both'></div></div>
 <div class="section" id="parallel">
-<span id="id4"></span><h2>Parallel<a class="headerlink" href="#parallel" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h2>Parallel<a class="headerlink" href="#parallel" title="Permalink to this headline">¶</a></h2>
 <p>This demonstrates how parallel processing works in Neuraxle.</p>
-<div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how to stream data in parallel in a Neuraxle pipeline."><div class="figure align-center" id="id15">
+<div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how to stream data in parallel in a Neuraxle pipeline."><div class="figure align-center" id="id17">
 <img alt="../_images/sphx_glr_plot_streaming_pipeline_thumb.png" src="../_images/sphx_glr_plot_streaming_pipeline_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="parallel/plot_streaming_pipeline.html#sphx-glr-examples-parallel-plot-streaming-pipeline-py"><span class="std std-ref">Parallel processing in Neuraxle</span></a></span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="parallel/plot_streaming_pipeline.html#sphx-glr-examples-parallel-plot-streaming-pipeline-py"><span class="std std-ref">Parallel processing in Neuraxle</span></a></span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
 <div style='clear:both'></div></div>
 <div class="section" id="neuraxle-hyperparameter-examples">
-<span id="id5"></span><h2>Neuraxle hyperparameter examples<a class="headerlink" href="#neuraxle-hyperparameter-examples" title="Permalink to this headline">¶</a></h2>
+<span id="id6"></span><h2>Neuraxle hyperparameter examples<a class="headerlink" href="#neuraxle-hyperparameter-examples" title="Permalink to this headline">¶</a></h2>
 <p>This demonstrates how to use sklearn classes in a Neuraxle pipeline.</p>
-<div class="sphx-glr-thumbcontainer" tooltip="This example solves a regression problem using a pipeline with the following steps:"><div class="figure align-center" id="id16">
+<div class="sphx-glr-thumbcontainer" tooltip="This example solves a regression problem using a pipeline with the following steps:"><div class="figure align-center" id="id18">
 <img alt="../_images/sphx_glr_plot_boston_housing_regression_with_model_stacking_thumb.png" src="../_images/sphx_glr_plot_boston_housing_regression_with_model_stacking_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="sklearn/plot_boston_housing_regression_with_model_stacking.html#sphx-glr-examples-sklearn-plot-boston-housing-regression-with-model-stacking-py"><span class="std std-ref">Boston Housing Regression</span></a></span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="sklearn/plot_boston_housing_regression_with_model_stacking.html#sphx-glr-examples-sklearn-plot-boston-housing-regression-with-model-stacking-py"><span class="std std-ref">Boston Housing Regression</span></a></span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="This is an automatic machine learning example. It is more sophisticated than the other simple r..."><div class="figure align-center" id="id17">
+<div class="sphx-glr-thumbcontainer" tooltip="This is an automatic machine learning example. It is more sophisticated than the other simple r..."><div class="figure align-center" id="id19">
 <img alt="../_images/sphx_glr_plot_boston_housing_meta_optimization_thumb.png" src="../_images/sphx_glr_plot_boston_housing_meta_optimization_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="sklearn/plot_boston_housing_meta_optimization.html#sphx-glr-examples-sklearn-plot-boston-housing-meta-optimization-py"><span class="std std-ref">Boston Housing Regression with Meta Optimization</span></a></span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="sklearn/plot_boston_housing_meta_optimization.html#sphx-glr-examples-sklearn-plot-boston-housing-meta-optimization-py"><span class="std std-ref">Boston Housing Regression with Meta Optimization</span></a></span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -578,7 +631,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="caching/plot_value_caching.html" class="btn btn-neutral float-right" title="Usage of ValueCachingWrapper in Neuraxle." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="auto_ml/plot_automl_loop_clean_kata.html" class="btn btn-neutral float-right" title="Usage of AutoML loop, and hyperparams with sklearn models." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../api/neuraxle.rest.flask.html" class="btn btn-neutral float-left" title="neuraxle.rest.flask" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

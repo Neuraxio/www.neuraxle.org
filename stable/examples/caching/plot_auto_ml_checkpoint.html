@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage of Checkpoints in Automatic Machine Learning (AutoML) &mdash; Neuraxle 0.4.0 documentation</title>
+  <title>Usage of Checkpoints in Automatic Machine Learning (AutoML) &mdash; Neuraxle 0.5.2 documentation</title>
   
 
   
@@ -27,6 +27,8 @@
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -66,7 +68,7 @@
             
             
               <div class="version">
-                0.4.0
+                0.5.2
               </div>
             
           
@@ -190,6 +192,24 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../handler_methods.html">Handler Methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#handle_fit_transform">handle_fit_transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#handle_fit">handle_fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#handle_transform">handle_transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#When-to-use-handler-methods-?">When to use handler methods ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#HandleOnlyMixin">HandleOnlyMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#ForceHandleMixin">ForceHandleMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#ForceHandleOnlyMixin">ForceHandleOnlyMixin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../handler_methods.html#Examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#ForEachDataInput">ForEachDataInput</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#ToNumpy">ToNumpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#Transform-Expected-Outputs">Transform Expected Outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#Expand-The-DataContainer">Expand The DataContainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#Reversible-Pipeline">Reversible Pipeline</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../hyperparameter_tuning.html">Introduction to Automatic Hyperparameter Tuning</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#Continuous-Hyperparameter-Distributions">Continuous Hyperparameter Distributions</a></li>
@@ -227,6 +247,21 @@
 <li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Quantized-Lognormal">Quantized Lognormal</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../step_saving_and_lifecycle.html">Step Saving And Lifecycle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Lifecycle">Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Step-Saving">Step Saving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Saver">Saver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Custom-Saver-Example">Custom Saver Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Saving-Example">Saving Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Pipeline">Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Full-Dump-Saving">Full Dump Saving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Full-Dump-Loading">Full Dump Loading</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../rest_api_serving.html">REST API Serving</a><ul>
@@ -292,6 +327,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.column_transformer.html">neuraxle.steps.column_transformer</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.column_transformer.html#neuraxle-s-column-transformer-steps">Neuraxle’s Column Transformer Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.features.html">neuraxle.steps.features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.features.html#featurization-steps">Featurization Steps</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
@@ -361,6 +400,10 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Usage Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#automl">AutoML</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../auto_ml/plot_automl_loop_clean_kata.html">Usage of AutoML loop, and hyperparams with sklearn models.</a></li>
+</ul>
+</li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html#caching">Caching</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="plot_value_caching.html">Usage of ValueCachingWrapper in Neuraxle.</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Usage of Checkpoints in Automatic Machine Learning (AutoML)</a></li>
@@ -475,1237 +518,27 @@
 trial 1/50
 fitting trial 1/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
 }
 
 
 epoch 1/1
-main train: 362537.5
-main validation: 278831.5
-mse train: 362537.5
-mse validation: 278831.5
+main train: 10000.0
+main validation: 10000.0
+mse train: 10000.0
+mse validation: 10000.0
 success trial 1/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
 }
- score: 278831.5
+ score: 10000.0
 
 trial 2/50
 fitting trial 2/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: 1776953.5
-main validation: 278831.5
-mse train: 1776953.5
-mse validation: 278831.5
-success trial 2/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 278831.5
-
-trial 3/50
-fitting trial 3/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: 1776953.5
-main validation: 278831.5
-mse train: 1776953.5
-mse validation: 278831.5
-success trial 3/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 278831.5
-
-trial 4/50
-fitting trial 4/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: 1776953.5
-main validation: 278831.5
-mse train: 1776953.5
-mse validation: 278831.5
-success trial 4/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 278831.5
-
-trial 5/50
-fitting trial 5/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: 7821401.5
-main validation: 278831.5
-mse train: 7821401.5
-mse validation: 278831.5
-success trial 5/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 278831.5
-
-trial 6/50
-fitting trial 6/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: 134125337.5
-main validation: 7184903.5
-mse train: 134125337.5
-mse validation: 7184903.5
-success trial 6/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 7184903.5
-
-trial 7/50
-fitting trial 7/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: 7821401.5
-main validation: 278831.5
-mse train: 7821401.5
-mse validation: 278831.5
-success trial 7/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 278831.5
-
-trial 8/50
-fitting trial 8/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: 32772761.5
-main validation: 1551287.5
-mse train: 32772761.5
-mse validation: 1551287.5
-success trial 8/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 1551287.5
-
-trial 9/50
-fitting trial 9/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: 542629913.5
-main validation: 7184903.5
-mse train: 542629913.5
-mse validation: 7184903.5
-success trial 9/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 7184903.5
-
-trial 10/50
-fitting trial 10/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: 35073613337.5
-main validation: 127470311.5
-mse train: 35073613337.5
-mse validation: 127470311.5
-success trial 10/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 127470311.5
-
-trial 11/50
-fitting trial 11/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: 140393410073.5
-main validation: 127470311.5
-mse train: 140393410073.5
-mse validation: 127470311.5
-success trial 11/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 127470311.5
-
-trial 12/50
-fitting trial 12/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: 8990721920537.5
-main validation: 2091189863.5
-mse train: 8990721920537.5
-mse validation: 2091189863.5
-success trial 12/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 2091189863.5
-
-trial 13/50
-fitting trial 13/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: 2247482461721.5
-main validation: 518474087.5
-mse train: 2247482461721.5
-mse validation: 518474087.5
-success trial 13/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 518474087.5
-
-trial 14/50
-fitting trial 14/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: 35964471889433.5
-main validation: 2091189863.5
-mse train: 35964471889433.5
-mse validation: 2091189863.5
-success trial 14/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 2091189863.5
-
-trial 15/50
-fitting trial 15/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: 35964471889433.5
-main validation: 2091189863.5
-mse train: 35964471889433.5
-mse validation: 2091189863.5
-success trial 15/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 2091189863.5
-
-trial 16/50
-fitting trial 16/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: 2301814918630937.0
-main validation: 33667314791.5
-mse train: 2301814918630937.0
-mse validation: 33667314791.5
-success trial 16/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 33667314791.5
-
-trial 17/50
-fitting trial 17/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: 2301814918630937.0
-main validation: 8399454311.5
-mse train: 2301814918630937.0
-mse validation: 8399454311.5
-success trial 17/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 8399454311.5
-
-trial 18/50
-fitting trial 18/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: 3.682919078745244e+16
-main validation: 33667314791.5
-mse train: 3.682919078745244e+16
-mse validation: 33667314791.5
-success trial 18/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 33667314791.5
-
-trial 19/50
-fitting trial 19/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: 1.3578344765073853e+18
-main validation: 2158603783271.5
-mse train: 1.3578344765073853e+18
-mse validation: 2158603783271.5
-success trial 19/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 2158603783271.5
-
-trial 20/50
-fitting trial 20/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: 3.584849080490331e+17
-main validation: 2158603783271.5
-mse train: 3.584849080490331e+17
-mse validation: 2158603783271.5
-success trial 20/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 2158603783271.5
-
-trial 21/50
-fitting trial 21/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: -6.413158315168952e+17
-main validation: 2158603783271.5
-mse train: -6.413158315168952e+17
-mse validation: 2158603783271.5
-success trial 21/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 2158603783271.5
-
-trial 22/50
-fitting trial 22/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: 2.3058170525788605e+18
-main validation: 34544342109287.5
-mse train: 2.3058170525788605e+18
-mse validation: 34544342109287.5
-success trial 22/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 34544342109287.5
-
-trial 23/50
-fitting trial 23/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: -103826539393510.5
-main validation: 138181823073383.5
-mse train: -103826539393510.5
-mse validation: 138181823073383.5
-success trial 23/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 138181823073383.5
-
-trial 24/50
-fitting trial 24/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: -207653078807014.5
-main validation: 138181823073383.5
-mse train: -207653078807014.5
-mse validation: 138181823073383.5
-success trial 24/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 138181823073383.5
-
-trial 25/50
-fitting trial 25/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: -415306157634022.5
-main validation: 552736201673831.4
-mse train: -415306157634022.5
-mse validation: 552736201673831.4
-success trial 25/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 552736201673831.4
-
-trial 26/50
-fitting trial 26/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: -1661224630596070.5
-main validation: 2210962625563751.2
-mse train: -1661224630596070.5
-mse validation: 2210962625563751.2
-success trial 26/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 2210962625563751.2
-
-trial 27/50
-fitting trial 27/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: -3322449261212135.0
-main validation: 8843886140099686.0
-mse train: -3322449261212135.0
-mse validation: 8843886140099686.0
-success trial 27/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 8843886140099686.0
-
-trial 28/50
-fitting trial 28/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: -6644898522444263.0
-main validation: 8843886140099686.0
-mse train: -6644898522444263.0
-mse validation: 8843886140099686.0
-success trial 28/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 8843886140099686.0
-
-trial 29/50
-fitting trial 29/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: -2.657959408983703e+16
-main validation: 3.5375615836195936e+16
-mse train: -2.657959408983703e+16
-mse validation: 3.5375615836195936e+16
-success trial 29/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 3.5375615836195936e+16
-
-trial 30/50
-fitting trial 30/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: -1.328979704490852e+16
-main validation: 8843886140099686.0
-mse train: -1.328979704490852e+16
-mse validation: 8843886140099686.0
-success trial 30/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 8843886140099686.0
-
-trial 31/50
-fitting trial 31/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: -1.063183763594081e+17
-main validation: 1.4150260589648598e+17
-mse train: -1.063183763594081e+17
-mse validation: 1.4150260589648598e+17
-success trial 31/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 1.4150260589648598e+17
-
-trial 32/50
-fitting trial 32/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: -1.063183763594081e+17
-main validation: 1.4150260589648598e+17
-mse train: -1.063183763594081e+17
-mse validation: 1.4150260589648598e+17
-success trial 32/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 1.4150260589648598e+17
-
-trial 33/50
-fitting trial 33/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: -2.1263675271883622e+17
-main validation: 5.6601070868945626e+17
-mse train: -2.1263675271883622e+17
-mse validation: 5.6601070868945626e+17
-success trial 33/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 5.6601070868945626e+17
-
-trial 34/50
-fitting trial 34/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: -5.3159188179694056e+16
-main validation: 3.5375615836195936e+16
-mse train: -5.3159188179694056e+16
-mse validation: 3.5375615836195936e+16
-success trial 34/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 3.5375615836195936e+16
-
-trial 35/50
-fitting trial 35/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: -4.2527350543769235e+17
-main validation: 5.6601070868945626e+17
-mse train: -4.2527350543769235e+17
-mse validation: 5.6601070868945626e+17
-success trial 35/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 5.6601070868945626e+17
-
-trial 36/50
-fitting trial 36/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: -2.1263675271883622e+17
-main validation: 1.4150260589648598e+17
-mse train: -2.1263675271883622e+17
-mse validation: 1.4150260589648598e+17
-success trial 36/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 1.4150260589648598e+17
-
-trial 37/50
-fitting trial 37/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: -8.505470108754047e+17
-main validation: 5.6601070868945626e+17
-mse train: -8.505470108754047e+17
-mse validation: 5.6601070868945626e+17
-success trial 37/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 5.6601070868945626e+17
-
-trial 38/50
-fitting trial 38/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: -8.505470108754047e+17
-main validation: 5.6601070868945626e+17
-mse train: -8.505470108754047e+17
-mse validation: 5.6601070868945626e+17
-success trial 38/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 5.6601070868945626e+17
-
-trial 39/50
-fitting trial 39/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: -1.7010940217508296e+18
-main validation: 2.2640434049649574e+18
-mse train: -1.7010940217508296e+18
-mse validation: 2.2640434049649574e+18
-success trial 39/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 2.2640434049649574e+18
-
-trial 40/50
-fitting trial 40/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: -8.505470108754047e+17
-main validation: 5.6601070868945626e+17
-mse train: -8.505470108754047e+17
-mse validation: 5.6601070868945626e+17
-success trial 40/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 5.6601070868945626e+17
-
-trial 41/50
-fitting trial 41/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: -1.7010940217508296e+18
-main validation: 2.2640434049649574e+18
-mse train: -1.7010940217508296e+18
-mse validation: 2.2640434049649574e+18
-success trial 41/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 2.2640434049649574e+18
-
-trial 42/50
-fitting trial 42/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: -6.960313224100901e+17
-main validation: -6.687868254934433e+17
-mse train: -6.960313224100901e+17
-mse validation: -6.687868254934433e+17
-success trial 42/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: -6.687868254934433e+17
-
-trial 43/50
-fitting trial 43/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: -3.4021880435016796e+18
-main validation: 2.2640434049649574e+18
-mse train: -3.4021880435016796e+18
-mse validation: 2.2640434049649574e+18
-success trial 43/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 2.2640434049649574e+18
-
-trial 44/50
-fitting trial 44/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: -6.960313224100901e+17
-main validation: 7.55139927104904e+17
-mse train: -6.960313224100901e+17
-mse validation: 7.55139927104904e+17
-success trial 44/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 7.55139927104904e+17
-
-trial 45/50
-fitting trial 45/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: -2.4769797950535725e+17
-main validation: 9.186887074047267e+16
-mse train: -2.4769797950535725e+17
-mse validation: 9.186887074047267e+16
-success trial 45/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 9.186887074047267e+16
-
-trial 46/50
-fitting trial 46/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: -2.4769797950535725e+17
-main validation: -6.687868254934433e+17
-mse train: -2.4769797950535725e+17
-mse validation: -6.687868254934433e+17
-success trial 46/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: -6.687868254934433e+17
-
-trial 47/50
-fitting trial 47/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: -6.845471433601152e+16
-main validation: -1.4771898010933297e+18
-mse train: -6.845471433601152e+16
-mse validation: -1.4771898010933297e+18
-success trial 47/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: -1.4771898010933297e+18
-
-trial 48/50
-fitting trial 48/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: -6.845471433601152e+16
-main validation: -1.4771898010933297e+18
-mse train: -6.845471433601152e+16
-mse validation: -1.4771898010933297e+18
-success trial 48/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: -1.4771898010933297e+18
-
-trial 49/50
-fitting trial 49/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: -3.4227357167995596e+16
-main validation: 9.186887074047267e+16
-mse train: -3.4227357167995596e+16
-mse validation: 9.186887074047267e+16
-success trial 49/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 9.186887074047267e+16
-
-trial 50/50
-fitting trial 50/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: -2.738188573441063e+17
-main validation: -3.7471773562887526e+17
-mse train: -2.738188573441063e+17
-mse validation: -3.7471773562887526e+17
-success trial 50/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: -3.7471773562887526e+17
-best hyperparams:
-{
-    &quot;multiplication_1&quot;: {
-        &quot;multiply_by&quot;: 1
-    },
-    &quot;multiplication_2&quot;: {
-        &quot;multiply_by&quot;: 2
-    },
-    &quot;multiplication_3&quot;: {
-        &quot;multiply_by&quot;: 2
-    }
-}
-33.89932703971863 seconds
-output: [  0   4   8  12  16  20  24  28  32  36  40  44  48  52  56  60  64  68
-  72  76  80  84  88  92  96 100 104 108 112 116 120 124 128 132 136 140
- 144 148 152 156 160 164 168 172 176 180 184 188 192 196 200 204 208 212
- 216 220 224 228 232 236 240 244 248 252 256 260 264 268 272 276 280 284
- 288 292 296 300 304 308 312 316 320 324 328 332 336 340 344 348 352 356
- 360 364 368 372 376 380 384 388 392 396]
-smallest mse: 9851.5
-best hyperparams: HyperparameterSamples([(&#39;multiplication_1__multiply_by&#39;, 1), (&#39;multiplication_2__multiply_by&#39;, 1), (&#39;multiplication_3__multiply_by&#39;, 1)])
-Resumable Pipeline:
-
-trial 1/50
-fitting trial 1/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: 57281.5
-main validation: 57281.5
-mse train: 57281.5
-mse validation: 57281.5
-success trial 1/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 57281.5
-
-trial 2/50
-fitting trial 2/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: 4193.5
-main validation: 4193.5
-mse train: 4193.5
-mse validation: 4193.5
-success trial 2/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 4193.5
-
-trial 3/50
-fitting trial 3/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: 4193.5
-main validation: 8223.5
-mse train: 4193.5
-mse validation: 8223.5
-success trial 3/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 8223.5
-
-trial 4/50
-fitting trial 4/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: 4193.5
-main validation: 8223.5
-mse train: 4193.5
-mse validation: 8223.5
-success trial 4/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 8223.5
-
-trial 5/50
-fitting trial 5/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: 4193.5
-main validation: 4193.5
-mse train: 4193.5
-mse validation: 4193.5
-success trial 5/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 4193.5
-
-trial 6/50
-fitting trial 6/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 2,
     &quot;multiplication_2__multiply_by&quot;: 1,
@@ -1715,16 +548,104 @@ hyperparams: {
 
 epoch 1/1
 main train: 5141.5
-main validation: 5411.5
+main validation: 28691.5
 mse train: 5141.5
-mse validation: 5411.5
-success trial 6/50 split 1/1
+mse validation: 28691.5
+success trial 2/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 2,
     &quot;multiplication_2__multiply_by&quot;: 1,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
- score: 5411.5
+ score: 28691.5
+
+trial 3/50
+fitting trial 3/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 143.5
+mse train: 4193.5
+mse validation: 143.5
+success trial 3/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 143.5
+
+trial 4/50
+fitting trial 4/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 5141.5
+main validation: 28691.5
+mse train: 5141.5
+mse validation: 28691.5
+success trial 4/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 28691.5
+
+trial 5/50
+fitting trial 5/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 5141.5
+main validation: 28691.5
+mse train: 5141.5
+mse validation: 28691.5
+success trial 5/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 28691.5
+
+trial 6/50
+fitting trial 6/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 143.5
+mse train: 4193.5
+mse validation: 143.5
+success trial 6/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 143.5
 
 trial 7/50
 fitting trial 7/50 split 1/1
@@ -1753,135 +674,25 @@ fitting trial 8/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 2,
     &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: 5141.5
-main validation: 5141.5
-mse train: 5141.5
-mse validation: 5141.5
-success trial 8/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 5141.5
-
-trial 9/50
-fitting trial 9/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: 5141.5
-main validation: 5141.5
-mse train: 5141.5
-mse validation: 5141.5
-success trial 9/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 5141.5
-
-trial 10/50
-fitting trial 10/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: 5141.5
-main validation: 5141.5
-mse train: 5141.5
-mse validation: 5141.5
-success trial 10/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 5141.5
-
-trial 11/50
-fitting trial 11/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: 5141.5
-main validation: 5411.5
-mse train: 5141.5
-mse validation: 5411.5
-success trial 11/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 5411.5
-
-trial 12/50
-fitting trial 12/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
 
 
 epoch 1/1
 main train: 57281.5
-main validation: 57281.5
+main validation: 278831.5
 mse train: 57281.5
-mse validation: 57281.5
-success trial 12/50 split 1/1
+mse validation: 278831.5
+success trial 8/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 2,
     &quot;multiplication_2__multiply_by&quot;: 2,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
- score: 57281.5
+ score: 278831.5
 
-trial 13/50
-fitting trial 13/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: 5141.5
-main validation: 5141.5
-mse train: 5141.5
-mse validation: 5141.5
-success trial 13/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 5141.5
-
-trial 14/50
-fitting trial 14/50 split 1/1
+trial 9/50
+fitting trial 9/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 2,
     &quot;multiplication_2__multiply_by&quot;: 1,
@@ -1891,60 +702,170 @@ hyperparams: {
 
 epoch 1/1
 main train: 4193.5
-main validation: 8223.5
+main validation: 143.5
 mse train: 4193.5
-mse validation: 8223.5
-success trial 14/50 split 1/1
+mse validation: 143.5
+success trial 9/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 2,
     &quot;multiplication_2__multiply_by&quot;: 1,
     &quot;multiplication_3__multiply_by&quot;: 1
 }
- score: 8223.5
+ score: 143.5
+
+trial 10/50
+fitting trial 10/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 143.5
+mse train: 4193.5
+mse validation: 143.5
+success trial 10/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 143.5
+
+trial 11/50
+fitting trial 11/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 5141.5
+main validation: 28691.5
+mse train: 5141.5
+mse validation: 28691.5
+success trial 11/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 28691.5
+
+trial 12/50
+fitting trial 12/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 5141.5
+main validation: 28691.5
+mse train: 5141.5
+mse validation: 28691.5
+success trial 12/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 28691.5
+
+trial 13/50
+fitting trial 13/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 57281.5
+main validation: 278831.5
+mse train: 57281.5
+mse validation: 278831.5
+success trial 13/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 278831.5
+
+trial 14/50
+fitting trial 14/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 143.5
+mse train: 4193.5
+mse validation: 143.5
+success trial 14/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 143.5
 
 trial 15/50
 fitting trial 15/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
 }
 
 
 epoch 1/1
 main train: 5141.5
-main validation: 5411.5
+main validation: 28691.5
 mse train: 5141.5
-mse validation: 5411.5
+mse validation: 28691.5
 success trial 15/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
 }
- score: 5411.5
+ score: 28691.5
 
 trial 16/50
 fitting trial 16/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_1__multiply_by&quot;: 2,
     &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
+    &quot;multiplication_3__multiply_by&quot;: 1
 }
 
 
 epoch 1/1
 main train: 5141.5
-main validation: 5141.5
+main validation: 28691.5
 mse train: 5141.5
-mse validation: 5141.5
+mse validation: 28691.5
 success trial 16/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_1__multiply_by&quot;: 2,
     &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
+    &quot;multiplication_3__multiply_by&quot;: 1
 }
- score: 5141.5
+ score: 28691.5
 
 trial 17/50
 fitting trial 17/50 split 1/1
@@ -1957,195 +878,85 @@ hyperparams: {
 
 epoch 1/1
 main train: 57281.5
-main validation: 57281.5
+main validation: 278831.5
 mse train: 57281.5
-mse validation: 57281.5
+mse validation: 278831.5
 success trial 17/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 2,
     &quot;multiplication_2__multiply_by&quot;: 2,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
- score: 57281.5
+ score: 278831.5
 
 trial 18/50
 fitting trial 18/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
 
 
 epoch 1/1
-main train: 57281.5
-main validation: 57281.5
-mse train: 57281.5
-mse validation: 57281.5
+main train: 4193.5
+main validation: 143.5
+mse train: 4193.5
+mse validation: 143.5
 success trial 18/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
- score: 57281.5
+ score: 143.5
 
 trial 19/50
 fitting trial 19/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 1,
     &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
+    &quot;multiplication_3__multiply_by&quot;: 2
 }
 
 
 epoch 1/1
-main train: 4193.5
-main validation: 4193.5
-mse train: 4193.5
-mse validation: 4193.5
+main train: 5141.5
+main validation: 28691.5
+mse train: 5141.5
+mse validation: 28691.5
 success trial 19/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 1,
     &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
+    &quot;multiplication_3__multiply_by&quot;: 2
 }
- score: 4193.5
+ score: 28691.5
 
 trial 20/50
 fitting trial 20/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
 }
 
 
 epoch 1/1
-main train: 4193.5
-main validation: 4193.5
-mse train: 4193.5
-mse validation: 4193.5
+main train: 5141.5
+main validation: 28691.5
+mse train: 5141.5
+mse validation: 28691.5
 success trial 20/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
 }
- score: 4193.5
+ score: 28691.5
 
 trial 21/50
 fitting trial 21/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: 5141.5
-main validation: 5141.5
-mse train: 5141.5
-mse validation: 5141.5
-success trial 21/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 5141.5
-
-trial 22/50
-fitting trial 22/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: 5141.5
-main validation: 5141.5
-mse train: 5141.5
-mse validation: 5141.5
-success trial 22/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 5141.5
-
-trial 23/50
-fitting trial 23/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: 5141.5
-main validation: 5141.5
-mse train: 5141.5
-mse validation: 5141.5
-success trial 23/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 5141.5
-
-trial 24/50
-fitting trial 24/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: 4193.5
-main validation: 8223.5
-mse train: 4193.5
-mse validation: 8223.5
-success trial 24/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 8223.5
-
-trial 25/50
-fitting trial 25/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: 4193.5
-main validation: 8223.5
-mse train: 4193.5
-mse validation: 8223.5
-success trial 25/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 8223.5
-
-trial 26/50
-fitting trial 26/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 1,
     &quot;multiplication_2__multiply_by&quot;: 1,
@@ -2158,7 +969,7 @@ main train: 10000.0
 main validation: 10000.0
 mse train: 10000.0
 mse validation: 10000.0
-success trial 26/50 split 1/1
+success trial 21/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 1,
     &quot;multiplication_2__multiply_by&quot;: 1,
@@ -2166,74 +977,52 @@ hyperparams: {
 }
  score: 10000.0
 
-trial 27/50
-fitting trial 27/50 split 1/1
+trial 22/50
+fitting trial 22/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
     &quot;multiplication_3__multiply_by&quot;: 1
 }
 
 
 epoch 1/1
 main train: 4193.5
-main validation: 4193.5
+main validation: 143.5
 mse train: 4193.5
-mse validation: 4193.5
-success trial 27/50 split 1/1
+mse validation: 143.5
+success trial 22/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
     &quot;multiplication_3__multiply_by&quot;: 1
 }
- score: 4193.5
+ score: 143.5
 
-trial 28/50
-fitting trial 28/50 split 1/1
+trial 23/50
+fitting trial 23/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
 
 
 epoch 1/1
-main train: 4193.5
-main validation: 8223.5
-mse train: 4193.5
-mse validation: 8223.5
-success trial 28/50 split 1/1
+main train: 57281.5
+main validation: 278831.5
+mse train: 57281.5
+mse validation: 278831.5
+success trial 23/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
- score: 8223.5
+ score: 278831.5
 
-trial 29/50
-fitting trial 29/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: 4193.5
-main validation: 4193.5
-mse train: 4193.5
-mse validation: 4193.5
-success trial 29/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 4193.5
-
-trial 30/50
-fitting trial 30/50 split 1/1
+trial 24/50
+fitting trial 24/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 2,
     &quot;multiplication_2__multiply_by&quot;: 2,
@@ -2243,16 +1032,148 @@ hyperparams: {
 
 epoch 1/1
 main train: 5141.5
-main validation: 5141.5
+main validation: 28691.5
 mse train: 5141.5
-mse validation: 5141.5
-success trial 30/50 split 1/1
+mse validation: 28691.5
+success trial 24/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 2,
     &quot;multiplication_2__multiply_by&quot;: 2,
     &quot;multiplication_3__multiply_by&quot;: 1
 }
- score: 5141.5
+ score: 28691.5
+
+trial 25/50
+fitting trial 25/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 143.5
+mse train: 4193.5
+mse validation: 143.5
+success trial 25/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 143.5
+
+trial 26/50
+fitting trial 26/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 5141.5
+main validation: 28691.5
+mse train: 5141.5
+mse validation: 28691.5
+success trial 26/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 28691.5
+
+trial 27/50
+fitting trial 27/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 57281.5
+main validation: 278831.5
+mse train: 57281.5
+mse validation: 278831.5
+success trial 27/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 278831.5
+
+trial 28/50
+fitting trial 28/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 143.5
+mse train: 4193.5
+mse validation: 143.5
+success trial 28/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 143.5
+
+trial 29/50
+fitting trial 29/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 143.5
+mse train: 4193.5
+mse validation: 143.5
+success trial 29/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 143.5
+
+trial 30/50
+fitting trial 30/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 143.5
+mse train: 4193.5
+mse validation: 143.5
+success trial 30/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 143.5
 
 trial 31/50
 fitting trial 31/50 split 1/1
@@ -2279,310 +1200,310 @@ hyperparams: {
 trial 32/50
 fitting trial 32/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_1__multiply_by&quot;: 1,
     &quot;multiplication_2__multiply_by&quot;: 1,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
 
 
 epoch 1/1
-main train: 5141.5
-main validation: 5411.5
-mse train: 5141.5
-mse validation: 5411.5
+main train: 4193.5
+main validation: 143.5
+mse train: 4193.5
+mse validation: 143.5
 success trial 32/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_1__multiply_by&quot;: 1,
     &quot;multiplication_2__multiply_by&quot;: 1,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
- score: 5411.5
+ score: 143.5
 
 trial 33/50
 fitting trial 33/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
     &quot;multiplication_3__multiply_by&quot;: 1
 }
 
 
 epoch 1/1
-main train: 4193.5
-main validation: 8223.5
-mse train: 4193.5
-mse validation: 8223.5
+main train: 5141.5
+main validation: 28691.5
+mse train: 5141.5
+mse validation: 28691.5
 success trial 33/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
     &quot;multiplication_3__multiply_by&quot;: 1
 }
- score: 8223.5
+ score: 28691.5
 
 trial 34/50
 fitting trial 34/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: 4193.5
-main validation: 8223.5
-mse train: 4193.5
-mse validation: 8223.5
-success trial 34/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 8223.5
-
-trial 35/50
-fitting trial 35/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
     &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
+    &quot;multiplication_3__multiply_by&quot;: 2
 }
 
 
 epoch 1/1
 main train: 5141.5
-main validation: 5141.5
+main validation: 28691.5
 mse train: 5141.5
-mse validation: 5141.5
+mse validation: 28691.5
+success trial 34/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 28691.5
+
+trial 35/50
+fitting trial 35/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 5141.5
+main validation: 28691.5
+mse train: 5141.5
+mse validation: 28691.5
 success trial 35/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_1__multiply_by&quot;: 1,
     &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
+    &quot;multiplication_3__multiply_by&quot;: 2
 }
- score: 5141.5
+ score: 28691.5
 
 trial 36/50
 fitting trial 36/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
     &quot;multiplication_3__multiply_by&quot;: 1
 }
 
 
 epoch 1/1
-main train: 4193.5
-main validation: 8223.5
-mse train: 4193.5
-mse validation: 8223.5
+main train: 5141.5
+main validation: 28691.5
+mse train: 5141.5
+mse validation: 28691.5
 success trial 36/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
     &quot;multiplication_3__multiply_by&quot;: 1
 }
- score: 8223.5
+ score: 28691.5
 
 trial 37/50
 fitting trial 37/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_1__multiply_by&quot;: 1,
     &quot;multiplication_2__multiply_by&quot;: 2,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
 
 
 epoch 1/1
-main train: 57281.5
-main validation: 57281.5
-mse train: 57281.5
-mse validation: 57281.5
+main train: 5141.5
+main validation: 28691.5
+mse train: 5141.5
+mse validation: 28691.5
 success trial 37/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_1__multiply_by&quot;: 1,
     &quot;multiplication_2__multiply_by&quot;: 2,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
- score: 57281.5
+ score: 28691.5
 
 trial 38/50
 fitting trial 38/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
 }
 
 
 epoch 1/1
-main train: 4193.5
-main validation: 8223.5
-mse train: 4193.5
-mse validation: 8223.5
+main train: 5141.5
+main validation: 28691.5
+mse train: 5141.5
+mse validation: 28691.5
 success trial 38/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
 }
- score: 8223.5
+ score: 28691.5
 
 trial 39/50
 fitting trial 39/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
 
 
 epoch 1/1
-main train: 4193.5
-main validation: 8223.5
-mse train: 4193.5
-mse validation: 8223.5
+main train: 5141.5
+main validation: 28691.5
+mse train: 5141.5
+mse validation: 28691.5
 success trial 39/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
- score: 8223.5
+ score: 28691.5
 
 trial 40/50
 fitting trial 40/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_1__multiply_by&quot;: 1,
     &quot;multiplication_2__multiply_by&quot;: 2,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
 
 
 epoch 1/1
-main train: 57281.5
-main validation: 57281.5
-mse train: 57281.5
-mse validation: 57281.5
+main train: 5141.5
+main validation: 28691.5
+mse train: 5141.5
+mse validation: 28691.5
 success trial 40/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_1__multiply_by&quot;: 1,
     &quot;multiplication_2__multiply_by&quot;: 2,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
- score: 57281.5
+ score: 28691.5
 
 trial 41/50
 fitting trial 41/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
 }
 
 
 epoch 1/1
 main train: 4193.5
-main validation: 4193.5
+main validation: 143.5
 mse train: 4193.5
-mse validation: 4193.5
+mse validation: 143.5
 success trial 41/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
 }
- score: 4193.5
+ score: 143.5
 
 trial 42/50
 fitting trial 42/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
 
 
 epoch 1/1
 main train: 5141.5
-main validation: 5411.5
+main validation: 28691.5
 mse train: 5141.5
-mse validation: 5411.5
+mse validation: 28691.5
 success trial 42/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
- score: 5411.5
+ score: 28691.5
 
 trial 43/50
 fitting trial 43/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_1__multiply_by&quot;: 1,
     &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
+    &quot;multiplication_3__multiply_by&quot;: 2
 }
 
 
 epoch 1/1
 main train: 5141.5
-main validation: 5141.5
+main validation: 28691.5
 mse train: 5141.5
-mse validation: 5141.5
+mse validation: 28691.5
 success trial 43/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_1__multiply_by&quot;: 1,
     &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
+    &quot;multiplication_3__multiply_by&quot;: 2
 }
- score: 5141.5
+ score: 28691.5
 
 trial 44/50
 fitting trial 44/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 1,
     &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 10000.0
+main validation: 10000.0
+mse train: 10000.0
+mse validation: 10000.0
+success trial 44/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 10000.0
+
+trial 45/50
+fitting trial 45/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
 
 
 epoch 1/1
 main train: 4193.5
-main validation: 8223.5
+main validation: 143.5
 mse train: 4193.5
-mse validation: 8223.5
-success trial 44/50 split 1/1
+mse validation: 143.5
+success trial 45/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 1,
     &quot;multiplication_2__multiply_by&quot;: 1,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
- score: 8223.5
-
-trial 45/50
-fitting trial 45/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: 5141.5
-main validation: 5141.5
-mse train: 5141.5
-mse validation: 5141.5
-success trial 45/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 5141.5
+ score: 143.5
 
 trial 46/50
 fitting trial 46/50 split 1/1
@@ -2611,101 +1532,101 @@ fitting trial 47/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 1,
     &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
+    &quot;multiplication_3__multiply_by&quot;: 1
 }
 
 
 epoch 1/1
-main train: 4193.5
-main validation: 8223.5
-mse train: 4193.5
-mse validation: 8223.5
+main train: 10000.0
+main validation: 10000.0
+mse train: 10000.0
+mse validation: 10000.0
 success trial 47/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 1,
     &quot;multiplication_2__multiply_by&quot;: 1,
-    &quot;multiplication_3__multiply_by&quot;: 2
+    &quot;multiplication_3__multiply_by&quot;: 1
 }
- score: 8223.5
+ score: 10000.0
 
 trial 48/50
 fitting trial 48/50 split 1/1
 hyperparams: {
     &quot;multiplication_1__multiply_by&quot;: 1,
     &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
-
-
-epoch 1/1
-main train: 4193.5
-main validation: 4193.5
-mse train: 4193.5
-mse validation: 4193.5
-success trial 48/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 1,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 1
-}
- score: 4193.5
-
-trial 49/50
-fitting trial 49/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
-
-
-epoch 1/1
-main train: 57281.5
-main validation: 57281.5
-mse train: 57281.5
-mse validation: 57281.5
-success trial 49/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 2,
-    &quot;multiplication_3__multiply_by&quot;: 2
-}
- score: 57281.5
-
-trial 50/50
-fitting trial 50/50 split 1/1
-hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
-    &quot;multiplication_2__multiply_by&quot;: 1,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
 
 
 epoch 1/1
 main train: 5141.5
-main validation: 5411.5
+main validation: 28691.5
 mse train: 5141.5
-mse validation: 5411.5
-success trial 50/50 split 1/1
+mse validation: 28691.5
+success trial 48/50 split 1/1
 hyperparams: {
-    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 28691.5
+
+trial 49/50
+fitting trial 49/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
     &quot;multiplication_2__multiply_by&quot;: 1,
     &quot;multiplication_3__multiply_by&quot;: 2
 }
- score: 5411.5
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 143.5
+mse train: 4193.5
+mse validation: 143.5
+success trial 49/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 143.5
+
+trial 50/50
+fitting trial 50/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 5141.5
+main validation: 28691.5
+mse train: 5141.5
+mse validation: 28691.5
+success trial 50/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 28691.5
 best hyperparams:
 {
     &quot;multiplication_1&quot;: {
         &quot;multiply_by&quot;: 1
     },
     &quot;multiplication_2&quot;: {
-        &quot;multiply_by&quot;: 2
+        &quot;multiply_by&quot;: 1
     },
     &quot;multiplication_3&quot;: {
-        &quot;multiply_by&quot;: 1
+        &quot;multiply_by&quot;: 2
     }
 }
-15.940355062484741 seconds
+31.010612964630127 seconds
 output: [  0   2   4   6   8  10  12  14  16  18  20  22  24  26  28  30  32  34
   36  38  40  42  44  46  48  50  52  54  56  58  60  62  64  66  68  70
   72  74  76  78  80  82  84  86  88  90  92  94  96  98 100 102 104 106
@@ -2713,6 +1634,1128 @@ output: [  0   2   4   6   8  10  12  14  16  18  20  22  24  26  28  30  32  34
  144 146 148 150 152 154 156 158 160 162 164 166 168 170 172 174 176 178
  180 182 184 186 188 190 192 194 196 198]
 smallest mse: 3383.5
+best hyperparams: HyperparameterSamples([(&#39;multiplication_1__multiply_by&#39;, 1), (&#39;multiplication_2__multiply_by&#39;, 1), (&#39;multiplication_3__multiply_by&#39;, 1)])
+Resumable Pipeline:
+
+trial 1/50
+fitting trial 1/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 4193.5
+mse train: 4193.5
+mse validation: 4193.5
+success trial 1/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 4193.5
+
+trial 2/50
+fitting trial 2/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 4193.5
+mse train: 4193.5
+mse validation: 4193.5
+success trial 2/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 4193.5
+
+trial 3/50
+fitting trial 3/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 57281.5
+main validation: 2751.5
+mse train: 57281.5
+mse validation: 2751.5
+success trial 3/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 2751.5
+
+trial 4/50
+fitting trial 4/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 4193.5
+mse train: 4193.5
+mse validation: 4193.5
+success trial 4/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 4193.5
+
+trial 5/50
+fitting trial 5/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 5141.5
+main validation: 5411.5
+mse train: 5141.5
+mse validation: 5411.5
+success trial 5/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 5411.5
+
+trial 6/50
+fitting trial 6/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 57281.5
+main validation: 2751.5
+mse train: 57281.5
+mse validation: 2751.5
+success trial 6/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 2751.5
+
+trial 7/50
+fitting trial 7/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 57281.5
+main validation: 2751.5
+mse train: 57281.5
+mse validation: 2751.5
+success trial 7/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 2751.5
+
+trial 8/50
+fitting trial 8/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 4193.5
+mse train: 4193.5
+mse validation: 4193.5
+success trial 8/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 4193.5
+
+trial 9/50
+fitting trial 9/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 5141.5
+main validation: 5411.5
+mse train: 5141.5
+mse validation: 5411.5
+success trial 9/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 5411.5
+
+trial 10/50
+fitting trial 10/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 5141.5
+main validation: 5411.5
+mse train: 5141.5
+mse validation: 5411.5
+success trial 10/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 5411.5
+
+trial 11/50
+fitting trial 11/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 5141.5
+main validation: 5411.5
+mse train: 5141.5
+mse validation: 5411.5
+success trial 11/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 5411.5
+
+trial 12/50
+fitting trial 12/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 5141.5
+main validation: 5411.5
+mse train: 5141.5
+mse validation: 5411.5
+success trial 12/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 5411.5
+
+trial 13/50
+fitting trial 13/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 57281.5
+main validation: 2751.5
+mse train: 57281.5
+mse validation: 2751.5
+success trial 13/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 2751.5
+
+trial 14/50
+fitting trial 14/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 8223.5
+mse train: 4193.5
+mse validation: 8223.5
+success trial 14/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 8223.5
+
+trial 15/50
+fitting trial 15/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 4193.5
+mse train: 4193.5
+mse validation: 4193.5
+success trial 15/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 4193.5
+
+trial 16/50
+fitting trial 16/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 4193.5
+mse train: 4193.5
+mse validation: 4193.5
+success trial 16/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 4193.5
+
+trial 17/50
+fitting trial 17/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 10000.0
+main validation: 10000.0
+mse train: 10000.0
+mse validation: 10000.0
+success trial 17/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 10000.0
+
+trial 18/50
+fitting trial 18/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 5141.5
+main validation: 5411.5
+mse train: 5141.5
+mse validation: 5411.5
+success trial 18/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 5411.5
+
+trial 19/50
+fitting trial 19/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 8223.5
+mse train: 4193.5
+mse validation: 8223.5
+success trial 19/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 8223.5
+
+trial 20/50
+fitting trial 20/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 10000.0
+main validation: 10000.0
+mse train: 10000.0
+mse validation: 10000.0
+success trial 20/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 10000.0
+
+trial 21/50
+fitting trial 21/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 4193.5
+mse train: 4193.5
+mse validation: 4193.5
+success trial 21/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 4193.5
+
+trial 22/50
+fitting trial 22/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 8223.5
+mse train: 4193.5
+mse validation: 8223.5
+success trial 22/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 8223.5
+
+trial 23/50
+fitting trial 23/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 57281.5
+main validation: 2751.5
+mse train: 57281.5
+mse validation: 2751.5
+success trial 23/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 2751.5
+
+trial 24/50
+fitting trial 24/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 4193.5
+mse train: 4193.5
+mse validation: 4193.5
+success trial 24/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 4193.5
+
+trial 25/50
+fitting trial 25/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 8223.5
+mse train: 4193.5
+mse validation: 8223.5
+success trial 25/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 8223.5
+
+trial 26/50
+fitting trial 26/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 5141.5
+main validation: 5411.5
+mse train: 5141.5
+mse validation: 5411.5
+success trial 26/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 5411.5
+
+trial 27/50
+fitting trial 27/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 10000.0
+main validation: 10000.0
+mse train: 10000.0
+mse validation: 10000.0
+success trial 27/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 10000.0
+
+trial 28/50
+fitting trial 28/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 5141.5
+main validation: 5141.5
+mse train: 5141.5
+mse validation: 5141.5
+success trial 28/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 5141.5
+
+trial 29/50
+fitting trial 29/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 10000.0
+main validation: 10000.0
+mse train: 10000.0
+mse validation: 10000.0
+success trial 29/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 10000.0
+
+trial 30/50
+fitting trial 30/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 10000.0
+main validation: 10000.0
+mse train: 10000.0
+mse validation: 10000.0
+success trial 30/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 10000.0
+
+trial 31/50
+fitting trial 31/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 10000.0
+main validation: 10000.0
+mse train: 10000.0
+mse validation: 10000.0
+success trial 31/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 10000.0
+
+trial 32/50
+fitting trial 32/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 5141.5
+main validation: 5141.5
+mse train: 5141.5
+mse validation: 5141.5
+success trial 32/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 5141.5
+
+trial 33/50
+fitting trial 33/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 57281.5
+main validation: 2751.5
+mse train: 57281.5
+mse validation: 2751.5
+success trial 33/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 2751.5
+
+trial 34/50
+fitting trial 34/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 4193.5
+mse train: 4193.5
+mse validation: 4193.5
+success trial 34/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 4193.5
+
+trial 35/50
+fitting trial 35/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 5141.5
+main validation: 5411.5
+mse train: 5141.5
+mse validation: 5411.5
+success trial 35/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 5411.5
+
+trial 36/50
+fitting trial 36/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 57281.5
+main validation: 2751.5
+mse train: 57281.5
+mse validation: 2751.5
+success trial 36/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 2751.5
+
+trial 37/50
+fitting trial 37/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 5141.5
+main validation: 5411.5
+mse train: 5141.5
+mse validation: 5411.5
+success trial 37/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 5411.5
+
+trial 38/50
+fitting trial 38/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 10000.0
+main validation: 10000.0
+mse train: 10000.0
+mse validation: 10000.0
+success trial 38/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 10000.0
+
+trial 39/50
+fitting trial 39/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 57281.5
+main validation: 2751.5
+mse train: 57281.5
+mse validation: 2751.5
+success trial 39/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 2751.5
+
+trial 40/50
+fitting trial 40/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 8223.5
+mse train: 4193.5
+mse validation: 8223.5
+success trial 40/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 8223.5
+
+trial 41/50
+fitting trial 41/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 5141.5
+main validation: 5141.5
+mse train: 5141.5
+mse validation: 5141.5
+success trial 41/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 5141.5
+
+trial 42/50
+fitting trial 42/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 10000.0
+main validation: 10000.0
+mse train: 10000.0
+mse validation: 10000.0
+success trial 42/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 10000.0
+
+trial 43/50
+fitting trial 43/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 8223.5
+mse train: 4193.5
+mse validation: 8223.5
+success trial 43/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 8223.5
+
+trial 44/50
+fitting trial 44/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 10000.0
+main validation: 10000.0
+mse train: 10000.0
+mse validation: 10000.0
+success trial 44/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 10000.0
+
+trial 45/50
+fitting trial 45/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 4193.5
+mse train: 4193.5
+mse validation: 4193.5
+success trial 45/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 4193.5
+
+trial 46/50
+fitting trial 46/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 10000.0
+main validation: 10000.0
+mse train: 10000.0
+mse validation: 10000.0
+success trial 46/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 10000.0
+
+trial 47/50
+fitting trial 47/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 10000.0
+main validation: 10000.0
+mse train: 10000.0
+mse validation: 10000.0
+success trial 47/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 1,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 10000.0
+
+trial 48/50
+fitting trial 48/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 8223.5
+mse train: 4193.5
+mse validation: 8223.5
+success trial 48/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 8223.5
+
+trial 49/50
+fitting trial 49/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+
+
+epoch 1/1
+main train: 4193.5
+main validation: 8223.5
+mse train: 4193.5
+mse validation: 8223.5
+success trial 49/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 1,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 1
+}
+ score: 8223.5
+
+trial 50/50
+fitting trial 50/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+
+
+epoch 1/1
+main train: 57281.5
+main validation: 2751.5
+mse train: 57281.5
+mse validation: 2751.5
+success trial 50/50 split 1/1
+hyperparams: {
+    &quot;multiplication_1__multiply_by&quot;: 2,
+    &quot;multiplication_2__multiply_by&quot;: 2,
+    &quot;multiplication_3__multiply_by&quot;: 2
+}
+ score: 2751.5
+best hyperparams:
+{
+    &quot;multiplication_1&quot;: {
+        &quot;multiply_by&quot;: 2
+    },
+    &quot;multiplication_2&quot;: {
+        &quot;multiply_by&quot;: 2
+    },
+    &quot;multiplication_3&quot;: {
+        &quot;multiply_by&quot;: 2
+    }
+}
+16.561289072036743 seconds
+output: [  0   8  16  24  32  40  48  56  64  72  80  88  96 104 112 120 128 136
+ 144 152 160 168 176 184 192 200 208 216 224 232 240 248 256 264 272 280
+ 288 296 304 312 320 328 336 344 352 360 368 376 384 392 400 408 416 424
+ 432 440 448 456 464 472 480 488 496 504 512 520 528 536 544 552 560 568
+ 576 584 592 600 608 616 624 632 640 648 656 664 672 680 688 696 704 712
+ 720 728 736 744 752 760 768 776 784 792]
+smallest mse: 101591.5
 best hyperparams: HyperparameterSamples([(&#39;multiplication_1__multiply_by&#39;, 1), (&#39;multiplication_2__multiply_by&#39;, 1), (&#39;multiplication_3__multiply_by&#39;, 1)])
 </pre></div>
 </div>
@@ -2827,7 +2870,7 @@ best hyperparams: HyperparameterSamples([(&#39;multiplication_1__multiply_by&#39
     <span class="n">main</span><span class="p">(</span><span class="n">DEFAULT_CACHE_FOLDER</span><span class="p">,</span> <span class="n">sleep_time</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  49.887 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  47.654 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-caching-plot-auto-ml-checkpoint-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/58ad843798d2fcd4f94ad11ae5716614/plot_auto_ml_checkpoint.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_auto_ml_checkpoint.py</span></code></a></p>
