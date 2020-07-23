@@ -54,13 +54,18 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search"  style="background: #F80" >
+        <div class="wy-side-nav-search"  style="background: #20232a" >
           
 
           
-            <a href="/en/" class="icon icon-home"> Neuraxio</a>/<a href="index.html" > Neuraxle
+            
+              <a href="https://www.neuraxio.com/" class="icon">
+                <img src="_static/neuraxio.png" class="logo" alt="Logo"/>
+              </a>
           
 
+          
+            <a href="https://www.neuraxio.com/" class="icon icon-home"> Neuraxio</a>/<a href="index.html" > Neuraxle
           
           </a>
 
@@ -268,7 +273,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rest_api_serving.html#Import-Packages">Import Packages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rest_api_serving.html#Load-your-Dataset">Load your Dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rest_api_serving.html#Create-your-Pipeline">Create your Pipeline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rest_api_serving.html#Let’s-Train-and-Test">Let’s Train and Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_api_serving.html#Let's-Train-and-Test">Let’s Train and Test</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rest_api_serving.html#Deploy-the-Pipeline">Deploy the Pipeline</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="rest_api_serving.html#Write-a-step-to-decode-the-accepted-JSON-as-data-inputs">Write a step to decode the accepted JSON as data inputs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rest_api_serving.html#Write-a-step-to-encode-the-returned-JSON-response">Write a step to encode the returned JSON response</a></li>
@@ -451,7 +456,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="/en/"> Neuraxio</a>/<a href="index.html">Neuraxle</a>
+          <a href="https://www.neuraxio.com/"> Neuraxio</a>/<a href="index.html">Neuraxle</a>
         
       </nav>
 
@@ -710,8 +715,8 @@ div.rendered_html tbody tr:hover {
 <h2>Lifecycle<a class="headerlink" href="#Lifecycle" title="Permalink to this headline">¶</a></h2>
 <p><img alt="Machine Learning Lifecycle in Neuraxle" src="_images/neuraxle_machine_learning_lifecycle1.png" /></p>
 <ol class="arabic simple">
-<li><p><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.BaseStep">BaseStep.__init__(hyperparams, hyperparams_space, name)</a>: This is where you initialize all of your props, and fitted state.</p></li>
-<li><p><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._HasHyperparams.set_hyperparams">set_hyperparams(hyperperparams)</a>:</p></li>
+<li><p><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.BaseStep">BaseStep.**init**(hyperparams, hyperparams_space, name)</a>: This is where you initialize all of your props, and fitted state.</p></li>
+<li><p><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._HasHyperparams.set_hyperparams">set_hyperparams(hyperperparams)</a>: Configure your steps’ hyperparameters before initializing it.</p></li>
 <li><p><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.TransformerStep.setup">setup(context)</a>: Initialize the step before it runs. Only from here and not before that heavy things should be created (e.g.: things inside GPU), and NOT in the constructor.</p></li>
 <li><p><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._FittableStep.fit">fit(data_inputs, expected_outputs)</a>: Fit step with the given data inputs, and expected outputs.</p></li>
 <li><p><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._TransformerStep.transform">transform(data_inputs)</a>: Transform given data inputs.</p></li>
@@ -725,7 +730,7 @@ div.rendered_html tbody tr:hover {
 <p>The cool thing about this is that you don’t even need the source code to load your steps. This enables a lot of thing like parallel processing, and distributed computing.</p>
 <div class="section" id="Saver">
 <h3>Saver<a class="headerlink" href="#Saver" title="Permalink to this headline">¶</a></h3>
-<p>Some savers just save parts of objects, some save it all or what remains. The <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.JoblibStepSaver">JoblibStepSaver</a><strong>has to be called last</strong> because it needs a stripped version of the step. You might need to create your own saver if you are using a step that is not serializable. For instance, this will most likely happen if the step is a deep learning model.</p>
+<p>Some savers just save parts of objects, some save it all or what remains. The <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.JoblibStepSaver">JoblibStepSaver</a> <strong>has to be called last</strong> because it needs a stripped version of the step. You might need to create your own saver if you are using a step that is not serializable. For instance, this will most likely happen if the step is a deep learning model.</p>
 <p>Fortunately, we have already built a set of savers for tensorflow 1, and 2 in <a class="reference external" href="https://github.com/Neuraxio/Neuraxle-TensorFlow">Neuraxle-Tensorflow</a>. We plan to do the same thing for Pytorch soon.</p>
 </div>
 <div class="section" id="Custom-Saver-Example">
