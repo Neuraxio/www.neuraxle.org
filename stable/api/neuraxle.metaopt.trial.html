@@ -44,7 +44,21 @@
     <link rel="prev" title="neuraxle.metaopt.auto_ml" href="neuraxle.metaopt.auto_ml.html" /> 
 
   <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
-
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search > a {
+      color: #DB1865;
+    }
+    .wy-side-nav-search > div.version {
+      color: #DB1865;
+    }
+    .wy-side-nav-search, .wy-nav-top {
+      color: #DB1865;
+    }
+    /* Sidebar */
+    .wy-nav-side {
+    }
+  </style>
 </head>
 
 <body class="wy-body-for-nav">
@@ -54,13 +68,13 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search"  style="background: #20232a" >
+        <div class="wy-side-nav-search"  style="background: #F7F7F7" >
           
 
           
             
               <a href="https://www.neuraxio.com/" class="icon">
-                <img src="../_static/neuraxio.png" class="logo" alt="Logo"/>
+                <img src="../_static/neuraxle_logo.png" class="logo" alt="Logo"/>
               </a>
           
 
@@ -579,7 +593,7 @@ Each trial split contains both the training set results, and the validation set 
 </div>
 <dl class="method">
 <dt id="neuraxle.metaopt.trial.Trial._get_trial_hash">
-<code class="descname">_get_trial_hash</code><span class="sig-paren">(</span><em>hp_dict: Dict</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/metaopt/trial.py#L199"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial._get_trial_hash" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_get_trial_hash</code><span class="sig-paren">(</span><em>hp_dict: Dict[KT, VT]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/metaopt/trial.py#L199"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial._get_trial_hash" title="Permalink to this definition">¶</a></dt>
 <dd><p>Hash hyperparams with md5 to create a trial hash.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -593,7 +607,7 @@ Each trial split contains both the training set results, and the validation set 
 
 <dl class="staticmethod">
 <dt id="neuraxle.metaopt.trial.Trial.from_json">
-<em class="property">static </em><code class="descname">from_json</code><span class="sig-paren">(</span><em>trial_json: Dict</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.Trial<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/metaopt/trial.py#L221"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.from_json" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">from_json</code><span class="sig-paren">(</span><em>trial_json: Dict[KT, VT]</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.Trial<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/metaopt/trial.py#L221"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.from_json" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -720,7 +734,7 @@ A trial has one or many split when the validation splitter function is kfold_cro
 
 <dl class="class">
 <dt id="neuraxle.metaopt.trial.TrialSplit">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.trial.</code><code class="descname">TrialSplit</code><span class="sig-paren">(</span><em>split_number</em>, <em>main_metric_name: str</em>, <em>status: Optional[neuraxle.metaopt.trial.TRIAL_STATUS] = None</em>, <em>error: Exception = None</em>, <em>error_traceback: str = None</em>, <em>metrics_results: Dict = None</em>, <em>start_time: datetime.datetime = None</em>, <em>end_time: datetime.datetime = None</em>, <em>pipeline: neuraxle.base.BaseStep = None</em>, <em>delete_pipeline_on_completion: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/metaopt/trial.py#L262"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.trial.</code><code class="descname">TrialSplit</code><span class="sig-paren">(</span><em>split_number</em>, <em>main_metric_name: str</em>, <em>status: Optional[neuraxle.metaopt.trial.TRIAL_STATUS] = None</em>, <em>error: Exception = None</em>, <em>error_traceback: str = None</em>, <em>metrics_results: Dict[KT</em>, <em>VT] = None</em>, <em>start_time: datetime.datetime = None</em>, <em>end_time: datetime.datetime = None</em>, <em>pipeline: neuraxle.base.BaseStep = None</em>, <em>delete_pipeline_on_completion: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/metaopt/trial.py#L262"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit" title="Permalink to this definition">¶</a></dt>
 <dd><p>One split of a trial.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -785,7 +799,7 @@ A trial has one or many split when the validation splitter function is kfold_cro
 
 <dl class="staticmethod">
 <dt id="neuraxle.metaopt.trial.TrialSplit.from_json">
-<em class="property">static </em><code class="descname">from_json</code><span class="sig-paren">(</span><em>trial_json: Dict</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.TrialSplit<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/metaopt/trial.py#L447"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.from_json" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">from_json</code><span class="sig-paren">(</span><em>trial_json: Dict[KT, VT]</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.TrialSplit<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/metaopt/trial.py#L447"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.from_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a trial split object from json.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1051,7 +1065,6 @@ A trial has one or many split when the validation splitter function is kfold_cro
           SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
-
   
   
     

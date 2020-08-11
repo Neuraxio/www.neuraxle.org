@@ -44,7 +44,21 @@
     <link rel="prev" title="neuraxle.metaopt.callbacks" href="neuraxle.metaopt.callbacks.html" /> 
 
   <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
-
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search > a {
+      color: #DB1865;
+    }
+    .wy-side-nav-search > div.version {
+      color: #DB1865;
+    }
+    .wy-side-nav-search, .wy-nav-top {
+      color: #DB1865;
+    }
+    /* Sidebar */
+    .wy-nav-side {
+    }
+  </style>
 </head>
 
 <body class="wy-body-for-nav">
@@ -54,13 +68,13 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search"  style="background: #20232a" >
+        <div class="wy-side-nav-search"  style="background: #F7F7F7" >
           
 
           
             
               <a href="https://www.neuraxio.com/" class="icon">
-                <img src="../_static/neuraxio.png" class="logo" alt="Logo"/>
+                <img src="../_static/neuraxle_logo.png" class="logo" alt="Logo"/>
               </a>
           
 
@@ -565,23 +579,8 @@ after their corresponding training split.</p>
 <p>Notes: The data supported by this cross validation is nd.array of shape [batch_size, total_time_steps, n_features].
 The array can have an arbitrary number of dimension, but the time series axis is currently limited to <cite>axis=1</cite>.</p>
 <dl class="attribute">
-<dt id="neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidationWrapper._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidationWrapper._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidationWrapper._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidationWrapper._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidationWrapper._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidationWrapper._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidationWrapper._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidationWrapper._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidationWrapper._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidationWrapper._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -639,7 +638,7 @@ The array can have an arbitrary number of dimension, but the time series axis is
 
 <dl class="method">
 <dt id="neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidationWrapper.validation_split">
-<code class="descname">validation_split</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; List<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/metaopt/random.py#L497"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidationWrapper.validation_split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">validation_split</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; List[T]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/metaopt/random.py#L497"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.AnchoredWalkForwardTimeSeriesCrossValidationWrapper.validation_split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Split the data into validation inputs, validation expected outputs.</p>
 <p>Notes: The data supported by this cross validation is nd.array of shape [batch_size, total_time_steps, n_features].
 The array can have an arbitrary number of dimension, but the time series axis is currently limited to <cite>axis=1</cite>.</p>
@@ -662,23 +661,8 @@ The array can have an arbitrary number of dimension, but the time series axis is
 <dt id="neuraxle.metaopt.random.BaseCrossValidationWrapper">
 <em class="property">class </em><code class="descclassname">neuraxle.metaopt.random.</code><code class="descname">BaseCrossValidationWrapper</code><span class="sig-paren">(</span><em>wrapped=None</em>, <em>scoring_function=&lt;function r2_score&gt;</em>, <em>joiner=NumpyConcatenateOuterBatch( 	name=NumpyConcatenateOuterBatch</em>, <em>hyperparameters=HyperparameterSamples() )</em>, <em>cache_folder_when_no_handle=None</em>, <em>split_data_container_during_fit=True</em>, <em>predict_after_fit=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/metaopt/random.py#L74"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.BaseCrossValidationWrapper" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
-<dt id="neuraxle.metaopt.random.BaseCrossValidationWrapper._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.BaseCrossValidationWrapper._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.random.BaseCrossValidationWrapper._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.BaseCrossValidationWrapper._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.random.BaseCrossValidationWrapper._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.metaopt.random.BaseCrossValidationWrapper._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.random.BaseCrossValidationWrapper._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.BaseCrossValidationWrapper._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.metaopt.random.BaseCrossValidationWrapper._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.metaopt.random.BaseCrossValidationWrapper._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -743,23 +727,8 @@ It has a scoring function to calculate the score for the validation split.</p>
 :class`neuraxle.metaopt.random.WalkForwardTimeSeriesCrossValidationWrapper`</p>
 </div>
 <dl class="attribute">
-<dt id="neuraxle.metaopt.random.BaseValidation._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.BaseValidation._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.random.BaseValidation._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.BaseValidation._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.random.BaseValidation._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.metaopt.random.BaseValidation._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.random.BaseValidation._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.BaseValidation._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.metaopt.random.BaseValidation._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.metaopt.random.BaseValidation._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -773,23 +742,8 @@ It has a scoring function to calculate the score for the validation split.</p>
 <dt id="neuraxle.metaopt.random.KFoldCrossValidationWrapper">
 <em class="property">class </em><code class="descclassname">neuraxle.metaopt.random.</code><code class="descname">KFoldCrossValidationWrapper</code><span class="sig-paren">(</span><em>scoring_function=&lt;function r2_score&gt;</em>, <em>k_fold=3</em>, <em>joiner=NumpyConcatenateOuterBatch( 	name=NumpyConcatenateOuterBatch</em>, <em>hyperparameters=HyperparameterSamples() )</em>, <em>cache_folder_when_no_handle=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/metaopt/random.py#L354"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.KFoldCrossValidationWrapper" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
-<dt id="neuraxle.metaopt.random.KFoldCrossValidationWrapper._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.KFoldCrossValidationWrapper._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.random.KFoldCrossValidationWrapper._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.KFoldCrossValidationWrapper._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.random.KFoldCrossValidationWrapper._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.metaopt.random.KFoldCrossValidationWrapper._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.random.KFoldCrossValidationWrapper._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.KFoldCrossValidationWrapper._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.metaopt.random.KFoldCrossValidationWrapper._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.metaopt.random.KFoldCrossValidationWrapper._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -846,23 +800,8 @@ It has a scoring function to calculate the score for the validation split.</p>
 :class`neuraxle.steps.data.DataShuffler`</p>
 </div>
 <dl class="attribute">
-<dt id="neuraxle.metaopt.random.ValidationSplitWrapper._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.ValidationSplitWrapper._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.random.ValidationSplitWrapper._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.ValidationSplitWrapper._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.random.ValidationSplitWrapper._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.metaopt.random.ValidationSplitWrapper._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.random.ValidationSplitWrapper._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.ValidationSplitWrapper._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.metaopt.random.ValidationSplitWrapper._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.metaopt.random.ValidationSplitWrapper._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -959,7 +898,7 @@ Calculate the scores using the validation split.</p>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.random.ValidationSplitWrapper.split">
-<code class="descname">split</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; Tuple[List, List, List, List]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/metaopt/random.py#L289"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.ValidationSplitWrapper.split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">split</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; Tuple[List[T], List[T], List[T], List[T]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/metaopt/random.py#L289"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.ValidationSplitWrapper.split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Split data inputs, and expected outputs into a training set, and a validation set.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -990,7 +929,7 @@ Calculate the scores using the validation split.</p>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.random.ValidationSplitWrapper.train_split">
-<code class="descname">train_split</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span> &#x2192; List<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/metaopt/random.py#L309"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.ValidationSplitWrapper.train_split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">train_split</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span> &#x2192; List[T]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/metaopt/random.py#L309"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.ValidationSplitWrapper.train_split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Split training set.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1004,7 +943,7 @@ Calculate the scores using the validation split.</p>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.random.ValidationSplitWrapper.validation_split">
-<code class="descname">validation_split</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span> &#x2192; List<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/metaopt/random.py#L318"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.ValidationSplitWrapper.validation_split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">validation_split</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span> &#x2192; List[T]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/metaopt/random.py#L318"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.ValidationSplitWrapper.validation_split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Split validation set.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1029,23 +968,8 @@ a certain time delay (if padding is set) after their corresponding training spli
 <p>Notes: The data supported by this cross validation is nd.array of shape [batch_size, total_time_steps, n_features].
 The array can have an arbitrary number of dimension, but the time series axis is currently limited to <cite>axis=1</cite>.</p>
 <dl class="attribute">
-<dt id="neuraxle.metaopt.random.WalkForwardTimeSeriesCrossValidationWrapper._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.WalkForwardTimeSeriesCrossValidationWrapper._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.random.WalkForwardTimeSeriesCrossValidationWrapper._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.WalkForwardTimeSeriesCrossValidationWrapper._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.random.WalkForwardTimeSeriesCrossValidationWrapper._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.metaopt.random.WalkForwardTimeSeriesCrossValidationWrapper._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.random.WalkForwardTimeSeriesCrossValidationWrapper._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.random.WalkForwardTimeSeriesCrossValidationWrapper._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.metaopt.random.WalkForwardTimeSeriesCrossValidationWrapper._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.metaopt.random.WalkForwardTimeSeriesCrossValidationWrapper._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1121,7 +1045,6 @@ The array can have an arbitrary number of dimension, but the time series axis is
           SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
-
   
   
     

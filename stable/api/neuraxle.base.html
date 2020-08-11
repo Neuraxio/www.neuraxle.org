@@ -44,7 +44,21 @@
     <link rel="prev" title="Complete API Documentation" href="../api.html" /> 
 
   <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
-
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search > a {
+      color: #DB1865;
+    }
+    .wy-side-nav-search > div.version {
+      color: #DB1865;
+    }
+    .wy-side-nav-search, .wy-nav-top {
+      color: #DB1865;
+    }
+    /* Sidebar */
+    .wy-nav-side {
+    }
+  </style>
 </head>
 
 <body class="wy-body-for-nav">
@@ -54,13 +68,13 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search"  style="background: #20232a" >
+        <div class="wy-side-nav-search"  style="background: #F7F7F7" >
           
 
           
             
               <a href="https://www.neuraxio.com/" class="icon">
-                <img src="../_static/neuraxio.png" class="logo" alt="Logo"/>
+                <img src="../_static/neuraxle_logo.png" class="logo" alt="Logo"/>
               </a>
           
 
@@ -614,28 +628,13 @@ to hash hyperparameters, and data inputs ids together after each transform.</p>
 <p><a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
 </div>
 <dl class="attribute">
-<dt id="neuraxle.base.BaseHasher._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseHasher._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.BaseHasher._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseHasher._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.BaseHasher._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.base.BaseHasher._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.BaseHasher._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseHasher._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.base.BaseHasher._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.base.BaseHasher._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.base.BaseHasher.hash">
-<code class="descname">hash</code><span class="sig-paren">(</span><em>current_ids: List[str], hyperparameters: neuraxle.hyperparams.space.HyperparameterSamples, data_inputs: Iterable</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L72"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseHasher.hash" title="Permalink to this definition">¶</a></dt>
+<code class="descname">hash</code><span class="sig-paren">(</span><em>current_ids: List[str], hyperparameters: neuraxle.hyperparams.space.HyperparameterSamples, data_inputs: Iterable[T_co]</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L72"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseHasher.hash" title="Permalink to this definition">¶</a></dt>
 <dd><p>Hash <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>.current_ids, data inputs, and hyperparameters together.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -681,23 +680,8 @@ Each :class`BaseStep` can potentially have multiple savers to make serialization
 <a class="reference internal" href="#neuraxle.base._HasSavers.load" title="neuraxle.base._HasSavers.load"><code class="xref py py-func docutils literal notranslate"><span class="pre">load()</span></code></a></p>
 </div>
 <dl class="attribute">
-<dt id="neuraxle.base.BaseSaver._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseSaver._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.BaseSaver._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseSaver._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.BaseSaver._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.base.BaseSaver._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.BaseSaver._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseSaver._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.base.BaseSaver._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.base.BaseSaver._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -813,23 +797,8 @@ Every step has hyperparemeters, and hyperparameters spaces that can be set befor
 <a class="reference internal" href="#neuraxle.base.NonTransformableMixin" title="neuraxle.base.NonTransformableMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">NonTransformableMixin</span></code></a></p>
 </div>
 <dl class="attribute">
-<dt id="neuraxle.base.BaseStep._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.BaseStep._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.BaseStep._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.base.BaseStep._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.BaseStep._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseStep._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.base.BaseStep._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.base.BaseStep._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -879,23 +848,8 @@ Every step has hyperparemeters, and hyperparameters spaces that can be set befor
 <a class="reference internal" href="#neuraxle.base.NonTransformableMixin" title="neuraxle.base.NonTransformableMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">NonTransformableMixin</span></code></a></p>
 </div>
 <dl class="attribute">
-<dt id="neuraxle.base.BaseTransformer._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseTransformer._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.BaseTransformer._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseTransformer._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.BaseTransformer._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.base.BaseTransformer._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.BaseTransformer._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseTransformer._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.base.BaseTransformer._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.base.BaseTransformer._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1058,7 +1012,7 @@ Override this method if you need to clear memory.</p>
 
 <dl class="class">
 <dt id="neuraxle.base.ExecutionContext">
-<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">ExecutionContext</code><span class="sig-paren">(</span><em>root: str = '/home/gui/Documents/GIT/www.neuraxle.org-builder/docs/cache'</em>, <em>execution_mode: neuraxle.base.ExecutionMode = None</em>, <em>stripped_saver: neuraxle.base.BaseSaver = None</em>, <em>parents: List[BaseStep] = None</em>, <em>services: Dict[Type</em>, <em>object] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L314"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">ExecutionContext</code><span class="sig-paren">(</span><em>root: str = '/home/alexandre/Documents/www.neuraxle.org-builder/docs/cache', execution_mode: neuraxle.base.ExecutionMode = None, stripped_saver: neuraxle.base.BaseSaver = None, parents: List[BaseStep] = None, services: Dict[Type[CT_co], object] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L314"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execution context object containing all of the pipeline hierarchy steps.
 First item in execution context parents is root, second is nested, and so on. This is like a stack.</p>
 <dl class="simple">
@@ -1123,7 +1077,7 @@ First item in execution context parents is root, second is nested, and so on. Th
 
 <dl class="method">
 <dt id="neuraxle.base.ExecutionContext.get_service">
-<code class="descname">get_service</code><span class="sig-paren">(</span><em>service_abstract_class_type: Type</em><span class="sig-paren">)</span> &#x2192; object<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L376"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.get_service" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_service</code><span class="sig-paren">(</span><em>service_abstract_class_type: Type[CT_co]</em><span class="sig-paren">)</span> &#x2192; object<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L376"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.get_service" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the registered instance for the given abstract class type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1148,7 +1102,7 @@ First item in execution context parents is root, second is nested, and so on. Th
 
 <dl class="method">
 <dt id="neuraxle.base.ExecutionContext.has_service">
-<code class="descname">has_service</code><span class="sig-paren">(</span><em>service_abstract_class_type: Type</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L393"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.has_service" title="Permalink to this definition">¶</a></dt>
+<code class="descname">has_service</code><span class="sig-paren">(</span><em>service_abstract_class_type: Type[CT_co]</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L393"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.has_service" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a bool indicating if the service has been registered.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1239,7 +1193,7 @@ First item in execution context parents is root, second is nested, and so on. Th
 
 <dl class="method">
 <dt id="neuraxle.base.ExecutionContext.register_service">
-<code class="descname">register_service</code><span class="sig-paren">(</span><em>service_abstract_class_type: Type</em>, <em>service_instance: object</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.ExecutionContext<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L365"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.register_service" title="Permalink to this definition">¶</a></dt>
+<code class="descname">register_service</code><span class="sig-paren">(</span><em>service_abstract_class_type: Type[CT_co], service_instance: object</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.ExecutionContext<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L365"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.register_service" title="Permalink to this definition">¶</a></dt>
 <dd><p>Register base class instance inside the services.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1286,7 +1240,7 @@ This method is called from a step checkpointer inside a <code class="xref py py-
 
 <dl class="method">
 <dt id="neuraxle.base.ExecutionContext.set_service_locator">
-<code class="descname">set_service_locator</code><span class="sig-paren">(</span><em>services: Dict[Type, object]</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.ExecutionContext<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L355"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.set_service_locator" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_service_locator</code><span class="sig-paren">(</span><em>services: Dict[Type[CT_co], object]</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.ExecutionContext<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L355"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.set_service_locator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Register abstract class type instances.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1411,7 +1365,7 @@ Create the parents by using the path of the current execution context.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.ForceHandleMixin.fit_transform">
-<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; Tuple[neuraxle.base.HandleOnlyMixin, Iterable]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L3499"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceHandleMixin.fit_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; Tuple[neuraxle.base.HandleOnlyMixin, Iterable[T_co]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L3499"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceHandleMixin.fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Using <a class="reference internal" href="#neuraxle.base._FittableStep.handle_fit_transform" title="neuraxle.base._FittableStep.handle_fit_transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">handle_fit_transform()</span></code></a>, fit and transform step with the given data inputs, and expected outputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1425,7 +1379,7 @@ Create the parents by using the path of the current execution context.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.ForceHandleMixin.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span> &#x2192; Iterable<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L3472"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceHandleMixin.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span> &#x2192; Iterable[T_co]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L3472"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceHandleMixin.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Using <a class="reference internal" href="#neuraxle.base._TransformerStep.handle_transform" title="neuraxle.base._TransformerStep.handle_transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">handle_transform()</span></code></a>, transform data inputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1481,23 +1435,8 @@ Used by <a class="reference internal" href="#neuraxle.base._HasSavers.load" titl
 <a class="reference internal" href="#neuraxle.base.Identity" title="neuraxle.base.Identity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Identity</span></code></a></p>
 </div>
 <dl class="attribute">
-<dt id="neuraxle.base.FullDumpLoader._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.FullDumpLoader._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.FullDumpLoader._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.FullDumpLoader._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.FullDumpLoader._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.base.FullDumpLoader._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.FullDumpLoader._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.FullDumpLoader._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.base.FullDumpLoader._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.base.FullDumpLoader._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1586,23 +1525,8 @@ to hash hyperparameters, and data inputs ids together after each transform.</p>
 <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
 </div>
 <dl class="attribute">
-<dt id="neuraxle.base.HashlibMd5Hasher._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.HashlibMd5Hasher._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.HashlibMd5Hasher._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.HashlibMd5Hasher._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.HashlibMd5Hasher._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.base.HashlibMd5Hasher._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.HashlibMd5Hasher._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.HashlibMd5Hasher._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.base.HashlibMd5Hasher._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.base.HashlibMd5Hasher._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1647,23 +1571,8 @@ using  <a class="reference external" href="https://docs.python.org/3/library/has
 <dt id="neuraxle.base.HashlibMd5ValueHasher">
 <em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">HashlibMd5ValueHasher</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L151"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.HashlibMd5ValueHasher" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
-<dt id="neuraxle.base.HashlibMd5ValueHasher._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.HashlibMd5ValueHasher._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.HashlibMd5ValueHasher._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.HashlibMd5ValueHasher._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.HashlibMd5ValueHasher._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.base.HashlibMd5ValueHasher._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.HashlibMd5ValueHasher._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.HashlibMd5ValueHasher._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.base.HashlibMd5ValueHasher._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.base.HashlibMd5ValueHasher._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1701,23 +1610,8 @@ effect in the pipeline: it doesn’t require fitting, and at transform-time, it 
 <a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p>
 </div>
 <dl class="attribute">
-<dt id="neuraxle.base.Identity._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.Identity._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.Identity._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.Identity._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.Identity._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.base.Identity._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.Identity._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.Identity._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.base.Identity._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.base.Identity._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1783,23 +1677,8 @@ The saver receives a <em>stripped</em> version of the step so that it can be sav
 <a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a></p>
 </div>
 <dl class="attribute">
-<dt id="neuraxle.base.JoblibStepSaver._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.JoblibStepSaver._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.JoblibStepSaver._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.JoblibStepSaver._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.JoblibStepSaver._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.base.JoblibStepSaver._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.JoblibStepSaver._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.JoblibStepSaver._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.base.JoblibStepSaver._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.base.JoblibStepSaver._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1876,23 +1755,8 @@ The saver receives a <em>stripped</em> version of the step so that it can be sav
 <dt id="neuraxle.base.MetaStep">
 <em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">MetaStep</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseTransformer = None</em>, <em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples = None</em>, <em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace = None</em>, <em>name: str = None</em>, <em>savers: List[neuraxle.base.BaseSaver] = None</em>, <em>hashers: List[neuraxle.base.BaseHasher] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L2591"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStep" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
-<dt id="neuraxle.base.MetaStep._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStep._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.MetaStep._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStep._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.MetaStep._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.base.MetaStep._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.MetaStep._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStep._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.base.MetaStep._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.base.MetaStep._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1902,23 +1766,8 @@ The saver receives a <em>stripped</em> version of the step so that it can be sav
 <em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">MetaStepJoblibStepSaver</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L2612"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepJoblibStepSaver" title="Permalink to this definition">¶</a></dt>
 <dd><p>Custom saver for meta step mixin.</p>
 <dl class="attribute">
-<dt id="neuraxle.base.MetaStepJoblibStepSaver._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepJoblibStepSaver._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.MetaStepJoblibStepSaver._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepJoblibStepSaver._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.MetaStepJoblibStepSaver._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.base.MetaStepJoblibStepSaver._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.MetaStepJoblibStepSaver._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepJoblibStepSaver._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.base.MetaStepJoblibStepSaver._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.base.MetaStepJoblibStepSaver._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2316,23 +2165,8 @@ See Checkpoint class documentation for more details on how a resumable checkpoin
 <dt id="neuraxle.base.StepWithContext">
 <em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">StepWithContext</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseTransformer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L3681"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.StepWithContext" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
-<dt id="neuraxle.base.StepWithContext._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.StepWithContext._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.StepWithContext._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.StepWithContext._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.StepWithContext._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.base.StepWithContext._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.StepWithContext._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.StepWithContext._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.base.StepWithContext._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.base.StepWithContext._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2396,23 +2230,8 @@ TruncableJoblibStepSaver saves, and loads all of the sub steps using their saver
 <a class="reference internal" href="#neuraxle.base.BaseSaver" title="neuraxle.base.BaseSaver"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSaver</span></code></a></p>
 </div>
 <dl class="attribute">
-<dt id="neuraxle.base.TruncableJoblibStepSaver._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableJoblibStepSaver._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.TruncableJoblibStepSaver._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableJoblibStepSaver._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.TruncableJoblibStepSaver._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.base.TruncableJoblibStepSaver._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.TruncableJoblibStepSaver._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableJoblibStepSaver._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.base.TruncableJoblibStepSaver._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.base.TruncableJoblibStepSaver._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2473,23 +2292,8 @@ It is possible to truncate this step * <code class="xref py py-func docutils lit
 <a class="reference internal" href="neuraxle.union.html#neuraxle.union.FeatureUnion" title="neuraxle.union.FeatureUnion"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureUnion</span></code></a></p>
 </div>
 <dl class="attribute">
-<dt id="neuraxle.base.TruncableSteps._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.TruncableSteps._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.TruncableSteps._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.base.TruncableSteps._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base.TruncableSteps._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.base.TruncableSteps._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.base.TruncableSteps._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2557,7 +2361,7 @@ Ensure uniqueness with the names yet parameter.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps._wrap_non_base_steps">
-<code class="descname">_wrap_non_base_steps</code><span class="sig-paren">(</span><em>steps_as_tuple: List</em><span class="sig-paren">)</span> &#x2192; List[Union[Tuple[str, neuraxle.base.BaseStep], neuraxle.base.BaseStep]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L2938"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps._wrap_non_base_steps" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_wrap_non_base_steps</code><span class="sig-paren">(</span><em>steps_as_tuple: List[T]</em><span class="sig-paren">)</span> &#x2192; List[Union[Tuple[str, neuraxle.base.BaseStep], neuraxle.base.BaseStep]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L2938"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps._wrap_non_base_steps" title="Permalink to this definition">¶</a></dt>
 <dd><p>If some steps are not of type BaseStep, we’ll try to make them of this type. For instance, sklearn objects
 will be wrapped by a SKLearnWrapper here.</p>
 <dl class="field-list simple">
@@ -2633,7 +2437,7 @@ will be wrapped by a SKLearnWrapper here.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.items">
-<code class="descname">items</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; ItemsView<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L3183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.items" title="Permalink to this definition">¶</a></dt>
+<code class="descname">items</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; ItemsView[KT, VT_co]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L3183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.items" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns all of the steps as tuples items (step_name, step).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -2644,7 +2448,7 @@ will be wrapped by a SKLearnWrapper here.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.keys">
-<code class="descname">keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; KeysView<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L3191"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.keys" title="Permalink to this definition">¶</a></dt>
+<code class="descname">keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; KeysView[KT]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L3191"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.keys" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the step names.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -2795,7 +2599,7 @@ Teardowns all of the sub steps as well.</p>
 
 <dl class="method">
 <dt id="neuraxle.base.TruncableSteps.values">
-<code class="descname">values</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; ValuesView<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L3199"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.values" title="Permalink to this definition">¶</a></dt>
+<code class="descname">values</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; ValuesView[VT_co]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L3199"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.values" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get step values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -2808,7 +2612,7 @@ Teardowns all of the sub steps as well.</p>
 
 <dl class="class">
 <dt id="neuraxle.base._CouldHaveContext">
-<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">_CouldHaveContext</code><span class="sig-paren">(</span><em>has_service_assertions: List[Type] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L1917"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._CouldHaveContext" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.base.</code><code class="descname">_CouldHaveContext</code><span class="sig-paren">(</span><em>has_service_assertions: List[Type[CT_co]] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L1917"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._CouldHaveContext" title="Permalink to this definition">¶</a></dt>
 <dd><p>Step that can have a context.
 It has “has service assertions” to ensure that the context has registered all the necessary services.</p>
 <p>A context can be injected with the with_context method:</p>
@@ -3308,23 +3112,8 @@ Hashers hash by hyperparameters, and source code.</p>
 <a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code></a></p>
 </div>
 <dl class="attribute">
-<dt id="neuraxle.base._HasHashers._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasHashers._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base._HasHashers._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasHashers._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base._HasHashers._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.base._HasHashers._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base._HasHashers._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasHashers._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.base._HasHashers._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.base._HasHashers._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -3410,23 +3199,8 @@ Hyperparameters can not only be passed in the constructor, but also be set by th
 <a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code></a></p>
 </div>
 <dl class="attribute">
-<dt id="neuraxle.base._HasHyperparams._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasHyperparams._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base._HasHyperparams._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasHyperparams._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base._HasHyperparams._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.base._HasHyperparams._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base._HasHyperparams._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasHyperparams._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.base._HasHyperparams._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.base._HasHyperparams._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -3441,7 +3215,7 @@ Hyperparameters can not only be passed in the constructor, but also be set by th
 
 <dl class="method">
 <dt id="neuraxle.base._HasHyperparams._set_hyperparams">
-<code class="descname">_set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: Dict</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L1443"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasHyperparams._set_hyperparams" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: Union[neuraxle.hyperparams.space.HyperparameterSamples, Dict[KT, VT]]</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L1443"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasHyperparams._set_hyperparams" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -3451,7 +3225,7 @@ Hyperparameters can not only be passed in the constructor, but also be set by th
 
 <dl class="method">
 <dt id="neuraxle.base._HasHyperparams._update_hyperparams">
-<code class="descname">_update_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: Dict</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L1483"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasHyperparams._update_hyperparams" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_update_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: Union[Dict[KT, VT], neuraxle.hyperparams.space.HyperparameterSamples]</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L1483"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasHyperparams._update_hyperparams" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -3610,23 +3384,8 @@ See <a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle
 <a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code></a></p>
 </div>
 <dl class="attribute">
-<dt id="neuraxle.base._HasHyperparamsSpace._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasHyperparamsSpace._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base._HasHyperparamsSpace._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasHyperparamsSpace._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base._HasHyperparamsSpace._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.base._HasHyperparamsSpace._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base._HasHyperparamsSpace._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasHyperparamsSpace._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.base._HasHyperparamsSpace._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.base._HasHyperparamsSpace._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -3636,12 +3395,12 @@ See <a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle
 
 <dl class="method">
 <dt id="neuraxle.base._HasHyperparamsSpace._set_hyperparams_space">
-<code class="descname">_set_hyperparams_space</code><span class="sig-paren">(</span><em>hyperparams_space: Dict</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L1304"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasHyperparamsSpace._set_hyperparams_space" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_set_hyperparams_space</code><span class="sig-paren">(</span><em>hyperparams_space: Union[Dict[KT, VT], neuraxle.hyperparams.space.HyperparameterSpace]</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L1304"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasHyperparamsSpace._set_hyperparams_space" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.base._HasHyperparamsSpace._update_hyperparams_space">
-<code class="descname">_update_hyperparams_space</code><span class="sig-paren">(</span><em>hyperparams_space: Dict</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L1346"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasHyperparamsSpace._update_hyperparams_space" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_update_hyperparams_space</code><span class="sig-paren">(</span><em>hyperparams_space: Union[Dict[KT, VT], neuraxle.hyperparams.space.HyperparameterSpace]</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/base.py#L1346"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasHyperparamsSpace._update_hyperparams_space" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -3756,23 +3515,8 @@ For example, you might want to reverse a step, and replace the transform method 
 <a class="reference internal" href="#neuraxle.base._TransformerStep.inverse_transform" title="neuraxle.base._TransformerStep.inverse_transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">inverse_transform()</span></code></a></p>
 </div>
 <dl class="attribute">
-<dt id="neuraxle.base._HasMutations._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasMutations._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base._HasMutations._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasMutations._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base._HasMutations._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.base._HasMutations._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base._HasMutations._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasMutations._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.base._HasMutations._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.base._HasMutations._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -3929,23 +3673,8 @@ Each saver saves some parts of the step.</p>
 <a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code></a></p>
 </div>
 <dl class="attribute">
-<dt id="neuraxle.base._HasSavers._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasSavers._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base._HasSavers._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasSavers._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base._HasSavers._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.base._HasSavers._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base._HasSavers._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasSavers._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.base._HasSavers._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.base._HasSavers._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -4103,23 +3832,8 @@ If a step is not transformable, you can inherit from <a class="reference interna
 <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
 </div>
 <dl class="attribute">
-<dt id="neuraxle.base._TransformerStep._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._TransformerStep._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base._TransformerStep._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._TransformerStep._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base._TransformerStep._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.base._TransformerStep._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base._TransformerStep._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._TransformerStep._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.base._TransformerStep._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.base._TransformerStep._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -4385,23 +4099,8 @@ Loading will inject the saved dependencies inside the :class`ExecutionContext`.<
 <a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a></p>
 </div>
 <dl class="attribute">
-<dt id="neuraxle.base._WithContextStepSaver._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._WithContextStepSaver._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base._WithContextStepSaver._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._WithContextStepSaver._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base._WithContextStepSaver._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.base._WithContextStepSaver._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.base._WithContextStepSaver._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._WithContextStepSaver._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.base._WithContextStepSaver._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.base._WithContextStepSaver._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -4523,7 +4222,6 @@ Loading will inject the saved dependencies inside the :class`ExecutionContext`.<
           SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
-
   
   
     

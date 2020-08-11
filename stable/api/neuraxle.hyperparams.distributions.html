@@ -44,7 +44,21 @@
     <link rel="prev" title="neuraxle.steps.misc" href="neuraxle.steps.misc.html" /> 
 
   <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
-
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search > a {
+      color: #DB1865;
+    }
+    .wy-side-nav-search > div.version {
+      color: #DB1865;
+    }
+    .wy-side-nav-search, .wy-nav-top {
+      color: #DB1865;
+    }
+    /* Sidebar */
+    .wy-nav-side {
+    }
+  </style>
 </head>
 
 <body class="wy-body-for-nav">
@@ -54,13 +68,13 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search"  style="background: #20232a" >
+        <div class="wy-side-nav-search"  style="background: #F7F7F7" >
           
 
           
             
               <a href="https://www.neuraxio.com/" class="icon">
-                <img src="../_static/neuraxio.png" class="logo" alt="Logo"/>
+                <img src="../_static/neuraxle_logo.png" class="logo" alt="Logo"/>
               </a>
           
 
@@ -582,23 +596,8 @@ the distribution.</p>
 <em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">Boolean</code><span class="sig-paren">(</span><em>proba_is_true: Optional[float] = None</em>, <em>null_default_value=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/hyperparams/distributions.py#L281"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Boolean" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a random boolean hyperparameter.</p>
 <dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.Boolean._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Boolean._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.Boolean._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Boolean._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.Boolean._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.Boolean._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.Boolean._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Boolean._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.hyperparams.distributions.Boolean._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.Boolean._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -676,29 +675,14 @@ the distribution.</p>
 
 <dl class="class">
 <dt id="neuraxle.hyperparams.distributions.Choice">
-<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">Choice</code><span class="sig-paren">(</span><em>choice_list: List</em>, <em>probas: Optional[List[float]] = None</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/hyperparams/distributions.py#L378"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">Choice</code><span class="sig-paren">(</span><em>choice_list: List[T], probas: Optional[List[float]] = None, null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/hyperparams/distributions.py#L378"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a random value from a choice list of possible value for this hyperparameter.</p>
 <p>When narrowed, the choice will only collapse to a single element when narrowed enough.
 For example, if there are 4 items in the list, only at a narrowing value of 0.25 that
 the first item will be kept alone.</p>
 <dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.Choice._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.Choice._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.Choice._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.Choice._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.hyperparams.distributions.Choice._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.Choice._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -802,23 +786,8 @@ Otherwise, a deepcopy of self is returned.</p>
 <em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">DistributionMixture</code><span class="sig-paren">(</span><em>distributions: Union[List[neuraxle.hyperparams.distributions.HyperparameterDistribution], Tuple[neuraxle.hyperparams.distributions.HyperparameterDistribution, ...]], distribution_amplitudes: Union[List[float], Tuple[float, ...]]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/hyperparams/distributions.py#L1613"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.DistributionMixture" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a mixture of multiple distribution</p>
 <dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.DistributionMixture._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.DistributionMixture._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.DistributionMixture._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.DistributionMixture._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.DistributionMixture._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.DistributionMixture._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.DistributionMixture._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.DistributionMixture._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.hyperparams.distributions.DistributionMixture._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.DistributionMixture._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
@@ -953,23 +922,8 @@ standard deviation and mean of each distribution and <span class="math notransla
 <em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">FixedHyperparameter</code><span class="sig-paren">(</span><em>value</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/hyperparams/distributions.py#L179"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.FixedHyperparameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is an hyperparameter that won’t change again, but that is still expressed as a distribution.</p>
 <dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.FixedHyperparameter._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.FixedHyperparameter._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.FixedHyperparameter._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.FixedHyperparameter._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.FixedHyperparameter._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.FixedHyperparameter._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.FixedHyperparameter._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.FixedHyperparameter._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.hyperparams.distributions.FixedHyperparameter._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.FixedHyperparameter._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1064,23 +1018,8 @@ Since the parameter is fixed, the value return is 1 when x == value and 0 otherw
 <em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">HyperparameterDistribution</code><span class="sig-paren">(</span><em>null_default_value</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/hyperparams/distributions.py#L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base class for other hyperparameter distributions.</p>
 <dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.HyperparameterDistribution._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.HyperparameterDistribution._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.HyperparameterDistribution._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.HyperparameterDistribution._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.hyperparams.distributions.HyperparameterDistribution._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.HyperparameterDistribution._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1237,23 +1176,8 @@ will return a copy of self.</p>
 <em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">LogNormal</code><span class="sig-paren">(</span><em>log2_space_mean: float</em>, <em>log2_space_std: float</em>, <em>hard_clip_min: float = None</em>, <em>hard_clip_max: float = None</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/hyperparams/distributions.py#L1394"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a LogNormal distribution.</p>
 <dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.LogNormal._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.LogNormal._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.LogNormal._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.LogNormal._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.hyperparams.distributions.LogNormal._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogNormal._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1355,23 +1279,8 @@ Note: the range at creation was in log space. The return value is after taking a
 <dd><p>Get a LogUniform distribution.</p>
 <p>For example, this is good for neural networks’ learning rates: that vary exponentially.</p>
 <dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.LogUniform._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogUniform._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.LogUniform._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogUniform._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.LogUniform._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogUniform._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.LogUniform._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogUniform._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.hyperparams.distributions.LogUniform._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.LogUniform._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1469,23 +1378,8 @@ Note: the range at creation was in log space. The return value is after taking a
 <em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">Normal</code><span class="sig-paren">(</span><em>mean: float</em>, <em>std: float</em>, <em>hard_clip_min: float = None</em>, <em>hard_clip_max: float = None</em>, <em>null_default_value: float = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/hyperparams/distributions.py#L1178"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a normal distribution.</p>
 <dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.Normal._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.Normal._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.Normal._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.Normal._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.hyperparams.distributions.Normal._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.Normal._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1594,28 +1488,13 @@ The hard clip limit is unchanged.</p>
 
 <dl class="class">
 <dt id="neuraxle.hyperparams.distributions.PriorityChoice">
-<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">PriorityChoice</code><span class="sig-paren">(</span><em>choice_list: List</em>, <em>probas: Optional[List[float]] = None</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/hyperparams/distributions.py#L530"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">PriorityChoice</code><span class="sig-paren">(</span><em>choice_list: List[T], probas: Optional[List[float]] = None, null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/hyperparams/distributions.py#L530"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a random value from a choice list of possible value for this hyperparameter.</p>
 <p>The first parameters are kept until the end when the list is narrowed (it is narrowed progressively),
 unless there is a best guess that surpasses some of the top choices.</p>
 <dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.PriorityChoice._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.PriorityChoice._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.PriorityChoice._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.PriorityChoice._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.hyperparams.distributions.PriorityChoice._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.PriorityChoice._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1719,23 +1598,8 @@ Otherwise if the list is unchanged, a deepcopy of self is returned.</p>
 <em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">Quantized</code><span class="sig-paren">(</span><em>hd: neuraxle.hyperparams.distributions.HyperparameterDistribution = None</em>, <em>hds: List[neuraxle.hyperparams.distributions.HyperparameterDistribution] = None</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/hyperparams/distributions.py#L716"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized" title="Permalink to this definition">¶</a></dt>
 <dd><p>A quantized wrapper for another distribution: will round() the rvs number.</p>
 <dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.Quantized._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.Quantized._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.Quantized._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.Quantized._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.hyperparams.distributions.Quantized._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.Quantized._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1833,23 +1697,8 @@ Otherwise if the list is unchanged, a deepcopy of self is returned.</p>
 <em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">RandInt</code><span class="sig-paren">(</span><em>min_included: int</em>, <em>max_included: int</em>, <em>null_default_value: int = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/hyperparams/distributions.py#L833"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a random integer within a range</p>
 <dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.RandInt._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.RandInt._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.RandInt._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.RandInt._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.hyperparams.distributions.RandInt._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.RandInt._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1947,23 +1796,8 @@ Otherwise if the list is unchanged, a deepcopy of self is returned.</p>
 <em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">Uniform</code><span class="sig-paren">(</span><em>min_included: float</em>, <em>max_included: float</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/hyperparams/distributions.py#L938"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a uniform distribution.</p>
 <dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.Uniform._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.Uniform._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.Uniform._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.Uniform._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.hyperparams.distributions.Uniform._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.Uniform._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2066,23 +1900,8 @@ Otherwise if the list is unchanged, a deepcopy of self is returned.</p>
 <dt id="neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions">
 <em class="property">class </em><code class="descclassname">neuraxle.hyperparams.distributions.</code><code class="descname">WrappedHyperparameterDistributions</code><span class="sig-paren">(</span><em>hd: neuraxle.hyperparams.distributions.HyperparameterDistribution = None</em>, <em>hds: List[neuraxle.hyperparams.distributions.HyperparameterDistribution] = None</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/hyperparams/distributions.py#L695"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 57</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/20c6e57/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.hyperparams.distributions.WrappedHyperparameterDistributions._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -2163,7 +1982,6 @@ Otherwise if the list is unchanged, a deepcopy of self is returned.</p>
           SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
-
   
   
     
