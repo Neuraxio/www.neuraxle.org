@@ -1,0 +1,1213 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Hyperparams And Distributions &mdash; Neuraxle 0.5.3 documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://www.neuraxle.org/Neuraxle/examples/Hyperparams And Distributions.html"/>
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search > a {
+      color: #DB1865;
+    }
+    .wy-side-nav-search > div.version {
+      color: #DB1865;
+    }
+    .wy-side-nav-search, .wy-nav-top {
+      color: #DB1865;
+    }
+    /* Sidebar */
+    .wy-nav-side {
+    }
+  </style>
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #F7F7F7" >
+          
+
+          
+            
+              <a href="https://www.neuraxle.org/" class="icon">
+                <img src="../../_static/neuraxle_logo.png" class="logo" alt="Logo"/>
+              </a>
+          
+
+          
+            <a href="https://www.neuraxio.com/" class="icon icon-home"> Neuraxio</a>/<a href="../../index.html" > Neuraxle
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#encapsulate-models-and-data-transformers">Encapsulate Models and Data Transformers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#pipe-and-filter">Pipe and Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#wrapper-a-k-a-decorator-classes">Wrapper (a.k.a. Decorator) classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#pipelines-for-minibatching-and-parallel-processing">Pipelines for Minibatching and Parallel Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#repository-for-lazy-data-loading">Repository for lazy data loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#training-your-pipeline">Training your pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#serializing-your-pipeline">Serializing your pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">Neuraxle Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../README.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#examples">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../README.html#why-neuraxle">Why Neuraxle ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../README.html#community">Community</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#license">License</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#citation">Citation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#contributors">Contributors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../README.html#supported-by">Supported By</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../scikit-learn_problems_solutions.html">Solutions to Scikit-Learn’s Biggest Problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#definitions">Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#inability-to-reasonably-do-automatic-machine-learning-automl">Inability to Reasonably do Automatic Machine Learning (AutoML)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-defining-the-search-space-hyperparameter-distributions">Problem: Defining the Search Space (Hyperparameter Distributions)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-define-hyperparameter-spaces-within-the-steps">Solution: Define Hyperparameter Spaces Within the Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-defining-hyperparameters-in-the-constructor-is-limiting">Problem: Defining Hyperparameters in the Constructor is Limiting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-separate-steps-s-constructors-from-the-get-params-method">Solution: Separate Steps’s Constructors From the <code class="docutils literal notranslate"><span class="pre">get_params</span></code> Method</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-different-train-and-test-behavior">Problem: Different Train and Test Behavior</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-use-the-set-train-special-method-and-use-step-wrappers">Solution: use the Set Train Special Method and use Step Wrappers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-you-trained-a-pipeline-and-you-want-feedback-statistics-on-its-learning">Problem: You trained a Pipeline and You Want Feedback Statistics on its Learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-the-introspect-special-method">Solution: the Introspect Special Method</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#inability-to-reasonably-do-deep-learning-pipelines">Inability to Reasonably do Deep Learning Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-scikit-learn-hardly-allows-for-mini-batch-gradient-descent-incremental-fit">Problem: Scikit-Learn Hardly Allows for Mini-Batch Gradient Descent (Incremental Fit)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-minibatch-pipeline-class-and-the-ability-to-incrementally-fit-pipeline-steps">Solution: Minibatch Pipeline Class and the Ability to Incrementally Fit Pipeline Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-initializing-the-pipeline-and-deallocating-resources">Problem: Initializing the Pipeline and Deallocating Resources</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-add-setup-and-teardown-lifecycle-methods-to-your-steps">Solution: Add Setup and Teardown Lifecycle Methods to Your Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-it-is-difficult-to-use-other-deep-learning-dl-libraries-in-scikit-learn">Problem: It is Difficult to Use Other Deep Learning (DL) Libraries in Scikit-Learn</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-moar-steps-lifecycle-methods">Solution: Moar Steps Lifecycle Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-the-ability-to-transform-output-labels">Problem: The Ability to Transform Output Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-outputtransformerwrapper-and-inputandoutputtransformermixin">Solution: OutputTransformerWrapper and InputAndOutputTransformerMixin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#not-ready-for-production-nor-for-complex-pipelines">Not ready for Production nor for Complex Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-processing-3d-4d-or-nd-data-in-your-pipeline-with-steps-made-for-lower-dimensionnal-data">Problem: Processing 3D, 4D, or ND Data in your Pipeline with Steps Made for Lower-Dimensionnal Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-use-a-foreachdatainputs-wrapper-to-loop-from-nd-data-to-n-d-1-data">Solution: use a ForEachDataInputs Wrapper to Loop from ND Data to N(D-1) Data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-modify-a-pipeline-along-the-way-such-as-for-pre-training-or-fine-tuning">Problem: Modify a Pipeline Along the Way, such as for Pre-Training or Fine-Tuning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-the-mutate-special-method">Solution: the Mutate Special Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#another-solution-the-apply-special-method">Another Solution: the Apply Special Method</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-getting-model-attributes-from-scikit-learn-pipeline">Problem: Getting Model Attributes from Scikit-Learn Pipeline</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-simpler-nested-pipelines-getitem-methods">Solution: Simpler Nested Pipelines <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-you-can-t-parallelize-nor-save-pipelines-using-steps-that-can-t-be-serialized-as-is-by-joblib">Problem: You can’t Parallelize nor Save Pipelines Using Steps that Can’t be Serialized “as-is” by Joblib</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#solution-use-a-chain-of-savers-in-each-step">Solution: Use a Chain of Savers in each Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#about-cluster-computing-and-parallelism-in-python">About Cluster Computing and Parallelism in Python</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../handler_methods.html">Handler Methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#handle_fit_transform">handle_fit_transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#handle_fit">handle_fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#handle_transform">handle_transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#When-to-use-handler-methods-?">When to use handler methods ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#HandleOnlyMixin">HandleOnlyMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#ForceHandleMixin">ForceHandleMixin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#ForceHandleOnlyMixin">ForceHandleOnlyMixin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../handler_methods.html#Examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#ForEachDataInput">ForEachDataInput</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#ToNumpy">ToNumpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#Transform-Expected-Outputs">Transform Expected Outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#Expand-The-DataContainer">Expand The DataContainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html#Reversible-Pipeline">Reversible Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../hyperparameter_tuning.html">Introduction to Automatic Hyperparameter Tuning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hyperparameter_tuning.html#AutoML-loop">AutoML loop</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html#1.-Define-your-pipeline">1. Define your pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html#2.-Choose-a-validation-splitter">2. Choose a validation splitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html#3.-Define-a-the-main-scoring-metric-with-ScoringCallback">3. Define a the main scoring metric with ScoringCallback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html#4.-Add-metric-callbacks-with-MetricCallback-(optional)">4. Add metric callbacks with MetricCallback (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html#5.-Select-an-hyperparams-repository">5. Select an hyperparams repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html#6.-Select-an-hyperparams-optimizer">6. Select an hyperparams optimizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html#7.-Create,-and-launch-AutoML-loop">7. Create, and launch AutoML loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#Run-10-trials">Run 10 trials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#Get-best-model,-and-predict">Get best model, and predict</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../random_distributions.html">Introduction to Random Distributions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html#Discrete-Distributions">Discrete Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#RandInt">RandInt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Boolean">Boolean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Choice">Choice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Priority-Choice">Priority Choice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html#Continuous-Distributions">Continuous Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Uniform">Continuous Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Loguniform">Continuous Loguniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Normal">Continuous Normal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Lognormal">Continuous Lognormal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Normal-Clipped">Continuous Normal Clipped</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Lognormal-Clipped">Continuous Lognormal Clipped</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html#Quantized-Hyperparameter-Distributions">Quantized Hyperparameter Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Quantized-Uniform">Quantized Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Repaired-Quantized-Uniform">Repaired Quantized Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Quantized-Log-Uniform">Quantized Log Uniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Quantized-Normal">Quantized Normal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Quantized-Lognormal">Quantized Lognormal</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html#Creating-your-own-distributions">Creating your own distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html#Using-Scipy-Distributions">Using Scipy Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html#Creating-your-own-distributions-using-scipy">Creating your own distributions using scipy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#BaseCustomContinuousScipyDistribution">BaseCustomContinuousScipyDistribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#BaseCustomDiscreteScipyDistribution">BaseCustomDiscreteScipyDistribution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../step_saving_and_lifecycle.html">Step Saving And Lifecycle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Lifecycle">Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Step-Saving">Step Saving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Saver">Saver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Custom-Saver-Example">Custom Saver Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Saving-Example">Saving Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Pipeline">Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Full-Dump-Saving">Full Dump Saving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Full-Dump-Loading">Full Dump Loading</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../rest_api_serving.html">REST API Serving</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Import-Packages">Import Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Load-your-Dataset">Load your Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Create-your-Pipeline">Create your Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Let's-Train-and-Test">Let’s Train and Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Deploy-the-Pipeline">Deploy the Pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Write-a-step-to-decode-the-accepted-JSON-as-data-inputs">Write a step to decode the accepted JSON as data inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Write-a-step-to-encode-the-returned-JSON-response">Write a step to encode the returned JSON response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Finally-Serve-Predictions">Finally Serve Predictions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#API-Call-Example">API Call Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html#Next-Steps">Next Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Pipeline-Serialization">Pipeline Serialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Data-Transformation-Caching">Data Transformation Caching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Checkpoints">Checkpoints</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">Complete API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.base.html">neuraxle.base</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.base.html#neuraxle-s-base-classes">Neuraxle’s Base Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.pipeline.html">neuraxle.pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.pipeline.html#neuraxle-s-pipeline-classes">Neuraxle’s Pipeline Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.data_container.html">neuraxle.data_container</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.data_container.html#neuraxle-s-datacontainer-classes">Neuraxle’s DataContainer classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.union.html">neuraxle.union</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.union.html#union-of-features">Union of Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.checkpoints.html">neuraxle.checkpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.checkpoints.html#neuraxle-s-checkpoint-classes">Neuraxle’s Checkpoint Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.api.html">neuraxle.api</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.api.html#neuraxle-s-api-classes">Neuraxle’s API classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metrics.html">neuraxle.metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metrics.html#neuraxle-s-metrics-classes">Neuraxle’s metrics classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.numpy.html">neuraxle.steps.numpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.numpy.html#pipeline-steps-based-on-numpy">Pipeline Steps Based on NumPy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.flow.html">neuraxle.steps.flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.flow.html#neuraxle-s-flow-steps">Neuraxle’s Flow Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.data.html">neuraxle.steps.data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.data.html#data-steps">Data Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.column_transformer.html">neuraxle.steps.column_transformer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.column_transformer.html#neuraxle-s-column-transformer-steps">Neuraxle’s Column Transformer Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.features.html">neuraxle.steps.features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.features.html#featurization-steps">Featurization Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.sklearn.html#pipeline-steps-based-on-scikit-learn">Pipeline Steps Based on Scikit-Learn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.loop.html">neuraxle.steps.loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.loop.html#pipeline-steps-for-looping">Pipeline Steps For Looping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.caching.html">neuraxle.steps.caching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.caching.html#pipeline-steps-for-caching">Pipeline Steps For Caching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.output_handlers.html">neuraxle.steps.output_handlers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.output_handlers.html#output-handlers-steps">Output Handlers Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.steps.misc.html">neuraxle.steps.misc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.steps.misc.html#miscelaneous-pipeline-steps">Miscelaneous Pipeline Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.hyperparams.distributions.html">neuraxle.hyperparams.distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.hyperparams.distributions.html#hyperparameter-distributions">Hyperparameter Distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.hyperparams.space.html">neuraxle.hyperparams.space</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.hyperparams.space.html#hyperparameter-dictionary-conversions">Hyperparameter Dictionary Conversions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.auto_ml.html">neuraxle.metaopt.auto_ml</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.auto_ml.html#neuraxle-s-automl-classes">Neuraxle’s AutoML Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.trial.html">neuraxle.metaopt.trial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.trial.html#neuraxle-s-trial-classes">Neuraxle’s Trial Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.callbacks.html">neuraxle.metaopt.callbacks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.callbacks.html#neuraxle-s-training-callbacks-classes">Neuraxle’s training callbacks classes.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.random.html">neuraxle.metaopt.random</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.random.html#random">Random</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.sklearn.html">neuraxle.metaopt.sklearn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.sklearn.html#scikit-learn-metaoptimizers">Scikit-learn metaoptimizers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.tpe.html">neuraxle.metaopt.tpe</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.tpe.html#tree-parzen-estimator">Tree parzen estimator</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.deprecated.html">neuraxle.metaopt.deprecated</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.deprecated.html#neuraxle-s-automatic-machine-learning-classes">Neuraxle’s Automatic Machine Learning Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.distributed.streaming.html">neuraxle.distributed.streaming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.distributed.streaming.html#streaming-parallel-data-processing">Streaming Parallel Data Processing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.rest.flask.html">neuraxle.rest.flask</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.rest.flask.html#neuraxle-s-flask-wrapper-classes">Neuraxle’s Flask Wrapper classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html#automl">AutoML</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/auto_ml/plot_automl_loop_clean_kata.html">Usage of AutoML loop, and hyperparams with sklearn models.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html#caching">Caching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/caching/plot_value_caching.html">Usage of ValueCachingWrapper in Neuraxle.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/caching/plot_auto_ml_checkpoint.html">Usage of Checkpoints in Automatic Machine Learning (AutoML)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html#rest-api-model-serving">REST API Model Serving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/deployment/plot_easy_rest_api_serving.html">Easy REST API Model Serving with Neuraxle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html#getting-started">Getting started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/getting_started/plot_inverse_transform.html">Inverse Transforms in Neuraxle: How to Reverse a Prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/getting_started/plot_nested_pipelines.html">Create Nested Pipelines in Neuraxle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/getting_started/plot_non_fittable_mixin.html">Create Pipeline Steps in Neuraxle that doesn’t fit or transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/getting_started/plot_label_encoder_across_multiple_columns.html">Create label encoder across multiple columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/getting_started/plot_force_handle_mixin.html">Create Pipeline Steps that require implementing only handler methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html#hyperparameters">Hyperparameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/hyperparams/plot_hyperparams.html">Manipulate Hyperparameter Spaces for Hyperparameter Tuning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html#parallel">Parallel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/parallel/plot_streaming_pipeline.html">Parallel processing in Neuraxle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html#neuraxle-hyperparameter-examples">Neuraxle hyperparameter examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/sklearn/plot_boston_housing_regression_with_model_stacking.html">Boston Housing Regression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/sklearn/plot_boston_housing_meta_optimization.html">Boston Housing Regression with Meta Optimization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://www.neuraxio.com/"> Neuraxio</a>/<a href="../../index.html">Neuraxle</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+
+        <a href="https://github.com/Neuraxio/Neuraxle"><img style="position: absolute; border: 0; top: 0; right: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Hyperparams And Distributions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <!-- <a href="../../_sources/Neuraxle/examples/Hyperparams And Distributions.ipynb.txt" rel="nofollow"> View page source</a> -->
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 7ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="Hyperparams-And-Distributions">
+<h1>Hyperparams And Distributions<a class="headerlink" href="#Hyperparams-And-Distributions" title="Permalink to this headline">¶</a></h1>
+<p>This page introduces the hyperparams, and distributions in Neuraxle. You can find <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.hyperparams.distributions.html">Hyperparams Distribution API here</a>, and <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.hyperparams.space.html">Hyperparameter Samples API here</a>.</p>
+<p>Hyperparameter is a parameter drawn from a prior distribution. In Neuraxle, we have a few built-in distributions, and we are also compatible with scipy distributions.</p>
+<p>Create a <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Uniform">Uniform Distribution</a>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">neuraxle.hyperparams.distributions</span> <span class="kn">import</span> <span class="n">Uniform</span>
+
+<span class="n">hd</span> <span class="o">=</span> <span class="n">Uniform</span><span class="p">(</span>
+    <span class="n">min_included</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">max_included</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">null_default_value</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Sample the random variable using <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.HyperparameterDistribution.rvs">rvs</a>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">hd</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-5.873595345744127
+</pre></div></div>
+</div>
+<p>Nullify the random variable using <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.HyperparameterDistribution.nullify">nullify</a>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">nullified_sample</span> <span class="o">=</span> <span class="n">hd</span><span class="o">.</span><span class="n">nullify</span><span class="p">()</span>
+<span class="k">assert</span> <span class="n">nullified_sample</span> <span class="o">==</span> <span class="n">hd</span><span class="o">.</span><span class="n">null_default_value</span>
+</pre></div>
+</div>
+</div>
+<p>Get the probability distribution function value at <code class="docutils literal notranslate"><span class="pre">x</span></code> using <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.HyperparameterDistribution.pdf">pdf</a>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pdf</span> <span class="o">=</span> <span class="n">hd</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;pdf: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pdf</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+pdf: 0.05
+</pre></div></div>
+</div>
+<p>Get the cumulative probability distribution function value at <code class="docutils literal notranslate"><span class="pre">x</span></code> using <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.HyperparameterDistribution.cdf">cdf</a></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">cdf</span> <span class="o">=</span> <span class="n">hd</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cdf: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cdf</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+cdf: 0.55
+</pre></div></div>
+</div>
+<div class="section" id="Setting-And-Updating-Hyperparams">
+<h2>Setting And Updating Hyperparams<a class="headerlink" href="#Setting-And-Updating-Hyperparams" title="Permalink to this headline">¶</a></h2>
+<p>In Neuraxle, each step has hyperparams of type <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples">HyperparameterSamples</a>, and spaces of type <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.HyperparameterDistribution">HyperparameterSpace</a>.</p>
+<p>Consider a simple pipeline that contains 2 MultiplyByN steps, and one PCA component inside a nested pipeline:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="kn">from</span> <span class="nn">neuraxle.hyperparams.distributions</span> <span class="kn">import</span> <span class="n">RandInt</span>
+<span class="kn">from</span> <span class="nn">neuraxle.hyperparams.space</span> <span class="kn">import</span> <span class="n">HyperparameterSpace</span><span class="p">,</span> <span class="n">HyperparameterSamples</span>
+<span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">neuraxle.steps.numpy</span> <span class="kn">import</span> <span class="n">MultiplyByN</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;step1&#39;</span><span class="p">,</span> <span class="n">MultiplyByN</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s1">&#39;step2&#39;</span><span class="p">,</span> <span class="n">MultiplyByN</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span>
+    <span class="n">Pipeline</span><span class="p">([</span>
+        <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="p">])</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<p>We can set or update the hyperparams, and spaces by doing the following:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">p</span><span class="o">.</span><span class="n">set_hyperparams</span><span class="p">(</span><span class="n">HyperparameterSamples</span><span class="p">({</span>
+    <span class="s1">&#39;step1__multiply_by&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+    <span class="s1">&#39;step2__multiply_by&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span>
+    <span class="s1">&#39;Pipeline__PCA__n_components&#39;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}))</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">update_hyperparams</span><span class="p">(</span><span class="n">HyperparameterSamples</span><span class="p">({</span>
+    <span class="s1">&#39;Pipeline__PCA__n_components&#39;</span><span class="p">:</span> <span class="mi">3</span>
+<span class="p">}))</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">set_hyperparams_space</span><span class="p">(</span><span class="n">HyperparameterSpace</span><span class="p">({</span>
+    <span class="s1">&#39;step1__multiply_by&#39;</span><span class="p">:</span> <span class="n">RandInt</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
+    <span class="s1">&#39;step2__multiply_by&#39;</span><span class="p">:</span> <span class="n">RandInt</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="s1">&#39;Pipeline__PCA__n_components&#39;</span><span class="p">:</span> <span class="n">RandInt</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">}))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Pipeline
+(
+    Pipeline(
+    name=Pipeline,
+    hyperparameters=HyperparameterSamples([(&#39;step1&#39;, RecursiveDict([(&#39;multiply_by&#39;, 42)])),
+                       (&#39;step2&#39;, RecursiveDict([(&#39;multiply_by&#39;, -10)])),
+                       (&#39;Pipeline&#39;,
+                        RecursiveDict([(&#39;PCA&#39;,
+                                        RecursiveDict([(&#39;n_components&#39;,
+                                                        3)]))]))])
+)(
+            [(&#39;step1&#39;,
+  MultiplyByN(
+    name=step1,
+    hyperparameters=HyperparameterSamples([(&#39;multiply_by&#39;, 42)])
+)),
+ (&#39;step2&#39;,
+  MultiplyByN(
+    name=step2,
+    hyperparameters=HyperparameterSamples([(&#39;multiply_by&#39;, -10)])
+)),
+ (&#39;Pipeline&#39;,
+  Pipeline
+(
+    Pipeline(
+    name=Pipeline,
+    hyperparameters=HyperparameterSamples([(&#39;PCA&#39;, RecursiveDict([(&#39;n_components&#39;, 3)]))])
+)(
+            [(&#39;PCA&#39;, &lt;neuraxle.steps.sklearn.SKLearnWrapper(PCA(...)) object 0x108906810&gt;)]
+)
+))]
+)
+)
+</pre></div>
+</div>
+</div>
+<p>We can sample the space of random variables:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">samples</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_hyperparams_space</span><span class="p">()</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span>
+
+<span class="k">assert</span> <span class="mi">42</span> <span class="o">&lt;=</span> <span class="n">samples</span><span class="p">[</span><span class="s1">&#39;step1__multiply_by&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">50</span>
+<span class="k">assert</span> <span class="o">-</span><span class="mi">10</span> <span class="o">&lt;=</span> <span class="n">samples</span><span class="p">[</span><span class="s1">&#39;step2__multiply_by&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">samples</span><span class="p">[</span><span class="s1">&#39;Pipeline__PCA__n_components&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>We can get all hyperparams:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">samples</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_hyperparams</span><span class="p">()</span>
+
+<span class="k">assert</span> <span class="mi">42</span> <span class="o">&lt;=</span> <span class="n">samples</span><span class="p">[</span><span class="s1">&#39;step1__multiply_by&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">50</span>
+<span class="k">assert</span> <span class="o">-</span><span class="mi">10</span> <span class="o">&lt;=</span> <span class="n">samples</span><span class="p">[</span><span class="s1">&#39;step2__multiply_by&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="n">samples</span><span class="p">[</span><span class="s1">&#39;Pipeline__PCA__n_components&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;Pipeline&#39;</span><span class="p">][</span><span class="s1">&#39;PCA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_wrapped_sklearn_predictor</span><span class="p">()</span><span class="o">.</span><span class="n">n_components</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Neuraxle-Custom-Distributions">
+<h2>Neuraxle Custom Distributions<a class="headerlink" href="#Neuraxle-Custom-Distributions" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="Scipy-Distributions">
+<h2>Scipy Distributions<a class="headerlink" href="#Scipy-Distributions" title="Permalink to this headline">¶</a></h2>
+<p>To define a scipy distribution that is compatible with Neuraxle, you need to wrap the scipy distribution with ScipyDistributionWrapper:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">neuraxle.hyperparams.scipy_distributions</span> <span class="kn">import</span> <span class="n">ScipyDistributionWrapper</span><span class="p">,</span> <span class="n">BaseContinuousDistribution</span><span class="p">,</span> <span class="n">BaseDiscreteDistribution</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">quad</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">factorial</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">rv_continuous</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">rv_discrete</span><span class="p">,</span> <span class="n">rv_histogram</span><span class="p">,</span> <span class="n">truncnorm</span><span class="p">,</span> <span class="n">randint</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">hd</span> <span class="o">=</span> <span class="n">ScipyDistributionWrapper</span><span class="p">(</span>
+    <span class="n">scipy_distribution</span><span class="o">=</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span>
+    <span class="n">is_continuous</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">null_default_value</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Discrete-Distributions">
+<h3>Discrete Distributions<a class="headerlink" href="#Discrete-Distributions" title="Permalink to this headline">¶</a></h3>
+<p>For discrete distribution that inherit from <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_discrete.html#scipy.stats.rv_discrete">rv_discrete</a>, you only need to implement _pmf. The rest is taken care of magically by scipy.</p>
+<p>For example, here is a discrete poisson distribution:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">class</span> <span class="nc">Poisson</span><span class="p">(</span><span class="n">BaseDiscreteDistribution</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_included</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">max_included</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">null_default_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mf">0.6</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">min_included</span><span class="o">=</span><span class="n">min_included</span><span class="p">,</span>
+            <span class="n">max_included</span><span class="o">=</span><span class="n">max_included</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;poisson&#39;</span><span class="p">,</span>
+            <span class="n">null_default_value</span><span class="o">=</span><span class="n">null_default_value</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mu</span> <span class="o">=</span> <span class="n">mu</span>
+
+    <span class="k">def</span> <span class="nf">_pmf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">mu</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu</span> <span class="o">**</span> <span class="n">x</span> <span class="o">/</span> <span class="n">factorial</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Continuous-Distributions">
+<h3>Continuous Distributions<a class="headerlink" href="#Continuous-Distributions" title="Permalink to this headline">¶</a></h3>
+<p>For continous distribution that inherit from <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.html">rv_continuous</a>, you only need to implement _pdf function. The rest is taken care of magically by scipy.</p>
+<p>For example, here is a continous gaussian distribution:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">class</span> <span class="nc">Gaussian</span><span class="p">(</span><span class="n">BaseContinuousDistribution</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_included</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">max_included</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">null_default_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_included</span> <span class="o">=</span> <span class="n">max_included</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_included</span> <span class="o">=</span> <span class="n">min_included</span>
+
+        <span class="n">BaseContinuousDistribution</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;gaussian&#39;</span><span class="p">,</span>
+            <span class="n">min_included</span><span class="o">=</span><span class="n">min_included</span><span class="p">,</span>
+            <span class="n">max_included</span><span class="o">=</span><span class="n">max_included</span><span class="p">,</span>
+            <span class="n">null_default_value</span><span class="o">=</span><span class="n">null_default_value</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_pdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Custom-Arguments">
+<h3>Custom Arguments<a class="headerlink" href="#Custom-Arguments" title="Permalink to this headline">¶</a></h3>
+<p>If you want to add more properties to calculate your distributions, just add them in self. They will be available in all of the scipy private methods you can override like _pmf, and _pdf.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">class</span> <span class="nc">LogNormal</span><span class="p">(</span><span class="n">BaseContinuousDistribution</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">log2_space_mean</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+            <span class="n">log2_space_std</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+            <span class="n">hard_clip_min</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+            <span class="n">hard_clip_max</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+            <span class="n">null_default_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="n">null_default_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">null_default_value</span> <span class="o">=</span> <span class="n">hard_clip_min</span>
+
+        <span class="k">if</span> <span class="n">hard_clip_min</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">hard_clip_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+        <span class="k">if</span> <span class="n">hard_clip_max</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">hard_clip_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">log2_space_mean</span> <span class="o">=</span> <span class="n">log2_space_mean</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log2_space_std</span> <span class="o">=</span> <span class="n">log2_space_std</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;log_normal&#39;</span><span class="p">,</span>
+            <span class="n">min_included</span><span class="o">=</span><span class="n">hard_clip_min</span><span class="p">,</span>
+            <span class="n">max_included</span><span class="o">=</span><span class="n">hard_clip_max</span><span class="p">,</span>
+            <span class="n">null_default_value</span><span class="o">=</span><span class="n">null_default_value</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_pdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">0.</span>
+
+        <span class="n">cdf_min</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="n">cdf_max</span> <span class="o">=</span> <span class="mf">1.</span>
+
+        <span class="n">pdf_x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">log2_space_std</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span>
+            <span class="o">-</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">log2_space_mean</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">log2_space_std</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">pdf_x</span> <span class="o">/</span> <span class="p">(</span><span class="n">cdf_max</span> <span class="o">-</span> <span class="n">cdf_min</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Scipy-methods">
+<h3>Scipy methods<a class="headerlink" href="#Scipy-methods" title="Permalink to this headline">¶</a></h3>
+<p>All of the scipy distribution methods are available:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">get_many_samples_for</span><span class="p">(</span><span class="n">hd</span><span class="p">,</span> <span class="n">num_trial</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">hd</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_trial</span><span class="p">)]</span>
+
+<span class="n">samples</span> <span class="o">=</span> <span class="n">get_many_samples_for</span><span class="p">(</span><span class="n">hd</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">samples</span><span class="p">:</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span>
+
+<span class="n">hd</span> <span class="o">=</span> <span class="n">Gaussian</span><span class="p">(</span><span class="n">min_included</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_included</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">null_default_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="mf">0.0</span> <span class="o">&lt;=</span> <span class="n">hd</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mf">10.0</span>
+<span class="k">assert</span> <span class="n">hd</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.001</span>
+<span class="k">assert</span> <span class="n">hd</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.42</span>
+<span class="k">assert</span> <span class="mf">0.55</span> <span class="o">&gt;</span> <span class="n">hd</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mf">5.0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.45</span>
+<span class="k">assert</span> <span class="n">hd</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="n">hd</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mf">13.418938533204672</span>
+<span class="k">assert</span> <span class="n">hd</span><span class="o">.</span><span class="n">logcdf</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mf">0.6931477538632531</span>
+<span class="k">assert</span> <span class="n">hd</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.5000002866515718</span>
+<span class="k">assert</span> <span class="n">hd</span><span class="o">.</span><span class="n">logsf</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mf">0.693146607256966</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">hd</span><span class="o">.</span><span class="n">ppf</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="mi">10</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">hd</span><span class="o">.</span><span class="n">moment</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="mf">50.50000000091249</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">hd</span><span class="o">.</span><span class="n">stats</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">hd</span><span class="o">.</span><span class="n">stats</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">hd</span><span class="o">.</span><span class="n">entropy</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">0.7094692666023363</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">hd</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="k">assert</span> <span class="n">hd</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">==</span> <span class="mf">5.398942280397029</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">hd</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span> <span class="mf">4.620759921685374</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">hd</span><span class="o">.</span><span class="n">var</span><span class="p">(),</span> <span class="mf">21.35142225385382</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">hd</span><span class="o">.</span><span class="n">expect</span><span class="p">(),</span> <span class="mf">0.39894228040143276</span><span class="p">)</span>
+<span class="n">interval</span> <span class="o">=</span> <span class="n">hd</span><span class="o">.</span><span class="n">interval</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">])</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">interval</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">interval</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">assert</span> <span class="n">hd</span><span class="o">.</span><span class="n">support</span><span class="p">()</span> <span class="o">==</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="SKLearn-Hyperparams">
+<h2>SKLearn Hyperparams<a class="headerlink" href="#SKLearn-Hyperparams" title="Permalink to this headline">¶</a></h2>
+<p>SKLearnWrapper wraps sklearn predictors so that they can be compatible with Neuraxle. When you set the hyperparams of an SKLearnWrapper, it automatically sets the params of the sklearn predictor for you:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">neuraxle.hyperparams.distributions</span> <span class="kn">import</span> <span class="n">Choice</span>
+<span class="kn">from</span> <span class="nn">neuraxle.hyperparams.distributions</span> <span class="kn">import</span> <span class="n">RandInt</span>
+<span class="kn">from</span> <span class="nn">neuraxle.hyperparams.space</span> <span class="kn">import</span> <span class="n">HyperparameterSpace</span>
+<span class="kn">from</span> <span class="nn">neuraxle.steps.sklearn</span> <span class="kn">import</span> <span class="n">SKLearnWrapper</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+
+
+<span class="n">decision_tree_classifier</span> <span class="o">=</span> <span class="n">SKLearnWrapper</span><span class="p">(</span>
+    <span class="n">DecisionTreeClassifier</span><span class="p">(),</span>
+    <span class="n">HyperparameterSpace</span><span class="p">({</span>
+        <span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <span class="n">Choice</span><span class="p">([</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span> <span class="s1">&#39;entropy&#39;</span><span class="p">]),</span>
+        <span class="s1">&#39;splitter&#39;</span><span class="p">:</span> <span class="n">Choice</span><span class="p">([</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="s1">&#39;random&#39;</span><span class="p">]),</span>
+        <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span> <span class="n">RandInt</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+        <span class="s1">&#39;min_samples_split&#39;</span><span class="p">:</span> <span class="n">RandInt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="p">})</span>
+<span class="p">)</span><span class="o">.</span><span class="n">set_hyperparams</span><span class="p">(</span><span class="n">HyperparameterSamples</span><span class="p">({</span>
+    <span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <span class="s1">&#39;gini&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;splitter&#39;</span><span class="p">:</span> <span class="s1">&#39;best&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s1">&#39;min_samples_split&#39;</span><span class="p">:</span> <span class="mi">3</span>
+<span class="p">}))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <!-- Begin Mailchimp Signup Form -->
+  <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+  <div id="mc_embed_signup">
+  <form action="https://neuraxio.us18.list-manage.com/subscribe/post?u=75b15e094bec4736090d7588c&amp;id=461343efc0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <div id="mc_embed_signup_scroll">
+      <label for="mce-EMAIL">Stay Tuned, Keep in Touch!</label>
+      <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75b15e094bec4736090d7588c_461343efc0" tabindex="-1" value=""></div>
+      <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+      </div>
+      <br/>
+      <a href="/en/blog/index.html">Visit Blog</a>
+  </form>
+  </div>
+  <!--End mc_embed_signup-->
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019 The Neuraxle Authors. All rights reserved. Apache License, Version 2.0.
+
+    </p>
+  </div>
+   
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-139527241-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>
