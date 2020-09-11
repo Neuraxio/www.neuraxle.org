@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>neuraxle.api &mdash; Neuraxle 0.5.3 documentation</title>
+  <title>neuraxle.api &mdash; Neuraxle 0.5.4 documentation</title>
   
 
   
@@ -87,7 +87,7 @@
             
             
               <div class="version">
-                0.5.3
+                0.5.4
               </div>
             
           
@@ -547,7 +547,7 @@
 </table>
 <dl class="class">
 <dt id="neuraxle.api.DeepLearningPipeline">
-<em class="property">class </em><code class="descclassname">neuraxle.api.</code><code class="descname">DeepLearningPipeline</code><span class="sig-paren">(</span><em>pipeline: Union[neuraxle.base.BaseStep, List[Union[Tuple[str, BaseStep], BaseStep]]], validation_size: float = None, batch_size: int = None, batch_metrics: Dict[str, Callable] = None, shuffle_in_each_epoch_at_train: bool = True, seed: int = None, n_epochs: int = 1, epochs_metrics: Dict[str, Callable] = None, scoring_function: Callable = None, cache_folder: str = None, print_epoch_metrics=False, print_batch_metrics=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/cd51708/neuraxle/api.py#L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.api.DeepLearningPipeline" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.api.</code><code class="descname">DeepLearningPipeline</code><span class="sig-paren">(</span><em>pipeline: Union[neuraxle.base.BaseStep, List[Union[Tuple[str, BaseStep], BaseStep]]], validation_size: float = None, batch_size: int = None, batch_metrics: Dict[str, Callable] = None, shuffle_in_each_epoch_at_train: bool = True, seed: int = None, n_epochs: int = 1, epochs_metrics: Dict[str, Callable] = None, scoring_function: Callable = None, cache_folder: str = None, print_epoch_metrics=False, print_batch_metrics=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/fac9bbc/neuraxle/api.py#L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.api.DeepLearningPipeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds an epoch loop, a validation split, and mini batching to a pipeline.
 It also tracks batch metrics, and epoch metrics.</p>
 <p>Example usage :</p>
@@ -587,7 +587,7 @@ It also tracks batch metrics, and epoch metrics.</p>
 
 <dl class="method">
 <dt id="neuraxle.api.DeepLearningPipeline._create_epoch_repeater">
-<code class="descname">_create_epoch_repeater</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/cd51708/neuraxle/api.py#L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.api.DeepLearningPipeline._create_epoch_repeater" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_create_epoch_repeater</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/fac9bbc/neuraxle/api.py#L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.api.DeepLearningPipeline._create_epoch_repeater" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add epoch loop by wrapping the step with <code class="xref py py-class docutils literal notranslate"><span class="pre">EpochRepeater</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -604,7 +604,7 @@ It also tracks batch metrics, and epoch metrics.</p>
 
 <dl class="method">
 <dt id="neuraxle.api.DeepLearningPipeline._create_mini_batch_pipeline">
-<code class="descname">_create_mini_batch_pipeline</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/cd51708/neuraxle/api.py#L131"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.api.DeepLearningPipeline._create_mini_batch_pipeline" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_create_mini_batch_pipeline</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/fac9bbc/neuraxle/api.py#L131"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.api.DeepLearningPipeline._create_mini_batch_pipeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add mini batching and batch metrics by wrapping the step with <code class="xref py py-class docutils literal notranslate"><span class="pre">MetricsWrapper</span></code>, and  :class:̀MiniBatchSequentialPipeline`.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -621,7 +621,7 @@ It also tracks batch metrics, and epoch metrics.</p>
 
 <dl class="method">
 <dt id="neuraxle.api.DeepLearningPipeline._create_validation_split">
-<code class="descname">_create_validation_split</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/cd51708/neuraxle/api.py#L150"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.api.DeepLearningPipeline._create_validation_split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_create_validation_split</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/fac9bbc/neuraxle/api.py#L150"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.api.DeepLearningPipeline._create_validation_split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add validation split and epoch metrics by wrapping the step with <code class="xref py py-class docutils literal notranslate"><span class="pre">MetricsWrapper</span></code>, and  :class:̀ValidationSplitWrapper`.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -638,7 +638,7 @@ It also tracks batch metrics, and epoch metrics.</p>
 
 <dl class="method">
 <dt id="neuraxle.api.DeepLearningPipeline.get_score">
-<code class="descname">get_score</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/cd51708/neuraxle/api.py#L188"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.api.DeepLearningPipeline.get_score" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_score</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/fac9bbc/neuraxle/api.py#L188"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.api.DeepLearningPipeline.get_score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get latest score. This function had to be defined for the hyperparameter optimization steps.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -652,7 +652,7 @@ It also tracks batch metrics, and epoch metrics.</p>
 
 <dl class="method">
 <dt id="neuraxle.api.DeepLearningPipeline.get_score_train">
-<code class="descname">get_score_train</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/cd51708/neuraxle/api.py#L206"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.api.DeepLearningPipeline.get_score_train" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_score_train</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/fac9bbc/neuraxle/api.py#L206"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.api.DeepLearningPipeline.get_score_train" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get latest score train.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -666,7 +666,7 @@ It also tracks batch metrics, and epoch metrics.</p>
 
 <dl class="method">
 <dt id="neuraxle.api.DeepLearningPipeline.get_score_validation">
-<code class="descname">get_score_validation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/cd51708/neuraxle/api.py#L197"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.api.DeepLearningPipeline.get_score_validation" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_score_validation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/fac9bbc/neuraxle/api.py#L197"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.api.DeepLearningPipeline.get_score_validation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get latest score validation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
