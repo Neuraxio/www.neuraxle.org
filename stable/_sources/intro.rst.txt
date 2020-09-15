@@ -22,6 +22,8 @@ You may be tempted to write simple code like this:
 
 .. code-block:: python
 
+    import numpy as np
+
     # train
     mean = np.expand_dims(np.mean(train_data, axis=-1), axis=-1)
     train_data = train_data - mean
@@ -38,6 +40,8 @@ You may be tempted to write simple code like this:
 However, it will backfire soon. Prefer the following:
 
 .. code-block:: python
+
+    import numpy as np
 
     # train
     norm = Normalizer()
@@ -57,6 +61,7 @@ This is how the Normalizer transformer implementation looks like:
 .. code-block:: python
 
     from neuraxle.base import BaseStep
+    import numpy as np
 
     class Normalizer(BaseStep):
         def fit(data_inputs, expected_outputs):
@@ -80,6 +85,10 @@ Let’s revisit the code example just above. You fit a normalizer, and then you 
 
 .. code-block:: python
 
+    import numpy as np
+    from neuraxle.pipeline import Pipeline
+    from neuraxle.steps.data import DataShuffler
+
     # train
     pipeline = Pipeline([
         Normalizer(),
@@ -97,6 +106,26 @@ Let’s revisit the code example just above. You fit a normalizer, and then you 
 This way, your code will be much more flexible and cleaner.
 Your main code now just 3 lines of code, yet you can see what it is made of and how the data flows from one class to another by knowing the pipeline object will chain calls from one of the steps it contains to another and so forth.
 
+**************************************************
+Features
+**************************************************
+
+Let's add features based on the transformations of different columns. Use the `ColumnTransformer <https://www.neuraxle.org/stable/api/neuraxle.steps.column_transformer.html#neuraxle.steps.column_transformer.ColumnTransformer>`_ step to create features based on the N-dimensional (ND) input data:
+
+.. code-block:: python
+
+    from neuraxle.pipeline import Pipeline
+
+    pipeline = Pipeline([
+        ColumnChooser([
+            (range(0, 2), DateToCosineEncoder()),
+            (3, CategoricalEnum(categeories_count=5, starts_at_zero=True)),
+        ]),
+        Normalizer(),
+        DataShuffler(),
+        Model()
+    ])
+
 **********************************
 Wrapper (a.k.a. Decorator) classes
 **********************************
@@ -107,21 +136,14 @@ Replace this:
 
 .. code-block:: python
 
-    pipeline = Pipeline([
-        Normalizer(),
-        DataShuffler(),
-        Model()
-    ])
+    DataShuffler(),
 
 With this:
 
 .. code-block:: python
 
-    pipeline = Pipeline([
-        Normalizer(),
-        TrainOnlyWrapper(DataShuffler()),
-        Model()
-    ])
+    TrainOnlyWrapper(DataShuffler()),
+
 
 **************************************************
 Pipelines for Minibatching and Parallel Processing
@@ -132,7 +154,16 @@ Use a `MiniBatchSequentialPipeline <https://www.neuraxle.org/stable/api/neuraxle
 
 .. code-block:: python
 
+    from neuraxle.pipeline import Pipeline, MiniBatchSequentialPipeline
+    from neuraxle.steps.column_transformer import ColumnTransformer
+    from neuraxle.steps.flow import TrainOnlyWrapper
+    from neuraxle.steps.data import DataShuffler
+
     pipeline = Pipeline([
+        ColumnTransformer([
+            (range(0, 2), DateToCosineEncoder()),
+            (3, CategoricalEnum(categeories_count=5, starts_at_zero=True)),
+        ]),
         Normalizer(),
         TrainOnlyWrapper(DataShuffler()),
         MiniBatchSequentialPipeline([
@@ -152,6 +183,11 @@ See how this can be done here:
 
 .. code-block:: python
 
+    from neuraxle.pipeline import Pipeline, MiniBatchSequentialPipeline
+    from neuraxle.base import ExecutionContext
+    from neuraxle.steps.column_transformer import ColumnTransformer
+    from neuraxle.steps.flow import TrainOnlyWrapper
+
     training_data_ids = training_data_repository.get_all_ids()
     context = ExecutionContext('caching_folder').set_service_locator({
         BaseRepository: training_data_repository
@@ -159,8 +195,15 @@ See how this can be done here:
 
     pipeline = Pipeline([
         ConvertIDsToLoadedData().assert_has_services(BaseRepository),
+        ColumnTransformer([
+            (range(0, 2), DateToCosineEncoder()),
+            (3, CategoricalEnum(categeories_count=5, starts_at_zero=True)),
+        ]),
         Normalizer(),
-        ...
+        TrainOnlyWrapper(DataShuffler()),
+        MiniBatchSequentialPipeline([
+            Model()
+        ], batch_size=128)
     ]).with_context(context)
 
 You can already see how powerful this can be to efficiently use data sampling techniques (undersampling, oversampling) and to do data augmentation without blowing your RAM usage.
@@ -171,10 +214,19 @@ The Normalizer will now change a little bit at each mini batch it sees, the mini
 
 .. code-block:: python
 
+    from neuraxle.pipeline import Pipeline, MiniBatchSequentialPipeline
+    from neuraxle.steps.column_transformer import ColumnTransformer
+    from neuraxle.steps.data import DataShuffler
+    from neuraxle.steps.flow import TrainOnlyWrapper
+
     pipeline = Pipeline([
         TrainOnlyWrapper(DataShuffler()),
         SequentialQueuedPipeline([
             ConvertIDsToLoadedData(),
+            ColumnTransformer([
+                (range(0, 2), DateToCosineEncoder()),
+                (3, CategoricalEnum(categeories_count=5, starts_at_zero=True)),
+            ]),
             Normalizer(),
             Model()
         ], n_workers_per_step=8, max_queue_size=1024, batch_size=128)
@@ -195,6 +247,8 @@ Let's add a few hyperparams to our Model step:
 
 .. code-block:: python
 
+    from neuraxle.pipeline import Pipeline
+
     pipeline = Pipeline([
         ...
         Model().set_hyperparams(HyperparameterSamples({
@@ -214,6 +268,9 @@ See the page `Hyperparams And Distributions <https://www.neuraxle.org/stable/ran
 The next step is to tune hyperparams. See how you can easily create an `AutoML <https://www.neuraxle.org/stable/api/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML>`_ loop that searches for the best hyperparams:
 
 .. code-block:: python
+
+    from neuraxle.metaopt.auto_ml import AutoML, HyperparamsJSONRepository, ValidationSplitter
+    from neuraxle.metaopt.callbacks import ScoringCallback
 
     auto_ml = AutoML(
         pipeline=pipeline
@@ -244,6 +301,8 @@ See how you can easily set custom savers for each step :
 
 .. code-block:: python
 
+    from neuraxle.pipeline import Pipeline
+
     pipeline = Pipeline([
         ...
         Model().set_savers([
@@ -263,6 +322,50 @@ Conclusion
 
 Now that is amazing. Your dirty little code was refactored using some design patterns, and now it is so modular that it was easy to parallelize it and to do funky things such as lazy loading the data with mini batches.
 This way, your machine learning pipeline is also ready for deep learning. Thanks for getting this far.
+
+Putting everything together, you get the following code:
+
+.. code-block:: python
+
+    from neuraxle.pipeline import Pipeline, MiniBatchSequentialPipeline
+    from neuraxle.steps.flow import TrainOnlyWrapper
+    from neuraxle.distributed.streaming import SequentialQueuedPipeline
+    from neuraxle.metaopt.auto_ml import AutoML, HyperparamsJSONRepository, ValidationSplitter
+    from neuraxle.metaopt.callbacks import ScoringCallback
+    from neuraxle.steps.data import DataShuffler
+    from neuraxle.hyperparams.space import HyperparmeterSamples, HyperparameterSpace
+    from neuraxle.steps.column_transformer import ColumnTransformer
+
+    pipeline = Pipeline([
+        TrainOnlyWrapper(DataShuffler()),
+        MiniBatchSequentialPipeline([
+            ConvertIDsToLoadedData(),
+            ColumnChooser([
+                (range(0, 2), DateToCosineEncoder()),
+                (3, CategoricalEnum(categeories_count=5, starts_at_zero=True)),
+            ]),
+            Normalizer(),
+            Model().set_savers([ModelSaver()]).set_hyperparams(HyperparameterSamples({
+                'hidden_dim': 12,
+            })).set_hyperparams_space(HyperparameterSpace({
+                'hidden_dim': RandInt(6, 750),
+            }))
+        ], batch_size=128)
+    ])
+
+    auto_ml = AutoML(
+        pipeline=pipeline
+        validation_splitter=ValidationSplitter(test_size=0.20),
+        scoring_callback=ScoringCallback(accuracy_score, higher_score_is_better=True),
+        n_trials=100,
+        epochs=30,
+        hyperparams_repository=HyperparamsJSONRepository(cache_folder='cache'),
+        refit_trial=True
+    )
+
+    auto_ml.fit(data_inputs, expected_outputs)
+
+Continue learning about Neuraxle:
 
 - `Flask rest api wrapper for rest api serving <https://www.neuraxle.org/stable/examples/deployment/plot_easy_rest_api_serving.html#sphx-glr-examples-deployment-plot-easy-rest-api-serving-py>`_
 - `Caching and Checkpoints <https://www.neuraxle.org/stable/examples/caching/plot_auto_ml_checkpoint.html#sphx-glr-examples-caching-plot-auto-ml-checkpoint-py>`_
