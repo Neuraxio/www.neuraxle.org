@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>neuraxle.hyperparams.space &mdash; Neuraxle 0.5.4 documentation</title>
+  <title>neuraxle.hyperparams.space &mdash; Neuraxle 0.5.7 documentation</title>
   
 
   
@@ -27,6 +27,7 @@
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
@@ -41,7 +42,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="neuraxle.metaopt.auto_ml" href="neuraxle.metaopt.auto_ml.html" />
-    <link rel="prev" title="neuraxle.hyperparams.distributions" href="neuraxle.hyperparams.distributions.html" /> 
+    <link rel="prev" title="neuraxle.hyperparams.scipy_distributions" href="neuraxle.hyperparams.scipy_distributions.html" /> 
 
   <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
   <style>
@@ -87,7 +88,7 @@
             
             
               <div class="version">
-                0.5.4
+                0.5.7
               </div>
             
           
@@ -292,7 +293,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Import-Packages">Import Packages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Load-your-Dataset">Load your Dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Create-your-Pipeline">Create your Pipeline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Let's-Train-and-Test">Let’s Train and Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Let’s-Train-and-Test">Let’s Train and Test</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rest_api_serving.html#Deploy-the-Pipeline">Deploy the Pipeline</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../rest_api_serving.html#Write-a-step-to-decode-the-accepted-JSON-as-data-inputs">Write a step to decode the accepted JSON as data inputs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../rest_api_serving.html#Write-a-step-to-encode-the-returned-JSON-response">Write a step to encode the returned JSON response</a></li>
@@ -306,6 +307,53 @@
 <li class="toctree-l3"><a class="reference internal" href="../rest_api_serving.html#Checkpoints">Checkpoints</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#automl">AutoML</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples/auto_ml/plot_automl_loop_clean_kata.html">Usage of AutoML loop, and hyperparams with sklearn models.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#caching">Caching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples/caching/plot_value_caching.html">Usage of ValueCachingWrapper in Neuraxle.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/caching/plot_auto_ml_checkpoint.html">Usage of Checkpoints in Automatic Machine Learning (AutoML)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#rest-api-model-serving">REST API Model Serving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples/deployment/plot_easy_rest_api_serving.html">Easy REST API Model Serving with Neuraxle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#getting-started">Getting started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples/getting_started/plot_inverse_transform.html">Inverse Transforms in Neuraxle: How to Reverse a Prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/getting_started/plot_nested_pipelines.html">Create Nested Pipelines in Neuraxle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/getting_started/plot_label_encoder_across_multiple_columns.html">Create label encoder across multiple columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/getting_started/plot_non_fittable_mixin.html">Create Pipeline Steps in Neuraxle that doesn’t fit or transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/getting_started/plot_force_handle_mixin.html">Create Pipeline Steps that require implementing only handler methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#hyperparameters">Hyperparameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples/hyperparams/plot_hyperparams.html">Manipulate Hyperparameter Spaces for Hyperparameter Tuning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#parallel">Parallel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples/parallel/plot_streaming_pipeline.html">Parallel processing in Neuraxle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#neuraxle-hyperparameter-examples">Neuraxle hyperparameter examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../examples/sklearn/plot_boston_housing_regression_with_model_stacking.html">Boston Housing Regression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../examples/sklearn/plot_boston_housing_meta_optimization.html">Boston Housing Regression with Meta Optimization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../awesome_neuraxle.html">Awesome Neuraxle </a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../awesome_neuraxle.html#contents">Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../awesome_neuraxle.html#examples-articles">Examples &amp; Articles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../awesome_neuraxle.html#courses-training">Courses &amp; Training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../awesome_neuraxle.html#videos">Videos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../awesome_neuraxle.html#projects">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../awesome_neuraxle.html#community">Community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../awesome_neuraxle.html#license">License</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">Complete API Documentation</a><ul class="current">
@@ -329,12 +377,12 @@
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.checkpoints.html#neuraxle-s-checkpoint-classes">Neuraxle’s Checkpoint Classes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="neuraxle.api.html">neuraxle.api</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="neuraxle.api.html#neuraxle-s-api-classes">Neuraxle’s API classes</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="neuraxle.metrics.html">neuraxle.metrics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.metrics.html#neuraxle-s-metrics-classes">Neuraxle’s metrics classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.plotting.html">neuraxle.plotting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.plotting.html#notebook-matplotlib-plotting-functions">Notebook matplotlib plotting functions</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="neuraxle.steps.numpy.html">neuraxle.steps.numpy</a><ul>
@@ -381,6 +429,7 @@
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.hyperparams.distributions.html#hyperparameter-distributions">Hyperparameter Distributions</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.hyperparams.scipy_distributions.html">neuraxle.hyperparams.scipy_distributions</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">neuraxle.hyperparams.space</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#hyperparameter-dictionary-conversions">Hyperparameter Dictionary Conversions</a></li>
 </ul>
@@ -409,6 +458,10 @@
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.tpe.html#tree-parzen-estimator">Tree parzen estimator</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.observable.html">neuraxle.metaopt.observable</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.observable.html#neuraxle-s-observable-classes">Neuraxle’s Observable Classes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.deprecated.html">neuraxle.metaopt.deprecated</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.deprecated.html#neuraxle-s-automatic-machine-learning-classes">Neuraxle’s Automatic Machine Learning Classes</a></li>
 </ul>
@@ -419,43 +472,6 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="neuraxle.rest.flask.html">neuraxle.rest.flask</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.rest.flask.html#neuraxle-s-flask-wrapper-classes">Neuraxle’s Flask Wrapper classes</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Usage Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#automl">AutoML</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../examples/auto_ml/plot_automl_loop_clean_kata.html">Usage of AutoML loop, and hyperparams with sklearn models.</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#caching">Caching</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../examples/caching/plot_value_caching.html">Usage of ValueCachingWrapper in Neuraxle.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples/caching/plot_auto_ml_checkpoint.html">Usage of Checkpoints in Automatic Machine Learning (AutoML)</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#rest-api-model-serving">REST API Model Serving</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../examples/deployment/plot_easy_rest_api_serving.html">Easy REST API Model Serving with Neuraxle</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#getting-started">Getting started</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../examples/getting_started/plot_inverse_transform.html">Inverse Transforms in Neuraxle: How to Reverse a Prediction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples/getting_started/plot_nested_pipelines.html">Create Nested Pipelines in Neuraxle</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples/getting_started/plot_non_fittable_mixin.html">Create Pipeline Steps in Neuraxle that doesn’t fit or transform</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples/getting_started/plot_label_encoder_across_multiple_columns.html">Create label encoder across multiple columns</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples/getting_started/plot_force_handle_mixin.html">Create Pipeline Steps that require implementing only handler methods</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#hyperparameters">Hyperparameters</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../examples/hyperparams/plot_hyperparams.html">Manipulate Hyperparameter Spaces for Hyperparameter Tuning</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#parallel">Parallel</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../examples/parallel/plot_streaming_pipeline.html">Parallel processing in Neuraxle</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#neuraxle-hyperparameter-examples">Neuraxle hyperparameter examples</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../examples/sklearn/plot_boston_housing_regression_with_model_stacking.html">Boston Housing Regression</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples/sklearn/plot_boston_housing_meta_optimization.html">Boston Housing Regression with Meta Optimization</a></li>
 </ul>
 </li>
 </ul>
@@ -584,7 +600,7 @@ ready to be sent to an instance of the pipeline to try and score it, for example
 </table>
 <dl class="class">
 <dt id="neuraxle.hyperparams.space.HyperparameterSamples">
-<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.space.</code><code class="descname">HyperparameterSamples</code><span class="sig-paren">(</span><em>*args</em>, <em>separator=None</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1568385/neuraxle/hyperparams/space.py#L255"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSamples" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.space.</code><code class="descname">HyperparameterSamples</code><span class="sig-paren">(</span><em>*args</em>, <em>separator=None</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/hyperparams/space.py#L259"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSamples" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wraps an hyperparameter nested dict or flat dict, and offer a few more functions.</p>
 <p>This can be set on a Pipeline with the method <code class="docutils literal notranslate"><span class="pre">set_hyperparams</span></code>.</p>
 <p>HyperparameterSamples are often the result of calling <code class="docutils literal notranslate"><span class="pre">.rvs()</span></code> on an HyperparameterSpace.</p>
@@ -592,14 +608,14 @@ ready to be sent to an instance of the pipeline to try and score it, for example
 
 <dl class="class">
 <dt id="neuraxle.hyperparams.space.HyperparameterSpace">
-<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.space.</code><code class="descname">HyperparameterSpace</code><span class="sig-paren">(</span><em>*args</em>, <em>separator=None</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1568385/neuraxle/hyperparams/space.py#L268"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.space.</code><code class="descname">HyperparameterSpace</code><span class="sig-paren">(</span><em>*args</em>, <em>separator=None</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/hyperparams/space.py#L272"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wraps an hyperparameter nested dict or flat dict, and offer a few more functions to process
 all contained HyperparameterDistribution.</p>
 <p>This can be set on a Pipeline with the method <code class="docutils literal notranslate"><span class="pre">set_hyperparams_space</span></code>.</p>
 <p>Calling <code class="docutils literal notranslate"><span class="pre">.rvs()</span></code> on an <code class="docutils literal notranslate"><span class="pre">HyperparameterSpace</span></code> results in <code class="docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code>.</p>
 <dl class="method">
 <dt id="neuraxle.hyperparams.space.HyperparameterSpace.narrow_space_from_best_guess">
-<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guesses: neuraxle.hyperparams.space.HyperparameterSpace</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1568385/neuraxle/hyperparams/space.py#L302"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guesses: neuraxle.hyperparams.space.HyperparameterSpace</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/hyperparams/space.py#L306"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes samples estimated to be the best ones of the space as of yet, and restrict the whole space towards that.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -616,12 +632,12 @@ all contained HyperparameterDistribution.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.space.HyperparameterSpace.nullify">
-<code class="descname">nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1568385/neuraxle/hyperparams/space.py#L294"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace.nullify" title="Permalink to this definition">¶</a></dt>
+<code class="descname">nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/hyperparams/space.py#L298"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace.nullify" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.space.HyperparameterSpace.rvs">
-<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1568385/neuraxle/hyperparams/space.py#L281"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace.rvs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/hyperparams/space.py#L285"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace.rvs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample the space of random variables.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -632,7 +648,7 @@ all contained HyperparameterDistribution.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.space.HyperparameterSpace.to_flat">
-<code class="descname">to_flat</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1568385/neuraxle/hyperparams/space.py#L336"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace.to_flat" title="Permalink to this definition">¶</a></dt>
+<code class="descname">to_flat</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/hyperparams/space.py#L340"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace.to_flat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will create an equivalent flat HyperparameterSpace.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -643,7 +659,7 @@ all contained HyperparameterDistribution.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.space.HyperparameterSpace.to_nested_dict">
-<code class="descname">to_nested_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1568385/neuraxle/hyperparams/space.py#L344"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace.to_nested_dict" title="Permalink to this definition">¶</a></dt>
+<code class="descname">to_nested_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/hyperparams/space.py#L348"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace.to_nested_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will create an equivalent nested dict HyperparameterSpace.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -654,7 +670,7 @@ all contained HyperparameterDistribution.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.space.HyperparameterSpace.unnarrow">
-<code class="descname">unnarrow</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1568385/neuraxle/hyperparams/space.py#L322"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace.unnarrow" title="Permalink to this definition">¶</a></dt>
+<code class="descname">unnarrow</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/hyperparams/space.py#L326"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace.unnarrow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the original space before narrowing of the distribution. If the distribution was never narrowed,
 the values in the dict will be copies.</p>
 <dl class="field-list simple">
@@ -668,7 +684,7 @@ the values in the dict will be copies.</p>
 
 <dl class="class">
 <dt id="neuraxle.hyperparams.space.RecursiveDict">
-<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.space.</code><code class="descname">RecursiveDict</code><span class="sig-paren">(</span><em>*args</em>, <em>separator=None</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1568385/neuraxle/hyperparams/space.py#L75"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.space.</code><code class="descname">RecursiveDict</code><span class="sig-paren">(</span><em>*args</em>, <em>separator=None</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/hyperparams/space.py#L75"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wraps an hyperparameter nested dict or flat dict, and offer a few more functions.</p>
 <p>This can be set on a Pipeline with the method <code class="docutils literal notranslate"><span class="pre">set_hyperparams</span></code>.</p>
 <p>HyperparameterSamples are often the result of calling <code class="docutils literal notranslate"><span class="pre">.rvs()</span></code> on an HyperparameterSpace.</p>
@@ -679,17 +695,17 @@ the values in the dict will be copies.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.space.RecursiveDict._patch_arg">
-<code class="descname">_patch_arg</code><span class="sig-paren">(</span><em>arg</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1568385/neuraxle/hyperparams/space.py#L113"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict._patch_arg" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_patch_arg</code><span class="sig-paren">(</span><em>arg</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/hyperparams/space.py#L113"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict._patch_arg" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.space.RecursiveDict._patch_args">
-<code class="descname">_patch_args</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1568385/neuraxle/hyperparams/space.py#L99"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict._patch_args" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_patch_args</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/hyperparams/space.py#L99"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict._patch_args" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.space.RecursiveDict.flat_to_nested_dict">
-<code class="descname">flat_to_nested_dict</code><span class="sig-paren">(</span><em>dict_ctor=&lt;class 'dict'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1568385/neuraxle/hyperparams/space.py#L211"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.flat_to_nested_dict" title="Permalink to this definition">¶</a></dt>
+<code class="descname">flat_to_nested_dict</code><span class="sig-paren">(</span><em>dict_ctor=&lt;class 'dict'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/hyperparams/space.py#L215"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.flat_to_nested_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a flat hyperparameter dictionary to a nested one.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -702,8 +718,14 @@ the values in the dict will be copies.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.hyperparams.space.RecursiveDict.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/hyperparams/space.py#L128"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the value for key if key is in the dictionary, else default.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.hyperparams.space.RecursiveDict.nested_dict_to_flat">
-<code class="descname">nested_dict_to_flat</code><span class="sig-paren">(</span><em>dict_ctor</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1568385/neuraxle/hyperparams/space.py#L187"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.nested_dict_to_flat" title="Permalink to this definition">¶</a></dt>
+<code class="descname">nested_dict_to_flat</code><span class="sig-paren">(</span><em>dict_ctor</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/hyperparams/space.py#L191"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.nested_dict_to_flat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a nested hyperparameter dictionary to a flat one.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -717,7 +739,7 @@ the values in the dict will be copies.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.space.RecursiveDict.to_flat">
-<code class="descname">to_flat</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.RecursiveDict<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1568385/neuraxle/hyperparams/space.py#L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.to_flat" title="Permalink to this definition">¶</a></dt>
+<code class="descname">to_flat</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.RecursiveDict<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/hyperparams/space.py#L143"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.to_flat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will create an equivalent flat HyperparameterSamples.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -728,7 +750,7 @@ the values in the dict will be copies.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.space.RecursiveDict.to_flat_as_dict_primitive">
-<code class="descname">to_flat_as_dict_primitive</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; dict<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1568385/neuraxle/hyperparams/space.py#L155"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.to_flat_as_dict_primitive" title="Permalink to this definition">¶</a></dt>
+<code class="descname">to_flat_as_dict_primitive</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; dict<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/hyperparams/space.py#L159"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.to_flat_as_dict_primitive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will create an equivalent flat HyperparameterSpace, as a dict.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -739,7 +761,7 @@ the values in the dict will be copies.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.space.RecursiveDict.to_flat_as_ordered_dict_primitive">
-<code class="descname">to_flat_as_ordered_dict_primitive</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; collections.OrderedDict<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1568385/neuraxle/hyperparams/space.py#L171"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.to_flat_as_ordered_dict_primitive" title="Permalink to this definition">¶</a></dt>
+<code class="descname">to_flat_as_ordered_dict_primitive</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; collections.OrderedDict<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/hyperparams/space.py#L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.to_flat_as_ordered_dict_primitive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will create an equivalent flat HyperparameterSpace, as a dict.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -750,7 +772,7 @@ the values in the dict will be copies.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.space.RecursiveDict.to_nested_dict">
-<code class="descname">to_nested_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.RecursiveDict<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1568385/neuraxle/hyperparams/space.py#L147"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.to_nested_dict" title="Permalink to this definition">¶</a></dt>
+<code class="descname">to_nested_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.RecursiveDict<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/hyperparams/space.py#L151"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.to_nested_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will create an equivalent nested dict HyperparameterSamples.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -761,7 +783,7 @@ the values in the dict will be copies.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.space.RecursiveDict.to_nested_dict_as_dict_primitive">
-<code class="descname">to_nested_dict_as_dict_primitive</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; dict<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1568385/neuraxle/hyperparams/space.py#L163"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.to_nested_dict_as_dict_primitive" title="Permalink to this definition">¶</a></dt>
+<code class="descname">to_nested_dict_as_dict_primitive</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; dict<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/hyperparams/space.py#L167"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.to_nested_dict_as_dict_primitive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will create an equivalent nested dict HyperparameterSpace, as a dict.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -772,7 +794,7 @@ the values in the dict will be copies.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.space.RecursiveDict.to_nested_dict_as_ordered_dict_primitive">
-<code class="descname">to_nested_dict_as_ordered_dict_primitive</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; collections.OrderedDict<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1568385/neuraxle/hyperparams/space.py#L179"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.to_nested_dict_as_ordered_dict_primitive" title="Permalink to this definition">¶</a></dt>
+<code class="descname">to_nested_dict_as_ordered_dict_primitive</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; collections.OrderedDict<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/hyperparams/space.py#L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.to_nested_dict_as_ordered_dict_primitive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will create an equivalent nested dict HyperparameterSpace, as a dict.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -783,7 +805,7 @@ the values in the dict will be copies.</p>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.space.RecursiveDict.with_separator">
-<code class="descname">with_separator</code><span class="sig-paren">(</span><em>separator</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1568385/neuraxle/hyperparams/space.py#L240"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.with_separator" title="Permalink to this definition">¶</a></dt>
+<code class="descname">with_separator</code><span class="sig-paren">(</span><em>separator</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/hyperparams/space.py#L244"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.with_separator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new recursive dict that uses the given separator at each level.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -811,7 +833,7 @@ the values in the dict will be copies.</p>
         <a href="neuraxle.metaopt.auto_ml.html" class="btn btn-neutral float-right" title="neuraxle.metaopt.auto_ml" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="neuraxle.hyperparams.distributions.html" class="btn btn-neutral float-left" title="neuraxle.hyperparams.distributions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="neuraxle.hyperparams.scipy_distributions.html" class="btn btn-neutral float-left" title="neuraxle.hyperparams.scipy_distributions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -837,7 +859,7 @@ the values in the dict will be copies.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019 The Neuraxle Authors. All rights reserved. Apache License, Version 2.0.
+        &copy; Copyright 2021 The Neuraxle Authors. All rights reserved. Apache License, Version 2.0.
 
     </p>
   </div>

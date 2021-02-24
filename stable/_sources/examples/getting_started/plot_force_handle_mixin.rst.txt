@@ -56,10 +56,10 @@ Handler methods are useful when :
         """
 
         def __init__(self):
-            ForceHandleMixin.__init__(self)
             BaseStep.__init__(self)
+            ForceHandleMixin.__init__(self)
 
-        def handle_fit(self, data_container: DataContainer, context: ExecutionContext):
+        def _fit_data_container(self, data_container: DataContainer, context: ExecutionContext) -> BaseStep:
             """
             Change the shape of the data container.
             and/or
@@ -70,7 +70,7 @@ Handler methods are useful when :
             data_container = self.hash_data_container(data_container)
             return self
 
-        def handle_transform(self, data_container: DataContainer, context: ExecutionContext):
+        def _transform_data_container(self, data_container: DataContainer, context: ExecutionContext) -> DataContainer:
             """
             Change the shape of the data container.
             and/or
@@ -81,7 +81,8 @@ Handler methods are useful when :
             data_container = self.hash_data_container(data_container)
             return data_container
 
-        def handle_fit_transform(self, data_container: DataContainer, context: ExecutionContext):
+        def _fit_transform_data_container(self, data_container: DataContainer, context: ExecutionContext) -> \
+                ('BaseStep', DataContainer):
             """
             Change the shape of the data container.
             and/or
@@ -108,7 +109,7 @@ Handler methods are useful when :
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.060 seconds)
+   **Total running time of the script:** ( 0 minutes  0.072 seconds)
 
 
 .. _sphx_glr_download_examples_getting_started_plot_force_handle_mixin.py:
