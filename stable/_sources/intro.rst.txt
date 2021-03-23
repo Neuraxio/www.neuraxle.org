@@ -76,12 +76,12 @@ This is how the Normalizer transformer implementation looks like:
     import numpy as np
 
     class Normalizer(BaseStep):
-        def fit(data_inputs, expected_outputs):
+        def fit(self, data_inputs, expected_outputs):
             self.mean = np.expand_dims(np.mean(train_data, axis=-1), axis=-1)
             self.std = np.expand_dims(np.std(train_data, axis=-1), axis=-1)
             return self
 
-        def transform(data_inputs):
+        def transform(self, data_inputs):
             return (data_inputs - self.mean) / self.std
 
 Note that you can build really powerful steps that can handle the flow of data from one step to another.
