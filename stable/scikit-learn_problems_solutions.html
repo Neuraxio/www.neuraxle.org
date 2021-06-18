@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Solutions to Scikit-Learn’s Biggest Problems &mdash; Neuraxle 0.5.7 documentation</title>
+  <title>Solutions to Scikit-Learn’s Biggest Problems &mdash; Neuraxle 0.5.8 documentation</title>
   
 
   
@@ -19,6 +20,14 @@
   
 
   
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PWQLPZ3');</script>
+  <!-- End Google Tag Manager -->
+
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
@@ -64,6 +73,11 @@
 
 <body class="wy-body-for-nav">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWQLPZ3"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
    
   <div class="wy-grid-for-nav">
     
@@ -88,7 +102,7 @@
             
             
               <div class="version">
-                0.5.7
+                0.5.8
               </div>
             
           
@@ -113,7 +127,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="intro.html#encapsulate-models-and-data-transformers">Encapsulate Models and Data Transformers</a></li>
@@ -226,17 +240,21 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="hyperparameter_tuning.html">Introduction to Automatic Hyperparameter Tuning</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="hyperparameter_tuning.html#AutoML-loop">AutoML loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#0.-Define-your-problem">0. Define your problem</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#1.-Define-your-pipeline">1. Define your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#2.-Choose-a-validation-splitter">2. Choose a validation splitter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#3.-Define-a-the-main-scoring-metric-with-ScoringCallback">3. Define a the main scoring metric with ScoringCallback</a></li>
-<li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#4.-Add-metric-callbacks-with-MetricCallback-(optional)">4. Add metric callbacks with MetricCallback (optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#4.-Add-other-metric-callbacks-with-MetricCallback-(optional)">4. Add other metric callbacks with MetricCallback (optional)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#5.-Select-an-hyperparams-repository">5. Select an hyperparams repository</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#6.-Select-an-hyperparams-optimizer">6. Select an hyperparams optimizer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#7.-Create,-and-launch-AutoML-loop">7. Create, and launch AutoML loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#7.-Create,-and-launch-AutoML-loop">7. Create, and launch AutoML loop</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hyperparameter_tuning.html#Run-10-trials">Run 10 trials</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="hyperparameter_tuning.html#Run-10-trials">Run 10 trials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hyperparameter_tuning.html#Get-best-model,-and-predict">Get best model, and predict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#8.-Get-best-model-and-measure-test-accuracy">8. Get best model and measure test accuracy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#9.-Additional-note-:-model-selection-as-an-hyperparameter">9. Additional note : model selection as an hyperparameter</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="random_distributions.html">Introduction to Random Distributions</a><ul>
@@ -450,10 +468,6 @@
 <li class="toctree-l3"><a class="reference internal" href="api/neuraxle.metaopt.random.html#random">Random</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="api/neuraxle.metaopt.sklearn.html">neuraxle.metaopt.sklearn</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="api/neuraxle.metaopt.sklearn.html#scikit-learn-metaoptimizers">Scikit-learn metaoptimizers</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="api/neuraxle.metaopt.tpe.html">neuraxle.metaopt.tpe</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="api/neuraxle.metaopt.tpe.html#tree-parzen-estimator">Tree parzen estimator</a></li>
 </ul>
@@ -479,6 +493,12 @@
 </ul>
 
             
+          <li class="toctree-l1">
+            <a class="reference internal" href="https://www.dl-rnn-course.neuraxio.com/overview?utm_source=neuraxle_doc"
+                                    style="background:#FF982E; color:#fff; text-decoration-line: underline;" target="_blank">
+            Deep Learning &amp; RNN Course [↗️]</a>
+          </li>
+
           
         </div>
         
@@ -497,8 +517,7 @@
 
 
       <div class="wy-nav-content">
-
-        <a href="https://github.com/Neuraxio/Neuraxle"><img style="position: absolute; border: 0; top: 0; right: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+        <a href="https://github.com/Neuraxio/Neuraxle"><img style="position: absolute; border: 0; top: 0; right: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
         
         <div class="rst-content">
         
@@ -543,7 +562,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="solutions-to-scikit-learn-s-biggest-problems">
+  <section id="solutions-to-scikit-learn-s-biggest-problems">
 <h1>Solutions to Scikit-Learn’s Biggest Problems<a class="headerlink" href="#solutions-to-scikit-learn-s-biggest-problems" title="Permalink to this headline">¶</a></h1>
 <p>Here is a list of problems of scikit-learn, and how Neuraxle solves
 them. In a sense, Neuraxle is a redesign of scikit-learn to solve those
@@ -596,7 +615,7 @@ Can’t be Serialized “as-is” by
 Joblib</a></p></li>
 </ul>
 </div>
-<div class="section" id="definitions">
+<section id="definitions">
 <h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h2>
 <p>Understanding the following terms is key for properly understanding the
 rest:</p>
@@ -634,10 +653,10 @@ AutoML algorithm can predict the next best hyperparameters to try
 of as a time series forecasting pipeline or as a RL agent).</p></li>
 </ul>
 <p>Let’s now dive into the heart of it.</p>
-</div>
-<div class="section" id="inability-to-reasonably-do-automatic-machine-learning-automl">
+</section>
+<section id="inability-to-reasonably-do-automatic-machine-learning-automl">
 <h2>Inability to Reasonably do Automatic Machine Learning (AutoML)<a class="headerlink" href="#inability-to-reasonably-do-automatic-machine-learning-automl" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="problem-defining-the-search-space-hyperparameter-distributions">
+<section id="problem-defining-the-search-space-hyperparameter-distributions">
 <h3>Problem: Defining the Search Space (Hyperparameter Distributions)<a class="headerlink" href="#problem-defining-the-search-space-hyperparameter-distributions" title="Permalink to this headline">¶</a></h3>
 <p>The search space of the model is awkwardly defined. Consider the
 following example in scikit-learn:</p>
@@ -657,7 +676,7 @@ to the file where you define hyperparameters and change them there.</p></li>
 perform a new hyperparameter, you can’t simply just copy the code of
 the pipeline step you defined</p></li>
 </ul>
-<div class="section" id="solution-define-hyperparameter-spaces-within-the-steps">
+<section id="solution-define-hyperparameter-spaces-within-the-steps">
 <h4>Solution: Define Hyperparameter Spaces Within the Steps<a class="headerlink" href="#solution-define-hyperparameter-spaces-within-the-steps" title="Permalink to this headline">¶</a></h4>
 <p>Let’s not only have <code class="xref py py-func docutils literal notranslate"><span class="pre">get_hyperparams()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">set_hyperparams()</span></code>, but
 also <code class="xref py py-func docutils literal notranslate"><span class="pre">get_hyperparams_space()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">set_hyperparams_space()</span></code>. Plus, have
@@ -676,9 +695,9 @@ not elsewhere. This way, maintaining your code and reusing parts from it
 in your future projects will be a breeze. And in case you want to
 customize your project more, nothing refrain you from redefining the
 space (or the best params that you’ve found) elsewhere.</p>
-</div>
-</div>
-<div class="section" id="problem-defining-hyperparameters-in-the-constructor-is-limiting">
+</section>
+</section>
+<section id="problem-defining-hyperparameters-in-the-constructor-is-limiting">
 <h3>Problem: Defining Hyperparameters in the Constructor is Limiting<a class="headerlink" href="#problem-defining-hyperparameters-in-the-constructor-is-limiting" title="Permalink to this headline">¶</a></h3>
 <p>Hyperparameters’ definition is less broken than hyperparameters space’s
 definition in scikit-learn. But still, it is. The problem is that the
@@ -693,15 +712,15 @@ an hyperparameter space, or to call <code class="docutils literal notranslate"><
 simple values as hyperparams. You now end up with objects upon calling
 <code class="docutils literal notranslate"><span class="pre">pipeline.get_params</span></code>. Uh-oh. You can’t add non-hyperparameter
 arguments, or doing so is clumsy. You’re stuck!</p>
-<div class="section" id="solution-separate-steps-s-constructors-from-the-get-params-method">
+<section id="solution-separate-steps-s-constructors-from-the-get-params-method">
 <h4>Solution: Separate Steps’s Constructors From the <code class="docutils literal notranslate"><span class="pre">get_params</span></code> Method<a class="headerlink" href="#solution-separate-steps-s-constructors-from-the-get-params-method" title="Permalink to this headline">¶</a></h4>
 <p>There isn’t much more to say. To counter the limitations of
 scikit-learn, decoupling the definition of hyperparameters from the
 constructor is a must. Neuraxle’s <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a> ‘s
 __init__ method is fine.</p>
-</div>
-</div>
-<div class="section" id="problem-different-train-and-test-behavior">
+</section>
+</section>
+<section id="problem-different-train-and-test-behavior">
 <h3>Problem: Different Train and Test Behavior<a class="headerlink" href="#problem-different-train-and-test-behavior" title="Permalink to this headline">¶</a></h3>
 <p>So your machine learning pipeline uses techniques that needs to be
 disabled at test time’s inference (transform) pass, but not at training
@@ -710,7 +729,7 @@ time’s inference (transform) pass.</p>
 only. An <a class="reference internal" href="api/neuraxle.steps.data.html#neuraxle.steps.data.EpochRepeater" title="neuraxle.steps.data.EpochRepeater"><code class="xref py py-class docutils literal notranslate"><span class="pre">EpochRepeater</span></code></a> and a <a class="reference internal" href="api/neuraxle.steps.data.html#neuraxle.steps.data.DataShuffler" title="neuraxle.steps.data.DataShuffler"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataShuffler</span></code></a> often are required in
 train mode only. Your neural network step might also know if it should
 deactivate dropout in the inference at test time.</p>
-<div class="section" id="solution-use-the-set-train-special-method-and-use-step-wrappers">
+<section id="solution-use-the-set-train-special-method-and-use-step-wrappers">
 <h4>Solution: use the Set Train Special Method and use Step Wrappers<a class="headerlink" href="#solution-use-the-set-train-special-method-and-use-step-wrappers" title="Permalink to this headline">¶</a></h4>
 <p>Good news: with Neuraxle, you can enable train or disable train mode
 with <code class="xref py py-func docutils literal notranslate"><span class="pre">set_train()</span></code>. That could affect how you code your steps.</p>
@@ -724,16 +743,16 @@ the behavior of the wrapped object but just from the outside.</p>
 <a class="reference internal" href="api/neuraxle.steps.caching.html#neuraxle.steps.caching.ValueCachingWrapper" title="neuraxle.steps.caching.ValueCachingWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">ValueCachingWrapper</span></code></a> that can cache precomputed values if the step
 sees the same things twice or more (this can be cool for putting things
 in production and getting a speedup).</p>
-</div>
-</div>
-<div class="section" id="problem-you-trained-a-pipeline-and-you-want-feedback-statistics-on-its-learning">
+</section>
+</section>
+<section id="problem-you-trained-a-pipeline-and-you-want-feedback-statistics-on-its-learning">
 <h3>Problem: You trained a Pipeline and You Want Feedback Statistics on its Learning<a class="headerlink" href="#problem-you-trained-a-pipeline-and-you-want-feedback-statistics-on-its-learning" title="Permalink to this headline">¶</a></h3>
 <p>What’s the mean and STD of each weight in each of your neural network’s
 layers? What was the train and validation curve (time series) looking
 like already? Do your neural net has a <a class="reference external" href="https://www.quora.com/What-are-the-advantages-of-using-Leaky-Rectified-Linear-Units-Leaky-ReLU-over-normal-ReLU-in-deep-learning/answer/Guillaume-Chevalier-2">dead
 ReLU</a>
 problem or other sorts of vanishing gradient problem?</p>
-<div class="section" id="solution-the-introspect-special-method">
+<section id="solution-the-introspect-special-method">
 <h4>Solution: the Introspect Special Method<a class="headerlink" href="#solution-the-introspect-special-method" title="Permalink to this headline">¶</a></h4>
 <p>Well, if you call the method introspect on your pipeline, it’ll
 aggregate statistics from all you steps, if your steps define the
@@ -747,12 +766,12 @@ in meta-learning scenarios.</p>
 very soon. Moreover, the information returned by this method could be
 used as features for an AutoML algorithm to generate better
 recommendations of the next hyperparameters to explore.</p>
-</div>
-</div>
-</div>
-<div class="section" id="inability-to-reasonably-do-deep-learning-pipelines">
+</section>
+</section>
+</section>
+<section id="inability-to-reasonably-do-deep-learning-pipelines">
 <h2>Inability to Reasonably do Deep Learning Pipelines<a class="headerlink" href="#inability-to-reasonably-do-deep-learning-pipelines" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="problem-scikit-learn-hardly-allows-for-mini-batch-gradient-descent-incremental-fit">
+<section id="problem-scikit-learn-hardly-allows-for-mini-batch-gradient-descent-incremental-fit">
 <h3>Problem: Scikit-Learn Hardly Allows for Mini-Batch Gradient Descent (Incremental Fit)<a class="headerlink" href="#problem-scikit-learn-hardly-allows-for-mini-batch-gradient-descent-incremental-fit" title="Permalink to this headline">¶</a></h3>
 <p>That is the essence of Deep Learning (DL).
 An <a class="reference internal" href="api/neuraxle.steps.data.html#neuraxle.steps.data.EpochRepeater" title="neuraxle.steps.data.EpochRepeater"><code class="xref py py-class docutils literal notranslate"><span class="pre">EpochRepeater</span></code></a> and a
@@ -762,7 +781,7 @@ An <a class="reference internal" href="api/neuraxle.steps.data.html#neuraxle.ste
 calls to fit, or if it’ll continue to train. Each mini-batch Stochastic
 Gradient Descent (SGD) update should ideally correspond to one call to
 <code class="docutils literal notranslate"><span class="pre">fit</span></code> on a subset of the data within the pipeline’s fit method call.</p>
-<div class="section" id="solution-minibatch-pipeline-class-and-the-ability-to-incrementally-fit-pipeline-steps">
+<section id="solution-minibatch-pipeline-class-and-the-ability-to-incrementally-fit-pipeline-steps">
 <h4>Solution: Minibatch Pipeline Class and the Ability to Incrementally Fit Pipeline Steps<a class="headerlink" href="#solution-minibatch-pipeline-class-and-the-ability-to-incrementally-fit-pipeline-steps" title="Permalink to this headline">¶</a></h4>
 <p>Simple: make <code class="xref py py-func docutils literal notranslate"><span class="pre">fit()</span></code> callable many times in a row <strong>without resetting
 the initialization of the step</strong>. Also create a pipeline class that
@@ -770,9 +789,9 @@ takes the dataset and loops on small batches of it to fit, transform,
 and/or predict the given data. Done. Don’t you feel relieved to finally
 have this now? You already see the next problem don’t you? The way the
 initialization is done.</p>
-</div>
-</div>
-<div class="section" id="problem-initializing-the-pipeline-and-deallocating-resources">
+</section>
+</section>
+<section id="problem-initializing-the-pipeline-and-deallocating-resources">
 <h3>Problem: Initializing the Pipeline and Deallocating Resources<a class="headerlink" href="#problem-initializing-the-pipeline-and-deallocating-resources" title="Permalink to this headline">¶</a></h3>
 <p>Doesn’t it feel like there is a missing method for preparing the steps
 between the moment they are initialized and the moment they start to
@@ -797,7 +816,7 @@ already has initialized (with <code class="xref py py-func docutils literal notr
 make copying your pipeline <strong>very fast</strong> and without weird Python
 memory copy bugs until the moment it is further initialized.</p></li>
 </ul>
-<div class="section" id="solution-add-setup-and-teardown-lifecycle-methods-to-your-steps">
+<section id="solution-add-setup-and-teardown-lifecycle-methods-to-your-steps">
 <h4>Solution: Add Setup and Teardown Lifecycle Methods to Your Steps<a class="headerlink" href="#solution-add-setup-and-teardown-lifecycle-methods-to-your-steps" title="Permalink to this headline">¶</a></h4>
 <p>This also has the side effect to allow for resource management and
 parallelism.</p>
@@ -838,9 +857,9 @@ copying the pipeline before each trial. Moreover, with clean <code class="xref p
 and <code class="xref py py-func docutils literal notranslate"><span class="pre">teardown()</span></code> methods, it’s possible to remove the ambiguity in
 re-fitting the objects and (most of the time) to be able to really
 specify when to reset.</p>
-</div>
-</div>
-<div class="section" id="problem-it-is-difficult-to-use-other-deep-learning-dl-libraries-in-scikit-learn">
+</section>
+</section>
+<section id="problem-it-is-difficult-to-use-other-deep-learning-dl-libraries-in-scikit-learn">
 <h3>Problem: It is Difficult to Use Other Deep Learning (DL) Libraries in Scikit-Learn<a class="headerlink" href="#problem-it-is-difficult-to-use-other-deep-learning-dl-libraries-in-scikit-learn" title="Permalink to this headline">¶</a></h3>
 <p>It’s difficult to build big, complex pipelines using scikit-learn (e.g.:
 an ensemble of classifiers).</p>
@@ -853,7 +872,7 @@ methods)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fit</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">transform</span></code></p></li>
 </ul>
-<div class="section" id="solution-moar-steps-lifecycle-methods">
+<section id="solution-moar-steps-lifecycle-methods">
 <h4>Solution: Moar Steps Lifecycle Methods<a class="headerlink" href="#solution-moar-steps-lifecycle-methods" title="Permalink to this headline">¶</a></h4>
 <p>The thing is: a machine learning pipeline and its steps needs more
 methods to be flexible enough to consider AutoML a viable option. We
@@ -887,16 +906,16 @@ pipelines</a>.
 You could finally scrutinize <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.BaseStep">Neuraxle’s BaseStep
 Documentation</a>
 to learn technical details on all those lifecycle methods when needed.</p>
-</div>
-</div>
-<div class="section" id="problem-the-ability-to-transform-output-labels">
+</section>
+</section>
+<section id="problem-the-ability-to-transform-output-labels">
 <h3>Problem: The Ability to Transform Output Labels<a class="headerlink" href="#problem-the-ability-to-transform-output-labels" title="Permalink to this headline">¶</a></h3>
 <p>In your pipeline, you may want steps that can process output labels
 furthermore throughout fitting. For instance, you may want a
 <a class="reference internal" href="api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.OneHotEncoder" title="neuraxle.steps.numpy.OneHotEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">OneHotEncoder</span></code></a> to only
 process output labels (“y”). At first, Scikit-Learn pipelines looks like
 they could process labels, but they don’t.</p>
-<div class="section" id="solution-outputtransformerwrapper-and-inputandoutputtransformermixin">
+<section id="solution-outputtransformerwrapper-and-inputandoutputtransformermixin">
 <h4>Solution: OutputTransformerWrapper and InputAndOutputTransformerMixin<a class="headerlink" href="#solution-outputtransformerwrapper-and-inputandoutputtransformermixin" title="Permalink to this headline">¶</a></h4>
 <p>Yes, Neuraxle has it all.</p>
 <p>You can use what we refer to as <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.steps.output_handlers.html">output
@@ -918,29 +937,29 @@ preprocessing step that takes some data in X and places it in y.
 Autoregression is to learn to predict the future of a time series or
 of a phrase.</p></li>
 </ul>
-</div>
-</div>
-</div>
-<div class="section" id="not-ready-for-production-nor-for-complex-pipelines">
+</section>
+</section>
+</section>
+<section id="not-ready-for-production-nor-for-complex-pipelines">
 <h2>Not ready for Production nor for Complex Pipelines<a class="headerlink" href="#not-ready-for-production-nor-for-complex-pipelines" title="Permalink to this headline">¶</a></h2>
 <p>Scikit-learn lacks a few methods to code complex machine learning
 pipelines. For instance, <a class="reference external" href="https://github.com/scikit-learn/scikit-learn/blob/master/sklearn/utils/metaestimators.py">scikit-learn’s metaestimators</a> lack a few
 abstractions, and scikit-learn estimators are made for mostly 2D tabular
 data. Moreover, parallelism and serialization is hard with
 scikit-learn.</p>
-<div class="section" id="problem-processing-3d-4d-or-nd-data-in-your-pipeline-with-steps-made-for-lower-dimensionnal-data">
+<section id="problem-processing-3d-4d-or-nd-data-in-your-pipeline-with-steps-made-for-lower-dimensionnal-data">
 <h3>Problem: Processing 3D, 4D, or ND Data in your Pipeline with Steps Made for Lower-Dimensionnal Data<a class="headerlink" href="#problem-processing-3d-4d-or-nd-data-in-your-pipeline-with-steps-made-for-lower-dimensionnal-data" title="Permalink to this headline">¶</a></h3>
 <p>Let’s face it: sklearn is built for 2D tabular data. You can extend the
 framework by inheriting from their base classes by yourself, but that’s
 limited. Not only that, but there is the problem that you may want to
 reuse your low-dimensional steps in different contexts of data
 dimensions.</p>
-<div class="section" id="solution-use-a-foreachdatainputs-wrapper-to-loop-from-nd-data-to-n-d-1-data">
+<section id="solution-use-a-foreachdatainputs-wrapper-to-loop-from-nd-data-to-n-d-1-data">
 <h4>Solution: use a ForEachDataInputs Wrapper to Loop from ND Data to N(D-1) Data<a class="headerlink" href="#solution-use-a-foreachdatainputs-wrapper-to-loop-from-nd-data-to-n-d-1-data" title="Permalink to this headline">¶</a></h4>
 <p>Simple! If your step is made for processing 2D data, but that the data
-you have at hand is 3D, use a <a class="reference internal" href="api/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEachDataInput" title="neuraxle.steps.loop.ForEachDataInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForEachDataInput</span></code></a> wrapper. You could
+you have at hand is 3D, use a <code class="xref py py-class docutils literal notranslate"><span class="pre">ForEachDataInput</span></code> wrapper. You could
 even make that work for steps that work with 1D data by using two
-<a class="reference internal" href="api/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEachDataInput" title="neuraxle.steps.loop.ForEachDataInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForEachDataInput</span></code></a> wrappers nested (wrapped) within themselves for processing 3D data
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ForEachDataInput</span></code> wrappers nested (wrapped) within themselves for processing 3D data
 inputs. Yay. There is also the <a class="reference internal" href="api/neuraxle.steps.loop.html#neuraxle.steps.loop.StepClonerForEachDataInput" title="neuraxle.steps.loop.StepClonerForEachDataInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">StepClonerForEachDataInput</span></code></a> in case
 you need each outermost item to have a clone of the step before fitting.</p>
 <p>From there, note that it’s also possible to have steps to reshape,
@@ -950,14 +969,14 @@ or to debug (e.g.: print shape with <a class="reference internal" href="api/neur
 some conditions) or do wicked things (e.g.: run the data in a step via a
 distant super-computer/worker over network using a <code class="xref py py-class docutils literal notranslate"><span class="pre">ClusteringWrapper</span></code> and/or a <code class="xref py py-class docutils literal notranslate"><span class="pre">FlaskRestApiWrapper</span></code> ),
 and so forth.</p>
-</div>
-</div>
-<div class="section" id="problem-modify-a-pipeline-along-the-way-such-as-for-pre-training-or-fine-tuning">
+</section>
+</section>
+<section id="problem-modify-a-pipeline-along-the-way-such-as-for-pre-training-or-fine-tuning">
 <h3>Problem: Modify a Pipeline Along the Way, such as for Pre-Training or Fine-Tuning<a class="headerlink" href="#problem-modify-a-pipeline-along-the-way-such-as-for-pre-training-or-fine-tuning" title="Permalink to this headline">¶</a></h3>
 <p>So you do unsupervised pre-training and then supervised training on top of that.
 First, you have an autoencoder training setup, then a supervised learning setup.
 And you want to reuse the same pipeline.</p>
-<div class="section" id="solution-the-mutate-special-method">
+<section id="solution-the-mutate-special-method">
 <h4>Solution: the Mutate Special Method<a class="headerlink" href="#solution-the-mutate-special-method" title="Permalink to this headline">¶</a></h4>
 <p>Change a pipeline’s steps on the fly (hotswap)</p>
 <p>The <code class="xref py py-func docutils literal notranslate"><span class="pre">mutate()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">will_mutate_to()</span></code>
@@ -975,8 +994,8 @@ Vision, Time Series Processing, and NLP work. For instance, in NLP with
 BERT, training needs many autoencoding loss functions, and where
 prediction (transforming) for results doesn’t require those
 autoregressive nor word masking steps used in training.</p>
-</div>
-<div class="section" id="another-solution-the-apply-special-method">
+</section>
+<section id="another-solution-the-apply-special-method">
 <h4>Another Solution: the Apply Special Method<a class="headerlink" href="#another-solution-the-apply-special-method" title="Permalink to this headline">¶</a></h4>
 <p>Just apply anything on each steps of a pipeline recursively.</p>
 <p>The generic <code class="xref py py-func docutils literal notranslate"><span class="pre">apply_method()</span></code> can apply any lambda on each nested
@@ -986,24 +1005,24 @@ pipeline step, and calling apply to find that step and calling this
 method if it exists, which can restructure the pipeline.</p>
 <p>There is also the <code class="xref py py-func docutils literal notranslate"><span class="pre">apply()</span></code> method accepting a string
 in case the method to apply is already defined in one or many objects of the <a class="reference internal" href="api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>.</p>
-</div>
-</div>
-<div class="section" id="problem-getting-model-attributes-from-scikit-learn-pipeline">
+</section>
+</section>
+<section id="problem-getting-model-attributes-from-scikit-learn-pipeline">
 <h3>Problem: Getting Model Attributes from Scikit-Learn Pipeline<a class="headerlink" href="#problem-getting-model-attributes-from-scikit-learn-pipeline" title="Permalink to this headline">¶</a></h3>
 <p>As highlighted in this <a class="reference external" href="https://stackoverflow.com/questions/28822756/getting-model-attributes-from-scikit-learn-pipeline/58359509#58359509">StackOverflow sklearn
 question</a>,
 one may want to access the elements of a pipeline to get information.
 With Scikit-Learn, the syntax is somewhat clumsy.</p>
-<div class="section" id="solution-simpler-nested-pipelines-getitem-methods">
+<section id="solution-simpler-nested-pipelines-getitem-methods">
 <h4>Solution: Simpler Nested Pipelines <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> Methods<a class="headerlink" href="#solution-simpler-nested-pipelines-getitem-methods" title="Permalink to this headline">¶</a></h4>
 <p>You should be able to more easily access estimators’ attributes inside
 your pipeline objects from outside the pipeline by getting the objects by their string name or
 by their int index in the pipeline, using the <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>’s <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.TruncableSteps" title="neuraxle.base.TruncableSteps"><code class="xref py py-class docutils literal notranslate"><span class="pre">TruncableSteps</span></code></a> ‘s <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> (square
 bracket <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> accessor) method of the pipeline (As a <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code> inherits from <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.TruncableSteps" title="neuraxle.base.TruncableSteps"><code class="xref py py-class docutils literal notranslate"><span class="pre">TruncableSteps</span></code></a> ).</p>
 <p>See our <a class="reference external" href="https://www.neuraxle.org/stable/examples/getting_started/plot_nested_pipelines.html">Nested estimator example</a>.</p>
-</div>
-</div>
-<div class="section" id="problem-you-can-t-parallelize-nor-save-pipelines-using-steps-that-can-t-be-serialized-as-is-by-joblib">
+</section>
+</section>
+<section id="problem-you-can-t-parallelize-nor-save-pipelines-using-steps-that-can-t-be-serialized-as-is-by-joblib">
 <h3>Problem: You can’t Parallelize nor Save Pipelines Using Steps that Can’t be Serialized “as-is” by Joblib<a class="headerlink" href="#problem-you-can-t-parallelize-nor-save-pipelines-using-steps-that-can-t-be-serialized-as-is-by-joblib" title="Permalink to this headline">¶</a></h3>
 <p>This problem will only surface past some point of using Scikit-Learn.
 This is the point of no-return: you’ve coded your entire production
@@ -1018,7 +1037,7 @@ framework on the side because you’ll live this same situation in your
 next 100 coding projects, and you have other clients who will be in the
 same situation soon, and this sh** is critical.</p>
 <p>Well, that’s out of shared need that Neuraxle was created.</p>
-<div class="section" id="solution-use-a-chain-of-savers-in-each-step">
+<section id="solution-use-a-chain-of-savers-in-each-step">
 <h4>Solution: Use a Chain of Savers in each Step<a class="headerlink" href="#solution-use-a-chain-of-savers-in-each-step" title="Permalink to this headline">¶</a></h4>
 <p>Each step is responsible for saving itself, and you should define one or
 many custom saver objects for your weird object. The saver should:</p>
@@ -1061,8 +1080,8 @@ soon be released (or which may be already released as of reading).</p>
 and if some steps define a custom <code class="xref py py-class docutils literal notranslate"><span class="pre">Saver</span></code>, then
 the step will use that saver before using the default <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.JoblibStepSaver" title="neuraxle.base.JoblibStepSaver"><code class="xref py py-class docutils literal notranslate"><span class="pre">JoblibStepSaver</span></code></a>.</p>
 </div></blockquote>
-</div>
-<div class="section" id="about-cluster-computing-and-parallelism-in-python">
+</section>
+<section id="about-cluster-computing-and-parallelism-in-python">
 <h4>About Cluster Computing and Parallelism in Python<a class="headerlink" href="#about-cluster-computing-and-parallelism-in-python" title="Permalink to this headline">¶</a></h4>
 <p>This is known to be hard in Python. It is. We wouldn’t have written any
 of those Savers otherwise.</p>
@@ -1088,10 +1107,10 @@ processing quickly some jobs for your pipeline deployed in productions
 that needs to run fast (e.g.: splitting your matrix across many
 computers and having a step or sub-pipeline process the parts to then
 send them back).</p>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -1109,32 +1128,24 @@ send them back).</p>
     </div>
   
 
-  <!-- Begin Mailchimp Signup Form -->
-  <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
-  <div id="mc_embed_signup">
-  <form action="https://neuraxio.us18.list-manage.com/subscribe/post?u=75b15e094bec4736090d7588c&amp;id=461343efc0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-      <div id="mc_embed_signup_scroll">
-      <label for="mce-EMAIL">Stay Tuned, Keep in Touch!</label>
-      <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75b15e094bec4736090d7588c_461343efc0" tabindex="-1" value=""></div>
-      <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-      </div>
-      <br/>
-      <a href="/en/blog/index.html">Visit Blog</a>
-  </form>
-  </div>
-  <!--End mc_embed_signup-->
-
   <hr/>
 
   <div role="contentinfo">
-    <p>
+    <p style="float:left;">
         &copy; Copyright 2021 The Neuraxle Authors. All rights reserved. Apache License, Version 2.0.
 
     </p>
+
+    <p style="float:right;">
+      <a href="https://www.neuraxio.com/policies/privacy-policy">Privacy Policy</a>
+    </p>
+
   </div>
    
+
+
+
+
 </footer>
 
         </div>

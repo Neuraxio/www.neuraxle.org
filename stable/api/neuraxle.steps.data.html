@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>neuraxle.steps.data &mdash; Neuraxle 0.5.7 documentation</title>
+  <title>neuraxle.steps.data &mdash; Neuraxle 0.5.8 documentation</title>
   
 
   
@@ -19,6 +20,14 @@
   
 
   
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PWQLPZ3');</script>
+  <!-- End Google Tag Manager -->
+
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
@@ -64,6 +73,11 @@
 
 <body class="wy-body-for-nav">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWQLPZ3"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
    
   <div class="wy-grid-for-nav">
     
@@ -88,7 +102,7 @@
             
             
               <div class="version">
-                0.5.7
+                0.5.8
               </div>
             
           
@@ -113,7 +127,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../intro.html#encapsulate-models-and-data-transformers">Encapsulate Models and Data Transformers</a></li>
@@ -226,17 +240,21 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../hyperparameter_tuning.html">Introduction to Automatic Hyperparameter Tuning</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html#AutoML-loop">AutoML loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#0.-Define-your-problem">0. Define your problem</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#1.-Define-your-pipeline">1. Define your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#2.-Choose-a-validation-splitter">2. Choose a validation splitter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#3.-Define-a-the-main-scoring-metric-with-ScoringCallback">3. Define a the main scoring metric with ScoringCallback</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#4.-Add-metric-callbacks-with-MetricCallback-(optional)">4. Add metric callbacks with MetricCallback (optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#4.-Add-other-metric-callbacks-with-MetricCallback-(optional)">4. Add other metric callbacks with MetricCallback (optional)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#5.-Select-an-hyperparams-repository">5. Select an hyperparams repository</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#6.-Select-an-hyperparams-optimizer">6. Select an hyperparams optimizer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#7.-Create,-and-launch-AutoML-loop">7. Create, and launch AutoML loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#7.-Create,-and-launch-AutoML-loop">7. Create, and launch AutoML loop</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../hyperparameter_tuning.html#Run-10-trials">Run 10 trials</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html#Run-10-trials">Run 10 trials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html#Get-best-model,-and-predict">Get best model, and predict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#8.-Get-best-model-and-measure-test-accuracy">8. Get best model and measure test accuracy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#9.-Additional-note-:-model-selection-as-an-hyperparameter">9. Additional note : model selection as an hyperparameter</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../random_distributions.html">Introduction to Random Distributions</a><ul>
@@ -450,10 +468,6 @@
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.random.html#random">Random</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.sklearn.html">neuraxle.metaopt.sklearn</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.sklearn.html#scikit-learn-metaoptimizers">Scikit-learn metaoptimizers</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.tpe.html">neuraxle.metaopt.tpe</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.tpe.html#tree-parzen-estimator">Tree parzen estimator</a></li>
 </ul>
@@ -479,6 +493,12 @@
 </ul>
 
             
+          <li class="toctree-l1">
+            <a class="reference internal" href="https://www.dl-rnn-course.neuraxio.com/overview?utm_source=neuraxle_doc"
+                                    style="background:#FF982E; color:#fff; text-decoration-line: underline;" target="_blank">
+            Deep Learning &amp; RNN Course [↗️]</a>
+          </li>
+
           
         </div>
         
@@ -497,8 +517,7 @@
 
 
       <div class="wy-nav-content">
-
-        <a href="https://github.com/Neuraxio/Neuraxle"><img style="position: absolute; border: 0; top: 0; right: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+        <a href="https://github.com/Neuraxio/Neuraxle"><img style="position: absolute; border: 0; top: 0; right: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
         
         <div class="rst-content">
         
@@ -545,9 +564,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-neuraxle.steps.data">
+  <section id="module-neuraxle.steps.data">
 <span id="neuraxle-steps-data"></span><h1>neuraxle.steps.data<a class="headerlink" href="#module-neuraxle.steps.data" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="data-steps">
+<section id="data-steps">
 <h2>Data Steps<a class="headerlink" href="#data-steps" title="Permalink to this headline">¶</a></h2>
 <p>You can find here steps that take action on data.</p>
 <p class="rubric">Classes</p>
@@ -576,7 +595,7 @@
 </table>
 <dl class="class">
 <dt id="neuraxle.steps.data.DataShuffler">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.data.</code><code class="descname">DataShuffler</code><span class="sig-paren">(</span><em>seed=None</em>, <em>increment_seed_after_each_fit=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/data.py#L33"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.DataShuffler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.data.</code><code class="descname">DataShuffler</code><span class="sig-paren">(</span><em>seed=None</em>, <em>increment_seed_after_each_fit=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/data.py#L33"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.DataShuffler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Data Shuffling step that shuffles data inputs, and expected_outputs at the same time.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
     <span class="n">TrainOnlyWrapper</span><span class="p">(</span><span class="n">DataShuffler</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">increment_seed_after_each_fit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">increment_seed_after_each_fit</span><span class="o">=</span><span class="kc">False</span><span class="p">)),</span>
@@ -602,7 +621,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.data.DataShuffler.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/data.py#L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.DataShuffler.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/data.py#L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.DataShuffler.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Shuffle data inputs, and expected outputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -618,7 +637,7 @@
 
 <dl class="class">
 <dt id="neuraxle.steps.data.EpochRepeater">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.data.</code><code class="descname">EpochRepeater</code><span class="sig-paren">(</span><em>wrapped</em>, <em>epochs</em>, <em>repeat_in_test_mode=False</em>, <em>cache_folder_when_no_handle=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/data.py#L81"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.EpochRepeater" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.data.</code><code class="descname">EpochRepeater</code><span class="sig-paren">(</span><em>wrapped</em>, <em>epochs</em>, <em>repeat_in_test_mode=False</em>, <em>cache_folder_when_no_handle=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/data.py#L81"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.EpochRepeater" title="Permalink to this definition">¶</a></dt>
 <dd><p>Repeat wrapped step fit, or transform for the number of epochs passed in the constructor.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
     <span class="n">TrainOnlyWrapper</span><span class="p">(</span><span class="n">DataShuffler</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">increment_seed_after_each_fit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">increment_seed_after_each_fit</span><span class="o">=</span><span class="kc">False</span><span class="p">)),</span>
@@ -641,7 +660,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.data.EpochRepeater._fit_data_container">
-<code class="descname">_fit_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/data.py#L142"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.EpochRepeater._fit_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_fit_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/data.py#L142"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.EpochRepeater._fit_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit wrapped step self.epochs times using wrapped step handle fit method.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -661,7 +680,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.data.EpochRepeater._fit_transform_data_container">
-<code class="descname">_fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/data.py#L108"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.EpochRepeater._fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/data.py#L108"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.EpochRepeater._fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit transform wrapped step self.epochs times using wrapped step handle fit transform method.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -681,22 +700,22 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.data.EpochRepeater._get_epochs">
-<code class="descname">_get_epochs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/data.py#L181"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.EpochRepeater._get_epochs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_get_epochs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/data.py#L181"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.EpochRepeater._get_epochs" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.data.EpochRepeater._should_repeat">
-<code class="descname">_should_repeat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/data.py#L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.EpochRepeater._should_repeat" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_should_repeat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/data.py#L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.EpochRepeater._should_repeat" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.data.EpochRepeater._should_repeat_fit">
-<code class="descname">_should_repeat_fit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/data.py#L187"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.EpochRepeater._should_repeat_fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_should_repeat_fit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/data.py#L187"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.EpochRepeater._should_repeat_fit" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.data.EpochRepeater._transform_data_container">
-<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/data.py#L178"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.EpochRepeater._transform_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/data.py#L178"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.EpochRepeater._transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform data container.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -713,7 +732,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.data.EpochRepeater.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/data.py#L159"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.EpochRepeater.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/data.py#L159"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.EpochRepeater.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit wrapped step self.epochs times.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -730,7 +749,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.data.EpochRepeater.fit_transform">
-<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None) -&gt; ('BaseStep'</em>, <em>typing.Iterable</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/data.py#L126"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.EpochRepeater.fit_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None) -&gt; ('BaseStep'</em>, <em>typing.Iterable</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/data.py#L126"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.EpochRepeater.fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit transform wrapped step self.epochs times.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -749,7 +768,7 @@
 
 <dl class="class">
 <dt id="neuraxle.steps.data.InnerConcatenateDataContainer">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.data.</code><code class="descname">InnerConcatenateDataContainer</code><span class="sig-paren">(</span><em>sub_data_container_names=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/data.py#L199"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.InnerConcatenateDataContainer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.data.</code><code class="descname">InnerConcatenateDataContainer</code><span class="sig-paren">(</span><em>sub_data_container_names=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/data.py#L199"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.InnerConcatenateDataContainer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Concatenate inner features of sub data containers along <cite>axis=-1</cite>..</p>
 <p>Code example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_container</span> <span class="o">=</span> <span class="n">DataContainer</span><span class="p">(</span><span class="n">data_inputs</span><span class="o">=</span><span class="n">data_inputs_3d</span><span class="p">,</span> <span class="n">expected_outputs</span><span class="o">=</span><span class="n">expected_outputs_3d</span><span class="p">)</span>
@@ -782,7 +801,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.data.InnerConcatenateDataContainer._concatenate_sub_data_container">
-<code class="descname">_concatenate_sub_data_container</code><span class="sig-paren">(</span><em>data_container</em>, <em>data_container_to_zip</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/data.py#L285"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.InnerConcatenateDataContainer._concatenate_sub_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_concatenate_sub_data_container</code><span class="sig-paren">(</span><em>data_container_to_zip: List[neuraxle.data_container.DataContainer]</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/data.py#L285"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.InnerConcatenateDataContainer._concatenate_sub_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Zip a data container into another data container with a higher dimension.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -799,7 +818,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.data.InnerConcatenateDataContainer._concatenate_sub_data_containers">
-<code class="descname">_concatenate_sub_data_containers</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/data.py#L263"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.InnerConcatenateDataContainer._concatenate_sub_data_containers" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_concatenate_sub_data_containers</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/data.py#L263"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.InnerConcatenateDataContainer._concatenate_sub_data_containers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Merge sub data containers into the current data container.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -816,7 +835,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.data.InnerConcatenateDataContainer._fit_transform_data_container">
-<code class="descname">_fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseTransformer'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/data.py#L236"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.InnerConcatenateDataContainer._fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseTransformer'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/data.py#L236"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.InnerConcatenateDataContainer._fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Merge sub data containers into the current data container.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -836,7 +855,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.data.InnerConcatenateDataContainer._transform_data_container">
-<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/data.py#L250"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.InnerConcatenateDataContainer._transform_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/data.py#L250"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.InnerConcatenateDataContainer._transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Merge sub data containers into the current data container.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -858,7 +877,7 @@
 
 <dl class="class">
 <dt id="neuraxle.steps.data.TrainShuffled">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.data.</code><code class="descname">TrainShuffled</code><span class="sig-paren">(</span><em>wrapped</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/data.py#L191"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.TrainShuffled" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.data.</code><code class="descname">TrainShuffled</code><span class="sig-paren">(</span><em>wrapped</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/data.py#L191"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.TrainShuffled" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="neuraxle.steps.data.TrainShuffled._abc_impl">
 <code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.steps.data.TrainShuffled._abc_impl" title="Permalink to this definition">¶</a></dt>
@@ -868,7 +887,7 @@
 
 <dl class="class">
 <dt id="neuraxle.steps.data.ZipBatchDataContainer">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.data.</code><code class="descname">ZipBatchDataContainer</code><span class="sig-paren">(</span><em>sub_data_container_names=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/data.py#L306"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.ZipBatchDataContainer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.data.</code><code class="descname">ZipBatchDataContainer</code><span class="sig-paren">(</span><em>sub_data_container_names=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/data.py#L304"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.ZipBatchDataContainer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Concatenate outer batch of sub data containers along <cite>axis=0</cite>..</p>
 <p>Code example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_container</span> <span class="o">=</span> <span class="n">DataContainer</span><span class="p">(</span><span class="n">data_inputs</span><span class="o">=</span><span class="n">data_inputs_3d</span><span class="p">,</span> <span class="n">expected_outputs</span><span class="o">=</span><span class="n">expected_outputs_3d</span><span class="p">)</span>
@@ -901,7 +920,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.data.ZipBatchDataContainer._batch_zip_sub_data_container">
-<code class="descname">_batch_zip_sub_data_container</code><span class="sig-paren">(</span><em>data_container</em>, <em>data_container_to_zip</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/data.py#L378"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.ZipBatchDataContainer._batch_zip_sub_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_batch_zip_sub_data_container</code><span class="sig-paren">(</span><em>data_container</em>, <em>data_container_to_zip</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/data.py#L376"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.ZipBatchDataContainer._batch_zip_sub_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Zip sub data container on the batch dimension.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -918,7 +937,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.data.ZipBatchDataContainer._batch_zip_sub_data_containers">
-<code class="descname">_batch_zip_sub_data_containers</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/data.py#L356"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.ZipBatchDataContainer._batch_zip_sub_data_containers" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_batch_zip_sub_data_containers</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/data.py#L354"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.ZipBatchDataContainer._batch_zip_sub_data_containers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Zip sub data containers on the batch dimension.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -935,7 +954,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.data.ZipBatchDataContainer._transform_data_container">
-<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/data.py#L343"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.ZipBatchDataContainer._transform_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/data.py#L341"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.ZipBatchDataContainer._transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Merge sub data containers into the current data container.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -955,8 +974,8 @@
 
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -974,32 +993,24 @@
     </div>
   
 
-  <!-- Begin Mailchimp Signup Form -->
-  <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
-  <div id="mc_embed_signup">
-  <form action="https://neuraxio.us18.list-manage.com/subscribe/post?u=75b15e094bec4736090d7588c&amp;id=461343efc0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-      <div id="mc_embed_signup_scroll">
-      <label for="mce-EMAIL">Stay Tuned, Keep in Touch!</label>
-      <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75b15e094bec4736090d7588c_461343efc0" tabindex="-1" value=""></div>
-      <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-      </div>
-      <br/>
-      <a href="/en/blog/index.html">Visit Blog</a>
-  </form>
-  </div>
-  <!--End mc_embed_signup-->
-
   <hr/>
 
   <div role="contentinfo">
-    <p>
+    <p style="float:left;">
         &copy; Copyright 2021 The Neuraxle Authors. All rights reserved. Apache License, Version 2.0.
 
     </p>
+
+    <p style="float:right;">
+      <a href="https://www.neuraxio.com/policies/privacy-policy">Privacy Policy</a>
+    </p>
+
   </div>
    
+
+
+
+
 </footer>
 
         </div>

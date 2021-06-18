@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage of AutoML loop, and hyperparams with sklearn models. &mdash; Neuraxle 0.5.7 documentation</title>
+  <title>Usage of AutoML loop, and hyperparams with sklearn models. &mdash; Neuraxle 0.5.8 documentation</title>
   
 
   
@@ -19,6 +20,14 @@
   
 
   
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PWQLPZ3');</script>
+  <!-- End Google Tag Manager -->
+
   <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
   
     
@@ -64,6 +73,11 @@
 
 <body class="wy-body-for-nav">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWQLPZ3"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
    
   <div class="wy-grid-for-nav">
     
@@ -88,7 +102,7 @@
             
             
               <div class="version">
-                0.5.7
+                0.5.8
               </div>
             
           
@@ -113,7 +127,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../intro.html#encapsulate-models-and-data-transformers">Encapsulate Models and Data Transformers</a></li>
@@ -226,17 +240,21 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../hyperparameter_tuning.html">Introduction to Automatic Hyperparameter Tuning</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html#AutoML-loop">AutoML loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#0.-Define-your-problem">0. Define your problem</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#1.-Define-your-pipeline">1. Define your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#2.-Choose-a-validation-splitter">2. Choose a validation splitter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#3.-Define-a-the-main-scoring-metric-with-ScoringCallback">3. Define a the main scoring metric with ScoringCallback</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#4.-Add-metric-callbacks-with-MetricCallback-(optional)">4. Add metric callbacks with MetricCallback (optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#4.-Add-other-metric-callbacks-with-MetricCallback-(optional)">4. Add other metric callbacks with MetricCallback (optional)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#5.-Select-an-hyperparams-repository">5. Select an hyperparams repository</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#6.-Select-an-hyperparams-optimizer">6. Select an hyperparams optimizer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#7.-Create,-and-launch-AutoML-loop">7. Create, and launch AutoML loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#7.-Create,-and-launch-AutoML-loop">7. Create, and launch AutoML loop</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../hyperparameter_tuning.html#Run-10-trials">Run 10 trials</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html#Run-10-trials">Run 10 trials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html#Get-best-model,-and-predict">Get best model, and predict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#8.-Get-best-model-and-measure-test-accuracy">8. Get best model and measure test accuracy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#9.-Additional-note-:-model-selection-as-an-hyperparameter">9. Additional note : model selection as an hyperparameter</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../random_distributions.html">Introduction to Random Distributions</a><ul>
@@ -450,10 +468,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.random.html#random">Random</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.sklearn.html">neuraxle.metaopt.sklearn</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.sklearn.html#scikit-learn-metaoptimizers">Scikit-learn metaoptimizers</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.metaopt.tpe.html">neuraxle.metaopt.tpe</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.metaopt.tpe.html#tree-parzen-estimator">Tree parzen estimator</a></li>
 </ul>
@@ -479,6 +493,12 @@
 </ul>
 
             
+          <li class="toctree-l1">
+            <a class="reference internal" href="https://www.dl-rnn-course.neuraxio.com/overview?utm_source=neuraxle_doc"
+                                    style="background:#FF982E; color:#fff; text-decoration-line: underline;" target="_blank">
+            Deep Learning &amp; RNN Course [↗️]</a>
+          </li>
+
           
         </div>
         
@@ -497,8 +517,7 @@
 
 
       <div class="wy-nav-content">
-
-        <a href="https://github.com/Neuraxio/Neuraxle"><img style="position: absolute; border: 0; top: 0; right: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+        <a href="https://github.com/Neuraxio/Neuraxle"><img style="position: absolute; border: 0; top: 0; right: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
         
         <div class="rst-content">
         
@@ -549,1267 +568,14 @@
 <p class="admonition-title">Note</p>
 <p>Click <a class="reference internal" href="#sphx-glr-download-examples-auto-ml-plot-automl-loop-clean-kata-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
-<div class="sphx-glr-example-title section" id="usage-of-automl-loop-and-hyperparams-with-sklearn-models">
+<section class="sphx-glr-example-title" id="usage-of-automl-loop-and-hyperparams-with-sklearn-models">
 <span id="sphx-glr-examples-auto-ml-plot-automl-loop-clean-kata-py"></span><h1>Usage of AutoML loop, and hyperparams with sklearn models.<a class="headerlink" href="#usage-of-automl-loop-and-hyperparams-with-sklearn-models" title="Permalink to this headline">¶</a></h1>
 <p>This demonstrates how you can build an AutoML loop that finds the best possible sklearn classifier.
 It also shows you how to add hyperparams to sklearn steps using SKLearnWrapper.
 This example has been derived and simplified from the following repository: <a class="reference external" href="https://github.com/Neuraxio/Kata-Clean-Machine-Learning-From-Dirty-Code">https://github.com/Neuraxio/Kata-Clean-Machine-Learning-From-Dirty-Code</a>
 Here, 2D data is fitted, whereas in the original example 3D (sequential / time series) data is preprocessed and then fitted with the same models.</p>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>trial 1/7
-fitting trial 1/7 split 1/1
-hyperparams: {
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__C&quot;: 1.0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__dual&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__intercept_scaling&quot;: 1,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__l1_ratio&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__max_iter&quot;: 100,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__multi_class&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__penalty&quot;: &quot;l2&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__random_state&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__solver&quot;: &quot;lbfgs&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__tol&quot;: 0.0001,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__bootstrap&quot;: true,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_samples&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_estimators&quot;: 100,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__oob_score&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__alpha&quot;: 1.0,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__copy_X&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__max_iter&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__normalize&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__solver&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__tol&quot;: 0.001,
-    &quot;ChooseOneStepOf__RidgeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_features&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__splitter&quot;: &quot;best&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__enabled&quot;: true,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__splitter&quot;: &quot;random&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__choice&quot;: &quot;SKLearnWrapper_DecisionTreeClassifier&quot;
-}
-
-
-epoch 1/1
-main train: 1.0
-main validation: 0.995625
-success trial 1/7 split 1/1
-hyperparams: {
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__C&quot;: 1.0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__dual&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__intercept_scaling&quot;: 1,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__l1_ratio&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__max_iter&quot;: 100,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__multi_class&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__penalty&quot;: &quot;l2&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__random_state&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__solver&quot;: &quot;lbfgs&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__tol&quot;: 0.0001,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__bootstrap&quot;: true,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_samples&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_estimators&quot;: 100,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__oob_score&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__alpha&quot;: 1.0,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__copy_X&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__max_iter&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__normalize&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__solver&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__tol&quot;: 0.001,
-    &quot;ChooseOneStepOf__RidgeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_features&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__splitter&quot;: &quot;best&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__enabled&quot;: true,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__splitter&quot;: &quot;random&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__choice&quot;: &quot;SKLearnWrapper_DecisionTreeClassifier&quot;
-}
- score: 0.995625
-
-trial 2/7
-fitting trial 2/7 split 1/1
-hyperparams: {
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__C&quot;: 1.0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__dual&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__intercept_scaling&quot;: 1,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__l1_ratio&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__max_iter&quot;: 100,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__multi_class&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__penalty&quot;: &quot;l2&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__random_state&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__solver&quot;: &quot;lbfgs&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__tol&quot;: 0.0001,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__bootstrap&quot;: true,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_samples&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_estimators&quot;: 100,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__oob_score&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__alpha&quot;: 1.0,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__copy_X&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__max_iter&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__normalize&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__solver&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__tol&quot;: 0.001,
-    &quot;ChooseOneStepOf__RidgeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_features&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__splitter&quot;: &quot;best&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__enabled&quot;: true,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__splitter&quot;: &quot;random&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__choice&quot;: &quot;SKLearnWrapper_ExtraTreeClassifier&quot;
-}
-
-
-epoch 1/1
-main train: 1.0
-main validation: 0.995625
-success trial 2/7 split 1/1
-hyperparams: {
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__C&quot;: 1.0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__dual&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__intercept_scaling&quot;: 1,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__l1_ratio&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__max_iter&quot;: 100,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__multi_class&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__penalty&quot;: &quot;l2&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__random_state&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__solver&quot;: &quot;lbfgs&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__tol&quot;: 0.0001,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__bootstrap&quot;: true,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_samples&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_estimators&quot;: 100,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__oob_score&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__alpha&quot;: 1.0,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__copy_X&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__max_iter&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__normalize&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__solver&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__tol&quot;: 0.001,
-    &quot;ChooseOneStepOf__RidgeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_features&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__splitter&quot;: &quot;best&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__enabled&quot;: true,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__splitter&quot;: &quot;random&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__choice&quot;: &quot;SKLearnWrapper_ExtraTreeClassifier&quot;
-}
- score: 0.995625
-
-trial 3/7
-fitting trial 3/7 split 1/1
-hyperparams: {
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__C&quot;: 1.0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__dual&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__intercept_scaling&quot;: 1,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__l1_ratio&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__max_iter&quot;: 100,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__multi_class&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__penalty&quot;: &quot;l2&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__random_state&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__solver&quot;: &quot;lbfgs&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__tol&quot;: 0.0001,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__bootstrap&quot;: true,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_samples&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_estimators&quot;: 100,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__oob_score&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__alpha&quot;: 1.0,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__copy_X&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__max_iter&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__normalize&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__solver&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__tol&quot;: 0.001,
-    &quot;ChooseOneStepOf__RidgeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_features&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__splitter&quot;: &quot;best&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__enabled&quot;: true,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__splitter&quot;: &quot;random&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__choice&quot;: &quot;SKLearnWrapper_DecisionTreeClassifier&quot;
-}
-
-
-epoch 1/1
-main train: 1.0
-main validation: 0.995625
-success trial 3/7 split 1/1
-hyperparams: {
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__C&quot;: 1.0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__dual&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__intercept_scaling&quot;: 1,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__l1_ratio&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__max_iter&quot;: 100,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__multi_class&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__penalty&quot;: &quot;l2&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__random_state&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__solver&quot;: &quot;lbfgs&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__tol&quot;: 0.0001,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__bootstrap&quot;: true,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_samples&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_estimators&quot;: 100,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__oob_score&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__alpha&quot;: 1.0,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__copy_X&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__max_iter&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__normalize&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__solver&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__tol&quot;: 0.001,
-    &quot;ChooseOneStepOf__RidgeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_features&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__splitter&quot;: &quot;best&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__enabled&quot;: true,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__splitter&quot;: &quot;random&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__choice&quot;: &quot;SKLearnWrapper_DecisionTreeClassifier&quot;
-}
- score: 0.995625
-
-trial 4/7
-fitting trial 4/7 split 1/1
-hyperparams: {
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__C&quot;: 1.0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__dual&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__intercept_scaling&quot;: 1,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__l1_ratio&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__max_iter&quot;: 100,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__multi_class&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__penalty&quot;: &quot;l2&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__random_state&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__solver&quot;: &quot;lbfgs&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__tol&quot;: 0.0001,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__bootstrap&quot;: true,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_samples&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_estimators&quot;: 100,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__oob_score&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__alpha&quot;: 1.0,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__copy_X&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__max_iter&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__normalize&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__solver&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__tol&quot;: 0.001,
-    &quot;ChooseOneStepOf__RidgeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_features&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__splitter&quot;: &quot;best&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__enabled&quot;: true,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__splitter&quot;: &quot;random&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__choice&quot;: &quot;RandomForestClassifier&quot;
-}
-
-
-epoch 1/1
-main train: 1.0
-main validation: 0.99625
-success trial 4/7 split 1/1
-hyperparams: {
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__C&quot;: 1.0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__dual&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__intercept_scaling&quot;: 1,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__l1_ratio&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__max_iter&quot;: 100,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__multi_class&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__penalty&quot;: &quot;l2&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__random_state&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__solver&quot;: &quot;lbfgs&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__tol&quot;: 0.0001,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__bootstrap&quot;: true,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_samples&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_estimators&quot;: 100,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__oob_score&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__alpha&quot;: 1.0,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__copy_X&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__max_iter&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__normalize&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__solver&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__tol&quot;: 0.001,
-    &quot;ChooseOneStepOf__RidgeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_features&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__splitter&quot;: &quot;best&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__enabled&quot;: true,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__splitter&quot;: &quot;random&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__choice&quot;: &quot;RandomForestClassifier&quot;
-}
- score: 0.99625
-
-trial 5/7
-fitting trial 5/7 split 1/1
-hyperparams: {
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__C&quot;: 1.0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__dual&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__intercept_scaling&quot;: 1,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__l1_ratio&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__max_iter&quot;: 100,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__multi_class&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__penalty&quot;: &quot;l2&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__random_state&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__solver&quot;: &quot;lbfgs&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__tol&quot;: 0.0001,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__bootstrap&quot;: true,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_samples&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_estimators&quot;: 100,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__oob_score&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__alpha&quot;: 1.0,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__copy_X&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__max_iter&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__normalize&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__solver&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__tol&quot;: 0.001,
-    &quot;ChooseOneStepOf__RidgeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_features&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__splitter&quot;: &quot;best&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__enabled&quot;: true,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__splitter&quot;: &quot;random&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__choice&quot;: &quot;RandomForestClassifier&quot;
-}
-
-
-epoch 1/1
-main train: 1.0
-main validation: 0.995625
-success trial 5/7 split 1/1
-hyperparams: {
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__C&quot;: 1.0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__dual&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__intercept_scaling&quot;: 1,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__l1_ratio&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__max_iter&quot;: 100,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__multi_class&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__penalty&quot;: &quot;l2&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__random_state&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__solver&quot;: &quot;lbfgs&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__tol&quot;: 0.0001,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__bootstrap&quot;: true,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_samples&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_estimators&quot;: 100,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__oob_score&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__alpha&quot;: 1.0,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__copy_X&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__max_iter&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__normalize&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__solver&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__tol&quot;: 0.001,
-    &quot;ChooseOneStepOf__RidgeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_features&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__splitter&quot;: &quot;best&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__enabled&quot;: true,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__splitter&quot;: &quot;random&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__choice&quot;: &quot;RandomForestClassifier&quot;
-}
- score: 0.995625
-
-trial 6/7
-fitting trial 6/7 split 1/1
-hyperparams: {
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__C&quot;: 1.0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__dual&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__intercept_scaling&quot;: 1,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__l1_ratio&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__max_iter&quot;: 100,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__multi_class&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__penalty&quot;: &quot;l2&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__random_state&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__solver&quot;: &quot;lbfgs&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__tol&quot;: 0.0001,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__bootstrap&quot;: true,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_samples&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_estimators&quot;: 100,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__oob_score&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__alpha&quot;: 1.0,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__copy_X&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__max_iter&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__normalize&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__solver&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__tol&quot;: 0.001,
-    &quot;ChooseOneStepOf__RidgeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_features&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__splitter&quot;: &quot;best&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__enabled&quot;: true,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__splitter&quot;: &quot;random&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__choice&quot;: &quot;LogisticRegression&quot;
-}
-
-
-epoch 1/1
-main train: 1.0
-main validation: 0.99625
-success trial 6/7 split 1/1
-hyperparams: {
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__C&quot;: 1.0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__dual&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__intercept_scaling&quot;: 1,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__l1_ratio&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__max_iter&quot;: 100,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__multi_class&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__penalty&quot;: &quot;l2&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__random_state&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__solver&quot;: &quot;lbfgs&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__tol&quot;: 0.0001,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__bootstrap&quot;: true,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_samples&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_estimators&quot;: 100,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__oob_score&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__alpha&quot;: 1.0,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__copy_X&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__max_iter&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__normalize&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__solver&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__tol&quot;: 0.001,
-    &quot;ChooseOneStepOf__RidgeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_features&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__splitter&quot;: &quot;best&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__enabled&quot;: true,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__splitter&quot;: &quot;random&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__choice&quot;: &quot;LogisticRegression&quot;
-}
- score: 0.99625
-
-trial 7/7
-fitting trial 7/7 split 1/1
-hyperparams: {
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__C&quot;: 1.0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__dual&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__intercept_scaling&quot;: 1,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__l1_ratio&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__max_iter&quot;: 100,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__multi_class&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__penalty&quot;: &quot;l2&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__random_state&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__solver&quot;: &quot;lbfgs&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__tol&quot;: 0.0001,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__bootstrap&quot;: true,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_samples&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_estimators&quot;: 100,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__oob_score&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__alpha&quot;: 1.0,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__copy_X&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__max_iter&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__normalize&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__solver&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__tol&quot;: 0.001,
-    &quot;ChooseOneStepOf__RidgeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_features&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__splitter&quot;: &quot;best&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__enabled&quot;: true,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__splitter&quot;: &quot;random&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__choice&quot;: &quot;LogisticRegression&quot;
-}
-
-
-epoch 1/1
-main train: 1.0
-main validation: 0.995625
-success trial 7/7 split 1/1
-hyperparams: {
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__C&quot;: 1.0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__dual&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__intercept_scaling&quot;: 1,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__l1_ratio&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__max_iter&quot;: 100,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__multi_class&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__penalty&quot;: &quot;l2&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__random_state&quot;: null,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__solver&quot;: &quot;lbfgs&quot;,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__tol&quot;: 0.0001,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__LogisticRegression__Optional(LogisticRegression)__SKLearnWrapper_LogisticRegression__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__LogisticRegression__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__bootstrap&quot;: true,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__max_samples&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_estimators&quot;: 100,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__n_jobs&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__oob_score&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__verbose&quot;: 0,
-    &quot;ChooseOneStepOf__RandomForestClassifier__Optional(RandomForestClassifier)__SKLearnWrapper_RandomForestClassifier__warm_start&quot;: false,
-    &quot;ChooseOneStepOf__RandomForestClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__alpha&quot;: 1.0,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__copy_X&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__fit_intercept&quot;: true,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__max_iter&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__normalize&quot;: false,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__random_state&quot;: null,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__solver&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__RidgeClassifier__Optional(RidgeClassifier)__SKLearnWrapper_RidgeClassifier__tol&quot;: 0.001,
-    &quot;ChooseOneStepOf__RidgeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_features&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__Optional(SKLearnWrapper_DecisionTreeClassifier)__splitter&quot;: &quot;best&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_DecisionTreeClassifier__enabled&quot;: true,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__ccp_alpha&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__class_weight&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__criterion&quot;: &quot;gini&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_depth&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_features&quot;: &quot;auto&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__max_leaf_nodes&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_decrease&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_impurity_split&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_leaf&quot;: 1,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_samples_split&quot;: 2,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__min_weight_fraction_leaf&quot;: 0.0,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__random_state&quot;: null,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__Optional(SKLearnWrapper_ExtraTreeClassifier)__splitter&quot;: &quot;random&quot;,
-    &quot;ChooseOneStepOf__SKLearnWrapper_ExtraTreeClassifier__enabled&quot;: false,
-    &quot;ChooseOneStepOf__choice&quot;: &quot;LogisticRegression&quot;
-}
- score: 0.995625
-best hyperparams:
-{
-    &quot;ChooseOneStepOf&quot;: {
-        &quot;LogisticRegression&quot;: {
-            &quot;Optional(LogisticRegression)&quot;: {
-                &quot;SKLearnWrapper_LogisticRegression&quot;: {
-                    &quot;C&quot;: 1.0,
-                    &quot;class_weight&quot;: null,
-                    &quot;dual&quot;: false,
-                    &quot;fit_intercept&quot;: true,
-                    &quot;intercept_scaling&quot;: 1,
-                    &quot;l1_ratio&quot;: null,
-                    &quot;max_iter&quot;: 100,
-                    &quot;multi_class&quot;: &quot;auto&quot;,
-                    &quot;n_jobs&quot;: null,
-                    &quot;penalty&quot;: &quot;l2&quot;,
-                    &quot;random_state&quot;: null,
-                    &quot;solver&quot;: &quot;lbfgs&quot;,
-                    &quot;tol&quot;: 0.0001,
-                    &quot;verbose&quot;: 0,
-                    &quot;warm_start&quot;: false
-                }
-            },
-            &quot;enabled&quot;: false
-        },
-        &quot;RandomForestClassifier&quot;: {
-            &quot;Optional(RandomForestClassifier)&quot;: {
-                &quot;SKLearnWrapper_RandomForestClassifier&quot;: {
-                    &quot;bootstrap&quot;: true,
-                    &quot;ccp_alpha&quot;: 0.0,
-                    &quot;class_weight&quot;: null,
-                    &quot;criterion&quot;: &quot;gini&quot;,
-                    &quot;max_depth&quot;: null,
-                    &quot;max_features&quot;: &quot;auto&quot;,
-                    &quot;max_leaf_nodes&quot;: null,
-                    &quot;max_samples&quot;: null,
-                    &quot;min_impurity_decrease&quot;: 0.0,
-                    &quot;min_impurity_split&quot;: null,
-                    &quot;min_samples_leaf&quot;: 1,
-                    &quot;min_samples_split&quot;: 2,
-                    &quot;min_weight_fraction_leaf&quot;: 0.0,
-                    &quot;n_estimators&quot;: 100,
-                    &quot;n_jobs&quot;: null,
-                    &quot;oob_score&quot;: false,
-                    &quot;random_state&quot;: null,
-                    &quot;verbose&quot;: 0,
-                    &quot;warm_start&quot;: false
-                }
-            },
-            &quot;enabled&quot;: false
-        },
-        &quot;RidgeClassifier&quot;: {
-            &quot;Optional(RidgeClassifier)&quot;: {
-                &quot;SKLearnWrapper_RidgeClassifier&quot;: {
-                    &quot;alpha&quot;: 1.0,
-                    &quot;class_weight&quot;: null,
-                    &quot;copy_X&quot;: true,
-                    &quot;fit_intercept&quot;: true,
-                    &quot;max_iter&quot;: null,
-                    &quot;normalize&quot;: false,
-                    &quot;random_state&quot;: null,
-                    &quot;solver&quot;: &quot;auto&quot;,
-                    &quot;tol&quot;: 0.001
-                }
-            },
-            &quot;enabled&quot;: false
-        },
-        &quot;SKLearnWrapper_DecisionTreeClassifier&quot;: {
-            &quot;Optional(SKLearnWrapper_DecisionTreeClassifier)&quot;: {
-                &quot;ccp_alpha&quot;: 0.0,
-                &quot;class_weight&quot;: null,
-                &quot;criterion&quot;: &quot;gini&quot;,
-                &quot;max_depth&quot;: null,
-                &quot;max_features&quot;: null,
-                &quot;max_leaf_nodes&quot;: null,
-                &quot;min_impurity_decrease&quot;: 0.0,
-                &quot;min_impurity_split&quot;: null,
-                &quot;min_samples_leaf&quot;: 1,
-                &quot;min_samples_split&quot;: 2,
-                &quot;min_weight_fraction_leaf&quot;: 0.0,
-                &quot;random_state&quot;: null,
-                &quot;splitter&quot;: &quot;best&quot;
-            },
-            &quot;enabled&quot;: true
-        },
-        &quot;SKLearnWrapper_ExtraTreeClassifier&quot;: {
-            &quot;Optional(SKLearnWrapper_ExtraTreeClassifier)&quot;: {
-                &quot;ccp_alpha&quot;: 0.0,
-                &quot;class_weight&quot;: null,
-                &quot;criterion&quot;: &quot;gini&quot;,
-                &quot;max_depth&quot;: null,
-                &quot;max_features&quot;: &quot;auto&quot;,
-                &quot;max_leaf_nodes&quot;: null,
-                &quot;min_impurity_decrease&quot;: 0.0,
-                &quot;min_impurity_split&quot;: null,
-                &quot;min_samples_leaf&quot;: 1,
-                &quot;min_samples_split&quot;: 2,
-                &quot;min_weight_fraction_leaf&quot;: 0.0,
-                &quot;random_state&quot;: null,
-                &quot;splitter&quot;: &quot;random&quot;
-            },
-            &quot;enabled&quot;: false
-        },
-        &quot;choice&quot;: &quot;RandomForestClassifier&quot;
-    }
-}
-Test accuracy score: 0.997
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Test accuracy score: 0.996
 </pre></div>
 </div>
 <div class="line-block">
@@ -1841,48 +607,49 @@ Test accuracy score: 0.997
     <span class="c1"># See also HyperparameterSpace documentation : https://www.neuraxle.org/stable/api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace</span>
 
     <span class="n">decision_tree_classifier</span> <span class="o">=</span> <a href="../../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span>
-        <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier" title="View documentation for sklearn.tree.DecisionTreeClassifier"><span class="n">DecisionTreeClassifier</span></a><span class="p">(),</span> <a href="../../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span>
+        <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier" title="View documentation for sklearn.tree.DecisionTreeClassifier"><span class="n">DecisionTreeClassifier</span></a><span class="p">(),</span>
+        <a href="../../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span>
             <span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Choice" title="View documentation for neuraxle.hyperparams.distributions.Choice"><span class="n">Choice</span></a><span class="p">([</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span> <span class="s1">&#39;entropy&#39;</span><span class="p">]),</span>
             <span class="s1">&#39;splitter&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Choice" title="View documentation for neuraxle.hyperparams.distributions.Choice"><span class="n">Choice</span></a><span class="p">([</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="s1">&#39;random&#39;</span><span class="p">]),</span>
             <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
-            <span class="s1">&#39;min_samples_split&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="s1">&#39;min_samples_split&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
         <span class="p">}))</span>
 
     <span class="n">extra_tree_classifier</span> <span class="o">=</span> <a href="../../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span>
-        <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.ExtraTreeClassifier.html#sklearn.tree.ExtraTreeClassifier" title="View documentation for sklearn.tree.ExtraTreeClassifier"><span class="n">ExtraTreeClassifier</span></a><span class="p">(),</span> <a href="../../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span>
+        <a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.ExtraTreeClassifier.html#sklearn.tree.ExtraTreeClassifier" title="View documentation for sklearn.tree.ExtraTreeClassifier"><span class="n">ExtraTreeClassifier</span></a><span class="p">(),</span>
+        <a href="../../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span>
             <span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Choice" title="View documentation for neuraxle.hyperparams.distributions.Choice"><span class="n">Choice</span></a><span class="p">([</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span> <span class="s1">&#39;entropy&#39;</span><span class="p">]),</span>
             <span class="s1">&#39;splitter&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Choice" title="View documentation for neuraxle.hyperparams.distributions.Choice"><span class="n">Choice</span></a><span class="p">([</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="s1">&#39;random&#39;</span><span class="p">]),</span>
             <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
-            <span class="s1">&#39;min_samples_split&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="s1">&#39;min_samples_split&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
         <span class="p">}))</span>
 
-    <span class="n">ridge_classifier</span> <span class="o">=</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">([</span>
-        <a href="../../api/neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.OutputTransformerWrapper" title="View documentation for neuraxle.steps.output_handlers.OutputTransformerWrapper"><span class="n">OutputTransformerWrapper</span></a><span class="p">(</span><a href="../../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyRavel" title="View documentation for neuraxle.steps.numpy.NumpyRavel"><span class="n">NumpyRavel</span></a><span class="p">()),</span>
-        <a href="../../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeClassifier.html#sklearn.linear_model.RidgeClassifier" title="View documentation for sklearn.linear_model.RidgeClassifier"><span class="n">RidgeClassifier</span></a><span class="p">(),</span> <a href="../../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span>
-            <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Choice" title="View documentation for neuraxle.hyperparams.distributions.Choice"><span class="n">Choice</span></a><span class="p">([(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">)]),</span>
+    <span class="n">ridge_classifier</span> <span class="o">=</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">([</span><a href="../../api/neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.OutputTransformerWrapper" title="View documentation for neuraxle.steps.output_handlers.OutputTransformerWrapper"><span class="n">OutputTransformerWrapper</span></a><span class="p">(</span><a href="../../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyRavel" title="View documentation for neuraxle.steps.numpy.NumpyRavel"><span class="n">NumpyRavel</span></a><span class="p">()),</span> <a href="../../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span>
+        <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeClassifier.html#sklearn.linear_model.RidgeClassifier" title="View documentation for sklearn.linear_model.RidgeClassifier"><span class="n">RidgeClassifier</span></a><span class="p">(),</span>
+        <a href="../../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span>
+            <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Choice" title="View documentation for neuraxle.hyperparams.distributions.Choice"><span class="n">Choice</span></a><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">]),</span>
             <span class="s1">&#39;fit_intercept&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Boolean" title="View documentation for neuraxle.hyperparams.distributions.Boolean"><span class="n">Boolean</span></a><span class="p">(),</span>
             <span class="s1">&#39;normalize&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Boolean" title="View documentation for neuraxle.hyperparams.distributions.Boolean"><span class="n">Boolean</span></a><span class="p">()</span>
         <span class="p">}))</span>
     <span class="p">])</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="s1">&#39;RidgeClassifier&#39;</span><span class="p">)</span>
 
-    <span class="n">logistic_regression</span> <span class="o">=</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">([</span>
-        <a href="../../api/neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.OutputTransformerWrapper" title="View documentation for neuraxle.steps.output_handlers.OutputTransformerWrapper"><span class="n">OutputTransformerWrapper</span></a><span class="p">(</span><a href="../../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyRavel" title="View documentation for neuraxle.steps.numpy.NumpyRavel"><span class="n">NumpyRavel</span></a><span class="p">()),</span>
-        <a href="../../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="View documentation for sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a><span class="p">(),</span> <a href="../../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span>
+    <span class="n">logistic_regression</span> <span class="o">=</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">([</span><a href="../../api/neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.OutputTransformerWrapper" title="View documentation for neuraxle.steps.output_handlers.OutputTransformerWrapper"><span class="n">OutputTransformerWrapper</span></a><span class="p">(</span><a href="../../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyRavel" title="View documentation for neuraxle.steps.numpy.NumpyRavel"><span class="n">NumpyRavel</span></a><span class="p">()),</span> <a href="../../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span>
+        <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="View documentation for sklearn.linear_model.LogisticRegression"><span class="n">LogisticRegression</span></a><span class="p">(),</span>
+        <a href="../../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span>
             <span class="s1">&#39;C&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.LogUniform" title="View documentation for neuraxle.hyperparams.distributions.LogUniform"><span class="n">LogUniform</span></a><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">),</span>
             <span class="s1">&#39;fit_intercept&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Boolean" title="View documentation for neuraxle.hyperparams.distributions.Boolean"><span class="n">Boolean</span></a><span class="p">(),</span>
-            <span class="s1">&#39;dual&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Boolean" title="View documentation for neuraxle.hyperparams.distributions.Boolean"><span class="n">Boolean</span></a><span class="p">(),</span>
-            <span class="s1">&#39;penalty&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Choice" title="View documentation for neuraxle.hyperparams.distributions.Choice"><span class="n">Choice</span></a><span class="p">([</span><span class="s1">&#39;l1&#39;</span><span class="p">,</span> <span class="s1">&#39;l2&#39;</span><span class="p">]),</span>
+            <span class="s1">&#39;penalty&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Choice" title="View documentation for neuraxle.hyperparams.distributions.Choice"><span class="n">Choice</span></a><span class="p">([</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="s1">&#39;l2&#39;</span><span class="p">]),</span>
             <span class="s1">&#39;max_iter&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
         <span class="p">}))</span>
     <span class="p">])</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="s1">&#39;LogisticRegression&#39;</span><span class="p">)</span>
 
-    <span class="n">random_forest_classifier</span> <span class="o">=</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">([</span>
-        <a href="../../api/neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.OutputTransformerWrapper" title="View documentation for neuraxle.steps.output_handlers.OutputTransformerWrapper"><span class="n">OutputTransformerWrapper</span></a><span class="p">(</span><a href="../../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyRavel" title="View documentation for neuraxle.steps.numpy.NumpyRavel"><span class="n">NumpyRavel</span></a><span class="p">()),</span>
-        <a href="../../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="View documentation for sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a><span class="p">(),</span> <a href="../../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span>
+    <span class="n">random_forest_classifier</span> <span class="o">=</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">([</span><a href="../../api/neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.OutputTransformerWrapper" title="View documentation for neuraxle.steps.output_handlers.OutputTransformerWrapper"><span class="n">OutputTransformerWrapper</span></a><span class="p">(</span><a href="../../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyRavel" title="View documentation for neuraxle.steps.numpy.NumpyRavel"><span class="n">NumpyRavel</span></a><span class="p">()),</span> <a href="../../api/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.SKLearnWrapper" title="View documentation for neuraxle.steps.sklearn.SKLearnWrapper"><span class="n">SKLearnWrapper</span></a><span class="p">(</span>
+        <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="View documentation for sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a><span class="p">(),</span>
+        <a href="../../api/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="View documentation for neuraxle.hyperparams.space.HyperparameterSpace"><span class="n">HyperparameterSpace</span></a><span class="p">({</span>
             <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">600</span><span class="p">),</span>
             <span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Choice" title="View documentation for neuraxle.hyperparams.distributions.Choice"><span class="n">Choice</span></a><span class="p">([</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span> <span class="s1">&#39;entropy&#39;</span><span class="p">]),</span>
             <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
-            <span class="s1">&#39;min_samples_split&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+            <span class="s1">&#39;min_samples_split&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
             <span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.Boolean" title="View documentation for neuraxle.hyperparams.distributions.Boolean"><span class="n">Boolean</span></a><span class="p">()</span>
         <span class="p">}))</span>
     <span class="p">])</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="s1">&#39;RandomForestClassifier&#39;</span><span class="p">)</span>
@@ -1912,6 +679,7 @@ Test accuracy score: 0.997
         <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
         <span class="n">hyperparams_repository</span><span class="o">=</span><a href="../../api/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.HyperparamsJSONRepository" title="View documentation for neuraxle.metaopt.auto_ml.HyperparamsJSONRepository"><span class="n">HyperparamsJSONRepository</span></a><span class="p">(</span><span class="n">cache_folder</span><span class="o">=</span><span class="s1">&#39;cache&#39;</span><span class="p">),</span>
         <span class="n">refit_trial</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">continue_loop_on_error</span><span class="o">=</span><span class="kc">False</span>
     <span class="p">)</span>
 
     <span class="c1"># Load data, and launch AutoML loop !</span>
@@ -1956,7 +724,7 @@ Test accuracy score: 0.997
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  8.930 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  13.209 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-auto-ml-plot-automl-loop-clean-kata-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/99746ad690cdc07ee93f901adced50cd/plot_automl_loop_clean_kata.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_automl_loop_clean_kata.py</span></code></a></p>
@@ -1966,7 +734,7 @@ Test accuracy score: 0.997
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
-</div>
+</section>
 
 
            </div>
@@ -1984,32 +752,24 @@ Test accuracy score: 0.997
     </div>
   
 
-  <!-- Begin Mailchimp Signup Form -->
-  <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
-  <div id="mc_embed_signup">
-  <form action="https://neuraxio.us18.list-manage.com/subscribe/post?u=75b15e094bec4736090d7588c&amp;id=461343efc0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-      <div id="mc_embed_signup_scroll">
-      <label for="mce-EMAIL">Stay Tuned, Keep in Touch!</label>
-      <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75b15e094bec4736090d7588c_461343efc0" tabindex="-1" value=""></div>
-      <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-      </div>
-      <br/>
-      <a href="/en/blog/index.html">Visit Blog</a>
-  </form>
-  </div>
-  <!--End mc_embed_signup-->
-
   <hr/>
 
   <div role="contentinfo">
-    <p>
+    <p style="float:left;">
         &copy; Copyright 2021 The Neuraxle Authors. All rights reserved. Apache License, Version 2.0.
 
     </p>
+
+    <p style="float:right;">
+      <a href="https://www.neuraxio.com/policies/privacy-policy">Privacy Policy</a>
+    </p>
+
   </div>
    
+
+
+
+
 </footer>
 
         </div>

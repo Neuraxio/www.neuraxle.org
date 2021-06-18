@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Handler Methods &mdash; Neuraxle 0.5.7 documentation</title>
+  <title>Handler Methods &mdash; Neuraxle 0.5.8 documentation</title>
   
 
   
@@ -19,6 +20,14 @@
   
 
   
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PWQLPZ3');</script>
+  <!-- End Google Tag Manager -->
+
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
@@ -64,6 +73,11 @@
 
 <body class="wy-body-for-nav">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWQLPZ3"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
    
   <div class="wy-grid-for-nav">
     
@@ -88,7 +102,7 @@
             
             
               <div class="version">
-                0.5.7
+                0.5.8
               </div>
             
           
@@ -113,7 +127,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="intro.html#encapsulate-models-and-data-transformers">Encapsulate Models and Data Transformers</a></li>
@@ -226,17 +240,21 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="hyperparameter_tuning.html">Introduction to Automatic Hyperparameter Tuning</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="hyperparameter_tuning.html#AutoML-loop">AutoML loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#0.-Define-your-problem">0. Define your problem</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#1.-Define-your-pipeline">1. Define your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#2.-Choose-a-validation-splitter">2. Choose a validation splitter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#3.-Define-a-the-main-scoring-metric-with-ScoringCallback">3. Define a the main scoring metric with ScoringCallback</a></li>
-<li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#4.-Add-metric-callbacks-with-MetricCallback-(optional)">4. Add metric callbacks with MetricCallback (optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#4.-Add-other-metric-callbacks-with-MetricCallback-(optional)">4. Add other metric callbacks with MetricCallback (optional)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#5.-Select-an-hyperparams-repository">5. Select an hyperparams repository</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#6.-Select-an-hyperparams-optimizer">6. Select an hyperparams optimizer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#7.-Create,-and-launch-AutoML-loop">7. Create, and launch AutoML loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#7.-Create,-and-launch-AutoML-loop">7. Create, and launch AutoML loop</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hyperparameter_tuning.html#Run-10-trials">Run 10 trials</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="hyperparameter_tuning.html#Run-10-trials">Run 10 trials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hyperparameter_tuning.html#Get-best-model,-and-predict">Get best model, and predict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#8.-Get-best-model-and-measure-test-accuracy">8. Get best model and measure test accuracy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hyperparameter_tuning.html#9.-Additional-note-:-model-selection-as-an-hyperparameter">9. Additional note : model selection as an hyperparameter</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="random_distributions.html">Introduction to Random Distributions</a><ul>
@@ -450,10 +468,6 @@
 <li class="toctree-l3"><a class="reference internal" href="api/neuraxle.metaopt.random.html#random">Random</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="api/neuraxle.metaopt.sklearn.html">neuraxle.metaopt.sklearn</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="api/neuraxle.metaopt.sklearn.html#scikit-learn-metaoptimizers">Scikit-learn metaoptimizers</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="api/neuraxle.metaopt.tpe.html">neuraxle.metaopt.tpe</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="api/neuraxle.metaopt.tpe.html#tree-parzen-estimator">Tree parzen estimator</a></li>
 </ul>
@@ -479,6 +493,12 @@
 </ul>
 
             
+          <li class="toctree-l1">
+            <a class="reference internal" href="https://www.dl-rnn-course.neuraxio.com/overview?utm_source=neuraxle_doc"
+                                    style="background:#FF982E; color:#fff; text-decoration-line: underline;" target="_blank">
+            Deep Learning &amp; RNN Course [↗️]</a>
+          </li>
+
           
         </div>
         
@@ -497,8 +517,7 @@
 
 
       <div class="wy-nav-content">
-
-        <a href="https://github.com/Neuraxio/Neuraxle"><img style="position: absolute; border: 0; top: 0; right: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+        <a href="https://github.com/Neuraxio/Neuraxle"><img style="position: absolute; border: 0; top: 0; right: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
         
         <div class="rst-content">
         
@@ -791,12 +810,12 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
-<div class="section" id="Handler-Methods">
+<section id="Handler-Methods">
 <h1>Handler Methods<a class="headerlink" href="#Handler-Methods" title="Permalink to this headline">¶</a></h1>
 <p style="font-size:18px"><p>Handler methods structure how to handle the flow of data from one step to another. Steps can override this algorithm inherited from BaseStep to change the behavior of the flow of data. It makes it possible to build really powerful steps that can edit and change the execution flow, and in multiple dimensions. Here is the detailed reference.</p>
 </p><p><img alt="Neuraxle Handler Methods" src="_images/neuraxle_handler_methods1.png" /></p>
 <p>The following handle methods are available for each step:</p>
-<div class="section" id="handle_fit_transform">
+<section id="handle_fit_transform">
 <h2><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._FittableStep.handle_fit">handle_fit_transform</a><a class="headerlink" href="#handle_fit_transform" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._TransformerStep._will_process">_will_process(data_container, context)</a>: Apply side effects before any step method.</p></li>
@@ -805,8 +824,8 @@ div.rendered_html tbody tr:hover {
 <li><p><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._FittableStep._did_fit_transform">_did_fit_transform(data_container, context)</a>: Apply side effects after fit_transform.</p></li>
 <li><p><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._TransformerStep._did_process">_did_process(data_container, context)</a>: Apply side effects after any step method.</p></li>
 </ol>
-</div>
-<div class="section" id="handle_fit">
+</section>
+<section id="handle_fit">
 <h2><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._FittableStep.handle_fit">handle_fit</a><a class="headerlink" href="#handle_fit" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._TransformerStep._will_process">_will_process(data_container, context)</a>: Apply side effects before any step method.</p></li>
@@ -814,8 +833,8 @@ div.rendered_html tbody tr:hover {
 <li><p><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._FittableStep._fit_data_container">_fit_data_container(data_container, context)</a>: Fit data container.</p></li>
 <li><p><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._FittableStep._did_fit">_did_fit(data_container, context)</a>: Apply side effects after fit.</p></li>
 </ol>
-</div>
-<div class="section" id="handle_transform">
+</section>
+<section id="handle_transform">
 <h2><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._TransformerStep.handle_transform">handle_transform</a><a class="headerlink" href="#handle_transform" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._TransformerStep._will_process">_will_process(data_container, context)</a>: Apply side effects before any step method</p></li>
@@ -824,8 +843,8 @@ div.rendered_html tbody tr:hover {
 <li><p><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._TransformerStep._did_transform">_did_transform(data_container, context)</a>: Apply side effects after transform.</p></li>
 <li><p><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._TransformerStep._did_process">_did_process(data_container, context)</a>: Apply side effects after any step method.</p></li>
 </ol>
-</div>
-<div class="section" id="When-to-use-handler-methods-?">
+</section>
+<section id="When-to-use-handler-methods-?">
 <h2>When to use handler methods ?<a class="headerlink" href="#When-to-use-handler-methods-?" title="Permalink to this headline">¶</a></h2>
 <p>When you need to apply side effects, or change the execution flow:</p>
 <ul class="simple">
@@ -835,23 +854,23 @@ div.rendered_html tbody tr:hover {
 <li><p>Caching (see <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.checkpoints.html">neuraxle.checkpoint</a> package)</p></li>
 <li><p>etc.</p></li>
 </ul>
-</div>
-<div class="section" id="HandleOnlyMixin">
+</section>
+<section id="HandleOnlyMixin">
 <h2><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.HandleOnlyMixin">HandleOnlyMixin</a><a class="headerlink" href="#HandleOnlyMixin" title="Permalink to this headline">¶</a></h2>
 <p>Inherit from <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.HandleOnlyMixin">HandleOnlyMixin</a>, to only implement the handler methods, and forbid implementing fit or transform or fit_transform without the handles.</p>
-</div>
-<div class="section" id="ForceHandleMixin">
+</section>
+<section id="ForceHandleMixin">
 <h2><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.ForceHandleMixin">ForceHandleMixin</a><a class="headerlink" href="#ForceHandleMixin" title="Permalink to this headline">¶</a></h2>
 <p>Inherit from <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.ForceHandleMixin">ForceHandleMixin</a>, to automatically calls handle methods in the transform, fit, and fit_transform methods. A step might have to be forced to pass through the lifecycle methods. This is true for all of the steps that can be called from the outside world. For example, you might want to transform all of the data inside the data container.</p>
-</div>
-<div class="section" id="ForceHandleOnlyMixin">
+</section>
+<section id="ForceHandleOnlyMixin">
 <h2><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.ForceHandleOnlyMixin">ForceHandleOnlyMixin</a><a class="headerlink" href="#ForceHandleOnlyMixin" title="Permalink to this headline">¶</a></h2>
 <p>Inherit from <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.ForceHandleOnlyMixin">ForceHandleOnlyMixin</a> to require the implementation of handler methods, AND automatically call handle methods in the transform, fit, and fit_transform methods.</p>
-<div class="section" id="Examples">
+<section id="Examples">
 <h3>Examples<a class="headerlink" href="#Examples" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
-<div class="section" id="ForEachDataInput">
+</section>
+</section>
+<section id="ForEachDataInput">
 <h2><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEachDataInput">ForEachDataInput</a><a class="headerlink" href="#ForEachDataInput" title="Permalink to this headline">¶</a></h2>
 <p>Consider a wrapper step that would loop through each data input, and transform each item with the wrapped step. One could create such a step by inheriting from <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.MetaStepMixin">MetaStepMixin</a>, and implementing each of the necessary handler methods : _transform_data_container, _fit_data_container, fit_transform_data_container.</p>
 <p>Here is the implementation of the _transform_data_container for the <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEachDataInput">ForEachDataInput</a> step</p>
@@ -880,8 +899,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="ToNumpy">
+</section>
+<section id="ToNumpy">
 <h2>ToNumpy<a class="headerlink" href="#ToNumpy" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -902,8 +921,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Transform-Expected-Outputs">
+</section>
+<section id="Transform-Expected-Outputs">
 <h2>Transform Expected Outputs<a class="headerlink" href="#Transform-Expected-Outputs" title="Permalink to this headline">¶</a></h2>
 <p>Consider a wrapper step that would transform the expected outputs instead of the data inputs.</p>
 <p>Create such a step in 4 easy steps (toudoum tish) :</p>
@@ -1076,8 +1095,8 @@ data_inputs after: [0 1]
 expected_outputs after: [2 4]
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Expand-The-DataContainer">
+</section>
+<section id="Expand-The-DataContainer">
 <h2>Expand The DataContainer<a class="headerlink" href="#Expand-The-DataContainer" title="Permalink to this headline">¶</a></h2>
 <p>Consider a typical step that expands the dimension of all the data inside the data container. <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.steps.flow.html#neuraxle.steps.flow.ExpandDim">ExpandDim</a> sends the expanded data container to the wrapped step. <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.steps.flow.html#neuraxle.steps.flow.ExpandDim">ExpandDim</a> returns the transformed expanded dim reduced to its original shape.</p>
 <p>This can be easily done in Neuraxle:</p>
@@ -1201,8 +1220,8 @@ expected_outputs inside: [[1, 2]]
 
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Reversible-Pipeline">
+</section>
+<section id="Reversible-Pipeline">
 <h2>Reversible Pipeline<a class="headerlink" href="#Reversible-Pipeline" title="Permalink to this headline">¶</a></h2>
 <p>Consider a step that can be reversible. For example, you might want to unnormalize predictions. This can be easily done with a step that inherits from <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html?highlight=truncablesteps#neuraxle.base.TruncableSteps">TruncableSteps</a>, and <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html?highlight=handleonlymixin#neuraxle.base.HandleOnlyMixin">HandleOnlyMixin</a>.</p>
 <ol class="arabic simple">
@@ -1404,8 +1423,8 @@ expected_outputs after preprocessing: [None, None]
 data inputs after inverse transform preprocessing: [3. 6.]
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -1423,32 +1442,24 @@ data inputs after inverse transform preprocessing: [3. 6.]
     </div>
   
 
-  <!-- Begin Mailchimp Signup Form -->
-  <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
-  <div id="mc_embed_signup">
-  <form action="https://neuraxio.us18.list-manage.com/subscribe/post?u=75b15e094bec4736090d7588c&amp;id=461343efc0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-      <div id="mc_embed_signup_scroll">
-      <label for="mce-EMAIL">Stay Tuned, Keep in Touch!</label>
-      <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75b15e094bec4736090d7588c_461343efc0" tabindex="-1" value=""></div>
-      <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-      </div>
-      <br/>
-      <a href="/en/blog/index.html">Visit Blog</a>
-  </form>
-  </div>
-  <!--End mc_embed_signup-->
-
   <hr/>
 
   <div role="contentinfo">
-    <p>
+    <p style="float:left;">
         &copy; Copyright 2021 The Neuraxle Authors. All rights reserved. Apache License, Version 2.0.
 
     </p>
+
+    <p style="float:right;">
+      <a href="https://www.neuraxio.com/policies/privacy-policy">Privacy Policy</a>
+    </p>
+
   </div>
    
+
+
+
+
 </footer>
 
         </div>

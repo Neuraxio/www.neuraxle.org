@@ -36,9 +36,9 @@ This demonstrates how to stream data in parallel in a Neuraxle pipeline.
  .. code-block:: none
 
     SequentialQueuedPipeline
-    execution time: 0.4587130546569824 seconds
+    execution time: 0.4986422061920166 seconds
     VanillaPipeline
-    execution time: 2.0222725868225098 seconds
+    execution time: 2.0218939781188965 seconds
 
 
 
@@ -53,7 +53,7 @@ This demonstrates how to stream data in parallel in a Neuraxle pipeline.
 
     from neuraxle.distributed.streaming import SequentialQueuedPipeline
     from neuraxle.pipeline import Pipeline
-    from neuraxle.steps.loop import ForEachDataInput
+    from neuraxle.steps.loop import ForEach
     from neuraxle.steps.misc import Sleep
     from neuraxle.steps.numpy import MultiplyByN
 
@@ -65,7 +65,7 @@ This demonstrates how to stream data in parallel in a Neuraxle pipeline.
         """
         sleep_time = 0.02
         p = SequentialQueuedPipeline([
-            Pipeline([ForEachDataInput(Sleep(sleep_time=sleep_time)), MultiplyByN(2)]),
+            Pipeline([ForEach(Sleep(sleep_time=sleep_time)), MultiplyByN(2)]),
         ], n_workers_per_step=8, max_queue_size=10, batch_size=10)
 
         a = time.time()
@@ -80,7 +80,7 @@ This demonstrates how to stream data in parallel in a Neuraxle pipeline.
         For each data input, sleep 0.02 seconds, and then multiply by 2.
         """
         p = Pipeline([
-            Pipeline([ForEachDataInput(Sleep(sleep_time=sleep_time)), MultiplyByN(2)]),
+            Pipeline([ForEach(Sleep(sleep_time=sleep_time)), MultiplyByN(2)]),
         ])
 
         a = time.time()
@@ -101,7 +101,7 @@ This demonstrates how to stream data in parallel in a Neuraxle pipeline.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.556 seconds)
+   **Total running time of the script:** ( 0 minutes  2.600 seconds)
 
 
 .. _sphx_glr_download_examples_parallel_plot_streaming_pipeline.py:

@@ -5,10 +5,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>neuraxle.steps.loop &mdash; Neuraxle 0.5.7 documentation</title>
+  <title>neuraxle.steps.loop &mdash; Neuraxle 0.5.8 documentation</title>
   
 
   
@@ -19,6 +20,14 @@
   
 
   
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PWQLPZ3');</script>
+  <!-- End Google Tag Manager -->
+
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
@@ -64,6 +73,11 @@
 
 <body class="wy-body-for-nav">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWQLPZ3"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
    
   <div class="wy-grid-for-nav">
     
@@ -88,7 +102,7 @@
             
             
               <div class="version">
-                0.5.7
+                0.5.8
               </div>
             
           
@@ -113,7 +127,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../intro.html#encapsulate-models-and-data-transformers">Encapsulate Models and Data Transformers</a></li>
@@ -226,17 +240,21 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../hyperparameter_tuning.html">Introduction to Automatic Hyperparameter Tuning</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html#AutoML-loop">AutoML loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#0.-Define-your-problem">0. Define your problem</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#1.-Define-your-pipeline">1. Define your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#2.-Choose-a-validation-splitter">2. Choose a validation splitter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#3.-Define-a-the-main-scoring-metric-with-ScoringCallback">3. Define a the main scoring metric with ScoringCallback</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#4.-Add-metric-callbacks-with-MetricCallback-(optional)">4. Add metric callbacks with MetricCallback (optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#4.-Add-other-metric-callbacks-with-MetricCallback-(optional)">4. Add other metric callbacks with MetricCallback (optional)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#5.-Select-an-hyperparams-repository">5. Select an hyperparams repository</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#6.-Select-an-hyperparams-optimizer">6. Select an hyperparams optimizer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#7.-Create,-and-launch-AutoML-loop">7. Create, and launch AutoML loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#7.-Create,-and-launch-AutoML-loop">7. Create, and launch AutoML loop</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../hyperparameter_tuning.html#Run-10-trials">Run 10 trials</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html#Run-10-trials">Run 10 trials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html#Get-best-model,-and-predict">Get best model, and predict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#8.-Get-best-model-and-measure-test-accuracy">8. Get best model and measure test accuracy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hyperparameter_tuning.html#9.-Additional-note-:-model-selection-as-an-hyperparameter">9. Additional note : model selection as an hyperparameter</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../random_distributions.html">Introduction to Random Distributions</a><ul>
@@ -450,10 +468,6 @@
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.random.html#random">Random</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.sklearn.html">neuraxle.metaopt.sklearn</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.sklearn.html#scikit-learn-metaoptimizers">Scikit-learn metaoptimizers</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.tpe.html">neuraxle.metaopt.tpe</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.tpe.html#tree-parzen-estimator">Tree parzen estimator</a></li>
 </ul>
@@ -479,6 +493,12 @@
 </ul>
 
             
+          <li class="toctree-l1">
+            <a class="reference internal" href="https://www.dl-rnn-course.neuraxio.com/overview?utm_source=neuraxle_doc"
+                                    style="background:#FF982E; color:#fff; text-decoration-line: underline;" target="_blank">
+            Deep Learning &amp; RNN Course [↗️]</a>
+          </li>
+
           
         </div>
         
@@ -497,8 +517,7 @@
 
 
       <div class="wy-nav-content">
-
-        <a href="https://github.com/Neuraxio/Neuraxle"><img style="position: absolute; border: 0; top: 0; right: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+        <a href="https://github.com/Neuraxio/Neuraxle"><img style="position: absolute; border: 0; top: 0; right: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
         
         <div class="rst-content">
         
@@ -545,9 +564,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-neuraxle.steps.loop">
+  <section id="module-neuraxle.steps.loop">
 <span id="neuraxle-steps-loop"></span><h1>neuraxle.steps.loop<a class="headerlink" href="#module-neuraxle.steps.loop" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="pipeline-steps-for-looping">
+<section id="pipeline-steps-for-looping">
 <h2>Pipeline Steps For Looping<a class="headerlink" href="#pipeline-steps-for-looping" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Classes</p>
 <table class="longtable docutils align-center">
@@ -556,10 +575,22 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.steps.loop.Break" title="neuraxle.steps.loop.Break"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Break</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.steps.loop.BreakIf" title="neuraxle.steps.loop.BreakIf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BreakIf</span></code></a>(condition_function)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.steps.loop.Continue" title="neuraxle.steps.loop.Continue"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Continue</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.steps.loop.ContinueIf" title="neuraxle.steps.loop.ContinueIf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ContinueIf</span></code></a>(condition_function)</p></td>
+<td><p></p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.steps.loop.FlattenForEach" title="neuraxle.steps.loop.FlattenForEach"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FlattenForEach</span></code></a>(wrapped, then_unflatten)</p></td>
 <td><p>Step that reduces a dimension instead of manually looping on it.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.steps.loop.ForEachDataInput" title="neuraxle.steps.loop.ForEachDataInput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ForEachDataInput</span></code></a>(wrapped[, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.steps.loop.ForEach" title="neuraxle.steps.loop.ForEach"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ForEach</span></code></a>(wrapped[, cache_folder_when_no_handle])</p></td>
 <td><p>Truncable step that fits/transforms each step for each of the data inputs, and expected outputs.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.steps.loop.StepClonerForEachDataInput" title="neuraxle.steps.loop.StepClonerForEachDataInput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StepClonerForEachDataInput</span></code></a>(wrapped[, …])</p></td>
@@ -567,9 +598,110 @@
 </tr>
 </tbody>
 </table>
+<p class="rubric">Exceptions</p>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.steps.loop.BreakInterrupt" title="neuraxle.steps.loop.BreakInterrupt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BreakInterrupt</span></code></a></p></td>
+<td><p>This exception is used to signal the interruption of a minibatch</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.steps.loop.ContinueInterrupt" title="neuraxle.steps.loop.ContinueInterrupt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ContinueInterrupt</span></code></a></p></td>
+<td><p>This exception is used to signal to the minibatch iterator to skip the rest of the execution of the current iteration.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="neuraxle.steps.loop.Break">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.loop.</code><code class="descname">Break</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L168"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.Break" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="neuraxle.steps.loop.Break._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.steps.loop.Break._abc_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.loop.Break._did_process">
+<code class="descname">_did_process</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L172"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.Break._did_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply side effects after any step method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> – data container</p></li>
+<li><p><strong>context</strong> – execution context</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(data container, execution context)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.steps.loop.BreakIf">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.loop.</code><code class="descname">BreakIf</code><span class="sig-paren">(</span><em>condition_function: Callable</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L176"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.BreakIf" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="neuraxle.steps.loop.BreakIf._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.steps.loop.BreakIf._abc_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="neuraxle.steps.loop.BreakInterrupt">
+<em class="property">exception </em><code class="descclassname">neuraxle.steps.loop.</code><code class="descname">BreakInterrupt</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L163"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.BreakInterrupt" title="Permalink to this definition">¶</a></dt>
+<dd><p>This exception is used to signal the interruption of a minibatch</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.steps.loop.Continue">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.loop.</code><code class="descname">Continue</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L181"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.Continue" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="neuraxle.steps.loop.Continue._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.steps.loop.Continue._abc_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.loop.Continue._did_process">
+<code class="descname">_did_process</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L185"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.Continue._did_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply side effects after any step method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> – data container</p></li>
+<li><p><strong>context</strong> – execution context</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(data container, execution context)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.steps.loop.ContinueIf">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.loop.</code><code class="descname">ContinueIf</code><span class="sig-paren">(</span><em>condition_function: Callable</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L189"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.ContinueIf" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="neuraxle.steps.loop.ContinueIf._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.steps.loop.ContinueIf._abc_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="neuraxle.steps.loop.ContinueInterrupt">
+<em class="property">exception </em><code class="descclassname">neuraxle.steps.loop.</code><code class="descname">ContinueInterrupt</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L158"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.ContinueInterrupt" title="Permalink to this definition">¶</a></dt>
+<dd><p>This exception is used to signal to the minibatch iterator to skip the rest of the execution of the current iteration.</p>
+</dd></dl>
+
 <dl class="class">
 <dt id="neuraxle.steps.loop.FlattenForEach">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.loop.</code><code class="descname">FlattenForEach</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseTransformer</em>, <em>then_unflatten: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/loop.py#L264"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.FlattenForEach" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.loop.</code><code class="descname">FlattenForEach</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseTransformer</em>, <em>then_unflatten: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L320"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.FlattenForEach" title="Permalink to this definition">¶</a></dt>
 <dd><p>Step that reduces a dimension instead of manually looping on it.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -591,7 +723,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.loop.FlattenForEach._did_process">
-<code class="descname">_did_process</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/loop.py#L344"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.FlattenForEach._did_process" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_did_process</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L400"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.FlattenForEach._did_process" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reaugment the flattened data container.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -608,7 +740,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.loop.FlattenForEach._flatten_list">
-<code class="descname">_flatten_list</code><span class="sig-paren">(</span><em>list_to_flatten</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/loop.py#L324"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.FlattenForEach._flatten_list" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_flatten_list</code><span class="sig-paren">(</span><em>list_to_flatten</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L380"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.FlattenForEach._flatten_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flatten the first dimension of a list.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -622,7 +754,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.loop.FlattenForEach._reaugment_list">
-<code class="descname">_reaugment_list</code><span class="sig-paren">(</span><em>list_to_reaugment</em>, <em>flattened_dimension_lengths</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/loop.py#L362"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.FlattenForEach._reaugment_list" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_reaugment_list</code><span class="sig-paren">(</span><em>list_to_reaugment</em>, <em>flattened_dimension_lengths</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L418"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.FlattenForEach._reaugment_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reaugment list with the flattened dimension lengths.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -636,7 +768,7 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.loop.FlattenForEach._will_process">
-<code class="descname">_will_process</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseTransformer'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/loop.py#L295"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.FlattenForEach._will_process" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_will_process</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseTransformer'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L351"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.FlattenForEach._will_process" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flatten data container before any processing is done on the wrapped step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -656,8 +788,8 @@
 
 <dl class="method">
 <dt id="neuraxle.steps.loop.FlattenForEach.should_resume">
-<code class="descname">should_resume</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/loop.py#L381"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.FlattenForEach.should_resume" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns True if a step can be resumed with the given the data container, and execution context.
+<code class="descname">should_resume</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L437"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.FlattenForEach.should_resume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if a step can be resumed with the given the data container and execution context.
 See Checkpoint class documentation for more details on how a resumable checkpoint works.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -675,8 +807,8 @@ See Checkpoint class documentation for more details on how a resumable checkpoin
 </dd></dl>
 
 <dl class="class">
-<dt id="neuraxle.steps.loop.ForEachDataInput">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.loop.</code><code class="descname">ForEachDataInput</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseTransformer</em>, <em>cache_folder_when_no_handle=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/loop.py#L36"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.ForEachDataInput" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.steps.loop.ForEach">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.loop.</code><code class="descname">ForEach</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseTransformer</em>, <em>cache_folder_when_no_handle=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L36"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.ForEach" title="Permalink to this definition">¶</a></dt>
 <dd><p>Truncable step that fits/transforms each step for each of the data inputs, and expected outputs.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -691,13 +823,13 @@ See Checkpoint class documentation for more details on how a resumable checkpoin
 <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
 </div>
 <dl class="attribute">
-<dt id="neuraxle.steps.loop.ForEachDataInput._abc_impl">
-<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.steps.loop.ForEachDataInput._abc_impl" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.steps.loop.ForEach._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.steps.loop.ForEach._abc_impl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.steps.loop.ForEachDataInput._fit_data_container">
-<code class="descname">_fit_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/loop.py#L56"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.ForEachDataInput._fit_data_container" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.steps.loop.ForEach._fit_data_container">
+<code class="descname">_fit_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L56"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.ForEach._fit_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit each step for each data inputs, and expected outputs</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -713,8 +845,8 @@ See Checkpoint class documentation for more details on how a resumable checkpoin
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.steps.loop.ForEachDataInput._fit_transform_data_container">
-<code class="descname">_fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[neuraxle.base.BaseStep, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/loop.py#L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.ForEachDataInput._fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.steps.loop.ForEach._fit_transform_data_container">
+<code class="descname">_fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[neuraxle.base.BaseStep, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L110"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.ForEach._fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit transform each step for each data inputs, and expected outputs</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -730,8 +862,8 @@ See Checkpoint class documentation for more details on how a resumable checkpoin
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.steps.loop.ForEachDataInput._transform_data_container">
-<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/loop.py#L73"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.ForEachDataInput._transform_data_container" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.steps.loop.ForEach._transform_data_container">
+<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L78"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.ForEach._transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform each step for each data inputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -747,8 +879,8 @@ See Checkpoint class documentation for more details on how a resumable checkpoin
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.steps.loop.ForEachDataInput.hash_data_container">
-<code class="descname">hash_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/loop.py#L129"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.ForEachDataInput.hash_data_container" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.steps.loop.ForEach.hash_data_container">
+<code class="descname">hash_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L144"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.ForEach.hash_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Hash data container using self.hashers.</p>
 <ol class="arabic simple">
 <li><p>Hash current ids with hyperparams.</p></li>
@@ -765,9 +897,9 @@ See Checkpoint class documentation for more details on how a resumable checkpoin
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.steps.loop.ForEachDataInput.should_resume">
-<code class="descname">should_resume</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/loop.py#L135"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.ForEachDataInput.should_resume" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns True if a step can be resumed with the given the data container, and execution context.
+<dt id="neuraxle.steps.loop.ForEach.should_resume">
+<code class="descname">should_resume</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L150"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.ForEach.should_resume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if a step can be resumed with the given the data container and execution context.
 See Checkpoint class documentation for more details on how a resumable checkpoint works.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -786,7 +918,7 @@ See Checkpoint class documentation for more details on how a resumable checkpoin
 
 <dl class="class">
 <dt id="neuraxle.steps.loop.StepClonerForEachDataInput">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.loop.</code><code class="descname">StepClonerForEachDataInput</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseTransformer</em>, <em>copy_op=&lt;function deepcopy&gt;</em>, <em>cache_folder_when_no_handle=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/loop.py#L143"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.StepClonerForEachDataInput" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.steps.loop.</code><code class="descname">StepClonerForEachDataInput</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseTransformer</em>, <em>copy_op=&lt;function deepcopy&gt;</em>, <em>cache_folder_when_no_handle=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L194"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.StepClonerForEachDataInput" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="neuraxle.steps.loop.StepClonerForEachDataInput._abc_impl">
 <code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.steps.loop.StepClonerForEachDataInput._abc_impl" title="Permalink to this definition">¶</a></dt>
@@ -794,12 +926,12 @@ See Checkpoint class documentation for more details on how a resumable checkpoin
 
 <dl class="method">
 <dt id="neuraxle.steps.loop.StepClonerForEachDataInput._copy_one_step_per_data_input">
-<code class="descname">_copy_one_step_per_data_input</code><span class="sig-paren">(</span><em>data_container</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/loop.py#L172"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.StepClonerForEachDataInput._copy_one_step_per_data_input" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_copy_one_step_per_data_input</code><span class="sig-paren">(</span><em>data_container</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L223"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.StepClonerForEachDataInput._copy_one_step_per_data_input" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.loop.StepClonerForEachDataInput._fit_data_container">
-<code class="descname">_fit_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/loop.py#L195"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.StepClonerForEachDataInput._fit_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_fit_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L248"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.StepClonerForEachDataInput._fit_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit data container.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -816,7 +948,7 @@ See Checkpoint class documentation for more details on how a resumable checkpoin
 
 <dl class="method">
 <dt id="neuraxle.steps.loop.StepClonerForEachDataInput._fit_transform_data_container">
-<code class="descname">_fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/loop.py#L178"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.StepClonerForEachDataInput._fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L230"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.StepClonerForEachDataInput._fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit transform data container.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -833,12 +965,12 @@ See Checkpoint class documentation for more details on how a resumable checkpoin
 
 <dl class="method">
 <dt id="neuraxle.steps.loop.StepClonerForEachDataInput._inverse_transform_data_container">
-<code class="descname">_inverse_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/loop.py#L222"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.StepClonerForEachDataInput._inverse_transform_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_inverse_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L277"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.StepClonerForEachDataInput._inverse_transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.loop.StepClonerForEachDataInput._transform_data_container">
-<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/loop.py#L208"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.StepClonerForEachDataInput._transform_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L262"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.StepClonerForEachDataInput._transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform data container.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -855,7 +987,7 @@ See Checkpoint class documentation for more details on how a resumable checkpoin
 
 <dl class="method">
 <dt id="neuraxle.steps.loop.StepClonerForEachDataInput._will_process">
-<code class="descname">_will_process</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/loop.py#L164"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.StepClonerForEachDataInput._will_process" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_will_process</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L215"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.StepClonerForEachDataInput._will_process" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply side effects before any step method.
 :param data_container: data container
 :param context: execution context
@@ -864,7 +996,7 @@ See Checkpoint class documentation for more details on how a resumable checkpoin
 
 <dl class="method">
 <dt id="neuraxle.steps.loop.StepClonerForEachDataInput.get_children">
-<code class="descname">get_children</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[neuraxle.base.BaseStep]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/loop.py#L153"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.StepClonerForEachDataInput.get_children" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_children</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[neuraxle.base.BaseStep]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L204"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.StepClonerForEachDataInput.get_children" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the list of all the children for that step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -875,7 +1007,7 @@ See Checkpoint class documentation for more details on how a resumable checkpoin
 
 <dl class="method">
 <dt id="neuraxle.steps.loop.StepClonerForEachDataInput.inverse_transform">
-<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>data_output</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/a2f3a46/neuraxle/steps/loop.py#L236"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.StepClonerForEachDataInput.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>data_output</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/1ed6348/neuraxle/steps/loop.py#L292"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.loop.StepClonerForEachDataInput.inverse_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse Transform the given transformed data inputs.</p>
 <p><code class="xref py py-func docutils literal notranslate"><span class="pre">mutate()</span></code> or <a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseTransformer.reverse" title="neuraxle.base.BaseTransformer.reverse"><code class="xref py py-func docutils literal notranslate"><span class="pre">reverse()</span></code></a> can be called to change the default transform behavior :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span><span class="n">MultiplyBy</span><span class="p">()])</span>
@@ -897,8 +1029,8 @@ See Checkpoint class documentation for more details on how a resumable checkpoin
 
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -916,32 +1048,24 @@ See Checkpoint class documentation for more details on how a resumable checkpoin
     </div>
   
 
-  <!-- Begin Mailchimp Signup Form -->
-  <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
-  <div id="mc_embed_signup">
-  <form action="https://neuraxio.us18.list-manage.com/subscribe/post?u=75b15e094bec4736090d7588c&amp;id=461343efc0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-      <div id="mc_embed_signup_scroll">
-      <label for="mce-EMAIL">Stay Tuned, Keep in Touch!</label>
-      <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75b15e094bec4736090d7588c_461343efc0" tabindex="-1" value=""></div>
-      <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-      </div>
-      <br/>
-      <a href="/en/blog/index.html">Visit Blog</a>
-  </form>
-  </div>
-  <!--End mc_embed_signup-->
-
   <hr/>
 
   <div role="contentinfo">
-    <p>
+    <p style="float:left;">
         &copy; Copyright 2021 The Neuraxle Authors. All rights reserved. Apache License, Version 2.0.
 
     </p>
+
+    <p style="float:right;">
+      <a href="https://www.neuraxio.com/policies/privacy-policy">Privacy Policy</a>
+    </p>
+
   </div>
    
+
+
+
+
 </footer>
 
         </div>
