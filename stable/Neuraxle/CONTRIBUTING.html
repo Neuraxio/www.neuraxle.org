@@ -9,7 +9,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Contributing to Neuraxle &mdash; Neuraxle 0.6.0 documentation</title>
+  <title>Contributing to Neuraxle &mdash; Neuraxle 0.6.1 documentation</title>
   
 
   
@@ -102,7 +102,7 @@
             
             
               <div class="version">
-                0.6.0
+                0.6.1
               </div>
             
           
@@ -229,6 +229,16 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../step_saving_and_lifecycle.html#Full-Dump-Saving">Full Dump Saving</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../step_saving_and_lifecycle.html#Full-Dump-Loading">Full Dump Loading</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../time_series_processing.html">Time Series Processing Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../time_series_processing.html#The-Dataset">The Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time_series_processing.html#The-task">The task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time_series_processing.html#Video-dataset-overview">Video dataset overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time_series_processing.html#Details-about-the-input-data">Details about the input data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time_series_processing.html#Loading-the-Dataset">Loading the Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time_series_processing.html#Part-1---How-would-you-code-this-in-a-typical-ML-project-using-Scikit-learn">Part 1 - How would you code this in a typical ML project using Scikit-learn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time_series_processing.html#Part-2---How-to-code-a-similar-pipeline---but-cleaner---using-Neuraxle">Part 2 - How to code a similar pipeline - but cleaner - using Neuraxle</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../random_distributions.html">Random Distributions</a><ul>
@@ -432,7 +442,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.distributed.streaming.html">neuraxle.distributed.streaming</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.distributed.streaming.html#streaming-parallel-data-processing">Streaming Parallel Data Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/neuraxle.distributed.streaming.html#streaming-pipelines-for-parallel-and-queued-data-processing">Streaming Pipelines for Parallel and Queued Data Processing</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../api/neuraxle.rest.flask.html">neuraxle.rest.flask</a><ul>
@@ -464,9 +474,15 @@
 
             
           <li class="toctree-l1">
-            <a class="reference internal" href="https://www.dl-rnn-course.neuraxio.com/overview?utm_source=neuraxle_doc"
+            <a class="reference internal" href="https://www.neuraxio.com/blogs/news"
                                     style="background:#FF982E; color:#fff; text-decoration-line: underline;" target="_blank">
-            Deep Learning &amp; RNN Course [↗️]</a>
+            Neuraxio Blog Articles [↗️]</a>
+            <a class="reference internal" href="https://www.neuraxio.com/blogs/news/our-top-learning-resources-for-ai-programmers?utm_source=neuraxle_doc"
+                                    style="background:#DB1865; color:#fff; text-decoration-line: underline;" target="_blank">
+            Learn AI Programming [↗️]</a>
+            <a class="reference internal" href="https://www.jobs.neuraxio.com/"
+                                    style="background:#111; color:#fff; text-decoration-line: underline;" target="_blank">
+            Jobs [↗️]</a>
           </li>
 
           
@@ -544,9 +560,9 @@
 <h2>Before coding<a class="headerlink" href="#before-coding" title="Permalink to this headline">¶</a></h2>
 <p>New contributor? Follow this checklist to get started right on track:</p>
 <ul class="simple">
-<li><p>[ ] Your local Git username is set to your GitHub username, and your local Git email is set to your <a class="reference external" href="https://github.com/settings/emails">GitHub email</a>. This is important to avoid breaking the cla-bot and for your contributions to be linked to your profile. If at least 1 contribution is not commited properly using the good credentials, the cla-bot will break until your <a class="reference external" href="https://stackoverflow.com/questions/20002557/how-to-remove-a-too-large-file-in-a-commit-when-my-branch-is-ahead-of-master-by/39768343#39768343">re-commit it</a>.</p></li>
+<li><p>[ ] Your local Git username is set to your GitHub username, and your local Git email is set to your <a class="reference external" href="https://github.com/settings/emails">GitHub email</a>. This is important to avoid breaking the cla-bot and for your contributions to be linked to your profile. If at least 1 contribution is not commited properly using the good credentials, the cla-bot will break until your <a class="reference external" href="https://stackoverflow.com/questions/20002557/how-to-remove-a-too-large-file-in-a-commit-when-my-branch-is-ahead-of-master-by/39768343#39768343">re-commit it</a>. Before commiting, <a class="reference external" href="https://stackoverflow.com/a/42167480/2476920">change your name and email</a> to the good ones.</p></li>
 <li><p>[ ] Use the PyCharm IDE with PyTest to test your code. Reformatting your code at every file save is a good idea, using <a class="reference external" href="https://www.jetbrains.com/help/pycharm/reformat-and-rearrange-code.html">PyCharm’s <code class="docutils literal notranslate"><span class="pre">Ctrl+Alt+L</span></code> shortcut</a>. You may reorganize imports automatically as well, as long as your project root is well configured. Run the tests to see if everything works, and always ensure that all tests run before opening a pull request as well.</p></li>
-<li><p>[ ] We recommend letting PyCharm manage the virtual environment by <a class="reference external" href="https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html#existing-environment">creating a new one just for this project</a>, and (using PyTest as a test runner in PyCharm](https://www.jetbrains.com/help/pycharm/pytest.html#pytest-fixtures). This is not required, but should help in getting you started.</p></li>
+<li><p>[ ] We recommend letting PyCharm manage the virtual environment by <a class="reference external" href="https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html#existing-environment">creating a new one just for this project</a>, and <a class="reference external" href="https://www.jetbrains.com/help/pycharm/pytest.html#pytest-fixtures">using PyTest as a test runner in PyCharm</a>. This is not required, but should help in getting you started.</p></li>
 <li><p>[ ] Please <a class="reference external" href="https://docs.github.com/en/github/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork">make your pull request(s) editable</a>, such as for us to add you to the list of contributors if you didn’t add the entry, for example.</p></li>
 <li><p>[ ] To contribute, first fork the project, then do your changes, and then <a class="reference external" href="https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork">open a pull request in the main repository</a>.</p></li>
 <li><p>[ ] Sign the <a class="reference external" href="https://docs.google.com/forms/d/e/1FAIpQLSfDP3eCQoV0tMq296OfbOpNn-QkHwfJQLkS0MVjSHiZQXPw2Q/viewform">Contributor License Agreement (CLA)</a> to allow Neuraxio to use and publish your contributions under the Apache 2.0 license, in order for everyone to be able to use your open-source contributions. Follow the instructions of the cla-bot upon opening the pull request.</p></li>
@@ -562,7 +578,7 @@
 </section>
 <section id="reviewing-other-s-code">
 <h2>Reviewing other’s code<a class="headerlink" href="#reviewing-other-s-code" title="Permalink to this headline">¶</a></h2>
-<p>We love that contributors review each other’s code as well, when they have time.</p>
+<p>We love that contributors review each other’s code as well.</p>
 </section>
 <section id="publishing-project-to-pypi">
 <h2>Publishing project to PyPI<a class="headerlink" href="#publishing-project-to-pypi" title="Permalink to this headline">¶</a></h2>

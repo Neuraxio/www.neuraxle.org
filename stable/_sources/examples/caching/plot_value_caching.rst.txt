@@ -39,9 +39,9 @@ This demonstrates how you can use value caching in a Neuraxle pipeline.
  .. code-block:: none
 
     Pipeline with ValueCachingWrapper
-    execution time: 0.23448395729064941 seconds
+    execution time: 0.26569247245788574 seconds
     Pipeline without value caching
-    execution time: 0.7671432495117188 seconds
+    execution time: 0.7917227745056152 seconds
 
 
 
@@ -50,6 +50,7 @@ This demonstrates how you can use value caching in a Neuraxle pipeline.
 
 
 .. code-block:: default
+   :lineno-start: 24
 
     import os
     import shutil
@@ -58,7 +59,7 @@ This demonstrates how you can use value caching in a Neuraxle pipeline.
     import numpy as np
 
     from neuraxle.pipeline import Pipeline
-    from neuraxle.steps.caching import PickleValueCachingWrapper
+    from neuraxle.steps.caching import JoblibValueCachingWrapper
     from neuraxle.steps.loop import ForEach
     from neuraxle.steps.misc import Sleep
     from neuraxle.steps.numpy import MultiplyByN
@@ -75,7 +76,7 @@ This demonstrates how you can use value caching in a Neuraxle pipeline.
         a = time.time()
         for i in range(5):
             p = Pipeline([
-                PickleValueCachingWrapper(
+                JoblibValueCachingWrapper(
                     ForEach(Pipeline([Sleep(sleep_time=sleep_time), MultiplyByN(2)])),
                     cache_folder=value_caching_folder
                 )
@@ -110,7 +111,7 @@ This demonstrates how you can use value caching in a Neuraxle pipeline.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.065 seconds)
+   **Total running time of the script:** ( 0 minutes  1.110 seconds)
 
 
 .. _sphx_glr_download_examples_caching_plot_value_caching.py:

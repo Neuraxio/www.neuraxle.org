@@ -9,7 +9,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>neuraxle.rest.flask &mdash; Neuraxle 0.6.0 documentation</title>
+  <title>neuraxle.rest.flask &mdash; Neuraxle 0.6.1 documentation</title>
   
 
   
@@ -103,7 +103,7 @@
             
             
               <div class="version">
-                0.6.0
+                0.6.1
               </div>
             
           
@@ -230,6 +230,16 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../step_saving_and_lifecycle.html#Full-Dump-Saving">Full Dump Saving</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../step_saving_and_lifecycle.html#Full-Dump-Loading">Full Dump Loading</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../time_series_processing.html">Time Series Processing Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../time_series_processing.html#The-Dataset">The Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time_series_processing.html#The-task">The task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time_series_processing.html#Video-dataset-overview">Video dataset overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time_series_processing.html#Details-about-the-input-data">Details about the input data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time_series_processing.html#Loading-the-Dataset">Loading the Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time_series_processing.html#Part-1---How-would-you-code-this-in-a-typical-ML-project-using-Scikit-learn">Part 1 - How would you code this in a typical ML project using Scikit-learn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time_series_processing.html#Part-2---How-to-code-a-similar-pipeline---but-cleaner---using-Neuraxle">Part 2 - How to code a similar pipeline - but cleaner - using Neuraxle</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../random_distributions.html">Random Distributions</a><ul>
@@ -433,7 +443,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="neuraxle.distributed.streaming.html">neuraxle.distributed.streaming</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="neuraxle.distributed.streaming.html#streaming-parallel-data-processing">Streaming Parallel Data Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.distributed.streaming.html#streaming-pipelines-for-parallel-and-queued-data-processing">Streaming Pipelines for Parallel and Queued Data Processing</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">neuraxle.rest.flask</a><ul>
@@ -465,9 +475,15 @@
 
             
           <li class="toctree-l1">
-            <a class="reference internal" href="https://www.dl-rnn-course.neuraxio.com/overview?utm_source=neuraxle_doc"
+            <a class="reference internal" href="https://www.neuraxio.com/blogs/news"
                                     style="background:#FF982E; color:#fff; text-decoration-line: underline;" target="_blank">
-            Deep Learning &amp; RNN Course [↗️]</a>
+            Neuraxio Blog Articles [↗️]</a>
+            <a class="reference internal" href="https://www.neuraxio.com/blogs/news/our-top-learning-resources-for-ai-programmers?utm_source=neuraxle_doc"
+                                    style="background:#DB1865; color:#fff; text-decoration-line: underline;" target="_blank">
+            Learn AI Programming [↗️]</a>
+            <a class="reference internal" href="https://www.jobs.neuraxio.com/"
+                                    style="background:#111; color:#fff; text-decoration-line: underline;" target="_blank">
+            Jobs [↗️]</a>
           </li>
 
           
@@ -560,7 +576,7 @@
 </table>
 <dl class="class">
 <dt id="neuraxle.rest.flask.FlaskRestApiWrapper">
-<em class="property">class </em><code class="descclassname">neuraxle.rest.flask.</code><code class="descname">FlaskRestApiWrapper</code><span class="sig-paren">(</span><em>json_decoder: neuraxle.rest.flask.JSONDataBodyDecoder</em>, <em>wrapped: neuraxle.base.BaseStep</em>, <em>json_encoder: neuraxle.rest.flask.JSONDataResponseEncoder</em>, <em>route='/'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/rest/flask.py#L80"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.FlaskRestApiWrapper" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.rest.flask.</code><code class="descname">FlaskRestApiWrapper</code><span class="sig-paren">(</span><em>json_decoder: neuraxle.rest.flask.JSONDataBodyDecoder</em>, <em>wrapped: neuraxle.base.BaseStep</em>, <em>json_encoder: neuraxle.rest.flask.JSONDataResponseEncoder</em>, <em>route='/'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/rest/flask.py#L80"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.FlaskRestApiWrapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wrap a pipeline to easily deploy it to a REST API. Just provide a json encoder and a json decoder.</p>
 <p>Usage example:</p>
 <p><a href="#id1"><span class="problematic" id="id2">``</span></a>`
@@ -594,12 +610,12 @@ json_encoder=CustomJSONEncoderOfOutputs(),</p>
 <a href="#id3"><span class="problematic" id="id4">``</span></a><a href="#id5"><span class="problematic" id="id6">`</span></a></p>
 <dl class="attribute">
 <dt id="neuraxle.rest.flask.FlaskRestApiWrapper._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.FlaskRestApiWrapper._abc_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.FlaskRestApiWrapper._abc_cache" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="neuraxle.rest.flask.FlaskRestApiWrapper._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.FlaskRestApiWrapper._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.FlaskRestApiWrapper._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -609,12 +625,12 @@ json_encoder=CustomJSONEncoderOfOutputs(),</p>
 
 <dl class="attribute">
 <dt id="neuraxle.rest.flask.FlaskRestApiWrapper._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.FlaskRestApiWrapper._abc_registry" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.FlaskRestApiWrapper._abc_registry" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.rest.flask.FlaskRestApiWrapper.get_app">
-<code class="descname">get_app</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/rest/flask.py#L125"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.FlaskRestApiWrapper.get_app" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_app</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/rest/flask.py#L125"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.FlaskRestApiWrapper.get_app" title="Permalink to this definition">¶</a></dt>
 <dd><p>This methods returns a REST API wrapping the pipeline.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -627,16 +643,16 @@ json_encoder=CustomJSONEncoderOfOutputs(),</p>
 
 <dl class="class">
 <dt id="neuraxle.rest.flask.JSONDataBodyDecoder">
-<em class="property">class </em><code class="descclassname">neuraxle.rest.flask.</code><code class="descname">JSONDataBodyDecoder</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples = None</em>, <em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace = None</em>, <em>name: str = None</em>, <em>savers: List[neuraxle.base.BaseSaver] = None</em>, <em>hashers: List[neuraxle.base.BaseHasher] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/rest/flask.py#L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataBodyDecoder" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.rest.flask.</code><code class="descname">JSONDataBodyDecoder</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples = None</em>, <em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace = None</em>, <em>name: str = None</em>, <em>savers: List[neuraxle.base.BaseSaver] = None</em>, <em>hashers: List[neuraxle.base.BaseHasher] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/rest/flask.py#L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataBodyDecoder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class to be used within a FlaskRESTApiWrapper to convert input json to actual data (e.g.: arrays)</p>
 <dl class="attribute">
 <dt id="neuraxle.rest.flask.JSONDataBodyDecoder._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataBodyDecoder._abc_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataBodyDecoder._abc_cache" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="neuraxle.rest.flask.JSONDataBodyDecoder._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataBodyDecoder._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataBodyDecoder._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -646,12 +662,12 @@ json_encoder=CustomJSONEncoderOfOutputs(),</p>
 
 <dl class="attribute">
 <dt id="neuraxle.rest.flask.JSONDataBodyDecoder._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataBodyDecoder._abc_registry" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataBodyDecoder._abc_registry" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.rest.flask.JSONDataBodyDecoder.decode">
-<code class="descname">decode</code><span class="sig-paren">(</span><em>data_inputs: dict</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/rest/flask.py#L43"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataBodyDecoder.decode" title="Permalink to this definition">¶</a></dt>
+<code class="descname">decode</code><span class="sig-paren">(</span><em>data_inputs: dict</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/rest/flask.py#L43"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataBodyDecoder.decode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Will convert data_inputs to a dict or a compatible data structure for jsonification</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -665,7 +681,7 @@ json_encoder=CustomJSONEncoderOfOutputs(),</p>
 
 <dl class="method">
 <dt id="neuraxle.rest.flask.JSONDataBodyDecoder.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/rest/flask.py#L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataBodyDecoder.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/rest/flask.py#L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataBodyDecoder.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform given data inputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -681,16 +697,16 @@ json_encoder=CustomJSONEncoderOfOutputs(),</p>
 
 <dl class="class">
 <dt id="neuraxle.rest.flask.JSONDataResponseEncoder">
-<em class="property">class </em><code class="descclassname">neuraxle.rest.flask.</code><code class="descname">JSONDataResponseEncoder</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples = None</em>, <em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace = None</em>, <em>name: str = None</em>, <em>savers: List[neuraxle.base.BaseSaver] = None</em>, <em>hashers: List[neuraxle.base.BaseHasher] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/rest/flask.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataResponseEncoder" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.rest.flask.</code><code class="descname">JSONDataResponseEncoder</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples = None</em>, <em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace = None</em>, <em>name: str = None</em>, <em>savers: List[neuraxle.base.BaseSaver] = None</em>, <em>hashers: List[neuraxle.base.BaseHasher] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/rest/flask.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataResponseEncoder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base class to be used within a FlaskRESTApiWrapper to convert prediction output to json response.</p>
 <dl class="attribute">
 <dt id="neuraxle.rest.flask.JSONDataResponseEncoder._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataResponseEncoder._abc_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataResponseEncoder._abc_cache" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="neuraxle.rest.flask.JSONDataResponseEncoder._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataResponseEncoder._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataResponseEncoder._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -700,12 +716,12 @@ json_encoder=CustomJSONEncoderOfOutputs(),</p>
 
 <dl class="attribute">
 <dt id="neuraxle.rest.flask.JSONDataResponseEncoder._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataResponseEncoder._abc_registry" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataResponseEncoder._abc_registry" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.rest.flask.JSONDataResponseEncoder.encode">
-<code class="descname">encode</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span> &#x2192; dict<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/rest/flask.py#L69"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataResponseEncoder.encode" title="Permalink to this definition">¶</a></dt>
+<code class="descname">encode</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span> &#x2192; dict<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/rest/flask.py#L69"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataResponseEncoder.encode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert data_inputs to a dict or a compatible data structure for jsonification.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -719,7 +735,7 @@ json_encoder=CustomJSONEncoderOfOutputs(),</p>
 
 <dl class="method">
 <dt id="neuraxle.rest.flask.JSONDataResponseEncoder.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span> &#x2192; flask.wrappers.Response<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/rest/flask.py#L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataResponseEncoder.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span> &#x2192; flask.wrappers.Response<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/rest/flask.py#L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataResponseEncoder.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform processed data inputs into a flask response object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

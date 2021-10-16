@@ -9,7 +9,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Manipulate Hyperparameter Spaces for Hyperparameter Tuning &mdash; Neuraxle 0.6.0 documentation</title>
+  <title>Manipulate Hyperparameter Spaces for Hyperparameter Tuning &mdash; Neuraxle 0.6.1 documentation</title>
   
 
   
@@ -103,7 +103,7 @@
             
             
               <div class="version">
-                0.6.0
+                0.6.1
               </div>
             
           
@@ -230,6 +230,16 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Full-Dump-Saving">Full Dump Saving</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Full-Dump-Loading">Full Dump Loading</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../time_series_processing.html">Time Series Processing Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../time_series_processing.html#The-Dataset">The Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../time_series_processing.html#The-task">The task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../time_series_processing.html#Video-dataset-overview">Video dataset overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../time_series_processing.html#Details-about-the-input-data">Details about the input data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../time_series_processing.html#Loading-the-Dataset">Loading the Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../time_series_processing.html#Part-1---How-would-you-code-this-in-a-typical-ML-project-using-Scikit-learn">Part 1 - How would you code this in a typical ML project using Scikit-learn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../time_series_processing.html#Part-2---How-to-code-a-similar-pipeline---but-cleaner---using-Neuraxle">Part 2 - How to code a similar pipeline - but cleaner - using Neuraxle</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html">Random Distributions</a><ul>
@@ -433,7 +443,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.distributed.streaming.html">neuraxle.distributed.streaming</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.distributed.streaming.html#streaming-parallel-data-processing">Streaming Parallel Data Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.distributed.streaming.html#streaming-pipelines-for-parallel-and-queued-data-processing">Streaming Pipelines for Parallel and Queued Data Processing</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.rest.flask.html">neuraxle.rest.flask</a><ul>
@@ -465,9 +475,15 @@
 
             
           <li class="toctree-l1">
-            <a class="reference internal" href="https://www.dl-rnn-course.neuraxio.com/overview?utm_source=neuraxle_doc"
+            <a class="reference internal" href="https://www.neuraxio.com/blogs/news"
                                     style="background:#FF982E; color:#fff; text-decoration-line: underline;" target="_blank">
-            Deep Learning &amp; RNN Course [↗️]</a>
+            Neuraxio Blog Articles [↗️]</a>
+            <a class="reference internal" href="https://www.neuraxio.com/blogs/news/our-top-learning-resources-for-ai-programmers?utm_source=neuraxle_doc"
+                                    style="background:#DB1865; color:#fff; text-decoration-line: underline;" target="_blank">
+            Learn AI Programming [↗️]</a>
+            <a class="reference internal" href="https://www.jobs.neuraxio.com/"
+                                    style="background:#111; color:#fff; text-decoration-line: underline;" target="_blank">
+            Jobs [↗️]</a>
           </li>
 
           
@@ -542,47 +558,84 @@
 <section class="sphx-glr-example-title" id="manipulate-hyperparameter-spaces-for-hyperparameter-tuning">
 <span id="sphx-glr-examples-hyperparams-plot-hyperparams-py"></span><h1>Manipulate Hyperparameter Spaces for Hyperparameter Tuning<a class="headerlink" href="#manipulate-hyperparameter-spaces-for-hyperparameter-tuning" title="Permalink to this headline">¶</a></h1>
 <p>This demonstrates how to manipulate hyperparameters and hyperparameter spaces.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="View documentation for sklearn.decomposition.PCA"><span class="n">PCA</span></a>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="View documentation for sklearn.decomposition.PCA"><span class="n">PCA</span></a>
 
-<span class="kn">from</span> <span class="nn">neuraxle.base</span> <span class="kn">import</span> <a href="../../api/neuraxle.base.html#neuraxle.base.Identity" title="View documentation for neuraxle.base.Identity"><span class="n">Identity</span></a>
-<span class="kn">from</span> <span class="nn">neuraxle.hyperparams.distributions</span> <span class="kn">import</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a>
-<span class="kn">from</span> <span class="nn">neuraxle.hyperparams.space</span> <span class="kn">import</span> <span class="n">HyperparameterSpace</span>
-<span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="kn">import</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a>
-<span class="kn">from</span> <span class="nn">neuraxle.steps.numpy</span> <span class="kn">import</span> <a href="../../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="View documentation for neuraxle.steps.numpy.MultiplyByN"><span class="n">MultiplyByN</span></a>
+ <span class="kn">from</span> <span class="nn">neuraxle.base</span> <span class="kn">import</span> <a href="../../api/neuraxle.base.html#neuraxle.base.Identity" title="View documentation for neuraxle.base.Identity"><span class="n">Identity</span></a>
+ <span class="kn">from</span> <span class="nn">neuraxle.hyperparams.distributions</span> <span class="kn">import</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a>
+ <span class="kn">from</span> <span class="nn">neuraxle.hyperparams.space</span> <span class="kn">import</span> <span class="n">HyperparameterSpace</span>
+ <span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="kn">import</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a>
+ <span class="kn">from</span> <span class="nn">neuraxle.steps.numpy</span> <span class="kn">import</span> <a href="../../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="View documentation for neuraxle.steps.numpy.MultiplyByN"><span class="n">MultiplyByN</span></a>
 
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">p</span> <span class="o">=</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">([</span>
-        <span class="p">(</span><span class="s1">&#39;step1&#39;</span><span class="p">,</span> <a href="../../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="View documentation for neuraxle.steps.numpy.MultiplyByN"><span class="n">MultiplyByN</span></a><span class="p">()),</span>
-        <span class="p">(</span><span class="s1">&#39;step2&#39;</span><span class="p">,</span> <a href="../../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="View documentation for neuraxle.steps.numpy.MultiplyByN"><span class="n">MultiplyByN</span></a><span class="p">()),</span>
-        <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">([</span>
-            <a href="../../api/neuraxle.base.html#neuraxle.base.Identity" title="View documentation for neuraxle.base.Identity"><span class="n">Identity</span></a><span class="p">(),</span>
-            <a href="../../api/neuraxle.base.html#neuraxle.base.Identity" title="View documentation for neuraxle.base.Identity"><span class="n">Identity</span></a><span class="p">(),</span>
-            <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="View documentation for sklearn.decomposition.PCA"><span class="n">PCA</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-        <span class="p">])</span>
-    <span class="p">])</span>
+ <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+     <span class="n">p</span> <span class="o">=</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">([</span>
+         <span class="p">(</span><span class="s1">&#39;step1&#39;</span><span class="p">,</span> <a href="../../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="View documentation for neuraxle.steps.numpy.MultiplyByN"><span class="n">MultiplyByN</span></a><span class="p">()),</span>
+         <span class="p">(</span><span class="s1">&#39;step2&#39;</span><span class="p">,</span> <a href="../../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="View documentation for neuraxle.steps.numpy.MultiplyByN"><span class="n">MultiplyByN</span></a><span class="p">()),</span>
+         <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">([</span>
+             <a href="../../api/neuraxle.base.html#neuraxle.base.Identity" title="View documentation for neuraxle.base.Identity"><span class="n">Identity</span></a><span class="p">(),</span>
+             <a href="../../api/neuraxle.base.html#neuraxle.base.Identity" title="View documentation for neuraxle.base.Identity"><span class="n">Identity</span></a><span class="p">(),</span>
+             <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="View documentation for sklearn.decomposition.PCA"><span class="n">PCA</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+         <span class="p">])</span>
+     <span class="p">])</span>
 
-    <span class="n">p</span><span class="o">.</span><span class="n">set_hyperparams_space</span><span class="p">({</span>
-        <span class="s1">&#39;step1__multiply_by&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
-        <span class="s1">&#39;step2__multiply_by&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-        <span class="s1">&#39;Pipeline__PCA__n_components&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-    <span class="p">})</span>
+     <span class="n">p</span><span class="o">.</span><span class="n">set_hyperparams_space</span><span class="p">({</span>
+         <span class="s1">&#39;step1__multiply_by&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
+         <span class="s1">&#39;step2__multiply_by&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+         <span class="s1">&#39;Pipeline__PCA__n_components&#39;</span><span class="p">:</span> <a href="../../api/neuraxle.hyperparams.distributions.html#neuraxle.hyperparams.distributions.RandInt" title="View documentation for neuraxle.hyperparams.distributions.RandInt"><span class="n">RandInt</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+     <span class="p">})</span>
 
-    <span class="n">samples</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_hyperparams_space</span><span class="p">()</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span>
-    <span class="n">p</span><span class="o">.</span><span class="n">set_hyperparams</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+     <span class="n">samples</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_hyperparams_space</span><span class="p">()</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span>
+     <span class="n">p</span><span class="o">.</span><span class="n">set_hyperparams</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
 
-    <span class="n">samples</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_hyperparams</span><span class="p">()</span>
-    <span class="k">assert</span> <span class="mi">42</span> <span class="o">&lt;=</span> <span class="n">samples</span><span class="p">[</span><span class="s1">&#39;step1__multiply_by&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">50</span>
-    <span class="k">assert</span> <span class="o">-</span><span class="mi">10</span> <span class="o">&lt;=</span> <span class="n">samples</span><span class="p">[</span><span class="s1">&#39;step2__multiply_by&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span>
-    <span class="k">assert</span> <span class="n">samples</span><span class="p">[</span><span class="s1">&#39;Pipeline__PCA__n_components&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-    <span class="k">assert</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;Pipeline&#39;</span><span class="p">][</span><span class="s1">&#39;PCA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_wrapped_sklearn_predictor</span><span class="p">()</span><span class="o">.</span><span class="n">n_components</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+     <span class="n">samples</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">get_hyperparams</span><span class="p">()</span>
+     <span class="k">assert</span> <span class="mi">42</span> <span class="o">&lt;=</span> <span class="n">samples</span><span class="p">[</span><span class="s1">&#39;step1__multiply_by&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">50</span>
+     <span class="k">assert</span> <span class="o">-</span><span class="mi">10</span> <span class="o">&lt;=</span> <span class="n">samples</span><span class="p">[</span><span class="s1">&#39;step2__multiply_by&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span>
+     <span class="k">assert</span> <span class="n">samples</span><span class="p">[</span><span class="s1">&#39;Pipeline__PCA__n_components&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+     <span class="k">assert</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;Pipeline&#39;</span><span class="p">][</span><span class="s1">&#39;PCA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_wrapped_sklearn_predictor</span><span class="p">()</span><span class="o">.</span><span class="n">n_components</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
+ <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+     <span class="n">main</span><span class="p">()</span>
 </pre></div>
-</div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.061 seconds)</p>
+</td></tr></table></div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.059 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-hyperparams-plot-hyperparams-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/e9ee1d04435fc6dbd9a7f6e6edfa2620/plot_hyperparams.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_hyperparams.py</span></code></a></p>

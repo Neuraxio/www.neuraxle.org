@@ -9,7 +9,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Parallel processing in Neuraxle &mdash; Neuraxle 0.6.0 documentation</title>
+  <title>Parallel processing in Neuraxle &mdash; Neuraxle 0.6.1 documentation</title>
   
 
   
@@ -103,7 +103,7 @@
             
             
               <div class="version">
-                0.6.0
+                0.6.1
               </div>
             
           
@@ -230,6 +230,16 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Full-Dump-Saving">Full Dump Saving</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Full-Dump-Loading">Full Dump Loading</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../time_series_processing.html">Time Series Processing Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../time_series_processing.html#The-Dataset">The Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../time_series_processing.html#The-task">The task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../time_series_processing.html#Video-dataset-overview">Video dataset overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../time_series_processing.html#Details-about-the-input-data">Details about the input data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../time_series_processing.html#Loading-the-Dataset">Loading the Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../time_series_processing.html#Part-1---How-would-you-code-this-in-a-typical-ML-project-using-Scikit-learn">Part 1 - How would you code this in a typical ML project using Scikit-learn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../time_series_processing.html#Part-2---How-to-code-a-similar-pipeline---but-cleaner---using-Neuraxle">Part 2 - How to code a similar pipeline - but cleaner - using Neuraxle</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html">Random Distributions</a><ul>
@@ -433,7 +443,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.distributed.streaming.html">neuraxle.distributed.streaming</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.distributed.streaming.html#streaming-parallel-data-processing">Streaming Parallel Data Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../api/neuraxle.distributed.streaming.html#streaming-pipelines-for-parallel-and-queued-data-processing">Streaming Pipelines for Parallel and Queued Data Processing</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../api/neuraxle.rest.flask.html">neuraxle.rest.flask</a><ul>
@@ -465,9 +475,15 @@
 
             
           <li class="toctree-l1">
-            <a class="reference internal" href="https://www.dl-rnn-course.neuraxio.com/overview?utm_source=neuraxle_doc"
+            <a class="reference internal" href="https://www.neuraxio.com/blogs/news"
                                     style="background:#FF982E; color:#fff; text-decoration-line: underline;" target="_blank">
-            Deep Learning &amp; RNN Course [↗️]</a>
+            Neuraxio Blog Articles [↗️]</a>
+            <a class="reference internal" href="https://www.neuraxio.com/blogs/news/our-top-learning-resources-for-ai-programmers?utm_source=neuraxle_doc"
+                                    style="background:#DB1865; color:#fff; text-decoration-line: underline;" target="_blank">
+            Learn AI Programming [↗️]</a>
+            <a class="reference internal" href="https://www.jobs.neuraxio.com/"
+                                    style="background:#111; color:#fff; text-decoration-line: underline;" target="_blank">
+            Jobs [↗️]</a>
           </li>
 
           
@@ -541,76 +557,133 @@
 </div>
 <section class="sphx-glr-example-title" id="parallel-processing-in-neuraxle">
 <span id="sphx-glr-examples-parallel-plot-streaming-pipeline-py"></span><h1>Parallel processing in Neuraxle<a class="headerlink" href="#parallel-processing-in-neuraxle" title="Permalink to this headline">¶</a></h1>
-<p>This demonstrates how to stream data in parallel in a Neuraxle pipeline.</p>
+<p>This demonstrates how to stream data in parallel in a Neuraxle pipeline.
+The pipeline steps’ parallelism here will be obvious.</p>
+<p>The pipeline has two steps:
+1. Preprocessing: the step that process the data simply sleeps.
+2. Model: the model simply multiplies the data by two.</p>
+<p>This can be used with scikit-learn as well to transform things in parallel,
+and any other library such as tensorflow.</p>
+<p>Pipelines benchmarked:
+1. We first use a classical pipeline and evaluate the time.
+2. Then we use a minibatched pipeline and we evaluate the time.
+3. Then we use a parallel pipeline and we evaluate the time.</p>
+<p>We expect the parallel pipeline to be faster due to having more workers
+in parallel, as well as starting the model’s transformations at the same
+time that other batches are being preprocessed, using queues.</p>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>SequentialQueuedPipeline
-execution time: 0.4577054977416992 seconds
-Traceback (most recent call last):
-  File &quot;/home/gui/Documents/GIT/www.neuraxle.org-builder/docs/Neuraxle/neuraxle/base.py&quot;, line 2232, in __del__
-    self._teardown()
-  File &quot;/home/gui/Documents/GIT/www.neuraxle.org-builder/docs/Neuraxle/neuraxle/distributed/streaming.py&quot;, line 697, in _teardown
-    ObservableQueueMixin.teardown(self)
-AttributeError: type object &#39;ObservableQueueMixin&#39; has no attribute &#39;teardown&#39;
-
-VanillaPipeline
-execution time: 2.0443735122680664 seconds
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Classical &#39;Pipeline&#39; execution time: 2.023383140563965 seconds.
+Minibatched &#39;MiniBatchSequentialPipeline&#39; execution time: 2.0648059844970703 seconds.
+Parallel &#39;SequentialQueuedPipeline&#39; execution time: 0.5119762420654297 seconds.
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="kn">import</span> <span class="nn">time</span>
+ <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">neuraxle.distributed.streaming</span> <span class="kn">import</span> <a href="../../api/neuraxle.distributed.streaming.html#neuraxle.distributed.streaming.SequentialQueuedPipeline" title="View documentation for neuraxle.distributed.streaming.SequentialQueuedPipeline"><span class="n">SequentialQueuedPipeline</span></a>
-<span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="kn">import</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a>
-<span class="kn">from</span> <span class="nn">neuraxle.steps.loop</span> <span class="kn">import</span> <a href="../../api/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEach" title="View documentation for neuraxle.steps.loop.ForEach"><span class="n">ForEach</span></a>
-<span class="kn">from</span> <span class="nn">neuraxle.steps.misc</span> <span class="kn">import</span> <a href="../../api/neuraxle.steps.misc.html#neuraxle.steps.misc.Sleep" title="View documentation for neuraxle.steps.misc.Sleep"><span class="n">Sleep</span></a>
-<span class="kn">from</span> <span class="nn">neuraxle.steps.numpy</span> <span class="kn">import</span> <a href="../../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="View documentation for neuraxle.steps.numpy.MultiplyByN"><span class="n">MultiplyByN</span></a>
+ <span class="kn">from</span> <span class="nn">neuraxle.distributed.streaming</span> <span class="kn">import</span> <a href="../../api/neuraxle.distributed.streaming.html#neuraxle.distributed.streaming.SequentialQueuedPipeline" title="View documentation for neuraxle.distributed.streaming.SequentialQueuedPipeline"><span class="n">SequentialQueuedPipeline</span></a>
+ <span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="kn">import</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.BasePipeline" title="View documentation for neuraxle.pipeline.BasePipeline"><span class="n">BasePipeline</span></a><span class="p">,</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">,</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.MiniBatchSequentialPipeline" title="View documentation for neuraxle.pipeline.MiniBatchSequentialPipeline"><span class="n">MiniBatchSequentialPipeline</span></a>
+ <span class="kn">from</span> <span class="nn">neuraxle.steps.loop</span> <span class="kn">import</span> <a href="../../api/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEach" title="View documentation for neuraxle.steps.loop.ForEach"><span class="n">ForEach</span></a>
+ <span class="kn">from</span> <span class="nn">neuraxle.steps.misc</span> <span class="kn">import</span> <a href="../../api/neuraxle.steps.misc.html#neuraxle.steps.misc.Sleep" title="View documentation for neuraxle.steps.misc.Sleep"><span class="n">Sleep</span></a>
+ <span class="kn">from</span> <span class="nn">neuraxle.steps.numpy</span> <span class="kn">import</span> <a href="../../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="View documentation for neuraxle.steps.numpy.MultiplyByN"><span class="n">MultiplyByN</span></a>
 
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Process tasks of batch size 10 with 8 queued workers that have a max queue size of 10.</span>
-<span class="sd">    Each task doest the following: For each data input, sleep 0.02 seconds, and multiply by 2.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">sleep_time</span> <span class="o">=</span> <span class="mf">0.02</span>
-    <span class="n">p</span> <span class="o">=</span> <a href="../../api/neuraxle.distributed.streaming.html#neuraxle.distributed.streaming.SequentialQueuedPipeline" title="View documentation for neuraxle.distributed.streaming.SequentialQueuedPipeline"><span class="n">SequentialQueuedPipeline</span></a><span class="p">([</span>
-        <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">([</span><a href="../../api/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEach" title="View documentation for neuraxle.steps.loop.ForEach"><span class="n">ForEach</span></a><span class="p">(</span><a href="../../api/neuraxle.steps.misc.html#neuraxle.steps.misc.Sleep" title="View documentation for neuraxle.steps.misc.Sleep"><span class="n">Sleep</span></a><span class="p">(</span><span class="n">sleep_time</span><span class="o">=</span><span class="n">sleep_time</span><span class="p">)),</span> <a href="../../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="View documentation for neuraxle.steps.numpy.MultiplyByN"><span class="n">MultiplyByN</span></a><span class="p">(</span><span class="mi">2</span><span class="p">)]),</span>
-    <span class="p">],</span> <span class="n">n_workers_per_step</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">max_queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-    <span class="n">a</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="n">outputs_streaming</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)))</span>
-    <span class="n">b</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="n">time_queued_pipeline</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;SequentialQueuedPipeline&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;execution time: </span><span class="si">{}</span><span class="s1"> seconds&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time_queued_pipeline</span><span class="p">))</span>
-
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Process data inputs sequentially.</span>
-<span class="sd">    For each data input, sleep 0.02 seconds, and then multiply by 2.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">p</span> <span class="o">=</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">([</span>
-        <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">([</span><a href="../../api/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEach" title="View documentation for neuraxle.steps.loop.ForEach"><span class="n">ForEach</span></a><span class="p">(</span><a href="../../api/neuraxle.steps.misc.html#neuraxle.steps.misc.Sleep" title="View documentation for neuraxle.steps.misc.Sleep"><span class="n">Sleep</span></a><span class="p">(</span><span class="n">sleep_time</span><span class="o">=</span><span class="n">sleep_time</span><span class="p">)),</span> <a href="../../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="View documentation for neuraxle.steps.numpy.MultiplyByN"><span class="n">MultiplyByN</span></a><span class="p">(</span><span class="mi">2</span><span class="p">)]),</span>
-    <span class="p">])</span>
-
-    <span class="n">a</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="n">outputs_vanilla</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)))</span>
-    <span class="n">b</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="n">time_vanilla_pipeline</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;VanillaPipeline&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;execution time: </span><span class="si">{}</span><span class="s1"> seconds&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time_vanilla_pipeline</span><span class="p">))</span>
-
-    <span class="k">assert</span> <span class="n">time_queued_pipeline</span> <span class="o">&lt;</span> <span class="n">time_vanilla_pipeline</span>
-    <span class="k">assert</span> <a href="http://docs.scipy.org/doc/numpy-1.16.1/reference/generated/numpy.array_equal.html#numpy.array_equal" title="View documentation for numpy.array_equal"><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span></a><span class="p">(</span><span class="n">outputs_streaming</span><span class="p">,</span> <span class="n">outputs_vanilla</span><span class="p">)</span>
+ <span class="k">def</span> <span class="nf">eval_run_time</span><span class="p">(</span><span class="n">pipeline</span><span class="p">:</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.BasePipeline" title="View documentation for neuraxle.pipeline.BasePipeline"><span class="n">BasePipeline</span></a><span class="p">):</span>
+     <span class="n">pipeline</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+     <span class="n">a</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+     <span class="n">output</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)))</span>
+     <span class="n">b</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+     <span class="n">seconds</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span>
+     <span class="k">return</span> <span class="n">seconds</span><span class="p">,</span> <span class="n">output</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
+ <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     The task is to sleep 0.02 seconds for each data input and then multiply by 2.</span>
+<span class="sd">     &quot;&quot;&quot;</span>
+     <span class="n">sleep_time</span> <span class="o">=</span> <span class="mf">0.02</span>
+     <span class="n">preprocessing_and_model_steps</span> <span class="o">=</span> <span class="p">[</span><a href="../../api/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEach" title="View documentation for neuraxle.steps.loop.ForEach"><span class="n">ForEach</span></a><span class="p">(</span><a href="../../api/neuraxle.steps.misc.html#neuraxle.steps.misc.Sleep" title="View documentation for neuraxle.steps.misc.Sleep"><span class="n">Sleep</span></a><span class="p">(</span><span class="n">sleep_time</span><span class="o">=</span><span class="n">sleep_time</span><span class="p">)),</span> <a href="../../api/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="View documentation for neuraxle.steps.numpy.MultiplyByN"><span class="n">MultiplyByN</span></a><span class="p">(</span><span class="mi">2</span><span class="p">)]</span>
+
+     <span class="c1"># Classical pipeline - all at once with one big batch:</span>
+     <span class="n">p</span> <span class="o">=</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="View documentation for neuraxle.pipeline.Pipeline"><span class="n">Pipeline</span></a><span class="p">(</span><span class="n">preprocessing_and_model_steps</span><span class="p">)</span>
+     <span class="n">time_vanilla_pipeline</span><span class="p">,</span> <span class="n">output_classical</span> <span class="o">=</span> <span class="n">eval_run_time</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Classical &#39;Pipeline&#39; execution time: </span><span class="si">{</span><span class="n">time_vanilla_pipeline</span><span class="si">}</span><span class="s2"> seconds.&quot;</span><span class="p">)</span>
+
+     <span class="c1"># Classical minibatch pipeline - minibatch size 10:</span>
+     <span class="n">p</span> <span class="o">=</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.MiniBatchSequentialPipeline" title="View documentation for neuraxle.pipeline.MiniBatchSequentialPipeline"><span class="n">MiniBatchSequentialPipeline</span></a><span class="p">(</span><span class="n">preprocessing_and_model_steps</span><span class="p">,</span>
+                                     <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+     <span class="n">time_minibatch_pipeline</span><span class="p">,</span> <span class="n">output_minibatch</span> <span class="o">=</span> <span class="n">eval_run_time</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Minibatched &#39;MiniBatchSequentialPipeline&#39; execution time: </span><span class="si">{</span><span class="n">time_minibatch_pipeline</span><span class="si">}</span><span class="s2"> seconds.&quot;</span><span class="p">)</span>
+
+     <span class="c1"># Parallel pipeline - minibatch size 10 with 8 workers per step that</span>
+     <span class="c1"># have a max queue size of 5 batches between preprocessing and the model:</span>
+     <span class="n">p</span> <span class="o">=</span> <a href="../../api/neuraxle.distributed.streaming.html#neuraxle.distributed.streaming.SequentialQueuedPipeline" title="View documentation for neuraxle.distributed.streaming.SequentialQueuedPipeline"><span class="n">SequentialQueuedPipeline</span></a><span class="p">(</span><span class="n">preprocessing_and_model_steps</span><span class="p">,</span>
+                                  <span class="n">n_workers_per_step</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">max_queue_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+     <span class="n">time_parallel_pipeline</span><span class="p">,</span> <span class="n">output_parallel</span> <span class="o">=</span> <span class="n">eval_run_time</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parallel &#39;SequentialQueuedPipeline&#39; execution time: </span><span class="si">{</span><span class="n">time_parallel_pipeline</span><span class="si">}</span><span class="s2"> seconds.&quot;</span><span class="p">)</span>
+
+     <span class="k">assert</span> <span class="n">time_parallel_pipeline</span> <span class="o">&lt;</span> <span class="n">time_minibatch_pipeline</span><span class="p">,</span> <span class="nb">str</span><span class="p">((</span><span class="n">time_parallel_pipeline</span><span class="p">,</span> <span class="n">time_vanilla_pipeline</span><span class="p">))</span>
+     <span class="k">assert</span> <a href="http://docs.scipy.org/doc/numpy-1.16.1/reference/generated/numpy.array_equal.html#numpy.array_equal" title="View documentation for numpy.array_equal"><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span></a><span class="p">(</span><span class="n">output_classical</span><span class="p">,</span> <span class="n">output_minibatch</span><span class="p">)</span>
+     <span class="k">assert</span> <a href="http://docs.scipy.org/doc/numpy-1.16.1/reference/generated/numpy.array_equal.html#numpy.array_equal" title="View documentation for numpy.array_equal"><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span></a><span class="p">(</span><span class="n">output_classical</span><span class="p">,</span> <span class="n">output_parallel</span><span class="p">)</span>
+
+
+ <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+     <span class="n">main</span><span class="p">()</span>
 </pre></div>
-</div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  2.579 seconds)</p>
+</td></tr></table></div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  4.689 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-parallel-plot-streaming-pipeline-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/077f9d3b642f3f7c967ae102d2567dc2/plot_streaming_pipeline.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_streaming_pipeline.py</span></code></a></p>

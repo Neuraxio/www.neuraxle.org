@@ -9,7 +9,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Step Saving &amp; Lifecycle &mdash; Neuraxle 0.6.0 documentation</title>
+  <title>Step Saving &amp; Lifecycle &mdash; Neuraxle 0.6.1 documentation</title>
   
 
   
@@ -51,7 +51,7 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Random Distributions" href="random_distributions.html" />
+    <link rel="next" title="Time Series Processing Example" href="time_series_processing.html" />
     <link rel="prev" title="Handler Methods" href="handler_methods.html" /> 
 
   <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
@@ -103,7 +103,7 @@
             
             
               <div class="version">
-                0.6.0
+                0.6.1
               </div>
             
           
@@ -230,6 +230,16 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#Full-Dump-Saving">Full Dump Saving</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Full-Dump-Loading">Full Dump Loading</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="time_series_processing.html">Time Series Processing Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="time_series_processing.html#The-Dataset">The Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time_series_processing.html#The-task">The task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time_series_processing.html#Video-dataset-overview">Video dataset overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time_series_processing.html#Details-about-the-input-data">Details about the input data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time_series_processing.html#Loading-the-Dataset">Loading the Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time_series_processing.html#Part-1---How-would-you-code-this-in-a-typical-ML-project-using-Scikit-learn">Part 1 - How would you code this in a typical ML project using Scikit-learn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time_series_processing.html#Part-2---How-to-code-a-similar-pipeline---but-cleaner---using-Neuraxle">Part 2 - How to code a similar pipeline - but cleaner - using Neuraxle</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="random_distributions.html">Random Distributions</a><ul>
@@ -433,7 +443,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api/neuraxle.distributed.streaming.html">neuraxle.distributed.streaming</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="api/neuraxle.distributed.streaming.html#streaming-parallel-data-processing">Streaming Parallel Data Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/neuraxle.distributed.streaming.html#streaming-pipelines-for-parallel-and-queued-data-processing">Streaming Pipelines for Parallel and Queued Data Processing</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api/neuraxle.rest.flask.html">neuraxle.rest.flask</a><ul>
@@ -465,9 +475,15 @@
 
             
           <li class="toctree-l1">
-            <a class="reference internal" href="https://www.dl-rnn-course.neuraxio.com/overview?utm_source=neuraxle_doc"
+            <a class="reference internal" href="https://www.neuraxio.com/blogs/news"
                                     style="background:#FF982E; color:#fff; text-decoration-line: underline;" target="_blank">
-            Deep Learning &amp; RNN Course [↗️]</a>
+            Neuraxio Blog Articles [↗️]</a>
+            <a class="reference internal" href="https://www.neuraxio.com/blogs/news/our-top-learning-resources-for-ai-programmers?utm_source=neuraxle_doc"
+                                    style="background:#DB1865; color:#fff; text-decoration-line: underline;" target="_blank">
+            Learn AI Programming [↗️]</a>
+            <a class="reference internal" href="https://www.jobs.neuraxio.com/"
+                                    style="background:#111; color:#fff; text-decoration-line: underline;" target="_blank">
+            Jobs [↗️]</a>
           </li>
 
           
@@ -788,7 +804,7 @@ div.rendered_html tbody tr:hover {
 <p style="font-size:18px"><p>This page introduces the concept of lifecycle in a Neuraxle BaseStep. You can find a deailed component API reference here.</p>
 </p><section id="Lifecycle">
 <h2>Lifecycle<a class="headerlink" href="#Lifecycle" title="Permalink to this headline">¶</a></h2>
-<p><img alt="Machine Learning Lifecycle in Neuraxle" src="_images/neuraxle_machine_learning_lifecycle1.png" /></p>
+<p><img alt="Machine Learning Lifecycle in Neuraxle" src="./_images/neuraxle_machine_learning_lifecycle.png" /></p>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base.BaseStep">BaseStep.__init__(hyperparams, hyperparams_space, name)</a>: This is where you initialize all of your props, and fitted state.</p></li>
 <li><p><a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.base.html#neuraxle.base._HasHyperparams.set_hyperparams">set_hyperparams(hyperperparams)</a>: Configure your steps’ hyperparameters before initializing it.</p></li>
@@ -1017,7 +1033,7 @@ outputs: [2 0 4 6]
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="random_distributions.html" class="btn btn-neutral float-right" title="Random Distributions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="time_series_processing.html" class="btn btn-neutral float-right" title="Time Series Processing Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="handler_methods.html" class="btn btn-neutral float-left" title="Handler Methods" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

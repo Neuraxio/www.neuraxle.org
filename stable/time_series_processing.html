@@ -9,7 +9,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Time Series Processing Example &mdash; Neuraxle 0.6.0 documentation</title>
+  <title>Time Series Processing Example &mdash; Neuraxle 0.6.1 documentation</title>
   
 
   
@@ -50,7 +50,9 @@
   <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Random Distributions" href="random_distributions.html" />
+    <link rel="prev" title="Step Saving &amp; Lifecycle" href="step_saving_and_lifecycle.html" /> 
 
   <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
   <style>
@@ -101,7 +103,7 @@
             
             
               <div class="version">
-                0.6.0
+                0.6.1
               </div>
             
           
@@ -127,7 +129,7 @@
             
             
               <p><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Neuraxle/README.html">Neuraxle Pipelines</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Neuraxle/README.html#documentation">Documentation</a></li>
@@ -168,7 +170,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="walkthroughs.html">&gt;&gt;&gt; Hands-On Walkthroughs</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="walkthroughs.html">&gt;&gt;&gt; Hands-On Walkthroughs</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="intro.html#encapsulate-models-and-data-transformers">Encapsulate Models and Data Transformers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="intro.html#pipe-and-filter">Pipe and Filter</a></li>
@@ -228,6 +230,16 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="step_saving_and_lifecycle.html#Full-Dump-Saving">Full Dump Saving</a></li>
 <li class="toctree-l3"><a class="reference internal" href="step_saving_and_lifecycle.html#Full-Dump-Loading">Full Dump Loading</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Time Series Processing Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#The-Dataset">The Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#The-task">The task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Video-dataset-overview">Video dataset overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Details-about-the-input-data">Details about the input data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Loading-the-Dataset">Loading the Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Part-1---How-would-you-code-this-in-a-typical-ML-project-using-Scikit-learn">Part 1 - How would you code this in a typical ML project using Scikit-learn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Part-2---How-to-code-a-similar-pipeline---but-cleaner---using-Neuraxle">Part 2 - How to code a similar pipeline - but cleaner - using Neuraxle</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="random_distributions.html">Random Distributions</a><ul>
@@ -431,7 +443,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api/neuraxle.distributed.streaming.html">neuraxle.distributed.streaming</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="api/neuraxle.distributed.streaming.html#streaming-parallel-data-processing">Streaming Parallel Data Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/neuraxle.distributed.streaming.html#streaming-pipelines-for-parallel-and-queued-data-processing">Streaming Pipelines for Parallel and Queued Data Processing</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api/neuraxle.rest.flask.html">neuraxle.rest.flask</a><ul>
@@ -463,9 +475,15 @@
 
             
           <li class="toctree-l1">
-            <a class="reference internal" href="https://www.dl-rnn-course.neuraxio.com/overview?utm_source=neuraxle_doc"
+            <a class="reference internal" href="https://www.neuraxio.com/blogs/news"
                                     style="background:#FF982E; color:#fff; text-decoration-line: underline;" target="_blank">
-            Deep Learning &amp; RNN Course [↗️]</a>
+            Neuraxio Blog Articles [↗️]</a>
+            <a class="reference internal" href="https://www.neuraxio.com/blogs/news/our-top-learning-resources-for-ai-programmers?utm_source=neuraxle_doc"
+                                    style="background:#DB1865; color:#fff; text-decoration-line: underline;" target="_blank">
+            Learn AI Programming [↗️]</a>
+            <a class="reference internal" href="https://www.jobs.neuraxio.com/"
+                                    style="background:#111; color:#fff; text-decoration-line: underline;" target="_blank">
+            Jobs [↗️]</a>
           </li>
 
           
@@ -511,6 +529,8 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="walkthroughs.html">&gt;&gt;&gt; Hands-On Walkthroughs</a> &raquo;</li>
         
       <li>Time Series Processing Example</li>
     
@@ -818,7 +838,7 @@ div.rendered_html tbody tr:hover {
 <p>That said, I will use the almost raw data: only the gravity effect has been filtered out of the accelerometer as a preprocessing step for another 3D feature as an input to help learning. If you’d ever want to extract the gravity by yourself, you could use the following <a class="reference external" href="https://github.com/guillaume-chevalier/filtering-stft-and-laplace-transform">Butterworth Low-Pass Filter (LPF)</a> and edit it to have the right cutoff frequency of 0.3 Hz which is a good frequency for activity recognition from
 body sensors.</p>
 <p>Here is how the 3D data cube looks like. So we’ll have a train and a test data cube, and might create validation data cubes as well:</p>
-<p><img alt="image0" src="images/time-series-data.jpg" /></p>
+<p><img alt="Time Series Data" src="./_images/neuraxle_time_series_data.png" /></p>
 <p>So we have 3D data of shape <code class="docutils literal notranslate"><span class="pre">[batch_size,</span> <span class="pre">time_steps,</span> <span class="pre">features]</span></code>. If this and the above is still unclear to you, you may want to <a class="reference external" href="https://www.quora.com/What-do-samples-features-time-steps-mean-in-LSTM/answers/79038267">learn more on the 3D shape of time series data</a>.</p>
 </section>
 <section id="Loading-the-Dataset">
@@ -887,9 +907,9 @@ Dataset is now located at: data/UCI HAR Dataset/
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">neuraxle</span>
-    <span class="k">assert</span> <span class="n">neuraxle</span><span class="o">.</span><span class="n">__version__</span> <span class="o">==</span> <span class="s1">&#39;0.5.8&#39;</span>
+    <span class="k">assert</span> <span class="n">neuraxle</span><span class="o">.</span><span class="n">__version__</span> <span class="o">==</span> <span class="s1">&#39;0.6.0&#39;</span>
 <span class="k">except</span><span class="p">:</span>
-    <span class="o">!</span>pip install <span class="nv">neuraxle</span><span class="o">==</span><span class="m">0</span>.5.8
+    <span class="o">!</span>pip install <span class="nv">neuraxle</span><span class="o">==</span><span class="m">0</span>.6.0
 </pre></div>
 </div>
 </div>
@@ -1863,6 +1883,15 @@ Test accuracy score: 0.9365456396335257
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="random_distributions.html" class="btn btn-neutral float-right" title="Random Distributions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="step_saving_and_lifecycle.html" class="btn btn-neutral float-left" title="Step Saving &amp; Lifecycle" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

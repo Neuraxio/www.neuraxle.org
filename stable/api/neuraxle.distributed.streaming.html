@@ -9,7 +9,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>neuraxle.distributed.streaming &mdash; Neuraxle 0.6.0 documentation</title>
+  <title>neuraxle.distributed.streaming &mdash; Neuraxle 0.6.1 documentation</title>
   
 
   
@@ -103,7 +103,7 @@
             
             
               <div class="version">
-                0.6.0
+                0.6.1
               </div>
             
           
@@ -230,6 +230,16 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../step_saving_and_lifecycle.html#Full-Dump-Saving">Full Dump Saving</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../step_saving_and_lifecycle.html#Full-Dump-Loading">Full Dump Loading</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../time_series_processing.html">Time Series Processing Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../time_series_processing.html#The-Dataset">The Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time_series_processing.html#The-task">The task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time_series_processing.html#Video-dataset-overview">Video dataset overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time_series_processing.html#Details-about-the-input-data">Details about the input data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time_series_processing.html#Loading-the-Dataset">Loading the Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time_series_processing.html#Part-1---How-would-you-code-this-in-a-typical-ML-project-using-Scikit-learn">Part 1 - How would you code this in a typical ML project using Scikit-learn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time_series_processing.html#Part-2---How-to-code-a-similar-pipeline---but-cleaner---using-Neuraxle">Part 2 - How to code a similar pipeline - but cleaner - using Neuraxle</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../random_distributions.html">Random Distributions</a><ul>
@@ -433,7 +443,7 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">neuraxle.distributed.streaming</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#streaming-parallel-data-processing">Streaming Parallel Data Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#streaming-pipelines-for-parallel-and-queued-data-processing">Streaming Pipelines for Parallel and Queued Data Processing</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="neuraxle.rest.flask.html">neuraxle.rest.flask</a><ul>
@@ -465,9 +475,15 @@
 
             
           <li class="toctree-l1">
-            <a class="reference internal" href="https://www.dl-rnn-course.neuraxio.com/overview?utm_source=neuraxle_doc"
+            <a class="reference internal" href="https://www.neuraxio.com/blogs/news"
                                     style="background:#FF982E; color:#fff; text-decoration-line: underline;" target="_blank">
-            Deep Learning &amp; RNN Course [↗️]</a>
+            Neuraxio Blog Articles [↗️]</a>
+            <a class="reference internal" href="https://www.neuraxio.com/blogs/news/our-top-learning-resources-for-ai-programmers?utm_source=neuraxle_doc"
+                                    style="background:#DB1865; color:#fff; text-decoration-line: underline;" target="_blank">
+            Learn AI Programming [↗️]</a>
+            <a class="reference internal" href="https://www.jobs.neuraxio.com/"
+                                    style="background:#111; color:#fff; text-decoration-line: underline;" target="_blank">
+            Jobs [↗️]</a>
           </li>
 
           
@@ -537,9 +553,12 @@
             
   <section id="module-neuraxle.distributed.streaming">
 <span id="neuraxle-distributed-streaming"></span><h1>neuraxle.distributed.streaming<a class="headerlink" href="#module-neuraxle.distributed.streaming" title="Permalink to this headline">¶</a></h1>
-<section id="streaming-parallel-data-processing">
-<h2>Streaming Parallel Data Processing<a class="headerlink" href="#streaming-parallel-data-processing" title="Permalink to this headline">¶</a></h2>
-<p>Neuraxle steps for streaming data in parallel in the pipeline</p>
+<section id="streaming-pipelines-for-parallel-and-queued-data-processing">
+<h2>Streaming Pipelines for Parallel and Queued Data Processing<a class="headerlink" href="#streaming-pipelines-for-parallel-and-queued-data-processing" title="Permalink to this headline">¶</a></h2>
+<p>Neuraxle steps for streaming data in parallel in the pipeline.</p>
+<p>Pipelines can stream data in queues with workers for each steps.
+Max queue sizes can be set, as well as number of clones per steps
+for the transformers.</p>
 <p class="rubric">Functions</p>
 <table class="longtable docutils align-center">
 <colgroup>
@@ -563,7 +582,7 @@
 <td><p>Sub class of <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.distributed.streaming.ObservableQueueMixin" title="neuraxle.distributed.streaming.ObservableQueueMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ObservableQueueMixin</span></code></a>(queue)</p></td>
-<td><p>A class to represent a step that can put items in a queue.</p></td>
+<td><p>A class to represent a step that can put items in a queue so that the step can be used to consume its tasks on its own.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.distributed.streaming.ObservableQueueStepSaver" title="neuraxle.distributed.streaming.ObservableQueueStepSaver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ObservableQueueStepSaver</span></code></a></p></td>
 <td><p>Saver for observable queue steps.</p></td>
@@ -574,7 +593,7 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.distributed.streaming.QueueJoiner" title="neuraxle.distributed.streaming.QueueJoiner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QueueJoiner</span></code></a>(batch_size[, n_batches])</p></td>
 <td><p>Observe the results of the queue worker of type <a class="reference internal" href="#neuraxle.distributed.streaming.QueueWorker" title="neuraxle.distributed.streaming.QueueWorker"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueWorker</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.distributed.streaming.QueueWorker" title="neuraxle.distributed.streaming.QueueWorker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QueueWorker</span></code></a>(wrapped, max_queue_size, …[, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.distributed.streaming.QueueWorker" title="neuraxle.distributed.streaming.QueueWorker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QueueWorker</span></code></a>(wrapped, max_queue_size, …)</p></td>
 <td><p>Start multiple Process or Thread that process items from the queue of batches to process.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.distributed.streaming.QueuedPipelineTask" title="neuraxle.distributed.streaming.QueuedPipelineTask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QueuedPipelineTask</span></code></a>(data_container[, step_name])</p></td>
@@ -587,61 +606,64 @@
 </table>
 <dl class="class">
 <dt id="neuraxle.distributed.streaming.BaseQueuedPipeline">
-<em class="property">class </em><code class="descclassname">neuraxle.distributed.streaming.</code><code class="descname">BaseQueuedPipeline</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L267"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.distributed.streaming.</code><code class="descname">BaseQueuedPipeline</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L302"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sub class of <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>.
 Transform data in many pipeline steps at once in parallel in the pipeline using multiprocessing Queues.</p>
 <p>Example usage :</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># step name, step</span>
-
-<span class="n">p</span> <span class="o">=</span> <span class="n">QueuedPipeline</span><span class="p">([</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multiple ways of specifying the steps tuples exists to do various things:</span>
+<span class="c1"># step name, step</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">SequentialQueuedPipeline</span><span class="p">([</span>
     <span class="p">(</span><span class="s1">&#39;step_a&#39;</span><span class="p">,</span> <span class="n">Identity</span><span class="p">()),</span>
     <span class="p">(</span><span class="s1">&#39;step_b&#39;</span><span class="p">,</span> <span class="n">Identity</span><span class="p">()),</span>
 <span class="p">],</span> <span class="n">n_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
 <span class="c1"># step name, number of workers, step</span>
-
-<span class="n">p</span> <span class="o">=</span> <span class="n">QueuedPipeline</span><span class="p">([</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">SequentialQueuedPipeline</span><span class="p">([</span>
     <span class="p">(</span><span class="s1">&#39;step_a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Identity</span><span class="p">()),</span>
     <span class="p">(</span><span class="s1">&#39;step_b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Identity</span><span class="p">()),</span>
 <span class="p">],</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
 <span class="c1"># step name, number of workers, and max size</span>
-
-<span class="n">p</span> <span class="o">=</span> <span class="n">QueuedPipeline</span><span class="p">([</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">SequentialQueuedPipeline</span><span class="p">([</span>
     <span class="p">(</span><span class="s1">&#39;step_a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">Identity</span><span class="p">()),</span>
     <span class="p">(</span><span class="s1">&#39;step_b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">Identity</span><span class="p">()),</span>
 <span class="p">],</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
 <span class="c1"># step name, number of workers for each step, and additional argument for each worker</span>
-
-<span class="n">p</span> <span class="o">=</span> <span class="n">QueuedPipeline</span><span class="p">([</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">SequentialQueuedPipeline</span><span class="p">([</span>
     <span class="p">(</span><span class="s1">&#39;step_a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[(</span><span class="s1">&#39;host&#39;</span><span class="p">,</span> <span class="s1">&#39;host1&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;host&#39;</span><span class="p">,</span> <span class="s1">&#39;host2&#39;</span><span class="p">)],</span> <span class="mi">10</span><span class="p">,</span> <span class="n">Identity</span><span class="p">())</span>
 <span class="p">],</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
 <span class="c1"># step name, number of workers for each step, additional argument for each worker, and max size</span>
-
-<span class="n">p</span> <span class="o">=</span> <span class="n">QueuedPipeline</span><span class="p">([</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">SequentialQueuedPipeline</span><span class="p">([</span>
     <span class="p">(</span><span class="s1">&#39;step_a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[(</span><span class="s1">&#39;host&#39;</span><span class="p">,</span> <span class="s1">&#39;host1&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;host&#39;</span><span class="p">,</span> <span class="s1">&#39;host2&#39;</span><span class="p">)],</span> <span class="mi">10</span><span class="p">,</span> <span class="n">Identity</span><span class="p">())</span>
 <span class="p">],</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># It&#39;s also possible to do parallel feature unions:</span>
+<span class="n">n_workers</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">worker_arguments</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;hyperparams&#39;</span><span class="p">,</span> <span class="n">HyperparameterSamples</span><span class="p">({</span><span class="s1">&#39;multiply_by&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}))</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_workers</span><span class="p">)]</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">ParallelQueuedFeatureUnion</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">n_workers</span><span class="p">,</span> <span class="n">worker_arguments</span><span class="p">,</span> <span class="n">MultiplyByN</span><span class="p">()),</span>
+<span class="p">],</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_queue_size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)))</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>steps</strong> – pipeline steps</p></li>
-<li><p><strong>batch_size</strong> – number of elements to combine into a single batch</p></li>
-<li><p><strong>n_workers_per_step</strong> – number of workers to spawn per step</p></li>
-<li><p><strong>max_queue_size</strong> – max number of elements inside the processing queue</p></li>
-<li><p><strong>data_joiner</strong> – transformer step to join streamed batches together at the end of the pipeline</p></li>
-<li><p><strong>use_threading</strong> – (Optional.) use threading for parallel processing. multiprocessing.context.Process is used by default.</p></li>
-<li><p><strong>use_savers</strong> – use savers to serialize steps for parallel processing.</p></li>
-<li><p><strong>keep_incomplete_batch</strong> – (Optional.) A bool representing</p></li>
+<li><p><strong>steps</strong> – pipeline steps.</p></li>
+<li><p><strong>batch_size</strong> – number of elements to combine into a single batch.</p></li>
+<li><p><strong>n_workers_per_step</strong> – number of workers to spawn per step.</p></li>
+<li><p><strong>max_queue_size</strong> – max number of batches inside the processing queue between the workers.</p></li>
+<li><p><strong>data_joiner</strong> – transformer step to join streamed batches together at the end of the pipeline.</p></li>
+<li><p><strong>use_processes</strong> – use processes instead of threads for parallel processing. multiprocessing.context.Process is used by default.</p></li>
+<li><p><strong>use_savers</strong> – use savers to serialize steps for parallel processing. Recommended if using processes instead of threads.</p></li>
+<li><p><strong>keep_incomplete_batch</strong> – (Optional.) A bool that indicates whether</p></li>
 </ul>
 </dd>
 </dl>
-<p>whether the last batch should be dropped in the case it has fewer than
-<cite>batch_size</cite> elements; the default behavior is to keep the smaller
-batch.
+<p>or not the last batch should be dropped in the case it has fewer than
+<cite>batch_size</cite> elements; the default behavior is to keep the smaller batch.
 :param default_value_data_inputs: expected_outputs default fill value
 for padding and values outside iteration range, or <code class="xref py py-class docutils literal notranslate"><span class="pre">AbsentValuesNullObject</span></code>
 to trim absent values from the batch
@@ -658,12 +680,12 @@ to trim absent values from the batch
 </div>
 <dl class="attribute">
 <dt id="neuraxle.distributed.streaming.BaseQueuedPipeline._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline._abc_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline._abc_cache" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="neuraxle.distributed.streaming.BaseQueuedPipeline._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -673,17 +695,17 @@ to trim absent values from the batch
 
 <dl class="attribute">
 <dt id="neuraxle.distributed.streaming.BaseQueuedPipeline._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline._abc_registry" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline._abc_registry" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.BaseQueuedPipeline._create_queue_worker">
-<code class="descname">_create_queue_worker</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L392"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline._create_queue_worker" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_create_queue_worker</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L430"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline._create_queue_worker" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.BaseQueuedPipeline._did_transform">
-<code class="descname">_did_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L529"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline._did_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_did_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L566"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline._did_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stop all of the workers after transform. Also, join the data using self.data_joiner.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -703,7 +725,7 @@ to trim absent values from the batch
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.BaseQueuedPipeline._get_step_params">
-<code class="descname">_get_step_params</code><span class="sig-paren">(</span><em>step</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L404"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline._get_step_params" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_get_step_params</code><span class="sig-paren">(</span><em>step</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L442"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline._get_step_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return all params necessary to create the QueuedPipeline for the given step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -713,14 +735,14 @@ to trim absent values from the batch
 <dd class="field-even"><p>return name, n_workers, max_queue_size, actual_step</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.9)">tuple</a>(<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a>, <a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep">BaseStep</a>)</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)">tuple</a>(<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">int</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">int</a>, <a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep">BaseStep</a>)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.BaseQueuedPipeline._initialize_steps_as_tuple">
-<code class="descname">_initialize_steps_as_tuple</code><span class="sig-paren">(</span><em>steps</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L374"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline._initialize_steps_as_tuple" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_initialize_steps_as_tuple</code><span class="sig-paren">(</span><em>steps</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L412"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline._initialize_steps_as_tuple" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wrap each step by a <a class="reference internal" href="#neuraxle.distributed.streaming.QueueWorker" title="neuraxle.distributed.streaming.QueueWorker"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueWorker</span></code></a> to  allow data to flow in many pipeline steps at once in parallel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -737,7 +759,7 @@ to trim absent values from the batch
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.BaseQueuedPipeline._will_process">
-<code class="descname">_will_process</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; (&lt;class 'neuraxle.data_container.DataContainer'&gt;</em>, <em>&lt;class 'neuraxle.base.ExecutionContext'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L447"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline._will_process" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_will_process</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; (&lt;class 'neuraxle.data_container.DataContainer'&gt;</em>, <em>&lt;class 'neuraxle.base.ExecutionContext'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L485"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline._will_process" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup streaming pipeline before any handler methods.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -754,7 +776,7 @@ to trim absent values from the batch
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.BaseQueuedPipeline.connect_queued_pipeline">
-<code class="descname">connect_queued_pipeline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L556"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline.connect_queued_pipeline" title="Permalink to this definition">¶</a></dt>
+<code class="descname">connect_queued_pipeline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L593"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline.connect_queued_pipeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect all the queued workers together so that the data can flow through each step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -765,7 +787,7 @@ to trim absent values from the batch
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.BaseQueuedPipeline.fit_transform_data_container">
-<code class="descname">fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('Pipeline'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L472"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline.fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; (&lt;class 'neuraxle.pipeline.Pipeline'&gt;</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L510"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline.fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit transform sequentially if any step is fittable. Otherwise transform in parallel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -782,7 +804,7 @@ to trim absent values from the batch
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.BaseQueuedPipeline.get_n_batches">
-<code class="descname">get_n_batches</code><span class="sig-paren">(</span><em>data_container</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L545"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline.get_n_batches" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_n_batches</code><span class="sig-paren">(</span><em>data_container</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L582"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline.get_n_batches" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the total number of batches that the queue joiner is supposed to receive.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -796,7 +818,7 @@ to trim absent values from the batch
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.BaseQueuedPipeline.send_batch_to_queued_pipeline">
-<code class="descname">send_batch_to_queued_pipeline</code><span class="sig-paren">(</span><em>batch_index: int</em>, <em>data_container: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L565"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline.send_batch_to_queued_pipeline" title="Permalink to this definition">¶</a></dt>
+<code class="descname">send_batch_to_queued_pipeline</code><span class="sig-paren">(</span><em>batch_index: int</em>, <em>data_container: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L602"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline.send_batch_to_queued_pipeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send batches to queued pipeline. It is blocking if there is no more space available in the multiprocessing queues.
 Workers might return batches in a different order, but the queue joiner will reorder them at the end.
 The queue joiner will use the summary ids to reorder all of the received batches.</p>
@@ -815,7 +837,7 @@ The queue joiner will use the summary ids to reorder all of the received batches
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.BaseQueuedPipeline.setup">
-<code class="descname">setup</code><span class="sig-paren">(</span><em>context: neuraxle.base.ExecutionContext = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseTransformer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L459"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline.setup" title="Permalink to this definition">¶</a></dt>
+<code class="descname">setup</code><span class="sig-paren">(</span><em>context: neuraxle.base.ExecutionContext = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseTransformer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L497"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline.setup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect the queued workers together so that the data can correctly flow through the pipeline.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -832,7 +854,7 @@ The queue joiner will use the summary ids to reorder all of the received batches
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.BaseQueuedPipeline.transform_data_container">
-<code class="descname">transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L498"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline.transform_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L535"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline.transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform data container</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -851,9 +873,13 @@ The queue joiner will use the summary ids to reorder all of the received batches
 
 <dl class="class">
 <dt id="neuraxle.distributed.streaming.ObservableQueueMixin">
-<em class="property">class </em><code class="descclassname">neuraxle.distributed.streaming.</code><code class="descname">ObservableQueueMixin</code><span class="sig-paren">(</span><em>queue</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L37"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueMixin" title="Permalink to this definition">¶</a></dt>
-<dd><p>A class to represent a step that can put items in a queue.
-It can also notify other queues that have subscribed to him using subscribe.</p>
+<em class="property">class </em><code class="descclassname">neuraxle.distributed.streaming.</code><code class="descname">ObservableQueueMixin</code><span class="sig-paren">(</span><em>queue: multiprocessing.context.BaseContext.Queue</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to represent a step that can put items in a queue so that the
+step can be used to consume its tasks on its own.</p>
+<p>Once tasks are solved, their results are added to the
+subscribers that were subscribed with the notify call.</p>
+<p>A subscriber is itself an ObservableQueueMixin and will thus be
+used to consume the tasks added to it in probably another thread.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code>,
@@ -865,44 +891,44 @@ It can also notify other queues that have subscribed to him using subscribe.</p>
 </div>
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.ObservableQueueMixin._add_observable_queue_step_saver">
-<code class="descname">_add_observable_queue_step_saver</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L61"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueMixin._add_observable_queue_step_saver" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_add_observable_queue_step_saver</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L72"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueMixin._add_observable_queue_step_saver" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.ObservableQueueMixin._teardown">
-<code class="descname">_teardown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L57"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueMixin._teardown" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_teardown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L68"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueMixin._teardown" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.distributed.streaming.ObservableQueueMixin.get">
-<code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.distributed.streaming.QueuedPipelineTask<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L79"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueMixin.get" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.distributed.streaming.ObservableQueueMixin.get_task">
+<code class="descname">get_task</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.distributed.streaming.QueuedPipelineTask<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L90"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueMixin.get_task" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get last item in queue.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.distributed.streaming.ObservableQueueMixin.notify">
-<code class="descname">notify</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueMixin.notify" title="Permalink to this definition">¶</a></dt>
-<dd><p>Notify all subscribed queue workers</p>
+<dt id="neuraxle.distributed.streaming.ObservableQueueMixin.notify_step">
+<code class="descname">notify_step</code><span class="sig-paren">(</span><em>value: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L102"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueMixin.notify_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Notify all subscribed queue workers to put them some tasks on their queue.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.distributed.streaming.ObservableQueueMixin.put">
-<code class="descname">put</code><span class="sig-paren">(</span><em>value: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueMixin.put" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.distributed.streaming.ObservableQueueMixin.put_task">
+<code class="descname">put_task</code><span class="sig-paren">(</span><em>value: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L96"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueMixin.put_task" title="Permalink to this definition">¶</a></dt>
 <dd><p>Put a queued pipeline task in queue.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.distributed.streaming.ObservableQueueMixin.subscribe">
-<code class="descname">subscribe</code><span class="sig-paren">(</span><em>observer_queue_worker: neuraxle.distributed.streaming.ObservableQueueMixin</em><span class="sig-paren">)</span> &#x2192; neuraxle.distributed.streaming.ObservableQueueMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueMixin.subscribe" title="Permalink to this definition">¶</a></dt>
-<dd><p>Subscribe a queue worker.
-The subscribed queue workers get notified when <a class="reference internal" href="#neuraxle.distributed.streaming.ObservableQueueMixin.notify" title="neuraxle.distributed.streaming.ObservableQueueMixin.notify"><code class="xref py py-func docutils literal notranslate"><span class="pre">notify()</span></code></a> is called.</p>
+<dt id="neuraxle.distributed.streaming.ObservableQueueMixin.subscribe_step">
+<code class="descname">subscribe_step</code><span class="sig-paren">(</span><em>observer_queue_worker: neuraxle.distributed.streaming.ObservableQueueMixin</em><span class="sig-paren">)</span> &#x2192; neuraxle.distributed.streaming.ObservableQueueMixin<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueMixin.subscribe_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe a queue worker to self such that we can notify them to post tasks to put on them.
+The subscribed queue workers get notified when <code class="xref py py-func docutils literal notranslate"><span class="pre">notify()</span></code> is called.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="neuraxle.distributed.streaming.ObservableQueueStepSaver">
-<em class="property">class </em><code class="descclassname">neuraxle.distributed.streaming.</code><code class="descname">ObservableQueueStepSaver</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L115"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueStepSaver" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.distributed.streaming.</code><code class="descname">ObservableQueueStepSaver</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L127"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueStepSaver" title="Permalink to this definition">¶</a></dt>
 <dd><p>Saver for observable queue steps.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -914,12 +940,12 @@ The subscribed queue workers get notified when <a class="reference internal" hre
 </div>
 <dl class="attribute">
 <dt id="neuraxle.distributed.streaming.ObservableQueueStepSaver._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueStepSaver._abc_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueStepSaver._abc_cache" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="neuraxle.distributed.streaming.ObservableQueueStepSaver._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueStepSaver._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueStepSaver._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -929,12 +955,12 @@ The subscribed queue workers get notified when <a class="reference internal" hre
 
 <dl class="attribute">
 <dt id="neuraxle.distributed.streaming.ObservableQueueStepSaver._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueStepSaver._abc_registry" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueStepSaver._abc_registry" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.ObservableQueueStepSaver.can_load">
-<code class="descname">can_load</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseTransformer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L132"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueStepSaver.can_load" title="Permalink to this definition">¶</a></dt>
+<code class="descname">can_load</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseTransformer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L144"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueStepSaver.can_load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns true if we can load the given step with the given execution context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -951,7 +977,7 @@ The subscribed queue workers get notified when <a class="reference internal" hre
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.ObservableQueueStepSaver.load_step">
-<code class="descname">load_step</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseTransformer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseTransformer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L135"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueStepSaver.load_step" title="Permalink to this definition">¶</a></dt>
+<code class="descname">load_step</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseTransformer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseTransformer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L147"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueStepSaver.load_step" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load step with execution context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -968,7 +994,7 @@ The subscribed queue workers get notified when <a class="reference internal" hre
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.ObservableQueueStepSaver.save_step">
-<code class="descname">save_step</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseTransformer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseTransformer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L127"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueStepSaver.save_step" title="Permalink to this definition">¶</a></dt>
+<code class="descname">save_step</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseTransformer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseTransformer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueStepSaver.save_step" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save step with execution context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -988,7 +1014,7 @@ The subscribed queue workers get notified when <a class="reference internal" hre
 
 <dl class="class">
 <dt id="neuraxle.distributed.streaming.ParallelQueuedFeatureUnion">
-<em class="property">class </em><code class="descclassname">neuraxle.distributed.streaming.</code><code class="descname">ParallelQueuedFeatureUnion</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L628"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ParallelQueuedFeatureUnion" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.distributed.streaming.</code><code class="descname">ParallelQueuedFeatureUnion</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L665"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ParallelQueuedFeatureUnion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Using <a class="reference internal" href="#neuraxle.distributed.streaming.QueueWorker" title="neuraxle.distributed.streaming.QueueWorker"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueWorker</span></code></a>, run all steps in parallel using QueueWorkers.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -1001,12 +1027,12 @@ The subscribed queue workers get notified when <a class="reference internal" hre
 </div>
 <dl class="attribute">
 <dt id="neuraxle.distributed.streaming.ParallelQueuedFeatureUnion._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ParallelQueuedFeatureUnion._abc_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ParallelQueuedFeatureUnion._abc_cache" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="neuraxle.distributed.streaming.ParallelQueuedFeatureUnion._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ParallelQueuedFeatureUnion._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ParallelQueuedFeatureUnion._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1016,12 +1042,12 @@ The subscribed queue workers get notified when <a class="reference internal" hre
 
 <dl class="attribute">
 <dt id="neuraxle.distributed.streaming.ParallelQueuedFeatureUnion._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ParallelQueuedFeatureUnion._abc_registry" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ParallelQueuedFeatureUnion._abc_registry" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.ParallelQueuedFeatureUnion.connect_queued_pipeline">
-<code class="descname">connect_queued_pipeline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L649"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ParallelQueuedFeatureUnion.connect_queued_pipeline" title="Permalink to this definition">¶</a></dt>
+<code class="descname">connect_queued_pipeline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L686"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ParallelQueuedFeatureUnion.connect_queued_pipeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect the queue joiner to all of the queued workers to process data in parallel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1032,7 +1058,7 @@ The subscribed queue workers get notified when <a class="reference internal" hre
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.ParallelQueuedFeatureUnion.get_n_batches">
-<code class="descname">get_n_batches</code><span class="sig-paren">(</span><em>data_container</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L641"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ParallelQueuedFeatureUnion.get_n_batches" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_n_batches</code><span class="sig-paren">(</span><em>data_container</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L678"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ParallelQueuedFeatureUnion.get_n_batches" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the number of batches to process by the queue joiner.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1043,7 +1069,7 @@ The subscribed queue workers get notified when <a class="reference internal" hre
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.ParallelQueuedFeatureUnion.send_batch_to_queued_pipeline">
-<code class="descname">send_batch_to_queued_pipeline</code><span class="sig-paren">(</span><em>batch_index: int</em>, <em>data_container: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L658"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ParallelQueuedFeatureUnion.send_batch_to_queued_pipeline" title="Permalink to this definition">¶</a></dt>
+<code class="descname">send_batch_to_queued_pipeline</code><span class="sig-paren">(</span><em>batch_index: int</em>, <em>data_container: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L695"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ParallelQueuedFeatureUnion.send_batch_to_queued_pipeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send batches to process to all of the queued workers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1062,7 +1088,7 @@ The subscribed queue workers get notified when <a class="reference internal" hre
 
 <dl class="class">
 <dt id="neuraxle.distributed.streaming.QueueJoiner">
-<em class="property">class </em><code class="descclassname">neuraxle.distributed.streaming.</code><code class="descname">QueueJoiner</code><span class="sig-paren">(</span><em>batch_size</em>, <em>n_batches=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L672"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueJoiner" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.distributed.streaming.</code><code class="descname">QueueJoiner</code><span class="sig-paren">(</span><em>batch_size</em>, <em>n_batches=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L709"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueJoiner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Observe the results of the queue worker of type <a class="reference internal" href="#neuraxle.distributed.streaming.QueueWorker" title="neuraxle.distributed.streaming.QueueWorker"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueWorker</span></code></a>.
 Synchronize all of the workers together.</p>
 <div class="admonition seealso">
@@ -1074,12 +1100,12 @@ Synchronize all of the workers together.</p>
 </div>
 <dl class="attribute">
 <dt id="neuraxle.distributed.streaming.QueueJoiner._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueJoiner._abc_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueJoiner._abc_cache" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="neuraxle.distributed.streaming.QueueJoiner._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueJoiner._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueJoiner._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1089,12 +1115,12 @@ Synchronize all of the workers together.</p>
 
 <dl class="attribute">
 <dt id="neuraxle.distributed.streaming.QueueJoiner._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueJoiner._abc_registry" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueJoiner._abc_registry" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.QueueJoiner._join_all_step_results">
-<code class="descname">_join_all_step_results</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L737"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueJoiner._join_all_step_results" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_join_all_step_results</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L774"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueJoiner._join_all_step_results" title="Permalink to this definition">¶</a></dt>
 <dd><p>Concatenate all resulting data containers together.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1105,17 +1131,17 @@ Synchronize all of the workers together.</p>
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.QueueJoiner._join_step_results">
-<code class="descname">_join_step_results</code><span class="sig-paren">(</span><em>data_containers</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L758"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueJoiner._join_step_results" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_join_step_results</code><span class="sig-paren">(</span><em>data_containers</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L795"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueJoiner._join_step_results" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.QueueJoiner._raise_exception_throwned_by_workers_if_needed">
-<code class="descname">_raise_exception_throwned_by_workers_if_needed</code><span class="sig-paren">(</span><em>data_containers</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L751"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueJoiner._raise_exception_throwned_by_workers_if_needed" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_raise_exception_throwned_by_workers_if_needed</code><span class="sig-paren">(</span><em>data_containers</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L788"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueJoiner._raise_exception_throwned_by_workers_if_needed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.QueueJoiner._teardown">
-<code class="descname">_teardown</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseTransformer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L691"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueJoiner._teardown" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_teardown</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseTransformer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L728"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueJoiner._teardown" title="Permalink to this definition">¶</a></dt>
 <dd><p>Properly clean queue, summary ids, and results during teardown.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1126,7 +1152,7 @@ Synchronize all of the workers together.</p>
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.QueueJoiner.join">
-<code class="descname">join</code><span class="sig-paren">(</span><em>original_data_container: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L706"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueJoiner.join" title="Permalink to this definition">¶</a></dt>
+<code class="descname">join</code><span class="sig-paren">(</span><em>original_data_container: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L743"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueJoiner.join" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the accumulated results received by the on next method of this observer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1140,14 +1166,14 @@ Synchronize all of the workers together.</p>
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.QueueJoiner.set_n_batches">
-<code class="descname">set_n_batches</code><span class="sig-paren">(</span><em>n_batches</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L703"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueJoiner.set_n_batches" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_n_batches</code><span class="sig-paren">(</span><em>n_batches</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L740"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueJoiner.set_n_batches" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="neuraxle.distributed.streaming.QueueWorker">
-<em class="property">class </em><code class="descclassname">neuraxle.distributed.streaming.</code><code class="descname">QueueWorker</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseTransformer</em>, <em>max_queue_size: int</em>, <em>n_workers: int</em>, <em>use_threading: bool</em>, <em>additional_worker_arguments=None</em>, <em>use_savers=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L140"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueWorker" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.distributed.streaming.</code><code class="descname">QueueWorker</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseTransformer</em>, <em>max_queue_size: int</em>, <em>n_workers: int</em>, <em>use_processes: bool = True</em>, <em>additional_worker_arguments: List = None</em>, <em>use_savers: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L152"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueWorker" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start multiple Process or Thread that process items from the queue of batches to process.
 It is both an observable, and observer.
 It notifies the results of the wrapped step handle transform method.
@@ -1161,12 +1187,12 @@ It receives the next data container to process.</p>
 </div>
 <dl class="attribute">
 <dt id="neuraxle.distributed.streaming.QueueWorker._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueWorker._abc_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueWorker._abc_cache" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="neuraxle.distributed.streaming.QueueWorker._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueWorker._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueWorker._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1176,12 +1202,12 @@ It receives the next data container to process.</p>
 
 <dl class="attribute">
 <dt id="neuraxle.distributed.streaming.QueueWorker._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueWorker._abc_registry" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueWorker._abc_registry" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.QueueWorker._teardown">
-<code class="descname">_teardown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L200"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueWorker._teardown" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_teardown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L230"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueWorker._teardown" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stop all processes on teardown.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1192,7 +1218,7 @@ It receives the next data container to process.</p>
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.QueueWorker.start">
-<code class="descname">start</code><span class="sig-paren">(</span><em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L176"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueWorker.start" title="Permalink to this definition">¶</a></dt>
+<code class="descname">start</code><span class="sig-paren">(</span><em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L197"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueWorker.start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start multiple processes or threads with the worker function as a target.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1206,7 +1232,7 @@ It receives the next data container to process.</p>
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.QueueWorker.stop">
-<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L209"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueWorker.stop" title="Permalink to this definition">¶</a></dt>
+<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L239"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueueWorker.stop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stop all of the workers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1219,8 +1245,9 @@ It receives the next data container to process.</p>
 
 <dl class="class">
 <dt id="neuraxle.distributed.streaming.QueuedPipelineTask">
-<em class="property">class </em><code class="descclassname">neuraxle.distributed.streaming.</code><code class="descname">QueuedPipelineTask</code><span class="sig-paren">(</span><em>data_container</em>, <em>step_name=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L99"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueuedPipelineTask" title="Permalink to this definition">¶</a></dt>
-<dd><p>Data object to contain the tasks processed by the queued pipeline.</p>
+<em class="property">class </em><code class="descclassname">neuraxle.distributed.streaming.</code><code class="descname">QueuedPipelineTask</code><span class="sig-paren">(</span><em>data_container</em>, <em>step_name=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L110"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.QueuedPipelineTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data object to contain the tasks processed by the queued pipeline.
+Attributes: step_name, data_container</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#neuraxle.distributed.streaming.QueueWorker" title="neuraxle.distributed.streaming.QueueWorker"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueWorker</span></code></a>,
@@ -1232,7 +1259,7 @@ It receives the next data container to process.</p>
 
 <dl class="class">
 <dt id="neuraxle.distributed.streaming.SequentialQueuedPipeline">
-<em class="property">class </em><code class="descclassname">neuraxle.distributed.streaming.</code><code class="descname">SequentialQueuedPipeline</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L579"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.SequentialQueuedPipeline" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.distributed.streaming.</code><code class="descname">SequentialQueuedPipeline</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L616"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.SequentialQueuedPipeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Using <a class="reference internal" href="#neuraxle.distributed.streaming.QueueWorker" title="neuraxle.distributed.streaming.QueueWorker"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueWorker</span></code></a>, run all steps sequentially even if they are in separate processes or threads.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -1247,12 +1274,12 @@ It receives the next data container to process.</p>
 </div>
 <dl class="attribute">
 <dt id="neuraxle.distributed.streaming.SequentialQueuedPipeline._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.SequentialQueuedPipeline._abc_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.SequentialQueuedPipeline._abc_cache" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="neuraxle.distributed.streaming.SequentialQueuedPipeline._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.SequentialQueuedPipeline._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.SequentialQueuedPipeline._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1262,12 +1289,12 @@ It receives the next data container to process.</p>
 
 <dl class="attribute">
 <dt id="neuraxle.distributed.streaming.SequentialQueuedPipeline._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.SequentialQueuedPipeline._abc_registry" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.SequentialQueuedPipeline._abc_registry" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.SequentialQueuedPipeline.connect_queued_pipeline">
-<code class="descname">connect_queued_pipeline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L606"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.SequentialQueuedPipeline.connect_queued_pipeline" title="Permalink to this definition">¶</a></dt>
+<code class="descname">connect_queued_pipeline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L643"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.SequentialQueuedPipeline.connect_queued_pipeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sequentially connect of the queued workers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1278,7 +1305,7 @@ It receives the next data container to process.</p>
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.SequentialQueuedPipeline.get_n_batches">
-<code class="descname">get_n_batches</code><span class="sig-paren">(</span><em>data_container</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L594"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.SequentialQueuedPipeline.get_n_batches" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_n_batches</code><span class="sig-paren">(</span><em>data_container</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L631"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.SequentialQueuedPipeline.get_n_batches" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the number of batches to process.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1292,7 +1319,7 @@ It receives the next data container to process.</p>
 
 <dl class="method">
 <dt id="neuraxle.distributed.streaming.SequentialQueuedPipeline.send_batch_to_queued_pipeline">
-<code class="descname">send_batch_to_queued_pipeline</code><span class="sig-paren">(</span><em>batch_index: int</em>, <em>data_container: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L615"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.SequentialQueuedPipeline.send_batch_to_queued_pipeline" title="Permalink to this definition">¶</a></dt>
+<code class="descname">send_batch_to_queued_pipeline</code><span class="sig-paren">(</span><em>batch_index: int</em>, <em>data_container: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L652"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.SequentialQueuedPipeline.send_batch_to_queued_pipeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send batches to process to the first queued worker.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1311,7 +1338,7 @@ It receives the next data container to process.</p>
 
 <dl class="function">
 <dt id="neuraxle.distributed.streaming.worker_function">
-<code class="descclassname">neuraxle.distributed.streaming.</code><code class="descname">worker_function</code><span class="sig-paren">(</span><em>queue_worker: neuraxle.distributed.streaming.QueueWorker</em>, <em>context: neuraxle.base.ExecutionContext</em>, <em>use_savers: bool</em>, <em>additional_worker_arguments</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/5430e91/neuraxle/distributed/streaming.py#L222"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.worker_function" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">neuraxle.distributed.streaming.</code><code class="descname">worker_function</code><span class="sig-paren">(</span><em>queue_worker: neuraxle.distributed.streaming.QueueWorker</em>, <em>context: neuraxle.base.ExecutionContext</em>, <em>use_savers: bool</em>, <em>additional_worker_arguments</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/e9cc89d/neuraxle/distributed/streaming.py#L252"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.worker_function" title="Permalink to this definition">¶</a></dt>
 <dd><p>Worker function that transforms the items inside the queue of items to process.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
