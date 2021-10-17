@@ -1,0 +1,1779 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>neuraxle.hyperparams.scipy_distributions &mdash; Neuraxle 0.6.1 documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://www.neuraxle.org/api/hyperparams/neuraxle.hyperparams.scipy_distributions.html"/>
+  
+
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PWQLPZ3');</script>
+  <!-- End Google Tag Manager -->
+
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sg_gallery-rendered-html.css" type="text/css" />
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="neuraxle.hyperparams.space" href="neuraxle.hyperparams.space.html" />
+    <link rel="prev" title="neuraxle.hyperparams.distributions" href="neuraxle.hyperparams.distributions.html" /> 
+
+  <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search > a {
+      color: #DB1865;
+    }
+    .wy-side-nav-search > div.version {
+      color: #DB1865;
+    }
+    .wy-side-nav-search, .wy-nav-top {
+      color: #DB1865;
+    }
+    /* Sidebar */
+    .wy-nav-side {
+    }
+  </style>
+</head>
+
+<body class="wy-body-for-nav">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWQLPZ3"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #F7F7F7" >
+          
+
+          
+            
+              <a href="https://www.neuraxle.org/" class="icon">
+                <img src="../../_static/neuraxle_logo.png" class="logo" alt="Logo"/>
+              </a>
+          
+
+          
+            <a href="https://www.neuraxio.com/" class="icon icon-home"> Neuraxio</a>/<a href="../../index.html" > Neuraxle
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Neuraxle/README.html">Neuraxle Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Neuraxle/README.html#documentation">Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Neuraxle/README.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Neuraxle/README.html#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Neuraxle/README.html#license">License</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Neuraxle/README.html#citation">Citation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Neuraxle/README.html#contributors">Contributors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Neuraxle/README.html#supported-by">Supported By</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../scikit-learn_problems_solutions.html">Solutions to Scikit-Learn’s Biggest Problems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#definitions">Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#inability-to-reasonably-do-automatic-machine-learning-automl">Inability to Reasonably do Automatic Machine Learning (AutoML)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-defining-the-search-space-hyperparameter-distributions">Problem: Defining the Search Space (Hyperparameter Distributions)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-defining-hyperparameters-in-the-constructor-is-limiting">Problem: Defining Hyperparameters in the Constructor is Limiting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-different-train-and-test-behavior">Problem: Different Train and Test Behavior</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-you-trained-a-pipeline-and-you-want-feedback-statistics-on-its-learning">Problem: You trained a Pipeline and You Want Feedback Statistics on its Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#inability-to-reasonably-do-deep-learning-pipelines">Inability to Reasonably do Deep Learning Pipelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-scikit-learn-hardly-allows-for-mini-batch-gradient-descent-incremental-fit">Problem: Scikit-Learn Hardly Allows for Mini-Batch Gradient Descent (Incremental Fit)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-initializing-the-pipeline-and-deallocating-resources">Problem: Initializing the Pipeline and Deallocating Resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-it-is-difficult-to-use-other-deep-learning-dl-libraries-in-scikit-learn">Problem: It is Difficult to Use Other Deep Learning (DL) Libraries in Scikit-Learn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-the-ability-to-transform-output-labels">Problem: The Ability to Transform Output Labels</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#not-ready-for-production-nor-for-complex-pipelines">Not ready for Production nor for Complex Pipelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-processing-3d-4d-or-nd-data-in-your-pipeline-with-steps-made-for-lower-dimensionnal-data">Problem: Processing 3D, 4D, or ND Data in your Pipeline with Steps Made for Lower-Dimensionnal Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-modify-a-pipeline-along-the-way-such-as-for-pre-training-or-fine-tuning">Problem: Modify a Pipeline Along the Way, such as for Pre-Training or Fine-Tuning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-getting-model-attributes-from-scikit-learn-pipeline">Problem: Getting Model Attributes from Scikit-Learn Pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../scikit-learn_problems_solutions.html#problem-you-can-t-parallelize-nor-save-pipelines-using-steps-that-can-t-be-serialized-as-is-by-joblib">Problem: You can’t Parallelize nor Save Pipelines Using Steps that Can’t be Serialized “as-is” by Joblib</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../walkthroughs.html">&gt;&gt;&gt; Hands-On Walkthroughs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro.html#encapsulate-models-and-data-transformers">Encapsulate Models and Data Transformers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro.html#pipe-and-filter">Pipe and Filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro.html#features">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro.html#wrapper-a-k-a-decorator-classes">Wrapper (a.k.a. Decorator) classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro.html#pipelines-for-minibatching-and-parallel-processing">Pipelines for Minibatching and Parallel Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro.html#repository-for-lazy-data-loading">Repository for lazy data loading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro.html#training-your-pipeline">Training your pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro.html#serializing-your-pipeline">Serializing your pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html">Automatic Hyperparameter Tuning / AutoML</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparameter_tuning.html#AutoML-loop">AutoML loop</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../hyperparameter_tuning.html#Define-your-problem">Define your problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../hyperparameter_tuning.html#Define-your-pipeline">Define your pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../hyperparameter_tuning.html#Choose-a-validation-splitter">Choose a validation splitter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../hyperparameter_tuning.html#Define-a-the-main-scoring-metric-with-ScoringCallback">Define a the main scoring metric with ScoringCallback</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../hyperparameter_tuning.html#Add-other-metric-callbacks-with-MetricCallback-(optional)">Add other metric callbacks with MetricCallback (optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../hyperparameter_tuning.html#Select-an-hyperparams-repository">Select an hyperparams repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../hyperparameter_tuning.html#Select-an-hyperparams-optimizer">Select an hyperparams optimizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../hyperparameter_tuning.html#Create,-and-launch-AutoML-loop">Create, and launch AutoML loop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../hyperparameter_tuning.html#Get-best-model-and-measure-test-accuracy">Get best model and measure test accuracy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../hyperparameter_tuning.html#Additional-note-:-model-selection-as-an-hyperparameter">Additional note : model selection as an hyperparameter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../handler_methods.html">Handler Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../handler_methods.html#handle_fit_transform">handle_fit_transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../handler_methods.html#handle_fit">handle_fit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../handler_methods.html#handle_transform">handle_transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../handler_methods.html#When-to-use-handler-methods-?">When to use handler methods ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../handler_methods.html#HandleOnlyMixin">HandleOnlyMixin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../handler_methods.html#ForceHandleMixin">ForceHandleMixin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../handler_methods.html#ForceHandleOnlyMixin">ForceHandleOnlyMixin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../handler_methods.html#Examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../handler_methods.html#ForEach">ForEach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../handler_methods.html#ToNumpy">ToNumpy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../handler_methods.html#Transform-Expected-Outputs">Transform Expected Outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../handler_methods.html#Expand-The-DataContainer">Expand The DataContainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../handler_methods.html#Reversible-Pipeline">Reversible Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../step_saving_and_lifecycle.html">Step Saving &amp; Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Lifecycle">Lifecycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Step-Saving">Step Saving</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Saver">Saver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Custom-Saver-Example">Custom Saver Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Saving-Example">Saving Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Pipeline">Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Full-Dump-Saving">Full Dump Saving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../step_saving_and_lifecycle.html#Full-Dump-Loading">Full Dump Loading</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../time_series_processing.html">Time Series Processing Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../time_series_processing.html#The-Dataset">The Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../time_series_processing.html#The-task">The task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../time_series_processing.html#Video-dataset-overview">Video dataset overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../time_series_processing.html#Details-about-the-input-data">Details about the input data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../time_series_processing.html#Loading-the-Dataset">Loading the Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../time_series_processing.html#Part-1---How-would-you-code-this-in-a-typical-ML-project-using-Scikit-learn">Part 1 - How would you code this in a typical ML project using Scikit-learn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../time_series_processing.html#Part-2---How-to-code-a-similar-pipeline---but-cleaner---using-Neuraxle">Part 2 - How to code a similar pipeline - but cleaner - using Neuraxle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../random_distributions.html">Random Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Discrete-Distributions">Discrete Distributions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../random_distributions.html#RandInt">RandInt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../random_distributions.html#Boolean">Boolean</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../random_distributions.html#Choice">Choice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../random_distributions.html#Priority-Choice">Priority Choice</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Continuous-Distributions">Continuous Distributions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../random_distributions.html#Continuous-Uniform">Continuous Uniform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../random_distributions.html#Continuous-Loguniform">Continuous Loguniform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../random_distributions.html#Continuous-Normal">Continuous Normal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../random_distributions.html#Continuous-Lognormal">Continuous Lognormal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../random_distributions.html#Continuous-Normal-Clipped">Continuous Normal Clipped</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../random_distributions.html#Continuous-Lognormal-Clipped">Continuous Lognormal Clipped</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Quantized-Hyperparameter-Distributions">Quantized Hyperparameter Distributions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../random_distributions.html#Quantized-Uniform">Quantized Uniform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../random_distributions.html#Repaired-Quantized-Uniform">Repaired Quantized Uniform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../random_distributions.html#Quantized-Log-Uniform">Quantized Log Uniform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../random_distributions.html#Quantized-Normal">Quantized Normal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../random_distributions.html#Quantized-Lognormal">Quantized Lognormal</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Creating-your-own-distributions">Creating your own distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Using-Scipy-Distributions">Using Scipy Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../random_distributions.html#Creating-your-own-distributions-using-scipy">Creating your own distributions using scipy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../random_distributions.html#BaseCustomContinuousScipyDistribution">BaseCustomContinuousScipyDistribution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../random_distributions.html#BaseCustomDiscreteScipyDistribution">BaseCustomDiscreteScipyDistribution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest_api_serving.html">REST API Serving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Import-Packages">Import Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Load-your-Dataset">Load your Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Create-your-Pipeline">Create your Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Let's-Train-and-Test">Let’s Train and Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Deploy-the-Pipeline">Deploy the Pipeline</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../rest_api_serving.html#Write-a-step-to-decode-the-accepted-JSON-as-data-inputs">Write a step to decode the accepted JSON as data inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../rest_api_serving.html#Write-a-step-to-encode-the-returned-JSON-response">Write a step to encode the returned JSON response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../rest_api_serving.html#Finally-Serve-Predictions">Finally Serve Predictions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#API-Call-Example">API Call Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Next-Steps">Next Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../rest_api_serving.html#Pipeline-Serialization">Pipeline Serialization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../rest_api_serving.html#Data-Transformation-Caching">Data Transformation Caching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../rest_api_serving.html#Checkpoints">Checkpoints</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">&gt;&gt;&gt; Practical Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html#automl">AutoML</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/auto_ml/plot_automl_loop_clean_kata.html">Usage of AutoML loop, and hyperparams with sklearn models.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html#caching">Caching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/caching/plot_value_caching.html">Usage of ValueCachingWrapper in Neuraxle.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/caching/plot_auto_ml_checkpoint.html">Usage of Checkpoints in Automatic Machine Learning (AutoML)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html#rest-api-model-serving">REST API Model Serving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/deployment/plot_easy_rest_api_serving.html">Easy REST API Model Serving with Neuraxle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html#getting-started">Getting started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/getting_started/plot_inverse_transform.html">Inverse Transforms in Neuraxle: How to Reverse a Prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/getting_started/plot_nested_pipelines.html">Create Nested Pipelines in Neuraxle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/getting_started/plot_label_encoder_across_multiple_columns.html">Create label encoder across multiple columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/getting_started/plot_non_fittable_mixin.html">Create Pipeline Steps in Neuraxle that doesn’t fit or transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/getting_started/plot_force_handle_mixin.html">Create Pipeline Steps that require implementing only handler methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html#hyperparameters">Hyperparameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/hyperparams/plot_hyperparams.html">Manipulate Hyperparameter Spaces for Hyperparameter Tuning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html#parallel">Parallel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/parallel/plot_streaming_pipeline.html">Parallel processing in Neuraxle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html#neuraxle-hyperparameter-examples">Neuraxle hyperparameter examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/sklearn/plot_boston_housing_regression_with_model_stacking.html">Boston Housing Regression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../examples/sklearn/plot_boston_housing_meta_optimization.html">Boston Housing Regression with Meta Optimization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../api.html">&gt;&gt;&gt; Complete API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../neuraxle.base.html">neuraxle.base</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../neuraxle.base.html#neuraxle-s-base-classes">Neuraxle’s Base Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../neuraxle.base.html#examples-using-neuraxle-base-basestep">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.base.BaseStep</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../neuraxle.base.html#examples-using-neuraxle-base-executioncontext">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.base.ExecutionContext</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../neuraxle.base.html#examples-using-neuraxle-base-forcehandlemixin">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.base.ForceHandleMixin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../neuraxle.base.html#examples-using-neuraxle-base-identity">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.base.Identity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../neuraxle.base.html#examples-using-neuraxle-base-nonfittablemixin">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.base.NonFittableMixin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../neuraxle.base.html#examples-using-neuraxle-base-nontransformablemixin">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.base.NonTransformableMixin</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../neuraxle.pipeline.html">neuraxle.pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../neuraxle.pipeline.html#neuraxle-s-pipeline-classes">Neuraxle’s Pipeline Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../neuraxle.pipeline.html#examples-using-neuraxle-pipeline-basepipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.BasePipeline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../neuraxle.pipeline.html#examples-using-neuraxle-pipeline-minibatchsequentialpipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.MiniBatchSequentialPipeline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../neuraxle.pipeline.html#examples-using-neuraxle-pipeline-pipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.Pipeline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../neuraxle.pipeline.html#examples-using-neuraxle-pipeline-resumablepipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.ResumablePipeline</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../neuraxle.data_container.html">neuraxle.data_container</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../neuraxle.data_container.html#neuraxle-s-datacontainer-classes">Neuraxle’s DataContainer classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../neuraxle.union.html">neuraxle.union</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../neuraxle.union.html#union-of-features">Union of Features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../neuraxle.union.html#examples-using-neuraxle-union-addfeatures">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.union.AddFeatures</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../neuraxle.union.html#examples-using-neuraxle-union-modelstacking">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.union.ModelStacking</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../neuraxle.checkpoints.html">neuraxle.checkpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../neuraxle.checkpoints.html#neuraxle-s-checkpoint-classes">Neuraxle’s Checkpoint Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../neuraxle.checkpoints.html#examples-using-neuraxle-checkpoints-defaultcheckpoint">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.checkpoints.DefaultCheckpoint</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../neuraxle.metrics.html">neuraxle.metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../neuraxle.metrics.html#neuraxle-s-metrics-classes">Neuraxle’s metrics classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../neuraxle.plotting.html">neuraxle.plotting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../neuraxle.plotting.html#notebook-matplotlib-plotting-functions">Notebook matplotlib plotting functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../steps/neuraxle.steps.numpy.html">neuraxle.steps.numpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../steps/neuraxle.steps.numpy.html#pipeline-steps-based-on-numpy">Pipeline Steps Based on NumPy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../steps/neuraxle.steps.numpy.html#examples-using-neuraxle-steps-numpy-multiplybyn">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.numpy.MultiplyByN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../steps/neuraxle.steps.numpy.html#examples-using-neuraxle-steps-numpy-numpyravel">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.numpy.NumpyRavel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../steps/neuraxle.steps.numpy.html#examples-using-neuraxle-steps-numpy-numpyshapeprinter">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.numpy.NumpyShapePrinter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../steps/neuraxle.steps.numpy.html#examples-using-neuraxle-steps-numpy-numpytranspose">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.numpy.NumpyTranspose</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../steps/neuraxle.steps.flow.html">neuraxle.steps.flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../steps/neuraxle.steps.flow.html#neuraxle-s-flow-steps">Neuraxle’s Flow Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../steps/neuraxle.steps.flow.html#examples-using-neuraxle-steps-flow-chooseonestepof">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.flow.ChooseOneStepOf</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../steps/neuraxle.steps.flow.html#examples-using-neuraxle-steps-flow-expanddim">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.flow.ExpandDim</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../steps/neuraxle.steps.data.html">neuraxle.steps.data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../steps/neuraxle.steps.data.html#data-steps">Data Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../steps/neuraxle.steps.column_transformer.html">neuraxle.steps.column_transformer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../steps/neuraxle.steps.column_transformer.html#neuraxle-s-column-transformer-steps">Neuraxle’s Column Transformer Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../steps/neuraxle.steps.column_transformer.html#examples-using-neuraxle-steps-column-transformer-columntransformer">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.column_transformer.ColumnTransformer</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../steps/neuraxle.steps.features.html">neuraxle.steps.features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../steps/neuraxle.steps.features.html#featurization-steps">Featurization Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../steps/neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../steps/neuraxle.steps.sklearn.html#pipeline-steps-based-on-scikit-learn">Pipeline Steps Based on Scikit-Learn</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../steps/neuraxle.steps.sklearn.html#examples-using-neuraxle-steps-sklearn-ridgemodelstacking">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.sklearn.RidgeModelStacking</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../steps/neuraxle.steps.sklearn.html#examples-using-neuraxle-steps-sklearn-sklearnwrapper">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.sklearn.SKLearnWrapper</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../steps/neuraxle.steps.loop.html">neuraxle.steps.loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../steps/neuraxle.steps.loop.html#pipeline-steps-for-looping">Pipeline Steps For Looping</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../steps/neuraxle.steps.loop.html#examples-using-neuraxle-steps-loop-flattenforeach">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.loop.FlattenForEach</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../steps/neuraxle.steps.loop.html#examples-using-neuraxle-steps-loop-foreach">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.loop.ForEach</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../steps/neuraxle.steps.caching.html">neuraxle.steps.caching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../steps/neuraxle.steps.caching.html#pipeline-steps-for-caching">Pipeline Steps For Caching</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../steps/neuraxle.steps.caching.html#examples-using-neuraxle-steps-caching-joblibvaluecachingwrapper">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.caching.JoblibValueCachingWrapper</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../steps/neuraxle.steps.output_handlers.html">neuraxle.steps.output_handlers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../steps/neuraxle.steps.output_handlers.html#output-handlers-steps">Output Handlers Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../steps/neuraxle.steps.output_handlers.html#examples-using-neuraxle-steps-output-handlers-outputtransformerwrapper">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.output_handlers.OutputTransformerWrapper</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../steps/neuraxle.steps.misc.html">neuraxle.steps.misc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../steps/neuraxle.steps.misc.html#miscelaneous-pipeline-steps">Miscelaneous Pipeline Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../steps/neuraxle.steps.misc.html#examples-using-neuraxle-steps-misc-sleep">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.misc.Sleep</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.hyperparams.distributions.html">neuraxle.hyperparams.distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.hyperparams.distributions.html#hyperparameter-distributions">Hyperparameter Distributions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="neuraxle.hyperparams.distributions.html#examples-using-neuraxle-hyperparams-distributions-boolean">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.hyperparams.distributions.Boolean</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="neuraxle.hyperparams.distributions.html#examples-using-neuraxle-hyperparams-distributions-choice">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.hyperparams.distributions.Choice</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="neuraxle.hyperparams.distributions.html#examples-using-neuraxle-hyperparams-distributions-loguniform">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.hyperparams.distributions.LogUniform</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="neuraxle.hyperparams.distributions.html#examples-using-neuraxle-hyperparams-distributions-randint">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.hyperparams.distributions.RandInt</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">neuraxle.hyperparams.scipy_distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.hyperparams.space.html">neuraxle.hyperparams.space</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.hyperparams.space.html#hyperparameter-dictionary-conversions">Hyperparameter Dictionary Conversions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="neuraxle.hyperparams.space.html#examples-using-neuraxle-hyperparams-space-hyperparameterspace">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.hyperparams.space.HyperparameterSpace</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../metaopt/neuraxle.metaopt.auto_ml.html">neuraxle.metaopt.auto_ml</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../metaopt/neuraxle.metaopt.auto_ml.html#neuraxle-s-automl-classes">Neuraxle’s AutoML Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../metaopt/neuraxle.metaopt.auto_ml.html#examples-using-neuraxle-metaopt-auto-ml-automl">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.AutoML</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../metaopt/neuraxle.metaopt.auto_ml.html#examples-using-neuraxle-metaopt-auto-ml-hyperparamsjsonrepository">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.HyperparamsJSONRepository</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../metaopt/neuraxle.metaopt.auto_ml.html#examples-using-neuraxle-metaopt-auto-ml-inmemoryhyperparamsrepository">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.InMemoryHyperparamsRepository</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../metaopt/neuraxle.metaopt.auto_ml.html#examples-using-neuraxle-metaopt-auto-ml-randomsearchhyperparameterselectionstrategy">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.RandomSearchHyperparameterSelectionStrategy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../metaopt/neuraxle.metaopt.auto_ml.html#examples-using-neuraxle-metaopt-auto-ml-validationsplitter">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.ValidationSplitter</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../metaopt/neuraxle.metaopt.trial.html">neuraxle.metaopt.trial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../metaopt/neuraxle.metaopt.trial.html#neuraxle-s-trial-classes">Neuraxle’s Trial Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../metaopt/neuraxle.metaopt.callbacks.html">neuraxle.metaopt.callbacks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../metaopt/neuraxle.metaopt.callbacks.html#neuraxle-s-training-callbacks-classes">Neuraxle’s training callbacks classes.</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../metaopt/neuraxle.metaopt.callbacks.html#examples-using-neuraxle-metaopt-callbacks-metriccallback">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.callbacks.MetricCallback</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../metaopt/neuraxle.metaopt.callbacks.html#examples-using-neuraxle-metaopt-callbacks-scoringcallback">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.callbacks.ScoringCallback</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../metaopt/neuraxle.metaopt.random.html">neuraxle.metaopt.random</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../metaopt/neuraxle.metaopt.random.html#random">Random</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../metaopt/neuraxle.metaopt.tpe.html">neuraxle.metaopt.tpe</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../metaopt/neuraxle.metaopt.tpe.html#tree-parzen-estimator">Tree parzen estimator</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../metaopt/neuraxle.metaopt.observable.html">neuraxle.metaopt.observable</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../metaopt/neuraxle.metaopt.observable.html#neuraxle-s-observable-classes">Neuraxle’s Observable Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../metaopt/neuraxle.metaopt.deprecated.html">neuraxle.metaopt.deprecated</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../metaopt/neuraxle.metaopt.deprecated.html#neuraxle-s-automatic-machine-learning-classes">Neuraxle’s Automatic Machine Learning Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../distributed/neuraxle.distributed.streaming.html">neuraxle.distributed.streaming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../distributed/neuraxle.distributed.streaming.html#streaming-pipelines-for-parallel-and-queued-data-processing">Streaming Pipelines for Parallel and Queued Data Processing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../distributed/neuraxle.distributed.streaming.html#examples-using-neuraxle-distributed-streaming-sequentialqueuedpipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.distributed.streaming.SequentialQueuedPipeline</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rest/neuraxle.rest.flask.html">neuraxle.rest.flask</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rest/neuraxle.rest.flask.html#neuraxle-s-flask-wrapper-classes">Neuraxle’s Flask Wrapper classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../rest/neuraxle.rest.flask.html#examples-using-neuraxle-rest-flask-flaskrestapiwrapper">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.rest.flask.FlaskRestApiWrapper</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rest/neuraxle.rest.flask.html#examples-using-neuraxle-rest-flask-jsondatabodydecoder">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.rest.flask.JSONDataBodyDecoder</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rest/neuraxle.rest.flask.html#examples-using-neuraxle-rest-flask-jsondataresponseencoder">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.rest.flask.JSONDataResponseEncoder</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../awesome_neuraxle.html">Awesome Neuraxle </a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../awesome_neuraxle.html#contents">Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awesome_neuraxle.html#examples-articles">Examples &amp; Articles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awesome_neuraxle.html#courses-training">Courses &amp; Training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awesome_neuraxle.html#videos">Videos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awesome_neuraxle.html#projects">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awesome_neuraxle.html#community">Community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../awesome_neuraxle.html#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Neuraxle/CONTRIBUTING.html">Contributing to Neuraxle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Neuraxle/CONTRIBUTING.html#first-steps">First steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Neuraxle/CONTRIBUTING.html#before-coding">Before coding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Neuraxle/CONTRIBUTING.html#pull-requests">Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Neuraxle/CONTRIBUTING.html#code-reviews">Code Reviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Neuraxle/CONTRIBUTING.html#reviewing-other-s-code">Reviewing other’s code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Neuraxle/CONTRIBUTING.html#publishing-project-to-pypi">Publishing project to PyPI</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          <li class="toctree-l1">
+            <a class="reference internal" href="https://www.neuraxio.com/blogs/news"
+                                    style="background:#FF982E; color:#fff; text-decoration-line: underline;" target="_blank">
+            Neuraxio Blog Articles [↗️]</a>
+            <a class="reference internal" href="https://www.neuraxio.com/blogs/news/our-top-learning-resources-for-ai-programmers?utm_source=neuraxle_doc"
+                                    style="background:#DB1865; color:#fff; text-decoration-line: underline;" target="_blank">
+            Learn AI Programming [↗️]</a>
+            <a class="reference internal" href="https://www.jobs.neuraxio.com/"
+                                    style="background:#111; color:#fff; text-decoration-line: underline;" target="_blank">
+            Jobs [↗️]</a>
+          </li>
+
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://www.neuraxio.com/"> Neuraxio</a>/<a href="../../index.html">Neuraxle</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        <a href="https://github.com/Neuraxio/Neuraxle"><img style="position: absolute; border: 0; top: 0; right: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../api.html">&gt;&gt;&gt; Complete API Documentation</a> &raquo;</li>
+        
+      <li>neuraxle.hyperparams.scipy_distributions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <!-- <a href="../../_sources/api/hyperparams/neuraxle.hyperparams.scipy_distributions.rst.txt" rel="nofollow"> View page source</a> -->
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="neuraxle-hyperparams-scipy-distributions">
+<h1>neuraxle.hyperparams.scipy_distributions<a class="headerlink" href="#neuraxle-hyperparams-scipy-distributions" title="Permalink to this headline">¶</a></h1>
+<p>Module-level documentation.</p>
+<span class="target" id="module-neuraxle.hyperparams.scipy_distributions"></span><p class="rubric">Functions</p>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.get_index_in_list_with_bool" title="neuraxle.hyperparams.scipy_distributions.get_index_in_list_with_bool"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_index_in_list_with_bool</span></code></a>(choice_list, value)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.scipy_method" title="neuraxle.hyperparams.scipy_distributions.scipy_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy_method</span></code></a>(func)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.BaseCustomContinuousScipyDistribution" title="neuraxle.hyperparams.scipy_distributions.BaseCustomContinuousScipyDistribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseCustomContinuousScipyDistribution</span></code></a>(name, …)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.BaseCustomDiscreteScipyDistribution" title="neuraxle.hyperparams.scipy_distributions.BaseCustomDiscreteScipyDistribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseCustomDiscreteScipyDistribution</span></code></a>(name, …)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.Boolean" title="neuraxle.hyperparams.scipy_distributions.Boolean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Boolean</span></code></a>(proba_is_true[, null_default_value])</p></td>
+<td><p>Get a random boolean hyperparameter.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.Choice" title="neuraxle.hyperparams.scipy_distributions.Choice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Choice</span></code></a>(choice_list, probas[, null_default_value])</p></td>
+<td><p>Get a random value from a choice list of possible value for this hyperparameter.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.Distribution" title="neuraxle.hyperparams.scipy_distributions.Distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Distribution</span></code></a>([momtype, a, b, xtol, …])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.FixedHyperparameter" title="neuraxle.hyperparams.scipy_distributions.FixedHyperparameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FixedHyperparameter</span></code></a>(value[, null_default_value])</p></td>
+<td><p>This is an hyperparameter that won’t change again, but that is still expressed as a distribution.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.Gaussian" title="neuraxle.hyperparams.scipy_distributions.Gaussian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Gaussian</span></code></a>(min_included, max_included, …)</p></td>
+<td><p>Gaussian distribution that inherits from <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.html#scipy.stats.rv_continuous">scipy.stats.rv_continuous</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.Histogram" title="neuraxle.hyperparams.scipy_distributions.Histogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Histogram</span></code></a>(histogram, null_default_value, …)</p></td>
+<td><p>Histogram distribution that inherits from <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_histogram.html#scipy.stats.rv_histogram">scipy.stats.rv_histogram</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.LogNormal" title="neuraxle.hyperparams.scipy_distributions.LogNormal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LogNormal</span></code></a>(log2_space_mean, log2_space_std, …)</p></td>
+<td><p>Get a normal distribution.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.LogUniform" title="neuraxle.hyperparams.scipy_distributions.LogUniform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LogUniform</span></code></a>(min_included, max_included[, …])</p></td>
+<td><p>Get a LogUniform distribution.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.Normal" title="neuraxle.hyperparams.scipy_distributions.Normal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Normal</span></code></a>(mean, std, hard_clip_min, …)</p></td>
+<td><p>LogNormal distribution that wraps a <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.html#scipy.stats.rv_continuous">continuous scipy distribution</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.Poisson" title="neuraxle.hyperparams.scipy_distributions.Poisson"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Poisson</span></code></a>(min_included, max_included, …[, mu])</p></td>
+<td><p>Poisson distribution that inherits from <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_histogram.html#scipy.stats.rv_histogram">scipy.stats.rv_discrete</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.Quantized" title="neuraxle.hyperparams.scipy_distributions.Quantized"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quantized</span></code></a>(hd, hds[, null_default_value])</p></td>
+<td><p>A quantized wrapper for another distribution: will round() the rvs number.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.RandInt" title="neuraxle.hyperparams.scipy_distributions.RandInt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RandInt</span></code></a>(min_included, max_included, **kwargs)</p></td>
+<td><p>Rand int scipy distribution.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.ScipyContinuousDistributionWrapper" title="neuraxle.hyperparams.scipy_distributions.ScipyContinuousDistributionWrapper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScipyContinuousDistributionWrapper</span></code></a>(…[, …])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.ScipyDiscreteDistributionWrapper" title="neuraxle.hyperparams.scipy_distributions.ScipyDiscreteDistributionWrapper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScipyDiscreteDistributionWrapper</span></code></a>(…[, …])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper" title="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScipyDistributionWrapper</span></code></a>(scipy_distribution, …)</p></td>
+<td><p>Base class for a distribution that wraps a scipy distribution.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.Uniform" title="neuraxle.hyperparams.scipy_distributions.Uniform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Uniform</span></code></a>(min_included, max_included[, …])</p></td>
+<td><p>Get a uniform distribution.</p></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="sphx-glr-backref-neuraxle-hyperparams-scipy-distributions-uniform"><span id="sphx-glr-backref-neuraxle-hyperparams-scipy-distributions-scipydistributionwrapper"></span><span id="sphx-glr-backref-neuraxle-hyperparams-scipy-distributions-scipydiscretedistributionwrapper"></span><span id="sphx-glr-backref-neuraxle-hyperparams-scipy-distributions-scipycontinuousdistributionwrapper"></span><span id="sphx-glr-backref-neuraxle-hyperparams-scipy-distributions-randint"></span><span id="sphx-glr-backref-neuraxle-hyperparams-scipy-distributions-quantized"></span><span id="sphx-glr-backref-neuraxle-hyperparams-scipy-distributions-poisson"></span><span id="sphx-glr-backref-neuraxle-hyperparams-scipy-distributions-normal"></span><span id="sphx-glr-backref-neuraxle-hyperparams-scipy-distributions-loguniform"></span><span id="sphx-glr-backref-neuraxle-hyperparams-scipy-distributions-lognormal"></span><span id="sphx-glr-backref-neuraxle-hyperparams-scipy-distributions-histogram"></span><span id="sphx-glr-backref-neuraxle-hyperparams-scipy-distributions-gaussian"></span><span id="sphx-glr-backref-neuraxle-hyperparams-scipy-distributions-fixedhyperparameter"></span><span id="sphx-glr-backref-neuraxle-hyperparams-scipy-distributions-distribution"></span><span id="sphx-glr-backref-neuraxle-hyperparams-scipy-distributions-choice"></span><span id="sphx-glr-backref-neuraxle-hyperparams-scipy-distributions-boolean"></span><span id="sphx-glr-backref-neuraxle-hyperparams-scipy-distributions-basecustomdiscretescipydistribution"></span><span id="sphx-glr-backref-neuraxle-hyperparams-scipy-distributions-basecustomcontinuousscipydistribution"></span></span><dl class="class">
+<dt id="neuraxle.hyperparams.scipy_distributions.BaseCustomContinuousScipyDistribution">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.scipy_distributions.</code><code class="descname">BaseCustomContinuousScipyDistribution</code><span class="sig-paren">(</span><em>name</em>, <em>min_included</em>, <em>max_included</em>, <em>null_default_value</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L338"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.BaseCustomContinuousScipyDistribution" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.BaseCustomContinuousScipyDistribution._abc_cache">
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.BaseCustomContinuousScipyDistribution._abc_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.BaseCustomContinuousScipyDistribution._abc_negative_cache">
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.BaseCustomContinuousScipyDistribution._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.BaseCustomContinuousScipyDistribution._abc_negative_cache_version">
+<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.BaseCustomContinuousScipyDistribution._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.BaseCustomContinuousScipyDistribution._abc_registry">
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.BaseCustomContinuousScipyDistribution._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.BaseCustomContinuousScipyDistribution._override_scipy_methods">
+<code class="descname">_override_scipy_methods</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L354"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.BaseCustomContinuousScipyDistribution._override_scipy_methods" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.BaseCustomContinuousScipyDistribution._pdf">
+<code class="descname">_pdf</code><span class="sig-paren">(</span><em>x</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L357"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.BaseCustomContinuousScipyDistribution._pdf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.scipy_distributions.BaseCustomDiscreteScipyDistribution">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.scipy_distributions.</code><code class="descname">BaseCustomDiscreteScipyDistribution</code><span class="sig-paren">(</span><em>name</em>, <em>min_included</em>, <em>max_included</em>, <em>null_default_value</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L310"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.BaseCustomDiscreteScipyDistribution" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.BaseCustomDiscreteScipyDistribution._abc_cache">
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.BaseCustomDiscreteScipyDistribution._abc_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.BaseCustomDiscreteScipyDistribution._abc_negative_cache">
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.BaseCustomDiscreteScipyDistribution._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.BaseCustomDiscreteScipyDistribution._abc_negative_cache_version">
+<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.BaseCustomDiscreteScipyDistribution._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.BaseCustomDiscreteScipyDistribution._abc_registry">
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.BaseCustomDiscreteScipyDistribution._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.BaseCustomDiscreteScipyDistribution._override_scipy_methods">
+<code class="descname">_override_scipy_methods</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L325"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.BaseCustomDiscreteScipyDistribution._override_scipy_methods" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.BaseCustomDiscreteScipyDistribution._pmf">
+<code class="descname">_pmf</code><span class="sig-paren">(</span><em>x</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L328"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.BaseCustomDiscreteScipyDistribution._pmf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.scipy_distributions.Boolean">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.scipy_distributions.</code><code class="descname">Boolean</code><span class="sig-paren">(</span><em>proba_is_true: Optional[float] = None</em>, <em>null_default_value=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L808"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Boolean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a random boolean hyperparameter.</p>
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Boolean._abc_cache">
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Boolean._abc_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Boolean._abc_negative_cache">
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Boolean._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Boolean._abc_negative_cache_version">
+<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Boolean._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Boolean._abc_registry">
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Boolean._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.Boolean._pmf">
+<code class="descname">_pmf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L838"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Boolean._pmf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the boolean probability mass function value at position <cite>x</cite>.
+:param x: value where the probability mass function is evaluated.
+:return: value of the probability mass function.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.scipy_distributions.Choice">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.scipy_distributions.</code><code class="descname">Choice</code><span class="sig-paren">(</span><em>choice_list: List</em>, <em>probas: Optional[List[float]] = None</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L866"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Choice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a random value from a choice list of possible value for this hyperparameter.</p>
+<p>When narrowed, the choice will only collapse to a single element when narrowed enough.
+For example, if there are 4 items in the list, only at a narrowing value of 0.25 that
+the first item will be kept alone.</p>
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Choice._abc_cache">
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Choice._abc_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Choice._abc_negative_cache">
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Choice._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Choice._abc_negative_cache_version">
+<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Choice._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Choice._abc_registry">
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Choice._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.Choice._pmf">
+<code class="descname">_pmf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L979"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Choice._pmf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the choice probability mass function value at position <cite>x</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – value where the probability mass function is evaluated.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>value of the probability mass function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.Choice.cdf">
+<code class="descname">cdf</code><span class="sig-paren">(</span><em>x</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L922"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Choice.cdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract method for cumulative distribution function value at <cite>x</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – value where the cumulative distribution function is evaluated.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The cumulative distribution function value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.Choice.max">
+<code class="descname">max</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L961"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Choice.max" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract method for obtaining maximal value that can sampled in distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>maximal value that can be sampled from distribution.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.Choice.mean">
+<code class="descname">mean</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L936"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Choice.mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate mean value (also called esperance) of the random variable.
+:return: mean value of the random variable.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.Choice.min">
+<code class="descname">min</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L958"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Choice.min" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract method for obtaining minimum value that can sampled in distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>minimal value that can be sampled from distribution.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.Choice.pdf">
+<code class="descname">pdf</code><span class="sig-paren">(</span><em>x</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L918"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Choice.pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract method for probability distribution function value at <cite>x</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – value where the probability distribution function is evaluated.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The probability distribution function value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.Choice.pmf">
+<code class="descname">pmf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L967"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Choice.pmf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the choice probability mass function value at position <cite>x</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – value where the probability mass function is evaluated.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>value of the probability mass function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.Choice.probabilities">
+<code class="descname">probabilities</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L906"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Choice.probabilities" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.Choice.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L912"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Choice.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample the random variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The randomly sampled value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.Choice.std">
+<code class="descname">std</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L964"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Choice.std" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base method to calculate distribution std value by taking sqrt of variance value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>distribution std value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.Choice.values">
+<code class="descname">values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L909"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Choice.values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.Choice.var">
+<code class="descname">var</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L946"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Choice.var" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate variance value of the random variable.
+:return: variance value of the random variable.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.scipy_distributions.Distribution">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.scipy_distributions.</code><code class="descname">Distribution</code><span class="sig-paren">(</span><em>momtype=1</em>, <em>a=None</em>, <em>b=None</em>, <em>xtol=1e-14</em>, <em>badvalue=None</em>, <em>name=None</em>, <em>longname=None</em>, <em>shapes=None</em>, <em>extradoc=None</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L333"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Distribution" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.Distribution._pdf">
+<code class="descname">_pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L334"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Distribution._pdf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.scipy_distributions.FixedHyperparameter">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.scipy_distributions.</code><code class="descname">FixedHyperparameter</code><span class="sig-paren">(</span><em>value</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L784"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.FixedHyperparameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is an hyperparameter that won’t change again, but that is still expressed as a distribution.</p>
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.FixedHyperparameter._abc_cache">
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.FixedHyperparameter._abc_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.FixedHyperparameter._abc_negative_cache">
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.FixedHyperparameter._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.FixedHyperparameter._abc_negative_cache_version">
+<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.FixedHyperparameter._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.FixedHyperparameter._abc_registry">
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.FixedHyperparameter._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.FixedHyperparameter._pdf">
+<code class="descname">_pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L802"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.FixedHyperparameter._pdf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.scipy_distributions.Gaussian">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.scipy_distributions.</code><code class="descname">Gaussian</code><span class="sig-paren">(</span><em>min_included: int</em>, <em>max_included: int</em>, <em>null_default_value: float = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L649"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Gaussian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gaussian distribution that inherits from <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.html#scipy.stats.rv_continuous">scipy.stats.rv_continuous</a></p>
+<p>Example usage :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gaussian_distribution</span> <span class="o">=</span> <span class="n">Gaussian</span><span class="p">(</span>
+    <span class="n">min_included</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">max_included</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">null_default_value</span><span class="o">=</span><span class="mf">0.0</span>
+<span class="p">)</span>
+
+<span class="k">assert</span> <span class="mf">0.0</span> <span class="o">&lt;=</span> <span class="n">gaussian_distribution</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mf">10.0</span>
+<span class="k">assert</span> <span class="n">gaussian_distribution</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.001</span>
+<span class="k">assert</span> <span class="n">gaussian_distribution</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.42</span>
+<span class="k">assert</span> <span class="mf">0.55</span> <span class="o">&gt;</span> <span class="n">gaussian_distribution</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mf">5.0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.45</span>
+<span class="k">assert</span> <span class="n">gaussian_distribution</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">GaussianScipyDistribution</span></code>,
+<a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper" title="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScipyDistributionWrapper</span></code></a>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">set_hyperparams_space()</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterDistribution</span></code>,
+<a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.hyperparams.space.HyperparameterSamples</span></code></a>,
+<a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="neuraxle.hyperparams.space.HyperparameterSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.hyperparams.space.HyperparameterSpace</span></code></a>,
+<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.BaseStep</span></code></a></p>
+</div>
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Gaussian._abc_cache">
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Gaussian._abc_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Gaussian._abc_negative_cache">
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Gaussian._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Gaussian._abc_negative_cache_version">
+<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Gaussian._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Gaussian._abc_registry">
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Gaussian._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.Gaussian._pdf">
+<code class="descname">_pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L692"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Gaussian._pdf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.scipy_distributions.Histogram">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.scipy_distributions.</code><code class="descname">Histogram</code><span class="sig-paren">(</span><em>histogram: numpy.histogram</em>, <em>null_default_value: float = None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L743"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Histogram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Histogram distribution that inherits from <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_histogram.html#scipy.stats.rv_histogram">scipy.stats.rv_histogram</a></p>
+<p>Example usage :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hist_dist</span> <span class="o">=</span> <span class="n">Histogram</span><span class="p">(</span>
+     <span class="n">histogram</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+     <span class="n">null_default_value</span><span class="o">=</span><span class="mf">0.0</span>
+<span class="p">)</span>
+
+<span class="k">assert</span> <span class="nb">min</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">hist_dist</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="nb">max</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="k">assert</span> <span class="mf">1.0</span> <span class="o">&gt;</span> <span class="n">hist_dist</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="n">hist_dist</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">))</span> <span class="o">==</span> <span class="mf">0.0</span>
+<span class="k">assert</span> <span class="n">hist_dist</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mf">0.001</span>
+<span class="k">assert</span> <span class="n">hist_dist</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">))</span> <span class="o">==</span> <span class="mf">1.0</span>
+<span class="k">assert</span> <span class="mf">0.55</span> <span class="o">&gt;</span> <span class="n">hist_dist</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">data</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mf">0.45</span>
+<span class="k">assert</span> <span class="n">hist_dist</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="p">))</span> <span class="o">==</span> <span class="mf">0.0</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterDistribution</span></code>,
+<a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper" title="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScipyDistributionWrapper</span></code></a>,
+<a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.Poisson" title="neuraxle.hyperparams.scipy_distributions.Poisson"><code class="xref py py-class docutils literal notranslate"><span class="pre">Poisson</span></code></a>,
+<a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.Gaussian" title="neuraxle.hyperparams.scipy_distributions.Gaussian"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gaussian</span></code></a>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">set_hyperparams_space()</span></code>,
+<a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code></a>,
+<a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="neuraxle.hyperparams.space.HyperparameterSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSpace</span></code></a>,
+<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p>
+</div>
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Histogram._abc_cache">
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Histogram._abc_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Histogram._abc_negative_cache">
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Histogram._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Histogram._abc_negative_cache_version">
+<code class="descname">_abc_negative_cache_version</code><em class="property"> = 59</em><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Histogram._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Histogram._abc_registry">
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Histogram._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.scipy_distributions.LogNormal">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.scipy_distributions.</code><code class="descname">LogNormal</code><span class="sig-paren">(</span><em>log2_space_mean: float</em>, <em>log2_space_std: float</em>, <em>hard_clip_min: float</em>, <em>hard_clip_max: float</em>, <em>null_default_value: float = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L582"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.LogNormal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a normal distribution.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">NormalScipyDistribution</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">set_hyperparams_space()</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterDistribution</span></code>,
+<a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper" title="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScipyDistributionWrapper</span></code></a>,
+<a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.hyperparams.space.HyperparameterSamples</span></code></a>,
+<a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="neuraxle.hyperparams.space.HyperparameterSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.hyperparams.space.HyperparameterSpace</span></code></a>,
+<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.BaseStep</span></code></a></p>
+</div>
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.LogNormal._abc_cache">
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.LogNormal._abc_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.LogNormal._abc_negative_cache">
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.LogNormal._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.LogNormal._abc_negative_cache_version">
+<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.LogNormal._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.LogNormal._abc_registry">
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.LogNormal._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.LogNormal._pdf">
+<code class="descname">_pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L637"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.LogNormal._pdf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.scipy_distributions.LogUniform">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.scipy_distributions.</code><code class="descname">LogUniform</code><span class="sig-paren">(</span><em>min_included: float</em>, <em>max_included: float</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L446"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.LogUniform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a LogUniform distribution.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">LogUniformScipyDistribution</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">set_hyperparams_space()</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterDistribution</span></code>,
+<a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper" title="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScipyDistributionWrapper</span></code></a>,
+<a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.hyperparams.space.HyperparameterSamples</span></code></a>,
+<a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="neuraxle.hyperparams.space.HyperparameterSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.hyperparams.space.HyperparameterSpace</span></code></a>,
+<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.BaseStep</span></code></a></p>
+</div>
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.LogUniform._abc_cache">
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.LogUniform._abc_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.LogUniform._abc_negative_cache">
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.LogUniform._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.LogUniform._abc_negative_cache_version">
+<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.LogUniform._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.LogUniform._abc_registry">
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.LogUniform._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.LogUniform._pdf">
+<code class="descname">_pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L487"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.LogUniform._pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the logUniform probability distribution value at position <cite>x</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – value where the probability distribution function is evaluated.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>value of the probability distribution function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.scipy_distributions.Normal">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.scipy_distributions.</code><code class="descname">Normal</code><span class="sig-paren">(</span><em>mean: float</em>, <em>std: float</em>, <em>hard_clip_min: float = None</em>, <em>hard_clip_max: float = None</em>, <em>null_default_value: float = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L503"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Normal" title="Permalink to this definition">¶</a></dt>
+<dd><p>LogNormal distribution that wraps a <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_continuous.html#scipy.stats.rv_continuous">continuous scipy distribution</a></p>
+<p>Example usage :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">distribution</span> <span class="o">=</span> <span class="n">LogNormal</span><span class="p">(</span>
+    <span class="n">min_included</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">max_included</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">null_default_value</span><span class="o">=</span><span class="mf">0.0</span>
+<span class="p">)</span>
+
+<span class="k">assert</span> <span class="mf">0.0</span> <span class="o">&lt;=</span> <span class="n">distribution</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mf">10.0</span>
+<span class="k">assert</span> <span class="n">distribution</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.001</span>
+<span class="k">assert</span> <span class="n">distribution</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.42</span>
+<span class="k">assert</span> <span class="mf">0.55</span> <span class="o">&gt;</span> <span class="n">distribution</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mf">5.0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.45</span>
+<span class="k">assert</span> <span class="n">distribution</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">LogNormalScipyDistribution</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">set_hyperparams_space()</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterDistribution</span></code>,
+<a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper" title="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScipyDistributionWrapper</span></code></a>,
+<a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.hyperparams.space.HyperparameterSamples</span></code></a>,
+<a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="neuraxle.hyperparams.space.HyperparameterSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.hyperparams.space.HyperparameterSpace</span></code></a>,
+<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.BaseStep</span></code></a></p>
+</div>
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Normal._abc_cache">
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Normal._abc_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Normal._abc_negative_cache">
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Normal._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Normal._abc_negative_cache_version">
+<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Normal._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Normal._abc_registry">
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Normal._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.Normal._pdf">
+<code class="descname">_pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L554"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Normal._pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the Normal probability distribution value at position <cite>x</cite>.
+:param x: value where the probability distribution function is evaluated.
+:return: value of the probability distribution function.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.scipy_distributions.Poisson">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.scipy_distributions.</code><code class="descname">Poisson</code><span class="sig-paren">(</span><em>min_included: float</em>, <em>max_included: float</em>, <em>null_default_value: float = None</em>, <em>mu=0.6</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L696"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Poisson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Poisson distribution that inherits from <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_histogram.html#scipy.stats.rv_histogram">scipy.stats.rv_discrete</a></p>
+<p>Example usage :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">poisson_distribution</span> <span class="o">=</span> <span class="n">Poisson</span><span class="p">(</span>
+    <span class="n">min_included</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">max_included</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span>
+    <span class="n">null_default_value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">mu</span><span class="o">=</span><span class="mf">5.0</span>
+<span class="p">)</span>
+
+<span class="n">rvs</span> <span class="o">=</span> <span class="p">[</span><span class="n">poisson_distribution</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">rvs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">rvs</span><span class="p">)</span>
+<span class="k">assert</span> <span class="mf">0.0</span> <span class="o">&lt;=</span> <span class="n">poisson_distribution</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mf">10.0</span>
+<span class="k">assert</span> <span class="n">poisson_distribution</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.01813278870782187</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">poisson_distribution</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="mf">0.006737946999085467</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">poisson_distribution</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mf">5.0</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.6159606548330632</span>
+<span class="k">assert</span> <span class="n">poisson_distribution</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.006737946999085467</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">set_hyperparams_space()</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">PoissonScipyDistribution</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterDistribution</span></code>,
+<a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper" title="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScipyDistributionWrapper</span></code></a>,
+<a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code></a>,
+<a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="neuraxle.hyperparams.space.HyperparameterSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSpace</span></code></a>,
+<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p>
+</div>
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Poisson._abc_cache">
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Poisson._abc_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Poisson._abc_negative_cache">
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Poisson._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Poisson._abc_negative_cache_version">
+<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Poisson._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Poisson._abc_registry">
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Poisson._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.Poisson._pmf">
+<code class="descname">_pmf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L739"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Poisson._pmf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.scipy_distributions.Quantized">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.scipy_distributions.</code><code class="descname">Quantized</code><span class="sig-paren">(</span><em>hd: neuraxle.hyperparams.distributions.HyperparameterDistribution = None</em>, <em>hds: List[neuraxle.hyperparams.distributions.HyperparameterDistribution] = None</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L995"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Quantized" title="Permalink to this definition">¶</a></dt>
+<dd><p>A quantized wrapper for another distribution: will round() the rvs number.</p>
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Quantized._abc_cache">
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Quantized._abc_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Quantized._abc_negative_cache">
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Quantized._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Quantized._abc_negative_cache_version">
+<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Quantized._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Quantized._abc_registry">
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Quantized._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.Quantized._pdf">
+<code class="descname">_pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L1028"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Quantized._pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the Quantized probability mass function value at position <cite>x</cite> of a continuous distribution.
+:param x: value where the probability mass function is evaluated.
+:return: value of the probability mass function.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.scipy_distributions.RandInt">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.scipy_distributions.</code><code class="descname">RandInt</code><span class="sig-paren">(</span><em>min_included: int</em>, <em>max_included: int</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L362"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.RandInt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rand int scipy distribution. Check out <a class="reference external" href="https://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.stats.randint.html">scipy.stats.randint for more info</a></p>
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.RandInt._abc_cache">
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.RandInt._abc_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.RandInt._abc_negative_cache">
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.RandInt._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.RandInt._abc_negative_cache_version">
+<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.RandInt._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.RandInt._abc_registry">
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.RandInt._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.RandInt.max">
+<code class="descname">max</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L386"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.RandInt.max" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract method for obtaining maximal value that can sampled in distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>maximal value that can be sampled from distribution.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.RandInt.mean">
+<code class="descname">mean</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L380"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.RandInt.mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract method for calculating distribution mean value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>distribution mean value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.RandInt.median">
+<code class="descname">median</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L383"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.RandInt.median" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.RandInt.min">
+<code class="descname">min</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L377"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.RandInt.min" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract method for obtaining minimum value that can sampled in distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>minimal value that can be sampled from distribution.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyContinuousDistributionWrapper">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.scipy_distributions.</code><code class="descname">ScipyContinuousDistributionWrapper</code><span class="sig-paren">(</span><em>scipy_distribution</em>, <em>null_default_value=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L290"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyContinuousDistributionWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyContinuousDistributionWrapper._abc_cache">
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyContinuousDistributionWrapper._abc_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyContinuousDistributionWrapper._abc_negative_cache">
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyContinuousDistributionWrapper._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyContinuousDistributionWrapper._abc_negative_cache_version">
+<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyContinuousDistributionWrapper._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyContinuousDistributionWrapper._abc_registry">
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyContinuousDistributionWrapper._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDiscreteDistributionWrapper">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.scipy_distributions.</code><code class="descname">ScipyDiscreteDistributionWrapper</code><span class="sig-paren">(</span><em>scipy_distribution</em>, <em>null_default_value=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L300"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDiscreteDistributionWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDiscreteDistributionWrapper._abc_cache">
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDiscreteDistributionWrapper._abc_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDiscreteDistributionWrapper._abc_negative_cache">
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDiscreteDistributionWrapper._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDiscreteDistributionWrapper._abc_negative_cache_version">
+<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDiscreteDistributionWrapper._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDiscreteDistributionWrapper._abc_registry">
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDiscreteDistributionWrapper._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.scipy_distributions.</code><code class="descname">ScipyDistributionWrapper</code><span class="sig-paren">(</span><em>scipy_distribution</em>, <em>**scipy_distribution_arguments</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L23"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for a distribution that wraps a scipy distribution.</p>
+<p>Usage example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">distribution</span> <span class="o">=</span> <span class="n">ScipyDistributionWrapper</span><span class="p">(</span>
+    <span class="n">scipy_distribution</span><span class="o">=</span><span class="n">rv_histogram</span><span class="p">(</span><span class="n">histogram</span><span class="o">=</span><span class="n">histogram</span><span class="p">),</span>
+    <span class="n">null_default_value</span><span class="o">=</span><span class="n">null_default_value</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterDistribution</span></code></p>
+</div>
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper._abc_cache">
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper._abc_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper._abc_negative_cache">
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper._abc_negative_cache_version">
+<code class="descname">_abc_negative_cache_version</code><em class="property"> = 59</em><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper._abc_registry">
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper._override_scipy_methods">
+<code class="descname">_override_scipy_methods</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L44"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper._override_scipy_methods" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.cdf">
+<code class="descname">cdf</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.cdf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.entropy">
+<code class="descname">entropy</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.entropy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.expect">
+<code class="descname">expect</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.expect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.fit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.fit_loc_scale">
+<code class="descname">fit_loc_scale</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.fit_loc_scale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.freeze">
+<code class="descname">freeze</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.freeze" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.interval">
+<code class="descname">interval</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.interval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.isf">
+<code class="descname">isf</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.isf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.logcdf">
+<code class="descname">logcdf</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.logcdf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.logpdf">
+<code class="descname">logpdf</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.logpdf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.logsf">
+<code class="descname">logsf</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.logsf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.max">
+<code class="descname">max</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.mean">
+<code class="descname">mean</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.mean" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.median">
+<code class="descname">median</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.median" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.min">
+<code class="descname">min</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.min" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.moment">
+<code class="descname">moment</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.moment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.nnlf">
+<code class="descname">nnlf</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.nnlf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.pdf">
+<code class="descname">pdf</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.pdf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.ppf">
+<code class="descname">ppf</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.ppf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.rvs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.sf">
+<code class="descname">sf</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.sf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.stats">
+<code class="descname">stats</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.stats" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.std">
+<code class="descname">std</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.std" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.support">
+<code class="descname">support</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.support" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.to_sk_learn">
+<code class="descname">to_sk_learn</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L286"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.to_sk_learn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.var">
+<code class="descname">var</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L15"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper.var" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.scipy_distributions.Uniform">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.scipy_distributions.</code><code class="descname">Uniform</code><span class="sig-paren">(</span><em>min_included: float</em>, <em>max_included: float</em>, <em>null_default_value=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L390"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Uniform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a uniform distribution.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">UniformScipyDistribution</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">set_hyperparams_space()</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterDistribution</span></code>,
+<a class="reference internal" href="#neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper" title="neuraxle.hyperparams.scipy_distributions.ScipyDistributionWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScipyDistributionWrapper</span></code></a>,
+<a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.hyperparams.space.HyperparameterSamples</span></code></a>,
+<a class="reference internal" href="neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="neuraxle.hyperparams.space.HyperparameterSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.hyperparams.space.HyperparameterSpace</span></code></a>,
+<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.BaseStep</span></code></a></p>
+</div>
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Uniform._abc_cache">
+<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Uniform._abc_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Uniform._abc_negative_cache">
+<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Uniform._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Uniform._abc_negative_cache_version">
+<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Uniform._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.hyperparams.scipy_distributions.Uniform._abc_registry">
+<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Uniform._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.scipy_distributions.Uniform._pdf">
+<code class="descname">_pdf</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L429"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.Uniform._pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the Uniform probability distribution value at position <cite>x</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – value where the probability distribution function is evaluated.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>value of the probability distribution function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="neuraxle.hyperparams.scipy_distributions.get_index_in_list_with_bool">
+<code class="descclassname">neuraxle.hyperparams.scipy_distributions.</code><code class="descname">get_index_in_list_with_bool</code><span class="sig-paren">(</span><em>choice_list: List[Any], value: Any</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L853"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.get_index_in_list_with_bool" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="neuraxle.hyperparams.scipy_distributions.scipy_method">
+<code class="descclassname">neuraxle.hyperparams.scipy_distributions.</code><code class="descname">scipy_method</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/hyperparams/scipy_distributions.py#L14"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.scipy_distributions.scipy_method" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="neuraxle.hyperparams.space.html" class="btn btn-neutral float-right" title="neuraxle.hyperparams.space" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="neuraxle.hyperparams.distributions.html" class="btn btn-neutral float-left" title="neuraxle.hyperparams.distributions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p style="float:left;">
+        &copy; Copyright 2021 The Neuraxle Authors. All rights reserved. Apache License, Version 2.0.
+
+    </p>
+
+    <p style="float:right;">
+      <a href="https://www.neuraxio.com/policies/privacy-policy">Privacy Policy</a>
+    </p>
+
+  </div>
+   
+
+
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-139527241-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>
