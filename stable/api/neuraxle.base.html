@@ -952,15 +952,18 @@ to hash hyperparameters, and data inputs ids together after each transform.</p>
 <code class="descname">hash</code><span class="sig-paren">(</span><em>current_ids: List[str], hyperparameters: neuraxle.hyperparams.space.HyperparameterSamples, data_inputs: Iterable</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L80"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseHasher.hash" title="Permalink to this definition">¶</a></dt>
 <dd><p>Hash <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>.current_ids, data inputs, and hyperparameters together.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>current_ids</strong> – current hashed ids (can be None if this function has not been called yet)</p></li>
-<li><p><strong>hyperparameters</strong> – step hyperparameters to hash with current ids</p></li>
-<li><p><strong>data_inputs</strong> – data inputs to hash current ids for</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>current_ids</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>) – current hashed ids (can be None if this function has not been called yet)</p></li>
+<li><p><strong>hyperparameters</strong> (<a class="reference internal" href="hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code></a>) – step hyperparameters to hash with current ids</p></li>
+<li><p><strong>data_inputs</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code></a>) – data inputs to hash current ids for</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the new hashed current ids</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the new hashed current ids</p>
 </dd>
 </dl>
 </dd></dl>
@@ -970,14 +973,17 @@ to hash hyperparameters, and data inputs ids together after each transform.</p>
 <code class="descname">single_hash</code><span class="sig-paren">(</span><em>current_id: str</em>, <em>hyperparameters: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L68"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.BaseHasher.single_hash" title="Permalink to this definition">¶</a></dt>
 <dd><p>Hash summary id, and hyperparameters together.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>current_id</strong> – current hashed id</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>current_id</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – current hashed id</p></li>
 <li><p><strong>hyperparameters</strong> (<a class="reference internal" href="hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><em>HyperparameterSamples</em></a>) – step hyperparameters to hash with current ids</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the new hashed current id</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the new hashed current id</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1313,7 +1319,7 @@ if applicable) be replaced by the <code class="docutils literal notranslate"><sp
 <dd><p>Set the name of the pipeline step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – a string.</p>
+<dd class="field-odd"><p><strong>name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – a string.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>self</p>
@@ -1355,7 +1361,7 @@ A setup function should set the self.is_initialized to True when called.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> – execution context</p>
+<dd class="field-odd"><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>self</p>
@@ -1449,7 +1455,7 @@ First item in execution context parents is root, second is nested, and so on. Th
 <dd><p>Creates the directory path for the current execution context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>is_absolute</strong> – bool to say if we want to add root to the path or not</p>
+<dd class="field-odd"><p><strong>is_absolute</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – bool to say if we want to add root to the path or not</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>current context path</p>
@@ -1462,11 +1468,14 @@ First item in execution context parents is root, second is nested, and so on. Th
 <code class="descname">get_service</code><span class="sig-paren">(</span><em>service_abstract_class_type: Type</em><span class="sig-paren">)</span> &#x2192; object<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L409"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.get_service" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the registered instance for the given abstract class type.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>service_abstract_class_type</strong> – base type</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">object</span></code></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>self</p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>service_abstract_class_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code></a>) – base type</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>self</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1487,11 +1496,14 @@ First item in execution context parents is root, second is nested, and so on. Th
 <code class="descname">has_service</code><span class="sig-paren">(</span><em>service_abstract_class_type: Type</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L426"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ExecutionContext.has_service" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a bool indicating if the service has been registered.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>service_abstract_class_type</strong> – base type</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>if the service registered or not</p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>service_abstract_class_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code></a>) – base type</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>if the service registered or not</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1502,7 +1514,7 @@ First item in execution context parents is root, second is nested, and so on. Th
 <dd><p>Load full dump at the given path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>path</strong> – pipeline step path</p>
+<dd class="field-odd"><p><strong>path</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – pipeline step path</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>loaded step</p>
@@ -1580,8 +1592,8 @@ First item in execution context parents is root, second is nested, and so on. Th
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>service_abstract_class_type</strong> – base type</p></li>
-<li><p><strong>service_instance</strong> – instance</p></li>
+<li><p><strong>service_abstract_class_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code></a>) – base type</p></li>
+<li><p><strong>service_instance</strong> (<code class="docutils literal notranslate"><span class="pre">object</span></code>) – instance</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1597,7 +1609,7 @@ First item in execution context parents is root, second is nested, and so on. Th
 This method is called from a step checkpointer inside a <code class="xref py py-class docutils literal notranslate"><span class="pre">Checkpoint</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>full_dump</strong> – save full pipeline dump to be able to load everything without source code (false by default).</p>
+<dd class="field-odd"><p><strong>full_dump</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – save full pipeline dump to be able to load everything without source code (false by default).</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p></p>
@@ -1626,7 +1638,7 @@ This method is called from a step checkpointer inside a <code class="xref py py-
 <dd><p>Set the instance’s execution phase to given phase.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>phase</strong> – </p>
+<dd class="field-odd"><p><strong>phase</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionPhase" title="neuraxle.base.ExecutionPhase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionPhase</span></code></a>) – </p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p></p>
@@ -1645,7 +1657,7 @@ This method is called from a step checkpointer inside a <code class="xref py py-
 <dd><p>Register abstract class type instances.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>services</strong> – instance</p>
+<dd class="field-odd"><p><strong>services</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>) – instance</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>self</p>
@@ -1807,15 +1819,18 @@ A class which inherits from ForceHandleMixin can’t use BaseStep’s  _fit_data
 <code class="descname">_encapsulate_data</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em>, <em>execution_mode=None</em><span class="sig-paren">)</span> &#x2192; Tuple[neuraxle.base.ExecutionContext, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L3600"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceHandleMixin._encapsulate_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Encapsulate data with <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
 <li><p><strong>data_inputs</strong> – data inputs</p></li>
 <li><p><strong>expected_outputs</strong> – expected outputs</p></li>
 <li><p><strong>execution_mode</strong> – execution mode</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>execution context, data container</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>execution context, data container</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1856,11 +1871,14 @@ A class which inherits from ForceHandleMixin can’t use BaseStep’s  _fit_data
 <code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; Tuple[neuraxle.base.HandleOnlyMixin, Iterable]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L3587"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceHandleMixin.fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Using <a class="reference internal" href="#neuraxle.base._FittableStep.handle_fit_transform" title="neuraxle.base._FittableStep.handle_fit_transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">handle_fit_transform()</span></code></a>, fit and transform step with the given data inputs, and expected outputs.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data_inputs</strong> – data inputs</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>fitted self, outputs</p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>data_inputs</strong> – data inputs</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>fitted self, outputs</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1870,11 +1888,14 @@ A class which inherits from ForceHandleMixin can’t use BaseStep’s  _fit_data
 <code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span> &#x2192; Iterable<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L3561"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.ForceHandleMixin.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Using <a class="reference internal" href="#neuraxle.base._TransformerStep.handle_transform" title="neuraxle.base._TransformerStep.handle_transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">handle_transform()</span></code></a>, transform data inputs.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data_inputs</strong> – data inputs</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code></a></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>outputs</p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>data_inputs</strong> – data inputs</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>outputs</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1947,14 +1968,17 @@ Used by <a class="reference internal" href="#neuraxle.base._HasSavers.load" titl
 <code class="descname">load</code><span class="sig-paren">(</span><em>context: neuraxle.base.ExecutionContext</em>, <em>full_dump=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L3726"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.FullDumpLoader.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load the full dump of a pipeline step.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>context</strong> – execution context</p></li>
-<li><p><strong>full_dump</strong> – load full dump or not (always true, inherited from <a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
+<li><p><strong>full_dump</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – load full dump or not (always true, inherited from <a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>loaded step</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>loaded step</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1969,6 +1993,8 @@ Used by <a class="reference internal" href="#neuraxle.base._HasSavers.load" titl
 <dt id="neuraxle.base.GlobalServiceAssertionExecutorMixin._assert">
 <code class="descname">_assert</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L3863"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.GlobalServiceAssertionExecutorMixin._assert" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calls _global_assert_has_services on GlobalyRetrievableServiceAssertionWrapper instances that are (recursively) children of this node.
+:type context: <a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
+:type data_container: <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>
 :param context: The ExecutionContext for which we test the presence of service.</p>
 </dd></dl>
 
@@ -2004,6 +2030,8 @@ Used by <a class="reference internal" href="#neuraxle.base._HasSavers.load" titl
 <dd><p>Intended to be used in a .apply(‘_global_assert_has_services’) call from the outside.
 Is used to test the presence of services at the root of the pipeline.</p>
 <p>See also GlobalServiceAssertionExecutorMixin._apply_service_assertions
+:rtype: <a class="reference internal" href="hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.RecursiveDict" title="neuraxle.hyperparams.space.RecursiveDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">RecursiveDict</span></code></a>
+:type context: <a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
 :params context : the execution context</p>
 </dd></dl>
 
@@ -2102,15 +2130,18 @@ to hash hyperparameters, and data inputs ids together after each transform.</p>
 <dd><p>Hash <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>.current_ids, data inputs, and hyperparameters together
 using  <a class="reference external" href="https://docs.python.org/3/library/hashlib.html">hashlib.md5</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
 <li><p><strong>current_ids</strong> – current hashed ids (can be None if this function has not been called yet)</p></li>
 <li><p><strong>hyperparameters</strong> – step hyperparameters to hash with current ids</p></li>
 <li><p><strong>data_inputs</strong> – data inputs to hash current ids for</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the new hashed current ids</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the new hashed current ids</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2120,14 +2151,17 @@ using  <a class="reference external" href="https://docs.python.org/3/library/has
 <code class="descname">single_hash</code><span class="sig-paren">(</span><em>current_id: str</em>, <em>hyperparameters: neuraxle.hyperparams.space.HyperparameterSamples</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L108"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.HashlibMd5Hasher.single_hash" title="Permalink to this definition">¶</a></dt>
 <dd><p>Hash summary id, and hyperparameters together.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>current_id</strong> – current hashed id</p></li>
-<li><p><strong>hyperparameters</strong> – step hyperparameters to hash with current ids</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>current_id</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – current hashed id</p></li>
+<li><p><strong>hyperparameters</strong> (<a class="reference internal" href="hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code></a>) – step hyperparameters to hash with current ids</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the new hashed current id</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the new hashed current id</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2163,15 +2197,18 @@ using  <a class="reference external" href="https://docs.python.org/3/library/has
 <dd><p>Hash <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>.current_ids, data inputs, and hyperparameters together
 using  <a class="reference external" href="https://docs.python.org/3/library/hashlib.html">hashlib.md5</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
 <li><p><strong>current_ids</strong> – current hashed ids (can be None if this function has not been called yet)</p></li>
 <li><p><strong>hyperparameters</strong> – step hyperparameters to hash with current ids</p></li>
 <li><p><strong>data_inputs</strong> – data inputs to hash current ids for</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the new hashed current ids</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the new hashed current ids</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2315,14 +2352,17 @@ The saver receives a <em>stripped</em> version of the step so that it can be sav
 <code class="descname">can_load</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseTransformer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L258"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.JoblibStepSaver.can_load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns true if the given step has been saved with the given execution context.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
 <li><p><strong>step</strong> – step that might have been saved</p></li>
 <li><p><strong>context</strong> – execution context</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>if we can load the step with the given context</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>if we can load the step with the given context</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2399,7 +2439,7 @@ The saver receives a <em>stripped</em> version of the step so that it can be sav
 <dd><p>Assert that all the necessary services are provided in the execution context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> – The ExecutionContext for which we test the presence of service.</p>
+<dd class="field-odd"><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – The ExecutionContext for which we test the presence of service.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2467,7 +2507,7 @@ The saver receives a <em>stripped</em> version of the step so that it can be sav
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>step</strong> – step to load</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -2486,14 +2526,17 @@ The saver receives a <em>stripped</em> version of the step so that it can be sav
 <li><p>Save meta step with wrapped step savers.</p></li>
 </ol>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#neuraxle.base.MetaStep" title="neuraxle.base.MetaStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaStep</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
 <li><p><strong>step</strong> – meta step to save</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2638,9 +2681,9 @@ For example, <code class="xref py py-class docutils literal notranslate"><span c
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
-<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
-<li><p><strong>warn</strong> – (verbose) wheter or not to warn about the inexistence of the method.</p></li>
+<li><p><strong>new_method</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – the method to replace transform with, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
+<li><p><strong>method_to_assign_to</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – the method to which the new method will be assigned to, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
+<li><p><strong>warn</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – (verbose) wheter or not to warn about the inexistence of the method.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -2659,11 +2702,14 @@ For example, <code class="xref py py-class docutils literal notranslate"><span c
 <code class="descname">set_step</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseTransformer</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L2548"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.MetaStepMixin.set_step" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set wrapped step to the given step.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>step</strong> – new wrapped step</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>self</p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>step</strong> (<a class="reference internal" href="#neuraxle.base.BaseTransformer" title="neuraxle.base.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTransformer</span></code></a>) – new wrapped step</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>self</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2686,8 +2732,8 @@ For example, <code class="xref py py-class docutils literal notranslate"><span c
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>new_base_step</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the object it will mutate to will be this provided new_base_step.</p></li>
-<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
-<li><p><strong>new_method</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the new_method will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>method_to_assign_to</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_method</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the new_method will be the one that is used on the provided new_base_step.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -2773,14 +2819,17 @@ Transform method is automatically implemented as changing nothing.</p>
 <code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L2818"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.NonTransformableMixin._transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do nothing - return the same data.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – data container</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>data container</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>data container</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2830,14 +2879,17 @@ Transform method is automatically implemented as changing nothing.</p>
 <dd><p>Returns True if a step can be resumed with the given the data container and execution context.
 See Checkpoint class documentation for more details on how a resumable checkpoint works.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – data container to resume from</p></li>
-<li><p><strong>context</strong> – execution context to resume from</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container to resume from</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context to resume from</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>if we can resume</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>if we can resume</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2873,7 +2925,7 @@ See Checkpoint class documentation for more details on how a resumable checkpoin
 <dd><p>Inject the given context and test service assertions (if any are appliable) before processing the wrapped step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data_container</strong> – data container to process</p>
+<dd class="field-odd"><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container to process</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>data container, execution context</p>
@@ -2898,14 +2950,17 @@ See Checkpoint class documentation for more details on how a resumable checkpoin
 <code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L3459"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TransformHandlerOnlyMixin._transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform data container with the given execution context.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – data container</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>transformed data container</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>transformed data container</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2959,7 +3014,7 @@ TruncableJoblibStepSaver saves, and loads all of the sub steps using their saver
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>step</strong> – step to load</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -2980,7 +3035,7 @@ TruncableJoblibStepSaver saves, and loads all of the sub steps using their saver
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>step</strong> – step to save</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -3034,7 +3089,7 @@ before the index into the current steps</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>saved_pipeline</strong> – saved pipeline</p></li>
-<li><p><strong>index</strong> – step index</p></li>
+<li><p><strong>index</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – step index</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -3048,11 +3103,14 @@ before the index into the current steps</p>
 <code class="descname">_patch_missing_names</code><span class="sig-paren">(</span><em>steps_as_tuple: List[Union[Tuple[str, neuraxle.base.BaseTransformer], neuraxle.base.BaseTransformer]]</em><span class="sig-paren">)</span> &#x2192; List[Union[Tuple[str, neuraxle.base.BaseTransformer], neuraxle.base.BaseTransformer]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L3030"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps._patch_missing_names" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make sure that each sub step has a unique name, and add a name to the sub steps that don’t have one already.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>steps_as_tuple</strong> – a NamedTupleList</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a NamedTupleList with fixed names</p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>steps_as_tuple</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>) – a NamedTupleList</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a NamedTupleList with fixed names</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3074,7 +3132,7 @@ Ensure uniqueness with the names yet parameter.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>step_name</strong> – step name</p></li>
 <li><p><strong>class_name</strong> – class name</p></li>
-<li><p><strong>names_yet</strong> – names already taken</p></li>
+<li><p><strong>names_yet</strong> (<code class="docutils literal notranslate"><span class="pre">set</span></code>) – names already taken</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -3099,11 +3157,14 @@ Ensure uniqueness with the names yet parameter.</p>
 <dd><p>If some steps are not of type BaseStep, we’ll try to make them of this type. For instance, sklearn objects
 will be wrapped by a SKLearnWrapper here.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>steps_as_tuple</strong> – a list of steps or of named tuples of steps (e.g.: NamedTupleList)</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a NamedTupleList</p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>steps_as_tuple</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>) – a list of steps or of named tuples of steps (e.g.: NamedTupleList)</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a NamedTupleList</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3114,7 +3175,7 @@ will be wrapped by a SKLearnWrapper here.</p>
 <dd><p>Add an item to steps as tuple.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>item</strong> – item tuple (step name, step)</p>
+<dd class="field-odd"><p><strong>item</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code>) – item tuple (step name, step)</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>self</p>
@@ -3127,14 +3188,17 @@ will be wrapped by a SKLearnWrapper here.</p>
 <code class="descname">are_steps_before_index_the_same</code><span class="sig-paren">(</span><em>other: neuraxle.base.TruncableSteps</em>, <em>index: int</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L2944"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.are_steps_before_index_the_same" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns true if self.steps before index are the same as other.steps before index.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
 <li><p><strong>other</strong> – other truncable steps to compare</p></li>
-<li><p><strong>index</strong> – max step index to compare</p></li>
+<li><p><strong>index</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – max step index to compare</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>bool</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3145,7 +3209,7 @@ will be wrapped by a SKLearnWrapper here.</p>
 <dd><p>Returns true if truncable steps end with a step of the given type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>step_type</strong> – step type</p>
+<dd class="field-odd"><p><strong>step_type</strong> (<code class="docutils literal notranslate"><span class="pre">type</span></code>) – step type</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>if truncable steps ends with the given step type</p>
@@ -3198,9 +3262,9 @@ will be wrapped by a SKLearnWrapper here.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_method</strong> – the method to replace transform with.</p></li>
-<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to.</p></li>
-<li><p><strong>warn</strong> – (verbose) wheter or not to warn about the inexistence of the method.</p></li>
+<li><p><strong>new_method</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – the method to replace transform with.</p></li>
+<li><p><strong>method_to_assign_to</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – the method to which the new method will be assigned to.</p></li>
+<li><p><strong>warn</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – (verbose) wheter or not to warn about the inexistence of the method.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -3252,11 +3316,14 @@ will be wrapped by a SKLearnWrapper here.</p>
 <code class="descname">popitem</code><span class="sig-paren">(</span><em>key=None</em><span class="sig-paren">)</span> &#x2192; Tuple[str, neuraxle.base.BaseTransformer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L3296"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.popitem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pop the last step, or the step with the given key</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>key</strong> – step name to pop, or None</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>last step item</p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>key</strong> – step name to pop, or None</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last step item</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3267,7 +3334,7 @@ will be wrapped by a SKLearnWrapper here.</p>
 <dd><p>Set steps as tuple.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>steps_as_tuple</strong> – list of tuple containing step name and step</p>
+<dd class="field-odd"><p><strong>steps_as_tuple</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>) – list of tuple containing step name and step</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p></p>
@@ -3295,11 +3362,14 @@ will be wrapped by a SKLearnWrapper here.</p>
 <code class="descname">split</code><span class="sig-paren">(</span><em>step_type: type</em><span class="sig-paren">)</span> &#x2192; List[neuraxle.base.TruncableSteps]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L3355"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base.TruncableSteps.split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Split truncable steps by a step class name.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>step_type</strong> – step class type to split from.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>list of truncable steps containing the splitted steps</p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>step_type</strong> (<code class="docutils literal notranslate"><span class="pre">type</span></code>) – step class type to split from.</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of truncable steps containing the splitted steps</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3441,8 +3511,8 @@ It allows the step to apply side effects before calling the real handler method.
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – data container to fit on</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container to fit on</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -3458,8 +3528,8 @@ It allows the step to apply side effects before calling the real handler method.
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – data container to fit on</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container to fit on</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -3477,8 +3547,8 @@ The custom method fit_data_container replaces _fit_data_container.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – the data container to transform</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to transform</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -3501,8 +3571,8 @@ The custom method fit_transform_data_container replaces <a class="reference inte
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – the data container to transform</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to transform</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -3523,14 +3593,17 @@ The custom method fit_transform_data_container replaces <a class="reference inte
 The custom method to override is transform_data_container.
 The custom method transform_data_container replaces <a class="reference internal" href="#neuraxle.base._TransformerStep._transform_data_container" title="neuraxle.base._TransformerStep._transform_data_container"><code class="xref py py-func docutils literal notranslate"><span class="pre">_transform_data_container()</span></code></a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – the data container to transform</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to transform</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>transformed data container</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>transformed data container</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -3547,8 +3620,8 @@ The custom method transform_data_container replaces <a class="reference internal
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – data container to transform</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container to transform</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -3575,14 +3648,17 @@ See <a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle
 <code class="descname">_did_fit</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L1089"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._FittableStep._did_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply side effects before fit is called.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – data container</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>(data container, execution context)</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>(data container, execution context)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3592,14 +3668,17 @@ See <a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle
 <code class="descname">_did_fit_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L1196"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._FittableStep._did_fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply side effects after fit transform.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – data container</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>(fitted self, data container)</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>(fitted self, data container)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3611,8 +3690,8 @@ See <a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – data container</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -3628,8 +3707,8 @@ See <a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – data container</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -3645,8 +3724,8 @@ See <a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – data container</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -3662,8 +3741,8 @@ See <a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – data container</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -3714,8 +3793,8 @@ The default behavior is to rehash current ids with the step hyperparameters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – the data container to transform</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to transform</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -3732,8 +3811,8 @@ The default behavior is to rehash current ids with the step hyperparameters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – the data container to transform</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to transform</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -3792,14 +3871,17 @@ current estimator will become</p>
 <dd><p>Apply method to root, and children steps.
 Split the root, and children values inside the arguments of type RecursiveDict.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.RecursiveDict" title="neuraxle.hyperparams.space.RecursiveDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">RecursiveDict</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
 <li><p><strong>method</strong> – str or callable function to apply</p></li>
-<li><p><strong>ra</strong> – recursive arguments</p></li>
+<li><p><strong>ra</strong> (<a class="reference internal" href="#neuraxle.base._RecursiveArguments" title="neuraxle.base._RecursiveArguments"><code class="xref py py-class docutils literal notranslate"><span class="pre">_RecursiveArguments</span></code></a>) – recursive arguments</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
 </dd>
 </dl>
 </dd></dl>
@@ -3856,11 +3938,14 @@ Hashers hash by hyperparameters, and source code.</p>
 <dd><p>Hash data inputs, current ids, and hyperparameters together using self.hashers.
 This is used to create unique ids for the data checkpoints.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data_container</strong> – data container</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>hashed current ids</p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>hashed current ids</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -3898,11 +3983,14 @@ This is used to create unique ids for the data checkpoints.</p>
 <dd><p>Hash data inputs, current ids, and hyperparameters together using self.hashers.
 This is used to create unique ids for the data checkpoints.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data_container</strong> – data container</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>hashed current ids</p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>hashed current ids</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -4042,7 +4130,7 @@ Hyperparameters can not only be passed in the constructor, but also be set by th
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>hyperparams</strong> – hyperparameters</p>
+<dd class="field-odd"><p><strong>hyperparams</strong> (<a class="reference internal" href="hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code></a>) – hyperparameters</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>self</p>
@@ -4108,7 +4196,7 @@ This can be useful to add more hyperparameters to the existing ones without flus
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>hyperparams</strong> – hyperparameters</p>
+<dd class="field-odd"><p><strong>hyperparams</strong> (<a class="reference internal" href="hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code></a>) – hyperparameters</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>self</p>
@@ -4209,7 +4297,7 @@ See <a class="reference internal" href="#neuraxle.base.BaseStep" title="neuraxle
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>hyperparams_space</strong> – hyperparameters space</p>
+<dd class="field-odd"><p><strong>hyperparams_space</strong> (<a class="reference internal" href="hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="neuraxle.hyperparams.space.HyperparameterSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSpace</span></code></a>) – hyperparameters space</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>self</p>
@@ -4252,7 +4340,7 @@ This can be useful to add more hyperparameter spaces to the existing ones withou
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>hyperparams_space</strong> – hyperparameters space</p>
+<dd class="field-odd"><p><strong>hyperparams_space</strong> (<a class="reference internal" href="hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="neuraxle.hyperparams.space.HyperparameterSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSpace</span></code></a>) – hyperparameters space</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>self</p>
@@ -4316,9 +4404,9 @@ to assign <code class="docutils literal notranslate"><span class="pre">predict_p
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>new_method</strong> – the method to replace transform with, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
-<li><p><strong>method_to_assign_to</strong> – the method to which the new method will be assigned to, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
-<li><p><strong>warn</strong> – (verbose) wheter or not to warn about the inexistence of the method.</p></li>
+<li><p><strong>new_method</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – the method to replace transform with, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
+<li><p><strong>method_to_assign_to</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – the method to which the new method will be assigned to, if there is no pending <code class="docutils literal notranslate"><span class="pre">will_mutate_to</span></code> call.</p></li>
+<li><p><strong>warn</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – (verbose) wheter or not to warn about the inexistence of the method.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -4357,8 +4445,8 @@ the object to new_base_step.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>new_base_step</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the object it will mutate to will be this provided new_base_step.</p></li>
-<li><p><strong>method_to_assign_to</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
-<li><p><strong>new_method</strong> – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the new_method will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>method_to_assign_to</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the method_to_affect will be the one that is used on the provided new_base_step.</p></li>
+<li><p><strong>new_method</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – if it is not None, upon calling <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, the new_method will be the one that is used on the provided new_base_step.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -4409,16 +4497,19 @@ The apply <a class="reference internal" href="#neuraxle.base._HasRecursiveMethod
 <code class="descname">apply</code><span class="sig-paren">(</span><em>method: Union[str, Callable], ra: neuraxle.base._RecursiveArguments = None, *args, **kwargs</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.RecursiveDict<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L740"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._HasRecursiveMethods.apply" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply a method to a step and its children.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.RecursiveDict" title="neuraxle.hyperparams.space.RecursiveDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">RecursiveDict</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
 <li><p><strong>method</strong> – method name that need to be called on all steps</p></li>
-<li><p><strong>ra</strong> – recursive arguments</p></li>
+<li><p><strong>ra</strong> (<a class="reference internal" href="#neuraxle.base._RecursiveArguments" title="neuraxle.base._RecursiveArguments"><code class="xref py py-class docutils literal notranslate"><span class="pre">_RecursiveArguments</span></code></a>) – recursive arguments</p></li>
 <li><p><strong>args</strong> – any additional arguments to be passed to the method</p></li>
 <li><p><strong>kwargs</strong> – any additional positional arguments to be passed to the method</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>method outputs, or None if no method has been applied</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>method outputs, or None if no method has been applied</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -4520,8 +4611,8 @@ Warning:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>context</strong> – execution context to load step from</p></li>
-<li><p><strong>full_dump</strong> – save full dump bool</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context to load step from</p></li>
+<li><p><strong>full_dump</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – save full dump bool</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -4551,8 +4642,8 @@ stripped version of the step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>context</strong> – context to save from</p></li>
-<li><p><strong>full_dump</strong> – save full pipeline dump to be able to load everything without source code (false by default).</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – context to save from</p></li>
+<li><p><strong>full_dump</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – save full pipeline dump to be able to load everything without source code (false by default).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -4671,14 +4762,17 @@ If a step is not transformable, you can inherit from <a class="reference interna
 <code class="descname">_did_process</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L882"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._TransformerStep._did_process" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply side effects after any step method.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – data container</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>(data container, execution context)</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>(data container, execution context)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4688,14 +4782,17 @@ If a step is not transformable, you can inherit from <a class="reference interna
 <code class="descname">_did_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L872"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._TransformerStep._did_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply side effects after transform.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – data container</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>data container</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>data container</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4710,14 +4807,17 @@ If a step is not transformable, you can inherit from <a class="reference interna
 <code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L846"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._TransformerStep._transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform data container.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – data container</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>data container</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>data container</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4726,6 +4826,8 @@ If a step is not transformable, you can inherit from <a class="reference interna
 <dt id="neuraxle.base._TransformerStep._will_process">
 <code class="descname">_will_process</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; (&lt;class 'neuraxle.data_container.DataContainer'&gt;</em>, <em>&lt;class 'neuraxle.base.ExecutionContext'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L803"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._TransformerStep._will_process" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply side effects before any step method.
+:type context: <a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
+:type data_container: <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>
 :param data_container: data container
 :param context: execution context
 :return: (data container, execution context)</p>
@@ -4738,8 +4840,8 @@ If a step is not transformable, you can inherit from <a class="reference interna
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – data container</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -4784,8 +4886,8 @@ The default behavior is to rehash current ids with the step hyperparameters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – the data container to transform</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to transform</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -4807,8 +4909,8 @@ The default behavior is to rehash current ids with the step hyperparameters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – the data container to transform</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to transform</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -4823,14 +4925,17 @@ The default behavior is to rehash current ids with the step hyperparameters.</p>
 <dd><p>Override this to add side effects or change the execution flow before (or after) calling <a class="reference internal" href="#neuraxle.base._TransformerStep.inverse_transform" title="neuraxle.base._TransformerStep.inverse_transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">inverse_transform()</span></code></a>.
 The default behavior is to rehash current ids with the step hyperparameters.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – the data container to inverse transform</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to inverse transform</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>data_container</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>data_container</p>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -4845,14 +4950,17 @@ The default behavior is to rehash current ids with the step hyperparameters.</p>
 <code class="descname">handle_predict</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/base.py#L945"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.base._TransformerStep.handle_predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Handle_transform in test mode.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – the data container to transform</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to transform</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>transformed data container</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>transformed data container</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4863,14 +4971,17 @@ The default behavior is to rehash current ids with the step hyperparameters.</p>
 <dd><p>Override this to add side effects or change the execution flow before (or after) calling * <a class="reference internal" href="#neuraxle.base._TransformerStep.transform" title="neuraxle.base._TransformerStep.transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">transform()</span></code></a>.
 The default behavior is to rehash current ids with the step hyperparameters.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – the data container to transform</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to transform</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>transformed data container</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>transformed data container</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4990,7 +5101,7 @@ Loading will inject the saved dependencies inside the :class`ExecutionContext`.<
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>step</strong> – step with context</p></li>
-<li><p><strong>context</strong> – execution context to load from</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context to load from</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -5007,7 +5118,7 @@ Loading will inject the saved dependencies inside the :class`ExecutionContext`.<
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>step</strong> – step with context</p></li>
-<li><p><strong>context</strong> – execution context to load from</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context to load from</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

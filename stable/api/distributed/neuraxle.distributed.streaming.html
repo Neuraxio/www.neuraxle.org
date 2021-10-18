@@ -855,8 +855,8 @@ to trim absent values from the batch
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – data container</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -898,11 +898,14 @@ to trim absent values from the batch
 <code class="descname">get_n_batches</code><span class="sig-paren">(</span><em>data_container</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/distributed/streaming.py#L582"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline.get_n_batches" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the total number of batches that the queue joiner is supposed to receive.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><em>DataContainer</em></a>) – data container to transform</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><em>DataContainer</em></a>) – data container to transform</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
 </dd>
 </dl>
 </dd></dl>
@@ -916,8 +919,8 @@ The queue joiner will use the summary ids to reorder all of the received batches
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>batch_index</strong> – batch index</p></li>
-<li><p><strong>data_container</strong> – data container batch</p></li>
+<li><p><strong>batch_index</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – batch index</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container batch</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -932,7 +935,7 @@ The queue joiner will use the summary ids to reorder all of the received batches
 <dd><p>Connect the queued workers together so that the data can correctly flow through the pipeline.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> – execution context</p>
+<dd class="field-odd"><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>step</p>
@@ -948,14 +951,17 @@ The queue joiner will use the summary ids to reorder all of the received batches
 <code class="descname">transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/distributed/streaming.py#L535"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.BaseQueuedPipeline.transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform data container</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
 <li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><em>DataContainer</em></a>) – data container to transform.</p></li>
 <li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><em>ExecutionContext</em></a>) – execution context</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>data container</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>data container</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1054,14 +1060,17 @@ The subscribed queue workers get notified when <code class="xref py py-func docu
 <code class="descname">can_load</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseTransformer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/distributed/streaming.py#L144"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueStepSaver.can_load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns true if we can load the given step with the given execution context.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>step</strong> – step to load</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>step</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseTransformer" title="neuraxle.base.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTransformer</span></code></a>) – step to load</p></li>
 <li><p><strong>context</strong> – execution context to load from</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1088,15 +1097,18 @@ The subscribed queue workers get notified when <code class="xref py py-func docu
 <code class="descname">save_step</code><span class="sig-paren">(</span><em>step: neuraxle.base.BaseTransformer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseTransformer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/distributed/streaming.py#L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.ObservableQueueStepSaver.save_step" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save step with execution context.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>step</strong> – step to save</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseTransformer" title="neuraxle.base.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTransformer</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>step</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseTransformer" title="neuraxle.base.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTransformer</span></code></a>) – step to save</p></li>
 <li><p><strong>context</strong> – execution context</p></li>
 <li><p><strong>save_savers</strong> – </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1165,8 +1177,8 @@ The subscribed queue workers get notified when <code class="xref py py-func docu
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>batch_index</strong> – batch index</p></li>
-<li><p><strong>data_container</strong> – data container batch</p></li>
+<li><p><strong>batch_index</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – batch index</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container batch</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1399,11 +1411,14 @@ Attributes: step_name, data_container</p>
 <code class="descname">get_n_batches</code><span class="sig-paren">(</span><em>data_container</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/distributed/streaming.py#L631"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.distributed.streaming.SequentialQueuedPipeline.get_n_batches" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the number of batches to process.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data_container</strong> – data container to transform</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>number of batches</p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>data_container</strong> – data container to transform</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of batches</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1415,8 +1430,8 @@ Attributes: step_name, data_container</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>batch_index</strong> – batch index</p></li>
-<li><p><strong>data_container</strong> – data container batch</p></li>
+<li><p><strong>batch_index</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – batch index</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container batch</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1434,9 +1449,9 @@ Attributes: step_name, data_container</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>queue_worker</strong> – step to transform</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
-<li><p><strong>use_savers</strong> – use savers</p></li>
+<li><p><strong>queue_worker</strong> (<a class="reference internal" href="#neuraxle.distributed.streaming.QueueWorker" title="neuraxle.distributed.streaming.QueueWorker"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueWorker</span></code></a>) – step to transform</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
+<li><p><strong>use_savers</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – use savers</p></li>
 <li><p><strong>additional_worker_arguments</strong> – any additional arguments that need to be passed to the workers</p></li>
 </ul>
 </dd>

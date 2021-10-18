@@ -840,8 +840,8 @@ Evaluate the pipeline on each trial using a validation technique.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – data container to fit</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container to fit</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -857,8 +857,8 @@ Evaluate the pipeline on each trial using a validation technique.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – data container</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -894,14 +894,17 @@ Evaluate the pipeline on each trial using a validation technique.</p>
 <code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/metaopt/auto_ml.py#L899"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.AutoML._transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform data container.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – data container</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>data container</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>data container</p>
 </dd>
 </dl>
 </dd></dl>
@@ -976,11 +979,14 @@ Evaluate the pipeline on each trial using a validation technique.</p>
 <code class="descname">find_next_best_hyperparams</code><span class="sig-paren">(</span><em>auto_ml_container: neuraxle.metaopt.auto_ml.AutoMLContainer</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/metaopt/auto_ml.py#L428"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.BaseHyperparameterSelectionStrategy.find_next_best_hyperparams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the next best hyperparams using previous trials.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>auto_ml_container</strong> – trials data container</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code></a></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>next best hyperparams</p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>auto_ml_container</strong> – trials data container</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>next best hyperparams</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1015,16 +1021,19 @@ Evaluate the pipeline on each trial using a validation technique.</p>
 <code class="descname">split</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>current_ids=None</em>, <em>expected_outputs=None</em>, <em>context: neuraxle.base.ExecutionContext = None</em><span class="sig-paren">)</span> &#x2192; Tuple[List, List, List, List, List, List]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/metaopt/auto_ml.py#L1054"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.BaseValidationSplitter.split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Train/Test split data inputs and expected outputs.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
 <li><p><strong>data_inputs</strong> – data inputs</p></li>
 <li><p><strong>current_ids</strong> – id associated with each data entry (optional)</p></li>
 <li><p><strong>expected_outputs</strong> – expected outputs (optional)</p></li>
-<li><p><strong>context</strong> – execution context (optional)</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context (optional)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>train_data_inputs, train_expected_outputs, train_current_ids, validation_data_inputs, validation_expected_outputs, validation_current_ids</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>train_data_inputs, train_expected_outputs, train_current_ids, validation_data_inputs, validation_expected_outputs, validation_current_ids</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1035,11 +1044,14 @@ Evaluate the pipeline on each trial using a validation technique.</p>
 <dd><p>Wrap a validation split function with a split data container function.
 A validation split function takes two arguments:  data inputs, and expected outputs.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data_container</strong> – data container to split</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a function that returns the pairs of training, and validation data containers for each validation split.</p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container to split</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a function that returns the pairs of training, and validation data containers for each validation split.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1120,11 +1132,14 @@ A validation split function takes two arguments:  data inputs, and expected outp
 <code class="descname">_get_successful_trial_json_file_path</code><span class="sig-paren">(</span><em>trial: neuraxle.metaopt.trial.Trial</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/metaopt/auto_ml.py#L369"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.HyperparamsJSONRepository._get_successful_trial_json_file_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the json path for the given successful trial.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>trial</strong> – trial</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>str</p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>trial</strong> – trial</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1174,11 +1189,14 @@ Reads all the saved trial json files, sorted by creation date.</p>
 <code class="descname">new_trial</code><span class="sig-paren">(</span><em>auto_ml_container: neuraxle.metaopt.auto_ml.AutoMLContainer</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.Trial<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/metaopt/auto_ml.py#L321"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.HyperparamsJSONRepository.new_trial" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create new hyperperams trial json file.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>auto_ml_container</strong> – auto ml container</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="neuraxle.metaopt.trial.html#neuraxle.metaopt.trial.Trial" title="neuraxle.metaopt.trial.Trial"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trial</span></code></a></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>auto_ml_container</strong> – auto ml container</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1190,8 +1208,8 @@ Reads all the saved trial json files, sorted by creation date.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>refresh_interval_in_seconds</strong> – number of seconds to wait before sending updates to the observers</p></li>
-<li><p><strong>observer</strong> – </p></li>
+<li><p><strong>refresh_interval_in_seconds</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – number of seconds to wait before sending updates to the observers</p></li>
+<li><p><strong>observer</strong> (<a class="reference internal" href="neuraxle.metaopt.observable.html#neuraxle.metaopt.observable._Observer" title="neuraxle.metaopt.observable._Observer"><code class="xref py py-class docutils literal notranslate"><span class="pre">_Observer</span></code></a>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1321,14 +1339,17 @@ Sorted by creation date.</p>
 <code class="descname">new_trial</code><span class="sig-paren">(</span><em>auto_ml_container: neuraxle.metaopt.auto_ml.AutoMLContainer</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.Trial<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/metaopt/auto_ml.py#L163"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.HyperparamsRepository.new_trial" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new trial with the best next hyperparams.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="neuraxle.metaopt.trial.html#neuraxle.metaopt.trial.Trial" title="neuraxle.metaopt.trial.Trial"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trial</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
 <li><p><strong>context</strong> – </p></li>
 <li><p><strong>auto_ml_container</strong> – auto ml data container</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>trial</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>trial</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1339,7 +1360,7 @@ Sorted by creation date.</p>
 <dd><p>Save the best model inside the best retrained model folder.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>step</strong> – step to save</p>
+<dd class="field-odd"><p><strong>step</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a>) – step to save</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>saved step</p>
@@ -1498,16 +1519,19 @@ Useful for debugging.</p>
 <code class="descname">split</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>current_ids=None</em>, <em>expected_outputs=None</em>, <em>context: neuraxle.base.ExecutionContext = None</em><span class="sig-paren">)</span> &#x2192; Tuple[List, List, List, List, List, List]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/metaopt/auto_ml.py#L1087"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.KFoldCrossValidationSplitter.split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Train/Test split data inputs and expected outputs.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
 <li><p><strong>data_inputs</strong> – data inputs</p></li>
 <li><p><strong>current_ids</strong> – id associated with each data entry (optional)</p></li>
 <li><p><strong>expected_outputs</strong> – expected outputs (optional)</p></li>
-<li><p><strong>context</strong> – execution context (optional)</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context (optional)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>train_data_inputs, train_expected_outputs, train_current_ids, validation_data_inputs, validation_expected_outputs, validation_current_ids</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>train_data_inputs, train_expected_outputs, train_current_ids, validation_data_inputs, validation_expected_outputs, validation_current_ids</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1556,11 +1580,14 @@ Please refer to <a class="reference internal" href="#neuraxle.metaopt.auto_ml.Au
 <code class="descname">find_next_best_hyperparams</code><span class="sig-paren">(</span><em>auto_ml_container: neuraxle.metaopt.auto_ml.AutoMLContainer</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/metaopt/auto_ml.py#L1002"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.RandomSearchHyperparameterSelectionStrategy.find_next_best_hyperparams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Randomly sample the next hyperparams to try.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>auto_ml_container</strong> – trials data container</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code></a></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>next best hyperparams</p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>auto_ml_container</strong> – trials data container</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>next best hyperparams</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1605,13 +1632,13 @@ Track training, and validation metrics for each epoch.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>pipeline</strong> – pipeline to train on</p></li>
+<li><p><strong>pipeline</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a>) – pipeline to train on</p></li>
 <li><p><strong>trial_number</strong> – trial number</p></li>
-<li><p><strong>repo_trial</strong> – repo trial</p></li>
-<li><p><strong>validation_splits</strong> – validation splits</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
-<li><p><strong>n_trial</strong> – total number of trials that will be executed</p></li>
-<li><p><strong>delete_pipeline_on_completion</strong> – bool to delete pipeline on completion or not</p></li>
+<li><p><strong>repo_trial</strong> (<a class="reference internal" href="neuraxle.metaopt.trial.html#neuraxle.metaopt.trial.Trial" title="neuraxle.metaopt.trial.Trial"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trial</span></code></a>) – repo trial</p></li>
+<li><p><strong>validation_splits</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>) – validation splits</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
+<li><p><strong>n_trial</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – total number of trials that will be executed</p></li>
+<li><p><strong>delete_pipeline_on_completion</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – bool to delete pipeline on completion or not</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1626,16 +1653,19 @@ Track training, and validation metrics for each epoch.</p>
 <dd><p>Train pipeline using the training data container.
 Track training, and validation metrics for each epoch.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>train_data_container</strong> – train data container</p></li>
-<li><p><strong>validation_data_container</strong> – validation data container</p></li>
-<li><p><strong>trial_split</strong> – trial to execute</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="neuraxle.metaopt.trial.html#neuraxle.metaopt.trial.TrialSplit" title="neuraxle.metaopt.trial.TrialSplit"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrialSplit</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>train_data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – train data container</p></li>
+<li><p><strong>validation_data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – validation data container</p></li>
+<li><p><strong>trial_split</strong> (<a class="reference internal" href="neuraxle.metaopt.trial.html#neuraxle.metaopt.trial.TrialSplit" title="neuraxle.metaopt.trial.TrialSplit"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrialSplit</span></code></a>) – trial to execute</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>executed trial</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>executed trial</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1656,15 +1686,18 @@ Track training, and validation metrics for each epoch.</p>
 <code class="descname">refit</code><span class="sig-paren">(</span><em>p: neuraxle.base.BaseStep</em>, <em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/metaopt/auto_ml.py#L648"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.Trainer.refit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Refit the pipeline on the whole dataset (without any validation technique).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>p</strong> – trial to refit</p></li>
-<li><p><strong>data_container</strong> – data container</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>p</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a>) – trial to refit</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>fitted pipeline</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>fitted pipeline</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1676,15 +1709,18 @@ Track training, and validation metrics for each epoch.</p>
 Track training, and validation metrics for each epoch.
 Note: the present method is just a shortcut to using the <cite>execute_trial</cite> method with less boilerplate code needed. Refer to <cite>execute_trial</cite> for full flexibility</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>pipeline</strong> – pipeline to train on</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="neuraxle.metaopt.trial.html#neuraxle.metaopt.trial.Trial" title="neuraxle.metaopt.trial.Trial"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trial</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>pipeline</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a>) – pipeline to train on</p></li>
 <li><p><strong>data_inputs</strong> – data inputs</p></li>
 <li><p><strong>expected_outputs</strong> – expected ouptuts to fit on</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>executed trial</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>executed trial</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1732,16 +1768,19 @@ Note: the present method is just a shortcut to using the <cite>execute_trial</ci
 <code class="descname">split</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>current_ids=None</em>, <em>expected_outputs=None</em>, <em>context: neuraxle.base.ExecutionContext = None</em><span class="sig-paren">)</span> &#x2192; Tuple[List, List, List, List]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/metaopt/auto_ml.py#L1152"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.ValidationSplitter.split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Train/Test split data inputs and expected outputs.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
 <li><p><strong>data_inputs</strong> – data inputs</p></li>
 <li><p><strong>current_ids</strong> – id associated with each data entry (optional)</p></li>
 <li><p><strong>expected_outputs</strong> – expected outputs (optional)</p></li>
-<li><p><strong>context</strong> – execution context (optional)</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context (optional)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>train_data_inputs, train_expected_outputs, train_current_ids, validation_data_inputs, validation_expected_outputs, validation_current_ids</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>train_data_inputs, train_expected_outputs, train_current_ids, validation_data_inputs, validation_expected_outputs, validation_current_ids</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1763,11 +1802,14 @@ Note: the present method is just a shortcut to using the <cite>execute_trial</ci
 <code class="descclassname">neuraxle.metaopt.auto_ml.</code><code class="descname">_train_split</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>test_size</em><span class="sig-paren">)</span> &#x2192; List<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/metaopt/auto_ml.py#L1195"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml._train_split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Split training set.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data_inputs</strong> – data inputs to split</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>train_data_inputs</p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>data_inputs</strong> – data inputs to split</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>train_data_inputs</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1777,11 +1819,14 @@ Note: the present method is just a shortcut to using the <cite>execute_trial</ci
 <code class="descclassname">neuraxle.metaopt.auto_ml.</code><code class="descname">_validation_split</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>test_size</em><span class="sig-paren">)</span> &#x2192; List<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/metaopt/auto_ml.py#L1205"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml._validation_split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Split validation set.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data_inputs</strong> – data inputs to split</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>validation_data_inputs</p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>data_inputs</strong> – data inputs to split</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>validation_data_inputs</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1796,16 +1841,19 @@ Note: the present method is just a shortcut to using the <cite>execute_trial</ci
 <code class="descclassname">neuraxle.metaopt.auto_ml.</code><code class="descname">validation_split</code><span class="sig-paren">(</span><em>test_size: float</em>, <em>data_inputs</em>, <em>current_ids=None</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; Tuple[List, List, List, List, List, List]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/metaopt/auto_ml.py#L1166"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.validation_split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Split data inputs, and expected outputs into a training set, and a validation set.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>test_size</strong> – test size in float</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>test_size</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – test size in float</p></li>
 <li><p><strong>data_inputs</strong> – data inputs to split</p></li>
 <li><p><strong>current_ids</strong> – ids associated with each data entry</p></li>
 <li><p><strong>expected_outputs</strong> – expected outputs to split</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>train_data_inputs, train_expected_outputs, current_ids_train, validation_data_inputs, validation_expected_outputs, current_ids_val</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>train_data_inputs, train_expected_outputs, current_ids_train, validation_data_inputs, validation_expected_outputs, current_ids_val</p>
 </dd>
 </dl>
 </dd></dl>

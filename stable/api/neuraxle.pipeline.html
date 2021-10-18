@@ -808,6 +808,10 @@ data inputs to get to the barrier in a sub pipeline before going through to the 
 <dt id="neuraxle.pipeline.Barrier.join_fit_transform">
 <code class="descname">join_fit_transform</code><span class="sig-paren">(</span><em>step: neuraxle.pipeline.Pipeline</em>, <em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[Any, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/pipeline.py#L626"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Barrier.join_fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute the given pipeline <a class="reference internal" href="#neuraxle.pipeline.Pipeline.fit_transform" title="neuraxle.pipeline.Pipeline.fit_transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">fit_transform()</span></code></a> with the given data container, and execution context.
+:rtype: <code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code>
+:type context: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
+:type data_container: <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>
+:type step: <a class="reference internal" href="#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>
 :param step: truncable steps to execute
 :param data_container: data container
 :param context: execution context
@@ -936,6 +940,7 @@ data inputs to get to the barrier in a sub pipeline before going through to the 
 <dt id="neuraxle.pipeline.Joiner.join_fit_transform">
 <code class="descname">join_fit_transform</code><span class="sig-paren">(</span><em>step: neuraxle.pipeline.Pipeline</em>, <em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[Any, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/pipeline.py#L686"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Joiner.join_fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Concatenate the pipeline fit transform output of each batch of self.batch_size together.
+:type context: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
 :param step: pipeline to fit transform on
 :type step: Pipeline
 :param data_container: data container to fit transform on
@@ -949,6 +954,7 @@ data inputs to get to the barrier in a sub pipeline before going through to the 
 <dt id="neuraxle.pipeline.Joiner.join_transform">
 <code class="descname">join_transform</code><span class="sig-paren">(</span><em>step: neuraxle.pipeline.Pipeline</em>, <em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/pipeline.py#L661"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Joiner.join_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Concatenate the pipeline transform output of each batch of self.batch_size together.
+:type context: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
 :param step: pipeline to transform on
 :type step: Pipeline
 :param data_container: data container to transform
@@ -1116,6 +1122,9 @@ to trim absent values from the batch
 <dt id="neuraxle.pipeline.MiniBatchSequentialPipeline.fit_data_container">
 <code class="descname">fit_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/pipeline.py#L512"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline.fit_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit all sub pipelines splitted by the Barrier steps.
+:rtype: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a>
+:type context: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
+:type data_container: <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>
 :param data_container: data container to transform.
 :param context: execution context
 :return: data container</p>
@@ -1125,6 +1134,9 @@ to trim absent values from the batch
 <dt id="neuraxle.pipeline.MiniBatchSequentialPipeline.fit_transform_data_container">
 <code class="descname">fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[neuraxle.base.BaseStep, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/pipeline.py#L543"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline.fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform all sub pipelines splitted by the Barrier steps.
+:rtype: <code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code>
+:type context: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
+:type data_container: <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>
 :param data_container: data container to transform.
 :param context: execution context
 :return: data container</p>
@@ -1139,6 +1151,9 @@ to trim absent values from the batch
 <dt id="neuraxle.pipeline.MiniBatchSequentialPipeline.transform_data_container">
 <code class="descname">transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/pipeline.py#L491"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline.transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform all sub pipelines splitted by the Barrier steps.
+:rtype: <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>
+:type context: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
+:type data_container: <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>
 :param data_container: data container to transform.
 :param context: execution context
 :return: data container</p>
@@ -1178,8 +1193,8 @@ but only fit the last pipeline step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – the data container to fit transform on</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to fit transform on</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1195,8 +1210,8 @@ but only fit the last pipeline step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – the data container to fit transform on</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to fit transform on</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1218,14 +1233,17 @@ but only fit the last pipeline step.</p>
 If pipeline cache loading succeeds, find steps left to do,
 and load the latest data container.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – the data container to resume</p></li>
-<li><p><strong>context</strong> – the execution context to resume</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to resume</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – the execution context to resume</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>tuple(steps left to do, last checkpoint data container)</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>tuple(steps left to do, last checkpoint data container)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1235,11 +1253,14 @@ and load the latest data container.</p>
 <code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/pipeline.py#L191"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline._transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>After loading the last checkpoint, transform each pipeline steps</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data_container</strong> – the data container to transform</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>transformed data container</p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to transform</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>transformed data container</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1362,11 +1383,14 @@ and load the latest data container.</p>
 <code class="descname">_get_starting_step_info</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[int, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/pipeline.py#L265"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.ResumablePipeline._get_starting_step_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the index of the latest step that can be resumed</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data_container</strong> – the data container to resume</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>index of the latest resumable step, data container at starting step</p>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to resume</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>index of the latest resumable step, data container at starting step</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1378,14 +1402,17 @@ and load the latest data container.</p>
 If pipeline cache loading succeeds, find steps left to do,
 and load the latest data container.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – the data container to resume</p></li>
-<li><p><strong>context</strong> – the execution context to resume</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tuple</span></code></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to resume</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – the execution context to resume</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>tuple(steps left to do, last checkpoint data container)</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>tuple(steps left to do, last checkpoint data container)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1395,14 +1422,17 @@ and load the latest data container.</p>
 <code class="descname">should_resume</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/pipeline.py#L288"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.ResumablePipeline.should_resume" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return True if the pipeline has a saved checkpoint that it can resume from</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>context</strong> – execution context</p></li>
-<li><p><strong>data_container</strong> – the data container to resume</p></li>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>context</strong> (<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to resume</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>bool</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1437,6 +1467,7 @@ and load the latest data container.</p>
 <dt id="neuraxle.pipeline.ZipMinibatchJoiner.join_fit_transform">
 <code class="descname">join_fit_transform</code><span class="sig-paren">(</span><em>step: neuraxle.pipeline.Pipeline</em>, <em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[Any, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/pipeline.py#L735"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.ZipMinibatchJoiner.join_fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Concatenate the pipeline fit transform output of each batch of self.batch_size together.
+:type context: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
 :param step: pipeline to fit transform on
 :type step: Pipeline
 :param data_container: data container to fit transform on
@@ -1450,6 +1481,7 @@ and load the latest data container.</p>
 <dt id="neuraxle.pipeline.ZipMinibatchJoiner.join_transform">
 <code class="descname">join_transform</code><span class="sig-paren">(</span><em>step: neuraxle.base.TruncableSteps</em>, <em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.ZipDataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/ddc0386/neuraxle/pipeline.py#L719"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.ZipMinibatchJoiner.join_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Concatenate the pipeline transform output of each batch of self.batch_size together.
+:type context: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
 :param step: pipeline to transform on
 :type step: Pipeline
 :param data_container: data container to transform
