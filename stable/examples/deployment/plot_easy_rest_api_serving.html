@@ -666,10 +666,10 @@ to download the full example code or to run this example in your browser via Bin
 Transforming train and test:
 
 Evaluating transformed train:
-R2 regression score: 0.9801581403080916
+R2 regression score: 0.9801045848070751
 
 Evaluating transformed test:
-R2 regression score: 0.9190734101158927
+R2 regression score: 0.9230878114725942
 Deploying the application by routing data to the transform method:
 Finally, run the app by uncommenting this next line of code:
 You can now call your pipeline over HTTP with a (JSON) REST API.
@@ -678,210 +678,110 @@ You can now call your pipeline over HTTP with a (JSON) REST API.
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 28</span>
-<span class="normal"> 29</span>
-<span class="normal"> 30</span>
-<span class="normal"> 31</span>
-<span class="normal"> 32</span>
-<span class="normal"> 33</span>
-<span class="normal"> 34</span>
-<span class="normal"> 35</span>
-<span class="normal"> 36</span>
-<span class="normal"> 37</span>
-<span class="normal"> 38</span>
-<span class="normal"> 39</span>
-<span class="normal"> 40</span>
-<span class="normal"> 41</span>
-<span class="normal"> 42</span>
-<span class="normal"> 43</span>
-<span class="normal"> 44</span>
-<span class="normal"> 45</span>
-<span class="normal"> 46</span>
-<span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
- <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
- <span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="sklearn.cluster.KMeans" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">KMeans</span></a>
- <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html#sklearn.datasets.load_boston" title="sklearn.datasets.load_boston" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">load_boston</span></a>
- <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">PCA</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html#sklearn.decomposition.FastICA" title="sklearn.decomposition.FastICA" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">FastICA</span></a>
- <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor" title="sklearn.ensemble.GradientBoostingRegressor" class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">GradientBoostingRegressor</span></a>
- <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="sklearn.metrics.r2_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">r2_score</span></a>
- <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split" class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function"><span class="n">train_test_split</span></a>
- <span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.shuffle.html#sklearn.utils.shuffle" title="sklearn.utils.shuffle" class="sphx-glr-backref-module-sklearn-utils sphx-glr-backref-type-py-function"><span class="n">shuffle</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="sklearn.cluster.KMeans" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">KMeans</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html#sklearn.datasets.load_boston" title="sklearn.datasets.load_boston" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">load_boston</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">PCA</span></a><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html#sklearn.decomposition.FastICA" title="sklearn.decomposition.FastICA" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">FastICA</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor" title="sklearn.ensemble.GradientBoostingRegressor" class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">GradientBoostingRegressor</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="sklearn.metrics.r2_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">r2_score</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split" class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function"><span class="n">train_test_split</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.shuffle.html#sklearn.utils.shuffle" title="sklearn.utils.shuffle" class="sphx-glr-backref-module-sklearn-utils sphx-glr-backref-type-py-function"><span class="n">shuffle</span></a>
 
- <span class="kn">from</span> <span class="nn">neuraxle.rest.flask</span> <span class="kn">import</span> <a href="../../api/rest/neuraxle.rest.flask.html#neuraxle.rest.flask.FlaskRestApiWrapper" title="neuraxle.rest.flask.FlaskRestApiWrapper" class="sphx-glr-backref-module-neuraxle-rest-flask sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">FlaskRestApiWrapper</span></a><span class="p">,</span> <a href="../../api/rest/neuraxle.rest.flask.html#neuraxle.rest.flask.JSONDataBodyDecoder" title="neuraxle.rest.flask.JSONDataBodyDecoder" class="sphx-glr-backref-module-neuraxle-rest-flask sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">JSONDataBodyDecoder</span></a><span class="p">,</span> <a href="../../api/rest/neuraxle.rest.flask.html#neuraxle.rest.flask.JSONDataResponseEncoder" title="neuraxle.rest.flask.JSONDataResponseEncoder" class="sphx-glr-backref-module-neuraxle-rest-flask sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">JSONDataResponseEncoder</span></a>
- <span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="kn">import</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline" class="sphx-glr-backref-module-neuraxle-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Pipeline</span></a>
- <span class="kn">from</span> <span class="nn">neuraxle.steps.sklearn</span> <span class="kn">import</span> <a href="../../api/steps/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.RidgeModelStacking" title="neuraxle.steps.sklearn.RidgeModelStacking" class="sphx-glr-backref-module-neuraxle-steps-sklearn sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">RidgeModelStacking</span></a>
- <span class="kn">from</span> <span class="nn">neuraxle.union</span> <span class="kn">import</span> <a href="../../api/neuraxle.union.html#neuraxle.union.AddFeatures" title="neuraxle.union.AddFeatures" class="sphx-glr-backref-module-neuraxle-union sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">AddFeatures</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.rest.flask</span> <span class="kn">import</span> <a href="../../api/rest/neuraxle.rest.flask.html#neuraxle.rest.flask.FlaskRestApiWrapper" title="neuraxle.rest.flask.FlaskRestApiWrapper" class="sphx-glr-backref-module-neuraxle-rest-flask sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">FlaskRestApiWrapper</span></a><span class="p">,</span> <a href="../../api/rest/neuraxle.rest.flask.html#neuraxle.rest.flask.JSONDataBodyDecoder" title="neuraxle.rest.flask.JSONDataBodyDecoder" class="sphx-glr-backref-module-neuraxle-rest-flask sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">JSONDataBodyDecoder</span></a><span class="p">,</span> <a href="../../api/rest/neuraxle.rest.flask.html#neuraxle.rest.flask.JSONDataResponseEncoder" title="neuraxle.rest.flask.JSONDataResponseEncoder" class="sphx-glr-backref-module-neuraxle-rest-flask sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">JSONDataResponseEncoder</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="kn">import</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline" class="sphx-glr-backref-module-neuraxle-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Pipeline</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.steps.sklearn</span> <span class="kn">import</span> <a href="../../api/steps/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.RidgeModelStacking" title="neuraxle.steps.sklearn.RidgeModelStacking" class="sphx-glr-backref-module-neuraxle-steps-sklearn sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">RidgeModelStacking</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.union</span> <span class="kn">import</span> <a href="../../api/neuraxle.union.html#neuraxle.union.AddFeatures" title="neuraxle.union.AddFeatures" class="sphx-glr-backref-module-neuraxle-union sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">AddFeatures</span></a>
 
 
- <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-     <span class="n">boston</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html#sklearn.datasets.load_boston" title="sklearn.datasets.load_boston" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">load_boston</span></a><span class="p">()</span>
-     <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.shuffle.html#sklearn.utils.shuffle" title="sklearn.utils.shuffle" class="sphx-glr-backref-module-sklearn-utils sphx-glr-backref-type-py-function"><span class="n">shuffle</span></a><span class="p">(</span><span class="n">boston</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
-     <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-     <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split" class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function"><span class="n">train_test_split</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.shuffle.html#sklearn.utils.shuffle" title="sklearn.utils.shuffle" class="sphx-glr-backref-module-sklearn-utils sphx-glr-backref-type-py-function"><span class="n">shuffle</span></a><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">boston</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html#sklearn.datasets.load_boston" title="sklearn.datasets.load_boston" class="sphx-glr-backref-module-sklearn-datasets sphx-glr-backref-type-py-function"><span class="n">load_boston</span></a><span class="p">()</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.shuffle.html#sklearn.utils.shuffle" title="sklearn.utils.shuffle" class="sphx-glr-backref-module-sklearn-utils sphx-glr-backref-type-py-function"><span class="n">shuffle</span></a><span class="p">(</span><span class="n">boston</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">boston</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="sklearn.model_selection.train_test_split" class="sphx-glr-backref-module-sklearn-model_selection sphx-glr-backref-type-py-function"><span class="n">train_test_split</span></a><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.shuffle.html#sklearn.utils.shuffle" title="sklearn.utils.shuffle" class="sphx-glr-backref-module-sklearn-utils sphx-glr-backref-type-py-function"><span class="n">shuffle</span></a><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-     <span class="n">pipeline</span> <span class="o">=</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline" class="sphx-glr-backref-module-neuraxle-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Pipeline</span></a><span class="p">([</span>
-         <a href="../../api/neuraxle.union.html#neuraxle.union.AddFeatures" title="neuraxle.union.AddFeatures" class="sphx-glr-backref-module-neuraxle-union sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">AddFeatures</span></a><span class="p">([</span>
-             <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">PCA</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
-             <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html#sklearn.decomposition.FastICA" title="sklearn.decomposition.FastICA" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">FastICA</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
-         <span class="p">]),</span>
-         <a href="../../api/steps/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.RidgeModelStacking" title="neuraxle.steps.sklearn.RidgeModelStacking" class="sphx-glr-backref-module-neuraxle-steps-sklearn sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">RidgeModelStacking</span></a><span class="p">([</span>
-             <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor" title="sklearn.ensemble.GradientBoostingRegressor" class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">GradientBoostingRegressor</span></a><span class="p">(),</span>
-             <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="sklearn.cluster.KMeans" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">KMeans</span></a><span class="p">(),</span>
-         <span class="p">]),</span>
-     <span class="p">])</span>
+    <span class="n">pipeline</span> <span class="o">=</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline" class="sphx-glr-backref-module-neuraxle-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Pipeline</span></a><span class="p">([</span>
+        <a href="../../api/neuraxle.union.html#neuraxle.union.AddFeatures" title="neuraxle.union.AddFeatures" class="sphx-glr-backref-module-neuraxle-union sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">AddFeatures</span></a><span class="p">([</span>
+            <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">PCA</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+            <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html#sklearn.decomposition.FastICA" title="sklearn.decomposition.FastICA" class="sphx-glr-backref-module-sklearn-decomposition sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">FastICA</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+        <span class="p">]),</span>
+        <a href="../../api/steps/neuraxle.steps.sklearn.html#neuraxle.steps.sklearn.RidgeModelStacking" title="neuraxle.steps.sklearn.RidgeModelStacking" class="sphx-glr-backref-module-neuraxle-steps-sklearn sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">RidgeModelStacking</span></a><span class="p">([</span>
+            <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor" title="sklearn.ensemble.GradientBoostingRegressor" class="sphx-glr-backref-module-sklearn-ensemble sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">GradientBoostingRegressor</span></a><span class="p">(),</span>
+            <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="sklearn.cluster.KMeans" class="sphx-glr-backref-module-sklearn-cluster sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">KMeans</span></a><span class="p">(),</span>
+        <span class="p">]),</span>
+    <span class="p">])</span>
 
-     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fitting on train:&quot;</span><span class="p">)</span>
-     <span class="n">pipeline</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Transforming train and test:&quot;</span><span class="p">)</span>
-     <span class="n">y_train_predicted</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-     <span class="n">y_test_predicted</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluating transformed train:&quot;</span><span class="p">)</span>
-     <span class="n">score</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="sklearn.metrics.r2_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">r2_score</span></a><span class="p">(</span><span class="n">y_train_predicted</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R2 regression score:&#39;</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
-     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluating transformed test:&quot;</span><span class="p">)</span>
-     <span class="n">score</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="sklearn.metrics.r2_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">r2_score</span></a><span class="p">(</span><span class="n">y_test_predicted</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R2 regression score:&#39;</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
-     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Deploying the application by routing data to the transform method:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fitting on train:&quot;</span><span class="p">)</span>
+    <span class="n">pipeline</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Transforming train and test:&quot;</span><span class="p">)</span>
+    <span class="n">y_train_predicted</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+    <span class="n">y_test_predicted</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluating transformed train:&quot;</span><span class="p">)</span>
+    <span class="n">score</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="sklearn.metrics.r2_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">r2_score</span></a><span class="p">(</span><span class="n">y_train_predicted</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R2 regression score:&#39;</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluating transformed test:&quot;</span><span class="p">)</span>
+    <span class="n">score</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="sklearn.metrics.r2_score" class="sphx-glr-backref-module-sklearn-metrics sphx-glr-backref-type-py-function"><span class="n">r2_score</span></a><span class="p">(</span><span class="n">y_test_predicted</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R2 regression score:&#39;</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Deploying the application by routing data to the transform method:&quot;</span><span class="p">)</span>
 
-     <span class="k">class</span> <span class="nc">CustomJSONDecoderFor2DArray</span><span class="p">(</span><a href="../../api/rest/neuraxle.rest.flask.html#neuraxle.rest.flask.JSONDataBodyDecoder" title="neuraxle.rest.flask.JSONDataBodyDecoder" class="sphx-glr-backref-module-neuraxle-rest-flask sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">JSONDataBodyDecoder</span></a><span class="p">):</span>
-         <span class="sd">&quot;&quot;&quot;This is a custom JSON decoder class that precedes the pipeline&#39;s transformation.&quot;&quot;&quot;</span>
+    <span class="k">class</span> <span class="nc">CustomJSONDecoderFor2DArray</span><span class="p">(</span><a href="../../api/rest/neuraxle.rest.flask.html#neuraxle.rest.flask.JSONDataBodyDecoder" title="neuraxle.rest.flask.JSONDataBodyDecoder" class="sphx-glr-backref-module-neuraxle-rest-flask sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">JSONDataBodyDecoder</span></a><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This is a custom JSON decoder class that precedes the pipeline&#39;s transformation.&quot;&quot;&quot;</span>
 
-         <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_inputs</span><span class="p">):</span>
-             <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">             Transform a JSON list object into an np.array object.</span>
+        <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_inputs</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Transform a JSON list object into an np.array object.</span>
 
-<span class="sd">             :param data_inputs: json object</span>
-<span class="sd">             :return: np array for data inputs</span>
-<span class="sd">             &quot;&quot;&quot;</span>
-             <span class="k">return</span> <a href="http://docs.scipy.org/doc/numpy-1.16.1/reference/generated/numpy.array.html#numpy.array" title="numpy.array" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">(</span><span class="n">data_inputs</span><span class="p">)</span>
+<span class="sd">            :param data_inputs: json object</span>
+<span class="sd">            :return: np array for data inputs</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="k">return</span> <a href="http://docs.scipy.org/doc/numpy-1.16.1/reference/generated/numpy.array.html#numpy.array" title="numpy.array" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">(</span><span class="n">data_inputs</span><span class="p">)</span>
 
-     <span class="k">class</span> <span class="nc">CustomJSONEncoderOfOutputs</span><span class="p">(</span><a href="../../api/rest/neuraxle.rest.flask.html#neuraxle.rest.flask.JSONDataResponseEncoder" title="neuraxle.rest.flask.JSONDataResponseEncoder" class="sphx-glr-backref-module-neuraxle-rest-flask sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">JSONDataResponseEncoder</span></a><span class="p">):</span>
-         <span class="sd">&quot;&quot;&quot;This is a custom JSON response encoder class for converting the pipeline&#39;s transformation outputs.&quot;&quot;&quot;</span>
+    <span class="k">class</span> <span class="nc">CustomJSONEncoderOfOutputs</span><span class="p">(</span><a href="../../api/rest/neuraxle.rest.flask.html#neuraxle.rest.flask.JSONDataResponseEncoder" title="neuraxle.rest.flask.JSONDataResponseEncoder" class="sphx-glr-backref-module-neuraxle-rest-flask sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">JSONDataResponseEncoder</span></a><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This is a custom JSON response encoder class for converting the pipeline&#39;s transformation outputs.&quot;&quot;&quot;</span>
 
-         <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_inputs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-             <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">             Convert predictions to a dict for creating a JSON Response object.</span>
+        <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_inputs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Convert predictions to a dict for creating a JSON Response object.</span>
 
-<span class="sd">             :param data_inputs:</span>
-<span class="sd">             :return:</span>
-<span class="sd">             &quot;&quot;&quot;</span>
-             <span class="k">return</span> <span class="p">{</span>
-                 <span class="s1">&#39;predictions&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_inputs</span><span class="p">)</span>
-             <span class="p">}</span>
+<span class="sd">            :param data_inputs:</span>
+<span class="sd">            :return:</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="s1">&#39;predictions&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_inputs</span><span class="p">)</span>
+            <span class="p">}</span>
 
-     <span class="n">app</span> <span class="o">=</span> <a href="../../api/rest/neuraxle.rest.flask.html#neuraxle.rest.flask.FlaskRestApiWrapper" title="neuraxle.rest.flask.FlaskRestApiWrapper" class="sphx-glr-backref-module-neuraxle-rest-flask sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">FlaskRestApiWrapper</span></a><span class="p">(</span>
-         <span class="n">json_decoder</span><span class="o">=</span><span class="n">CustomJSONDecoderFor2DArray</span><span class="p">(),</span>
-         <span class="n">wrapped</span><span class="o">=</span><span class="n">pipeline</span><span class="p">,</span>
-         <span class="n">json_encoder</span><span class="o">=</span><span class="n">CustomJSONEncoderOfOutputs</span><span class="p">()</span>
-     <span class="p">)</span><span class="o">.</span><span class="n">get_app</span><span class="p">()</span>
+    <span class="n">app</span> <span class="o">=</span> <a href="../../api/rest/neuraxle.rest.flask.html#neuraxle.rest.flask.FlaskRestApiWrapper" title="neuraxle.rest.flask.FlaskRestApiWrapper" class="sphx-glr-backref-module-neuraxle-rest-flask sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">FlaskRestApiWrapper</span></a><span class="p">(</span>
+        <span class="n">json_decoder</span><span class="o">=</span><span class="n">CustomJSONDecoderFor2DArray</span><span class="p">(),</span>
+        <span class="n">wrapped</span><span class="o">=</span><span class="n">pipeline</span><span class="p">,</span>
+        <span class="n">json_encoder</span><span class="o">=</span><span class="n">CustomJSONEncoderOfOutputs</span><span class="p">()</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">get_app</span><span class="p">()</span>
 
-     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finally, run the app by uncommenting this next line of code:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finally, run the app by uncommenting this next line of code:&quot;</span><span class="p">)</span>
 
-     <span class="c1"># app.run(debug=False, port=5000)</span>
+    <span class="c1"># app.run(debug=False, port=5000)</span>
 
-     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You can now call your pipeline over HTTP with a (JSON) REST API.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You can now call your pipeline over HTTP with a (JSON) REST API.&quot;</span><span class="p">)</span>
 
-     <span class="c1"># test_predictictions = requests.post(</span>
-     <span class="c1">#     url=&#39;http://127.0.0.1:5000/&#39;,</span>
-     <span class="c1">#     json=X_test.tolist()</span>
-     <span class="c1"># )</span>
-     <span class="c1"># print(test_predictictions)</span>
-     <span class="c1"># print(test_predictictions.content)</span>
+    <span class="c1"># test_predictictions = requests.post(</span>
+    <span class="c1">#     url=&#39;http://127.0.0.1:5000/&#39;,</span>
+    <span class="c1">#     json=X_test.tolist()</span>
+    <span class="c1"># )</span>
+    <span class="c1"># print(test_predictictions)</span>
+    <span class="c1"># print(test_predictictions.content)</span>
 
-     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">Flask</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">Flask</span><span class="p">)</span>
 
-     <span class="k">return</span> <span class="n">app</span>
+    <span class="k">return</span> <span class="n">app</span>
 
 
- <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-     <span class="n">main</span><span class="p">()</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
 </pre></div>
-</td></tr></table></div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.232 seconds)</p>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.206 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-deployment-plot-easy-rest-api-serving-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/Neuraxio/Neuraxle/master?urlpath=lab/tree/notebooks/examples/deployment/plot_easy_rest_api_serving.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo.png" style="width: 150px;" /></a>

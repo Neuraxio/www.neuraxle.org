@@ -724,152 +724,142 @@
 </figcaption>
 </figure>
 </div><div class="sphx-glr-clear"></div><span class="target" id="sphx-glr-backref-neuraxle-steps-flow-trainortestonlywrapper"><span id="sphx-glr-backref-neuraxle-steps-flow-trainonlywrapper"></span><span id="sphx-glr-backref-neuraxle-steps-flow-testonlywrapper"></span><span id="sphx-glr-backref-neuraxle-steps-flow-selectnonemptydatainputs"></span><span id="sphx-glr-backref-neuraxle-steps-flow-selectnonemptydatacontainer"></span><span id="sphx-glr-backref-neuraxle-steps-flow-reversiblepreprocessingwrapper"></span><span id="sphx-glr-backref-neuraxle-steps-flow-optional"></span><span id="sphx-glr-backref-neuraxle-steps-flow-ifexecutionphaseisthen"></span></span><dl class="class">
-<dt id="neuraxle.steps.flow.ChooseOneOrManyStepsOf">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">ChooseOneOrManyStepsOf</code><span class="sig-paren">(</span><em>steps</em>, <em>joiner: neuraxle.base.NonFittableMixin = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L454"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneOrManyStepsOf" title="Permalink to this definition">¶</a></dt>
-<dd><p>A pipeline to allow choosing many steps using an hyperparameter.</p>
-<p>Example usage :</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-    <span class="n">ChooseOneOrManyStepsOf</span><span class="p">([</span>
-        <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">Identity</span><span class="p">()),</span>
-        <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">Identity</span><span class="p">())</span>
-    <span class="p">])</span>
-<span class="p">])</span>
-<span class="n">p</span><span class="o">.</span><span class="n">set_hyperparams</span><span class="p">({</span>
-    <span class="s1">&#39;ChooseOneOrManyStepsOf__a__enabled&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="s1">&#39;ChooseOneOrManyStepsOf__b__enabled&#39;</span><span class="p">:</span> <span class="kc">False</span>
-<span class="p">})</span>
-<span class="c1"># or</span>
-<span class="n">p</span><span class="o">.</span><span class="n">set_hyperparams</span><span class="p">({</span>
-    <span class="s1">&#39;ChooseOneOrManyStepsOf&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;enabled&#39;</span><span class="p">:</span> <span class="kc">True</span> <span class="p">},</span>
-        <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;enabled&#39;</span><span class="p">:</span> <span class="kc">False</span> <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">})</span>
+<dt id="neuraxle.steps.flow.TrainOrTestOnlyWrapper">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">TrainOrTestOnlyWrapper</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em>, <em>is_train_only=True</em>, <em>cache_folder_when_no_handle=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ForceHandleOnlyMixin" title="neuraxle.base.ForceHandleOnlyMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.ForceHandleOnlyMixin</span></code></a>, <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.MetaStep" title="neuraxle.base.MetaStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.MetaStep</span></code></a></p>
+<p>A wrapper to run wrapped step only in test mode, or only in train mode.</p>
+<p>Execute only in test mode:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">TrainOrTestOnlyWrapper</span><span class="p">(</span><span class="n">Identity</span><span class="p">(),</span> <span class="n">is_train_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Execute only in train mode:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">TrainOnlyWrapper</span><span class="p">(</span><span class="n">Identity</span><span class="p">(),</span> <span class="n">test_only</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference internal" href="../neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>
-<a class="reference internal" href="#neuraxle.steps.flow.Optional" title="neuraxle.steps.flow.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">Optional</span></code></a></p>
+<p><a class="reference internal" href="#neuraxle.steps.flow.TrainOnlyWrapper" title="neuraxle.steps.flow.TrainOnlyWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrainOnlyWrapper</span></code></a>,
+<a class="reference internal" href="#neuraxle.steps.flow.TestOnlyWrapper" title="neuraxle.steps.flow.TestOnlyWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">TestOnlyWrapper</span></code></a>,
+<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ForceHandleMixin" title="neuraxle.base.ForceHandleMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForceHandleMixin</span></code></a>,
+<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.MetaStepMixin" title="neuraxle.base.MetaStepMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaStepMixin</span></code></a>,
+<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p>
 </div>
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ChooseOneOrManyStepsOf._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneOrManyStepsOf._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="method">
+<dt id="neuraxle.steps.flow.TrainOrTestOnlyWrapper.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em>, <em>is_train_only=True</em>, <em>cache_folder_when_no_handle=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
 
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ChooseOneOrManyStepsOf._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneOrManyStepsOf._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="method">
+<dt id="neuraxle.steps.flow.TrainOrTestOnlyWrapper._fit_data_container">
+<code class="descname">_fit_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L70"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper._fit_data_container" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>step, data_container</p>
+</dd>
+</dl>
+</dd></dl>
 
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ChooseOneOrManyStepsOf._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneOrManyStepsOf._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="method">
+<dt id="neuraxle.steps.flow.TrainOrTestOnlyWrapper._fit_transform_data_container">
+<code class="descname">_fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L81"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper._fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>step, data_container</p>
+</dd>
+</dl>
+</dd></dl>
 
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ChooseOneOrManyStepsOf._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneOrManyStepsOf._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="neuraxle.steps.flow.TrainOrTestOnlyWrapper._transform_data_container">
+<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L93"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper._transform_data_container" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>step, data_container</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.flow.TrainOrTestOnlyWrapper.should_resume">
+<code class="descname">should_resume</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L103"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper.should_resume" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.steps.flow.ChooseOneOrManyStepsOf._make_all_steps_optional">
-<code class="descname">_make_all_steps_optional</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L492"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneOrManyStepsOf._make_all_steps_optional" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wrap all steps with <a class="reference internal" href="#neuraxle.steps.flow.Optional" title="neuraxle.steps.flow.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">Optional</span></code></a> wrapper.</p>
+<dt id="neuraxle.steps.flow.TrainOrTestOnlyWrapper._should_execute_wrapped_step">
+<code class="descname">_should_execute_wrapped_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L107"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper._should_execute_wrapped_step" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.steps.flow.TrainOnlyWrapper">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">TrainOnlyWrapper</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L111"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOnlyWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper" title="neuraxle.steps.flow.TrainOrTestOnlyWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.steps.flow.TrainOrTestOnlyWrapper</span></code></a></p>
+<p>A wrapper to run wrapped step only in train mode</p>
+<p>Execute only in train mode:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="n">TrainOnlyWrapper</span><span class="p">(</span><span class="n">Identity</span><span class="p">())</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper" title="neuraxle.steps.flow.TrainOrTestOnlyWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrainOrTestOnlyWrapper</span></code></a>,
+<a class="reference internal" href="#neuraxle.steps.flow.TestOnlyWrapper" title="neuraxle.steps.flow.TestOnlyWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">TestOnlyWrapper</span></code></a></p>
+</div>
+<dl class="method">
+<dt id="neuraxle.steps.flow.TrainOnlyWrapper.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L128"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOnlyWrapper.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
-<dt id="neuraxle.steps.flow.ChooseOneStepOf">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">ChooseOneStepOf</code><span class="sig-paren">(</span><em>steps</em>, <em>hyperparams=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L347"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneStepOf" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="attribute">
-<dt id="neuraxle.steps.flow.ChooseOneStepOf.CHOICE_HYPERPARAM">
-<code class="descname">CHOICE_HYPERPARAM</code><em class="property"> = 'choice'</em><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneStepOf.CHOICE_HYPERPARAM" title="Permalink to this definition">¶</a></dt>
-<dd><p>A pipeline to allow choosing one step using an hyperparameter.</p>
-<p>Example usage :</p>
+<dt id="neuraxle.steps.flow.TestOnlyWrapper">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">TestOnlyWrapper</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L132"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TestOnlyWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper" title="neuraxle.steps.flow.TrainOrTestOnlyWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.steps.flow.TrainOrTestOnlyWrapper</span></code></a></p>
+<p>A wrapper to run wrapped step only in test mode</p>
+<p>Execute only in train mode:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-    <span class="n">ChooseOneStepOf</span><span class="p">([</span>
-        <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">Identity</span><span class="p">()),</span>
-        <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">Identity</span><span class="p">())</span>
-    <span class="p">])</span>
+    <span class="n">TestOnlyWrapper</span><span class="p">(</span><span class="n">Identity</span><span class="p">())</span>
 <span class="p">])</span>
-<span class="n">p</span><span class="o">.</span><span class="n">set_hyperparams</span><span class="p">({</span>
-    <span class="s1">&#39;ChooseOneOrManyStepsOf__choice&#39;</span><span class="p">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span>
-<span class="p">})</span>
-<span class="c1"># or</span>
-<span class="n">p</span><span class="o">.</span><span class="n">set_hyperparams</span><span class="p">({</span>
-    <span class="s1">&#39;ChooseOneStepOf&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;enabled&#39;</span><span class="p">:</span> <span class="kc">True</span> <span class="p">},</span>
-        <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;enabled&#39;</span><span class="p">:</span> <span class="kc">False</span> <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">})</span>
 </pre></div>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference internal" href="../neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>
-<a class="reference internal" href="#neuraxle.steps.flow.Optional" title="neuraxle.steps.flow.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">Optional</span></code></a></p>
+<p><a class="reference internal" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper" title="neuraxle.steps.flow.TrainOrTestOnlyWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrainOrTestOnlyWrapper</span></code></a>,
+<a class="reference internal" href="#neuraxle.steps.flow.TrainOnlyWrapper" title="neuraxle.steps.flow.TrainOnlyWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrainOnlyWrapper</span></code></a></p>
 </div>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ChooseOneStepOf._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneStepOf._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ChooseOneStepOf._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneStepOf._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ChooseOneStepOf._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneStepOf._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ChooseOneStepOf._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneStepOf._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="method">
-<dt id="neuraxle.steps.flow.ChooseOneStepOf._make_all_steps_optional">
-<code class="descname">_make_all_steps_optional</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L439"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneStepOf._make_all_steps_optional" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wrap all steps with <a class="reference internal" href="#neuraxle.steps.flow.Optional" title="neuraxle.steps.flow.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">Optional</span></code></a> wrapper.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.flow.ChooseOneStepOf._update_hyperparams">
-<code class="descname">_update_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: dict</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L410"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneStepOf._update_hyperparams" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set chosen step hyperparams.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>hyperparams</strong> (<a class="reference internal" href="../hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><em>HyperparameterSamples</em></a>) – hyperparams</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.flow.ChooseOneStepOf._update_optional_hyperparams">
-<code class="descname">_update_optional_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L422"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneStepOf._update_optional_hyperparams" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.flow.ChooseOneStepOf.set_hyperparams">
-<code class="descname">set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: dict</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L397"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneStepOf.set_hyperparams" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set chosen step hyperparams.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>hyperparams</strong> (<a class="reference internal" href="../hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><em>HyperparameterSamples</em></a>) – hyperparams</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-</dl>
+<dt id="neuraxle.steps.flow.TestOnlyWrapper.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L149"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TestOnlyWrapper.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 </dd></dl>
@@ -877,25 +867,12 @@
 <dl class="class">
 <dt id="neuraxle.steps.flow.ExecuteIf">
 <em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">ExecuteIf</code><span class="sig-paren">(</span><em>condition_function: Callable</em>, <em>wrapped: neuraxle.base.BaseStep</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L153"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExecuteIf" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="attribute">
-<dt id="neuraxle.steps.flow.ExecuteIf._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExecuteIf._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ExecuteIf._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExecuteIf._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ExecuteIf._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.steps.flow.ExecuteIf._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ExecuteIf._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExecuteIf._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Bases: <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.HandleOnlyMixin" title="neuraxle.base.HandleOnlyMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.HandleOnlyMixin</span></code></a>, <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.MetaStep" title="neuraxle.base.MetaStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.MetaStep</span></code></a></p>
+<dl class="method">
+<dt id="neuraxle.steps.flow.ExecuteIf.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>condition_function: Callable</em>, <em>wrapped: neuraxle.base.BaseStep</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L154"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExecuteIf.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.flow.ExecuteIf._fit_data_container">
@@ -951,26 +928,43 @@
 </dd></dl>
 
 <dl class="class">
+<dt id="neuraxle.steps.flow.IfExecutionPhaseIsThen">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">IfExecutionPhaseIsThen</code><span class="sig-paren">(</span><em>phase: neuraxle.base.ExecutionPhase</em>, <em>wrapped: neuraxle.base.BaseTransformer</em>, <em>raise_if_phase_unspecified: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.IfExecutionPhaseIsThen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.steps.flow.ExecuteIf" title="neuraxle.steps.flow.ExecuteIf"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.steps.flow.ExecuteIf</span></code></a></p>
+<p>If, at runtime, the execution phase is the same as the one given to the constructor, then execute wrapped step.</p>
+<p>By default, will raise an error if the execution phase is not specified in the context.
+Steps which implement ForceHandleMixin create context with unspecified phase on fit, fit_transform and transform call.</p>
+<dl class="method">
+<dt id="neuraxle.steps.flow.IfExecutionPhaseIsThen.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>phase: neuraxle.base.ExecutionPhase</em>, <em>wrapped: neuraxle.base.BaseTransformer</em>, <em>raise_if_phase_unspecified: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.IfExecutionPhaseIsThen.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.flow.IfExecutionPhaseIsThen.check_context">
+<code class="descname">check_context</code><span class="sig-paren">(</span><em>step</em>, <em>data_container</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L188"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.IfExecutionPhaseIsThen.check_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="neuraxle.steps.flow.ExecutionPhaseSwitch">
 <em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">ExecutionPhaseSwitch</code><span class="sig-paren">(</span><em>phase_to_callable: Dict[neuraxle.base.ExecutionPhase, neuraxle.base.BaseTransformer], default: Optional[neuraxle.base.BaseTransformer] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L196"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExecutionPhaseSwitch" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="attribute">
-<dt id="neuraxle.steps.flow.ExecutionPhaseSwitch._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExecutionPhaseSwitch._abc_cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.HandleOnlyMixin" title="neuraxle.base.HandleOnlyMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.HandleOnlyMixin</span></code></a>, <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.TruncableSteps" title="neuraxle.base.TruncableSteps"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.TruncableSteps</span></code></a></p>
+<dl class="method">
+<dt id="neuraxle.steps.flow.ExecutionPhaseSwitch.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>phase_to_callable: Dict[neuraxle.base.ExecutionPhase, neuraxle.base.BaseTransformer], default: Optional[neuraxle.base.BaseTransformer] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L197"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExecutionPhaseSwitch.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.flow.ExecutionPhaseSwitch._get_step">
+<code class="descname">_get_step</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L206"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExecutionPhaseSwitch._get_step" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ExecutionPhaseSwitch._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExecutionPhaseSwitch._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ExecutionPhaseSwitch._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.steps.flow.ExecutionPhaseSwitch._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ExecutionPhaseSwitch._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExecutionPhaseSwitch._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="neuraxle.steps.flow.ExecutionPhaseSwitch._set_step">
+<code class="descname">_set_step</code><span class="sig-paren">(</span><em>context</em>, <em>step</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L215"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExecutionPhaseSwitch._set_step" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1008,16 +1002,6 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.steps.flow.ExecutionPhaseSwitch._get_step">
-<code class="descname">_get_step</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L206"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExecutionPhaseSwitch._get_step" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.flow.ExecutionPhaseSwitch._set_step">
-<code class="descname">_set_step</code><span class="sig-paren">(</span><em>context</em>, <em>step</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L215"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExecutionPhaseSwitch._set_step" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="neuraxle.steps.flow.ExecutionPhaseSwitch._transform_data_container">
 <code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseTransformer'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L234"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExecutionPhaseSwitch._transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform data container.</p>
@@ -1037,138 +1021,10 @@
 </dd></dl>
 
 <dl class="class">
-<dt id="neuraxle.steps.flow.ExpandDim">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">ExpandDim</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseTransformer</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L558"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExpandDim" title="Permalink to this definition">¶</a></dt>
-<dd><p>Similar to numpys expand_dim function, ExpandDim step expands the dimension of all the data inside the data container.
-ExpandDim sends the expanded data container to the wrapped step.
-ExpandDim returns the transformed expanded dim reduced to its original shape (see <code class="xref py py-func docutils literal notranslate"><span class="pre">reduce_dim()</span></code>).</p>
-<dl class="simple">
-<dt>The wrapped step will receive a single current_id, data_input, and expected output:</dt><dd><ul class="simple">
-<li><p>The current_id is a list of one element that contains a single summary hash for all of the current ids.</p></li>
-<li><p>The data_inputs is a list of one element that contains the original expected outputs list.</p></li>
-<li><p>The expected_outputs is a list of one element that contains the original expected outputs list.</p></li>
-</ul>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><code class="xref py py-class docutils literal notranslate"><span class="pre">ForceAlwaysHandleMixin</span></code>,
-<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.MetaStepMixin" title="neuraxle.base.MetaStepMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaStepMixin</span></code></a>,
-<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a>
-<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseHasher" title="neuraxle.base.BaseHasher"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHasher</span></code></a>
-<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.ExpandedDataContainer" title="neuraxle.data_container.ExpandedDataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExpandedDataContainer</span></code></a></p>
-</div>
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ExpandDim._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExpandDim._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ExpandDim._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExpandDim._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ExpandDim._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.steps.flow.ExpandDim._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ExpandDim._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExpandDim._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.flow.ExpandDim._did_process">
-<code class="descname">_did_process</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L585"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExpandDim._did_process" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply side effects after any step method.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
-<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>(data container, execution context)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.flow.ExpandDim._will_process">
-<code class="descname">_will_process</code><span class="sig-paren">(</span><em>data_container</em>, <em>context</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L581"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExpandDim._will_process" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply side effects before any step method.
-:param data_container: data container
-:param context: execution context
-:return: (data container, execution context)</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.flow.ExpandDim.resume">
-<code class="descname">resume</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L589"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExpandDim.resume" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.flow.ExpandDim.should_resume">
-<code class="descname">should_resume</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L610"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExpandDim.should_resume" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns True if a step can be resumed with the given the data container and execution context.
-See Checkpoint class documentation for more details on how a resumable checkpoint works.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
-</dd>
-<dt class="field-even">Parameters</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container to resume from</p></li>
-<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context to resume from</p></li>
-</ul>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>if we can resume</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="neuraxle.steps.flow.IfExecutionPhaseIsThen">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">IfExecutionPhaseIsThen</code><span class="sig-paren">(</span><em>phase: neuraxle.base.ExecutionPhase</em>, <em>wrapped: neuraxle.base.BaseTransformer</em>, <em>raise_if_phase_unspecified: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.IfExecutionPhaseIsThen" title="Permalink to this definition">¶</a></dt>
-<dd><p>If, at runtime, the execution phase is the same as the one given to the constructor, then execute wrapped step.</p>
-<p>By default, will raise an error if the execution phase is not specified in the context.
-Steps which implement ForceHandleMixin create context with unspecified phase on fit, fit_transform and transform call.</p>
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.IfExecutionPhaseIsThen._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.IfExecutionPhaseIsThen._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.IfExecutionPhaseIsThen._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.IfExecutionPhaseIsThen._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.IfExecutionPhaseIsThen._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.steps.flow.IfExecutionPhaseIsThen._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.IfExecutionPhaseIsThen._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.IfExecutionPhaseIsThen._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.flow.IfExecutionPhaseIsThen.check_context">
-<code class="descname">check_context</code><span class="sig-paren">(</span><em>step</em>, <em>data_container</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L188"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.IfExecutionPhaseIsThen.check_context" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
 <dt id="neuraxle.steps.flow.Optional">
 <em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">Optional</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseTransformer</em>, <em>enabled: bool = True</em>, <em>nullified_return_value=None</em>, <em>cache_folder_when_no_handle=None</em>, <em>use_hyperparameter_space=True</em>, <em>nullify_hyperparams=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L239"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.Optional" title="Permalink to this definition">¶</a></dt>
-<dd><p>A wrapper to nullify a step : nullify its hyperparams, and also nullify all of his behavior.</p>
+<dd><p>Bases: <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ForceHandleOnlyMixin" title="neuraxle.base.ForceHandleOnlyMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.ForceHandleOnlyMixin</span></code></a>, <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.MetaStep" title="neuraxle.base.MetaStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.MetaStep</span></code></a></p>
+<p>A wrapper to nullify a step : nullify its hyperparams, and also nullify all of his behavior.</p>
 <p>Example usage :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
     <span class="n">Optional</span><span class="p">(</span><span class="n">Identity</span><span class="p">(),</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1182,25 +1038,11 @@ Steps which implement ForceHandleMixin create context with unspecified phase on 
 <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.MetaStepMixin" title="neuraxle.base.MetaStepMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaStepMixin</span></code></a>,
 <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p>
 </div>
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.Optional._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.Optional._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.Optional._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.Optional._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.Optional._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.steps.flow.Optional._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.Optional._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.Optional._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="method">
+<dt id="neuraxle.steps.flow.Optional.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseTransformer</em>, <em>enabled: bool = True</em>, <em>nullified_return_value=None</em>, <em>cache_folder_when_no_handle=None</em>, <em>use_hyperparameter_space=True</em>, <em>nullify_hyperparams=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L258"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.Optional.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.flow.Optional._fit_data_container">
@@ -1237,12 +1079,6 @@ Steps which implement ForceHandleMixin create context with unspecified phase on 
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.steps.flow.Optional._nullify_hyperparams">
-<code class="descname">_nullify_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L337"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.Optional._nullify_hyperparams" title="Permalink to this definition">¶</a></dt>
-<dd><p>Nullify wrapped step hyperparams using hyperparams_space.nullify().</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="neuraxle.steps.flow.Optional._transform_data_container">
 <code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L317"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.Optional._transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Nullify wrapped step hyperparams, and don’t transform the wrapped step.</p>
@@ -1262,12 +1098,307 @@ Steps which implement ForceHandleMixin create context with unspecified phase on 
 </dl>
 </dd></dl>
 
+<dl class="method">
+<dt id="neuraxle.steps.flow.Optional._nullify_hyperparams">
+<code class="descname">_nullify_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L337"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.Optional._nullify_hyperparams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nullify wrapped step hyperparams using hyperparams_space.nullify().</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.steps.flow.ChooseOneStepOf">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">ChooseOneStepOf</code><span class="sig-paren">(</span><em>steps</em>, <em>hyperparams=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L347"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneStepOf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../neuraxle.union.html#neuraxle.union.FeatureUnion" title="neuraxle.union.FeatureUnion"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.union.FeatureUnion</span></code></a></p>
+<dl class="attribute">
+<dt id="neuraxle.steps.flow.ChooseOneStepOf.CHOICE_HYPERPARAM">
+<code class="descname">CHOICE_HYPERPARAM</code><em class="property"> = 'choice'</em><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneStepOf.CHOICE_HYPERPARAM" title="Permalink to this definition">¶</a></dt>
+<dd><p>A pipeline to allow choosing one step using an hyperparameter.</p>
+<p>Example usage :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="n">ChooseOneStepOf</span><span class="p">([</span>
+        <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">Identity</span><span class="p">()),</span>
+        <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">Identity</span><span class="p">())</span>
+    <span class="p">])</span>
+<span class="p">])</span>
+<span class="n">p</span><span class="o">.</span><span class="n">set_hyperparams</span><span class="p">({</span>
+    <span class="s1">&#39;ChooseOneOrManyStepsOf__choice&#39;</span><span class="p">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="c1"># or</span>
+<span class="n">p</span><span class="o">.</span><span class="n">set_hyperparams</span><span class="p">({</span>
+    <span class="s1">&#39;ChooseOneStepOf&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;enabled&#39;</span><span class="p">:</span> <span class="kc">True</span> <span class="p">},</span>
+        <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;enabled&#39;</span><span class="p">:</span> <span class="kc">False</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>
+<a class="reference internal" href="#neuraxle.steps.flow.Optional" title="neuraxle.steps.flow.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">Optional</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.flow.ChooseOneStepOf.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>steps</em>, <em>hyperparams=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L378"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneStepOf.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a feature union.
+:param steps_as_tuple: the NamedTupleList of steps to process in parallel and to join.
+:param joiner: What will be used to join the features. <code class="docutils literal notranslate"><span class="pre">NumpyConcatenateInnerFeatures()</span></code> is used by default.
+:param n_jobs: The number of jobs for the parallelized <code class="docutils literal notranslate"><span class="pre">joblib.Parallel</span></code> loop in fit and in transform.
+:param backend: The type of parallelization to do with <code class="docutils literal notranslate"><span class="pre">joblib.Parallel</span></code>. Possible values: “loky”, “multiprocessing”, “threading”, “dask” if you use dask, and more.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.flow.ChooseOneStepOf.set_hyperparams">
+<code class="descname">set_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: dict</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L397"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneStepOf.set_hyperparams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set chosen step hyperparams.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>hyperparams</strong> (<a class="reference internal" href="../hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><em>HyperparameterSamples</em></a>) – hyperparams</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.flow.ChooseOneStepOf._update_hyperparams">
+<code class="descname">_update_hyperparams</code><span class="sig-paren">(</span><em>hyperparams: dict</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L410"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneStepOf._update_hyperparams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set chosen step hyperparams.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>hyperparams</strong> (<a class="reference internal" href="../hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><em>HyperparameterSamples</em></a>) – hyperparams</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.flow.ChooseOneStepOf._update_optional_hyperparams">
+<code class="descname">_update_optional_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L422"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneStepOf._update_optional_hyperparams" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.flow.ChooseOneStepOf._make_all_steps_optional">
+<code class="descname">_make_all_steps_optional</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L439"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneStepOf._make_all_steps_optional" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrap all steps with <a class="reference internal" href="#neuraxle.steps.flow.Optional" title="neuraxle.steps.flow.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">Optional</span></code></a> wrapper.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.steps.flow.ChooseOneOrManyStepsOf">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">ChooseOneOrManyStepsOf</code><span class="sig-paren">(</span><em>steps</em>, <em>joiner: neuraxle.base.NonFittableMixin = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L454"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneOrManyStepsOf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../neuraxle.union.html#neuraxle.union.FeatureUnion" title="neuraxle.union.FeatureUnion"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.union.FeatureUnion</span></code></a></p>
+<p>A pipeline to allow choosing many steps using an hyperparameter.</p>
+<p>Example usage :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="n">ChooseOneOrManyStepsOf</span><span class="p">([</span>
+        <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">Identity</span><span class="p">()),</span>
+        <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">Identity</span><span class="p">())</span>
+    <span class="p">])</span>
+<span class="p">])</span>
+<span class="n">p</span><span class="o">.</span><span class="n">set_hyperparams</span><span class="p">({</span>
+    <span class="s1">&#39;ChooseOneOrManyStepsOf__a__enabled&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s1">&#39;ChooseOneOrManyStepsOf__b__enabled&#39;</span><span class="p">:</span> <span class="kc">False</span>
+<span class="p">})</span>
+<span class="c1"># or</span>
+<span class="n">p</span><span class="o">.</span><span class="n">set_hyperparams</span><span class="p">({</span>
+    <span class="s1">&#39;ChooseOneOrManyStepsOf&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;enabled&#39;</span><span class="p">:</span> <span class="kc">True</span> <span class="p">},</span>
+        <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;enabled&#39;</span><span class="p">:</span> <span class="kc">False</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>
+<a class="reference internal" href="#neuraxle.steps.flow.Optional" title="neuraxle.steps.flow.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">Optional</span></code></a></p>
+</div>
+<dl class="method">
+<dt id="neuraxle.steps.flow.ChooseOneOrManyStepsOf.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>steps</em>, <em>joiner: neuraxle.base.NonFittableMixin = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L485"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneOrManyStepsOf.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a feature union.
+:type joiner: <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.NonFittableMixin" title="neuraxle.base.NonFittableMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">NonFittableMixin</span></code></a>
+:param steps_as_tuple: the NamedTupleList of steps to process in parallel and to join.
+:param joiner: What will be used to join the features. <code class="docutils literal notranslate"><span class="pre">NumpyConcatenateInnerFeatures()</span></code> is used by default.
+:param n_jobs: The number of jobs for the parallelized <code class="docutils literal notranslate"><span class="pre">joblib.Parallel</span></code> loop in fit and in transform.
+:param backend: The type of parallelization to do with <code class="docutils literal notranslate"><span class="pre">joblib.Parallel</span></code>. Possible values: “loky”, “multiprocessing”, “threading”, “dask” if you use dask, and more.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.flow.ChooseOneOrManyStepsOf._make_all_steps_optional">
+<code class="descname">_make_all_steps_optional</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L492"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ChooseOneOrManyStepsOf._make_all_steps_optional" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrap all steps with <a class="reference internal" href="#neuraxle.steps.flow.Optional" title="neuraxle.steps.flow.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">Optional</span></code></a> wrapper.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.steps.flow.SelectNonEmptyDataInputs">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">SelectNonEmptyDataInputs</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L502"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.SelectNonEmptyDataInputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.TransformHandlerOnlyMixin" title="neuraxle.base.TransformHandlerOnlyMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.TransformHandlerOnlyMixin</span></code></a>, <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseTransformer" title="neuraxle.base.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.BaseTransformer</span></code></a></p>
+<p>A step that selects non empty data inputs.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../neuraxle.base.html#neuraxle.base.TransformHandlerOnlyMixin" title="neuraxle.base.TransformHandlerOnlyMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransformHandlerOnlyMixin</span></code></a>,
+<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p>
+</div>
+<dl class="method">
+<dt id="neuraxle.steps.flow.SelectNonEmptyDataInputs.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L511"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.SelectNonEmptyDataInputs.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.flow.SelectNonEmptyDataInputs._transform_data_container">
+<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L515"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.SelectNonEmptyDataInputs._transform_data_container" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle transform.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to join</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>transformed data container</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.steps.flow.SelectNonEmptyDataContainer">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">SelectNonEmptyDataContainer</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L532"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.SelectNonEmptyDataContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.TransformHandlerOnlyMixin" title="neuraxle.base.TransformHandlerOnlyMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.TransformHandlerOnlyMixin</span></code></a>, <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseTransformer" title="neuraxle.base.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.BaseTransformer</span></code></a></p>
+<p>A step that selects non empty data containers.
+Assumes that the given DataContainer contains a list of DataContainer as data_inputs.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../neuraxle.base.html#neuraxle.base.TransformHandlerOnlyMixin" title="neuraxle.base.TransformHandlerOnlyMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransformHandlerOnlyMixin</span></code></a>,
+<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p>
+</div>
+<dl class="method">
+<dt id="neuraxle.steps.flow.SelectNonEmptyDataContainer.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L542"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.SelectNonEmptyDataContainer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.flow.SelectNonEmptyDataContainer._transform_data_container">
+<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L546"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.SelectNonEmptyDataContainer._transform_data_container" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform data container with the given execution context.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>transformed data container</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.steps.flow.ExpandDim">
+<em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">ExpandDim</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseTransformer</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L558"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExpandDim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ResumableStepMixin" title="neuraxle.base.ResumableStepMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.ResumableStepMixin</span></code></a>, <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.MetaStep" title="neuraxle.base.MetaStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.MetaStep</span></code></a></p>
+<p>Similar to numpys expand_dim function, ExpandDim step expands the dimension of all the data inside the data container.
+ExpandDim sends the expanded data container to the wrapped step.
+ExpandDim returns the transformed expanded dim reduced to its original shape (see <code class="xref py py-func docutils literal notranslate"><span class="pre">reduce_dim()</span></code>).</p>
+<dl class="simple">
+<dt>The wrapped step will receive a single current_id, data_input, and expected output:</dt><dd><ul class="simple">
+<li><p>The current_id is a list of one element that contains a single summary hash for all of the current ids.</p></li>
+<li><p>The data_inputs is a list of one element that contains the original expected outputs list.</p></li>
+<li><p>The expected_outputs is a list of one element that contains the original expected outputs list.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">ForceAlwaysHandleMixin</span></code>,
+<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.MetaStepMixin" title="neuraxle.base.MetaStepMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaStepMixin</span></code></a>,
+<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a>
+<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseHasher" title="neuraxle.base.BaseHasher"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHasher</span></code></a>
+<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.ExpandedDataContainer" title="neuraxle.data_container.ExpandedDataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExpandedDataContainer</span></code></a></p>
+</div>
+<dl class="method">
+<dt id="neuraxle.steps.flow.ExpandDim.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseTransformer</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L577"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExpandDim.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.flow.ExpandDim._will_process">
+<code class="descname">_will_process</code><span class="sig-paren">(</span><em>data_container</em>, <em>context</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L581"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExpandDim._will_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply side effects before any step method.
+:param data_container: data container
+:param context: execution context
+:return: (data container, execution context)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.flow.ExpandDim._did_process">
+<code class="descname">_did_process</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L585"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExpandDim._did_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply side effects after any step method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(data container, execution context)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.flow.ExpandDim.resume">
+<code class="descname">resume</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L589"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExpandDim.resume" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.steps.flow.ExpandDim.should_resume">
+<code class="descname">should_resume</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L610"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ExpandDim.should_resume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if a step can be resumed with the given the data container and execution context.
+See Checkpoint class documentation for more details on how a resumable checkpoint works.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container to resume from</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context to resume from</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>if we can resume</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
 <dt id="neuraxle.steps.flow.ReversiblePreprocessingWrapper">
 <em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">ReversiblePreprocessingWrapper</code><span class="sig-paren">(</span><em>preprocessing_step</em>, <em>postprocessing_step</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L621"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ReversiblePreprocessingWrapper" title="Permalink to this definition">¶</a></dt>
-<dd><p>TruncableSteps with a preprocessing step(1), and a postprocessing step(2)
+<dd><p>Bases: <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.HandleOnlyMixin" title="neuraxle.base.HandleOnlyMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.HandleOnlyMixin</span></code></a>, <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.TruncableSteps" title="neuraxle.base.TruncableSteps"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.TruncableSteps</span></code></a></p>
+<p>TruncableSteps with a preprocessing step(1), and a postprocessing step(2)
 that inverse transforms with the preprocessing step at the end (1, 2, reversed(1)).</p>
 <p>Example usage :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">step</span> <span class="o">=</span> <span class="n">ReversiblePreprocessingWrapper</span><span class="p">(</span>
@@ -1280,25 +1411,11 @@ that inverse transforms with the preprocessing step at the end (1, 2, reversed(1
 <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]))</span>
 </pre></div>
 </div>
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ReversiblePreprocessingWrapper._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ReversiblePreprocessingWrapper._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ReversiblePreprocessingWrapper._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ReversiblePreprocessingWrapper._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ReversiblePreprocessingWrapper._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.steps.flow.ReversiblePreprocessingWrapper._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.ReversiblePreprocessingWrapper._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ReversiblePreprocessingWrapper._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="method">
+<dt id="neuraxle.steps.flow.ReversiblePreprocessingWrapper.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>preprocessing_step</em>, <em>postprocessing_step</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L641"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ReversiblePreprocessingWrapper.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.steps.flow.ReversiblePreprocessingWrapper._fit_data_container">
@@ -1316,30 +1433,6 @@ that inverse transforms with the preprocessing step at the end (1, 2, reversed(1
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>(<a class="reference internal" href="#neuraxle.steps.flow.ReversiblePreprocessingWrapper" title="neuraxle.steps.flow.ReversiblePreprocessingWrapper">ReversiblePreprocessingWrapper</a>, <a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer">DataContainer</a>)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.flow.ReversiblePreprocessingWrapper._fit_transform_data_container">
-<code class="descname">_fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L695"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ReversiblePreprocessingWrapper._fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
-<dd><p>According to the idiom of <cite>(1, 2, reversed(1))</cite>, we do this, in order:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><cite>1</cite>. Fit Transform preprocessing step</p></li>
-<li><p><cite>2</cite>. Fit Transform postprocessing step</p></li>
-<li><p><cite>reversed(1)</cite>. Inverse transform preprocessing step</p></li>
-</ul>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container to transform</p></li>
-<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>(self, data_container)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1371,282 +1464,29 @@ that inverse transforms with the preprocessing step at the end (1, 2, reversed(1
 </dl>
 </dd></dl>
 
-</dd></dl>
-
-<dl class="class">
-<dt id="neuraxle.steps.flow.SelectNonEmptyDataContainer">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">SelectNonEmptyDataContainer</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L532"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.SelectNonEmptyDataContainer" title="Permalink to this definition">¶</a></dt>
-<dd><p>A step that selects non empty data containers.
-Assumes that the given DataContainer contains a list of DataContainer as data_inputs.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="../neuraxle.base.html#neuraxle.base.TransformHandlerOnlyMixin" title="neuraxle.base.TransformHandlerOnlyMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransformHandlerOnlyMixin</span></code></a>,
-<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p>
-</div>
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.SelectNonEmptyDataContainer._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.SelectNonEmptyDataContainer._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.SelectNonEmptyDataContainer._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.SelectNonEmptyDataContainer._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.SelectNonEmptyDataContainer._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.steps.flow.SelectNonEmptyDataContainer._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.SelectNonEmptyDataContainer._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.SelectNonEmptyDataContainer._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="method">
-<dt id="neuraxle.steps.flow.SelectNonEmptyDataContainer._transform_data_container">
-<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L546"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.SelectNonEmptyDataContainer._transform_data_container" title="Permalink to this definition">¶</a></dt>
-<dd><p>Transform data container with the given execution context.</p>
+<dt id="neuraxle.steps.flow.ReversiblePreprocessingWrapper._fit_transform_data_container">
+<code class="descname">_fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L695"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.ReversiblePreprocessingWrapper._fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
+<dd><p>According to the idiom of <cite>(1, 2, reversed(1))</cite>, we do this, in order:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>1</cite>. Fit Transform preprocessing step</p></li>
+<li><p><cite>2</cite>. Fit Transform postprocessing step</p></li>
+<li><p><cite>reversed(1)</cite>. Inverse transform preprocessing step</p></li>
+</ul>
+</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container to transform</p></li>
 <li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>transformed data container</p>
+<dd class="field-even"><p>(self, data_container)</p>
 </dd>
 </dl>
 </dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="neuraxle.steps.flow.SelectNonEmptyDataInputs">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">SelectNonEmptyDataInputs</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L502"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.SelectNonEmptyDataInputs" title="Permalink to this definition">¶</a></dt>
-<dd><p>A step that selects non empty data inputs.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="../neuraxle.base.html#neuraxle.base.TransformHandlerOnlyMixin" title="neuraxle.base.TransformHandlerOnlyMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransformHandlerOnlyMixin</span></code></a>,
-<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p>
-</div>
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.SelectNonEmptyDataInputs._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.SelectNonEmptyDataInputs._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.SelectNonEmptyDataInputs._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.SelectNonEmptyDataInputs._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.SelectNonEmptyDataInputs._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.steps.flow.SelectNonEmptyDataInputs._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.SelectNonEmptyDataInputs._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.SelectNonEmptyDataInputs._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.flow.SelectNonEmptyDataInputs._transform_data_container">
-<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L515"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.SelectNonEmptyDataInputs._transform_data_container" title="Permalink to this definition">¶</a></dt>
-<dd><p>Handle transform.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to join</p></li>
-<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>transformed data container</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="neuraxle.steps.flow.TestOnlyWrapper">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">TestOnlyWrapper</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L132"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TestOnlyWrapper" title="Permalink to this definition">¶</a></dt>
-<dd><p>A wrapper to run wrapped step only in test mode</p>
-<p>Execute only in train mode:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-    <span class="n">TestOnlyWrapper</span><span class="p">(</span><span class="n">Identity</span><span class="p">())</span>
-<span class="p">])</span>
-</pre></div>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper" title="neuraxle.steps.flow.TrainOrTestOnlyWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrainOrTestOnlyWrapper</span></code></a>,
-<a class="reference internal" href="#neuraxle.steps.flow.TrainOnlyWrapper" title="neuraxle.steps.flow.TrainOnlyWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrainOnlyWrapper</span></code></a></p>
-</div>
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.TestOnlyWrapper._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TestOnlyWrapper._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.TestOnlyWrapper._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TestOnlyWrapper._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.TestOnlyWrapper._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.steps.flow.TestOnlyWrapper._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.TestOnlyWrapper._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TestOnlyWrapper._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="neuraxle.steps.flow.TrainOnlyWrapper">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">TrainOnlyWrapper</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L111"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOnlyWrapper" title="Permalink to this definition">¶</a></dt>
-<dd><p>A wrapper to run wrapped step only in train mode</p>
-<p>Execute only in train mode:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-    <span class="n">TrainOnlyWrapper</span><span class="p">(</span><span class="n">Identity</span><span class="p">())</span>
-<span class="p">])</span>
-</pre></div>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper" title="neuraxle.steps.flow.TrainOrTestOnlyWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrainOrTestOnlyWrapper</span></code></a>,
-<a class="reference internal" href="#neuraxle.steps.flow.TestOnlyWrapper" title="neuraxle.steps.flow.TestOnlyWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">TestOnlyWrapper</span></code></a></p>
-</div>
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.TrainOnlyWrapper._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOnlyWrapper._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.TrainOnlyWrapper._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOnlyWrapper._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.TrainOnlyWrapper._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.steps.flow.TrainOnlyWrapper._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.TrainOnlyWrapper._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOnlyWrapper._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="neuraxle.steps.flow.TrainOrTestOnlyWrapper">
-<em class="property">class </em><code class="descclassname">neuraxle.steps.flow.</code><code class="descname">TrainOrTestOnlyWrapper</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em>, <em>is_train_only=True</em>, <em>cache_folder_when_no_handle=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper" title="Permalink to this definition">¶</a></dt>
-<dd><p>A wrapper to run wrapped step only in test mode, or only in train mode.</p>
-<p>Execute only in test mode:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">TrainOrTestOnlyWrapper</span><span class="p">(</span><span class="n">Identity</span><span class="p">(),</span> <span class="n">is_train_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Execute only in train mode:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">TrainOnlyWrapper</span><span class="p">(</span><span class="n">Identity</span><span class="p">(),</span> <span class="n">test_only</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#neuraxle.steps.flow.TrainOnlyWrapper" title="neuraxle.steps.flow.TrainOnlyWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrainOnlyWrapper</span></code></a>,
-<a class="reference internal" href="#neuraxle.steps.flow.TestOnlyWrapper" title="neuraxle.steps.flow.TestOnlyWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">TestOnlyWrapper</span></code></a>,
-<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ForceHandleMixin" title="neuraxle.base.ForceHandleMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForceHandleMixin</span></code></a>,
-<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.MetaStepMixin" title="neuraxle.base.MetaStepMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaStepMixin</span></code></a>,
-<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p>
-</div>
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.TrainOrTestOnlyWrapper._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.TrainOrTestOnlyWrapper._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.TrainOrTestOnlyWrapper._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.steps.flow.TrainOrTestOnlyWrapper._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.flow.TrainOrTestOnlyWrapper._fit_data_container">
-<code class="descname">_fit_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L70"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper._fit_data_container" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p>
-</dd>
-<dt class="field-even">Parameters</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
-<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
-</ul>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>step, data_container</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.flow.TrainOrTestOnlyWrapper._fit_transform_data_container">
-<code class="descname">_fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('BaseStep'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L81"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper._fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
-<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>step, data_container</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.flow.TrainOrTestOnlyWrapper._should_execute_wrapped_step">
-<code class="descname">_should_execute_wrapped_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L107"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper._should_execute_wrapped_step" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.flow.TrainOrTestOnlyWrapper._transform_data_container">
-<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L93"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper._transform_data_container" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
-</dd>
-<dt class="field-even">Parameters</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
-<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
-</ul>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>step, data_container</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.steps.flow.TrainOrTestOnlyWrapper.should_resume">
-<code class="descname">should_resume</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/flow.py#L103"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.flow.TrainOrTestOnlyWrapper.should_resume" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 

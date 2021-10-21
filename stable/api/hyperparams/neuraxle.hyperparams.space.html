@@ -727,77 +727,10 @@ ready to be sent to an instance of the pipeline to try and score it, for example
 </figcaption>
 </figure>
 </div><div class="sphx-glr-clear"></div><span class="target" id="sphx-glr-backref-neuraxle-hyperparams-space-recursivedict"></span><dl class="class">
-<dt id="neuraxle.hyperparams.space.HyperparameterSamples">
-<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.space.</code><code class="descname">HyperparameterSamples</code><span class="sig-paren">(</span><em>*args</em>, <em>separator=None</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L217"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSamples" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wraps an hyperparameter nested dict or flat dict, and offer a few more functions.</p>
-<p>This can be set on a Pipeline with the method <code class="docutils literal notranslate"><span class="pre">set_hyperparams</span></code>.</p>
-<p>HyperparameterSamples are often the result of calling <code class="docutils literal notranslate"><span class="pre">.rvs()</span></code> on an HyperparameterSpace.</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="neuraxle.hyperparams.space.HyperparameterSpace">
-<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.space.</code><code class="descname">HyperparameterSpace</code><span class="sig-paren">(</span><em>*args</em>, <em>separator=None</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L230"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wraps an hyperparameter nested dict or flat dict, and offer a few more functions to process
-all contained HyperparameterDistribution.</p>
-<p>This can be set on a Pipeline with the method <code class="docutils literal notranslate"><span class="pre">set_hyperparams_space</span></code>.</p>
-<p>Calling <code class="docutils literal notranslate"><span class="pre">.rvs()</span></code> on an <code class="docutils literal notranslate"><span class="pre">HyperparameterSpace</span></code> results in <code class="docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code>.</p>
-<dl class="method">
-<dt id="neuraxle.hyperparams.space.HyperparameterSpace._patch_arg">
-<code class="descname">_patch_arg</code><span class="sig-paren">(</span><em>arg</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L243"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace._patch_arg" title="Permalink to this definition">¶</a></dt>
-<dd><p>Override of the RecursiveDict’s default _patch_arg(arg) method.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.hyperparams.space.HyperparameterSpace.narrow_space_from_best_guess">
-<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guesses: neuraxle.hyperparams.space.HyperparameterSpace</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L278"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
-<dd><p>Takes samples estimated to be the best ones of the space as of yet, and restrict the whole space towards that.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>best_guesses</strong> – sampled HyperparameterSpace (the result of rvs on each parameter, but still stored as a HyperparameterSpace).</p></li>
-<li><p><strong>kept_space_ratio</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – what proportion of the space is kept. Should be between 0.0 and 1.0. Default is 0.5.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a new HyperparameterSpace containing the narrowed HyperparameterDistribution objects.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.hyperparams.space.HyperparameterSpace.nullify">
-<code class="descname">nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L270"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace.nullify" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.hyperparams.space.HyperparameterSpace.rvs">
-<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L255"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace.rvs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sample the space of random variables.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>a random HyperparameterSamples, sampled from a point of the present HyperparameterSpace.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.hyperparams.space.HyperparameterSpace.unnarrow">
-<code class="descname">unnarrow</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L298"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace.unnarrow" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the original space before narrowing of the distribution. If the distribution was never narrowed,
-the values in the dict will be copies.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>the original HyperparameterSpace before narrowing.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
 <dt id="neuraxle.hyperparams.space.RecursiveDict">
 <em class="property">class </em><code class="descclassname">neuraxle.hyperparams.space.</code><code class="descname">RecursiveDict</code><span class="sig-paren">(</span><em>*args</em>, <em>separator=None</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L75"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict" title="Permalink to this definition">¶</a></dt>
-<dd><p>A data structure that provides an interface to access nested dictionaries with “flattened keys”, and a few more functions.</p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.OrderedDict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">collections.OrderedDict</span></code></a></p>
+<p>A data structure that provides an interface to access nested dictionaries with “flattened keys”, and a few more functions.</p>
 <dl class="simple">
 <dt>e.g.</dt><dd><p>dct = RecursiveDict({‘a’:{‘b’:2}})
 assert dct[“a__b”] == 2
@@ -812,8 +745,24 @@ assert dct[‘a’][‘b’][‘c’] == dct[“a__b__c”] == dct.to_flat_dict(
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.hyperparams.space.RecursiveDict.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>*args</em>, <em>separator=None</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L89"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.hyperparams.space.RecursiveDict._is_only_arg_a_recursive_dict">
 <code class="descname">_is_only_arg_a_recursive_dict</code><span class="sig-paren">(</span><em>args</em>, <em>kwds</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L104"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict._is_only_arg_a_recursive_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.space.RecursiveDict._patch_args">
+<code class="descname">_patch_args</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L107"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict._patch_args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.space.RecursiveDict.same_class_new_instance">
+<code class="descname">same_class_new_instance</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L120"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.same_class_new_instance" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -823,11 +772,6 @@ assert dct[‘a’][‘b’][‘c’] == dct[“a__b__c”] == dct.to_flat_dict(
 :param arg: arg to patch if needed.
 :return: (patched_arg, did_patch)</p>
 </dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.hyperparams.space.RecursiveDict._patch_args">
-<code class="descname">_patch_args</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L107"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict._patch_args" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.space.RecursiveDict._rec_get">
@@ -846,11 +790,6 @@ None returns every non-recursive elements.</p>
 <code class="descname">iter_flat</code><span class="sig-paren">(</span><em>pre_key=''</em>, <em>values_only=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L173"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.iter_flat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a generator which yield (flatenned_key, value) pairs. value is never a RecursiveDict instance.</p>
 </dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.hyperparams.space.RecursiveDict.same_class_new_instance">
-<code class="descname">same_class_new_instance</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L120"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.RecursiveDict.same_class_new_instance" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.hyperparams.space.RecursiveDict.to_flat_dict">
@@ -874,6 +813,88 @@ None returns every non-recursive elements.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.space.HyperparameterSamples">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.space.</code><code class="descname">HyperparameterSamples</code><span class="sig-paren">(</span><em>*args</em>, <em>separator=None</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L217"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSamples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.hyperparams.space.RecursiveDict" title="neuraxle.hyperparams.space.RecursiveDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.hyperparams.space.RecursiveDict</span></code></a></p>
+<p>Wraps an hyperparameter nested dict or flat dict, and offer a few more functions.</p>
+<p>This can be set on a Pipeline with the method <code class="docutils literal notranslate"><span class="pre">set_hyperparams</span></code>.</p>
+<p>HyperparameterSamples are often the result of calling <code class="docutils literal notranslate"><span class="pre">.rvs()</span></code> on an HyperparameterSpace.</p>
+<dl class="method">
+<dt id="neuraxle.hyperparams.space.HyperparameterSamples.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>*args</em>, <em>separator=None</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L226"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSamples.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.hyperparams.space.HyperparameterSpace">
+<em class="property">class </em><code class="descclassname">neuraxle.hyperparams.space.</code><code class="descname">HyperparameterSpace</code><span class="sig-paren">(</span><em>*args</em>, <em>separator=None</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L230"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.hyperparams.space.RecursiveDict" title="neuraxle.hyperparams.space.RecursiveDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.hyperparams.space.RecursiveDict</span></code></a></p>
+<p>Wraps an hyperparameter nested dict or flat dict, and offer a few more functions to process
+all contained HyperparameterDistribution.</p>
+<p>This can be set on a Pipeline with the method <code class="docutils literal notranslate"><span class="pre">set_hyperparams_space</span></code>.</p>
+<p>Calling <code class="docutils literal notranslate"><span class="pre">.rvs()</span></code> on an <code class="docutils literal notranslate"><span class="pre">HyperparameterSpace</span></code> results in <code class="docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code>.</p>
+<dl class="method">
+<dt id="neuraxle.hyperparams.space.HyperparameterSpace.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>*args</em>, <em>separator=None</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L240"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.space.HyperparameterSpace._patch_arg">
+<code class="descname">_patch_arg</code><span class="sig-paren">(</span><em>arg</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L243"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace._patch_arg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override of the RecursiveDict’s default _patch_arg(arg) method.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.space.HyperparameterSpace.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L255"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample the space of random variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a random HyperparameterSamples, sampled from a point of the present HyperparameterSpace.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.space.HyperparameterSpace.nullify">
+<code class="descname">nullify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L270"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace.nullify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.space.HyperparameterSpace.narrow_space_from_best_guess">
+<code class="descname">narrow_space_from_best_guess</code><span class="sig-paren">(</span><em>best_guesses: neuraxle.hyperparams.space.HyperparameterSpace</em>, <em>kept_space_ratio: float = 0.5</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L278"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace.narrow_space_from_best_guess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes samples estimated to be the best ones of the space as of yet, and restrict the whole space towards that.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>best_guesses</strong> – sampled HyperparameterSpace (the result of rvs on each parameter, but still stored as a HyperparameterSpace).</p></li>
+<li><p><strong>kept_space_ratio</strong> (<code class="docutils literal notranslate"><span class="pre">float</span></code>) – what proportion of the space is kept. Should be between 0.0 and 1.0. Default is 0.5.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new HyperparameterSpace containing the narrowed HyperparameterDistribution objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.hyperparams.space.HyperparameterSpace.unnarrow">
+<code class="descname">unnarrow</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSpace<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/hyperparams/space.py#L298"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.hyperparams.space.HyperparameterSpace.unnarrow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the original space before narrowing of the distribution. If the distribution was never narrowed,
+the values in the dict will be copies.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the original HyperparameterSpace before narrowing.</p>
 </dd>
 </dl>
 </dd></dl>

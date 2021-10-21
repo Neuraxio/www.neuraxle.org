@@ -662,45 +662,27 @@ to download the full example code or to run this example in your browser via Bin
 <p>This demonstrates how to make a prediction, and then to undo the prediction to get back the original inputs or an
 estimate of the original inputs. Not every pipeline steps have an inverse transform method, because not every operation
 is reversible.</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
- <span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="kn">import</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline" class="sphx-glr-backref-module-neuraxle-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Pipeline</span></a>
- <span class="kn">from</span> <span class="nn">neuraxle.steps.numpy</span> <span class="kn">import</span> <a href="../../api/steps/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="neuraxle.steps.numpy.MultiplyByN" class="sphx-glr-backref-module-neuraxle-steps-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">MultiplyByN</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="kn">import</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline" class="sphx-glr-backref-module-neuraxle-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Pipeline</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.steps.numpy</span> <span class="kn">import</span> <a href="../../api/steps/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="neuraxle.steps.numpy.MultiplyByN" class="sphx-glr-backref-module-neuraxle-steps-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">MultiplyByN</span></a>
 
 
- <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-     <span class="n">p</span> <span class="o">=</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline" class="sphx-glr-backref-module-neuraxle-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Pipeline</span></a><span class="p">([</span><a href="../../api/steps/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="neuraxle.steps.numpy.MultiplyByN" class="sphx-glr-backref-module-neuraxle-steps-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">MultiplyByN</span></a><span class="p">(</span><span class="n">multiply_by</span><span class="o">=</span><span class="mi">2</span><span class="p">)])</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">p</span> <span class="o">=</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline" class="sphx-glr-backref-module-neuraxle-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Pipeline</span></a><span class="p">([</span><a href="../../api/steps/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="neuraxle.steps.numpy.MultiplyByN" class="sphx-glr-backref-module-neuraxle-steps-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">MultiplyByN</span></a><span class="p">(</span><span class="n">multiply_by</span><span class="o">=</span><span class="mi">2</span><span class="p">)])</span>
 
-     <span class="n">data_inputs</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.16.1/reference/generated/numpy.array.html#numpy.array" title="numpy.array" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-     <span class="n">generated_outputs</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data_inputs</span><span class="p">)</span>
-     <span class="n">regenerated_inputs</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">generated_outputs</span><span class="p">)</span>
+    <span class="n">data_inputs</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.16.1/reference/generated/numpy.array.html#numpy.array" title="numpy.array" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">generated_outputs</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data_inputs</span><span class="p">)</span>
+    <span class="n">regenerated_inputs</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">generated_outputs</span><span class="p">)</span>
 
-     <span class="k">assert</span> <a href="http://docs.scipy.org/doc/numpy-1.16.1/reference/generated/numpy.array_equal.html#numpy.array_equal" title="numpy.array_equal" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span></a><span class="p">(</span><span class="n">regenerated_inputs</span><span class="p">,</span> <span class="n">data_inputs</span><span class="p">)</span>
-     <span class="k">assert</span> <a href="http://docs.scipy.org/doc/numpy-1.16.1/reference/generated/numpy.array_equal.html#numpy.array_equal" title="numpy.array_equal" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span></a><span class="p">(</span><span class="n">generated_outputs</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">data_inputs</span><span class="p">)</span>
+    <span class="k">assert</span> <a href="http://docs.scipy.org/doc/numpy-1.16.1/reference/generated/numpy.array_equal.html#numpy.array_equal" title="numpy.array_equal" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span></a><span class="p">(</span><span class="n">regenerated_inputs</span><span class="p">,</span> <span class="n">data_inputs</span><span class="p">)</span>
+    <span class="k">assert</span> <a href="http://docs.scipy.org/doc/numpy-1.16.1/reference/generated/numpy.array_equal.html#numpy.array_equal" title="numpy.array_equal" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span></a><span class="p">(</span><span class="n">generated_outputs</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">data_inputs</span><span class="p">)</span>
 
 
- <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-     <span class="n">main</span><span class="p">()</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.002 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-getting-started-plot-inverse-transform-py">
 <div class="binder-badge docutils container">

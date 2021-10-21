@@ -680,35 +680,10 @@
 </tbody>
 </table>
 <span class="target" id="sphx-glr-backref-neuraxle-metaopt-trial-trials"><span id="sphx-glr-backref-neuraxle-metaopt-trial-trialsplit"></span><span id="sphx-glr-backref-neuraxle-metaopt-trial-trial"></span><span id="sphx-glr-backref-neuraxle-metaopt-trial-trial-status"></span></span><dl class="class">
-<dt id="neuraxle.metaopt.trial.TRIAL_STATUS">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.trial.</code><code class="descname">TRIAL_STATUS</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L688"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TRIAL_STATUS" title="Permalink to this definition">¶</a></dt>
-<dd><p>Trial status.</p>
-<dl class="attribute">
-<dt id="neuraxle.metaopt.trial.TRIAL_STATUS.FAILED">
-<code class="descname">FAILED</code><em class="property"> = 'failed'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TRIAL_STATUS.FAILED" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.trial.TRIAL_STATUS.PLANNED">
-<code class="descname">PLANNED</code><em class="property"> = 'planned'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TRIAL_STATUS.PLANNED" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.trial.TRIAL_STATUS.STARTED">
-<code class="descname">STARTED</code><em class="property"> = 'started'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TRIAL_STATUS.STARTED" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.trial.TRIAL_STATUS.SUCCESS">
-<code class="descname">SUCCESS</code><em class="property"> = 'success'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TRIAL_STATUS.SUCCESS" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
 <dt id="neuraxle.metaopt.trial.Trial">
 <em class="property">class </em><code class="descclassname">neuraxle.metaopt.trial.</code><code class="descname">Trial</code><span class="sig-paren">(</span><em>trial_number: int</em>, <em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em>, <em>main_metric_name: str</em>, <em>save_trial_function: Callable</em>, <em>status: Optional[neuraxle.metaopt.trial.TRIAL_STATUS] = None</em>, <em>pipeline: neuraxle.base.BaseStep = None</em>, <em>validation_splits: List[TrialSplit] = None</em>, <em>cache_folder: str = None</em>, <em>error: str = None</em>, <em>error_traceback: str = None</em>, <em>start_time: datetime.datetime = None</em>, <em>end_time: datetime.datetime = None</em>, <em>logger: logging.Logger = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L43"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial" title="Permalink to this definition">¶</a></dt>
-<dd><p>Trial data container for <code class="xref py py-class docutils literal notranslate"><span class="pre">AutoML</span></code>.
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Trial data container for <code class="xref py py-class docutils literal notranslate"><span class="pre">AutoML</span></code>.
 A Trial contains the results for each validation split.
 Each trial split contains both the training set results, and the validation set results.</p>
 <div class="admonition seealso">
@@ -721,91 +696,18 @@ Each trial split contains both the training set results, and the validation set 
 <code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></p>
 </div>
 <dl class="method">
-<dt id="neuraxle.metaopt.trial.Trial._free_logger_file">
-<code class="descname">_free_logger_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L330"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial._free_logger_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove file handlers from logger to free file lock on Windows.</p>
+<dt id="neuraxle.metaopt.trial.Trial.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>trial_number: int</em>, <em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em>, <em>main_metric_name: str</em>, <em>save_trial_function: Callable</em>, <em>status: Optional[neuraxle.metaopt.trial.TRIAL_STATUS] = None</em>, <em>pipeline: neuraxle.base.BaseStep = None</em>, <em>validation_splits: List[TrialSplit] = None</em>, <em>cache_folder: str = None</em>, <em>error: str = None</em>, <em>error_traceback: str = None</em>, <em>start_time: datetime.datetime = None</em>, <em>end_time: datetime.datetime = None</em>, <em>logger: logging.Logger = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L58"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.metaopt.trial.Trial._get_trial_hash">
-<code class="descname">_get_trial_hash</code><span class="sig-paren">(</span><em>hp_dict: Dict</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L266"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial._get_trial_hash" title="Permalink to this definition">¶</a></dt>
-<dd><p>Hash hyperparams with md5 to create a trial hash.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>hp_dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>) – hyperparams dict</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.trial.Trial._initialize_logger_with_file">
-<code class="descname">_initialize_logger_with_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; logging.Logger<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L317"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial._initialize_logger_with_file" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.trial.Trial._save_model">
-<code class="descname">_save_model</code><span class="sig-paren">(</span><em>pipeline: neuraxle.base.BaseStep</em>, <em>label: str</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L138"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial._save_model" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="staticmethod">
-<dt id="neuraxle.metaopt.trial.Trial.from_json">
-<em class="property">static </em><code class="descname">from_json</code><span class="sig-paren">(</span><em>update_trial_function: Callable</em>, <em>trial_json: Dict</em>, <em>cache_folder: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.Trial<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L289"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.from_json" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.trial.Trial.get_model">
-<code class="descname">get_model</code><span class="sig-paren">(</span><em>label: str</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L144"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.get_model" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load model in the trial hash folder.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.trial.Trial.get_n_epoch_to_best_validation_score">
-<code class="descname">get_n_epoch_to_best_validation_score</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L199"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.get_n_epoch_to_best_validation_score" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the best validation score for the main scoring metric.
-Returns the average score for all validation splits.</p>
+<dt id="neuraxle.metaopt.trial.Trial.save_trial">
+<code class="descname">save_trial</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.Trial<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.save_trial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update trial with the hyperparams repository.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>validation score</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.trial.Trial.get_trained_pipeline">
-<code class="descname">get_trained_pipeline</code><span class="sig-paren">(</span><em>split_number: int = 0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L257"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.get_trained_pipeline" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get trained pipeline inside the validation splits.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>split_number</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – split number to get trained pipeline from</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.trial.Trial.get_validation_score">
-<code class="descname">get_validation_score</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.get_validation_score" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the best validation score for the main scoring metric.
-Returns the average score for all validation splits.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>validation score</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.trial.Trial.is_higher_score_better">
-<code class="descname">is_higher_score_better</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.is_higher_score_better" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return True if higher scores are better for the main metric.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>if higher score is better</p>
+<dd class="field-odd"><p></p>
 </dd>
 </dl>
 </dd></dl>
@@ -833,26 +735,23 @@ A trial has one or many split when the validation splitter function is kfold_cro
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.metaopt.trial.Trial.save_trial">
-<code class="descname">save_trial</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.Trial<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.save_trial" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update trial with the hyperparams repository.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
-</dd>
-</dl>
+<dt id="neuraxle.metaopt.trial.Trial._save_model">
+<code class="descname">_save_model</code><span class="sig-paren">(</span><em>pipeline: neuraxle.base.BaseStep</em>, <em>label: str</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L138"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial._save_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trial.get_model">
+<code class="descname">get_model</code><span class="sig-paren">(</span><em>label: str</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L144"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.get_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load model in the trial hash folder.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.metaopt.trial.Trial.set_failed">
-<code class="descname">set_failed</code><span class="sig-paren">(</span><em>error: Exception</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.Trial<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L242"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.set_failed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set failed trial with exception.</p>
+<dt id="neuraxle.metaopt.trial.Trial.set_main_metric_name">
+<code class="descname">set_main_metric_name</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.Trial<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L155"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.set_main_metric_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set trial main metric name.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>error</strong> (<code class="docutils literal notranslate"><span class="pre">Exception</span></code>) – catched exception</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>self</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>self</p>
 </dd>
 </dl>
 </dd></dl>
@@ -872,12 +771,36 @@ A trial has one or many split when the validation splitter function is kfold_cro
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.metaopt.trial.Trial.set_main_metric_name">
-<code class="descname">set_main_metric_name</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.Trial<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L155"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.set_main_metric_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set trial main metric name.</p>
+<dt id="neuraxle.metaopt.trial.Trial.is_higher_score_better">
+<code class="descname">is_higher_score_better</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.is_higher_score_better" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if higher scores are better for the main metric.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>self</p>
+<dd class="field-odd"><p>if higher score is better</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trial.get_validation_score">
+<code class="descname">get_validation_score</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.get_validation_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the best validation score for the main scoring metric.
+Returns the average score for all validation splits.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>validation score</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trial.get_n_epoch_to_best_validation_score">
+<code class="descname">get_n_epoch_to_best_validation_score</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L199"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.get_n_epoch_to_best_validation_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the best validation score for the main scoring metric.
+Returns the average score for all validation splits.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>validation score</p>
 </dd>
 </dl>
 </dd></dl>
@@ -894,14 +817,72 @@ A trial has one or many split when the validation splitter function is kfold_cro
 </dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.metaopt.trial.Trial.update_final_trial_status">
+<code class="descname">update_final_trial_status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L226"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.update_final_trial_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set trial status to success.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trial.set_failed">
+<code class="descname">set_failed</code><span class="sig-paren">(</span><em>error: Exception</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.Trial<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L242"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.set_failed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set failed trial with exception.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>error</strong> (<code class="docutils literal notranslate"><span class="pre">Exception</span></code>) – catched exception</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trial.get_trained_pipeline">
+<code class="descname">get_trained_pipeline</code><span class="sig-paren">(</span><em>split_number: int = 0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L257"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.get_trained_pipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get trained pipeline inside the validation splits.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>split_number</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – split number to get trained pipeline from</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trial._get_trial_hash">
+<code class="descname">_get_trial_hash</code><span class="sig-paren">(</span><em>hp_dict: Dict</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L266"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial._get_trial_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hash hyperparams with md5 to create a trial hash.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>hp_dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>) – hyperparams dict</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.metaopt.trial.Trial.to_json">
 <code class="descname">to_json</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L276"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.to_json" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="staticmethod">
+<dt id="neuraxle.metaopt.trial.Trial.from_json">
+<em class="property">static </em><code class="descname">from_json</code><span class="sig-paren">(</span><em>update_trial_function: Callable</em>, <em>trial_json: Dict</em>, <em>cache_folder: str = None</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.Trial<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L289"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.from_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
-<dt id="neuraxle.metaopt.trial.Trial.update_final_trial_status">
-<code class="descname">update_final_trial_status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L226"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial.update_final_trial_status" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set trial status to success.</p>
+<dt id="neuraxle.metaopt.trial.Trial._initialize_logger_with_file">
+<code class="descname">_initialize_logger_with_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; logging.Logger<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L317"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial._initialize_logger_with_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trial._free_logger_file">
+<code class="descname">_free_logger_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L330"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial._free_logger_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove file handlers from logger to free file lock on Windows.</p>
 </dd></dl>
 
 </dd></dl>
@@ -909,7 +890,8 @@ A trial has one or many split when the validation splitter function is kfold_cro
 <dl class="class">
 <dt id="neuraxle.metaopt.trial.TrialSplit">
 <em class="property">class </em><code class="descclassname">neuraxle.metaopt.trial.</code><code class="descname">TrialSplit</code><span class="sig-paren">(</span><em>trial: neuraxle.metaopt.trial.Trial</em>, <em>split_number: int</em>, <em>main_metric_name: str</em>, <em>status: Optional[neuraxle.metaopt.trial.TRIAL_STATUS] = None</em>, <em>error: Exception = None</em>, <em>error_traceback: str = None</em>, <em>metrics_results: Dict = None</em>, <em>start_time: datetime.datetime = None</em>, <em>end_time: datetime.datetime = None</em>, <em>pipeline: neuraxle.base.BaseStep = None</em>, <em>delete_pipeline_on_completion: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L371"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit" title="Permalink to this definition">¶</a></dt>
-<dd><p>One split of a trial.</p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>One split of a trial.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><code class="xref py py-class docutils literal notranslate"><span class="pre">AutoML</span></code>,
@@ -918,6 +900,83 @@ A trial has one or many split when the validation splitter function is kfold_cro
 <code class="xref py py-class docutils literal notranslate"><span class="pre">RandomSearchHyperparameterSelectionStrategy</span></code>,
 <code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></p>
 </div>
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>trial: neuraxle.metaopt.trial.Trial</em>, <em>split_number: int</em>, <em>main_metric_name: str</em>, <em>status: Optional[neuraxle.metaopt.trial.TRIAL_STATUS] = None</em>, <em>error: Exception = None</em>, <em>error_traceback: str = None</em>, <em>metrics_results: Dict = None</em>, <em>start_time: datetime.datetime = None</em>, <em>end_time: datetime.datetime = None</em>, <em>pipeline: neuraxle.base.BaseStep = None</em>, <em>delete_pipeline_on_completion: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L383"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.get_metric_names">
+<code class="descname">get_metric_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L414"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.get_metric_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.save_parent_trial">
+<code class="descname">save_parent_trial</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.TrialSplit<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L417"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.save_parent_trial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save parent trial.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.save_model">
+<code class="descname">save_model</code><span class="sig-paren">(</span><em>label: str</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L426"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.save_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the pipeline instance the same way a Trial instance would. Will overwrite
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.fit_trial_split">
+<code class="descname">fit_trial_split</code><span class="sig-paren">(</span><em>train_data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.TrialSplit<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L433"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.fit_trial_split" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the trial split pipeline with the training data container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – training data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>trial split with its fitted pipeline.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.predict_with_pipeline">
+<code class="descname">predict_with_pipeline</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L445"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.predict_with_pipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict data with the fitted trial split pipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container to predict</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>predicted data container</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.set_main_metric_name">
+<code class="descname">set_main_metric_name</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.TrialSplit<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L455"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.set_main_metric_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set main metric name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – main metric name.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="method">
 <dt id="neuraxle.metaopt.trial.TrialSplit.add_metric_results_train">
 <code class="descname">add_metric_results_train</code><span class="sig-paren">(</span><em>name: str</em>, <em>score: float</em>, <em>higher_score_is_better: bool</em>, <em>log_metric: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L466"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.add_metric_results_train" title="Permalink to this definition">¶</a></dt>
@@ -955,43 +1014,9 @@ A trial has one or many split when the validation splitter function is kfold_cro
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.metaopt.trial.TrialSplit.fit_trial_split">
-<code class="descname">fit_trial_split</code><span class="sig-paren">(</span><em>train_data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.TrialSplit<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L433"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.fit_trial_split" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fit the trial split pipeline with the training data container.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>train_data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – training data container</p></li>
-<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>trial split with its fitted pipeline.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="neuraxle.metaopt.trial.TrialSplit.from_json">
-<em class="property">static </em><code class="descname">from_json</code><span class="sig-paren">(</span><em>trial: neuraxle.metaopt.trial.Trial</em>, <em>trial_split_json: Dict</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.TrialSplit<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L602"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.from_json" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a trial split object from json.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>trial</strong> – parent trial</p></li>
-<li><p><strong>trial_split_json</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>) – trial json</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.trial.TrialSplit.get_best_validation_score">
-<code class="descname">get_best_validation_score</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L520"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.get_best_validation_score" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the best validation score for the main scoring metric.</p>
+<dt id="neuraxle.metaopt.trial.TrialSplit.get_validation_scores">
+<code class="descname">get_validation_scores</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L508"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.get_validation_scores" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the validation scores for the main scoring metric.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1001,19 +1026,10 @@ A trial has one or many split when the validation splitter function is kfold_cro
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.metaopt.trial.TrialSplit.get_metric_names">
-<code class="descname">get_metric_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L414"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.get_metric_names" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.trial.TrialSplit.get_metric_train_results">
-<code class="descname">get_metric_train_results</code><span class="sig-paren">(</span><em>metric_name</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L582"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.get_metric_train_results" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.trial.TrialSplit.get_metric_validation_results">
-<code class="descname">get_metric_validation_results</code><span class="sig-paren">(</span><em>metric_name</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L579"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.get_metric_validation_results" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="neuraxle.metaopt.trial.TrialSplit.get_best_validation_score">
+<code class="descname">get_best_validation_score</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L520"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.get_best_validation_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the best validation score for the main scoring metric.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.trial.TrialSplit.get_n_epochs_to_best_validation_score">
@@ -1025,12 +1041,6 @@ A trial has one or many split when the validation splitter function is kfold_cro
 <dt id="neuraxle.metaopt.trial.TrialSplit.get_pipeline">
 <code class="descname">get_pipeline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L544"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.get_pipeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the trained pipeline.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.trial.TrialSplit.get_validation_scores">
-<code class="descname">get_validation_scores</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L508"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.get_validation_scores" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the validation scores for the main scoring metric.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1056,70 +1066,39 @@ A trial has one or many split when the validation splitter function is kfold_cro
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.metaopt.trial.TrialSplit.is_success">
-<code class="descname">is_success</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L633"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.is_success" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set trial status to success.</p>
-</dd></dl>
+<dt id="neuraxle.metaopt.trial.TrialSplit.get_metric_validation_results">
+<code class="descname">get_metric_validation_results</code><span class="sig-paren">(</span><em>metric_name</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L579"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.get_metric_validation_results" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.metaopt.trial.TrialSplit.predict_with_pipeline">
-<code class="descname">predict_with_pipeline</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L445"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.predict_with_pipeline" title="Permalink to this definition">¶</a></dt>
-<dd><p>Predict data with the fitted trial split pipeline.</p>
+<dt id="neuraxle.metaopt.trial.TrialSplit.get_metric_train_results">
+<code class="descname">get_metric_train_results</code><span class="sig-paren">(</span><em>metric_name</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L582"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.get_metric_train_results" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.to_json">
+<code class="descname">to_json</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; dict<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L585"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trial in a json format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="neuraxle.metaopt.trial.TrialSplit.from_json">
+<em class="property">static </em><code class="descname">from_json</code><span class="sig-paren">(</span><em>trial: neuraxle.metaopt.trial.Trial</em>, <em>trial_split_json: Dict</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.TrialSplit<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L602"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.from_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a trial split object from json.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> (<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container to predict</p></li>
-<li><p><strong>context</strong> (<a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
+<li><p><strong>trial</strong> – parent trial</p></li>
+<li><p><strong>trial_split_json</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>) – trial json</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>predicted data container</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.trial.TrialSplit.save_model">
-<code class="descname">save_model</code><span class="sig-paren">(</span><em>label: str</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L426"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.save_model" title="Permalink to this definition">¶</a></dt>
-<dd><p>Saves the pipeline instance the same way a Trial instance would. Will overwrite
-:return:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.trial.TrialSplit.save_parent_trial">
-<code class="descname">save_parent_trial</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.TrialSplit<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L417"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.save_parent_trial" title="Permalink to this definition">¶</a></dt>
-<dd><p>Save parent trial.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>self</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.trial.TrialSplit.set_failed">
-<code class="descname">set_failed</code><span class="sig-paren">(</span><em>error: Exception</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.TrialSplit<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L639"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.set_failed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set failed trial with exception.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>error</strong> (<code class="docutils literal notranslate"><span class="pre">Exception</span></code>) – catched exception</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>self</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.trial.TrialSplit.set_main_metric_name">
-<code class="descname">set_main_metric_name</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.TrialSplit<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L455"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.set_main_metric_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set main metric name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – main metric name.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>self</p>
+<dd class="field-even"><p></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1136,12 +1115,21 @@ A trial has one or many split when the validation splitter function is kfold_cro
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.metaopt.trial.TrialSplit.to_json">
-<code class="descname">to_json</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; dict<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L585"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.to_json" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the trial in a json format.</p>
+<dt id="neuraxle.metaopt.trial.TrialSplit.is_success">
+<code class="descname">is_success</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L633"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.is_success" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set trial status to success.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.TrialSplit.set_failed">
+<code class="descname">set_failed</code><span class="sig-paren">(</span><em>error: Exception</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.TrialSplit<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L639"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TrialSplit.set_failed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set failed trial with exception.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>error</strong> (<code class="docutils literal notranslate"><span class="pre">Exception</span></code>) – catched exception</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1149,9 +1137,37 @@ A trial has one or many split when the validation splitter function is kfold_cro
 </dd></dl>
 
 <dl class="class">
+<dt id="neuraxle.metaopt.trial.TRIAL_STATUS">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.trial.</code><code class="descname">TRIAL_STATUS</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L688"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TRIAL_STATUS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></a></p>
+<p>Trial status.</p>
+<dl class="attribute">
+<dt id="neuraxle.metaopt.trial.TRIAL_STATUS.FAILED">
+<code class="descname">FAILED</code><em class="property"> = 'failed'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TRIAL_STATUS.FAILED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.trial.TRIAL_STATUS.STARTED">
+<code class="descname">STARTED</code><em class="property"> = 'started'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TRIAL_STATUS.STARTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.trial.TRIAL_STATUS.SUCCESS">
+<code class="descname">SUCCESS</code><em class="property"> = 'success'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TRIAL_STATUS.SUCCESS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.trial.TRIAL_STATUS.PLANNED">
+<code class="descname">PLANNED</code><em class="property"> = 'planned'</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.TRIAL_STATUS.PLANNED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="neuraxle.metaopt.trial.Trials">
 <em class="property">class </em><code class="descclassname">neuraxle.metaopt.trial.</code><code class="descname">Trials</code><span class="sig-paren">(</span><em>trials: List[neuraxle.metaopt.trial.Trial] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L698"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trials" title="Permalink to this definition">¶</a></dt>
-<dd><p>Data object containing auto ml trials.</p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Data object containing auto ml trials.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><code class="xref py py-class docutils literal notranslate"><span class="pre">AutoMLSequentialWrapper</span></code>,
@@ -1160,6 +1176,45 @@ A trial has one or many split when the validation splitter function is kfold_cro
 <code class="xref py py-class docutils literal notranslate"><span class="pre">MetaStepMixin</span></code>,
 <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></p>
 </div>
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trials.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>trials: List[neuraxle.metaopt.trial.Trial] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L710"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trials.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trials.get_best_hyperparams">
+<code class="descname">get_best_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L718"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trials.get_best_hyperparams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get best hyperparams from all trials.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trials.get_best_trial">
+<code class="descname">get_best_trial</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.Trial<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L729"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trials.get_best_trial" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>trial with best score from all trials</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trials.split_good_and_bad_trials">
+<code class="descname">split_good_and_bad_trials</code><span class="sig-paren">(</span><em>quantile_threshold: float</em>, <em>number_of_good_trials_max_cap: int</em><span class="sig-paren">)</span> &#x2192; Tuple[neuraxle.metaopt.trial.Trials, neuraxle.metaopt.trial.Trials]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L746"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trials.split_good_and_bad_trials" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.trial.Trials.is_higher_score_better">
+<code class="descname">is_higher_score_better</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L775"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trials.is_higher_score_better" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if higher score is better.</p>
+<p>:return</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="neuraxle.metaopt.trial.Trials.append">
 <code class="descname">append</code><span class="sig-paren">(</span><em>trial: neuraxle.metaopt.trial.Trial</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L786"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trials.append" title="Permalink to this definition">¶</a></dt>
@@ -1189,46 +1244,13 @@ A trial has one or many split when the validation splitter function is kfold_cro
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.metaopt.trial.Trials.get_best_hyperparams">
-<code class="descname">get_best_hyperparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L718"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trials.get_best_hyperparams" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get best hyperparams from all trials.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.trial.Trials.get_best_trial">
-<code class="descname">get_best_trial</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.trial.Trial<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L729"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trials.get_best_trial" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>trial with best score from all trials</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.trial.Trials.get_metric_names">
-<code class="descname">get_metric_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L814"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trials.get_metric_names" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="neuraxle.metaopt.trial.Trials.get_number_of_split">
 <code class="descname">get_number_of_split</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L809"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trials.get_number_of_split" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.metaopt.trial.Trials.is_higher_score_better">
-<code class="descname">is_higher_score_better</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L775"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trials.is_higher_score_better" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return true if higher score is better.</p>
-<p>:return</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.trial.Trials.split_good_and_bad_trials">
-<code class="descname">split_good_and_bad_trials</code><span class="sig-paren">(</span><em>quantile_threshold: float</em>, <em>number_of_good_trials_max_cap: int</em><span class="sig-paren">)</span> &#x2192; Tuple[neuraxle.metaopt.trial.Trials, neuraxle.metaopt.trial.Trials]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L746"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trials.split_good_and_bad_trials" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.metaopt.trial.Trials.get_metric_names">
+<code class="descname">get_metric_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L814"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trials.get_metric_names" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

@@ -744,7 +744,8 @@
 </div><div class="sphx-glr-clear"></div><span class="target" id="sphx-glr-backref-neuraxle-metaopt-callbacks-stepsavercallback"></span><dl class="class">
 <dt id="neuraxle.metaopt.callbacks.BaseCallback">
 <em class="property">class </em><code class="descclassname">neuraxle.metaopt.callbacks.</code><code class="descname">BaseCallback</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L36"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.BaseCallback" title="Permalink to this definition">¶</a></dt>
-<dd><p>Base class for a training callback.
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
+<p>Base class for a training callback.
 Callbacks are called after each epoch inside the fit function of the <code class="xref py py-class docutils literal notranslate"><span class="pre">Trainer</span></code>.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -763,26 +764,6 @@ Callbacks are called after each epoch inside the fit function of the <code class
 <code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code>,
 <a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
 </div>
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.BaseCallback._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.BaseCallback._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.BaseCallback._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.BaseCallback._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.BaseCallback._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 59</em><a class="headerlink" href="#neuraxle.metaopt.callbacks.BaseCallback._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.BaseCallback._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.BaseCallback._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="method">
 <dt id="neuraxle.metaopt.callbacks.BaseCallback.call">
 <code class="descname">call</code><span class="sig-paren">(</span><em>trial_split: neuraxle.metaopt.trial.TrialSplit</em>, <em>epoch_number: int</em>, <em>total_epochs: int</em>, <em>input_train: neuraxle.data_container.DataContainer</em>, <em>pred_train: neuraxle.data_container.DataContainer</em>, <em>input_val: neuraxle.data_container.DataContainer</em>, <em>pred_val: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em>, <em>is_finished_and_fitted: bool</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L58"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.BaseCallback.call" title="Permalink to this definition">¶</a></dt>
@@ -790,66 +771,11 @@ Callbacks are called after each epoch inside the fit function of the <code class
 
 </dd></dl>
 
-<dl class="function">
-<dt id="neuraxle.metaopt.callbacks.BestModelCheckpoint">
-<code class="descclassname">neuraxle.metaopt.callbacks.</code><code class="descname">BestModelCheckpoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L271"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.BestModelCheckpoint" title="Permalink to this definition">¶</a></dt>
-<dd><p>Saves the pipeline model in a folder named “best” when the a new best validation score is reached.
-It is important to note that when refit=True, an AutoML loop will overwrite the best model after refitting.</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="neuraxle.metaopt.callbacks.CallbackList">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.callbacks.</code><code class="descname">CallbackList</code><span class="sig-paren">(</span><em>callbacks</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L279"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.CallbackList" title="Permalink to this definition">¶</a></dt>
-<dd><p>Callback list that be executed.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#neuraxle.metaopt.callbacks.BaseCallback" title="neuraxle.metaopt.callbacks.BaseCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCallback</span></code></a>,
-<a class="reference internal" href="#neuraxle.metaopt.callbacks.MetaCallback" title="neuraxle.metaopt.callbacks.MetaCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaCallback</span></code></a>,
-<a class="reference internal" href="#neuraxle.metaopt.callbacks.EarlyStoppingCallback" title="neuraxle.metaopt.callbacks.EarlyStoppingCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">EarlyStoppingCallback</span></code></a>,
-<a class="reference internal" href="#neuraxle.metaopt.callbacks.IfBestScore" title="neuraxle.metaopt.callbacks.IfBestScore"><code class="xref py py-class docutils literal notranslate"><span class="pre">IfBestScore</span></code></a>,
-<a class="reference internal" href="#neuraxle.metaopt.callbacks.IfLastStep" title="neuraxle.metaopt.callbacks.IfLastStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">IfLastStep</span></code></a>,
-<a class="reference internal" href="#neuraxle.metaopt.callbacks.StepSaverCallback" title="neuraxle.metaopt.callbacks.StepSaverCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">StepSaverCallback</span></code></a>,
-<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML" title="neuraxle.metaopt.auto_ml.AutoML"><code class="xref py py-class docutils literal notranslate"><span class="pre">AutoML</span></code></a>,
-<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.Trainer" title="neuraxle.metaopt.auto_ml.Trainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trainer</span></code></a>,
-<a class="reference internal" href="neuraxle.metaopt.trial.html#neuraxle.metaopt.trial.Trial" title="neuraxle.metaopt.trial.Trial"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trial</span></code></a>,
-<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.InMemoryHyperparamsRepository" title="neuraxle.metaopt.auto_ml.InMemoryHyperparamsRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">InMemoryHyperparamsRepository</span></code></a>,
-<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.HyperparamsJSONRepository" title="neuraxle.metaopt.auto_ml.HyperparamsJSONRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparamsJSONRepository</span></code></a>,
-<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.BaseHyperparameterSelectionStrategy" title="neuraxle.metaopt.auto_ml.BaseHyperparameterSelectionStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHyperparameterSelectionStrategy</span></code></a>,
-<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.RandomSearchHyperparameterSelectionStrategy" title="neuraxle.metaopt.auto_ml.RandomSearchHyperparameterSelectionStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomSearchHyperparameterSelectionStrategy</span></code></a>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code>,
-<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
-</div>
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.CallbackList._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.CallbackList._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.CallbackList._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.CallbackList._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.CallbackList._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 59</em><a class="headerlink" href="#neuraxle.metaopt.callbacks.CallbackList._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.CallbackList._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.CallbackList._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.callbacks.CallbackList.call">
-<code class="descname">call</code><span class="sig-paren">(</span><em>trial_split: neuraxle.metaopt.trial.TrialSplit</em>, <em>epoch_number: int</em>, <em>total_epochs: int</em>, <em>input_train: neuraxle.data_container.DataContainer</em>, <em>pred_train: neuraxle.data_container.DataContainer</em>, <em>input_val: neuraxle.data_container.DataContainer</em>, <em>pred_val: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em>, <em>is_finished_and_fitted: bool</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L307"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.CallbackList.call" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 <dl class="class">
 <dt id="neuraxle.metaopt.callbacks.EarlyStoppingCallback">
 <em class="property">class </em><code class="descclassname">neuraxle.metaopt.callbacks.</code><code class="descname">EarlyStoppingCallback</code><span class="sig-paren">(</span><em>max_epochs_without_improvement</em>, <em>metric_name=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L65"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.EarlyStoppingCallback" title="Permalink to this definition">¶</a></dt>
-<dd><p>Perform early stopping when there is multiple epochs in a row that didn’t improve the performance of the model.</p>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.callbacks.BaseCallback" title="neuraxle.metaopt.callbacks.BaseCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.callbacks.BaseCallback</span></code></a></p>
+<p>Perform early stopping when there is multiple epochs in a row that didn’t improve the performance of the model.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#neuraxle.metaopt.callbacks.BaseCallback" title="neuraxle.metaopt.callbacks.BaseCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCallback</span></code></a>,
@@ -867,25 +793,18 @@ It is important to note that when refit=True, an AutoML loop will overwrite the 
 <code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code>,
 <a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
 </div>
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.EarlyStoppingCallback._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.EarlyStoppingCallback._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.EarlyStoppingCallback._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.EarlyStoppingCallback._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.EarlyStoppingCallback._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 59</em><a class="headerlink" href="#neuraxle.metaopt.callbacks.EarlyStoppingCallback._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.EarlyStoppingCallback._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.EarlyStoppingCallback._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="method">
+<dt id="neuraxle.metaopt.callbacks.EarlyStoppingCallback.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>max_epochs_without_improvement</em>, <em>metric_name=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L86"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.EarlyStoppingCallback.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>max_epochs_without_improvement</strong> – The number of step without improvement on the validation score before an early stopping is triggered.</p></li>
+<li><p><strong>metric_name</strong> – The name of the metric on which we want to condition the early stopping. If None, the main metric will be used.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.callbacks.EarlyStoppingCallback.call">
@@ -895,104 +814,10 @@ It is important to note that when refit=True, an AutoML loop will overwrite the 
 </dd></dl>
 
 <dl class="class">
-<dt id="neuraxle.metaopt.callbacks.IfBestScore">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.callbacks.</code><code class="descname">IfBestScore</code><span class="sig-paren">(</span><em>wrapped_callback: neuraxle.metaopt.callbacks.BaseCallback</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L165"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.IfBestScore" title="Permalink to this definition">¶</a></dt>
-<dd><p>Meta callback that only execute when the trial is a new best score.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#neuraxle.metaopt.callbacks.BaseCallback" title="neuraxle.metaopt.callbacks.BaseCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCallback</span></code></a>,
-<a class="reference internal" href="#neuraxle.metaopt.callbacks.MetaCallback" title="neuraxle.metaopt.callbacks.MetaCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaCallback</span></code></a>,
-<a class="reference internal" href="#neuraxle.metaopt.callbacks.IfBestScore" title="neuraxle.metaopt.callbacks.IfBestScore"><code class="xref py py-class docutils literal notranslate"><span class="pre">IfBestScore</span></code></a>,
-<a class="reference internal" href="#neuraxle.metaopt.callbacks.IfLastStep" title="neuraxle.metaopt.callbacks.IfLastStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">IfLastStep</span></code></a>,
-<a class="reference internal" href="#neuraxle.metaopt.callbacks.StepSaverCallback" title="neuraxle.metaopt.callbacks.StepSaverCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">StepSaverCallback</span></code></a>,
-<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML" title="neuraxle.metaopt.auto_ml.AutoML"><code class="xref py py-class docutils literal notranslate"><span class="pre">AutoML</span></code></a>,
-<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.Trainer" title="neuraxle.metaopt.auto_ml.Trainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trainer</span></code></a>,
-<a class="reference internal" href="neuraxle.metaopt.trial.html#neuraxle.metaopt.trial.Trial" title="neuraxle.metaopt.trial.Trial"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trial</span></code></a>,
-<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.InMemoryHyperparamsRepository" title="neuraxle.metaopt.auto_ml.InMemoryHyperparamsRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">InMemoryHyperparamsRepository</span></code></a>,
-<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.HyperparamsJSONRepository" title="neuraxle.metaopt.auto_ml.HyperparamsJSONRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparamsJSONRepository</span></code></a>,
-<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.BaseHyperparameterSelectionStrategy" title="neuraxle.metaopt.auto_ml.BaseHyperparameterSelectionStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHyperparameterSelectionStrategy</span></code></a>,
-<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.RandomSearchHyperparameterSelectionStrategy" title="neuraxle.metaopt.auto_ml.RandomSearchHyperparameterSelectionStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomSearchHyperparameterSelectionStrategy</span></code></a>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code>,
-<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
-</div>
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.IfBestScore._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.IfBestScore._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.IfBestScore._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.IfBestScore._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.IfBestScore._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 59</em><a class="headerlink" href="#neuraxle.metaopt.callbacks.IfBestScore._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.IfBestScore._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.IfBestScore._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.callbacks.IfBestScore.call">
-<code class="descname">call</code><span class="sig-paren">(</span><em>trial_split: neuraxle.metaopt.trial.TrialSplit</em>, <em>epoch_number: int</em>, <em>total_epochs: int</em>, <em>input_train: neuraxle.data_container.DataContainer</em>, <em>pred_train: neuraxle.data_container.DataContainer</em>, <em>input_val: neuraxle.data_container.DataContainer</em>, <em>pred_val: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em>, <em>is_finished_and_fitted: bool</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L186"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.IfBestScore.call" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="neuraxle.metaopt.callbacks.IfLastStep">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.callbacks.</code><code class="descname">IfLastStep</code><span class="sig-paren">(</span><em>wrapped_callback: neuraxle.metaopt.callbacks.BaseCallback</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L205"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.IfLastStep" title="Permalink to this definition">¶</a></dt>
-<dd><p>Meta callback that only execute when the training is finished or fitted, or when it is the last epoch.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#neuraxle.metaopt.callbacks.BaseCallback" title="neuraxle.metaopt.callbacks.BaseCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCallback</span></code></a>,
-<a class="reference internal" href="#neuraxle.metaopt.callbacks.MetaCallback" title="neuraxle.metaopt.callbacks.MetaCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaCallback</span></code></a>,
-<a class="reference internal" href="#neuraxle.metaopt.callbacks.IfBestScore" title="neuraxle.metaopt.callbacks.IfBestScore"><code class="xref py py-class docutils literal notranslate"><span class="pre">IfBestScore</span></code></a>,
-<a class="reference internal" href="#neuraxle.metaopt.callbacks.StepSaverCallback" title="neuraxle.metaopt.callbacks.StepSaverCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">StepSaverCallback</span></code></a>,
-<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML" title="neuraxle.metaopt.auto_ml.AutoML"><code class="xref py py-class docutils literal notranslate"><span class="pre">AutoML</span></code></a>,
-<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.Trainer" title="neuraxle.metaopt.auto_ml.Trainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trainer</span></code></a>,
-<a class="reference internal" href="neuraxle.metaopt.trial.html#neuraxle.metaopt.trial.Trial" title="neuraxle.metaopt.trial.Trial"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trial</span></code></a>,
-<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.InMemoryHyperparamsRepository" title="neuraxle.metaopt.auto_ml.InMemoryHyperparamsRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">InMemoryHyperparamsRepository</span></code></a>,
-<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.HyperparamsJSONRepository" title="neuraxle.metaopt.auto_ml.HyperparamsJSONRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparamsJSONRepository</span></code></a>,
-<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.BaseHyperparameterSelectionStrategy" title="neuraxle.metaopt.auto_ml.BaseHyperparameterSelectionStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHyperparameterSelectionStrategy</span></code></a>,
-<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.RandomSearchHyperparameterSelectionStrategy" title="neuraxle.metaopt.auto_ml.RandomSearchHyperparameterSelectionStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomSearchHyperparameterSelectionStrategy</span></code></a>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code>,
-<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
-</div>
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.IfLastStep._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.IfLastStep._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.IfLastStep._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.IfLastStep._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.IfLastStep._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 59</em><a class="headerlink" href="#neuraxle.metaopt.callbacks.IfLastStep._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.IfLastStep._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.IfLastStep._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.callbacks.IfLastStep.call">
-<code class="descname">call</code><span class="sig-paren">(</span><em>trial_split: neuraxle.metaopt.trial.TrialSplit</em>, <em>epoch_number: int</em>, <em>total_epochs: int</em>, <em>input_train: neuraxle.data_container.DataContainer</em>, <em>pred_train: neuraxle.data_container.DataContainer</em>, <em>input_val: neuraxle.data_container.DataContainer</em>, <em>pred_val: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em>, <em>is_finished_and_fitted: bool</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L225"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.IfLastStep.call" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
 <dt id="neuraxle.metaopt.callbacks.MetaCallback">
 <em class="property">class </em><code class="descclassname">neuraxle.metaopt.callbacks.</code><code class="descname">MetaCallback</code><span class="sig-paren">(</span><em>wrapped_callback: neuraxle.metaopt.callbacks.BaseCallback</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L125"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.MetaCallback" title="Permalink to this definition">¶</a></dt>
-<dd><p>Meta callback wraps another callback.
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.callbacks.BaseCallback" title="neuraxle.metaopt.callbacks.BaseCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.callbacks.BaseCallback</span></code></a></p>
+<p>Meta callback wraps another callback.
 It can be useful to test conditions before executing certain callbacks.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -1010,25 +835,11 @@ It can be useful to test conditions before executing certain callbacks.</p>
 <code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code>,
 <a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
 </div>
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.MetaCallback._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.MetaCallback._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.MetaCallback._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.MetaCallback._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.MetaCallback._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 59</em><a class="headerlink" href="#neuraxle.metaopt.callbacks.MetaCallback._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.MetaCallback._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.MetaCallback._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="method">
+<dt id="neuraxle.metaopt.callbacks.MetaCallback.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>wrapped_callback: neuraxle.metaopt.callbacks.BaseCallback</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L146"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.MetaCallback.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.callbacks.MetaCallback.call">
@@ -1038,19 +849,17 @@ It can be useful to test conditions before executing certain callbacks.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="neuraxle.metaopt.callbacks.MetricCallback">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.callbacks.</code><code class="descname">MetricCallback</code><span class="sig-paren">(</span><em>name: str</em>, <em>metric_function: Callable</em>, <em>higher_score_is_better: bool</em>, <em>log_metrics=True</em>, <em>pass_context_to_metric_function: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L332"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.MetricCallback" title="Permalink to this definition">¶</a></dt>
-<dd><p>Callback that calculates metric results.
-Adds the results into the trial repository.</p>
+<dt id="neuraxle.metaopt.callbacks.IfBestScore">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.callbacks.</code><code class="descname">IfBestScore</code><span class="sig-paren">(</span><em>wrapped_callback: neuraxle.metaopt.callbacks.BaseCallback</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L165"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.IfBestScore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.callbacks.MetaCallback" title="neuraxle.metaopt.callbacks.MetaCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.callbacks.MetaCallback</span></code></a></p>
+<p>Meta callback that only execute when the trial is a new best score.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#neuraxle.metaopt.callbacks.BaseCallback" title="neuraxle.metaopt.callbacks.BaseCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCallback</span></code></a>,
 <a class="reference internal" href="#neuraxle.metaopt.callbacks.MetaCallback" title="neuraxle.metaopt.callbacks.MetaCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaCallback</span></code></a>,
-<a class="reference internal" href="#neuraxle.metaopt.callbacks.EarlyStoppingCallback" title="neuraxle.metaopt.callbacks.EarlyStoppingCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">EarlyStoppingCallback</span></code></a>,
 <a class="reference internal" href="#neuraxle.metaopt.callbacks.IfBestScore" title="neuraxle.metaopt.callbacks.IfBestScore"><code class="xref py py-class docutils literal notranslate"><span class="pre">IfBestScore</span></code></a>,
 <a class="reference internal" href="#neuraxle.metaopt.callbacks.IfLastStep" title="neuraxle.metaopt.callbacks.IfLastStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">IfLastStep</span></code></a>,
 <a class="reference internal" href="#neuraxle.metaopt.callbacks.StepSaverCallback" title="neuraxle.metaopt.callbacks.StepSaverCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">StepSaverCallback</span></code></a>,
-<a class="reference internal" href="#neuraxle.metaopt.callbacks.CallbackList" title="neuraxle.metaopt.callbacks.CallbackList"><code class="xref py py-class docutils literal notranslate"><span class="pre">CallbackList</span></code></a>,
 <a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML" title="neuraxle.metaopt.auto_ml.AutoML"><code class="xref py py-class docutils literal notranslate"><span class="pre">AutoML</span></code></a>,
 <a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.Trainer" title="neuraxle.metaopt.auto_ml.Trainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trainer</span></code></a>,
 <a class="reference internal" href="neuraxle.metaopt.trial.html#neuraxle.metaopt.trial.Trial" title="neuraxle.metaopt.trial.Trial"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trial</span></code></a>,
@@ -1061,47 +870,24 @@ Adds the results into the trial repository.</p>
 <code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code>,
 <a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
 </div>
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.MetricCallback._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.MetricCallback._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.MetricCallback._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.MetricCallback._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.MetricCallback._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 59</em><a class="headerlink" href="#neuraxle.metaopt.callbacks.MetricCallback._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.MetricCallback._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.MetricCallback._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="method">
-<dt id="neuraxle.metaopt.callbacks.MetricCallback.call">
-<code class="descname">call</code><span class="sig-paren">(</span><em>trial_split: neuraxle.metaopt.trial.TrialSplit</em>, <em>epoch_number: int</em>, <em>total_epochs: int</em>, <em>input_train: neuraxle.data_container.DataContainer</em>, <em>pred_train: neuraxle.data_container.DataContainer</em>, <em>input_val: neuraxle.data_container.DataContainer</em>, <em>pred_val: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em>, <em>is_finished_and_fitted: bool</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L364"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.MetricCallback.call" title="Permalink to this definition">¶</a></dt>
+<dt id="neuraxle.metaopt.callbacks.IfBestScore.call">
+<code class="descname">call</code><span class="sig-paren">(</span><em>trial_split: neuraxle.metaopt.trial.TrialSplit</em>, <em>epoch_number: int</em>, <em>total_epochs: int</em>, <em>input_train: neuraxle.data_container.DataContainer</em>, <em>pred_train: neuraxle.data_container.DataContainer</em>, <em>input_val: neuraxle.data_container.DataContainer</em>, <em>pred_val: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em>, <em>is_finished_and_fitted: bool</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L186"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.IfBestScore.call" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
-<dt id="neuraxle.metaopt.callbacks.ScoringCallback">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.callbacks.</code><code class="descname">ScoringCallback</code><span class="sig-paren">(</span><em>metric_function: Callable</em>, <em>name='main'</em>, <em>higher_score_is_better: bool = True</em>, <em>log_metrics: bool = True</em>, <em>pass_context_to_metric_function: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L392"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.ScoringCallback" title="Permalink to this definition">¶</a></dt>
-<dd><p>Metric Callback that calculates metric results for the main scoring metric.
-Adds the results into the trial repository.</p>
+<dt id="neuraxle.metaopt.callbacks.IfLastStep">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.callbacks.</code><code class="descname">IfLastStep</code><span class="sig-paren">(</span><em>wrapped_callback: neuraxle.metaopt.callbacks.BaseCallback</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L205"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.IfLastStep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.callbacks.MetaCallback" title="neuraxle.metaopt.callbacks.MetaCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.callbacks.MetaCallback</span></code></a></p>
+<p>Meta callback that only execute when the training is finished or fitted, or when it is the last epoch.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#neuraxle.metaopt.callbacks.BaseCallback" title="neuraxle.metaopt.callbacks.BaseCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCallback</span></code></a>,
 <a class="reference internal" href="#neuraxle.metaopt.callbacks.MetaCallback" title="neuraxle.metaopt.callbacks.MetaCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaCallback</span></code></a>,
-<a class="reference internal" href="#neuraxle.metaopt.callbacks.EarlyStoppingCallback" title="neuraxle.metaopt.callbacks.EarlyStoppingCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">EarlyStoppingCallback</span></code></a>,
 <a class="reference internal" href="#neuraxle.metaopt.callbacks.IfBestScore" title="neuraxle.metaopt.callbacks.IfBestScore"><code class="xref py py-class docutils literal notranslate"><span class="pre">IfBestScore</span></code></a>,
-<a class="reference internal" href="#neuraxle.metaopt.callbacks.IfLastStep" title="neuraxle.metaopt.callbacks.IfLastStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">IfLastStep</span></code></a>,
 <a class="reference internal" href="#neuraxle.metaopt.callbacks.StepSaverCallback" title="neuraxle.metaopt.callbacks.StepSaverCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">StepSaverCallback</span></code></a>,
-<a class="reference internal" href="#neuraxle.metaopt.callbacks.CallbackList" title="neuraxle.metaopt.callbacks.CallbackList"><code class="xref py py-class docutils literal notranslate"><span class="pre">CallbackList</span></code></a>,
 <a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML" title="neuraxle.metaopt.auto_ml.AutoML"><code class="xref py py-class docutils literal notranslate"><span class="pre">AutoML</span></code></a>,
 <a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.Trainer" title="neuraxle.metaopt.auto_ml.Trainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trainer</span></code></a>,
 <a class="reference internal" href="neuraxle.metaopt.trial.html#neuraxle.metaopt.trial.Trial" title="neuraxle.metaopt.trial.Trial"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trial</span></code></a>,
@@ -1112,24 +898,9 @@ Adds the results into the trial repository.</p>
 <code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code>,
 <a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
 </div>
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.ScoringCallback._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.ScoringCallback._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.ScoringCallback._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.ScoringCallback._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.ScoringCallback._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 59</em><a class="headerlink" href="#neuraxle.metaopt.callbacks.ScoringCallback._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.ScoringCallback._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.ScoringCallback._abc_registry" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="neuraxle.metaopt.callbacks.IfLastStep.call">
+<code class="descname">call</code><span class="sig-paren">(</span><em>trial_split: neuraxle.metaopt.trial.TrialSplit</em>, <em>epoch_number: int</em>, <em>total_epochs: int</em>, <em>input_train: neuraxle.data_container.DataContainer</em>, <em>pred_train: neuraxle.data_container.DataContainer</em>, <em>input_val: neuraxle.data_container.DataContainer</em>, <em>pred_val: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em>, <em>is_finished_and_fitted: bool</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L225"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.IfLastStep.call" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1137,7 +908,8 @@ Adds the results into the trial repository.</p>
 <dl class="class">
 <dt id="neuraxle.metaopt.callbacks.StepSaverCallback">
 <em class="property">class </em><code class="descclassname">neuraxle.metaopt.callbacks.</code><code class="descname">StepSaverCallback</code><span class="sig-paren">(</span><em>label</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L244"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.StepSaverCallback" title="Permalink to this definition">¶</a></dt>
-<dd><p>Callback that saves the trial model.</p>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.callbacks.BaseCallback" title="neuraxle.metaopt.callbacks.BaseCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.callbacks.BaseCallback</span></code></a></p>
+<p>Callback that saves the trial model.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#neuraxle.metaopt.callbacks.BaseCallback" title="neuraxle.metaopt.callbacks.BaseCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCallback</span></code></a>,
@@ -1150,30 +922,130 @@ Adds the results into the trial repository.</p>
 <a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.RandomSearchHyperparameterSelectionStrategy" title="neuraxle.metaopt.auto_ml.RandomSearchHyperparameterSelectionStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomSearchHyperparameterSelectionStrategy</span></code></a>,
 <code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code>,</p>
 </div>
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.StepSaverCallback._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.StepSaverCallback._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.StepSaverCallback._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.StepSaverCallback._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.StepSaverCallback._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 59</em><a class="headerlink" href="#neuraxle.metaopt.callbacks.StepSaverCallback._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.callbacks.StepSaverCallback._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.StepSaverCallback._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="method">
+<dt id="neuraxle.metaopt.callbacks.StepSaverCallback.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>label</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L260"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.StepSaverCallback.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.callbacks.StepSaverCallback.call">
 <code class="descname">call</code><span class="sig-paren">(</span><em>trial_split: neuraxle.metaopt.trial.TrialSplit</em>, <em>epoch_number: int</em>, <em>total_epochs: int</em>, <em>input_train: neuraxle.data_container.DataContainer</em>, <em>pred_train: neuraxle.data_container.DataContainer</em>, <em>input_val: neuraxle.data_container.DataContainer</em>, <em>pred_val: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em>, <em>is_finished_and_fitted: bool</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L264"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.StepSaverCallback.call" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="neuraxle.metaopt.callbacks.BestModelCheckpoint">
+<code class="descclassname">neuraxle.metaopt.callbacks.</code><code class="descname">BestModelCheckpoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L271"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.BestModelCheckpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the pipeline model in a folder named “best” when the a new best validation score is reached.
+It is important to note that when refit=True, an AutoML loop will overwrite the best model after refitting.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.callbacks.CallbackList">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.callbacks.</code><code class="descname">CallbackList</code><span class="sig-paren">(</span><em>callbacks</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L279"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.CallbackList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.callbacks.BaseCallback" title="neuraxle.metaopt.callbacks.BaseCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.callbacks.BaseCallback</span></code></a></p>
+<p>Callback list that be executed.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#neuraxle.metaopt.callbacks.BaseCallback" title="neuraxle.metaopt.callbacks.BaseCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCallback</span></code></a>,
+<a class="reference internal" href="#neuraxle.metaopt.callbacks.MetaCallback" title="neuraxle.metaopt.callbacks.MetaCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaCallback</span></code></a>,
+<a class="reference internal" href="#neuraxle.metaopt.callbacks.EarlyStoppingCallback" title="neuraxle.metaopt.callbacks.EarlyStoppingCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">EarlyStoppingCallback</span></code></a>,
+<a class="reference internal" href="#neuraxle.metaopt.callbacks.IfBestScore" title="neuraxle.metaopt.callbacks.IfBestScore"><code class="xref py py-class docutils literal notranslate"><span class="pre">IfBestScore</span></code></a>,
+<a class="reference internal" href="#neuraxle.metaopt.callbacks.IfLastStep" title="neuraxle.metaopt.callbacks.IfLastStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">IfLastStep</span></code></a>,
+<a class="reference internal" href="#neuraxle.metaopt.callbacks.StepSaverCallback" title="neuraxle.metaopt.callbacks.StepSaverCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">StepSaverCallback</span></code></a>,
+<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML" title="neuraxle.metaopt.auto_ml.AutoML"><code class="xref py py-class docutils literal notranslate"><span class="pre">AutoML</span></code></a>,
+<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.Trainer" title="neuraxle.metaopt.auto_ml.Trainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trainer</span></code></a>,
+<a class="reference internal" href="neuraxle.metaopt.trial.html#neuraxle.metaopt.trial.Trial" title="neuraxle.metaopt.trial.Trial"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trial</span></code></a>,
+<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.InMemoryHyperparamsRepository" title="neuraxle.metaopt.auto_ml.InMemoryHyperparamsRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">InMemoryHyperparamsRepository</span></code></a>,
+<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.HyperparamsJSONRepository" title="neuraxle.metaopt.auto_ml.HyperparamsJSONRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparamsJSONRepository</span></code></a>,
+<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.BaseHyperparameterSelectionStrategy" title="neuraxle.metaopt.auto_ml.BaseHyperparameterSelectionStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHyperparameterSelectionStrategy</span></code></a>,
+<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.RandomSearchHyperparameterSelectionStrategy" title="neuraxle.metaopt.auto_ml.RandomSearchHyperparameterSelectionStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomSearchHyperparameterSelectionStrategy</span></code></a>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code>,
+<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
+</div>
+<dl class="method">
+<dt id="neuraxle.metaopt.callbacks.CallbackList.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>callbacks</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L301"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.CallbackList.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.callbacks.CallbackList.call">
+<code class="descname">call</code><span class="sig-paren">(</span><em>trial_split: neuraxle.metaopt.trial.TrialSplit</em>, <em>epoch_number: int</em>, <em>total_epochs: int</em>, <em>input_train: neuraxle.data_container.DataContainer</em>, <em>pred_train: neuraxle.data_container.DataContainer</em>, <em>input_val: neuraxle.data_container.DataContainer</em>, <em>pred_val: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em>, <em>is_finished_and_fitted: bool</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L307"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.CallbackList.call" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.callbacks.MetricCallback">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.callbacks.</code><code class="descname">MetricCallback</code><span class="sig-paren">(</span><em>name: str</em>, <em>metric_function: Callable</em>, <em>higher_score_is_better: bool</em>, <em>log_metrics=True</em>, <em>pass_context_to_metric_function: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L332"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.MetricCallback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.callbacks.BaseCallback" title="neuraxle.metaopt.callbacks.BaseCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.callbacks.BaseCallback</span></code></a></p>
+<p>Callback that calculates metric results.
+Adds the results into the trial repository.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#neuraxle.metaopt.callbacks.BaseCallback" title="neuraxle.metaopt.callbacks.BaseCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCallback</span></code></a>,
+<a class="reference internal" href="#neuraxle.metaopt.callbacks.MetaCallback" title="neuraxle.metaopt.callbacks.MetaCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaCallback</span></code></a>,
+<a class="reference internal" href="#neuraxle.metaopt.callbacks.EarlyStoppingCallback" title="neuraxle.metaopt.callbacks.EarlyStoppingCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">EarlyStoppingCallback</span></code></a>,
+<a class="reference internal" href="#neuraxle.metaopt.callbacks.IfBestScore" title="neuraxle.metaopt.callbacks.IfBestScore"><code class="xref py py-class docutils literal notranslate"><span class="pre">IfBestScore</span></code></a>,
+<a class="reference internal" href="#neuraxle.metaopt.callbacks.IfLastStep" title="neuraxle.metaopt.callbacks.IfLastStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">IfLastStep</span></code></a>,
+<a class="reference internal" href="#neuraxle.metaopt.callbacks.StepSaverCallback" title="neuraxle.metaopt.callbacks.StepSaverCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">StepSaverCallback</span></code></a>,
+<a class="reference internal" href="#neuraxle.metaopt.callbacks.CallbackList" title="neuraxle.metaopt.callbacks.CallbackList"><code class="xref py py-class docutils literal notranslate"><span class="pre">CallbackList</span></code></a>,
+<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML" title="neuraxle.metaopt.auto_ml.AutoML"><code class="xref py py-class docutils literal notranslate"><span class="pre">AutoML</span></code></a>,
+<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.Trainer" title="neuraxle.metaopt.auto_ml.Trainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trainer</span></code></a>,
+<a class="reference internal" href="neuraxle.metaopt.trial.html#neuraxle.metaopt.trial.Trial" title="neuraxle.metaopt.trial.Trial"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trial</span></code></a>,
+<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.InMemoryHyperparamsRepository" title="neuraxle.metaopt.auto_ml.InMemoryHyperparamsRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">InMemoryHyperparamsRepository</span></code></a>,
+<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.HyperparamsJSONRepository" title="neuraxle.metaopt.auto_ml.HyperparamsJSONRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparamsJSONRepository</span></code></a>,
+<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.BaseHyperparameterSelectionStrategy" title="neuraxle.metaopt.auto_ml.BaseHyperparameterSelectionStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHyperparameterSelectionStrategy</span></code></a>,
+<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.RandomSearchHyperparameterSelectionStrategy" title="neuraxle.metaopt.auto_ml.RandomSearchHyperparameterSelectionStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomSearchHyperparameterSelectionStrategy</span></code></a>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code>,
+<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
+</div>
+<dl class="method">
+<dt id="neuraxle.metaopt.callbacks.MetricCallback.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>name: str</em>, <em>metric_function: Callable</em>, <em>higher_score_is_better: bool</em>, <em>log_metrics=True</em>, <em>pass_context_to_metric_function: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L356"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.MetricCallback.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.callbacks.MetricCallback.call">
+<code class="descname">call</code><span class="sig-paren">(</span><em>trial_split: neuraxle.metaopt.trial.TrialSplit</em>, <em>epoch_number: int</em>, <em>total_epochs: int</em>, <em>input_train: neuraxle.data_container.DataContainer</em>, <em>pred_train: neuraxle.data_container.DataContainer</em>, <em>input_val: neuraxle.data_container.DataContainer</em>, <em>pred_val: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em>, <em>is_finished_and_fitted: bool</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L364"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.MetricCallback.call" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.callbacks.ScoringCallback">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.callbacks.</code><code class="descname">ScoringCallback</code><span class="sig-paren">(</span><em>metric_function: Callable</em>, <em>name='main'</em>, <em>higher_score_is_better: bool = True</em>, <em>log_metrics: bool = True</em>, <em>pass_context_to_metric_function: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L392"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.ScoringCallback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.callbacks.MetricCallback" title="neuraxle.metaopt.callbacks.MetricCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.callbacks.MetricCallback</span></code></a></p>
+<p>Metric Callback that calculates metric results for the main scoring metric.
+Adds the results into the trial repository.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#neuraxle.metaopt.callbacks.BaseCallback" title="neuraxle.metaopt.callbacks.BaseCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCallback</span></code></a>,
+<a class="reference internal" href="#neuraxle.metaopt.callbacks.MetaCallback" title="neuraxle.metaopt.callbacks.MetaCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaCallback</span></code></a>,
+<a class="reference internal" href="#neuraxle.metaopt.callbacks.EarlyStoppingCallback" title="neuraxle.metaopt.callbacks.EarlyStoppingCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">EarlyStoppingCallback</span></code></a>,
+<a class="reference internal" href="#neuraxle.metaopt.callbacks.IfBestScore" title="neuraxle.metaopt.callbacks.IfBestScore"><code class="xref py py-class docutils literal notranslate"><span class="pre">IfBestScore</span></code></a>,
+<a class="reference internal" href="#neuraxle.metaopt.callbacks.IfLastStep" title="neuraxle.metaopt.callbacks.IfLastStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">IfLastStep</span></code></a>,
+<a class="reference internal" href="#neuraxle.metaopt.callbacks.StepSaverCallback" title="neuraxle.metaopt.callbacks.StepSaverCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">StepSaverCallback</span></code></a>,
+<a class="reference internal" href="#neuraxle.metaopt.callbacks.CallbackList" title="neuraxle.metaopt.callbacks.CallbackList"><code class="xref py py-class docutils literal notranslate"><span class="pre">CallbackList</span></code></a>,
+<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML" title="neuraxle.metaopt.auto_ml.AutoML"><code class="xref py py-class docutils literal notranslate"><span class="pre">AutoML</span></code></a>,
+<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.Trainer" title="neuraxle.metaopt.auto_ml.Trainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trainer</span></code></a>,
+<a class="reference internal" href="neuraxle.metaopt.trial.html#neuraxle.metaopt.trial.Trial" title="neuraxle.metaopt.trial.Trial"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trial</span></code></a>,
+<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.InMemoryHyperparamsRepository" title="neuraxle.metaopt.auto_ml.InMemoryHyperparamsRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">InMemoryHyperparamsRepository</span></code></a>,
+<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.HyperparamsJSONRepository" title="neuraxle.metaopt.auto_ml.HyperparamsJSONRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparamsJSONRepository</span></code></a>,
+<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.BaseHyperparameterSelectionStrategy" title="neuraxle.metaopt.auto_ml.BaseHyperparameterSelectionStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHyperparameterSelectionStrategy</span></code></a>,
+<a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.RandomSearchHyperparameterSelectionStrategy" title="neuraxle.metaopt.auto_ml.RandomSearchHyperparameterSelectionStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomSearchHyperparameterSelectionStrategy</span></code></a>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code>,
+<a class="reference internal" href="../neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
+</div>
+<dl class="method">
+<dt id="neuraxle.metaopt.callbacks.ScoringCallback.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>metric_function: Callable</em>, <em>name='main'</em>, <em>higher_score_is_better: bool = True</em>, <em>log_metrics: bool = True</em>, <em>pass_context_to_metric_function: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L415"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.ScoringCallback.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
 
 </dd></dl>
 

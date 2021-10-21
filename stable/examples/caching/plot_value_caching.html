@@ -662,126 +662,72 @@ to download the full example code or to run this example in your browser via Bin
 <p>This demonstrates how you can use value caching in a Neuraxle pipeline.</p>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Pipeline with ValueCachingWrapper
-execution time: 0.21962571144104004 seconds
+execution time: 0.24300813674926758 seconds
 Pipeline without value caching
-execution time: 0.6193723678588867 seconds
+execution time: 0.6980977058410645 seconds
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="kn">import</span> <span class="nn">os</span>
- <span class="kn">import</span> <span class="nn">shutil</span>
- <span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">time</span>
 
- <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
- <span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="kn">import</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline" class="sphx-glr-backref-module-neuraxle-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Pipeline</span></a>
- <span class="kn">from</span> <span class="nn">neuraxle.steps.caching</span> <span class="kn">import</span> <a href="../../api/steps/neuraxle.steps.caching.html#neuraxle.steps.caching.JoblibValueCachingWrapper" title="neuraxle.steps.caching.JoblibValueCachingWrapper" class="sphx-glr-backref-module-neuraxle-steps-caching sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">JoblibValueCachingWrapper</span></a>
- <span class="kn">from</span> <span class="nn">neuraxle.steps.loop</span> <span class="kn">import</span> <a href="../../api/steps/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEach" title="neuraxle.steps.loop.ForEach" class="sphx-glr-backref-module-neuraxle-steps-loop sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ForEach</span></a>
- <span class="kn">from</span> <span class="nn">neuraxle.steps.misc</span> <span class="kn">import</span> <a href="../../api/steps/neuraxle.steps.misc.html#neuraxle.steps.misc.Sleep" title="neuraxle.steps.misc.Sleep" class="sphx-glr-backref-module-neuraxle-steps-misc sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Sleep</span></a>
- <span class="kn">from</span> <span class="nn">neuraxle.steps.numpy</span> <span class="kn">import</span> <a href="../../api/steps/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="neuraxle.steps.numpy.MultiplyByN" class="sphx-glr-backref-module-neuraxle-steps-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">MultiplyByN</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="kn">import</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline" class="sphx-glr-backref-module-neuraxle-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Pipeline</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.steps.caching</span> <span class="kn">import</span> <a href="../../api/steps/neuraxle.steps.caching.html#neuraxle.steps.caching.JoblibValueCachingWrapper" title="neuraxle.steps.caching.JoblibValueCachingWrapper" class="sphx-glr-backref-module-neuraxle-steps-caching sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">JoblibValueCachingWrapper</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.steps.loop</span> <span class="kn">import</span> <a href="../../api/steps/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEach" title="neuraxle.steps.loop.ForEach" class="sphx-glr-backref-module-neuraxle-steps-loop sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ForEach</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.steps.misc</span> <span class="kn">import</span> <a href="../../api/steps/neuraxle.steps.misc.html#neuraxle.steps.misc.Sleep" title="neuraxle.steps.misc.Sleep" class="sphx-glr-backref-module-neuraxle-steps-misc sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Sleep</span></a>
+<span class="kn">from</span> <span class="nn">neuraxle.steps.numpy</span> <span class="kn">import</span> <a href="../../api/steps/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="neuraxle.steps.numpy.MultiplyByN" class="sphx-glr-backref-module-neuraxle-steps-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">MultiplyByN</span></a>
 
 
- <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-     <span class="n">value_caching_folder</span> <span class="o">=</span> <span class="s1">&#39;value_caching&#39;</span>
-     <span class="k">if</span> <span class="ow">not</span> <a href="https://docs.python.org/3/library/os.path.html#os.path.exists" title="os.path.exists" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span></a><span class="p">(</span><span class="n">value_caching_folder</span><span class="p">):</span>
-         <a href="https://docs.python.org/3/library/os.html#os.makedirs" title="os.makedirs" class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span></a><span class="p">(</span><span class="n">value_caching_folder</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">value_caching_folder</span> <span class="o">=</span> <span class="s1">&#39;value_caching&#39;</span>
+    <span class="k">if</span> <span class="ow">not</span> <a href="https://docs.python.org/3/library/os.path.html#os.path.exists" title="os.path.exists" class="sphx-glr-backref-module-os-path sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span></a><span class="p">(</span><span class="n">value_caching_folder</span><span class="p">):</span>
+        <a href="https://docs.python.org/3/library/os.html#os.makedirs" title="os.makedirs" class="sphx-glr-backref-module-os sphx-glr-backref-type-py-function"><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span></a><span class="p">(</span><span class="n">value_caching_folder</span><span class="p">)</span>
 
-     <span class="n">data_inputs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+    <span class="n">data_inputs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
 
-     <span class="n">sleep_time</span> <span class="o">=</span> <span class="mf">0.001</span>
-     <span class="n">a</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
-     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-         <span class="n">p</span> <span class="o">=</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline" class="sphx-glr-backref-module-neuraxle-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Pipeline</span></a><span class="p">([</span>
-             <a href="../../api/steps/neuraxle.steps.caching.html#neuraxle.steps.caching.JoblibValueCachingWrapper" title="neuraxle.steps.caching.JoblibValueCachingWrapper" class="sphx-glr-backref-module-neuraxle-steps-caching sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">JoblibValueCachingWrapper</span></a><span class="p">(</span>
-                 <a href="../../api/steps/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEach" title="neuraxle.steps.loop.ForEach" class="sphx-glr-backref-module-neuraxle-steps-loop sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ForEach</span></a><span class="p">(</span><a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline" class="sphx-glr-backref-module-neuraxle-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Pipeline</span></a><span class="p">([</span><a href="../../api/steps/neuraxle.steps.misc.html#neuraxle.steps.misc.Sleep" title="neuraxle.steps.misc.Sleep" class="sphx-glr-backref-module-neuraxle-steps-misc sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Sleep</span></a><span class="p">(</span><span class="n">sleep_time</span><span class="o">=</span><span class="n">sleep_time</span><span class="p">),</span> <a href="../../api/steps/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="neuraxle.steps.numpy.MultiplyByN" class="sphx-glr-backref-module-neuraxle-steps-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">MultiplyByN</span></a><span class="p">(</span><span class="mi">2</span><span class="p">)])),</span>
-                 <span class="n">cache_folder</span><span class="o">=</span><span class="n">value_caching_folder</span>
-             <span class="p">)</span>
-         <span class="p">])</span>
-         <span class="n">outputs_value_caching</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data_inputs</span><span class="p">)</span>
-     <span class="n">b</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
-     <span class="n">time_value_caching_pipeline</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span>
-     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Pipeline with ValueCachingWrapper&#39;</span><span class="p">)</span>
-     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;execution time: </span><span class="si">{}</span><span class="s1"> seconds&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time_value_caching_pipeline</span><span class="p">))</span>
+    <span class="n">sleep_time</span> <span class="o">=</span> <span class="mf">0.001</span>
+    <span class="n">a</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline" class="sphx-glr-backref-module-neuraxle-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Pipeline</span></a><span class="p">([</span>
+            <a href="../../api/steps/neuraxle.steps.caching.html#neuraxle.steps.caching.JoblibValueCachingWrapper" title="neuraxle.steps.caching.JoblibValueCachingWrapper" class="sphx-glr-backref-module-neuraxle-steps-caching sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">JoblibValueCachingWrapper</span></a><span class="p">(</span>
+                <a href="../../api/steps/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEach" title="neuraxle.steps.loop.ForEach" class="sphx-glr-backref-module-neuraxle-steps-loop sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ForEach</span></a><span class="p">(</span><a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline" class="sphx-glr-backref-module-neuraxle-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Pipeline</span></a><span class="p">([</span><a href="../../api/steps/neuraxle.steps.misc.html#neuraxle.steps.misc.Sleep" title="neuraxle.steps.misc.Sleep" class="sphx-glr-backref-module-neuraxle-steps-misc sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Sleep</span></a><span class="p">(</span><span class="n">sleep_time</span><span class="o">=</span><span class="n">sleep_time</span><span class="p">),</span> <a href="../../api/steps/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="neuraxle.steps.numpy.MultiplyByN" class="sphx-glr-backref-module-neuraxle-steps-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">MultiplyByN</span></a><span class="p">(</span><span class="mi">2</span><span class="p">)])),</span>
+                <span class="n">cache_folder</span><span class="o">=</span><span class="n">value_caching_folder</span>
+            <span class="p">)</span>
+        <span class="p">])</span>
+        <span class="n">outputs_value_caching</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data_inputs</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
+    <span class="n">time_value_caching_pipeline</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Pipeline with ValueCachingWrapper&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;execution time: </span><span class="si">{}</span><span class="s1"> seconds&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time_value_caching_pipeline</span><span class="p">))</span>
 
-     <span class="n">a</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
-     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-         <span class="n">p</span> <span class="o">=</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline" class="sphx-glr-backref-module-neuraxle-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Pipeline</span></a><span class="p">([</span>
-             <a href="../../api/steps/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEach" title="neuraxle.steps.loop.ForEach" class="sphx-glr-backref-module-neuraxle-steps-loop sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ForEach</span></a><span class="p">(</span><a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline" class="sphx-glr-backref-module-neuraxle-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Pipeline</span></a><span class="p">([</span><a href="../../api/steps/neuraxle.steps.misc.html#neuraxle.steps.misc.Sleep" title="neuraxle.steps.misc.Sleep" class="sphx-glr-backref-module-neuraxle-steps-misc sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Sleep</span></a><span class="p">(</span><span class="n">sleep_time</span><span class="o">=</span><span class="n">sleep_time</span><span class="p">),</span> <a href="../../api/steps/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="neuraxle.steps.numpy.MultiplyByN" class="sphx-glr-backref-module-neuraxle-steps-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">MultiplyByN</span></a><span class="p">(</span><span class="mi">2</span><span class="p">)])),</span>
-         <span class="p">])</span>
+    <span class="n">a</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline" class="sphx-glr-backref-module-neuraxle-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Pipeline</span></a><span class="p">([</span>
+            <a href="../../api/steps/neuraxle.steps.loop.html#neuraxle.steps.loop.ForEach" title="neuraxle.steps.loop.ForEach" class="sphx-glr-backref-module-neuraxle-steps-loop sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ForEach</span></a><span class="p">(</span><a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline" class="sphx-glr-backref-module-neuraxle-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Pipeline</span></a><span class="p">([</span><a href="../../api/steps/neuraxle.steps.misc.html#neuraxle.steps.misc.Sleep" title="neuraxle.steps.misc.Sleep" class="sphx-glr-backref-module-neuraxle-steps-misc sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Sleep</span></a><span class="p">(</span><span class="n">sleep_time</span><span class="o">=</span><span class="n">sleep_time</span><span class="p">),</span> <a href="../../api/steps/neuraxle.steps.numpy.html#neuraxle.steps.numpy.MultiplyByN" title="neuraxle.steps.numpy.MultiplyByN" class="sphx-glr-backref-module-neuraxle-steps-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">MultiplyByN</span></a><span class="p">(</span><span class="mi">2</span><span class="p">)])),</span>
+        <span class="p">])</span>
 
-         <span class="n">outputs_vanilla</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data_inputs</span><span class="p">)</span>
-     <span class="n">b</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
-     <span class="n">time_vanilla_pipeline</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span>
-     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Pipeline without value caching&#39;</span><span class="p">)</span>
-     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;execution time: </span><span class="si">{}</span><span class="s1"> seconds&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time_vanilla_pipeline</span><span class="p">))</span>
+        <span class="n">outputs_vanilla</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data_inputs</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <a href="https://docs.python.org/3/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span><span class="o">.</span><span class="n">time</span></a><span class="p">()</span>
+    <span class="n">time_vanilla_pipeline</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Pipeline without value caching&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;execution time: </span><span class="si">{}</span><span class="s1"> seconds&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time_vanilla_pipeline</span><span class="p">))</span>
 
-     <a href="https://docs.python.org/3/library/shutil.html#shutil.rmtree" title="shutil.rmtree" class="sphx-glr-backref-module-shutil sphx-glr-backref-type-py-function"><span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span></a><span class="p">(</span><span class="n">value_caching_folder</span><span class="p">)</span>
+    <a href="https://docs.python.org/3/library/shutil.html#shutil.rmtree" title="shutil.rmtree" class="sphx-glr-backref-module-shutil sphx-glr-backref-type-py-function"><span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span></a><span class="p">(</span><span class="n">value_caching_folder</span><span class="p">)</span>
 
-     <span class="k">assert</span> <a href="http://docs.scipy.org/doc/numpy-1.16.1/reference/generated/numpy.array_equal.html#numpy.array_equal" title="numpy.array_equal" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span></a><span class="p">(</span><span class="n">outputs_value_caching</span><span class="p">,</span> <span class="n">outputs_vanilla</span><span class="p">)</span>
-     <span class="k">assert</span> <span class="n">time_value_caching_pipeline</span> <span class="o">&lt;</span> <span class="n">time_vanilla_pipeline</span>
+    <span class="k">assert</span> <a href="http://docs.scipy.org/doc/numpy-1.16.1/reference/generated/numpy.array_equal.html#numpy.array_equal" title="numpy.array_equal" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span></a><span class="p">(</span><span class="n">outputs_value_caching</span><span class="p">,</span> <span class="n">outputs_vanilla</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">time_value_caching_pipeline</span> <span class="o">&lt;</span> <span class="n">time_vanilla_pipeline</span>
 
 
- <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-     <span class="n">main</span><span class="p">()</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
 </pre></div>
-</td></tr></table></div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.843 seconds)</p>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.948 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-caching-plot-value-caching-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/Neuraxio/Neuraxle/master?urlpath=lab/tree/notebooks/examples/caching/plot_value_caching.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo.png" style="width: 150px;" /></a>

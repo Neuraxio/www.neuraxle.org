@@ -709,51 +709,10 @@
 </figcaption>
 </figure>
 </div><div class="sphx-glr-clear"></div><span class="target" id="sphx-glr-backref-neuraxle-union-zipfeatures"></span><dl class="class">
-<dt id="neuraxle.union.AddFeatures">
-<em class="property">class </em><code class="descclassname">neuraxle.union.</code><code class="descname">AddFeatures</code><span class="sig-paren">(</span><em>steps_as_tuple: List[Union[Tuple[str, neuraxle.base.BaseTransformer], neuraxle.base.BaseTransformer]], **kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L186"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.AddFeatures" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parallelize the union of many pipeline steps AND concatenate the new features to the received inputs using Identity.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-    <span class="n">AddFeatures</span><span class="p">([</span>
-        <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
-        <span class="n">FastICA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
-    <span class="p">])</span>
-<span class="p">])</span>
-</pre></div>
-</div>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#neuraxle.union.FeatureUnion" title="neuraxle.union.FeatureUnion"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureUnion</span></code></a>,
-<a class="reference internal" href="#neuraxle.union.ModelStacking" title="neuraxle.union.ModelStacking"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelStacking</span></code></a>,
-<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ForceHandleOnlyMixin" title="neuraxle.base.ForceHandleOnlyMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForceHandleOnlyMixin</span></code></a>,
-<a class="reference internal" href="neuraxle.base.html#neuraxle.base.TruncableSteps" title="neuraxle.base.TruncableSteps"><code class="xref py py-class docutils literal notranslate"><span class="pre">TruncableSteps</span></code></a>,
-<a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p>
-</div>
-<dl class="attribute">
-<dt id="neuraxle.union.AddFeatures._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.AddFeatures._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.union.AddFeatures._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.AddFeatures._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.union.AddFeatures._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.union.AddFeatures._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.union.AddFeatures._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.AddFeatures._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
 <dt id="neuraxle.union.FeatureUnion">
 <em class="property">class </em><code class="descclassname">neuraxle.union.</code><code class="descname">FeatureUnion</code><span class="sig-paren">(</span><em>steps_as_tuple: List[Union[Tuple[str, neuraxle.base.BaseTransformer], neuraxle.base.BaseTransformer]], joiner: neuraxle.base.BaseTransformer = None, n_jobs: int = None, backend: str = 'threading', cache_folder_when_no_handle: str = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.FeatureUnion" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parallelize the union of many pipeline steps.</p>
+<dd><p>Bases: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.ForceHandleOnlyMixin" title="neuraxle.base.ForceHandleOnlyMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.ForceHandleOnlyMixin</span></code></a>, <a class="reference internal" href="neuraxle.base.html#neuraxle.base.TruncableSteps" title="neuraxle.base.TruncableSteps"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.TruncableSteps</span></code></a></p>
+<p>Parallelize the union of many pipeline steps.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
     <span class="n">FeatureUnion</span><span class="p">([</span>
         <span class="n">Mean</span><span class="p">(),</span>
@@ -772,41 +731,37 @@
 <a class="reference internal" href="neuraxle.base.html#neuraxle.base.TruncableSteps" title="neuraxle.base.TruncableSteps"><code class="xref py py-class docutils literal notranslate"><span class="pre">TruncableSteps</span></code></a>,
 <a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p>
 </div>
-<dl class="attribute">
-<dt id="neuraxle.union.FeatureUnion._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.FeatureUnion._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.union.FeatureUnion._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.FeatureUnion._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.union.FeatureUnion._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.union.FeatureUnion._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.union.FeatureUnion._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.FeatureUnion._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="method">
+<dt id="neuraxle.union.FeatureUnion.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>steps_as_tuple: List[Union[Tuple[str, neuraxle.base.BaseTransformer], neuraxle.base.BaseTransformer]], joiner: neuraxle.base.BaseTransformer = None, n_jobs: int = None, backend: str = 'threading', cache_folder_when_no_handle: str = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.FeatureUnion.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a feature union.
+:type cache_folder_when_no_handle: <code class="docutils literal notranslate"><span class="pre">str</span></code>
+:type backend: <code class="docutils literal notranslate"><span class="pre">str</span></code>
+:type n_jobs: <code class="docutils literal notranslate"><span class="pre">int</span></code>
+:type joiner: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseTransformer" title="neuraxle.base.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTransformer</span></code></a>
+:type steps_as_tuple: <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>
+:param steps_as_tuple: the NamedTupleList of steps to process in parallel and to join.
+:param joiner: What will be used to join the features. <code class="docutils literal notranslate"><span class="pre">NumpyConcatenateInnerFeatures()</span></code> is used by default.
+:param n_jobs: The number of jobs for the parallelized <code class="docutils literal notranslate"><span class="pre">joblib.Parallel</span></code> loop in fit and in transform.
+:param backend: The type of parallelization to do with <code class="docutils literal notranslate"><span class="pre">joblib.Parallel</span></code>. Possible values: “loky”, “multiprocessing”, “threading”, “dask” if you use dask, and more.</p>
+</dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.union.FeatureUnion._did_fit_transform">
-<code class="descname">_did_fit_transform</code><span class="sig-paren">(</span><em>data_container</em>, <em>context</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L153"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.FeatureUnion._did_fit_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply side effects after fit transform.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> – data container</p></li>
-<li><p><strong>context</strong> – execution context</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>(fitted self, data container)</p>
-</dd>
-</dl>
+<dt id="neuraxle.union.FeatureUnion._fit_data_container">
+<code class="descname">_fit_data_container</code><span class="sig-paren">(</span><em>data_container</em>, <em>context</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.FeatureUnion._fit_data_container" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the parallel steps on the data. It will make use of some parallel processing.
+:param data_container: The input data to fit onto
+:param context: execution context
+:return: self</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.union.FeatureUnion._transform_data_container">
+<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container</em>, <em>context</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L105"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.FeatureUnion._transform_data_container" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform the data with the unions. It will make use of some parallel processing.
+:param data_container: data container
+:param context: execution context
+:return: the transformed data_inputs.</p>
 </dd></dl>
 
 <dl class="method">
@@ -827,15 +782,6 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.union.FeatureUnion._fit_data_container">
-<code class="descname">_fit_data_container</code><span class="sig-paren">(</span><em>data_container</em>, <em>context</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.FeatureUnion._fit_data_container" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fit the parallel steps on the data. It will make use of some parallel processing.
-:param data_container: The input data to fit onto
-:param context: execution context
-:return: self</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="neuraxle.union.FeatureUnion._fit_transform_data_container">
 <code class="descname">_fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container</em>, <em>context</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L135"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.FeatureUnion._fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform the data with the unions. It will make use of some parallel processing.
@@ -850,12 +796,101 @@
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.union.FeatureUnion._transform_data_container">
-<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container</em>, <em>context</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L105"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.FeatureUnion._transform_data_container" title="Permalink to this definition">¶</a></dt>
-<dd><p>Transform the data with the unions. It will make use of some parallel processing.
-:param data_container: data container
-:param context: execution context
-:return: the transformed data_inputs.</p>
+<dt id="neuraxle.union.FeatureUnion._did_fit_transform">
+<code class="descname">_did_fit_transform</code><span class="sig-paren">(</span><em>data_container</em>, <em>context</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L153"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.FeatureUnion._did_fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply side effects after fit transform.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_container</strong> – data container</p></li>
+<li><p><strong>context</strong> – execution context</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(fitted self, data container)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.union.ZipFeatures">
+<em class="property">class </em><code class="descclassname">neuraxle.union.</code><code class="descname">ZipFeatures</code><span class="sig-paren">(</span><em>concatenate_inner_features=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L158"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ZipFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.NonFittableMixin" title="neuraxle.base.NonFittableMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.NonFittableMixin</span></code></a>, <a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.BaseStep</span></code></a></p>
+<p>This class receives an iterable of DataContainer and zips their feature together.
+If concatenate_inner_features is True, then features are concatenated after being zipped.</p>
+<dl class="method">
+<dt id="neuraxle.union.ZipFeatures.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>concatenate_inner_features=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L164"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ZipFeatures.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.union.ZipFeatures.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ZipFeatures.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform given data inputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_inputs</strong> – data inputs</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>transformed data inputs</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.union.ZipFeatures._transform_data_container">
+<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L177"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ZipFeatures._transform_data_container" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform data container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>data container</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.union.AddFeatures">
+<em class="property">class </em><code class="descclassname">neuraxle.union.</code><code class="descname">AddFeatures</code><span class="sig-paren">(</span><em>steps_as_tuple: List[Union[Tuple[str, neuraxle.base.BaseTransformer], neuraxle.base.BaseTransformer]], **kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L186"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.AddFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.union.FeatureUnion" title="neuraxle.union.FeatureUnion"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.union.FeatureUnion</span></code></a></p>
+<p>Parallelize the union of many pipeline steps AND concatenate the new features to the received inputs using Identity.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="n">AddFeatures</span><span class="p">([</span>
+        <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+        <span class="n">FastICA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+    <span class="p">])</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#neuraxle.union.FeatureUnion" title="neuraxle.union.FeatureUnion"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureUnion</span></code></a>,
+<a class="reference internal" href="#neuraxle.union.ModelStacking" title="neuraxle.union.ModelStacking"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelStacking</span></code></a>,
+<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ForceHandleOnlyMixin" title="neuraxle.base.ForceHandleOnlyMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForceHandleOnlyMixin</span></code></a>,
+<a class="reference internal" href="neuraxle.base.html#neuraxle.base.TruncableSteps" title="neuraxle.base.TruncableSteps"><code class="xref py py-class docutils literal notranslate"><span class="pre">TruncableSteps</span></code></a>,
+<a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p>
+</div>
+<dl class="method">
+<dt id="neuraxle.union.AddFeatures.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>steps_as_tuple: List[Union[Tuple[str, neuraxle.base.BaseTransformer], neuraxle.base.BaseTransformer]], **kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L208"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.AddFeatures.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a <code class="docutils literal notranslate"><span class="pre">FeatureUnion</span></code> where <code class="docutils literal notranslate"><span class="pre">Identity</span></code> is the first step so as to also keep
+the inputs to concatenate them to the outputs.
+:type steps_as_tuple: <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>
+:param steps_as_tuple: The steps to be sent to the <code class="docutils literal notranslate"><span class="pre">FeatureUnion</span></code>. <code class="docutils literal notranslate"><span class="pre">Identity()</span></code> is prepended.
+:param kwargs: Other arguments to send to <code class="docutils literal notranslate"><span class="pre">FeatureUnion</span></code>.</p>
 </dd></dl>
 
 </dd></dl>
@@ -863,7 +898,8 @@
 <dl class="class">
 <dt id="neuraxle.union.ModelStacking">
 <em class="property">class </em><code class="descclassname">neuraxle.union.</code><code class="descname">ModelStacking</code><span class="sig-paren">(</span><em>steps_as_tuple: List[Union[Tuple[str, neuraxle.base.BaseTransformer], neuraxle.base.BaseTransformer]], judge: neuraxle.base.BaseStep, **kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L218"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ModelStacking" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs a <code class="docutils literal notranslate"><span class="pre">FeatureUnion</span></code> of steps, and then send the joined result to the above judge step.</p>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.union.FeatureUnion" title="neuraxle.union.FeatureUnion"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.union.FeatureUnion</span></code></a></p>
+<p>Performs a <code class="docutils literal notranslate"><span class="pre">FeatureUnion</span></code> of steps, and then send the joined result to the above judge step.</p>
 <p>Usage example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_stacking</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
     <span class="n">ModelStacking</span><span class="p">([</span>
@@ -901,37 +937,16 @@
 <a class="reference internal" href="neuraxle.base.html#neuraxle.base.TruncableSteps" title="neuraxle.base.TruncableSteps"><code class="xref py py-class docutils literal notranslate"><span class="pre">TruncableSteps</span></code></a>,
 <a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p>
 </div>
-<dl class="attribute">
-<dt id="neuraxle.union.ModelStacking._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ModelStacking._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.union.ModelStacking._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ModelStacking._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.union.ModelStacking._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.union.ModelStacking._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.union.ModelStacking._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ModelStacking._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="method">
-<dt id="neuraxle.union.ModelStacking._did_fit">
-<code class="descname">_did_fit</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L285"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ModelStacking._did_fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fit the parallel steps on the data. It will make use of some parallel processing.
-Also, fit the judge on the result of the parallel steps.
-:rtype: <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>
-:type context: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
-:type data_container: <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>
-:param data_container: data container to fit on
-:param context: execution context
-:return: self</p>
+<dt id="neuraxle.union.ModelStacking.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>steps_as_tuple: List[Union[Tuple[str, neuraxle.base.BaseTransformer], neuraxle.base.BaseTransformer]], judge: neuraxle.base.BaseStep, **kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L261"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ModelStacking.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform model stacking. The steps will be merged with a FeatureUnion,
+and the judge will recombine the predictions.
+:type judge: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a>
+:type steps_as_tuple: <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>
+:param steps_as_tuple: the NamedTupleList of steps to process in parallel and to join.
+:param judge: a BaseStep that will learn to judge the best answer and who to trust out of every parallel steps.
+:param kwargs: Other arguments to send to <code class="docutils literal notranslate"><span class="pre">FeatureUnion</span></code>.</p>
 </dd></dl>
 
 <dl class="method">
@@ -952,6 +967,19 @@ Also, fit the judge on the result of the parallel steps.
 </dd></dl>
 
 <dl class="method">
+<dt id="neuraxle.union.ModelStacking._did_fit">
+<code class="descname">_did_fit</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L285"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ModelStacking._did_fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the parallel steps on the data. It will make use of some parallel processing.
+Also, fit the judge on the result of the parallel steps.
+:rtype: <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>
+:type context: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
+:type data_container: <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>
+:param data_container: data container to fit on
+:param context: execution context
+:return: self</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="neuraxle.union.ModelStacking._did_transform">
 <code class="descname">_did_transform</code><span class="sig-paren">(</span><em>data_container</em>, <em>context</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L302"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ModelStacking._did_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform the data with the unions. It will make use of some parallel processing.
@@ -959,67 +987,6 @@ Then, use the judge to refine the transformations.
 :rtype: <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>
 :param data_container: data container to transform
 :param context: execution context</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="neuraxle.union.ZipFeatures">
-<em class="property">class </em><code class="descclassname">neuraxle.union.</code><code class="descname">ZipFeatures</code><span class="sig-paren">(</span><em>concatenate_inner_features=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L158"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ZipFeatures" title="Permalink to this definition">¶</a></dt>
-<dd><p>This class receives an iterable of DataContainer and zips their feature together.
-If concatenate_inner_features is True, then features are concatenated after being zipped.</p>
-<dl class="attribute">
-<dt id="neuraxle.union.ZipFeatures._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ZipFeatures._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.union.ZipFeatures._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ZipFeatures._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.union.ZipFeatures._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.union.ZipFeatures._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.union.ZipFeatures._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ZipFeatures._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.union.ZipFeatures._transform_data_container">
-<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L177"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ZipFeatures._transform_data_container" title="Permalink to this definition">¶</a></dt>
-<dd><p>Transform data container.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a></p>
-</dd>
-<dt class="field-even">Parameters</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – data container</p></li>
-<li><p><strong>context</strong> (<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
-</ul>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>data container</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.union.ZipFeatures.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/union.py#L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.union.ZipFeatures.transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Transform given data inputs.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data_inputs</strong> – data inputs</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>transformed data inputs</p>
-</dd>
-</dl>
 </dd></dl>
 
 </dd></dl>

@@ -673,7 +673,8 @@
 <span class="target" id="sphx-glr-backref-neuraxle-metrics-metricswrapper"></span><dl class="class">
 <dt id="neuraxle.metrics.MetricsWrapper">
 <em class="property">class </em><code class="descclassname">neuraxle.metrics.</code><code class="descname">MetricsWrapper</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em>, <em>metrics: Dict</em>, <em>name: str = None</em>, <em>print_metrics=False</em>, <em>print_fun=&lt;built-in function print&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metrics.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metrics.MetricsWrapper" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add metrics calculation to a step. Calculates metrics after each fit, fit_transform, or even transform if there is an expected outputs.</p>
+<dd><p>Bases: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.MetaStep" title="neuraxle.base.MetaStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.MetaStep</span></code></a></p>
+<p>Add metrics calculation to a step. Calculates metrics after each fit, fit_transform, or even transform if there is an expected outputs.</p>
 <p>Example usage :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wrapped</span> <span class="o">=</span> <span class="n">MetricsWrapper</span><span class="p">(</span><span class="n">wrapped</span><span class="o">=</span><span class="n">wrapped</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_metrics</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">BATCH_METRICS_STEP_NAME</span><span class="p">)</span>
 <span class="n">wrapped</span> <span class="o">=</span> <span class="n">MiniBatchSequentialPipeline</span><span class="p">(</span>
@@ -692,33 +693,19 @@
 <a class="reference internal" href="neuraxle.base.html#neuraxle.base.MetaStepMixin" title="neuraxle.base.MetaStepMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaStepMixin</span></code></a>,
 <a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a></p>
 </div>
-<dl class="attribute">
-<dt id="neuraxle.metrics.MetricsWrapper._abc_cache">
-<code class="descname">_abc_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metrics.MetricsWrapper._abc_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metrics.MetricsWrapper._abc_negative_cache">
-<code class="descname">_abc_negative_cache</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metrics.MetricsWrapper._abc_negative_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metrics.MetricsWrapper._abc_negative_cache_version">
-<code class="descname">_abc_negative_cache_version</code><em class="property"> = 60</em><a class="headerlink" href="#neuraxle.metrics.MetricsWrapper._abc_negative_cache_version" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metrics.MetricsWrapper._abc_registry">
-<code class="descname">_abc_registry</code><em class="property"> = &lt;_weakrefset.WeakSet object&gt;</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/../../../venv/lib/python3.6/_weakrefset.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metrics.MetricsWrapper._abc_registry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="method">
+<dt id="neuraxle.metrics.MetricsWrapper.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em>, <em>metrics: Dict</em>, <em>name: str = None</em>, <em>print_metrics=False</em>, <em>print_fun=&lt;built-in function print&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metrics.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metrics.MetricsWrapper.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.metrics.MetricsWrapper._calculate_metrics_results">
-<code class="descname">_calculate_metrics_results</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metrics.py#L120"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metrics.MetricsWrapper._calculate_metrics_results" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate metrics results using the transformed data container, and the metrics function dict.</p>
+<dt id="neuraxle.metrics.MetricsWrapper._initialize_metrics">
+<code class="descname">_initialize_metrics</code><span class="sig-paren">(</span><em>metrics</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metrics.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metrics.MetricsWrapper._initialize_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize metrics results dict for train, and validation using the metrics function dict.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><em>DataContainer</em></a>) – transformed data container</p>
+<dd class="field-odd"><p><strong>metrics</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><em>dict</em></a>) – metrics function dict</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p></p>
@@ -747,25 +734,6 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.metrics.MetricsWrapper._did_fit_transform_or_transform">
-<code class="descname">_did_fit_transform_or_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metrics.py#L92"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metrics.MetricsWrapper._did_fit_transform_or_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate metrics results after fit, or transform if there is an expected outputs in the data container.
-Also, calculate validation metrics if there is a sub data container named validation in the data container.
-Please refer to <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a> for more information about sub data containers.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><em>DataContainer</em></a>) – data container to calculate metrics for</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>data container</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer">DataContainer</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
 <dt id="neuraxle.metrics.MetricsWrapper._did_transform">
 <code class="descname">_did_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metrics.py#L89"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metrics.MetricsWrapper._did_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply side effects after transform.</p>
@@ -786,37 +754,34 @@ Please refer to <a class="reference internal" href="neuraxle.data_container.html
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.metrics.MetricsWrapper._initialize_metrics">
-<code class="descname">_initialize_metrics</code><span class="sig-paren">(</span><em>metrics</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metrics.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metrics.MetricsWrapper._initialize_metrics" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize metrics results dict for train, and validation using the metrics function dict.</p>
+<dt id="neuraxle.metrics.MetricsWrapper._did_fit_transform_or_transform">
+<code class="descname">_did_fit_transform_or_transform</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metrics.py#L92"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metrics.MetricsWrapper._did_fit_transform_or_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate metrics results after fit, or transform if there is an expected outputs in the data container.
+Also, calculate validation metrics if there is a sub data container named validation in the data container.
+Please refer to <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a> for more information about sub data containers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>metrics</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><em>dict</em></a>) – metrics function dict</p>
+<dd class="field-odd"><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><em>DataContainer</em></a>) – data container to calculate metrics for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>data container</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer">DataContainer</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metrics.MetricsWrapper._calculate_metrics_results">
+<code class="descname">_calculate_metrics_results</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metrics.py#L120"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metrics.MetricsWrapper._calculate_metrics_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate metrics results using the transformed data container, and the metrics function dict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><em>DataContainer</em></a>) – transformed data container</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metrics.MetricsWrapper.disable_metrics">
-<code class="descname">disable_metrics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metrics.py#L165"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metrics.MetricsWrapper.disable_metrics" title="Permalink to this definition">¶</a></dt>
-<dd><p>Disable metrics wrapper metrics if needed..</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metrics.MetricsWrapper.enable_metrics">
-<code class="descname">enable_metrics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metrics.py#L174"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metrics.MetricsWrapper.enable_metrics" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enable metrics wrapper metrics if needed..</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
 </dd>
 </dl>
 </dd></dl>
@@ -837,6 +802,28 @@ To be used with <code class="xref py py-func docutils literal notranslate"><span
 <dt id="neuraxle.metrics.MetricsWrapper.toggle_metrics">
 <code class="descname">toggle_metrics</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.RecursiveDict<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metrics.py#L156"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metrics.MetricsWrapper.toggle_metrics" title="Permalink to this definition">¶</a></dt>
 <dd><p>Toggle metrics wrapper on and off to temporarily disable metrics if needed..</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metrics.MetricsWrapper.disable_metrics">
+<code class="descname">disable_metrics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metrics.py#L165"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metrics.MetricsWrapper.disable_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable metrics wrapper metrics if needed..</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metrics.MetricsWrapper.enable_metrics">
+<code class="descname">enable_metrics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metrics.py#L174"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metrics.MetricsWrapper.enable_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable metrics wrapper metrics if needed..</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p></p>
