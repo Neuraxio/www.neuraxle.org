@@ -1,10 +1,178 @@
+Class diagrams and inheritance charts of Neuraxle objects
+=========================================================================
 
-====================================
+Here is a description of the most used classes in Neuraxle. Reading this page
+will help you understand more on how they relate to each other, as the
+inherited classes and they order, combined with mixins, is often important in Neuraxle. 
 
+The Mixin design pattern in machine learning
+-------------------------------------------------------------------------
 
-.. uml:: {{modulename}}
-    :classes:
-    :packages:
+Understanding the design pattern "Mixin" is important. For this, we will refer you to
+the wikipedia page on mixins, which is a good place to start. Mixins are a way to solve 
+the `Diamond Problem <https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem>`__
+that happen when two sub-sub-classes inherit multiple times from the base class. It is
+at this point that `Mixins <https://en.wikipedia.org/wiki/Mixin#In_Python>`__ are required. 
 
+The Mixin design pattern, in Neuraxle, is an important one to respect the SOLID Principles
+as established by Robert C. Martin, the author of Clean Code. Especially, mixins help to
+respect the Interface Segregation Principle (ISP), that is the "I" in SOLID. You may
+enjoy reading Umaneo's article on 
+`SOLID Machine Learning <https://www.umaneo.com/post/the-solid-principles-applied-to-machine-learning>`__
+which does a good job of covering the importance of the ISP principle, as well as the other principles, 
+in ML projects. 
 
+The BaseStep of Neuraxle is itself a composition of many mixins, passing via the 
+BaseTransformer that doesn't have fit methods. 
 
+.. inheritance-diagram:: neuraxle.base.BaseStep
+   :private-bases:
+   :parts: 1
+
+|
+
+Steps containing other steps as the composite design pattern in machine learning
+--------------------------------------------------------------------------------
+
+Steps can contain other steps, in a nested fashion. They can be traversed like a tree
+using the :func:`~neuraxle.base._HasChildrenMixin.apply` method when inheriting from the mixin
+:class:`~neuraxle.base._HasChildrenMixin`. To this effect, two class visible in the
+inheritance diagram below are :class:`~neuraxle.base.TruncableSteps` and :class:`~neuraxle.base.MetaStep`.
+This is in fact using the composite design pattern, that is the same way components
+are coded in other frameworks like react or vue.js. Here is how the TruncableSteps
+and MetaStep works - they also combine some Mixins, as they
+are a BaseStep themselves and compose other base steps as childrens:
+
+.. inheritance-diagram:: neuraxle.base.TruncableSteps neuraxle.base.MetaStep neuraxle.base._RecursiveArguments neuraxle.hyperparams.space.HyperparameterSamples neuraxle.hyperparams.space.HyperparameterSpace
+   :top-classes: neuraxle.base.BaseStep
+   :private-bases:
+   :parts: 1
+
+|
+
+These steps, using the apply method, uses the :class:`~neuraxle.base._RecursiveArguments`
+class for nested arguments, and combines recursively some :class:`~neuraxle.hyperparams.space.RecursiveDict`
+as return values of the traversed machine learning pipeline's tree. 
+
+To summarize, a MetaStep is a step containing another one. We could say of a MetaStep that it is a decorator of another
+step, or a wrapper of another step to create the tree. The same goes with the TruncableSteps object. This one
+is a wrapper of multiple other objects. See it as a list that can be truncated. 
+
+Scikit-learn's pipeline.Pipeline class and how to shift to parallel deep learning
+-----------------------------------------------------------------------------------
+
+The neuraxle :class:`~neuraxle.pipeline.Pipeline` class is a wrapper of a list of steps, and it acts
+just like the `sklearn.pipeline.Pipeline <https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html>`__ object,
+except that `scikit-learn pipelines have limitations, and we've found some solutions to that <https://www.neuraxle.org/stable/scikit-learn_problems_solutions.html>`__.
+
+The result is that Neuraxle Pipelines can properly do Deep Learning whereasvscikit-learn Pipelines
+can only do Machine Learning and with less features. Neuraxle pipelines are compatible with
+scikit-learn pipelines, thus helps scikit-learn to evolve, reusing its proven power.
+
+It is a good example of how to build proper machine learning pipelines. However, in Neuraxle, we add more context to the pipeline, 
+using a ExecutionContext :class:`~neuraxle.base.ExecutionContext` object. 
+
+Together, the following inheritance diagram shows the inheritance of all Pipeline classes, inheriting from the TruncableSteps class.
+As you can see, we also have built-in parallelism and minibatching ready to use:
+
+.. inheritance-diagram:: neuraxle.pipeline.Pipeline neuraxle.pipeline.MiniBatchSequentialPipeline neuraxle.distributed.streaming.SequentialQueuedPipeline neuraxle.base.ExecutionContext neuraxle.base.ExecutionPhase neuraxle.base.ExecutionMode
+   :top-classes: neuraxle.base.BaseStep, neuraxle.base.TruncableSteps, neuraxle.base.MetaStep
+   :private-bases:
+   :parts: 1
+
+|
+
+It seems like there are a lot of classes to the right, but this is only because the
+:class:`~neuraxle.distributed.streaming.SequentialQueuedPipeline` that allows you
+to run a pipeline in a distributed environment has a lot under the hood for it to work.
+
+Here are some examples on how to use the Pipeline class of Neuraxle.
+This Pipeline :class:`~neuraxle.pipeline.Pipeline` is the class that you will use the most often,
+even within parallelized pipelines. Some examples are using sklearn estimators in the Neuraxle pipelines:
+
+.. minigallery:: neuraxle.pipeline.Pipeline
+      :add-heading:
+
+|
+
+.. minigallery:: neuraxle.distributed.streaming.SequentialQueuedPipeline
+      :add-heading:
+
+|
+
+FeatureUnion to compute steps in parallel and join their results
+--------------------------------------------------------------------------------
+
+The :class:`~neuraxle.union.FeatureUnion` class and its parallel counterpart
+:class:`~neuraxle.distributed.streaming.ParallelQueuedFeatureUnion`
+both use joiners to join the results of the steps, such as the
+:class:`~neuraxle.steps.numpy.NumpyConcatenateInnerFeatures` class to concatenate
+the results of the steps on the innermost dimension, that is often the features dimension.
+
+See the inheritance diagram below to understand the inheritance of the FeatureUnion class,
+its parallel counterpart and the parallel joiner:
+
+.. inheritance-diagram:: neuraxle.union.FeatureUnion neuraxle.distributed.streaming.ParallelQueuedFeatureUnion neuraxle.steps.numpy.NumpyConcatenateInnerFeatures
+   :top-classes: neuraxle.base.BaseStep, neuraxle.base.TruncableSteps, neuraxle.base.MetaStep
+   :private-bases:
+   :parts: 1
+
+|
+
+Here are some practical examples on how to use the FeatureUnion class of Neuraxle:
+
+.. minigallery:: neuraxle.union.FeatureUnion
+      :add-heading:
+
+|
+
+The :class:`~neuraxle.union.FeatureUnion` we have here looks much like the one in sklearn,
+`sklearn.pipeline.FeatureUnion <https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.FeatureUnion.html>`__,
+but it is a class of Neuraxle. It is a wrapper of a list of steps, and it acts
+with all the benefits that Neuraxle Pipelines have, such as parallelism, minibatching, 
+distributed execution, savers, built-in hyperparameter tuning, and neat hyperparameter spaces.
+
+AutoML module to automatically tune hyperparameters of your pipelines
+--------------------------------------------------------------------------------
+
+You machine learning pipelines may contain various data preprocessing steps
+and models, as well as model selection steps. In order to automatically tune 
+the hyperparameters, you can use the :class:`~neuraxle.metaopt.auto_ml.AutoML`
+class. 
+
+.. inheritance-diagram:: neuraxle.metaopt.auto_ml
+   :top-classes: neuraxle.base.BaseStep, neuraxle.base.TruncableSteps, neuraxle.base.MetaStep
+   :parts: 1
+
+|
+
+Here are some practical examples on how to use the AutoML class of Neuraxle:
+
+.. minigallery:: neuraxle.metaopt.auto_ml.AutoML
+      :add-heading:
+
+|
+
+You may also find interesting a whole lot of other modules, such as the flow module,
+in which lots of control-flow wrappers are defined. Those steps can often make
+conditional decisions on how your data will traverse the pipeline:
+
+.. inheritance-diagram:: neuraxle.steps.flow
+   :top-classes: neuraxle.base.BaseStep
+   :private-bases:
+   :parts: 1
+
+All the base classes of Neuraxle together
+--------------------------------------------------------------------------------
+
+See how everything is combined together in the base.py module. Here are defined some other
+important base classes you can inherit from or use to do some funky data pipelines.
+
+.. inheritance-diagram:: neuraxle.base
+   :private-bases:
+   :parts: 1
+
+|
+
+You may like to see all other inheritance diagrams defined in each module of the library.
+Refer to the `complete API documentation of Neuraxle <https://www.neuraxle.org/stable/api.html>`__.

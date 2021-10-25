@@ -47,6 +47,7 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
@@ -222,6 +223,22 @@
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#training-your-pipeline">Training your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#serializing-your-pipeline">Serializing your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../classes_and_modules_overview.html">Class diagrams and inheritance charts of Neuraxle objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#the-mixin-design-pattern-in-machine-learning">The Mixin design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#steps-containing-other-steps-as-the-composite-design-pattern-in-machine-learning">Steps containing other steps as the composite design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#scikit-learn-s-pipeline-pipeline-class-and-how-to-shift-to-parallel-deep-learning">Scikit-learn’s pipeline.Pipeline class and how to shift to parallel deep learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-pipeline-pipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.Pipeline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-distributed-streaming-sequentialqueuedpipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.distributed.streaming.SequentialQueuedPipeline</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#featureunion-to-compute-steps-in-parallel-and-join-their-results">FeatureUnion to compute steps in parallel and join their results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#automl-module-to-automatically-tune-hyperparameters-of-your-pipelines">AutoML module to automatically tune hyperparameters of your pipelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-metaopt-auto-ml-automl">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.AutoML</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#all-the-base-classes-of-neuraxle-together">All the base classes of Neuraxle together</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html">Automatic Hyperparameter Tuning / AutoML</a><ul>
@@ -654,7 +671,30 @@
             
   <section id="neuraxle-steps-data">
 <h1>neuraxle.steps.data<a class="headerlink" href="#neuraxle-steps-data" title="Permalink to this headline">¶</a></h1>
-<p>Module-level documentation.</p>
+<p>Module-level documentation for neuraxle.steps.data. Here is an inheritance diagram,
+including dependencies to other base modules of Neuraxle:</p>
+<div class="graphviz"><img src="../../_images/inheritance-856f5210352691c6cd4429266b1cc7760b487ad6.png" alt="Inheritance diagram of neuraxle.steps.data" usemap="#inheritance8d6590b05c" class="inheritance graphviz" /></div>
+<map id="inheritance8d6590b05c" name="inheritance8d6590b05c">
+<area shape="rect" id="node2" href="../neuraxle.pipeline.html#neuraxle.pipeline.BasePipeline" target="_top" title="BasePipeline" alt="" coords="1144,5,1253,29"/>
+<area shape="rect" id="node3" href="../neuraxle.base.html#neuraxle.base.TruncableSteps" target="_top" title="Step that contains multiple steps. :class:`Pipeline` inherits form this class." alt="" coords="976,26,1100,50"/>
+<area shape="rect" id="node4" href="../neuraxle.base.html#neuraxle.base.BaseStep" target="_top" title="Base class for a transformer step that can also be fitted." alt="" coords="779,112,858,136"/>
+<area shape="rect" id="node5" href="../neuraxle.base.html#neuraxle.base.BaseTransformer" target="_top" title="Base class for a pipeline step that can only be transformed." alt="" coords="472,156,604,179"/>
+<area shape="rect" id="node16" href="../neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" target="_top" title="Fits and transform steps" alt="" coords="1296,5,1375,29"/>
+<area shape="rect" id="node10" href="../neuraxle.base.html#neuraxle.base.MetaStep" target="_top" title="MetaStep" alt="" coords="999,243,1078,266"/>
+<area shape="rect" id="node6" href="#neuraxle.steps.data.DataShuffler" target="_top" title="Data Shuffling step that shuffles data inputs, and expected_outputs at the same time." alt="" coords="764,69,872,92"/>
+<area shape="rect" id="node14" href="#neuraxle.steps.data.InnerConcatenateDataContainer" target="_top" title="Concatenate inner features of sub data containers along `axis=&#45;1`.." alt="" coords="700,156,936,179"/>
+<area shape="rect" id="node18" href="#neuraxle.steps.data.ZipBatchDataContainer" target="_top" title="WARNING: Unexpected behaviour from this class. It&#39;s not to date." alt="" coords="730,199,906,223"/>
+<area shape="rect" id="node7" href="neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.InputAndOutputTransformerMixin" target="_top" title="Base output transformer step that can modify data inputs, and expected_outputs at the same time." alt="" coords="416,69,660,92"/>
+<area shape="rect" id="node8" href="#neuraxle.steps.data.EpochRepeater" target="_top" title="Repeat wrapped step fit, or transform for the number of epochs passed in the constructor." alt="" coords="1140,264,1256,287"/>
+<area shape="rect" id="node9" href="../neuraxle.base.html#neuraxle.base.ForceHandleOnlyMixin" target="_top" title="A step that automatically calls handle methods in the transform, fit, and fit_transform methods." alt="" coords="453,199,623,223"/>
+<area shape="rect" id="node11" href="../neuraxle.base.html#neuraxle.base.ForceHandleMixin" target="_top" title="A step that automatically calls handle methods in the transform, fit, and fit_transform methods." alt="" coords="236,177,376,200"/>
+<area shape="rect" id="node12" href="../neuraxle.base.html#neuraxle.base.MixinForBaseTransformer" target="_top" title="Any steps/transformers within a pipeline that inherits of this class should implement BaseStep/BaseTransformer and initialize it before any mixin. This class checks that its the case at initialization." alt="" coords="4,199,196,223"/>
+<area shape="rect" id="node13" href="../neuraxle.base.html#neuraxle.base.HandleOnlyMixin" target="_top" title="A pipeline step that only requires the implementation of handler methods :" alt="" coords="240,220,372,244"/>
+<area shape="rect" id="node15" href="../neuraxle.base.html#neuraxle.base.MetaStepMixin" target="_top" title="A class to represent a step that wraps another step. It can be used for many things." alt="" coords="760,243,876,266"/>
+<area shape="rect" id="node17" href="#neuraxle.steps.data.TrainShuffled" target="_top" title="TrainShuffled" alt="" coords="1416,5,1532,29"/>
+</map><div class="line-block">
+<div class="line"><br /></div>
+</div>
 <span class="target" id="module-neuraxle.steps.data"></span><section id="data-steps">
 <h2>Data Steps<a class="headerlink" href="#data-steps" title="Permalink to this headline">¶</a></h2>
 <p>You can find here steps that take action on data.</p>
@@ -682,7 +722,10 @@
 </tr>
 </tbody>
 </table>
-<span class="target" id="sphx-glr-backref-neuraxle-steps-data-zipbatchdatacontainer"><span id="sphx-glr-backref-neuraxle-steps-data-trainshuffled"></span><span id="sphx-glr-backref-neuraxle-steps-data-innerconcatenatedatacontainer"></span><span id="sphx-glr-backref-neuraxle-steps-data-epochrepeater"></span><span id="sphx-glr-backref-neuraxle-steps-data-datashuffler"></span></span><dl class="class">
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="class">
 <dt id="neuraxle.steps.data.DataShuffler">
 <em class="property">class </em><code class="descclassname">neuraxle.steps.data.</code><code class="descname">DataShuffler</code><span class="sig-paren">(</span><em>seed=None</em>, <em>increment_seed_after_each_fit=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/data.py#L33"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.data.DataShuffler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="neuraxle.steps.output_handlers.html#neuraxle.steps.output_handlers.InputAndOutputTransformerMixin" title="neuraxle.steps.output_handlers.InputAndOutputTransformerMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.steps.output_handlers.InputAndOutputTransformerMixin</span></code></a>, <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseTransformer" title="neuraxle.base.BaseTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.BaseTransformer</span></code></a></p>

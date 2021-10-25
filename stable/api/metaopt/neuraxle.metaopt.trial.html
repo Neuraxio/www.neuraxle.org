@@ -47,6 +47,7 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
@@ -222,6 +223,22 @@
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#training-your-pipeline">Training your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#serializing-your-pipeline">Serializing your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../classes_and_modules_overview.html">Class diagrams and inheritance charts of Neuraxle objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#the-mixin-design-pattern-in-machine-learning">The Mixin design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#steps-containing-other-steps-as-the-composite-design-pattern-in-machine-learning">Steps containing other steps as the composite design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#scikit-learn-s-pipeline-pipeline-class-and-how-to-shift-to-parallel-deep-learning">Scikit-learn’s pipeline.Pipeline class and how to shift to parallel deep learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-pipeline-pipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.Pipeline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-distributed-streaming-sequentialqueuedpipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.distributed.streaming.SequentialQueuedPipeline</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#featureunion-to-compute-steps-in-parallel-and-join-their-results">FeatureUnion to compute steps in parallel and join their results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#automl-module-to-automatically-tune-hyperparameters-of-your-pipelines">AutoML module to automatically tune hyperparameters of your pipelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-metaopt-auto-ml-automl">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.AutoML</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#all-the-base-classes-of-neuraxle-together">All the base classes of Neuraxle together</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html">Automatic Hyperparameter Tuning / AutoML</a><ul>
@@ -654,7 +671,17 @@
             
   <section id="neuraxle-metaopt-trial">
 <h1>neuraxle.metaopt.trial<a class="headerlink" href="#neuraxle-metaopt-trial" title="Permalink to this headline">¶</a></h1>
-<p>Module-level documentation.</p>
+<p>Module-level documentation for neuraxle.metaopt.trial. Here is an inheritance diagram,
+including dependencies to other base modules of Neuraxle:</p>
+<div class="graphviz"><img src="../../_images/inheritance-2f4958e3a75f5a1045f359f59459365dad1d3175.png" alt="Inheritance diagram of neuraxle.metaopt.trial" usemap="#inheritance8948f3fddb" class="inheritance graphviz" /></div>
+<map id="inheritance8948f3fddb" name="inheritance8948f3fddb">
+<area shape="rect" id="node2" href="#neuraxle.metaopt.trial.TRIAL_STATUS" target="_top" title="Trial status." alt="" coords="165,161,296,189"/>
+<area shape="rect" id="node3" href="#neuraxle.metaopt.trial.Trial" target="_top" title="Trial data container for :class:`AutoML`." alt="" coords="25,109,97,137"/>
+<area shape="rect" id="node4" href="#neuraxle.metaopt.trial.TrialSplit" target="_top" title="One split of a trial." alt="" coords="5,57,117,85"/>
+<area shape="rect" id="node5" href="#neuraxle.metaopt.trial.Trials" target="_top" title="Data object containing auto ml trials." alt="" coords="23,5,99,33"/>
+</map><div class="line-block">
+<div class="line"><br /></div>
+</div>
 <span class="target" id="module-neuraxle.metaopt.trial"></span><section id="neuraxle-s-trial-classes">
 <h2>Neuraxle’s Trial Classes<a class="headerlink" href="#neuraxle-s-trial-classes" title="Permalink to this headline">¶</a></h2>
 <p>Trial objects used by AutoML algorithm classes.</p>
@@ -679,7 +706,10 @@
 </tr>
 </tbody>
 </table>
-<span class="target" id="sphx-glr-backref-neuraxle-metaopt-trial-trials"><span id="sphx-glr-backref-neuraxle-metaopt-trial-trialsplit"></span><span id="sphx-glr-backref-neuraxle-metaopt-trial-trial"></span><span id="sphx-glr-backref-neuraxle-metaopt-trial-trial-status"></span></span><dl class="class">
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="class">
 <dt id="neuraxle.metaopt.trial.Trial">
 <em class="property">class </em><code class="descclassname">neuraxle.metaopt.trial.</code><code class="descname">Trial</code><span class="sig-paren">(</span><em>trial_number: int</em>, <em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples</em>, <em>main_metric_name: str</em>, <em>save_trial_function: Callable</em>, <em>status: Optional[neuraxle.metaopt.trial.TRIAL_STATUS] = None</em>, <em>pipeline: neuraxle.base.BaseStep = None</em>, <em>validation_splits: List[TrialSplit] = None</em>, <em>cache_folder: str = None</em>, <em>error: str = None</em>, <em>error_traceback: str = None</em>, <em>start_time: datetime.datetime = None</em>, <em>end_time: datetime.datetime = None</em>, <em>logger: logging.Logger = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/trial.py#L43"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.trial.Trial" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>

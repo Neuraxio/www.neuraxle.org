@@ -47,6 +47,7 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../_static/sg_gallery.css" type="text/css" />
   <link rel="stylesheet" href="../_static/sg_gallery-binder.css" type="text/css" />
   <link rel="stylesheet" href="../_static/sg_gallery-dataframe.css" type="text/css" />
@@ -222,6 +223,22 @@
 <li class="toctree-l3"><a class="reference internal" href="../intro.html#training-your-pipeline">Training your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../intro.html#serializing-your-pipeline">Serializing your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../intro.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../classes_and_modules_overview.html">Class diagrams and inheritance charts of Neuraxle objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../classes_and_modules_overview.html#the-mixin-design-pattern-in-machine-learning">The Mixin design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../classes_and_modules_overview.html#steps-containing-other-steps-as-the-composite-design-pattern-in-machine-learning">Steps containing other steps as the composite design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../classes_and_modules_overview.html#scikit-learn-s-pipeline-pipeline-class-and-how-to-shift-to-parallel-deep-learning">Scikit-learn’s pipeline.Pipeline class and how to shift to parallel deep learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../classes_and_modules_overview.html#examples-using-neuraxle-pipeline-pipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.Pipeline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../classes_and_modules_overview.html#examples-using-neuraxle-distributed-streaming-sequentialqueuedpipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.distributed.streaming.SequentialQueuedPipeline</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../classes_and_modules_overview.html#featureunion-to-compute-steps-in-parallel-and-join-their-results">FeatureUnion to compute steps in parallel and join their results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../classes_and_modules_overview.html#automl-module-to-automatically-tune-hyperparameters-of-your-pipelines">AutoML module to automatically tune hyperparameters of your pipelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../classes_and_modules_overview.html#examples-using-neuraxle-metaopt-auto-ml-automl">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.AutoML</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../classes_and_modules_overview.html#all-the-base-classes-of-neuraxle-together">All the base classes of Neuraxle together</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html">Automatic Hyperparameter Tuning / AutoML</a><ul>
@@ -654,7 +671,18 @@
             
   <section id="neuraxle-data-container">
 <h1>neuraxle.data_container<a class="headerlink" href="#neuraxle-data-container" title="Permalink to this headline">¶</a></h1>
-<p>Module-level documentation.</p>
+<p>Module-level documentation for neuraxle.data_container. Here is an inheritance diagram,
+including dependencies to other base modules of Neuraxle:</p>
+<div class="graphviz"><img src="../_images/inheritance-db0f3d4f0c53d1e114a97ca91e52057cc3eb5c94.png" alt="Inheritance diagram of neuraxle.data_container" usemap="#inheritance7f27b8ec56" class="inheritance graphviz" /></div>
+<map id="inheritance7f27b8ec56" name="inheritance7f27b8ec56">
+<area shape="rect" id="node1" href="#neuraxle.data_container.AbsentValuesNullObject" target="_top" title="This object, when passed to the default_value_data_inputs argument of the DataContainer.batch method, will return the minibatched data containers such that the last batch won&#39;t have the full batch_size if it was incomplete with trailing None values at the end." alt="" coords="5,109,225,137"/>
+<area shape="rect" id="node2" href="#neuraxle.data_container.DataContainer" target="_top" title="DataContainer class to store data inputs, expected outputs, and ids together." alt="" coords="46,57,185,85"/>
+<area shape="rect" id="node3" href="#neuraxle.data_container.ExpandedDataContainer" target="_top" title="Sub class of DataContainer to expand data container dimension." alt="" coords="273,5,484,33"/>
+<area shape="rect" id="node4" href="#neuraxle.data_container.ListDataContainer" target="_top" title="Sub class of DataContainer to perform list operations." alt="" coords="291,57,466,85"/>
+<area shape="rect" id="node5" href="#neuraxle.data_container.ZipDataContainer" target="_top" title="Sub class of DataContainer to zip two data sources together." alt="" coords="295,109,462,137"/>
+</map><div class="line-block">
+<div class="line"><br /></div>
+</div>
 <span class="target" id="module-neuraxle.data_container"></span><section id="neuraxle-s-datacontainer-classes">
 <h2>Neuraxle’s DataContainer classes<a class="headerlink" href="#neuraxle-s-datacontainer-classes" title="Permalink to this headline">¶</a></h2>
 <p>Classes for containing the data that flows throught the pipeline steps.</p>
@@ -682,7 +710,10 @@
 </tr>
 </tbody>
 </table>
-<span class="target" id="sphx-glr-backref-neuraxle-data-container-zipdatacontainer"><span id="sphx-glr-backref-neuraxle-data-container-listdatacontainer"></span><span id="sphx-glr-backref-neuraxle-data-container-expandeddatacontainer"></span><span id="sphx-glr-backref-neuraxle-data-container-datacontainer"></span><span id="sphx-glr-backref-neuraxle-data-container-absentvaluesnullobject"></span></span><dl class="class">
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="class">
 <dt id="neuraxle.data_container.AbsentValuesNullObject">
 <em class="property">class </em><code class="descclassname">neuraxle.data_container.</code><code class="descname">AbsentValuesNullObject</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/data_container.py#L37"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.data_container.AbsentValuesNullObject" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>

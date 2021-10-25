@@ -47,6 +47,7 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
@@ -221,6 +222,22 @@
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#training-your-pipeline">Training your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#serializing-your-pipeline">Serializing your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../classes_and_modules_overview.html">Class diagrams and inheritance charts of Neuraxle objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#the-mixin-design-pattern-in-machine-learning">The Mixin design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#steps-containing-other-steps-as-the-composite-design-pattern-in-machine-learning">Steps containing other steps as the composite design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#scikit-learn-s-pipeline-pipeline-class-and-how-to-shift-to-parallel-deep-learning">Scikit-learn’s pipeline.Pipeline class and how to shift to parallel deep learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-pipeline-pipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.Pipeline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-distributed-streaming-sequentialqueuedpipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.distributed.streaming.SequentialQueuedPipeline</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#featureunion-to-compute-steps-in-parallel-and-join-their-results">FeatureUnion to compute steps in parallel and join their results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#automl-module-to-automatically-tune-hyperparameters-of-your-pipelines">AutoML module to automatically tune hyperparameters of your pipelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-metaopt-auto-ml-automl">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.AutoML</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#all-the-base-classes-of-neuraxle-together">All the base classes of Neuraxle together</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html">Automatic Hyperparameter Tuning / AutoML</a><ul>
@@ -653,7 +670,21 @@
             
   <section id="neuraxle-rest-flask">
 <h1>neuraxle.rest.flask<a class="headerlink" href="#neuraxle-rest-flask" title="Permalink to this headline">¶</a></h1>
-<p>Module-level documentation.</p>
+<p>Module-level documentation for neuraxle.rest.flask. Here is an inheritance diagram,
+including dependencies to other base modules of Neuraxle:</p>
+<div class="graphviz"><img src="../../_images/inheritance-da07ea15f4e0deb0c7279ec6ea981323290d0f3e.png" alt="Inheritance diagram of neuraxle.rest.flask" usemap="#inheritance2a69344995" class="inheritance graphviz" /></div>
+<map id="inheritance2a69344995" name="inheritance2a69344995">
+<area shape="rect" id="node2" href="../neuraxle.pipeline.html#neuraxle.pipeline.BasePipeline" target="_top" title="BasePipeline" alt="" coords="751,10,881,38"/>
+<area shape="rect" id="node3" href="../neuraxle.base.html#neuraxle.base.TruncableSteps" target="_top" title="Step that contains multiple steps. :class:`Pipeline` inherits form this class." alt="" coords="514,35,662,63"/>
+<area shape="rect" id="node4" href="../neuraxle.base.html#neuraxle.base.BaseStep" target="_top" title="Base class for a transformer step that can also be fitted." alt="" coords="331,136,425,164"/>
+<area shape="rect" id="node5" href="../neuraxle.base.html#neuraxle.base.BaseTransformer" target="_top" title="Base class for a pipeline step that can only be transformed." alt="" coords="125,187,283,215"/>
+<area shape="rect" id="node8" href="#neuraxle.rest.flask.JSONDataBodyDecoder" target="_top" title="Class to be used within a FlaskRESTApiWrapper to convert input json to actual data (e.g.: arrays)" alt="" coords="491,111,685,139"/>
+<area shape="rect" id="node9" href="#neuraxle.rest.flask.JSONDataResponseEncoder" target="_top" title="Base class to be used within a FlaskRESTApiWrapper to convert prediction output to json response." alt="" coords="473,212,703,240"/>
+<area shape="rect" id="node7" href="../neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" target="_top" title="Fits and transform steps" alt="" coords="929,10,1024,38"/>
+<area shape="rect" id="node6" href="#neuraxle.rest.flask.FlaskRestApiWrapper" target="_top" title="Wrap a pipeline to easily deploy it to a REST API. Just provide a json encoder and a json decoder." alt="" coords="1072,10,1265,38"/>
+</map><div class="line-block">
+<div class="line"><br /></div>
+</div>
 <span class="target" id="module-neuraxle.rest.flask"></span><section id="neuraxle-s-flask-wrapper-classes">
 <h2>Neuraxle’s Flask Wrapper classes<a class="headerlink" href="#neuraxle-s-flask-wrapper-classes" title="Permalink to this headline">¶</a></h2>
 <p>The flask wrapper classes are used to easily serve pipeline predictions using a flask rest api.</p>
@@ -701,7 +732,10 @@
 <p><span class="caption-text"><a class="reference internal" href="../../examples/deployment/plot_easy_rest_api_serving.html#sphx-glr-examples-deployment-plot-easy-rest-api-serving-py"><span class="std std-ref">Easy REST API Model Serving with Neuraxle</span></a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
-</div><div class="sphx-glr-clear"></div><dl class="class">
+</div><div class="sphx-glr-clear"></div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="class">
 <dt id="neuraxle.rest.flask.JSONDataBodyDecoder">
 <em class="property">class </em><code class="descclassname">neuraxle.rest.flask.</code><code class="descname">JSONDataBodyDecoder</code><span class="sig-paren">(</span><em>hyperparams: neuraxle.hyperparams.space.HyperparameterSamples = None</em>, <em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace = None</em>, <em>name: str = None</em>, <em>savers: List[neuraxle.base.BaseSaver] = None</em>, <em>hashers: List[neuraxle.base.BaseHasher] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/rest/flask.py#L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.rest.flask.JSONDataBodyDecoder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.BaseStep</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>

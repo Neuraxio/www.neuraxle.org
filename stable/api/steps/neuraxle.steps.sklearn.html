@@ -47,6 +47,7 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
@@ -222,6 +223,22 @@
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#training-your-pipeline">Training your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#serializing-your-pipeline">Serializing your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../classes_and_modules_overview.html">Class diagrams and inheritance charts of Neuraxle objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#the-mixin-design-pattern-in-machine-learning">The Mixin design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#steps-containing-other-steps-as-the-composite-design-pattern-in-machine-learning">Steps containing other steps as the composite design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#scikit-learn-s-pipeline-pipeline-class-and-how-to-shift-to-parallel-deep-learning">Scikit-learn’s pipeline.Pipeline class and how to shift to parallel deep learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-pipeline-pipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.Pipeline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-distributed-streaming-sequentialqueuedpipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.distributed.streaming.SequentialQueuedPipeline</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#featureunion-to-compute-steps-in-parallel-and-join-their-results">FeatureUnion to compute steps in parallel and join their results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#automl-module-to-automatically-tune-hyperparameters-of-your-pipelines">AutoML module to automatically tune hyperparameters of your pipelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-metaopt-auto-ml-automl">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.AutoML</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#all-the-base-classes-of-neuraxle-together">All the base classes of Neuraxle together</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html">Automatic Hyperparameter Tuning / AutoML</a><ul>
@@ -654,7 +671,24 @@
             
   <section id="neuraxle-steps-sklearn">
 <h1>neuraxle.steps.sklearn<a class="headerlink" href="#neuraxle-steps-sklearn" title="Permalink to this headline">¶</a></h1>
-<p>Module-level documentation.</p>
+<p>Module-level documentation for neuraxle.steps.sklearn. Here is an inheritance diagram,
+including dependencies to other base modules of Neuraxle:</p>
+<div class="graphviz"><img src="../../_images/inheritance-1ef29de0c90e5a63f806804adb104052e120bd4a.png" alt="Inheritance diagram of neuraxle.steps.sklearn" usemap="#inheritanced52feca9e3" class="inheritance graphviz" /></div>
+<map id="inheritanced52feca9e3" name="inheritanced52feca9e3">
+<area shape="rect" id="node2" href="../neuraxle.base.html#neuraxle.base.BaseStep" target="_top" title="Base class for a transformer step that can also be fitted." alt="" coords="439,28,533,56"/>
+<area shape="rect" id="node3" href="../neuraxle.base.html#neuraxle.base.BaseTransformer" target="_top" title="Base class for a pipeline step that can only be transformed." alt="" coords="161,28,319,56"/>
+<area shape="rect" id="node6" href="../neuraxle.base.html#neuraxle.base.TruncableSteps" target="_top" title="Step that contains multiple steps. :class:`Pipeline` inherits form this class." alt="" coords="645,80,793,108"/>
+<area shape="rect" id="node12" href="#neuraxle.steps.sklearn.SKLearnWrapper" target="_top" title="SKLearnWrapper" alt="" coords="645,28,793,56"/>
+<area shape="rect" id="node4" href="../neuraxle.union.html#neuraxle.union.FeatureUnion" target="_top" title="Parallelize the union of many pipeline steps." alt="" coords="868,107,999,135"/>
+<area shape="rect" id="node10" href="../neuraxle.union.html#neuraxle.union.ModelStacking" target="_top" title="Performs a ``FeatureUnion`` of steps, and then send the joined result to the above judge step." alt="" coords="1047,107,1185,135"/>
+<area shape="rect" id="node5" href="../neuraxle.base.html#neuraxle.base.ForceHandleOnlyMixin" target="_top" title="A step that automatically calls handle methods in the transform, fit, and fit_transform methods." alt="" coords="617,132,820,160"/>
+<area shape="rect" id="node7" href="../neuraxle.base.html#neuraxle.base.ForceHandleMixin" target="_top" title="A step that automatically calls handle methods in the transform, fit, and fit_transform methods." alt="" coords="403,132,569,160"/>
+<area shape="rect" id="node8" href="../neuraxle.base.html#neuraxle.base.MixinForBaseTransformer" target="_top" title="Any steps/transformers within a pipeline that inherits of this class should implement BaseStep/BaseTransformer and initialize it before any mixin. This class checks that its the case at initialization." alt="" coords="125,157,355,185"/>
+<area shape="rect" id="node9" href="../neuraxle.base.html#neuraxle.base.HandleOnlyMixin" target="_top" title="A pipeline step that only requires the implementation of handler methods :" alt="" coords="407,184,565,212"/>
+<area shape="rect" id="node11" href="#neuraxle.steps.sklearn.RidgeModelStacking" target="_top" title="RidgeModelStacking" alt="" coords="1233,107,1417,135"/>
+</map><div class="line-block">
+<div class="line"><br /></div>
+</div>
 <span class="target" id="module-neuraxle.steps.sklearn"></span><section id="pipeline-steps-based-on-scikit-learn">
 <h2>Pipeline Steps Based on Scikit-Learn<a class="headerlink" href="#pipeline-steps-based-on-scikit-learn" title="Permalink to this headline">¶</a></h2>
 <p>Those steps works with scikit-learn (sklearn) transformers and estimators.</p>
@@ -702,7 +736,10 @@
 <p><span class="caption-text"><a class="reference internal" href="../../examples/sklearn/plot_boston_housing_meta_optimization.html#sphx-glr-examples-sklearn-plot-boston-housing-meta-optimization-py"><span class="std std-ref">Boston Housing Regression with Meta Optimization</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
-</div><div class="sphx-glr-clear"></div><dl class="class">
+</div><div class="sphx-glr-clear"></div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="class">
 <dt id="neuraxle.steps.sklearn.SKLearnWrapper">
 <em class="property">class </em><code class="descclassname">neuraxle.steps.sklearn.</code><code class="descname">SKLearnWrapper</code><span class="sig-paren">(</span><em>wrapped_sklearn_predictor</em>, <em>hyperparams_space: neuraxle.hyperparams.space.HyperparameterSpace = None</em>, <em>return_all_sklearn_default_params_on_get: bool = False</em>, <em>use_partial_fit: bool = False</em>, <em>use_predict_proba: bool = False</em>, <em>partial_fit_kwargs: dict = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/sklearn.py#L41"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.sklearn.SKLearnWrapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.BaseStep</span></code></a></p>

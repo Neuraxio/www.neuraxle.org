@@ -47,6 +47,7 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
@@ -222,6 +223,22 @@
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#training-your-pipeline">Training your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#serializing-your-pipeline">Serializing your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../classes_and_modules_overview.html">Class diagrams and inheritance charts of Neuraxle objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#the-mixin-design-pattern-in-machine-learning">The Mixin design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#steps-containing-other-steps-as-the-composite-design-pattern-in-machine-learning">Steps containing other steps as the composite design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#scikit-learn-s-pipeline-pipeline-class-and-how-to-shift-to-parallel-deep-learning">Scikit-learn’s pipeline.Pipeline class and how to shift to parallel deep learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-pipeline-pipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.Pipeline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-distributed-streaming-sequentialqueuedpipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.distributed.streaming.SequentialQueuedPipeline</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#featureunion-to-compute-steps-in-parallel-and-join-their-results">FeatureUnion to compute steps in parallel and join their results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#automl-module-to-automatically-tune-hyperparameters-of-your-pipelines">AutoML module to automatically tune hyperparameters of your pipelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-metaopt-auto-ml-automl">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.AutoML</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#all-the-base-classes-of-neuraxle-together">All the base classes of Neuraxle together</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html">Automatic Hyperparameter Tuning / AutoML</a><ul>
@@ -654,7 +671,15 @@
             
   <section id="neuraxle-metaopt-tpe">
 <h1>neuraxle.metaopt.tpe<a class="headerlink" href="#neuraxle-metaopt-tpe" title="Permalink to this headline">¶</a></h1>
-<p>Module-level documentation.</p>
+<p>Module-level documentation for neuraxle.metaopt.tpe. Here is an inheritance diagram,
+including dependencies to other base modules of Neuraxle:</p>
+<div class="graphviz"><img src="../../_images/inheritance-1849b5b51affa9d3bda0a65e36d2cfae873803be.png" alt="Inheritance diagram of neuraxle.metaopt.tpe" usemap="#inheritance83b28033dd" class="inheritance graphviz" /></div>
+<map id="inheritance83b28033dd" name="inheritance83b28033dd">
+<area shape="rect" id="node2" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.BaseHyperparameterSelectionStrategy" target="_top" title="BaseHyperparameterSelectionStrategy" alt="" coords="125,5,463,33"/>
+<area shape="rect" id="node3" href="#neuraxle.metaopt.tpe.TreeParzenEstimatorHyperparameterSelectionStrategy" target="_top" title="TreeParzenEstimatorHyperparameterSelectionStrategy" alt="" coords="511,5,983,33"/>
+</map><div class="line-block">
+<div class="line"><br /></div>
+</div>
 <span class="target" id="module-neuraxle.metaopt.tpe"></span><section id="tree-parzen-estimator">
 <h2>Tree parzen estimator<a class="headerlink" href="#tree-parzen-estimator" title="Permalink to this headline">¶</a></h2>
 <p>Code for tree parzen estimator auto ml.</p>
@@ -670,7 +695,10 @@
 </tr>
 </tbody>
 </table>
-<span class="target" id="sphx-glr-backref-neuraxle-metaopt-tpe-treeparzenestimatorhyperparameterselectionstrategy"></span><dl class="class">
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="class">
 <dt id="neuraxle.metaopt.tpe.TreeParzenEstimatorHyperparameterSelectionStrategy">
 <em class="property">class </em><code class="descclassname">neuraxle.metaopt.tpe.</code><code class="descname">TreeParzenEstimatorHyperparameterSelectionStrategy</code><span class="sig-paren">(</span><em>number_of_initial_random_step: int = 40</em>, <em>quantile_threshold: float = 0.3</em>, <em>number_good_trials_max_cap: int = 25</em>, <em>number_possible_hyperparams_candidates: int = 100</em>, <em>prior_weight: float = 0.0</em>, <em>use_linear_forgetting_weights: bool = False</em>, <em>number_recent_trial_at_full_weights: int = 25</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/tpe.py#L24"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.tpe.TreeParzenEstimatorHyperparameterSelectionStrategy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.BaseHyperparameterSelectionStrategy" title="neuraxle.metaopt.auto_ml.BaseHyperparameterSelectionStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.BaseHyperparameterSelectionStrategy</span></code></a></p>

@@ -47,6 +47,7 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
@@ -222,6 +223,22 @@
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#training-your-pipeline">Training your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#serializing-your-pipeline">Serializing your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../classes_and_modules_overview.html">Class diagrams and inheritance charts of Neuraxle objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#the-mixin-design-pattern-in-machine-learning">The Mixin design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#steps-containing-other-steps-as-the-composite-design-pattern-in-machine-learning">Steps containing other steps as the composite design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#scikit-learn-s-pipeline-pipeline-class-and-how-to-shift-to-parallel-deep-learning">Scikit-learn’s pipeline.Pipeline class and how to shift to parallel deep learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-pipeline-pipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.Pipeline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-distributed-streaming-sequentialqueuedpipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.distributed.streaming.SequentialQueuedPipeline</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#featureunion-to-compute-steps-in-parallel-and-join-their-results">FeatureUnion to compute steps in parallel and join their results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#automl-module-to-automatically-tune-hyperparameters-of-your-pipelines">AutoML module to automatically tune hyperparameters of your pipelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-metaopt-auto-ml-automl">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.AutoML</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#all-the-base-classes-of-neuraxle-together">All the base classes of Neuraxle together</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html">Automatic Hyperparameter Tuning / AutoML</a><ul>
@@ -654,7 +671,21 @@
             
   <section id="neuraxle-steps-caching">
 <h1>neuraxle.steps.caching<a class="headerlink" href="#neuraxle-steps-caching" title="Permalink to this headline">¶</a></h1>
-<p>Module-level documentation.</p>
+<p>Module-level documentation for neuraxle.steps.caching. Here is an inheritance diagram,
+including dependencies to other base modules of Neuraxle:</p>
+<div class="graphviz"><img src="../../_images/inheritance-e4eefc4b53bd3c845584754648fbcc8b154a844d.png" alt="Inheritance diagram of neuraxle.steps.caching" usemap="#inheritance7264df029e" class="inheritance graphviz" /></div>
+<map id="inheritance7264df029e" name="inheritance7264df029e">
+<area shape="rect" id="node2" href="../neuraxle.base.html#neuraxle.base.BaseStep" target="_top" title="Base class for a transformer step that can also be fitted." alt="" coords="353,25,447,53"/>
+<area shape="rect" id="node3" href="../neuraxle.base.html#neuraxle.base.BaseTransformer" target="_top" title="Base class for a pipeline step that can only be transformed." alt="" coords="125,25,283,53"/>
+<area shape="rect" id="node4" href="#neuraxle.steps.caching.BaseValueHasher" target="_top" title="BaseValueHasher" alt="" coords="125,77,283,105"/>
+<area shape="rect" id="node8" href="../neuraxle.base.html#neuraxle.base.MetaStep" target="_top" title="MetaStep" alt="" coords="517,77,612,105"/>
+<area shape="rect" id="node7" href="#neuraxle.steps.caching.Md5Hasher" target="_top" title="Md5Hasher" alt="" coords="349,77,451,105"/>
+<area shape="rect" id="node5" href="#neuraxle.steps.caching.JoblibValueCachingWrapper" target="_top" title="Value Caching Wrapper class that caches the wrapped step transformed data inputs using python ``joblib`` library." alt="" coords="901,77,1148,105"/>
+<area shape="rect" id="node6" href="#neuraxle.steps.caching.ValueCachingWrapper" target="_top" title="Value caching wrapper wraps a step to cache the values." alt="" coords="660,77,853,105"/>
+<area shape="rect" id="node9" href="../neuraxle.base.html#neuraxle.base.MetaStepMixin" target="_top" title="A class to represent a step that wraps another step. It can be used for many things." alt="" coords="331,129,469,157"/>
+</map><div class="line-block">
+<div class="line"><br /></div>
+</div>
 <span class="target" id="module-neuraxle.steps.caching"></span><section id="pipeline-steps-for-caching">
 <h2>Pipeline Steps For Caching<a class="headerlink" href="#pipeline-steps-for-caching" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Classes</p>
@@ -686,7 +717,10 @@
 <p><span class="caption-text"><a class="reference internal" href="../../examples/caching/plot_value_caching.html#sphx-glr-examples-caching-plot-value-caching-py"><span class="std std-ref">Usage of ValueCachingWrapper in Neuraxle.</span></a></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
-</div><div class="sphx-glr-clear"></div><span class="target" id="sphx-glr-backref-neuraxle-steps-caching-valuecachingwrapper"><span id="sphx-glr-backref-neuraxle-steps-caching-md5hasher"></span></span><dl class="class">
+</div><div class="sphx-glr-clear"></div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="class">
 <dt id="neuraxle.steps.caching.ValueCachingWrapper">
 <em class="property">class </em><code class="descclassname">neuraxle.steps.caching.</code><code class="descname">ValueCachingWrapper</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em>, <em>cache_folder: str = 'cache'</em>, <em>value_hasher: Optional[neuraxle.steps.caching.BaseValueHasher] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/caching.py#L38"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.caching.ValueCachingWrapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.MetaStep" title="neuraxle.base.MetaStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.MetaStep</span></code></a></p>

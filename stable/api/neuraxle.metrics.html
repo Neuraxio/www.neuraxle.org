@@ -47,6 +47,7 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../_static/sg_gallery.css" type="text/css" />
   <link rel="stylesheet" href="../_static/sg_gallery-binder.css" type="text/css" />
   <link rel="stylesheet" href="../_static/sg_gallery-dataframe.css" type="text/css" />
@@ -222,6 +223,22 @@
 <li class="toctree-l3"><a class="reference internal" href="../intro.html#training-your-pipeline">Training your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../intro.html#serializing-your-pipeline">Serializing your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../intro.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../classes_and_modules_overview.html">Class diagrams and inheritance charts of Neuraxle objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../classes_and_modules_overview.html#the-mixin-design-pattern-in-machine-learning">The Mixin design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../classes_and_modules_overview.html#steps-containing-other-steps-as-the-composite-design-pattern-in-machine-learning">Steps containing other steps as the composite design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../classes_and_modules_overview.html#scikit-learn-s-pipeline-pipeline-class-and-how-to-shift-to-parallel-deep-learning">Scikit-learn’s pipeline.Pipeline class and how to shift to parallel deep learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../classes_and_modules_overview.html#examples-using-neuraxle-pipeline-pipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.Pipeline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../classes_and_modules_overview.html#examples-using-neuraxle-distributed-streaming-sequentialqueuedpipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.distributed.streaming.SequentialQueuedPipeline</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../classes_and_modules_overview.html#featureunion-to-compute-steps-in-parallel-and-join-their-results">FeatureUnion to compute steps in parallel and join their results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../classes_and_modules_overview.html#automl-module-to-automatically-tune-hyperparameters-of-your-pipelines">AutoML module to automatically tune hyperparameters of your pipelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../classes_and_modules_overview.html#examples-using-neuraxle-metaopt-auto-ml-automl">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.AutoML</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../classes_and_modules_overview.html#all-the-base-classes-of-neuraxle-together">All the base classes of Neuraxle together</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../hyperparameter_tuning.html">Automatic Hyperparameter Tuning / AutoML</a><ul>
@@ -654,7 +671,18 @@
             
   <section id="neuraxle-metrics">
 <h1>neuraxle.metrics<a class="headerlink" href="#neuraxle-metrics" title="Permalink to this headline">¶</a></h1>
-<p>Module-level documentation.</p>
+<p>Module-level documentation for neuraxle.metrics. Here is an inheritance diagram,
+including dependencies to other base modules of Neuraxle:</p>
+<div class="graphviz"><img src="../_images/inheritance-bc9257f214de9beed4212e4cf9ff8eae1bf7cbf4.png" alt="Inheritance diagram of neuraxle.metrics" usemap="#inheritancee10a4a1947" class="inheritance graphviz" /></div>
+<map id="inheritancee10a4a1947" name="inheritancee10a4a1947">
+<area shape="rect" id="node2" href="neuraxle.base.html#neuraxle.base.BaseStep" target="_top" title="Base class for a transformer step that can also be fitted." alt="" coords="353,5,447,33"/>
+<area shape="rect" id="node3" href="neuraxle.base.html#neuraxle.base.BaseTransformer" target="_top" title="Base class for a pipeline step that can only be transformed." alt="" coords="125,32,283,60"/>
+<area shape="rect" id="node4" href="neuraxle.base.html#neuraxle.base.MetaStep" target="_top" title="MetaStep" alt="" coords="517,32,612,60"/>
+<area shape="rect" id="node6" href="#neuraxle.metrics.MetricsWrapper" target="_top" title="Add metrics calculation to a step. Calculates metrics after each fit, fit_transform, or even transform if there is an expected outputs." alt="" coords="660,32,808,60"/>
+<area shape="rect" id="node5" href="neuraxle.base.html#neuraxle.base.MetaStepMixin" target="_top" title="A class to represent a step that wraps another step. It can be used for many things." alt="" coords="331,57,469,85"/>
+</map><div class="line-block">
+<div class="line"><br /></div>
+</div>
 <span class="target" id="module-neuraxle.metrics"></span><section id="neuraxle-s-metrics-classes">
 <h2>Neuraxle’s metrics classes<a class="headerlink" href="#neuraxle-s-metrics-classes" title="Permalink to this headline">¶</a></h2>
 <p>The neuraxle classes to track metrics results.</p>
@@ -670,7 +698,10 @@
 </tr>
 </tbody>
 </table>
-<span class="target" id="sphx-glr-backref-neuraxle-metrics-metricswrapper"></span><dl class="class">
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="class">
 <dt id="neuraxle.metrics.MetricsWrapper">
 <em class="property">class </em><code class="descclassname">neuraxle.metrics.</code><code class="descname">MetricsWrapper</code><span class="sig-paren">(</span><em>wrapped: neuraxle.base.BaseStep</em>, <em>metrics: Dict</em>, <em>name: str = None</em>, <em>print_metrics=False</em>, <em>print_fun=&lt;built-in function print&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metrics.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metrics.MetricsWrapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.MetaStep" title="neuraxle.base.MetaStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.MetaStep</span></code></a></p>

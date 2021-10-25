@@ -9,7 +9,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>&lt;no title&gt; &mdash; Neuraxle 0.6.1 documentation</title>
+  <title>Class diagrams and inheritance charts of Neuraxle objects &mdash; Neuraxle 0.6.1 documentation</title>
   
 
   
@@ -47,6 +47,7 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="_static/sg_gallery.css" type="text/css" />
   <link rel="stylesheet" href="_static/sg_gallery-binder.css" type="text/css" />
   <link rel="stylesheet" href="_static/sg_gallery-dataframe.css" type="text/css" />
@@ -54,8 +55,8 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="&gt;&gt;&gt; Practical Examples" href="examples/index.html" />
-    <link rel="prev" title="REST API Serving" href="rest_api_serving.html" /> 
+    <link rel="next" title="Automatic Hyperparameter Tuning / AutoML" href="hyperparameter_tuning.html" />
+    <link rel="prev" title="Introduction" href="intro.html" /> 
 
   <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
   <style>
@@ -132,7 +133,7 @@
             
             
               <p><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="about.html">About Neuraxle</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Neuraxle/README.html">Neuraxle Pipelines</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Neuraxle/README.html#documentation">Documentation</a></li>
@@ -211,7 +212,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="walkthroughs.html">&gt;&gt;&gt; Hands-On Walkthroughs</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="walkthroughs.html">&gt;&gt;&gt; Hands-On Walkthroughs</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="intro.html#encapsulate-models-and-data-transformers">Encapsulate Models and Data Transformers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="intro.html#pipe-and-filter">Pipe and Filter</a></li>
@@ -222,6 +223,22 @@
 <li class="toctree-l3"><a class="reference internal" href="intro.html#training-your-pipeline">Training your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="intro.html#serializing-your-pipeline">Serializing your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="intro.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Class diagrams and inheritance charts of Neuraxle objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-mixin-design-pattern-in-machine-learning">The Mixin design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#steps-containing-other-steps-as-the-composite-design-pattern-in-machine-learning">Steps containing other steps as the composite design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scikit-learn-s-pipeline-pipeline-class-and-how-to-shift-to-parallel-deep-learning">Scikit-learn’s pipeline.Pipeline class and how to shift to parallel deep learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#examples-using-neuraxle-pipeline-pipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.Pipeline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples-using-neuraxle-distributed-streaming-sequentialqueuedpipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.distributed.streaming.SequentialQueuedPipeline</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#featureunion-to-compute-steps-in-parallel-and-join-their-results">FeatureUnion to compute steps in parallel and join their results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#automl-module-to-automatically-tune-hyperparameters-of-your-pipelines">AutoML module to automatically tune hyperparameters of your pipelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#examples-using-neuraxle-metaopt-auto-ml-automl">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.AutoML</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#all-the-base-classes-of-neuraxle-together">All the base classes of Neuraxle together</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="hyperparameter_tuning.html">Automatic Hyperparameter Tuning / AutoML</a><ul>
@@ -633,7 +650,7 @@
         
           <li><a href="walkthroughs.html">&gt;&gt;&gt; Hands-On Walkthroughs</a> &raquo;</li>
         
-      <li>&lt;no title&gt;</li>
+      <li>Class diagrams and inheritance charts of Neuraxle objects</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -652,7 +669,398 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <hr class="docutils" />
+  <section id="class-diagrams-and-inheritance-charts-of-neuraxle-objects">
+<h1>Class diagrams and inheritance charts of Neuraxle objects<a class="headerlink" href="#class-diagrams-and-inheritance-charts-of-neuraxle-objects" title="Permalink to this headline">¶</a></h1>
+<p>Here is a description of the most used classes in Neuraxle. Reading this page
+will help you understand more on how they relate to each other, as the
+inherited classes and they order, combined with mixins, is often important in Neuraxle.</p>
+<section id="the-mixin-design-pattern-in-machine-learning">
+<h2>The Mixin design pattern in machine learning<a class="headerlink" href="#the-mixin-design-pattern-in-machine-learning" title="Permalink to this headline">¶</a></h2>
+<p>Understanding the design pattern “Mixin” is important. For this, we will refer you to
+the wikipedia page on mixins, which is a good place to start. Mixins are a way to solve
+the <a class="reference external" href="https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem">Diamond Problem</a>
+that happen when two sub-sub-classes inherit multiple times from the base class. It is
+at this point that <a class="reference external" href="https://en.wikipedia.org/wiki/Mixin#In_Python">Mixins</a> are required.</p>
+<p>The Mixin design pattern, in Neuraxle, is an important one to respect the SOLID Principles
+as established by Robert C. Martin, the author of Clean Code. Especially, mixins help to
+respect the Interface Segregation Principle (ISP), that is the “I” in SOLID. You may
+enjoy reading Umaneo’s article on
+<a class="reference external" href="https://www.umaneo.com/post/the-solid-principles-applied-to-machine-learning">SOLID Machine Learning</a>
+which does a good job of covering the importance of the ISP principle, as well as the other principles,
+in ML projects.</p>
+<p>The BaseStep of Neuraxle is itself a composition of many mixins, passing via the
+BaseTransformer that doesn’t have fit methods.</p>
+<div class="graphviz"><img src="_images/inheritance-301aea0e0d1185b23f1fb48b692b70de1460209d.png" alt="Inheritance diagram of neuraxle.base.BaseStep" usemap="#inheritanced5e474cfb1" class="inheritance graphviz" /></div>
+<map id="inheritanced5e474cfb1" name="inheritanced5e474cfb1">
+<area shape="rect" id="node2" href="api/neuraxle.base.html#neuraxle.base.BaseStep" target="_top" title="Base class for a transformer step that can also be fitted." alt="" coords="581,207,676,235"/>
+<area shape="rect" id="node4" href="api/neuraxle.base.html#neuraxle.base.BaseTransformer" target="_top" title="Base class for a pipeline step that can only be transformed." alt="" coords="376,207,533,235"/>
+<area shape="rect" id="node6" href="api/neuraxle.base.html#neuraxle.base._HasMutations" target="_top" title="An internal class to represent a step that can be mutated." alt="" coords="157,77,296,105"/>
+<area shape="rect" id="node7" href="api/neuraxle.base.html#neuraxle.base._HasHyperparamsSpace" target="_top" title="An internal class to represent a step that has hyperparameter spaces of type :class:`~neuraxle.hyperparams.space.HyperparameterSpace`." alt="" coords="125,129,328,157"/>
+<area shape="rect" id="node8" href="api/neuraxle.base.html#neuraxle.base._HasHyperparams" target="_top" title="An internal class to represent a step that has hyperparameters of type :class:`~neuraxle.hyperparams.space.HyperparameterSamples`." alt="" coords="148,181,305,209"/>
+<area shape="rect" id="node9" href="api/neuraxle.base.html#neuraxle.base._HasHashers" target="_top" title="An internal class to represent a step that has hashers." alt="" coords="166,233,287,261"/>
+<area shape="rect" id="node10" href="api/neuraxle.base.html#neuraxle.base._HasSavers" target="_top" title="An internal class to represent a step that can be saved." alt="" coords="171,285,283,313"/>
+<area shape="rect" id="node12" href="api/neuraxle.base.html#neuraxle.base._TransformerStep" target="_top" title="An internal class to represent a step that can be transformed, or inverse transformed." alt="" coords="143,337,310,365"/>
+<area shape="rect" id="node3" href="api/neuraxle.base.html#neuraxle.base._FittableStep" target="_top" title="An internal class to represent a step that can be fitted." alt="" coords="385,259,524,287"/>
+<area shape="rect" id="node5" href="api/neuraxle.base.html#neuraxle.base._CouldHaveContext" target="_top" title="Step that can have a context." alt="" coords="139,389,314,417"/>
+<area shape="rect" id="node11" href="api/neuraxle.base.html#neuraxle.base._HasRecursiveMethods" target="_top" title="An internal class to represent a step that has recursive methods." alt="" coords="125,441,328,469"/>
+</map><div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="steps-containing-other-steps-as-the-composite-design-pattern-in-machine-learning">
+<h2>Steps containing other steps as the composite design pattern in machine learning<a class="headerlink" href="#steps-containing-other-steps-as-the-composite-design-pattern-in-machine-learning" title="Permalink to this headline">¶</a></h2>
+<p>Steps can contain other steps, in a nested fashion. They can be traversed like a tree
+using the <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base._HasChildrenMixin.apply" title="neuraxle.base._HasChildrenMixin.apply"><code class="xref py py-func docutils literal notranslate"><span class="pre">apply()</span></code></a> method when inheriting from the mixin
+<a class="reference internal" href="api/neuraxle.base.html#neuraxle.base._HasChildrenMixin" title="neuraxle.base._HasChildrenMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">_HasChildrenMixin</span></code></a>. To this effect, two class visible in the
+inheritance diagram below are <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.TruncableSteps" title="neuraxle.base.TruncableSteps"><code class="xref py py-class docutils literal notranslate"><span class="pre">TruncableSteps</span></code></a> and <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.MetaStep" title="neuraxle.base.MetaStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaStep</span></code></a>.
+This is in fact using the composite design pattern, that is the same way components
+are coded in other frameworks like react or vue.js. Here is how the TruncableSteps
+and MetaStep works - they also combine some Mixins, as they
+are a BaseStep themselves and compose other base steps as childrens:</p>
+<div class="graphviz"><img src="_images/inheritance-8e0e2e90fb35d9144bc834d0a1e1147ba7b8e15f.png" alt="Inheritance diagram of neuraxle.base.TruncableSteps, neuraxle.base.MetaStep, neuraxle.base._RecursiveArguments, neuraxle.hyperparams.space.HyperparameterSamples, neuraxle.hyperparams.space.HyperparameterSpace" usemap="#inheritance17a410cb26" class="inheritance graphviz" /></div>
+<map id="inheritance17a410cb26" name="inheritance17a410cb26">
+<area shape="rect" id="node11" href="api/neuraxle.base.html#neuraxle.base.TruncableSteps" target="_top" title="Step that contains multiple steps. :class:`Pipeline` inherits form this class." alt="" coords="537,187,685,215"/>
+<area shape="rect" id="node2" href="api/neuraxle.base.html#neuraxle.base.BaseStep" target="_top" title="Base class for a transformer step that can also be fitted." alt="" coords="323,135,417,163"/>
+<area shape="rect" id="node6" href="api/neuraxle.base.html#neuraxle.base.MetaStep" target="_top" title="MetaStep" alt="" coords="764,187,859,215"/>
+<area shape="rect" id="node3" href="api/hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" target="_top" title="Wraps an hyperparameter nested dict or flat dict, and offer a few more functions." alt="" coords="505,31,716,59"/>
+<area shape="rect" id="node4" href="api/hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.RecursiveDict" target="_top" title="A data structure that provides an interface to access nested dictionaries with &quot;flattened keys&quot;, and a few more functions." alt="" coords="301,57,439,85"/>
+<area shape="rect" id="node5" href="api/hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" target="_top" title="Wraps an hyperparameter nested dict or flat dict, and offer a few more functions to process" alt="" coords="514,83,707,111"/>
+<area shape="rect" id="node7" href="api/neuraxle.base.html#neuraxle.base.MetaStepMixin" target="_top" title="A class to represent a step that wraps another step. It can be used for many things." alt="" coords="541,239,680,267"/>
+<area shape="rect" id="node8" href="api/neuraxle.base.html#neuraxle.base._HasChildrenMixin" target="_top" title="Mixin to add behavior to the steps that have children (sub steps)." alt="" coords="283,239,457,267"/>
+<area shape="rect" id="node9" href="api/neuraxle.base.html#neuraxle.base.MixinForBaseTransformer" target="_top" title="Any steps/transformers within a pipeline that inherits of this class should implement BaseStep/BaseTransformer and initialize it before any mixin. This class checks that its the case at initialization." alt="" coords="5,239,235,267"/>
+<area shape="rect" id="node12" href="api/neuraxle.base.html#neuraxle.base._RecursiveArguments" target="_top" title="This class is used by :func:`~neuraxle.base.BaseStep.apply`, and :class:`_HasChildrenMixin` to pass the right arguments to steps with children." alt="" coords="23,5,217,33"/>
+</map><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>These steps, using the apply method, uses the <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base._RecursiveArguments" title="neuraxle.base._RecursiveArguments"><code class="xref py py-class docutils literal notranslate"><span class="pre">_RecursiveArguments</span></code></a>
+class for nested arguments, and combines recursively some <a class="reference internal" href="api/hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.RecursiveDict" title="neuraxle.hyperparams.space.RecursiveDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">RecursiveDict</span></code></a>
+as return values of the traversed machine learning pipeline’s tree.</p>
+<p>To summarize, a MetaStep is a step containing another one. We could say of a MetaStep that it is a decorator of another
+step, or a wrapper of another step to create the tree. The same goes with the TruncableSteps object. This one
+is a wrapper of multiple other objects. See it as a list that can be truncated.</p>
+</section>
+<section id="scikit-learn-s-pipeline-pipeline-class-and-how-to-shift-to-parallel-deep-learning">
+<h2>Scikit-learn’s pipeline.Pipeline class and how to shift to parallel deep learning<a class="headerlink" href="#scikit-learn-s-pipeline-pipeline-class-and-how-to-shift-to-parallel-deep-learning" title="Permalink to this headline">¶</a></h2>
+<p>The neuraxle <a class="reference internal" href="api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a> class is a wrapper of a list of steps, and it acts
+just like the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html">sklearn.pipeline.Pipeline</a> object,
+except that <a class="reference external" href="https://www.neuraxle.org/stable/scikit-learn_problems_solutions.html">scikit-learn pipelines have limitations, and we’ve found some solutions to that</a>.</p>
+<p>The result is that Neuraxle Pipelines can properly do Deep Learning whereasvscikit-learn Pipelines
+can only do Machine Learning and with less features. Neuraxle pipelines are compatible with
+scikit-learn pipelines, thus helps scikit-learn to evolve, reusing its proven power.</p>
+<p>It is a good example of how to build proper machine learning pipelines. However, in Neuraxle, we add more context to the pipeline,
+using a ExecutionContext <a class="reference internal" href="api/neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a> object.</p>
+<p>Together, the following inheritance diagram shows the inheritance of all Pipeline classes, inheriting from the TruncableSteps class.
+As you can see, we also have built-in parallelism and minibatching ready to use:</p>
+<div class="graphviz"><img src="_images/inheritance-86a5fcca601a633ae9189dba8e1cc93a54664f3b.png" alt="Inheritance diagram of neuraxle.pipeline.Pipeline, neuraxle.pipeline.MiniBatchSequentialPipeline, neuraxle.distributed.streaming.SequentialQueuedPipeline, neuraxle.base.ExecutionContext, neuraxle.base.ExecutionPhase, neuraxle.base.ExecutionMode" usemap="#inheritancebd725a185d" class="inheritance graphviz" /></div>
+<map id="inheritancebd725a185d" name="inheritancebd725a185d">
+<area shape="rect" id="node2" href="api/neuraxle.pipeline.html#neuraxle.pipeline.BasePipeline" target="_top" title="BasePipeline" alt="" coords="268,134,398,162"/>
+<area shape="rect" id="node13" href="api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" target="_top" title="Fits and transform steps" alt="" coords="552,134,646,162"/>
+<area shape="rect" id="node3" href="api/neuraxle.base.html#neuraxle.base.TruncableSteps" target="_top" title="Step that contains multiple steps. :class:`Pipeline` inherits form this class." alt="" coords="15,174,162,201"/>
+<area shape="rect" id="node4" href="api/distributed/neuraxle.distributed.streaming.html#neuraxle.distributed.streaming.BaseQueuedPipeline" target="_top" title="Sub class of :class:`Pipeline`." alt="" coords="1063,186,1246,213"/>
+<area shape="rect" id="node14" href="api/distributed/neuraxle.distributed.streaming.html#neuraxle.distributed.streaming.SequentialQueuedPipeline" target="_top" title="Using :class:`QueueWorker`, run all steps sequentially even if they are in separate processes or threads." alt="" coords="1293,186,1531,213"/>
+<area shape="rect" id="node5" href="api/neuraxle.pipeline.html#neuraxle.pipeline.MiniBatchSequentialPipeline" target="_top" title="Mini Batch Sequential Pipeline class to create a pipeline processing data inputs in batch." alt="" coords="751,186,1015,213"/>
+<area shape="rect" id="node8" href="api/neuraxle.base.html#neuraxle.base.ExecutionMode" target="_top" title="An enumeration." alt="" coords="264,30,402,58"/>
+<area shape="rect" id="node9" href="api/neuraxle.base.html#neuraxle.base.ExecutionPhase" target="_top" title="An enumeration." alt="" coords="259,82,406,110"/>
+<area shape="rect" id="node7" href="api/neuraxle.base.html#neuraxle.base.ExecutionContext" target="_top" title="Execution context object containing all of the pipeline hierarchy steps." alt="" coords="5,5,171,33"/>
+<area shape="rect" id="node10" href="api/neuraxle.base.html#neuraxle.base.ForceHandleMixin" target="_top" title="A step that automatically calls handle methods in the transform, fit, and fit_transform methods." alt="" coords="516,186,682,213"/>
+<area shape="rect" id="node11" href="api/neuraxle.base.html#neuraxle.base.MixinForBaseTransformer" target="_top" title="Any steps/transformers within a pipeline that inherits of this class should implement BaseStep/BaseTransformer and initialize it before any mixin. This class checks that its the case at initialization." alt="" coords="219,186,447,213"/>
+<area shape="rect" id="node12" href="api/neuraxle.base.html#neuraxle.base._CustomHandlerMethods" target="_top" title="A class to represent a step that needs to add special behavior on top of the normal handler methods." alt="" coords="494,237,704,265"/>
+</map><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>It seems like there are a lot of classes to the right, but this is only because the
+<a class="reference internal" href="api/distributed/neuraxle.distributed.streaming.html#neuraxle.distributed.streaming.SequentialQueuedPipeline" title="neuraxle.distributed.streaming.SequentialQueuedPipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">SequentialQueuedPipeline</span></code></a> that allows you
+to run a pipeline in a distributed environment has a lot under the hood for it to work.</p>
+<p>Here are some examples on how to use the Pipeline class of Neuraxle.
+This Pipeline <a class="reference internal" href="api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a> is the class that you will use the most often,
+even within parallelized pipelines. Some examples are using sklearn estimators in the Neuraxle pipelines:</p>
+<section id="examples-using-neuraxle-pipeline-pipeline">
+<h3>Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.Pipeline</span></code><a class="headerlink" href="#examples-using-neuraxle-pipeline-pipeline" title="Permalink to this headline">¶</a></h3>
+<div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how you can build an AutoML loop that finds the best possible sklearn classif..."><figure class="align-center" id="id1">
+<img alt="Usage of AutoML loop, and hyperparams with sklearn models." src="_images/sphx_glr_plot_automl_loop_clean_kata_thumb.png" />
+<figcaption>
+<p><span class="caption-text"><a class="reference internal" href="examples/auto_ml/plot_automl_loop_clean_kata.html#sphx-glr-examples-auto-ml-plot-automl-loop-clean-kata-py"><span class="std std-ref">Usage of AutoML loop, and hyperparams with sklearn models.</span></a></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how you can use value caching in a Neuraxle pipeline."><figure class="align-center" id="id2">
+<img alt="Usage of ValueCachingWrapper in Neuraxle." src="_images/sphx_glr_plot_value_caching_thumb.png" />
+<figcaption>
+<p><span class="caption-text"><a class="reference internal" href="examples/caching/plot_value_caching.html#sphx-glr-examples-caching-plot-value-caching-py"><span class="std std-ref">Usage of ValueCachingWrapper in Neuraxle.</span></a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how you can use checkpoints in a pipeline to save computing time when doing a..."><figure class="align-center" id="id3">
+<img alt="Usage of Checkpoints in Automatic Machine Learning (AutoML)" src="_images/sphx_glr_plot_auto_ml_checkpoint_thumb.png" />
+<figcaption>
+<p><span class="caption-text"><a class="reference internal" href="examples/caching/plot_auto_ml_checkpoint.html#sphx-glr-examples-caching-plot-auto-ml-checkpoint-py"><span class="std std-ref">Usage of Checkpoints in Automatic Machine Learning (AutoML)</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This demonstrates an easy way to deploy your Neuraxle model or pipeline to a REST API."><figure class="align-center" id="id4">
+<img alt="Easy REST API Model Serving with Neuraxle" src="_images/sphx_glr_plot_easy_rest_api_serving_thumb.png" />
+<figcaption>
+<p><span class="caption-text"><a class="reference internal" href="examples/deployment/plot_easy_rest_api_serving.html#sphx-glr-examples-deployment-plot-easy-rest-api-serving-py"><span class="std std-ref">Easy REST API Model Serving with Neuraxle</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how to make a prediction, and then to undo the prediction to get back the ori..."><figure class="align-center" id="id5">
+<img alt="Inverse Transforms in Neuraxle: How to Reverse a Prediction" src="_images/sphx_glr_plot_inverse_transform_thumb.png" />
+<figcaption>
+<p><span class="caption-text"><a class="reference internal" href="examples/getting_started/plot_inverse_transform.html#sphx-glr-examples-getting-started-plot-inverse-transform-py"><span class="std std-ref">Inverse Transforms in Neuraxle: How to Reverse a Prediction</span></a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</div><div class="sphx-glr-thumbcontainer" tooltip="You can create pipelines within pipelines using the composition design pattern."><figure class="align-center" id="id6">
+<img alt="Create Nested Pipelines in Neuraxle" src="_images/sphx_glr_plot_nested_pipelines_thumb.png" />
+<figcaption>
+<p><span class="caption-text"><a class="reference internal" href="examples/getting_started/plot_nested_pipelines.html#sphx-glr-examples-getting-started-plot-nested-pipelines-py"><span class="std std-ref">Create Nested Pipelines in Neuraxle</span></a></span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</div><div class="sphx-glr-thumbcontainer" tooltip="If a pipeline step doesn&#x27;t need to be fitted and only transforms data (e.g.: taking the logarit..."><figure class="align-center" id="id7">
+<img alt="Create Pipeline Steps in Neuraxle that doesn't fit or transform" src="_images/sphx_glr_plot_non_fittable_mixin_thumb.png" />
+<figcaption>
+<p><span class="caption-text"><a class="reference internal" href="examples/getting_started/plot_non_fittable_mixin.html#sphx-glr-examples-getting-started-plot-non-fittable-mixin-py"><span class="std std-ref">Create Pipeline Steps in Neuraxle that doesn’t fit or transform</span></a></span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how to manipulate hyperparameters and hyperparameter spaces."><figure class="align-center" id="id8">
+<img alt="Manipulate Hyperparameter Spaces for Hyperparameter Tuning" src="_images/sphx_glr_plot_hyperparams_thumb.png" />
+<figcaption>
+<p><span class="caption-text"><a class="reference internal" href="examples/hyperparams/plot_hyperparams.html#sphx-glr-examples-hyperparams-plot-hyperparams-py"><span class="std std-ref">Manipulate Hyperparameter Spaces for Hyperparameter Tuning</span></a></span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how to stream data in parallel in a Neuraxle pipeline. The pipeline steps&#x27; pa..."><figure class="align-center" id="id9">
+<img alt="Parallel processing in Neuraxle" src="_images/sphx_glr_plot_streaming_pipeline_thumb.png" />
+<figcaption>
+<p><span class="caption-text"><a class="reference internal" href="examples/parallel/plot_streaming_pipeline.html#sphx-glr-examples-parallel-plot-streaming-pipeline-py"><span class="std std-ref">Parallel processing in Neuraxle</span></a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example solves a regression problem using a pipeline with the following steps:"><figure class="align-center" id="id10">
+<img alt="Boston Housing Regression" src="_images/sphx_glr_plot_boston_housing_regression_with_model_stacking_thumb.png" />
+<figcaption>
+<p><span class="caption-text"><a class="reference internal" href="examples/sklearn/plot_boston_housing_regression_with_model_stacking.html#sphx-glr-examples-sklearn-plot-boston-housing-regression-with-model-stacking-py"><span class="std std-ref">Boston Housing Regression</span></a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This is an automatic machine learning example. It is more sophisticated than the other simple r..."><figure class="align-center" id="id11">
+<img alt="Boston Housing Regression with Meta Optimization" src="_images/sphx_glr_plot_boston_housing_meta_optimization_thumb.png" />
+<figcaption>
+<p><span class="caption-text"><a class="reference internal" href="examples/sklearn/plot_boston_housing_meta_optimization.html#sphx-glr-examples-sklearn-plot-boston-housing-meta-optimization-py"><span class="std std-ref">Boston Housing Regression with Meta Optimization</span></a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</div><div class="sphx-glr-clear"></div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="examples-using-neuraxle-distributed-streaming-sequentialqueuedpipeline">
+<h3>Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.distributed.streaming.SequentialQueuedPipeline</span></code><a class="headerlink" href="#examples-using-neuraxle-distributed-streaming-sequentialqueuedpipeline" title="Permalink to this headline">¶</a></h3>
+<div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how to stream data in parallel in a Neuraxle pipeline. The pipeline steps&#x27; pa..."><figure class="align-center" id="id12">
+<img alt="Parallel processing in Neuraxle" src="_images/sphx_glr_plot_streaming_pipeline_thumb.png" />
+<figcaption>
+<p><span class="caption-text"><a class="reference internal" href="examples/parallel/plot_streaming_pipeline.html#sphx-glr-examples-parallel-plot-streaming-pipeline-py"><span class="std std-ref">Parallel processing in Neuraxle</span></a></span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</div><div class="sphx-glr-clear"></div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+<section id="featureunion-to-compute-steps-in-parallel-and-join-their-results">
+<h2>FeatureUnion to compute steps in parallel and join their results<a class="headerlink" href="#featureunion-to-compute-steps-in-parallel-and-join-their-results" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="api/neuraxle.union.html#neuraxle.union.FeatureUnion" title="neuraxle.union.FeatureUnion"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureUnion</span></code></a> class and its parallel counterpart
+<a class="reference internal" href="api/distributed/neuraxle.distributed.streaming.html#neuraxle.distributed.streaming.ParallelQueuedFeatureUnion" title="neuraxle.distributed.streaming.ParallelQueuedFeatureUnion"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParallelQueuedFeatureUnion</span></code></a>
+both use joiners to join the results of the steps, such as the
+<a class="reference internal" href="api/steps/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures" title="neuraxle.steps.numpy.NumpyConcatenateInnerFeatures"><code class="xref py py-class docutils literal notranslate"><span class="pre">NumpyConcatenateInnerFeatures</span></code></a> class to concatenate
+the results of the steps on the innermost dimension, that is often the features dimension.</p>
+<p>See the inheritance diagram below to understand the inheritance of the FeatureUnion class,
+its parallel counterpart and the parallel joiner:</p>
+<div class="graphviz"><img src="_images/inheritance-8d06276374fcc51d9ebcc8e7c5f151e596450539.png" alt="Inheritance diagram of neuraxle.union.FeatureUnion, neuraxle.distributed.streaming.ParallelQueuedFeatureUnion, neuraxle.steps.numpy.NumpyConcatenateInnerFeatures" usemap="#inheritance04fd610fb2" class="inheritance graphviz" /></div>
+<map id="inheritance04fd610fb2" name="inheritance04fd610fb2">
+<area shape="rect" id="node2" href="api/neuraxle.pipeline.html#neuraxle.pipeline.BasePipeline" target="_top" title="BasePipeline" alt="" coords="234,159,357,185"/>
+<area shape="rect" id="node6" href="api/neuraxle.base.html#neuraxle.base.BaseTransformer" target="_top" title="Base class for a pipeline step that can only be transformed." alt="" coords="473,402,620,428"/>
+<area shape="rect" id="node8" href="api/neuraxle.base.html#neuraxle.base._HasMutations" target="_top" title="An internal class to represent a step that can be mutated." alt="" coords="231,305,360,331"/>
+<area shape="rect" id="node9" href="api/neuraxle.base.html#neuraxle.base._HasHyperparamsSpace" target="_top" title="An internal class to represent a step that has hyperparameter spaces of type :class:`~neuraxle.hyperparams.space.HyperparameterSpace`." alt="" coords="201,353,390,380"/>
+<area shape="rect" id="node10" href="api/neuraxle.base.html#neuraxle.base._HasHyperparams" target="_top" title="An internal class to represent a step that has hyperparameters of type :class:`~neuraxle.hyperparams.space.HyperparameterSamples`." alt="" coords="222,451,369,477"/>
+<area shape="rect" id="node11" href="api/neuraxle.base.html#neuraxle.base._HasHashers" target="_top" title="An internal class to represent a step that has hashers." alt="" coords="239,499,352,526"/>
+<area shape="rect" id="node12" href="api/neuraxle.base.html#neuraxle.base._HasSavers" target="_top" title="An internal class to represent a step that can be saved." alt="" coords="243,548,348,574"/>
+<area shape="rect" id="node14" href="api/neuraxle.base.html#neuraxle.base._TransformerStep" target="_top" title="An internal class to represent a step that can be transformed, or inverse transformed." alt="" coords="218,597,373,623"/>
+<area shape="rect" id="node21" href="api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" target="_top" title="Fits and transform steps" alt="" coords="502,184,590,210"/>
+<area shape="rect" id="node3" href="api/neuraxle.base.html#neuraxle.base.TruncableSteps" target="_top" title="Step that contains multiple steps. :class:`Pipeline` inherits form this class." alt="" coords="5,87,143,113"/>
+<area shape="rect" id="node15" href="api/neuraxle.union.html#neuraxle.union.FeatureUnion" target="_top" title="Parallelize the union of many pipeline steps." alt="" coords="1054,14,1176,41"/>
+<area shape="rect" id="node4" href="api/distributed/neuraxle.distributed.streaming.html#neuraxle.distributed.streaming.BaseQueuedPipeline" target="_top" title="Sub class of :class:`Pipeline`." alt="" coords="1029,135,1201,161"/>
+<area shape="rect" id="node24" href="api/distributed/neuraxle.distributed.streaming.html#neuraxle.distributed.streaming.ParallelQueuedFeatureUnion" target="_top" title="Using :class:`QueueWorker`, run all steps in parallel using QueueWorkers." alt="" coords="1292,135,1531,161"/>
+<area shape="rect" id="node5" href="api/neuraxle.pipeline.html#neuraxle.pipeline.MiniBatchSequentialPipeline" target="_top" title="Mini Batch Sequential Pipeline class to create a pipeline processing data inputs in batch." alt="" coords="689,135,938,161"/>
+<area shape="rect" id="node23" href="api/steps/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyConcatenateOnAxis" target="_top" title="Numpy concetenation step where the concatenation is performed along the specified custom axis." alt="" coords="711,402,916,428"/>
+<area shape="rect" id="node7" href="api/neuraxle.base.html#neuraxle.base._CouldHaveContext" target="_top" title="Step that can have a context." alt="" coords="214,402,377,428"/>
+<area shape="rect" id="node13" href="api/neuraxle.base.html#neuraxle.base._HasRecursiveMethods" target="_top" title="An internal class to represent a step that has recursive methods." alt="" coords="201,256,390,282"/>
+<area shape="rect" id="node16" href="api/neuraxle.base.html#neuraxle.base.ForceHandleOnlyMixin" target="_top" title="A step that automatically calls handle methods in the transform, fit, and fit_transform methods." alt="" coords="719,38,908,64"/>
+<area shape="rect" id="node17" href="api/neuraxle.base.html#neuraxle.base.ForceHandleMixin" target="_top" title="A step that automatically calls handle methods in the transform, fit, and fit_transform methods." alt="" coords="468,87,624,113"/>
+<area shape="rect" id="node18" href="api/neuraxle.base.html#neuraxle.base.MixinForBaseTransformer" target="_top" title="Any steps/transformers within a pipeline that inherits of this class should implement BaseStep/BaseTransformer and initialize it before any mixin. This class checks that its the case at initialization." alt="" coords="188,62,403,88"/>
+<area shape="rect" id="node19" href="api/neuraxle.base.html#neuraxle.base.HandleOnlyMixin" target="_top" title="A pipeline step that only requires the implementation of handler methods :" alt="" coords="473,38,620,64"/>
+<area shape="rect" id="node20" href="api/neuraxle.base.html#neuraxle.base._CustomHandlerMethods" target="_top" title="A class to represent a step that needs to add special behavior on top of the normal handler methods." alt="" coords="448,135,645,161"/>
+<area shape="rect" id="node22" href="api/steps/neuraxle.steps.numpy.html#neuraxle.steps.numpy.NumpyConcatenateInnerFeatures" target="_top" title="Numpy concatenation step where the concatenation is performed along `axis=&#45;1`." alt="" coords="982,402,1247,428"/>
+</map><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Here are some practical examples on how to use the FeatureUnion class of Neuraxle:</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The <a class="reference internal" href="api/neuraxle.union.html#neuraxle.union.FeatureUnion" title="neuraxle.union.FeatureUnion"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureUnion</span></code></a> we have here looks much like the one in sklearn,
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.FeatureUnion.html">sklearn.pipeline.FeatureUnion</a>,
+but it is a class of Neuraxle. It is a wrapper of a list of steps, and it acts
+with all the benefits that Neuraxle Pipelines have, such as parallelism, minibatching,
+distributed execution, savers, built-in hyperparameter tuning, and neat hyperparameter spaces.</p>
+</section>
+<section id="automl-module-to-automatically-tune-hyperparameters-of-your-pipelines">
+<h2>AutoML module to automatically tune hyperparameters of your pipelines<a class="headerlink" href="#automl-module-to-automatically-tune-hyperparameters-of-your-pipelines" title="Permalink to this headline">¶</a></h2>
+<p>You machine learning pipelines may contain various data preprocessing steps
+and models, as well as model selection steps. In order to automatically tune
+the hyperparameters, you can use the <a class="reference internal" href="api/metaopt/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML" title="neuraxle.metaopt.auto_ml.AutoML"><code class="xref py py-class docutils literal notranslate"><span class="pre">AutoML</span></code></a>
+class.</p>
+<div class="graphviz"><img src="_images/inheritance-8c4134cc94900dd8d21e0409e91db37f45c12f83.png" alt="Inheritance diagram of neuraxle.metaopt.auto_ml" usemap="#inheritanced679390240" class="inheritance graphviz" /></div>
+<map id="inheritanced679390240" name="inheritanced679390240">
+<area shape="rect" id="node6" href="api/metaopt/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.BaseHyperparameterSelectionStrategy" target="_top" title="BaseHyperparameterSelectionStrategy" alt="" coords="283,239,620,267"/>
+<area shape="rect" id="node7" href="api/metaopt/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.BaseValidationSplitter" target="_top" title="BaseValidationSplitter" alt="" coords="341,291,561,319"/>
+<area shape="rect" id="node10" href="api/metaopt/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.HyperparamsRepository" target="_top" title="Hyperparams repository that saves hyperparams, and scores for every AutoML trial." alt="" coords="346,343,557,371"/>
+<area shape="rect" id="node2" href="api/metaopt/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML" target="_top" title="A step to execute any Automatic Machine Learning Algorithms." alt="" coords="835,135,911,163"/>
+<area shape="rect" id="node3" href="api/neuraxle.base.html#neuraxle.base.ForceHandleMixin" target="_top" title="A step that automatically calls handle methods in the transform, fit, and fit_transform methods." alt="" coords="368,109,535,137"/>
+<area shape="rect" id="node4" href="api/neuraxle.base.html#neuraxle.base.BaseStep" target="_top" title="Base class for a transformer step that can also be fitted." alt="" coords="404,161,499,189"/>
+<area shape="rect" id="node5" href="api/metaopt/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoMLContainer" target="_top" title="Data object for auto ml." alt="" coords="41,57,199,85"/>
+<area shape="rect" id="node13" href="api/metaopt/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.RandomSearchHyperparameterSelectionStrategy" target="_top" title="AutoML Hyperparameter Optimizer that randomly samples the space of random variables." alt="" coords="668,187,1077,215"/>
+<area shape="rect" id="node12" href="api/metaopt/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.KFoldCrossValidationSplitter" target="_top" title="Create a function that splits data with K&#45;Fold Cross&#45;Validation resampling." alt="" coords="735,239,1010,267"/>
+<area shape="rect" id="node15" href="api/metaopt/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.ValidationSplitter" target="_top" title="Create a function that splits data into a training, and a validation set." alt="" coords="781,291,965,319"/>
+<area shape="rect" id="node8" href="api/neuraxle.base.html#neuraxle.base.MixinForBaseTransformer" target="_top" title="Any steps/transformers within a pipeline that inherits of this class should implement BaseStep/BaseTransformer and initialize it before any mixin. This class checks that its the case at initialization." alt="" coords="5,109,235,137"/>
+<area shape="rect" id="node9" href="api/metaopt/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.HyperparamsJSONRepository" target="_top" title="Hyperparams repository that saves json files for every AutoML trial." alt="" coords="749,343,996,371"/>
+<area shape="rect" id="node11" href="api/metaopt/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.InMemoryHyperparamsRepository" target="_top" title="In memory hyperparams repository that can print information about trials." alt="" coords="731,395,1014,423"/>
+<area shape="rect" id="node14" href="api/metaopt/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.Trainer" target="_top" title="Example usage :" alt="" coords="77,5,163,33"/>
+</map><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Here are some practical examples on how to use the AutoML class of Neuraxle:</p>
+<section id="examples-using-neuraxle-metaopt-auto-ml-automl">
+<h3>Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.AutoML</span></code><a class="headerlink" href="#examples-using-neuraxle-metaopt-auto-ml-automl" title="Permalink to this headline">¶</a></h3>
+<div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how you can build an AutoML loop that finds the best possible sklearn classif..."><figure class="align-center" id="id13">
+<img alt="Usage of AutoML loop, and hyperparams with sklearn models." src="_images/sphx_glr_plot_automl_loop_clean_kata_thumb.png" />
+<figcaption>
+<p><span class="caption-text"><a class="reference internal" href="examples/auto_ml/plot_automl_loop_clean_kata.html#sphx-glr-examples-auto-ml-plot-automl-loop-clean-kata-py"><span class="std std-ref">Usage of AutoML loop, and hyperparams with sklearn models.</span></a></span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how you can use checkpoints in a pipeline to save computing time when doing a..."><figure class="align-center" id="id14">
+<img alt="Usage of Checkpoints in Automatic Machine Learning (AutoML)" src="_images/sphx_glr_plot_auto_ml_checkpoint_thumb.png" />
+<figcaption>
+<p><span class="caption-text"><a class="reference internal" href="examples/caching/plot_auto_ml_checkpoint.html#sphx-glr-examples-caching-plot-auto-ml-checkpoint-py"><span class="std std-ref">Usage of Checkpoints in Automatic Machine Learning (AutoML)</span></a></span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This is an automatic machine learning example. It is more sophisticated than the other simple r..."><figure class="align-center" id="id15">
+<img alt="Boston Housing Regression with Meta Optimization" src="_images/sphx_glr_plot_boston_housing_meta_optimization_thumb.png" />
+<figcaption>
+<p><span class="caption-text"><a class="reference internal" href="examples/sklearn/plot_boston_housing_meta_optimization.html#sphx-glr-examples-sklearn-plot-boston-housing-meta-optimization-py"><span class="std std-ref">Boston Housing Regression with Meta Optimization</span></a></span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</div><div class="sphx-glr-clear"></div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>You may also find interesting a whole lot of other modules, such as the flow module,
+in which lots of control-flow wrappers are defined. Those steps can often make
+conditional decisions on how your data will traverse the pipeline:</p>
+<div class="graphviz"><img src="_images/inheritance-10b81608ea5c0c61bfb37ad0f87cf45a6e6b21a0.png" alt="Inheritance diagram of neuraxle.steps.flow" usemap="#inheritance0192eece9c" class="inheritance graphviz" /></div>
+<map id="inheritance0192eece9c" name="inheritance0192eece9c">
+<area shape="rect" id="node3" href="api/neuraxle.base.html#neuraxle.base.BaseTransformer" target="_top" title="Base class for a pipeline step that can only be transformed." alt="" coords="373,189,504,212"/>
+<area shape="rect" id="node5" href="api/neuraxle.base.html#neuraxle.base._HasMutations" target="_top" title="An internal class to represent a step that can be mutated." alt="" coords="142,221,258,244"/>
+<area shape="rect" id="node6" href="api/neuraxle.base.html#neuraxle.base._HasHyperparamsSpace" target="_top" title="An internal class to represent a step that has hyperparameter spaces of type :class:`~neuraxle.hyperparams.space.HyperparameterSpace`." alt="" coords="116,264,284,288"/>
+<area shape="rect" id="node7" href="api/neuraxle.base.html#neuraxle.base._HasHyperparams" target="_top" title="An internal class to represent a step that has hyperparameters of type :class:`~neuraxle.hyperparams.space.HyperparameterSamples`." alt="" coords="134,308,265,331"/>
+<area shape="rect" id="node8" href="api/neuraxle.base.html#neuraxle.base._HasHashers" target="_top" title="An internal class to represent a step that has hashers." alt="" coords="149,48,250,71"/>
+<area shape="rect" id="node9" href="api/neuraxle.base.html#neuraxle.base._HasSavers" target="_top" title="An internal class to represent a step that can be saved." alt="" coords="153,91,247,114"/>
+<area shape="rect" id="node11" href="api/neuraxle.base.html#neuraxle.base._TransformerStep" target="_top" title="An internal class to represent a step that can be transformed, or inverse transformed." alt="" coords="130,134,269,158"/>
+<area shape="rect" id="node19" href="api/neuraxle.base.html#neuraxle.base.TruncableSteps" target="_top" title="Step that contains multiple steps. :class:`Pipeline` inherits form this class." alt="" coords="630,503,753,526"/>
+<area shape="rect" id="node2" href="api/neuraxle.base.html#neuraxle.base.BaseStep" target="_top" title="Base class for a transformer step that can also be fitted." alt="" coords="399,481,478,504"/>
+<area shape="rect" id="node17" href="api/neuraxle.base.html#neuraxle.base.MetaStep" target="_top" title="MetaStep" alt="" coords="924,330,1003,353"/>
+<area shape="rect" id="node30" href="api/steps/neuraxle.steps.flow.html#neuraxle.steps.flow.SelectNonEmptyDataContainer" target="_top" title="A step that selects non empty data containers." alt="" coords="581,189,802,212"/>
+<area shape="rect" id="node32" href="api/steps/neuraxle.steps.flow.html#neuraxle.steps.flow.SelectNonEmptyDataInputs" target="_top" title="A step that selects non empty data inputs." alt="" coords="592,232,791,255"/>
+<area shape="rect" id="node4" href="api/neuraxle.base.html#neuraxle.base._CouldHaveContext" target="_top" title="Step that can have a context." alt="" coords="127,351,273,374"/>
+<area shape="rect" id="node10" href="api/neuraxle.base.html#neuraxle.base._HasRecursiveMethods" target="_top" title="An internal class to represent a step that has recursive methods." alt="" coords="116,4,284,28"/>
+<area shape="rect" id="node12" href="api/steps/neuraxle.steps.flow.html#neuraxle.steps.flow.ChooseOneOrManyStepsOf" target="_top" title="A pipeline to allow choosing many steps using an hyperparameter." alt="" coords="1348,535,1532,559"/>
+<area shape="rect" id="node13" href="api/neuraxle.union.html#neuraxle.union.FeatureUnion" target="_top" title="Parallelize the union of many pipeline steps." alt="" coords="1162,514,1271,538"/>
+<area shape="rect" id="node14" href="api/steps/neuraxle.steps.flow.html#neuraxle.steps.flow.ChooseOneStepOf" target="_top" title="ChooseOneStepOf" alt="" coords="1374,492,1505,515"/>
+<area shape="rect" id="node15" href="api/steps/neuraxle.steps.flow.html#neuraxle.steps.flow.ExecuteIf" target="_top" title="ExecuteIf" alt="" coords="1174,416,1259,440"/>
+<area shape="rect" id="node25" href="api/steps/neuraxle.steps.flow.html#neuraxle.steps.flow.IfExecutionPhaseIsThen" target="_top" title="If, at runtime, the execution phase is the same as the one given to the constructor, then execute wrapped step." alt="" coords="1348,416,1532,440"/>
+<area shape="rect" id="node16" href="api/neuraxle.base.html#neuraxle.base.HandleOnlyMixin" target="_top" title="A pipeline step that only requires the implementation of handler methods :" alt="" coords="626,459,757,482"/>
+<area shape="rect" id="node18" href="api/steps/neuraxle.steps.flow.html#neuraxle.steps.flow.ExecutionPhaseSwitch" target="_top" title="ExecutionPhaseSwitch" alt="" coords="879,503,1048,526"/>
+<area shape="rect" id="node22" href="api/neuraxle.base.html#neuraxle.base.ForceHandleOnlyMixin" target="_top" title="A step that automatically calls handle methods in the transform, fit, and fit_transform methods." alt="" coords="879,373,1048,396"/>
+<area shape="rect" id="node29" href="api/steps/neuraxle.steps.flow.html#neuraxle.steps.flow.ReversiblePreprocessingWrapper" target="_top" title="TruncableSteps with a preprocessing step(1), and a postprocessing step(2)" alt="" coords="842,460,1085,483"/>
+<area shape="rect" id="node20" href="api/steps/neuraxle.steps.flow.html#neuraxle.steps.flow.ExpandDim" target="_top" title="Similar to numpys expand_dim function, ExpandDim step expands the dimension of all the data inside the data container." alt="" coords="1174,287,1259,310"/>
+<area shape="rect" id="node28" href="api/steps/neuraxle.steps.flow.html#neuraxle.steps.flow.Optional" target="_top" title="A wrapper to nullify a step : nullify its hyperparams, and also nullify all of his behavior." alt="" coords="1177,373,1256,396"/>
+<area shape="rect" id="node34" href="api/steps/neuraxle.steps.flow.html#neuraxle.steps.flow.TrainOrTestOnlyWrapper" target="_top" title="A wrapper to run wrapped step only in test mode, or only in train mode." alt="" coords="1125,330,1308,353"/>
+<area shape="rect" id="node21" href="api/neuraxle.base.html#neuraxle.base.ResumableStepMixin" target="_top" title="Mixin to add resumable function to a step, or a class that can be resumed, for example a checkpoint on disk." alt="" coords="887,287,1040,310"/>
+<area shape="rect" id="node23" href="api/neuraxle.base.html#neuraxle.base.ForceHandleMixin" target="_top" title="A step that automatically calls handle methods in the transform, fit, and fit_transform methods." alt="" coords="369,351,508,374"/>
+<area shape="rect" id="node24" href="api/neuraxle.base.html#neuraxle.base.MixinForBaseTransformer" target="_top" title="Any steps/transformers within a pipeline that inherits of this class should implement BaseStep/BaseTransformer and initialize it before any mixin. This class checks that its the case at initialization." alt="" coords="104,394,295,418"/>
+<area shape="rect" id="node27" href="api/neuraxle.base.html#neuraxle.base._HasChildrenMixin" target="_top" title="Mixin to add behavior to the steps that have children (sub steps)." alt="" coords="365,394,511,418"/>
+<area shape="rect" id="node31" href="api/neuraxle.base.html#neuraxle.base.TransformHandlerOnlyMixin" target="_top" title="A pipeline step that only requires the implementation of _transform_data_container." alt="" coords="335,232,541,255"/>
+<area shape="rect" id="node26" href="api/neuraxle.base.html#neuraxle.base.MetaStepMixin" target="_top" title="A class to represent a step that wraps another step. It can be used for many things." alt="" coords="634,330,749,353"/>
+<area shape="rect" id="node33" href="api/steps/neuraxle.steps.flow.html#neuraxle.steps.flow.TestOnlyWrapper" target="_top" title="A wrapper to run wrapped step only in test mode" alt="" coords="1374,351,1505,374"/>
+<area shape="rect" id="node35" href="api/steps/neuraxle.steps.flow.html#neuraxle.steps.flow.TrainOnlyWrapper" target="_top" title="A wrapper to run wrapped step only in train mode" alt="" coords="1371,308,1509,331"/>
+</map></section>
+</section>
+<section id="all-the-base-classes-of-neuraxle-together">
+<h2>All the base classes of Neuraxle together<a class="headerlink" href="#all-the-base-classes-of-neuraxle-together" title="Permalink to this headline">¶</a></h2>
+<p>See how everything is combined together in the base.py module. Here are defined some other
+important base classes you can inherit from or use to do some funky data pipelines.</p>
+<div class="graphviz"><img src="_images/inheritance-03ea6b07407623f2056164bc5c05681850090161.png" alt="Inheritance diagram of neuraxle.base" usemap="#inheritanceb604dacc25" class="inheritance graphviz" /></div>
+<map id="inheritanceb604dacc25" name="inheritanceb604dacc25">
+<area shape="rect" id="node10" href="api/neuraxle.base.html#neuraxle.base.BaseHasher" target="_top" title="Base class to hash hyperparamters, and data input ids together." alt="" coords="195,151,266,168"/>
+<area shape="rect" id="node11" href="api/neuraxle.base.html#neuraxle.base.BaseSaver" target="_top" title="Any saver must inherit from this one. Some savers just save parts of objects, some save it all or what remains." alt="" coords="198,271,263,289"/>
+<area shape="rect" id="node12" href="api/neuraxle.base.html#neuraxle.base.BaseStep" target="_top" title="Base class for a transformer step that can also be fitted." alt="" coords="548,451,608,468"/>
+<area shape="rect" id="node14" href="api/neuraxle.base.html#neuraxle.base.BaseTransformer" target="_top" title="Base class for a pipeline step that can only be transformed." alt="" coords="348,467,447,484"/>
+<area shape="rect" id="node16" href="api/neuraxle.base.html#neuraxle.base._HasMutations" target="_top" title="An internal class to represent a step that can be mutated." alt="" coords="187,567,275,584"/>
+<area shape="rect" id="node17" href="api/neuraxle.base.html#neuraxle.base._HasHyperparamsSpace" target="_top" title="An internal class to represent a step that has hyperparameter spaces of type :class:`~neuraxle.hyperparams.space.HyperparameterSpace`." alt="" coords="167,370,295,387"/>
+<area shape="rect" id="node18" href="api/neuraxle.base.html#neuraxle.base._HasHyperparams" target="_top" title="An internal class to represent a step that has hyperparameters of type :class:`~neuraxle.hyperparams.space.HyperparameterSamples`." alt="" coords="181,403,280,420"/>
+<area shape="rect" id="node19" href="api/neuraxle.base.html#neuraxle.base._HasHashers" target="_top" title="An internal class to represent a step that has hashers." alt="" coords="192,435,269,453"/>
+<area shape="rect" id="node20" href="api/neuraxle.base.html#neuraxle.base._HasSavers" target="_top" title="An internal class to represent a step that can be saved." alt="" coords="195,468,266,486"/>
+<area shape="rect" id="node22" href="api/neuraxle.base.html#neuraxle.base._TransformerStep" target="_top" title="An internal class to represent a step that can be transformed, or inverse transformed." alt="" coords="178,501,283,519"/>
+<area shape="rect" id="node51" href="api/neuraxle.base.html#neuraxle.base.TruncableSteps" target="_top" title="Step that contains multiple steps. :class:`Pipeline` inherits form this class." alt="" coords="704,405,797,423"/>
+<area shape="rect" id="node2" href="api/neuraxle.base.html#neuraxle.base.AssertExpectedOutputIsNone" target="_top" title="AssertExpectedOutputIsNone" alt="" coords="1328,275,1490,292"/>
+<area shape="rect" id="node3" href="api/neuraxle.base.html#neuraxle.base.AssertExpectedOutputIsNoneMixin" target="_top" title="AssertExpectedOutputIsNoneMixin" alt="" coords="1054,258,1244,275"/>
+<area shape="rect" id="node6" href="api/neuraxle.base.html#neuraxle.base.AssertExpectedOutputIsNoneStep" target="_top" title="AssertExpectedOutputIsNoneStep" alt="" coords="1317,209,1501,227"/>
+<area shape="rect" id="node4" href="api/neuraxle.base.html#neuraxle.base.Identity" target="_top" title="A pipeline step that has no effect at all but to return the same data without changes." alt="" coords="720,274,780,291"/>
+<area shape="rect" id="node30" href="api/neuraxle.base.html#neuraxle.base.ForceHandleIdentity" target="_top" title="An identity step which forces usage of handler methods. Mostly used in unit tests." alt="" coords="867,258,989,275"/>
+<area shape="rect" id="node33" href="api/neuraxle.base.html#neuraxle.base.FullDumpLoader" target="_top" title="Identity step that can load the full dump of a pipeline step." alt="" coords="882,323,975,341"/>
+<area shape="rect" id="node5" href="api/neuraxle.base.html#neuraxle.base.WillProcessAssertionMixin" target="_top" title="WillProcessAssertionMixin" alt="" coords="851,225,1006,243"/>
+<area shape="rect" id="node7" href="api/neuraxle.base.html#neuraxle.base.AssertExpectedOutputIsNotNoneMixin" target="_top" title="AssertExpectedOutputIsNotNoneMixin" alt="" coords="1045,225,1253,243"/>
+<area shape="rect" id="node34" href="api/neuraxle.base.html#neuraxle.base.GlobalServiceAssertionExecutorMixin" target="_top" title="Any step which inherit of this class will test globaly retrievable service assertion of itself and all its children on a will_process call." alt="" coords="1043,323,1256,341"/>
+<area shape="rect" id="node36" href="api/neuraxle.base.html#neuraxle.base.LocalServiceAssertionWrapper" target="_top" title="Is used to assert the presence of service at execution time for a given step" alt="" coords="1062,356,1236,374"/>
+<area shape="rect" id="node8" href="api/neuraxle.base.html#neuraxle.base.AssertionMixin" target="_top" title="AssertionMixin" alt="" coords="704,175,797,193"/>
+<area shape="rect" id="node23" href="api/neuraxle.base.html#neuraxle.base.DidProcessAssertionMixin" target="_top" title="DidProcessAssertionMixin" alt="" coords="853,159,1004,177"/>
+<area shape="rect" id="node9" href="api/neuraxle.base.html#neuraxle.base.ForceHandleMixin" target="_top" title="A step that automatically calls handle methods in the transform, fit, and fit_transform methods." alt="" coords="525,175,631,193"/>
+<area shape="rect" id="node31" href="api/neuraxle.base.html#neuraxle.base.ForceHandleOnlyMixin" target="_top" title="A step that automatically calls handle methods in the transform, fit, and fit_transform methods." alt="" coords="686,142,814,160"/>
+<area shape="rect" id="node37" href="api/neuraxle.base.html#neuraxle.base.HashlibMd5Hasher" target="_top" title="Class to hash hyperparamters, and data input ids together using md5 algorithm from hashlib :" alt="" coords="345,61,450,78"/>
+<area shape="rect" id="node42" href="api/neuraxle.base.html#neuraxle.base.JoblibStepSaver" target="_top" title="Saver that can save, or load a step with `joblib.load &lt;https://joblib.readthedocs.io/en/latest/generated/joblib.load.html&gt;`_," alt="" coords="348,109,447,127"/>
+<area shape="rect" id="node54" href="api/neuraxle.base.html#neuraxle.base._WithContextStepSaver" target="_top" title="Custom saver for steps that have an :class:`ExecutionContext`." alt="" coords="331,274,464,291"/>
+<area shape="rect" id="node43" href="api/neuraxle.base.html#neuraxle.base.MetaStep" target="_top" title="MetaStep" alt="" coords="899,381,958,398"/>
+<area shape="rect" id="node13" href="api/neuraxle.base.html#neuraxle.base._FittableStep" target="_top" title="An internal class to represent a step that can be fitted." alt="" coords="354,665,441,683"/>
+<area shape="rect" id="node15" href="api/neuraxle.base.html#neuraxle.base._CouldHaveContext" target="_top" title="Step that can have a context." alt="" coords="176,600,286,617"/>
+<area shape="rect" id="node21" href="api/neuraxle.base.html#neuraxle.base._HasRecursiveMethods" target="_top" title="An internal class to represent a step that has recursive methods." alt="" coords="167,337,295,355"/>
+<area shape="rect" id="node28" href="api/neuraxle.base.html#neuraxle.base.ExecutionMode" target="_top" title="An enumeration." alt="" coords="187,85,275,103"/>
+<area shape="rect" id="node29" href="api/neuraxle.base.html#neuraxle.base.ExecutionPhase" target="_top" title="An enumeration." alt="" coords="184,118,277,136"/>
+<area shape="rect" id="node25" href="api/neuraxle.base.html#neuraxle.base.EvaluableStepMixin" target="_top" title="A step that can be evaluated with the scoring functions." alt="" coords="520,208,636,226"/>
+<area shape="rect" id="node26" href="api/neuraxle.base.html#neuraxle.base.MixinForBaseTransformer" target="_top" title="Any steps/transformers within a pipeline that inherits of this class should implement BaseStep/BaseTransformer and initialize it before any mixin. This class checks that its the case at initialization." alt="" coords="325,241,470,259"/>
+<area shape="rect" id="node32" href="api/neuraxle.base.html#neuraxle.base.HandleOnlyMixin" target="_top" title="A pipeline step that only requires the implementation of handler methods :" alt="" coords="528,142,628,160"/>
+<area shape="rect" id="node39" href="api/neuraxle.base.html#neuraxle.base.NonTransformableMixin" target="_top" title="A pipeline step that has no effect at all but to return the same data without changes." alt="" coords="512,241,645,259"/>
+<area shape="rect" id="node40" href="api/neuraxle.base.html#neuraxle.base.NonFittableMixin" target="_top" title="A pipeline step that requires no fitting: fitting just returns self when called to do no action." alt="" coords="525,274,631,291"/>
+<area shape="rect" id="node46" href="api/neuraxle.base.html#neuraxle.base._HasChildrenMixin" target="_top" title="Mixin to add behavior to the steps that have children (sub steps)." alt="" coords="523,372,633,390"/>
+<area shape="rect" id="node47" href="api/neuraxle.base.html#neuraxle.base.ResumableStepMixin" target="_top" title="Mixin to add resumable function to a step, or a class that can be resumed, for example a checkpoint on disk." alt="" coords="520,307,636,324"/>
+<area shape="rect" id="node49" href="api/neuraxle.base.html#neuraxle.base.TransformHandlerOnlyMixin" target="_top" title="A pipeline step that only requires the implementation of _transform_data_container." alt="" coords="500,339,656,357"/>
+<area shape="rect" id="node27" href="api/neuraxle.base.html#neuraxle.base.ExecutionContext" target="_top" title="Execution context object containing all of the pipeline hierarchy steps." alt="" coords="17,69,123,87"/>
+<area shape="rect" id="node41" href="api/neuraxle.base.html#neuraxle.base.IdentityHandlerMethodsMixin" target="_top" title="A step that has a default implementation for all handler methods." alt="" coords="845,126,1012,144"/>
+<area shape="rect" id="node48" href="api/neuraxle.base.html#neuraxle.base.StepWithContext" target="_top" title="StepWithContext" alt="" coords="1360,389,1459,407"/>
+<area shape="rect" id="node35" href="api/neuraxle.base.html#neuraxle.base.GlobalyRetrievableServiceAssertionWrapper" target="_top" title="Is used to assert the presence of service at the start of the pipeline AND at execution time for a given step." alt="" coords="1286,356,1533,374"/>
+<area shape="rect" id="node38" href="api/neuraxle.base.html#neuraxle.base.HashlibMd5ValueHasher" target="_top" title="HashlibMd5ValueHasher" alt="" coords="512,44,645,61"/>
+<area shape="rect" id="node45" href="api/neuraxle.base.html#neuraxle.base.MetaStepJoblibStepSaver" target="_top" title="Custom saver for meta step mixin." alt="" coords="506,109,651,127"/>
+<area shape="rect" id="node50" href="api/neuraxle.base.html#neuraxle.base.TruncableJoblibStepSaver" target="_top" title="Step saver for a TruncableSteps." alt="" coords="503,77,653,94"/>
+<area shape="rect" id="node44" href="api/neuraxle.base.html#neuraxle.base.MetaStepMixin" target="_top" title="A class to represent a step that wraps another step. It can be used for many things." alt="" coords="707,372,794,390"/>
+<area shape="rect" id="node52" href="api/neuraxle.base.html#neuraxle.base._CustomHandlerMethods" target="_top" title="A class to represent a step that needs to add special behavior on top of the normal handler methods." alt="" coords="3,36,136,54"/>
+<area shape="rect" id="node53" href="api/neuraxle.base.html#neuraxle.base._RecursiveArguments" target="_top" title="This class is used by :func:`~neuraxle.base.BaseStep.apply`, and :class:`_HasChildrenMixin` to pass the right arguments to steps with children." alt="" coords="9,3,131,21"/>
+</map><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>You may like to see all other inheritance diagrams defined in each module of the library.
+Refer to the <a class="reference external" href="https://www.neuraxle.org/stable/api.html">complete API documentation of Neuraxle</a>.</p>
+</section>
+</section>
 
 
            </div>
@@ -662,10 +1070,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="examples/index.html" class="btn btn-neutral float-right" title="&gt;&gt;&gt; Practical Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="hyperparameter_tuning.html" class="btn btn-neutral float-right" title="Automatic Hyperparameter Tuning / AutoML" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="rest_api_serving.html" class="btn btn-neutral float-left" title="REST API Serving" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="intro.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

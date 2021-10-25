@@ -47,6 +47,7 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
@@ -222,6 +223,22 @@
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#training-your-pipeline">Training your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#serializing-your-pipeline">Serializing your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../classes_and_modules_overview.html">Class diagrams and inheritance charts of Neuraxle objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#the-mixin-design-pattern-in-machine-learning">The Mixin design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#steps-containing-other-steps-as-the-composite-design-pattern-in-machine-learning">Steps containing other steps as the composite design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#scikit-learn-s-pipeline-pipeline-class-and-how-to-shift-to-parallel-deep-learning">Scikit-learn’s pipeline.Pipeline class and how to shift to parallel deep learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-pipeline-pipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.Pipeline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-distributed-streaming-sequentialqueuedpipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.distributed.streaming.SequentialQueuedPipeline</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#featureunion-to-compute-steps-in-parallel-and-join-their-results">FeatureUnion to compute steps in parallel and join their results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#automl-module-to-automatically-tune-hyperparameters-of-your-pipelines">AutoML module to automatically tune hyperparameters of your pipelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-metaopt-auto-ml-automl">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.AutoML</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#all-the-base-classes-of-neuraxle-together">All the base classes of Neuraxle together</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html">Automatic Hyperparameter Tuning / AutoML</a><ul>
@@ -654,7 +671,22 @@
             
   <section id="neuraxle-metaopt-callbacks">
 <h1>neuraxle.metaopt.callbacks<a class="headerlink" href="#neuraxle-metaopt-callbacks" title="Permalink to this headline">¶</a></h1>
-<p>Module-level documentation.</p>
+<p>Module-level documentation for neuraxle.metaopt.callbacks. Here is an inheritance diagram,
+including dependencies to other base modules of Neuraxle:</p>
+<div class="graphviz"><img src="../../_images/inheritance-d291a7d1b558902ad808acc7dab719265f243598.png" alt="Inheritance diagram of neuraxle.metaopt.callbacks" usemap="#inheritance5bdb4d106c" class="inheritance graphviz" /></div>
+<map id="inheritance5bdb4d106c" name="inheritance5bdb4d106c">
+<area shape="rect" id="node2" href="#neuraxle.metaopt.callbacks.BaseCallback" target="_top" title="Base class for a training callback." alt="" coords="125,109,256,137"/>
+<area shape="rect" id="node3" href="#neuraxle.metaopt.callbacks.CallbackList" target="_top" title="Callback list that be executed." alt="" coords="344,5,475,33"/>
+<area shape="rect" id="node4" href="#neuraxle.metaopt.callbacks.EarlyStoppingCallback" target="_top" title="Perform early stopping when there is multiple epochs in a row that didn&#39;t improve the performance of the model." alt="" coords="304,57,515,85"/>
+<area shape="rect" id="node6" href="#neuraxle.metaopt.callbacks.MetaCallback" target="_top" title="Meta callback wraps another callback." alt="" coords="344,109,475,137"/>
+<area shape="rect" id="node8" href="#neuraxle.metaopt.callbacks.MetricCallback" target="_top" title="Callback that calculates metric results." alt="" coords="335,161,483,189"/>
+<area shape="rect" id="node10" href="#neuraxle.metaopt.callbacks.StepSaverCallback" target="_top" title="Callback that saves the trial model." alt="" coords="322,213,497,241"/>
+<area shape="rect" id="node5" href="#neuraxle.metaopt.callbacks.IfBestScore" target="_top" title="Meta callback that only execute when the trial is a new best score." alt="" coords="581,57,702,85"/>
+<area shape="rect" id="node7" href="#neuraxle.metaopt.callbacks.IfLastStep" target="_top" title="Meta callback that only execute when the training is finished or fitted, or when it is the last epoch." alt="" coords="585,109,697,137"/>
+<area shape="rect" id="node9" href="#neuraxle.metaopt.callbacks.ScoringCallback" target="_top" title="Metric Callback that calculates metric results for the main scoring metric." alt="" coords="563,161,720,189"/>
+</map><div class="line-block">
+<div class="line"><br /></div>
+</div>
 <span class="target" id="module-neuraxle.metaopt.callbacks"></span><section id="neuraxle-s-training-callbacks-classes">
 <h2>Neuraxle’s training callbacks classes.<a class="headerlink" href="#neuraxle-s-training-callbacks-classes" title="Permalink to this headline">¶</a></h2>
 <p>Training callback classes.</p>
@@ -741,7 +773,10 @@
 <p><span class="caption-text"><a class="reference internal" href="../../examples/sklearn/plot_boston_housing_meta_optimization.html#sphx-glr-examples-sklearn-plot-boston-housing-meta-optimization-py"><span class="std std-ref">Boston Housing Regression with Meta Optimization</span></a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
-</div><div class="sphx-glr-clear"></div><span class="target" id="sphx-glr-backref-neuraxle-metaopt-callbacks-stepsavercallback"></span><dl class="class">
+</div><div class="sphx-glr-clear"></div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="class">
 <dt id="neuraxle.metaopt.callbacks.BaseCallback">
 <em class="property">class </em><code class="descclassname">neuraxle.metaopt.callbacks.</code><code class="descname">BaseCallback</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/metaopt/callbacks.py#L36"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.callbacks.BaseCallback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>

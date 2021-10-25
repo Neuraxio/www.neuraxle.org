@@ -47,6 +47,7 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
@@ -222,6 +223,22 @@
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#training-your-pipeline">Training your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#serializing-your-pipeline">Serializing your pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../intro.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../classes_and_modules_overview.html">Class diagrams and inheritance charts of Neuraxle objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#the-mixin-design-pattern-in-machine-learning">The Mixin design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#steps-containing-other-steps-as-the-composite-design-pattern-in-machine-learning">Steps containing other steps as the composite design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#scikit-learn-s-pipeline-pipeline-class-and-how-to-shift-to-parallel-deep-learning">Scikit-learn’s pipeline.Pipeline class and how to shift to parallel deep learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-pipeline-pipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.Pipeline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-distributed-streaming-sequentialqueuedpipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.distributed.streaming.SequentialQueuedPipeline</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#featureunion-to-compute-steps-in-parallel-and-join-their-results">FeatureUnion to compute steps in parallel and join their results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#automl-module-to-automatically-tune-hyperparameters-of-your-pipelines">AutoML module to automatically tune hyperparameters of your pipelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../classes_and_modules_overview.html#examples-using-neuraxle-metaopt-auto-ml-automl">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.AutoML</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../classes_and_modules_overview.html#all-the-base-classes-of-neuraxle-together">All the base classes of Neuraxle together</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../hyperparameter_tuning.html">Automatic Hyperparameter Tuning / AutoML</a><ul>
@@ -654,7 +671,29 @@
             
   <section id="neuraxle-steps-misc">
 <h1>neuraxle.steps.misc<a class="headerlink" href="#neuraxle-steps-misc" title="Permalink to this headline">¶</a></h1>
-<p>Module-level documentation.</p>
+<p>Module-level documentation for neuraxle.steps.misc. Here is an inheritance diagram,
+including dependencies to other base modules of Neuraxle:</p>
+<div class="graphviz"><img src="../../_images/inheritance-d459a3ce8228fb39415036bbfeb756278191c524.png" alt="Inheritance diagram of neuraxle.steps.misc" usemap="#inheritance966f09737d" class="inheritance graphviz" /></div>
+<map id="inheritance966f09737d" name="inheritance966f09737d">
+<area shape="rect" id="node2" href="#neuraxle.steps.misc.BaseCallbackStep" target="_top" title="Base class for callback steps." alt="" coords="784,32,951,60"/>
+<area shape="rect" id="node3" href="../neuraxle.base.html#neuraxle.base.BaseStep" target="_top" title="Base class for a transformer step that can also be fitted." alt="" coords="551,109,646,137"/>
+<area shape="rect" id="node4" href="../neuraxle.base.html#neuraxle.base.BaseTransformer" target="_top" title="Base class for a pipeline step that can only be transformed." alt="" coords="287,57,445,85"/>
+<area shape="rect" id="node8" href="#neuraxle.steps.misc.FitCallbackStep" target="_top" title="Call a callback method on fit." alt="" coords="1061,7,1219,35"/>
+<area shape="rect" id="node17" href="#neuraxle.steps.misc.TransformCallbackStep" target="_top" title="Call a callback method on transform and inverse transform." alt="" coords="1035,59,1245,87"/>
+<area shape="rect" id="node7" href="../neuraxle.base.html#neuraxle.base.MetaStep" target="_top" title="MetaStep" alt="" coords="820,213,915,241"/>
+<area shape="rect" id="node9" href="#neuraxle.steps.misc.FitTransformCallbackStep" target="_top" title="FitTransformCallbackStep" alt="" coords="748,109,987,137"/>
+<area shape="rect" id="node13" href="#neuraxle.steps.misc.HandleCallbackStep" target="_top" title="HandleCallbackStep" alt="" coords="775,161,959,189"/>
+<area shape="rect" id="node15" href="#neuraxle.steps.misc.Sleep" target="_top" title="Sleep" alt="" coords="563,57,635,85"/>
+<area shape="rect" id="node5" href="#neuraxle.steps.misc.CallbackWrapper" target="_top" title="A step that calls a callback function for each of his methods : transform, fit, fit_transform, and even inverse_transform." alt="" coords="1061,239,1219,267"/>
+<area shape="rect" id="node6" href="../neuraxle.base.html#neuraxle.base.HandleOnlyMixin" target="_top" title="A pipeline step that only requires the implementation of handler methods :" alt="" coords="287,213,445,241"/>
+<area shape="rect" id="node12" href="../neuraxle.base.html#neuraxle.base.ForceHandleOnlyMixin" target="_top" title="A step that automatically calls handle methods in the transform, fit, and fit_transform methods." alt="" coords="497,161,700,189"/>
+<area shape="rect" id="node10" href="../neuraxle.base.html#neuraxle.base.ForceHandleMixin" target="_top" title="A step that automatically calls handle methods in the transform, fit, and fit_transform methods." alt="" coords="283,161,449,189"/>
+<area shape="rect" id="node11" href="../neuraxle.base.html#neuraxle.base.MixinForBaseTransformer" target="_top" title="Any steps/transformers within a pipeline that inherits of this class should implement BaseStep/BaseTransformer and initialize it before any mixin. This class checks that its the case at initialization." alt="" coords="5,187,235,215"/>
+<area shape="rect" id="node14" href="../neuraxle.base.html#neuraxle.base.MetaStepMixin" target="_top" title="A class to represent a step that wraps another step. It can be used for many things." alt="" coords="529,213,668,241"/>
+<area shape="rect" id="node16" href="#neuraxle.steps.misc.TapeCallbackFunction" target="_top" title="This class&#39;s purpose is to be sent to the callback to accumulate information." alt="" coords="19,5,221,33"/>
+</map><div class="line-block">
+<div class="line"><br /></div>
+</div>
 <span class="target" id="module-neuraxle.steps.misc"></span><section id="miscelaneous-pipeline-steps">
 <h2>Miscelaneous Pipeline Steps<a class="headerlink" href="#miscelaneous-pipeline-steps" title="Permalink to this headline">¶</a></h2>
 <p>You can find here misc. pipeline steps, for example, callbacks useful for debugging, and a step cloner.</p>
@@ -711,7 +750,10 @@
 <p><span class="caption-text"><a class="reference internal" href="../../examples/parallel/plot_streaming_pipeline.html#sphx-glr-examples-parallel-plot-streaming-pipeline-py"><span class="std std-ref">Parallel processing in Neuraxle</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
-</div><div class="sphx-glr-clear"></div><span class="target" id="sphx-glr-backref-neuraxle-steps-misc-transformcallbackstep"><span id="sphx-glr-backref-neuraxle-steps-misc-tapecallbackfunction"></span></span><dl class="class">
+</div><div class="sphx-glr-clear"></div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="class">
 <dt id="neuraxle.steps.misc.BaseCallbackStep">
 <em class="property">class </em><code class="descclassname">neuraxle.steps.misc.</code><code class="descname">BaseCallbackStep</code><span class="sig-paren">(</span><em>callback_function</em>, <em>more_arguments: List = ()</em>, <em>hyperparams=None</em>, <em>fit_callback_function=None</em>, <em>transform_function=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/0615701/neuraxle/steps/misc.py#L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.steps.misc.BaseCallbackStep" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.BaseStep</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
