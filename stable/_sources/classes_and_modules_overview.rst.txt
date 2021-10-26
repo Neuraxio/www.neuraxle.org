@@ -44,7 +44,7 @@ and MetaStep works - they also combine some Mixins, as they
 are a BaseStep themselves and compose other base steps as childrens:
 
 .. inheritance-diagram:: neuraxle.base.TruncableSteps neuraxle.base.MetaStep neuraxle.base._RecursiveArguments neuraxle.hyperparams.space.HyperparameterSamples neuraxle.hyperparams.space.HyperparameterSpace
-   :top-classes: neuraxle.base.BaseStep
+   :top-classes: neuraxle.base.BaseStep, neuraxle.base.BaseTransformer
    :private-bases:
    :parts: 1
 
@@ -76,7 +76,7 @@ Together, the following inheritance diagram shows the inheritance of all Pipelin
 As you can see, we also have built-in parallelism and minibatching ready to use:
 
 .. inheritance-diagram:: neuraxle.pipeline.Pipeline neuraxle.pipeline.MiniBatchSequentialPipeline neuraxle.distributed.streaming.SequentialQueuedPipeline neuraxle.base.ExecutionContext neuraxle.base.ExecutionPhase neuraxle.base.ExecutionMode
-   :top-classes: neuraxle.base.BaseStep, neuraxle.base.TruncableSteps, neuraxle.base.MetaStep
+   :top-classes: neuraxle.base.BaseStep, neuraxle.base.TruncableSteps, neuraxle.base.MetaStep, neuraxle.base.BaseTransformer
    :private-bases:
    :parts: 1
 
@@ -113,7 +113,7 @@ See the inheritance diagram below to understand the inheritance of the FeatureUn
 its parallel counterpart and the parallel joiner:
 
 .. inheritance-diagram:: neuraxle.union.FeatureUnion neuraxle.distributed.streaming.ParallelQueuedFeatureUnion neuraxle.steps.numpy.NumpyConcatenateInnerFeatures
-   :top-classes: neuraxle.base.BaseStep, neuraxle.base.TruncableSteps, neuraxle.base.MetaStep
+   :top-classes: neuraxle.base.BaseStep, neuraxle.base.TruncableSteps, neuraxle.base.MetaStep, neuraxle.base.BaseTransformer
    :private-bases:
    :parts: 1
 
@@ -141,7 +141,7 @@ the hyperparameters, you can use the :class:`~neuraxle.metaopt.auto_ml.AutoML`
 class. 
 
 .. inheritance-diagram:: neuraxle.metaopt.auto_ml
-   :top-classes: neuraxle.base.BaseStep, neuraxle.base.TruncableSteps, neuraxle.base.MetaStep
+   :top-classes: neuraxle.base.BaseStep, neuraxle.base.TruncableSteps, neuraxle.base.MetaStep, neuraxle.base.BaseTransformer
    :parts: 1
 
 |
@@ -158,7 +158,7 @@ in which lots of control-flow wrappers are defined. Those steps can often make
 conditional decisions on how your data will traverse the pipeline:
 
 .. inheritance-diagram:: neuraxle.steps.flow
-   :top-classes: neuraxle.base.BaseStep
+   :top-classes: neuraxle.base.BaseStep, neuraxle.base.BaseTransformer
    :private-bases:
    :parts: 1
 
