@@ -44,8 +44,7 @@ performed to find the best possible combination of hyperparameters by sampling r
     Thanks to Umaneo Technologies Inc. for their contributions to this Machine Learning
     project, visit https://www.umaneo.com/ for more information on Umaneo Technologies Inc.
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 29-129
+.. GENERATED FROM PYTHON SOURCE LINES 29-128
 
 
 
@@ -56,6 +55,42 @@ performed to find the best possible combination of hyperparameters by sampling r
 
  .. code-block:: none
 
+    /home/gui/Documents/GIT/www.neuraxle.org-builder/venv/lib/python3.8/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function load_boston is deprecated; `load_boston` is deprecated in 1.0 and will be removed in 1.2.
+
+        The Boston housing prices dataset has an ethical problem. You can refer to
+        the documentation of this function for further details.
+
+        The scikit-learn maintainers therefore strongly discourage the use of this
+        dataset unless the purpose of the code is to study and educate about
+        ethical issues in data science and machine learning.
+
+        In this special case, you can fetch the dataset from the original
+        source::
+
+            import pandas as pd
+            import numpy as np
+
+
+            data_url = "http://lib.stat.cmu.edu/datasets/boston"
+            raw_df = pd.read_csv(data_url, sep="\s+", skiprows=22, header=None)
+            data = np.hstack([raw_df.values[::2, :], raw_df.values[1::2, :2]])
+            target = raw_df.values[1::2, 2]
+
+        Alternative datasets include the California housing dataset (i.e.
+        :func:`~sklearn.datasets.fetch_california_housing`) and the Ames housing
+        dataset. You can load the datasets as follows::
+
+            from sklearn.datasets import fetch_california_housing
+            housing = fetch_california_housing()
+
+        for the California housing dataset and::
+
+            from sklearn.datasets import fetch_openml
+            housing = fetch_openml(name="house_prices", as_frame=True)
+
+        for the Ames housing dataset.
+    
+      warnings.warn(msg, category=FutureWarning)
     Meta-fitting on train:
 
     Transforming train and test:
@@ -77,7 +112,6 @@ performed to find the best possible combination of hyperparameters by sampling r
 
 
     import numpy as np
-    from py._path.local import LocalPath
     from sklearn.cluster import KMeans
     from sklearn.datasets import load_boston
     from sklearn.decomposition import PCA, FastICA
@@ -97,7 +131,7 @@ performed to find the best possible combination of hyperparameters by sampling r
     from neuraxle.union import AddFeatures, ModelStacking
 
 
-    def main(tmpdir: LocalPath):
+    def main(tmpdir):
         boston = load_boston()
         X, y = shuffle(boston.data, boston.target, random_state=13)
         X = X.astype(np.float32)
@@ -179,7 +213,7 @@ performed to find the best possible combination of hyperparameters by sampling r
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  3.191 seconds)
+   **Total running time of the script:** ( 0 minutes  19.661 seconds)
 
 
 .. _sphx_glr_download_examples_sklearn_plot_boston_housing_meta_optimization.py:
