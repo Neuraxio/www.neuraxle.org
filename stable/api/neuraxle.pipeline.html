@@ -17,7 +17,7 @@
   <meta property="og:locale" content="en_US" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>neuraxle.pipeline &mdash; Neuraxle 0.6.1 documentation</title>
+  <title>neuraxle.pipeline &mdash; Neuraxle 0.7.0 documentation</title>
   
 
   
@@ -70,13 +70,13 @@
   <style>
     /* Sidebar header (and topbar for mobile) */
     .wy-side-nav-search > a {
-      color: #DB1865;
+      color: #ff6201;
     }
     .wy-side-nav-search > div.version {
-      color: #DB1865;
+      color: #ff6201;
     }
     .wy-side-nav-search, .wy-nav-top {
-      color: #DB1865;
+      color: #ff6201;
     }
     /* Sidebar */
     .wy-nav-side {
@@ -96,7 +96,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search"  style="background: #F7F7F7" >
+        <div class="wy-side-nav-search"  style="background: #FCFCFC" >
           
 
           
@@ -115,7 +115,7 @@
             
             
               <div class="version">
-                0.6.1
+                0.7.0
               </div>
             
           
@@ -373,11 +373,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../examples/auto_ml/plot_automl_loop_clean_kata.html">Usage of AutoML loop, and hyperparams with sklearn models.</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#caching">Caching</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../examples/caching/plot_value_caching.html">Usage of ValueCachingWrapper in Neuraxle.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../examples/caching/plot_auto_ml_checkpoint.html">Usage of Checkpoints in Automatic Machine Learning (AutoML)</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html#caching">Caching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/index.html#rest-api-model-serving">REST API Model Serving</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../examples/deployment/plot_easy_rest_api_serving.html">Easy REST API Model Serving with Neuraxle</a></li>
 </ul>
@@ -439,7 +435,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#examples-using-neuraxle-pipeline-basepipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.BasePipeline</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#examples-using-neuraxle-pipeline-minibatchsequentialpipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.MiniBatchSequentialPipeline</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#examples-using-neuraxle-pipeline-pipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.Pipeline</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#examples-using-neuraxle-pipeline-resumablepipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.ResumablePipeline</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -457,21 +452,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="neuraxle.checkpoints.html">neuraxle.checkpoints</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="neuraxle.checkpoints.html#neuraxle-s-checkpoint-classes">Neuraxle’s Checkpoint Classes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="neuraxle.checkpoints.html#examples-using-neuraxle-checkpoints-defaultcheckpoint">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.checkpoints.DefaultCheckpoint</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="neuraxle.metrics.html">neuraxle.metrics</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="neuraxle.metrics.html#neuraxle-s-metrics-classes">Neuraxle’s metrics classes</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="neuraxle.plotting.html">neuraxle.plotting</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="neuraxle.plotting.html#notebook-matplotlib-plotting-functions">Notebook matplotlib plotting functions</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="steps/neuraxle.steps.numpy.html">neuraxle.steps.numpy</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="steps/neuraxle.steps.numpy.html#pipeline-steps-based-on-numpy">Pipeline Steps Based on NumPy</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="steps/neuraxle.steps.numpy.html#examples-using-neuraxle-steps-numpy-multiplybyn">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.numpy.MultiplyByN</span></code></a></li>
@@ -485,7 +465,6 @@
 <li class="toctree-l2"><a class="reference internal" href="steps/neuraxle.steps.flow.html">neuraxle.steps.flow</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="steps/neuraxle.steps.flow.html#neuraxle-s-flow-steps">Neuraxle’s Flow Steps</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="steps/neuraxle.steps.flow.html#examples-using-neuraxle-steps-flow-chooseonestepof">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.flow.ChooseOneStepOf</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="steps/neuraxle.steps.flow.html#examples-using-neuraxle-steps-flow-expanddim">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.flow.ExpandDim</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -517,13 +496,6 @@
 <li class="toctree-l3"><a class="reference internal" href="steps/neuraxle.steps.loop.html#pipeline-steps-for-looping">Pipeline Steps For Looping</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="steps/neuraxle.steps.loop.html#examples-using-neuraxle-steps-loop-flattenforeach">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.loop.FlattenForEach</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="steps/neuraxle.steps.loop.html#examples-using-neuraxle-steps-loop-foreach">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.loop.ForEach</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="steps/neuraxle.steps.caching.html">neuraxle.steps.caching</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="steps/neuraxle.steps.caching.html#pipeline-steps-for-caching">Pipeline Steps For Caching</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="steps/neuraxle.steps.caching.html#examples-using-neuraxle-steps-caching-joblibvaluecachingwrapper">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.caching.JoblibValueCachingWrapper</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -563,16 +535,12 @@
 <li class="toctree-l2"><a class="reference internal" href="metaopt/neuraxle.metaopt.auto_ml.html">neuraxle.metaopt.auto_ml</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="metaopt/neuraxle.metaopt.auto_ml.html#neuraxle-s-automl-classes">Neuraxle’s AutoML Classes</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="metaopt/neuraxle.metaopt.auto_ml.html#examples-using-neuraxle-metaopt-auto-ml-automl">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.AutoML</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="metaopt/neuraxle.metaopt.auto_ml.html#examples-using-neuraxle-metaopt-auto-ml-hyperparamsjsonrepository">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.HyperparamsJSONRepository</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="metaopt/neuraxle.metaopt.auto_ml.html#examples-using-neuraxle-metaopt-auto-ml-inmemoryhyperparamsrepository">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.InMemoryHyperparamsRepository</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="metaopt/neuraxle.metaopt.auto_ml.html#examples-using-neuraxle-metaopt-auto-ml-randomsearchhyperparameterselectionstrategy">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.RandomSearchHyperparameterSelectionStrategy</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="metaopt/neuraxle.metaopt.auto_ml.html#examples-using-neuraxle-metaopt-auto-ml-validationsplitter">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.ValidationSplitter</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="metaopt/neuraxle.metaopt.trial.html">neuraxle.metaopt.trial</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="metaopt/neuraxle.metaopt.trial.html#neuraxle-s-trial-classes">Neuraxle’s Trial Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metaopt/neuraxle.metaopt.validation.html">neuraxle.metaopt.validation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="metaopt/neuraxle.metaopt.validation.html#validation">Validation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="metaopt/neuraxle.metaopt.callbacks.html">neuraxle.metaopt.callbacks</a><ul>
@@ -583,20 +551,27 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="metaopt/neuraxle.metaopt.random.html">neuraxle.metaopt.random</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="metaopt/neuraxle.metaopt.random.html#random">Random</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="metaopt/neuraxle.metaopt.tpe.html">neuraxle.metaopt.tpe</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="metaopt/neuraxle.metaopt.tpe.html#tree-parzen-estimator">Tree parzen estimator</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="metaopt/neuraxle.metaopt.observable.html">neuraxle.metaopt.observable</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="metaopt/neuraxle.metaopt.observable.html#neuraxle-s-observable-classes">Neuraxle’s Observable Classes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="metaopt/neuraxle.metaopt.deprecated.html">neuraxle.metaopt.deprecated</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="metaopt/neuraxle.metaopt.deprecated.html#neuraxle-s-automatic-machine-learning-classes">Neuraxle’s Automatic Machine Learning Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metaopt/data/neuraxle.metaopt.data.vanilla.html">neuraxle.metaopt.data.vanilla</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="metaopt/data/neuraxle.metaopt.data.vanilla.html#neuraxle-s-base-hyperparameter-repository-classes">Neuraxle’s Base Hyperparameter Repository Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="metaopt/data/neuraxle.metaopt.data.aggregates.html">neuraxle.metaopt.data.aggregates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="metaopt/data/neuraxle.metaopt.data.aggregates.html#neuraxle-s-automl-scope-manager-classes">Neuraxle’s AutoML Scope Manager Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="metaopt/data/neuraxle.metaopt.data.json_repo.html">neuraxle.metaopt.data.json_repo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="metaopt/data/neuraxle.metaopt.data.json_repo.html#neuraxle-s-sqlalchemy-hyperparameter-repository-classes">Neuraxle’s SQLAlchemy Hyperparameter Repository Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="metaopt/data/neuraxle.metaopt.data.json_repo.html#examples-using-neuraxle-metaopt-data-json-repo-hyperparamsondiskrepository">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.data.json_repo.HyperparamsOnDiskRepository</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="metaopt/hyperopt/neuraxle.metaopt.hyperopt.tpe.html">neuraxle.metaopt.hyperopt.tpe</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="metaopt/hyperopt/neuraxle.metaopt.hyperopt.tpe.html#tree-parzen-estimator">Tree parzen estimator</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="distributed/neuraxle.distributed.streaming.html">neuraxle.distributed.streaming</a><ul>
@@ -604,6 +579,14 @@
 <li class="toctree-l4"><a class="reference internal" href="distributed/neuraxle.distributed.streaming.html#examples-using-neuraxle-distributed-streaming-sequentialqueuedpipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.distributed.streaming.SequentialQueuedPipeline</span></code></a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="logging/neuraxle.logging.logging.html">neuraxle.logging.logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="logging/neuraxle.logging.logging.html#neuraxle-s-logging-module">Neuraxle’s Logging module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="logging/neuraxle.logging.warnings.html">neuraxle.logging.warnings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="logging/neuraxle.logging.warnings.html#neuraxle-s-deprecation-warnings">Neuraxle’s Deprecation Warnings</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="rest/neuraxle.rest.flask.html">neuraxle.rest.flask</a><ul>
@@ -622,10 +605,10 @@
             
           <li class="toctree-l1">
             <a class="reference internal" href="https://www.neuraxio.com/blogs/news"
-                                    style="background:#FF982E; color:#fff; text-decoration-line: underline;" target="_blank">
+                                    style="background:#ff6201; color:#fff; text-decoration-line: underline;" target="_blank">
             Neuraxio Blog Articles [↗️]</a>
             <a class="reference internal" href="https://www.neuraxio.com/blogs/news/our-top-learning-resources-for-ai-programmers?utm_source=neuraxle_doc"
-                                    style="background:#DB1865; color:#fff; text-decoration-line: underline;" target="_blank">
+                                    style="background:#ffaf00; color:#fff; text-decoration-line: underline;" target="_blank">
             Learn AI Programming [↗️]</a>
             <a class="reference internal" href="https://www.jobs.neuraxio.com/"
                                     style="background:#111; color:#fff; text-decoration-line: underline;" target="_blank">
@@ -701,24 +684,24 @@
 <h1>neuraxle.pipeline<a class="headerlink" href="#neuraxle-pipeline" title="Permalink to this headline">¶</a></h1>
 <p>Module-level documentation for neuraxle.pipeline. Here is an inheritance diagram,
 including dependencies to other base modules of Neuraxle:</p>
-<div class="graphviz"><img src="../_images/inheritance-acf6d832663f760eb8ae77dcb5fc1eb80ba422ff.png" alt="Inheritance diagram of neuraxle.pipeline" usemap="#inheritance6fb786c723" class="inheritance graphviz" /></div>
+<div class="graphviz"><img src="../_images/inheritance-d55578d06c541360a6abdcf6ff498c94ba3a2c7e.png" alt="Inheritance diagram of neuraxle.pipeline" usemap="#inheritance6fb786c723" class="inheritance graphviz" /></div>
 <map id="inheritance6fb786c723" name="inheritance6fb786c723">
-<area shape="rect" id="node2" href="#neuraxle.pipeline.Barrier" target="_top" title="A Barrier step to be used in a minibatch sequential pipeline. It forces all the" alt="" coords="925,76,1011,104"/>
-<area shape="rect" id="node4" href="#neuraxle.pipeline.BasePipeline" target="_top" title="BasePipeline" alt="" coords="903,284,1033,312"/>
-<area shape="rect" id="node5" href="neuraxle.base.html#neuraxle.base.TruncableSteps" target="_top" title="Step that contains multiple steps. :class:`Pipeline` inherits form this class." alt="" coords="671,282,819,310"/>
-<area shape="rect" id="node6" href="neuraxle.base.html#neuraxle.base.BaseStep" target="_top" title="Base class for a transformer step that can also be fitted." alt="" coords="461,232,555,260"/>
-<area shape="rect" id="node7" href="neuraxle.base.html#neuraxle.base.BaseTransformer" target="_top" title="Base class for a pipeline step that can only be transformed." alt="" coords="161,232,319,260"/>
-<area shape="rect" id="node12" href="#neuraxle.pipeline.Joiner" target="_top" title="A Special Barrier step that joins the transformed mini batches together with list.extend method." alt="" coords="1117,76,1193,104"/>
-<area shape="rect" id="node3" href="neuraxle.base.html#neuraxle.base.Identity" target="_top" title="A pipeline step that has no effect at all but to return the same data without changes." alt="" coords="697,76,792,104"/>
-<area shape="rect" id="node14" href="#neuraxle.pipeline.Pipeline" target="_top" title="Fits and transform steps" alt="" coords="1108,180,1203,208"/>
-<area shape="rect" id="node8" href="neuraxle.base.html#neuraxle.base.ForceHandleMixin" target="_top" title="A step that automatically calls handle methods in the transform, fit, and fit_transform methods." alt="" coords="661,205,828,233"/>
-<area shape="rect" id="node13" href="#neuraxle.pipeline.MiniBatchSequentialPipeline" target="_top" title="Mini Batch Sequential Pipeline class to create a pipeline processing data inputs in batch." alt="" coords="1251,218,1516,246"/>
-<area shape="rect" id="node9" href="neuraxle.base.html#neuraxle.base.MixinForBaseTransformer" target="_top" title="Any steps/transformers within a pipeline that inherits of this class should implement BaseStep/BaseTransformer and initialize it before any mixin. This class checks that its the case at initialization." alt="" coords="125,102,355,130"/>
-<area shape="rect" id="node10" href="neuraxle.base.html#neuraxle.base.NonTransformableMixin" target="_top" title="A pipeline step that has no effect at all but to return the same data without changes." alt="" coords="403,25,613,53"/>
-<area shape="rect" id="node11" href="neuraxle.base.html#neuraxle.base.NonFittableMixin" target="_top" title="A pipeline step that requires no fitting: fitting just returns self when called to do no action." alt="" coords="425,77,591,105"/>
-<area shape="rect" id="node16" href="neuraxle.base.html#neuraxle.base.ResumableStepMixin" target="_top" title="Mixin to add resumable function to a step, or a class that can be resumed, for example a checkpoint on disk." alt="" coords="876,129,1060,157"/>
-<area shape="rect" id="node17" href="#neuraxle.pipeline.ZipMinibatchJoiner" target="_top" title="Zips together minibatch outputs, i.e. returns a DataContainer where the first element is a tuple of every minibatches first element and so on." alt="" coords="1291,76,1475,104"/>
-<area shape="rect" id="node15" href="#neuraxle.pipeline.ResumablePipeline" target="_top" title="Fits and transform steps after latest checkpoint" alt="" coords="1296,141,1471,169"/>
+<area shape="rect" id="node2" href="#neuraxle.pipeline.Barrier" target="_top" title="A Barrier step to be used in a minibatch sequential pipeline. It forces all the" alt="" coords="1002,82,1082,108"/>
+<area shape="rect" id="node4" href="#neuraxle.pipeline.BasePipeline" target="_top" title="Pipeline is a list of steps. This base class is the base class for all pipelines." alt="" coords="981,236,1103,262"/>
+<area shape="rect" id="node5" href="neuraxle.base.html#neuraxle.base.TruncableSteps" target="_top" title="Step that contains multiple steps. :class:`Pipeline` inherits form this class." alt="" coords="788,285,927,311"/>
+<area shape="rect" id="node6" href="neuraxle.base.html#neuraxle.base.BaseService" target="_top" title="Base class for all services registred into the :class:`ExecutionContext`." alt="" coords="118,187,231,213"/>
+<area shape="rect" id="node7" href="neuraxle.base.html#neuraxle.base.BaseStep" target="_top" title="Base class for a transformer step that can also be fitted." alt="" coords="591,187,680,213"/>
+<area shape="rect" id="node8" href="neuraxle.base.html#neuraxle.base.BaseTransformer" target="_top" title="Base class for a pipeline step that can only be transformed." alt="" coords="310,187,458,213"/>
+<area shape="rect" id="node13" href="#neuraxle.pipeline.Joiner" target="_top" title="A Special Barrier step that joins the transformed mini batches together with list.extend method." alt="" coords="1157,82,1228,108"/>
+<area shape="rect" id="node3" href="neuraxle.base.html#neuraxle.base.Identity" target="_top" title="A pipeline step that has no effect at all but to return the same data without changes." alt="" coords="813,87,902,113"/>
+<area shape="rect" id="node15" href="#neuraxle.pipeline.Pipeline" target="_top" title="Handle methods are used to handle the fit, transform, fit_transform and inverse_transform methods" alt="" coords="1148,215,1237,241"/>
+<area shape="rect" id="node9" href="neuraxle.base.html#neuraxle.base.ForceHandleMixin" target="_top" title="A step that automatically calls handle methods in the transform, fit, and fit_transform methods." alt="" coords="779,138,936,164"/>
+<area shape="rect" id="node14" href="#neuraxle.pipeline.MiniBatchSequentialPipeline" target="_top" title="Mini Batch Sequential Pipeline class to create a pipeline processing data inputs in batch." alt="" coords="1282,154,1531,181"/>
+<area shape="rect" id="node10" href="neuraxle.base.html#neuraxle.base.MixinForBaseTransformer" target="_top" title="Any steps/transformers within a pipeline that inherits of this class should implement BaseStep/BaseTransformer and" alt="" coords="276,42,492,68"/>
+<area shape="rect" id="node11" href="neuraxle.base.html#neuraxle.base.NonTransformableMixin" target="_top" title="A pipeline step that has no effect at all but to return the same data without changes." alt="" coords="537,89,734,116"/>
+<area shape="rect" id="node12" href="neuraxle.base.html#neuraxle.base.NonFittableMixin" target="_top" title="A pipeline step that requires no fitting: fitting just returns self when called to do no action." alt="" coords="557,41,714,67"/>
+<area shape="rect" id="node17" href="#neuraxle.pipeline.ZipMinibatchJoiner" target="_top" title="Zips together minibatch outputs, i.e. returns a DataContainer where the first" alt="" coords="1320,82,1493,108"/>
+<area shape="rect" id="node16" href="neuraxle.base.html#neuraxle.base.TruncableStepsMixin" target="_top" title="A mixin for services that can be truncated." alt="" coords="545,332,726,358"/>
 </map><div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -732,11 +715,11 @@ including dependencies to other base modules of Neuraxle:</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.pipeline.Barrier" title="neuraxle.pipeline.Barrier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Barrier</span></code></a>([savers, name])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.pipeline.Barrier" title="neuraxle.pipeline.Barrier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Barrier</span></code></a>([name, savers])</p></td>
 <td><p>A Barrier step to be used in a minibatch sequential pipeline.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.pipeline.BasePipeline" title="neuraxle.pipeline.BasePipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BasePipeline</span></code></a>(steps, …)</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.pipeline.BasePipeline" title="neuraxle.pipeline.BasePipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BasePipeline</span></code></a>(steps, BaseTransformerT], …)</p></td>
+<td><p>Pipeline is a list of steps.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.pipeline.Joiner" title="neuraxle.pipeline.Joiner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Joiner</span></code></a>(batch_size, keep_incomplete_batch[, …])</p></td>
 <td><p>A Special Barrier step that joins the transformed mini batches together with list.extend method.</p></td>
@@ -744,13 +727,10 @@ including dependencies to other base modules of Neuraxle:</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.pipeline.MiniBatchSequentialPipeline" title="neuraxle.pipeline.MiniBatchSequentialPipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MiniBatchSequentialPipeline</span></code></a>(steps, …[, …])</p></td>
 <td><p>Mini Batch Sequential Pipeline class to create a pipeline processing data inputs in batch.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pipeline</span></code></a>(steps, …[, cache_folder])</p></td>
-<td><p>Fits and transform steps</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pipeline</span></code></a>(steps, BaseTransformerT], …)</p></td>
+<td><p>Handle methods are used to handle the fit, transform, fit_transform and inverse_transform methods using a pipe and filter design pattern to handle the steps sequentially.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.pipeline.ResumablePipeline" title="neuraxle.pipeline.ResumablePipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ResumablePipeline</span></code></a>(steps, …[, cache_folder])</p></td>
-<td><p>Fits and transform steps after latest checkpoint</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.pipeline.ZipMinibatchJoiner" title="neuraxle.pipeline.ZipMinibatchJoiner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZipMinibatchJoiner</span></code></a>(batch_size, …[, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.pipeline.ZipMinibatchJoiner" title="neuraxle.pipeline.ZipMinibatchJoiner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZipMinibatchJoiner</span></code></a>(batch_size, …[, …])</p></td>
 <td><p>Zips together minibatch outputs, i.e.</p></td>
 </tr>
 </tbody>
@@ -781,79 +761,58 @@ including dependencies to other base modules of Neuraxle:</p>
 <p><span class="caption-text"><a class="reference internal" href="../examples/auto_ml/plot_automl_loop_clean_kata.html#sphx-glr-examples-auto-ml-plot-automl-loop-clean-kata-py"><span class="std std-ref">Usage of AutoML loop, and hyperparams with sklearn models.</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how you can use value caching in a Neuraxle pipeline."><figure class="align-center" id="id4">
-<img alt="Usage of ValueCachingWrapper in Neuraxle." src="../_images/sphx_glr_plot_value_caching_thumb.png" />
-<figcaption>
-<p><span class="caption-text"><a class="reference internal" href="../examples/caching/plot_value_caching.html#sphx-glr-examples-caching-plot-value-caching-py"><span class="std std-ref">Usage of ValueCachingWrapper in Neuraxle.</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how you can use checkpoints in a pipeline to save computing time when doing a..."><figure class="align-center" id="id5">
-<img alt="Usage of Checkpoints in Automatic Machine Learning (AutoML)" src="../_images/sphx_glr_plot_auto_ml_checkpoint_thumb.png" />
-<figcaption>
-<p><span class="caption-text"><a class="reference internal" href="../examples/caching/plot_auto_ml_checkpoint.html#sphx-glr-examples-caching-plot-auto-ml-checkpoint-py"><span class="std std-ref">Usage of Checkpoints in Automatic Machine Learning (AutoML)</span></a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This demonstrates an easy way to deploy your Neuraxle model or pipeline to a REST API."><figure class="align-center" id="id6">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This demonstrates an easy way to deploy your Neuraxle model or pipeline to a REST API."><figure class="align-center" id="id4">
 <img alt="Easy REST API Model Serving with Neuraxle" src="../_images/sphx_glr_plot_easy_rest_api_serving_thumb.png" />
 <figcaption>
-<p><span class="caption-text"><a class="reference internal" href="../examples/deployment/plot_easy_rest_api_serving.html#sphx-glr-examples-deployment-plot-easy-rest-api-serving-py"><span class="std std-ref">Easy REST API Model Serving with Neuraxle</span></a></span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text"><a class="reference internal" href="../examples/deployment/plot_easy_rest_api_serving.html#sphx-glr-examples-deployment-plot-easy-rest-api-serving-py"><span class="std std-ref">Easy REST API Model Serving with Neuraxle</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how to make a prediction, and then to undo the prediction to get back the ori..."><figure class="align-center" id="id7">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how to make a prediction, and then to undo the prediction to get back the ori..."><figure class="align-center" id="id5">
 <img alt="Inverse Transforms in Neuraxle: How to Reverse a Prediction" src="../_images/sphx_glr_plot_inverse_transform_thumb.png" />
 <figcaption>
-<p><span class="caption-text"><a class="reference internal" href="../examples/getting_started/plot_inverse_transform.html#sphx-glr-examples-getting-started-plot-inverse-transform-py"><span class="std std-ref">Inverse Transforms in Neuraxle: How to Reverse a Prediction</span></a></span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text"><a class="reference internal" href="../examples/getting_started/plot_inverse_transform.html#sphx-glr-examples-getting-started-plot-inverse-transform-py"><span class="std std-ref">Inverse Transforms in Neuraxle: How to Reverse a Prediction</span></a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
-</div><div class="sphx-glr-thumbcontainer" tooltip="You can create pipelines within pipelines using the composition design pattern."><figure class="align-center" id="id8">
+</div><div class="sphx-glr-thumbcontainer" tooltip="You can create pipelines within pipelines using the composition design pattern."><figure class="align-center" id="id6">
 <img alt="Create Nested Pipelines in Neuraxle" src="../_images/sphx_glr_plot_nested_pipelines_thumb.png" />
 <figcaption>
-<p><span class="caption-text"><a class="reference internal" href="../examples/getting_started/plot_nested_pipelines.html#sphx-glr-examples-getting-started-plot-nested-pipelines-py"><span class="std std-ref">Create Nested Pipelines in Neuraxle</span></a></span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text"><a class="reference internal" href="../examples/getting_started/plot_nested_pipelines.html#sphx-glr-examples-getting-started-plot-nested-pipelines-py"><span class="std std-ref">Create Nested Pipelines in Neuraxle</span></a></span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
-</div><div class="sphx-glr-thumbcontainer" tooltip="If a pipeline step doesn&#x27;t need to be fitted and only transforms data (e.g.: taking the logarit..."><figure class="align-center" id="id9">
+</div><div class="sphx-glr-thumbcontainer" tooltip="If a pipeline step doesn&#x27;t need to be fitted and only transforms data (e.g.: taking the logarit..."><figure class="align-center" id="id7">
 <img alt="Create Pipeline Steps in Neuraxle that doesn't fit or transform" src="../_images/sphx_glr_plot_non_fittable_mixin_thumb.png" />
 <figcaption>
-<p><span class="caption-text"><a class="reference internal" href="../examples/getting_started/plot_non_fittable_mixin.html#sphx-glr-examples-getting-started-plot-non-fittable-mixin-py"><span class="std std-ref">Create Pipeline Steps in Neuraxle that doesn’t fit or transform</span></a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text"><a class="reference internal" href="../examples/getting_started/plot_non_fittable_mixin.html#sphx-glr-examples-getting-started-plot-non-fittable-mixin-py"><span class="std std-ref">Create Pipeline Steps in Neuraxle that doesn’t fit or transform</span></a></span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how to manipulate hyperparameters and hyperparameter spaces."><figure class="align-center" id="id10">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how to manipulate hyperparameters and hyperparameter spaces."><figure class="align-center" id="id8">
 <img alt="Manipulate Hyperparameter Spaces for Hyperparameter Tuning" src="../_images/sphx_glr_plot_hyperparams_thumb.png" />
 <figcaption>
-<p><span class="caption-text"><a class="reference internal" href="../examples/hyperparams/plot_hyperparams.html#sphx-glr-examples-hyperparams-plot-hyperparams-py"><span class="std std-ref">Manipulate Hyperparameter Spaces for Hyperparameter Tuning</span></a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text"><a class="reference internal" href="../examples/hyperparams/plot_hyperparams.html#sphx-glr-examples-hyperparams-plot-hyperparams-py"><span class="std std-ref">Manipulate Hyperparameter Spaces for Hyperparameter Tuning</span></a></span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how to stream data in parallel in a Neuraxle pipeline. The pipeline steps&#x27; pa..."><figure class="align-center" id="id11">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how to stream data in parallel in a Neuraxle pipeline. The pipeline steps&#x27; pa..."><figure class="align-center" id="id9">
 <img alt="Parallel processing in Neuraxle" src="../_images/sphx_glr_plot_streaming_pipeline_thumb.png" />
 <figcaption>
-<p><span class="caption-text"><a class="reference internal" href="../examples/parallel/plot_streaming_pipeline.html#sphx-glr-examples-parallel-plot-streaming-pipeline-py"><span class="std std-ref">Parallel processing in Neuraxle</span></a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text"><a class="reference internal" href="../examples/parallel/plot_streaming_pipeline.html#sphx-glr-examples-parallel-plot-streaming-pipeline-py"><span class="std std-ref">Parallel processing in Neuraxle</span></a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example solves a regression problem using a pipeline with the following steps:"><figure class="align-center" id="id12">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example solves a regression problem using a pipeline with the following steps:"><figure class="align-center" id="id10">
 <img alt="Boston Housing Regression" src="../_images/sphx_glr_plot_boston_housing_regression_with_model_stacking_thumb.png" />
 <figcaption>
-<p><span class="caption-text"><a class="reference internal" href="../examples/sklearn/plot_boston_housing_regression_with_model_stacking.html#sphx-glr-examples-sklearn-plot-boston-housing-regression-with-model-stacking-py"><span class="std std-ref">Boston Housing Regression</span></a></span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text"><a class="reference internal" href="../examples/sklearn/plot_boston_housing_regression_with_model_stacking.html#sphx-glr-examples-sklearn-plot-boston-housing-regression-with-model-stacking-py"><span class="std std-ref">Boston Housing Regression</span></a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This is an automatic machine learning example. It is more sophisticated than the other simple r..."><figure class="align-center" id="id13">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This is an automatic machine learning example. It is more sophisticated than the other simple r..."><figure class="align-center" id="id11">
 <img alt="Boston Housing Regression with Meta Optimization" src="../_images/sphx_glr_plot_boston_housing_meta_optimization_thumb.png" />
 <figcaption>
-<p><span class="caption-text"><a class="reference internal" href="../examples/sklearn/plot_boston_housing_meta_optimization.html#sphx-glr-examples-sklearn-plot-boston-housing-meta-optimization-py"><span class="std std-ref">Boston Housing Regression with Meta Optimization</span></a></span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text"><a class="reference internal" href="../examples/sklearn/plot_boston_housing_meta_optimization.html#sphx-glr-examples-sklearn-plot-boston-housing-meta-optimization-py"><span class="std std-ref">Boston Housing Regression with Meta Optimization</span></a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This notebook introduces different strategies with Neuraxle to leverage time-related features f..."><figure class="align-center" id="id14">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This notebook introduces different strategies with Neuraxle to leverage time-related features f..."><figure class="align-center" id="id12">
 <img alt="Time-related feature engineering with scikit-learn" src="../_images/sphx_glr_plot_cyclical_feature_engineering_thumb.png" />
 <figcaption>
-<p><span class="caption-text"><a class="reference internal" href="../examples/sklearn/plot_cyclical_feature_engineering.html#sphx-glr-examples-sklearn-plot-cyclical-feature-engineering-py"><span class="std std-ref">Time-related feature engineering with scikit-learn</span></a></span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
-</div><div class="sphx-glr-clear"></div></section>
-<section id="examples-using-neuraxle-pipeline-resumablepipeline">
-<span id="sphx-glr-backref-neuraxle-pipeline-resumablepipeline"></span><h3>Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.ResumablePipeline</span></code><a class="headerlink" href="#examples-using-neuraxle-pipeline-resumablepipeline" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="This demonstrates how you can use checkpoints in a pipeline to save computing time when doing a..."><figure class="align-center" id="id15">
-<img alt="Usage of Checkpoints in Automatic Machine Learning (AutoML)" src="../_images/sphx_glr_plot_auto_ml_checkpoint_thumb.png" />
-<figcaption>
-<p><span class="caption-text"><a class="reference internal" href="../examples/caching/plot_auto_ml_checkpoint.html#sphx-glr-examples-caching-plot-auto-ml-checkpoint-py"><span class="std std-ref">Usage of Checkpoints in Automatic Machine Learning (AutoML)</span></a></span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text"><a class="reference internal" href="../examples/sklearn/plot_cyclical_feature_engineering.html#sphx-glr-examples-sklearn-plot-cyclical-feature-engineering-py"><span class="std std-ref">Time-related feature engineering with scikit-learn</span></a></span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 </div><div class="sphx-glr-clear"></div><div class="line-block">
@@ -861,17 +820,24 @@ including dependencies to other base modules of Neuraxle:</p>
 </div>
 <dl class="class">
 <dt id="neuraxle.pipeline.BasePipeline">
-<em class="property">class </em><code class="descclassname">neuraxle.pipeline.</code><code class="descname">BasePipeline</code><span class="sig-paren">(</span><em>steps: List[Union[Tuple[str, neuraxle.base.BaseTransformer], neuraxle.base.BaseTransformer]]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L41"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.BasePipeline" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.pipeline.</code><code class="descname">BasePipeline</code><span class="sig-paren">(</span><em>steps: List[Union[Tuple[str, BaseTransformerT], BaseTransformerT]]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L41"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.BasePipeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.TruncableSteps" title="neuraxle.base.TruncableSteps"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.TruncableSteps</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
+<p>Pipeline is a list of steps. This base class is the base class for all pipelines.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>,
+<a class="reference internal" href="#neuraxle.pipeline.MiniBatchSequentialPipeline" title="neuraxle.pipeline.MiniBatchSequentialPipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">MiniBatchSequentialPipeline</span></code></a>,
+<a class="reference internal" href="distributed/neuraxle.distributed.streaming.html#neuraxle.distributed.streaming.SequentialQueuedPipeline" title="neuraxle.distributed.streaming.SequentialQueuedPipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">SequentialQueuedPipeline</span></code></a></p>
+</div>
 <dl class="method">
 <dt id="neuraxle.pipeline.BasePipeline.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>steps: List[Union[Tuple[str, neuraxle.base.BaseTransformer], neuraxle.base.BaseTransformer]]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.BasePipeline.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>steps: List[Union[Tuple[str, BaseTransformerT], BaseTransformerT]]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L51"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.BasePipeline.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.pipeline.BasePipeline.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.pipeline.BasePipeline<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L45"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.BasePipeline.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.pipeline.BasePipeline<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.BasePipeline.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit data inputs on the given expected outputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -888,7 +854,7 @@ including dependencies to other base modules of Neuraxle:</p>
 
 <dl class="method">
 <dt id="neuraxle.pipeline.BasePipeline.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L49"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.BasePipeline.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L58"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.BasePipeline.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform given data inputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -902,7 +868,7 @@ including dependencies to other base modules of Neuraxle:</p>
 
 <dl class="method">
 <dt id="neuraxle.pipeline.BasePipeline.fit_transform">
-<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None) -&gt; ('BasePipeline'</em>, <em>typing.Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.BasePipeline.fit_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; Tuple[neuraxle.pipeline.BasePipeline, Any]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.BasePipeline.fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit, and transform step with the given data inputs, and expected outputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -926,59 +892,33 @@ including dependencies to other base modules of Neuraxle:</p>
 
 <dl class="class">
 <dt id="neuraxle.pipeline.Pipeline">
-<em class="property">class </em><code class="descclassname">neuraxle.pipeline.</code><code class="descname">Pipeline</code><span class="sig-paren">(</span><em>steps: List[Union[Tuple[str, neuraxle.base.BaseTransformer], neuraxle.base.BaseTransformer]], cache_folder='cache'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L58"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.pipeline.</code><code class="descname">Pipeline</code><span class="sig-paren">(</span><em>steps: List[Union[Tuple[str, BaseTransformerT], BaseTransformerT]]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L67"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#neuraxle.pipeline.BasePipeline" title="neuraxle.pipeline.BasePipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.pipeline.BasePipeline</span></code></a></p>
-<p>Fits and transform steps</p>
+<p>Handle methods are used to handle the fit, transform, fit_transform and inverse_transform methods
+using a pipe and filter design pattern to handle the steps sequentially. Each step is called
+with the previous step’s output as input. The last step’s output is returned as final output.</p>
+<p>Think like the termina pipe commands chained together with the character ‘|’, but where each
+command is a step, and where each step can acquire some state from fitting the transformed
+output of the previous step. This way, the steps can be chained together and the state of each
+step can be saved and reused in the end.</p>
+<p>When a pipeline fit, a new pipeline is returned containing the fitted steps within itself.</p>
+<p>Also check out the parallelized version of the pipeline,
+<a class="reference internal" href="distributed/neuraxle.distributed.streaming.html#neuraxle.distributed.streaming.SequentialQueuedPipeline" title="neuraxle.distributed.streaming.SequentialQueuedPipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">SequentialQueuedPipeline</span></code></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#neuraxle.pipeline.BasePipeline" title="neuraxle.pipeline.BasePipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasePipeline</span></code></a>,
+<a class="reference internal" href="#neuraxle.pipeline.MiniBatchSequentialPipeline" title="neuraxle.pipeline.MiniBatchSequentialPipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">MiniBatchSequentialPipeline</span></code></a>
+<a class="reference internal" href="distributed/neuraxle.distributed.streaming.html#neuraxle.distributed.streaming.SequentialQueuedPipeline" title="neuraxle.distributed.streaming.SequentialQueuedPipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">SequentialQueuedPipeline</span></code></a></p>
+</div>
 <dl class="method">
 <dt id="neuraxle.pipeline.Pipeline.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>steps: List[Union[Tuple[str, neuraxle.base.BaseTransformer], neuraxle.base.BaseTransformer]], cache_folder='cache'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>steps: List[Union[Tuple[str, BaseTransformerT], BaseTransformerT]]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L89"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.pipeline.Pipeline.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs: Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L67"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline.transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>After loading the last checkpoint, transform each pipeline steps</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data_inputs</strong> – the data input to transform</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>transformed data inputs</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.pipeline.Pipeline.transform_data_container">
-<code class="descname">transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L77"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline.transform_data_container" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.pipeline.Pipeline.fit_transform">
-<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None) -&gt; ('Pipeline'</em>, <em>typing.Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L84"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline.fit_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>After loading the last checkpoint, fit transform each pipeline steps</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_inputs</strong> – the data input to fit on</p></li>
-<li><p><strong>expected_outputs</strong> – the expected data output to fit on</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the pipeline itself</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.pipeline.Pipeline.fit_transform_data_container">
-<code class="descname">fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container</em><span class="sig-paren">)</span> &#x2192; Tuple[neuraxle.pipeline.Pipeline, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L96"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline.fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="neuraxle.pipeline.Pipeline.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.pipeline.Pipeline<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L102"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; neuraxle.pipeline.Pipeline<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L92"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>After loading the last checkpoint, fit each pipeline steps</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -994,13 +934,39 @@ including dependencies to other base modules of Neuraxle:</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.pipeline.Pipeline.fit_data_container">
-<code class="descname">fit_data_container</code><span class="sig-paren">(</span><em>data_container</em><span class="sig-paren">)</span> &#x2192; neuraxle.pipeline.Pipeline<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L113"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline.fit_data_container" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="neuraxle.pipeline.Pipeline.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>data_inputs: Any</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L102"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform each pipeline steps with the pipe and filter design pattern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_inputs</strong> – the data input to transform</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>transformed data inputs</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.pipeline.Pipeline.fit_transform">
+<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>data_inputs</em>, <em>expected_outputs=None</em><span class="sig-paren">)</span> &#x2192; Tuple[neuraxle.pipeline.Pipeline, Any]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L112"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>After loading the last checkpoint, fit transform each pipeline steps</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_inputs</strong> – the data input to fit on</p></li>
+<li><p><strong>expected_outputs</strong> – the expected data output to fit on</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the pipeline itself</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.pipeline.Pipeline.inverse_transform">
-<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span> &#x2192; Any<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L116"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse_transform</code><span class="sig-paren">(</span><em>processed_outputs</em><span class="sig-paren">)</span> &#x2192; Any<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L124"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline.inverse_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>After transforming all data inputs, and obtaining a prediction, we can inverse transform the processed outputs</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1013,14 +979,23 @@ including dependencies to other base modules of Neuraxle:</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.pipeline.Pipeline._inverse_transform_data_container">
-<code class="descname">_inverse_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L131"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline._inverse_transform_data_container" title="Permalink to this definition">¶</a></dt>
-<dd><p>After transforming all data inputs, and obtaining a prediction, we can inverse transform the processed outputs</p>
-</dd></dl>
+<dt id="neuraxle.pipeline.Pipeline.fit_data_container">
+<code class="descname">fit_data_container</code><span class="sig-paren">(</span><em>data_container</em><span class="sig-paren">)</span> &#x2192; neuraxle.pipeline.Pipeline<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline.fit_data_container" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.pipeline.Pipeline.transform_data_container">
+<code class="descname">transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L143"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline.transform_data_container" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.pipeline.Pipeline.fit_transform_data_container">
+<code class="descname">fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container</em><span class="sig-paren">)</span> &#x2192; Tuple[neuraxle.pipeline.Pipeline, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline.fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.pipeline.Pipeline._fit_data_container">
-<code class="descname">_fit_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.pipeline.Pipeline<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L140"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline._fit_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_fit_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.pipeline.Pipeline<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L153"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline._fit_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>After loading the last checkpoint, fit transform each pipeline steps,
 but only fit the last pipeline step.</p>
 <dl class="field-list simple">
@@ -1037,25 +1012,8 @@ but only fit the last pipeline step.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.pipeline.Pipeline._fit_transform_data_container">
-<code class="descname">_fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext) -&gt; ('Pipeline'</em>, <em>&lt;class 'neuraxle.data_container.DataContainer'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline._fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
-<dd><p>After loading the last checkpoint, fit transform each pipeline steps</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to fit transform on</p></li>
-<li><p><strong>context</strong> (<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>tuple(pipeline, data_container)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
 <dt id="neuraxle.pipeline.Pipeline._transform_data_container">
-<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L191"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline._transform_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline._transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>After loading the last checkpoint, transform each pipeline steps</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -1071,28 +1029,27 @@ but only fit the last pipeline step.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.pipeline.Pipeline._load_checkpoint">
-<code class="descname">_load_checkpoint</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[List[Union[Tuple[str, neuraxle.base.BaseTransformer], neuraxle.base.BaseTransformer]], neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L205"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline._load_checkpoint" title="Permalink to this definition">¶</a></dt>
-<dd><p>Try loading a pipeline cache with the passed data container.
-If pipeline cache loading succeeds, find steps left to do,
-and load the latest data container.</p>
+<dt id="neuraxle.pipeline.Pipeline._fit_transform_data_container">
+<code class="descname">_fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[neuraxle.pipeline.Pipeline, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L186"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline._fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
+<dd><p>After loading the last checkpoint, fit transform each pipeline steps</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to resume</p></li>
-<li><p><strong>context</strong> (<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – the execution context to resume</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to fit transform on</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>tuple(steps left to do, last checkpoint data container)</p>
+<dd class="field-even"><p>tuple(pipeline, data_container)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
-<dt id="neuraxle.pipeline.Pipeline.flush_all_cache">
-<code class="descname">flush_all_cache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L218"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline.flush_all_cache" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="neuraxle.pipeline.Pipeline._inverse_transform_data_container">
+<code class="descname">_inverse_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L205"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Pipeline._inverse_transform_data_container" title="Permalink to this definition">¶</a></dt>
+<dd><p>After transforming all data inputs, and obtaining a prediction, we can inverse transform the processed outputs</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="neuraxle.pipeline.Pipeline._abc_impl">
@@ -1102,78 +1059,8 @@ and load the latest data container.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="neuraxle.pipeline.ResumablePipeline">
-<em class="property">class </em><code class="descclassname">neuraxle.pipeline.</code><code class="descname">ResumablePipeline</code><span class="sig-paren">(</span><em>steps: List[Union[Tuple[str, neuraxle.base.BaseTransformer], neuraxle.base.BaseTransformer]], cache_folder='cache'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L222"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.ResumablePipeline" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.ResumableStepMixin" title="neuraxle.base.ResumableStepMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.ResumableStepMixin</span></code></a>, <a class="reference internal" href="#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.pipeline.Pipeline</span></code></a></p>
-<p>Fits and transform steps after latest checkpoint</p>
-<dl class="method">
-<dt id="neuraxle.pipeline.ResumablePipeline._load_checkpoint">
-<code class="descname">_load_checkpoint</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[List[Union[Tuple[str, neuraxle.base.BaseTransformer], neuraxle.base.BaseTransformer]], neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L227"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.ResumablePipeline._load_checkpoint" title="Permalink to this definition">¶</a></dt>
-<dd><p>Try loading a pipeline cache with the passed data container.
-If pipeline cache loading succeeds, find steps left to do,
-and load the latest data container.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to resume</p></li>
-<li><p><strong>context</strong> (<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – the execution context to resume</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>tuple(steps left to do, last checkpoint data container)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.pipeline.ResumablePipeline._assign_loaded_pipeline_into_self">
-<code class="descname">_assign_loaded_pipeline_into_self</code><span class="sig-paren">(</span><em>loaded_self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L259"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.ResumablePipeline._assign_loaded_pipeline_into_self" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.pipeline.ResumablePipeline._get_starting_step_info">
-<code class="descname">_get_starting_step_info</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[int, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L265"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.ResumablePipeline._get_starting_step_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find the index of the latest step that can be resumed</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to resume</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>index of the latest resumable step, data container at starting step</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.pipeline.ResumablePipeline.should_resume">
-<code class="descname">should_resume</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L288"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.ResumablePipeline.should_resume" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return True if the pipeline has a saved checkpoint that it can resume from</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p>
-</dd>
-<dt class="field-even">Parameters</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>context</strong> (<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>) – execution context</p></li>
-<li><p><strong>data_container</strong> (<a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>) – the data container to resume</p></li>
-</ul>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.pipeline.ResumablePipeline._abc_impl">
-<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.pipeline.ResumablePipeline._abc_impl" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
 <dt id="neuraxle.pipeline.MiniBatchSequentialPipeline">
-<em class="property">class </em><code class="descclassname">neuraxle.pipeline.</code><code class="descname">MiniBatchSequentialPipeline</code><span class="sig-paren">(</span><em>steps: List[Union[Tuple[str, neuraxle.base.BaseTransformer], neuraxle.base.BaseTransformer]], batch_size=None, keep_incomplete_batch: bool = None, default_value_data_inputs=&lt;neuraxle.data_container.AbsentValuesNullObject object&gt;, default_value_expected_outputs=None, cache_folder=None, mute_joiner_batch_size_warning: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L304"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.pipeline.</code><code class="descname">MiniBatchSequentialPipeline</code><span class="sig-paren">(</span><em>steps: List[Union[Tuple[str, BaseTransformerT], BaseTransformerT]], batch_size=None, keep_incomplete_batch: bool = None, default_value_data_inputs=&lt;neuraxle.data_container.AbsentValuesNullObject object&gt;, default_value_expected_outputs=None, mute_joiner_batch_size_warning: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L215"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="neuraxle.base.html#neuraxle.base._CustomHandlerMethods" title="neuraxle.base._CustomHandlerMethods"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base._CustomHandlerMethods</span></code></a>, <a class="reference internal" href="neuraxle.base.html#neuraxle.base.ForceHandleMixin" title="neuraxle.base.ForceHandleMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.ForceHandleMixin</span></code></a>, <a class="reference internal" href="#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.pipeline.Pipeline</span></code></a></p>
 <p>Mini Batch Sequential Pipeline class to create a pipeline processing data inputs in batch.</p>
 <p>Provide a default batch size :</p>
@@ -1271,7 +1158,7 @@ to trim absent values from the batch
 for padding and values outside iteration range, or <code class="xref py py-class docutils literal notranslate"><span class="pre">AbsentValuesNullObject</span></code>
 to trim absent values from the batch
 :param cache_folder: cache_folder if its at the root of the pipeline
-:param mute_joiner_batch_size_warning: If False, will log a warning when automatically setting the joiner batch_size attribut.</p>
+:param mute_joiner_batch_size_warning: If False, will log a warning when automatically setting the joiner batch_size attribute.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer.minibatches" title="neuraxle.data_container.DataContainer.minibatches"><code class="xref py py-func docutils literal notranslate"><span class="pre">minibatches()</span></code></a>,
@@ -1280,22 +1167,23 @@ to trim absent values from the batch
 <a class="reference internal" href="#neuraxle.pipeline.Barrier" title="neuraxle.pipeline.Barrier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Barrier</span></code></a>,
 <a class="reference internal" href="#neuraxle.pipeline.Joiner" title="neuraxle.pipeline.Joiner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Joiner</span></code></a>,
 <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>,
-<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a></p>
+<a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>,
+<a class="reference internal" href="distributed/neuraxle.distributed.streaming.html#neuraxle.distributed.streaming.SequentialQueuedPipeline" title="neuraxle.distributed.streaming.SequentialQueuedPipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">SequentialQueuedPipeline</span></code></a></p>
 </div>
 <dl class="method">
 <dt id="neuraxle.pipeline.MiniBatchSequentialPipeline.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>steps: List[Union[Tuple[str, neuraxle.base.BaseTransformer], neuraxle.base.BaseTransformer]], batch_size=None, keep_incomplete_batch: bool = None, default_value_data_inputs=&lt;neuraxle.data_container.AbsentValuesNullObject object&gt;, default_value_expected_outputs=None, cache_folder=None, mute_joiner_batch_size_warning: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L416"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>steps: List[Union[Tuple[str, BaseTransformerT], BaseTransformerT]], batch_size=None, keep_incomplete_batch: bool = None, default_value_data_inputs=&lt;neuraxle.data_container.AbsentValuesNullObject object&gt;, default_value_expected_outputs=None, mute_joiner_batch_size_warning: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L328"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.pipeline.MiniBatchSequentialPipeline.set_batch_size">
-<code class="descname">set_batch_size</code><span class="sig-paren">(</span><em>batch_size</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L440"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline.set_batch_size" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_batch_size</code><span class="sig-paren">(</span><em>batch_size</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L351"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline.set_batch_size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.pipeline.MiniBatchSequentialPipeline.transform_data_container">
-<code class="descname">transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L491"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline.transform_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L402"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline.transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform all sub pipelines splitted by the Barrier steps.
 :rtype: <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>
 :type context: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
@@ -1307,7 +1195,7 @@ to trim absent values from the batch
 
 <dl class="method">
 <dt id="neuraxle.pipeline.MiniBatchSequentialPipeline.fit_data_container">
-<code class="descname">fit_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L512"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline.fit_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L421"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline.fit_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit all sub pipelines splitted by the Barrier steps.
 :rtype: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStep</span></code></a>
 :type context: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
@@ -1319,7 +1207,7 @@ to trim absent values from the batch
 
 <dl class="method">
 <dt id="neuraxle.pipeline.MiniBatchSequentialPipeline.fit_transform_data_container">
-<code class="descname">fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[neuraxle.base.BaseStep, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L543"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline.fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[neuraxle.base.BaseStep, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L431"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline.fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform all sub pipelines splitted by the Barrier steps.
 :type context: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
 :type data_container: <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>
@@ -1330,24 +1218,24 @@ to trim absent values from the batch
 
 <dl class="method">
 <dt id="neuraxle.pipeline.MiniBatchSequentialPipeline._create_sub_pipelines">
-<code class="descname">_create_sub_pipelines</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[neuraxle.pipeline.MiniBatchSequentialPipeline]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L575"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline._create_sub_pipelines" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_create_sub_pipelines</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[neuraxle.pipeline.MiniBatchSequentialPipeline]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L461"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline._create_sub_pipelines" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create sub pipelines by splitting the steps by the join type name.
 :return: list of sub pipelines</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.pipeline.MiniBatchSequentialPipeline._MiniBatchSequentialPipeline__patch_barriers_batch_size">
-<code class="descname">_MiniBatchSequentialPipeline__patch_barriers_batch_size</code><span class="sig-paren">(</span><em>batch_size</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L454"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline._MiniBatchSequentialPipeline__patch_barriers_batch_size" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_MiniBatchSequentialPipeline__patch_barriers_batch_size</code><span class="sig-paren">(</span><em>batch_size</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L365"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline._MiniBatchSequentialPipeline__patch_barriers_batch_size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.pipeline.MiniBatchSequentialPipeline._MiniBatchSequentialPipeline__patch_missing_barrier">
-<code class="descname">_MiniBatchSequentialPipeline__patch_missing_barrier</code><span class="sig-paren">(</span><em>batch_size: int</em>, <em>keep_incomplete_batch: bool</em>, <em>default_value_data_inputs: Union[Any</em>, <em>neuraxle.data_container.AbsentValuesNullObject] = None</em>, <em>default_value_expected_outputs: Union[Any</em>, <em>neuraxle.data_container.AbsentValuesNullObject] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L465"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline._MiniBatchSequentialPipeline__patch_missing_barrier" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_MiniBatchSequentialPipeline__patch_missing_barrier</code><span class="sig-paren">(</span><em>batch_size: int</em>, <em>keep_incomplete_batch: bool</em>, <em>default_value_data_inputs: Union[Any</em>, <em>neuraxle.data_container.AbsentValuesNullObject] = None</em>, <em>default_value_expected_outputs: Union[Any</em>, <em>neuraxle.data_container.AbsentValuesNullObject] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L376"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline._MiniBatchSequentialPipeline__patch_missing_barrier" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.pipeline.MiniBatchSequentialPipeline._MiniBatchSequentialPipeline__validate_barriers_batch_size">
-<code class="descname">_MiniBatchSequentialPipeline__validate_barriers_batch_size</code><span class="sig-paren">(</span><em>batch_size</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L443"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline._MiniBatchSequentialPipeline__validate_barriers_batch_size" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_MiniBatchSequentialPipeline__validate_barriers_batch_size</code><span class="sig-paren">(</span><em>batch_size</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L354"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.MiniBatchSequentialPipeline._MiniBatchSequentialPipeline__validate_barriers_batch_size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1359,7 +1247,7 @@ to trim absent values from the batch
 
 <dl class="class">
 <dt id="neuraxle.pipeline.Barrier">
-<em class="property">class </em><code class="descclassname">neuraxle.pipeline.</code><code class="descname">Barrier</code><span class="sig-paren">(</span><em>savers=None</em>, <em>name=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L588"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Barrier" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.pipeline.</code><code class="descname">Barrier</code><span class="sig-paren">(</span><em>name=None</em>, <em>savers=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L474"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Barrier" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.Identity" title="neuraxle.base.Identity"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.Identity</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
 <p>A Barrier step to be used in a minibatch sequential pipeline. It forces all the
 data inputs to get to the barrier in a sub pipeline before going through to the next sub-pipeline.</p>
@@ -1380,7 +1268,7 @@ data inputs to get to the barrier in a sub pipeline before going through to the 
 </div>
 <dl class="method">
 <dt id="neuraxle.pipeline.Barrier.join_transform">
-<code class="descname">join_transform</code><span class="sig-paren">(</span><em>step: neuraxle.base.TruncableSteps</em>, <em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L610"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Barrier.join_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">join_transform</code><span class="sig-paren">(</span><em>step: neuraxle.base.TruncableSteps</em>, <em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L496"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Barrier.join_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute the given pipeline <a class="reference internal" href="#neuraxle.pipeline.Pipeline.transform" title="neuraxle.pipeline.Pipeline.transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">transform()</span></code></a> with the given data container, and execution context.
 :param step: truncable steps to execute
 :type step: TruncableSteps
@@ -1394,7 +1282,7 @@ data inputs to get to the barrier in a sub pipeline before going through to the 
 
 <dl class="method">
 <dt id="neuraxle.pipeline.Barrier.join_fit_transform">
-<code class="descname">join_fit_transform</code><span class="sig-paren">(</span><em>step: neuraxle.pipeline.Pipeline</em>, <em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[Any, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L626"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Barrier.join_fit_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">join_fit_transform</code><span class="sig-paren">(</span><em>step: neuraxle.pipeline.Pipeline</em>, <em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[Any, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L512"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Barrier.join_fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute the given pipeline <a class="reference internal" href="#neuraxle.pipeline.Pipeline.fit_transform" title="neuraxle.pipeline.Pipeline.fit_transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">fit_transform()</span></code></a> with the given data container, and execution context.
 :type context: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
 :type data_container: <a class="reference internal" href="neuraxle.data_container.html#neuraxle.data_container.DataContainer" title="neuraxle.data_container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a>
@@ -1414,7 +1302,7 @@ data inputs to get to the barrier in a sub pipeline before going through to the 
 
 <dl class="class">
 <dt id="neuraxle.pipeline.Joiner">
-<em class="property">class </em><code class="descclassname">neuraxle.pipeline.</code><code class="descname">Joiner</code><span class="sig-paren">(</span><em>batch_size: int</em>, <em>keep_incomplete_batch: bool = True</em>, <em>default_value_data_inputs=&lt;neuraxle.data_container.AbsentValuesNullObject object&gt;</em>, <em>default_value_expected_outputs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L639"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Joiner" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.pipeline.</code><code class="descname">Joiner</code><span class="sig-paren">(</span><em>batch_size: int</em>, <em>keep_incomplete_batch: bool = True</em>, <em>default_value_data_inputs=&lt;neuraxle.data_container.AbsentValuesNullObject object&gt;</em>, <em>default_value_expected_outputs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L525"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Joiner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#neuraxle.pipeline.Barrier" title="neuraxle.pipeline.Barrier"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.pipeline.Barrier</span></code></a></p>
 <p>A Special Barrier step that joins the transformed mini batches together with list.extend method.</p>
 <div class="admonition seealso">
@@ -1424,13 +1312,13 @@ data inputs to get to the barrier in a sub pipeline before going through to the 
 </div>
 <dl class="method">
 <dt id="neuraxle.pipeline.Joiner.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>batch_size: int</em>, <em>keep_incomplete_batch: bool = True</em>, <em>default_value_data_inputs=&lt;neuraxle.data_container.AbsentValuesNullObject object&gt;</em>, <em>default_value_expected_outputs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L648"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Joiner.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>batch_size: int</em>, <em>keep_incomplete_batch: bool = True</em>, <em>default_value_data_inputs=&lt;neuraxle.data_container.AbsentValuesNullObject object&gt;</em>, <em>default_value_expected_outputs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L534"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Joiner.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.pipeline.Joiner.join_transform">
-<code class="descname">join_transform</code><span class="sig-paren">(</span><em>step: neuraxle.pipeline.Pipeline</em>, <em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L661"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Joiner.join_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">join_transform</code><span class="sig-paren">(</span><em>step: neuraxle.pipeline.Pipeline</em>, <em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L547"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Joiner.join_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Concatenate the pipeline transform output of each batch of self.batch_size together.
 :type context: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
 :param step: pipeline to transform on
@@ -1444,7 +1332,7 @@ data inputs to get to the barrier in a sub pipeline before going through to the 
 
 <dl class="method">
 <dt id="neuraxle.pipeline.Joiner.join_fit_transform">
-<code class="descname">join_fit_transform</code><span class="sig-paren">(</span><em>step: neuraxle.pipeline.Pipeline</em>, <em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[Any, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L686"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Joiner.join_fit_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">join_fit_transform</code><span class="sig-paren">(</span><em>step: neuraxle.pipeline.Pipeline</em>, <em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[Any, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L572"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.Joiner.join_fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Concatenate the pipeline fit transform output of each batch of self.batch_size together.
 :type context: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
 :param step: pipeline to fit transform on
@@ -1465,12 +1353,13 @@ data inputs to get to the barrier in a sub pipeline before going through to the 
 
 <dl class="class">
 <dt id="neuraxle.pipeline.ZipMinibatchJoiner">
-<em class="property">class </em><code class="descclassname">neuraxle.pipeline.</code><code class="descname">ZipMinibatchJoiner</code><span class="sig-paren">(</span><em>batch_size: int</em>, <em>keep_incomplete_batch: bool = True</em>, <em>default_value_data_inputs=&lt;neuraxle.data_container.AbsentValuesNullObject object&gt;</em>, <em>default_value_expected_outputs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L714"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.ZipMinibatchJoiner" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.pipeline.</code><code class="descname">ZipMinibatchJoiner</code><span class="sig-paren">(</span><em>batch_size: int</em>, <em>keep_incomplete_batch: bool = True</em>, <em>default_value_data_inputs=&lt;neuraxle.data_container.AbsentValuesNullObject object&gt;</em>, <em>default_value_expected_outputs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L600"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.ZipMinibatchJoiner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#neuraxle.pipeline.Joiner" title="neuraxle.pipeline.Joiner"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.pipeline.Joiner</span></code></a></p>
-<p>Zips together minibatch outputs, i.e. returns a DataContainer where the first element is a tuple of every minibatches first element and so on.</p>
+<p>Zips together minibatch outputs, i.e. returns a DataContainer where the first
+element is a tuple of every minibatches first element and so on.</p>
 <dl class="method">
 <dt id="neuraxle.pipeline.ZipMinibatchJoiner.join_transform">
-<code class="descname">join_transform</code><span class="sig-paren">(</span><em>step: neuraxle.base.TruncableSteps</em>, <em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.ZipDataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L719"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.ZipMinibatchJoiner.join_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">join_transform</code><span class="sig-paren">(</span><em>step: neuraxle.base.TruncableSteps</em>, <em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.ZipDataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L606"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.ZipMinibatchJoiner.join_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Concatenate the pipeline transform output of each batch of self.batch_size together.
 :type context: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
 :param step: pipeline to transform on
@@ -1484,7 +1373,7 @@ data inputs to get to the barrier in a sub pipeline before going through to the 
 
 <dl class="method">
 <dt id="neuraxle.pipeline.ZipMinibatchJoiner.join_fit_transform">
-<code class="descname">join_fit_transform</code><span class="sig-paren">(</span><em>step: neuraxle.pipeline.Pipeline</em>, <em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[Any, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/d24c7c1/neuraxle/pipeline.py#L735"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.ZipMinibatchJoiner.join_fit_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">join_fit_transform</code><span class="sig-paren">(</span><em>step: neuraxle.pipeline.Pipeline</em>, <em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[Any, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/af96f79/neuraxle/pipeline.py#L622"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.pipeline.ZipMinibatchJoiner.join_fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Concatenate the pipeline fit transform output of each batch of self.batch_size together.
 :type context: <a class="reference internal" href="neuraxle.base.html#neuraxle.base.ExecutionContext" title="neuraxle.base.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
 :param step: pipeline to fit transform on
