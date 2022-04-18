@@ -11,7 +11,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.neuraxle.org/stable/Neuraxle/README.html" />
   <meta property="og:site_name" content="Neuraxle" />
-  <meta property="og:description" content="Code Machine Learning Pipelines - The Right Way. Neuraxle Logo Neuraxle is a Machine Learning (ML) library for building machine learning pipelines. Component-Based: Build encapsulated steps, then c..." />
+  <meta property="og:description" content="Code Machine Learning Pipelines - The Right Way. Neuraxle Logo Neuraxle is a Machine Learning (ML) library for building clean machine learning pipelines using the right abstractions. Component-Base..." />
   <meta property="og:image" content="https://www.neuraxle.org/stable/_static/neuraxle_logo.png" />
   <meta property="og:image:alt" content="Neuraxle logo" />
   <meta property="og:locale" content="en_US" />
@@ -564,7 +564,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../api/metaopt/data/neuraxle.metaopt.data.json_repo.html">neuraxle.metaopt.data.json_repo</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../api/metaopt/data/neuraxle.metaopt.data.json_repo.html#neuraxle-s-sqlalchemy-hyperparameter-repository-classes">Neuraxle’s SQLAlchemy Hyperparameter Repository Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/metaopt/data/neuraxle.metaopt.data.json_repo.html#neuraxle-s-json-hyperparameter-repository-classes">Neuraxle’s JSON Hyperparameter Repository Classes</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../api/metaopt/data/neuraxle.metaopt.data.json_repo.html#examples-using-neuraxle-metaopt-data-json-repo-hyperparamsondiskrepository">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.data.json_repo.HyperparamsOnDiskRepository</span></code></a></li>
 </ul>
 </li>
@@ -690,7 +690,7 @@
 <a class="reference external image-reference" href="https://pypi.org/project/neuraxle/"><img alt="https://img.shields.io/github/v/release/neuraxio/neuraxle?:alt:GitHubrelease(latestbydate)" src="https://img.shields.io/github/v/release/neuraxio/neuraxle?:alt:GitHubrelease(latestbydate)" /></a>
 <a class="reference external image-reference" href="https://www.codacy.com/gh/Neuraxio/Neuraxle/dashboard"><img alt="https://img.shields.io/codacy/grade/d56d39746e29468bac700ee055694192?:alt:Codacy" src="https://img.shields.io/codacy/grade/d56d39746e29468bac700ee055694192?:alt:Codacy" /></a>
 <img alt="Neuraxle Logo" class="align-center" src="../_images/neuraxle_logo.png" />
-<p>Neuraxle is a Machine Learning (ML) library for building machine learning pipelines.</p>
+<p>Neuraxle is a Machine Learning (ML) library for building clean machine learning pipelines using the right abstractions.</p>
 <ul class="simple">
 <li><p><strong>Component-Based</strong>: Build encapsulated steps, then compose them to build complex pipelines.</p></li>
 <li><p><strong>Evolving State</strong>: Each pipeline step can fit, and evolve through the learning process</p></li>
@@ -716,29 +716,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
     <span class="n">TrainOnlyWrapper</span><span class="p">(</span><span class="n">DataShuffler</span><span class="p">()),</span>
     <span class="n">WindowTimeSeries</span><span class="p">(),</span>
-    <span class="n">MiniBatchSequentialPipeline</span><span class="p">([</span>
-        <span class="n">Tensorflow2ModelStep</span><span class="p">(</span>
-            <span class="n">create_model</span><span class="o">=</span><span class="n">create_model</span><span class="p">,</span>
-            <span class="n">create_optimizer</span><span class="o">=</span><span class="n">create_optimizer</span><span class="p">,</span>
-            <span class="n">create_loss</span><span class="o">=</span><span class="n">create_loss</span>
-        <span class="p">)</span><span class="o">.</span><span class="n">set_hyperparams</span><span class="p">(</span><span class="n">HyperparameterSpace</span><span class="p">({</span>
-            <span class="s1">&#39;hidden_dim&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
-            <span class="s1">&#39;layers_stacked_count&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-            <span class="s1">&#39;lambda_loss_amount&#39;</span><span class="p">:</span> <span class="mf">0.0003</span><span class="p">,</span>
-            <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.001</span>
-            <span class="s1">&#39;window_size_future&#39;</span><span class="p">:</span> <span class="n">sequence_length</span><span class="p">,</span>
-            <span class="s1">&#39;output_dim&#39;</span><span class="p">:</span> <span class="n">output_dim</span><span class="p">,</span>
-            <span class="s1">&#39;input_dim&#39;</span><span class="p">:</span> <span class="n">input_dim</span>
-        <span class="p">}))</span><span class="o">.</span><span class="n">set_hyperparams_space</span><span class="p">(</span><span class="n">HyperparameterSpace</span><span class="p">({</span>
-            <span class="s1">&#39;hidden_dim&#39;</span><span class="p">:</span> <span class="n">RandInt</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">750</span><span class="p">),</span>
-            <span class="s1">&#39;layers_stacked_count&#39;</span><span class="p">:</span> <span class="n">RandInt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
-            <span class="s1">&#39;lambda_loss_amount&#39;</span><span class="p">:</span> <span class="n">Uniform</span><span class="p">(</span><span class="mf">0.0003</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">),</span>
-            <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="n">Uniform</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span>
-            <span class="s1">&#39;window_size_future&#39;</span><span class="p">:</span> <span class="n">FixedHyperparameter</span><span class="p">(</span><span class="n">sequence_length</span><span class="p">),</span>
-            <span class="s1">&#39;output_dim&#39;</span><span class="p">:</span> <span class="n">FixedHyperparameter</span><span class="p">(</span><span class="n">output_dim</span><span class="p">),</span>
-            <span class="s1">&#39;input_dim&#39;</span><span class="p">:</span> <span class="n">FixedHyperparameter</span><span class="p">(</span><span class="n">input_dim</span><span class="p">)</span>
-        <span class="p">}))</span>
-    <span class="p">])</span>
+
 <span class="p">])</span>
 
 <span class="c1"># Load data</span>
@@ -753,35 +731,79 @@
 </pre></div>
 </div>
 <p>You can also tune your hyperparameters using AutoML algorithms such as the TPE:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">auto_ml</span> <span class="o">=</span> <span class="n">AutoML</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define classification models with hyperparams.</span>
+
+<span class="c1"># All SKLearn models can be used and compared to each other.</span>
+<span class="c1"># Define them an hyperparameter space like this:</span>
+<span class="n">decision_tree_classifier</span> <span class="o">=</span> <span class="n">SKLearnWrapper</span><span class="p">(</span>
+    <span class="n">DecisionTreeClassifier</span><span class="p">(),</span>
+    <span class="n">HyperparameterSpace</span><span class="p">({</span>
+        <span class="s1">&#39;criterion&#39;</span><span class="p">:</span> <span class="n">Choice</span><span class="p">([</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span> <span class="s1">&#39;entropy&#39;</span><span class="p">]),</span>
+        <span class="s1">&#39;splitter&#39;</span><span class="p">:</span> <span class="n">Choice</span><span class="p">([</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="s1">&#39;random&#39;</span><span class="p">]),</span>
+        <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span> <span class="n">RandInt</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+        <span class="s1">&#39;min_samples_split&#39;</span><span class="p">:</span> <span class="n">RandInt</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="p">}))</span>
+
+<span class="c1"># More SKLearn models can be added (code details skipped):</span>
+<span class="n">random_forest_classifier</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">logistic_regression</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># It&#39;s possible to mix TensorFlow models into Neuraxle as well,</span>
+<span class="c1"># using Neuraxle-Tensorflow&#39; Tensorflow2ModelStep class, passing in</span>
+<span class="c1"># the TensorFlow functions like create_model and create_optimizer:</span>
+<span class="n">minibatched_tensorflow_classifier</span> <span class="o">=</span> <span class="n">EpochRepeater</span><span class="p">(</span><span class="n">MiniBatchSequentialPipeline</span><span class="p">([</span>
+        <span class="n">Tensorflow2ModelStep</span><span class="p">(</span>
+            <span class="n">create_model</span><span class="o">=</span><span class="n">create_linear_model</span><span class="p">,</span>
+            <span class="n">create_optimizer</span><span class="o">=</span><span class="n">create_adam_optimizer</span><span class="p">,</span>
+            <span class="n">create_loss</span><span class="o">=</span><span class="n">create_mse_loss_with_regularization</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">set_hyperparams_space</span><span class="p">(</span><span class="n">HyperparameterSpace</span><span class="p">({</span>
+            <span class="s1">&#39;hidden_dim&#39;</span><span class="p">:</span> <span class="n">RandInt</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">750</span><span class="p">),</span>
+            <span class="s1">&#39;layers_stacked_count&#39;</span><span class="p">:</span> <span class="n">RandInt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+            <span class="s1">&#39;lambda_loss_amount&#39;</span><span class="p">:</span> <span class="n">Uniform</span><span class="p">(</span><span class="mf">0.0003</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">),</span>
+            <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="n">Uniform</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span>
+            <span class="s1">&#39;window_size_future&#39;</span><span class="p">:</span> <span class="n">FixedHyperparameter</span><span class="p">(</span><span class="n">sequence_length</span><span class="p">),</span>
+            <span class="s1">&#39;output_dim&#39;</span><span class="p">:</span> <span class="n">FixedHyperparameter</span><span class="p">(</span><span class="n">output_dim</span><span class="p">),</span>
+            <span class="s1">&#39;input_dim&#39;</span><span class="p">:</span> <span class="n">FixedHyperparameter</span><span class="p">(</span><span class="n">input_dim</span><span class="p">)</span>
+        <span class="p">}))</span>
+    <span class="p">]),</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Define a classification pipeline that lets the AutoML loop choose one of the classifier.</span>
+<span class="c1"># See also ChooseOneStepOf documentation: https://www.neuraxle.org/stable/api/steps/neuraxle.steps.flow.html#neuraxle.steps.flow.ChooseOneStepOf</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="n">ChooseOneStepOf</span><span class="p">([</span>
+        <span class="n">decision_tree_classifier</span><span class="p">,</span>
+        <span class="n">random_forest_classifier</span><span class="p">,</span>
+        <span class="n">logistic_regression</span><span class="p">,</span>
+        <span class="n">minibatched_tensorflow_classifier</span><span class="p">,</span>
+    <span class="p">])</span>
+<span class="p">])</span>
+
+<span class="c1"># Create the AutoML loop object.</span>
+<span class="c1"># See also AutoML documentation: https://www.neuraxle.org/stable/api/metaopt/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML</span>
+<span class="n">auto_ml</span> <span class="o">=</span> <span class="n">AutoML</span><span class="p">(</span>
     <span class="n">pipeline</span><span class="o">=</span><span class="n">pipeline</span><span class="p">,</span>
-    <span class="n">hyperparams_optimizer</span><span class="o">=</span><span class="n">TreeParzenEstimatorHyperparameterSelectionStrategy</span><span class="p">(</span>
-        <span class="n">number_of_initial_random_step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-        <span class="n">quantile_threshold</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
-        <span class="n">number_good_trials_max_cap</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
-        <span class="n">number_possible_hyperparams_candidates</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-        <span class="n">prior_weight</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span>
-        <span class="n">use_linear_forgetting_weights</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">number_recent_trial_at_full_weights</span><span class="o">=</span><span class="mi">25</span>
+    <span class="n">hyperparams_optimizer</span><span class="o">=</span><span class="n">TreeParzenEstimator</span><span class="p">(</span>
+        <span class="c1"># This is the TPE as in Hyperopt.</span>
+        <span class="n">number_of_initial_random_step</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
     <span class="p">),</span>
     <span class="n">validation_splitter</span><span class="o">=</span><span class="n">ValidationSplitter</span><span class="p">(</span><span class="n">validation_size</span><span class="o">=</span><span class="mf">0.20</span><span class="p">),</span>
     <span class="n">scoring_callback</span><span class="o">=</span><span class="n">ScoringCallback</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">,</span> <span class="n">higher_score_is_better</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-    <span class="n">callbacks</span><span class="p">[</span>
-        <span class="n">MetricCallback</span><span class="p">(</span><span class="n">f1_score</span><span class="p">,</span> <span class="n">higher_score_is_better</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-        <span class="n">MetricCallback</span><span class="p">(</span><span class="n">precision</span><span class="p">,</span> <span class="n">higher_score_is_better</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-        <span class="n">MetricCallback</span><span class="p">(</span><span class="n">recall</span><span class="p">,</span> <span class="n">higher_score_is_better</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="p">],</span>
-    <span class="n">n_trials</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
-    <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">n_trials</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># Could be higher if only TF models were used.</span>
+    <span class="n">hyperparams_repository</span><span class="o">=</span><span class="n">HyperparamsOnDiskRepository</span><span class="p">(</span><span class="n">cache_folder</span><span class="o">=</span><span class="n">neuraxle_dashboard</span><span class="p">),</span>
     <span class="n">refit_best_trial</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">continue_loop_on_error</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">)</span>
 
-<span class="c1"># Load data, and launch AutoML loop !</span>
+<span class="c1"># Load data, and launch AutoML loop!</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">generate_classification_data</span><span class="p">()</span>
 <span class="n">auto_ml</span> <span class="o">=</span> <span class="n">auto_ml</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
-<span class="c1"># Get the model from the best trial, and make predictions using predict.</span>
+<span class="c1"># Get the model from the best trial, and make predictions using predict, as per the `refit_best_trial=True` argument to AutoML.</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">auto_ml</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_true</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test accuracy score:&quot;</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
 </pre></div>
 </div>
 <section id="why-neuraxle">

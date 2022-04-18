@@ -14,12 +14,12 @@ First, let’s see why it’s important to encapsulate your data transformers an
 Then, let’s see how to chain those steps into a machine learning pipeline to have everything flow correctly and in the good order.
 Finally, let’s dig into some pipeline functionalities that are surprisingly useful to manage all the things.
 
-The following talk by Guillaume Chevalier covers the content of this page with more depth.
+The following talk by Guillaume Chevalier covers the content of this page with more depth, as well as other pages of this documentation site.
 
 .. raw:: html
 
     <center>
-    <iframe src="https://www.youtube.com/embed/OFe223rUBY8" \
+    <iframe src="https://www.youtube.com/embed/9gzTvu-og34" \
         width=560 height=315 frameborder="0" \
         webkitAllowFullScreen mozallowfullscreen allowfullscreen \
         class="align-center"></iframe>
@@ -122,7 +122,7 @@ Your main code now just 3 lines of code, yet you can see what it is made of and 
 Features
 **************************************************
 
-Let's add features based on the transformations of different columns. Use the `ColumnTransformer <https://www.neuraxle.org/stable/api/neuraxle.steps.column_transformer.html#neuraxle.steps.column_transformer.ColumnTransformer>`_ step to create features based on the N-dimensional (ND) input data:
+Let's add features based on the transformations of different columns. Use the `ColumnTransformer <https://www.neuraxle.org/stable/api/steps/neuraxle.steps.column_transformer.html#neuraxle.steps.column_transformer.ColumnTransformer>`_ step to create features based on the N-dimensional (ND) input data:
 
 .. code-block:: python
 
@@ -183,7 +183,7 @@ Use a `MiniBatchSequentialPipeline <https://www.neuraxle.org/stable/api/neuraxle
         ], batch_size=128)
     ])
 
-Note that if you’d like to use queues between each steps in the pipeline to do parallel processing and give a chance to each of your threads to transform some parts of the pipelines for you, especially at test time in prod, you may as well use a `SequentialQueuedPipeline <https://www.neuraxle.org/stable/api/neuraxle.distributed.streaming.html#neuraxle.distributed.streaming.SequentialQueuedPipeline>`_ with a simple replacement above, instead of a `Pipeline <https://www.neuraxle.org/stable/api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline>`_.
+Note that if you’d like to use queues between each steps in the pipeline to do parallel processing and give a chance to each of your threads to transform some parts of the pipelines for you, especially at test time in prod, you may as well use a `SequentialQueuedPipeline <https://www.neuraxle.org/stable/api/distributed/neuraxle.distributed.streaming.html#neuraxle.distributed.streaming.SequentialQueuedPipeline>`_ with a simple replacement above, instead of a `Pipeline <https://www.neuraxle.org/stable/api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline>`_.
 
 ********************************
 Repository for lazy data loading
@@ -277,7 +277,7 @@ Let's add a few hyperparams to our Model step:
 Note that it would be much cleaner to define those inside the Model step implementation (Guillaume Chevalier likes to have them as a class constant).
 See the page `Hyperparams And Distributions <https://www.neuraxle.org/stable/random_distributions.html>`_ for more information.
 
-The next step is to tune hyperparams. See how you can easily create an `AutoML <https://www.neuraxle.org/stable/api/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML>`_ loop that searches for the best hyperparams:
+The next step is to tune hyperparams. See how you can easily create an `AutoML <https://www.neuraxle.org/stable/api/metaopt/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML>`_ loop that searches for the best hyperparams:
 
 .. code-block:: python
 

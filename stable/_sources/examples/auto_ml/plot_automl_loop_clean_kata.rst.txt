@@ -68,6 +68,8 @@ Here, 2D data is fitted, whereas in the original example 3D (sequential / time s
 
     Set parameter alpha to: original_alpha * n_samples. 
       warnings.warn(
+    /home/gui/Documents/GIT/www.neuraxle.org-builder/venv/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:1483: UserWarning: Setting penalty='none' will ignore the C and l1_ratio parameters
+      warnings.warn(
     /home/gui/Documents/GIT/www.neuraxle.org-builder/venv/lib/python3.8/site-packages/sklearn/linear_model/_base.py:141: FutureWarning: 'normalize' was deprecated in version 1.0 and will be removed in 1.2.
     If you wish to scale the data, use Pipeline with a StandardScaler in a preprocessing stage. To reproduce the previous behavior:
 
@@ -82,7 +84,21 @@ Here, 2D data is fitted, whereas in the original example 3D (sequential / time s
 
     Set parameter alpha to: original_alpha * n_samples. 
       warnings.warn(
-    Test accuracy score: 0.9895
+    /home/gui/Documents/GIT/www.neuraxle.org-builder/venv/lib/python3.8/site-packages/sklearn/linear_model/_base.py:141: FutureWarning: 'normalize' was deprecated in version 1.0 and will be removed in 1.2.
+    If you wish to scale the data, use Pipeline with a StandardScaler in a preprocessing stage. To reproduce the previous behavior:
+
+    from sklearn.pipeline import make_pipeline
+
+    model = make_pipeline(StandardScaler(with_mean=False), RidgeClassifier())
+
+    If you wish to pass a sample_weight parameter, you need to pass it as a fit parameter to each step of the pipeline as follows:
+
+    kwargs = {s[0] + '__sample_weight': sample_weight for s in model.steps}
+    model.fit(X, y, **kwargs)
+
+    Set parameter alpha to: original_alpha * n_samples. 
+      warnings.warn(
+    Test accuracy score: 1.0
 
 
 
@@ -168,7 +184,7 @@ Here, 2D data is fitted, whereas in the original example 3D (sequential / time s
         ]).set_name('RandomForestClassifier')
 
         # Define a classification pipeline that lets the AutoML loop choose one of the classifier.
-        # See also ChooseOneStepOf documentation: https://www.neuraxle.org/stable/api/neuraxle.steps.flow.html#neuraxle.steps.flow.ChooseOneStepOf
+        # See also ChooseOneStepOf documentation: https://www.neuraxle.org/stable/api/steps/neuraxle.steps.flow.html#neuraxle.steps.flow.ChooseOneStepOf
 
         pipeline = Pipeline([
             ChooseOneStepOf([
@@ -181,7 +197,7 @@ Here, 2D data is fitted, whereas in the original example 3D (sequential / time s
         ])
 
         # Create the AutoML loop object.
-        # See also AutoML documentation: https://www.neuraxle.org/stable/api/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML
+        # See also AutoML documentation: https://www.neuraxle.org/stable/api/metaopt/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML
 
         auto_ml = AutoML(
             pipeline=pipeline,
@@ -236,7 +252,7 @@ Here, 2D data is fitted, whereas in the original example 3D (sequential / time s
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  8.406 seconds)
+   **Total running time of the script:** ( 0 minutes  4.366 seconds)
 
 
 .. _sphx_glr_download_examples_auto_ml_plot_automl_loop_clean_kata.py:

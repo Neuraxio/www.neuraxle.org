@@ -564,7 +564,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api/metaopt/data/neuraxle.metaopt.data.json_repo.html">neuraxle.metaopt.data.json_repo</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="api/metaopt/data/neuraxle.metaopt.data.json_repo.html#neuraxle-s-sqlalchemy-hyperparameter-repository-classes">Neuraxle’s SQLAlchemy Hyperparameter Repository Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/metaopt/data/neuraxle.metaopt.data.json_repo.html#neuraxle-s-json-hyperparameter-repository-classes">Neuraxle’s JSON Hyperparameter Repository Classes</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="api/metaopt/data/neuraxle.metaopt.data.json_repo.html#examples-using-neuraxle-metaopt-data-json-repo-hyperparamsondiskrepository">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.data.json_repo.HyperparamsOnDiskRepository</span></code></a></li>
 </ul>
 </li>
@@ -693,9 +693,9 @@ Having completed lots of machine learning projects, we’ve come to discover whi
 <p>First, let’s see why it’s important to encapsulate your data transformers and your models properly into objects.
 Then, let’s see how to chain those steps into a machine learning pipeline to have everything flow correctly and in the good order.
 Finally, let’s dig into some pipeline functionalities that are surprisingly useful to manage all the things.</p>
-<p>The following talk by Guillaume Chevalier covers the content of this page with more depth.</p>
+<p>The following talk by Guillaume Chevalier covers the content of this page with more depth, as well as other pages of this documentation site.</p>
 <center>
-<iframe src="https://www.youtube.com/embed/OFe223rUBY8" \
+<iframe src="https://www.youtube.com/embed/9gzTvu-og34" \
     width=560 height=315 frameborder="0" \
     webkitAllowFullScreen mozallowfullscreen allowfullscreen \
     class="align-center"></iframe>
@@ -780,7 +780,7 @@ Your main code now just 3 lines of code, yet you can see what it is made of and 
 </section>
 <section id="features">
 <h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
-<p>Let’s add features based on the transformations of different columns. Use the <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.steps.column_transformer.html#neuraxle.steps.column_transformer.ColumnTransformer">ColumnTransformer</a> step to create features based on the N-dimensional (ND) input data:</p>
+<p>Let’s add features based on the transformations of different columns. Use the <a class="reference external" href="https://www.neuraxle.org/stable/api/steps/neuraxle.steps.column_transformer.html#neuraxle.steps.column_transformer.ColumnTransformer">ColumnTransformer</a> step to create features based on the N-dimensional (ND) input data:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">neuraxle.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
@@ -829,7 +829,7 @@ Use a <a class="reference external" href="https://www.neuraxle.org/stable/api/ne
 <span class="p">])</span>
 </pre></div>
 </div>
-<p>Note that if you’d like to use queues between each steps in the pipeline to do parallel processing and give a chance to each of your threads to transform some parts of the pipelines for you, especially at test time in prod, you may as well use a <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.distributed.streaming.html#neuraxle.distributed.streaming.SequentialQueuedPipeline">SequentialQueuedPipeline</a> with a simple replacement above, instead of a <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline">Pipeline</a>.</p>
+<p>Note that if you’d like to use queues between each steps in the pipeline to do parallel processing and give a chance to each of your threads to transform some parts of the pipelines for you, especially at test time in prod, you may as well use a <a class="reference external" href="https://www.neuraxle.org/stable/api/distributed/neuraxle.distributed.streaming.html#neuraxle.distributed.streaming.SequentialQueuedPipeline">SequentialQueuedPipeline</a> with a simple replacement above, instead of a <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline">Pipeline</a>.</p>
 </section>
 <section id="repository-for-lazy-data-loading">
 <h2>Repository for lazy data loading<a class="headerlink" href="#repository-for-lazy-data-loading" title="Permalink to this headline">¶</a></h2>
@@ -910,7 +910,7 @@ Let’s add a few hyperparams to our Model step:</p>
 </div>
 <p>Note that it would be much cleaner to define those inside the Model step implementation (Guillaume Chevalier likes to have them as a class constant).
 See the page <a class="reference external" href="https://www.neuraxle.org/stable/random_distributions.html">Hyperparams And Distributions</a> for more information.</p>
-<p>The next step is to tune hyperparams. See how you can easily create an <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML">AutoML</a> loop that searches for the best hyperparams:</p>
+<p>The next step is to tune hyperparams. See how you can easily create an <a class="reference external" href="https://www.neuraxle.org/stable/api/metaopt/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML">AutoML</a> loop that searches for the best hyperparams:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">neuraxle.metaopt.auto_ml</span> <span class="kn">import</span> <span class="n">AutoML</span><span class="p">,</span> <span class="n">HyperparamsJSONRepository</span><span class="p">,</span> <span class="n">ValidationSplitter</span>
 <span class="kn">from</span> <span class="nn">neuraxle.metaopt.callbacks</span> <span class="kn">import</span> <span class="n">ScoringCallback</span>
 

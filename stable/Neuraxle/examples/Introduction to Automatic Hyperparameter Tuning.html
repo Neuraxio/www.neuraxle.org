@@ -562,7 +562,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../api/metaopt/data/neuraxle.metaopt.data.json_repo.html">neuraxle.metaopt.data.json_repo</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../api/metaopt/data/neuraxle.metaopt.data.json_repo.html#neuraxle-s-sqlalchemy-hyperparameter-repository-classes">Neuraxle’s SQLAlchemy Hyperparameter Repository Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/metaopt/data/neuraxle.metaopt.data.json_repo.html#neuraxle-s-json-hyperparameter-repository-classes">Neuraxle’s JSON Hyperparameter Repository Classes</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../api/metaopt/data/neuraxle.metaopt.data.json_repo.html#examples-using-neuraxle-metaopt-data-json-repo-hyperparamsondiskrepository">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.data.json_repo.HyperparamsOnDiskRepository</span></code></a></li>
 </ul>
 </li>
@@ -1037,7 +1037,7 @@ div.rendered_html tbody tr:hover {
 </section>
 <section id="Choose-a-validation-splitter">
 <h3>Choose a validation splitter<a class="headerlink" href="#Choose-a-validation-splitter" title="Permalink to this headline">¶</a></h3>
-<p>Let’s pick the <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.metaopt.auto_ml.html?highlight=validationsplitter#neuraxle.metaopt.auto_ml.ValidationSplitter">ValidationSplitter</a> which is enough for most machine learning problems:</p>
+<p>Let’s pick the <a class="reference external" href="https://www.neuraxle.org/stable/api/metaopt/neuraxle.metaopt.auto_ml.html?highlight=validationsplitter#neuraxle.metaopt.auto_ml.ValidationSplitter">ValidationSplitter</a> which is enough for most machine learning problems:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -1050,10 +1050,10 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <p>This validation splitter will perform a single 80%-20% split of the dataset.</p>
-<p>We have also implemented <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.metaopt.auto_ml.html?highlight=kfoldcross#neuraxle.metaopt.auto_ml.KFoldCrossValidationSplitter">KFoldCrossValidationSplitter</a> if you are interested in using cross-validation for your machine learning problem.</p>
+<p>We have also implemented <a class="reference external" href="https://www.neuraxle.org/stable/api/metaopt/neuraxle.metaopt.auto_ml.html?highlight=kfoldcross#neuraxle.metaopt.auto_ml.KFoldCrossValidationSplitter">KFoldCrossValidationSplitter</a> if you are interested in using cross-validation for your machine learning problem.</p>
 </section>
 <section id="Define-a-the-main-scoring-metric-with-ScoringCallback">
-<h3>Define a the main scoring metric with <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.metaopt.callbacks.html?highlight=scoringcallback#neuraxle.metaopt.callbacks.ScoringCallback">ScoringCallback</a><a class="headerlink" href="#Define-a-the-main-scoring-metric-with-ScoringCallback" title="Permalink to this headline">¶</a></h3>
+<h3>Define a the main scoring metric with <a class="reference external" href="https://www.neuraxle.org/stable/api/metaopt/neuraxle.metaopt.callbacks.html?highlight=scoringcallback#neuraxle.metaopt.callbacks.ScoringCallback">ScoringCallback</a><a class="headerlink" href="#Define-a-the-main-scoring-metric-with-ScoringCallback" title="Permalink to this headline">¶</a></h3>
 <p>Let’s pick the accuracy score as our scoring metric:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
@@ -1074,7 +1074,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </section>
 <section id="Add-other-metric-callbacks-with-MetricCallback-(optional)">
-<h3>Add other metric callbacks with <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.metaopt.callbacks.html?highlight=metriccallback#neuraxle.metaopt.callbacks.MetricCallback">MetricCallback</a> (optional)<a class="headerlink" href="#Add-other-metric-callbacks-with-MetricCallback-(optional)" title="Permalink to this headline">¶</a></h3>
+<h3>Add other metric callbacks with <a class="reference external" href="https://www.neuraxle.org/stable/api/metaopt/neuraxle.metaopt.callbacks.html?highlight=metriccallback#neuraxle.metaopt.callbacks.MetricCallback">MetricCallback</a> (optional)<a class="headerlink" href="#Add-other-metric-callbacks-with-MetricCallback-(optional)" title="Permalink to this headline">¶</a></h3>
 <p>During training, we’ll monitor the f1 score, the precision and the recall on the training and validation dataset. We will make use of the sklearn implementation of these metric, using a weighted average since we are in a multiclass setting.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -1092,12 +1092,12 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p>Multiple callbacks, such as EarlyStoppingCallback and SaveBestModelCallback are available as part of Neuraxle. You could also implement your own callback by inheriting from <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.metaopt.callbacks.html?highlight=basecallback#neuraxle.metaopt.callbacks.BaseCallback">BaseCallback</a>.</p>
+<p>Multiple callbacks, such as EarlyStoppingCallback and SaveBestModelCallback are available as part of Neuraxle. You could also implement your own callback by inheriting from <a class="reference external" href="https://www.neuraxle.org/stable/api/metaopt/neuraxle.metaopt.callbacks.html?highlight=basecallback#neuraxle.metaopt.callbacks.BaseCallback">BaseCallback</a>.</p>
 </section>
 <section id="Select-an-hyperparams-repository">
 <h3>Select an hyperparams repository<a class="headerlink" href="#Select-an-hyperparams-repository" title="Permalink to this headline">¶</a></h3>
-<p>For the sake of this example, let’s pick the <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.metaopt.auto_ml.html?highlight=inmemoryhyperparamsrepository#neuraxle.metaopt.auto_ml.InMemoryHyperparamsRepository">InMemoryHyperparamsRepository</a> because we don’t need to persist trial files. <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.metaopt.data.json_repo.html?highlight=hyperparamsondiskrepository#neuraxle.metaopt.data.json_repo.HyperparamsOnDiskRepository">HyperparamsOnDiskRepository</a>​ is
-also available if you want to use json files to persist trials.</p>
+<p>For the sake of this example, let’s pick the <a class="reference external" href="https://www.neuraxle.org/stable/api/metaopt/neuraxle.metaopt.auto_ml.html?highlight=inmemoryhyperparamsrepository#neuraxle.metaopt.auto_ml.InMemoryHyperparamsRepository">InMemoryHyperparamsRepository</a> because we don’t need to persist trial files.
+<a class="reference external" href="https://www.neuraxle.org/stable/api/metaopt/data/neuraxle.metaopt.data.json_repo.html?highlight=hyperparamsondiskrepository#neuraxle.metaopt.data.json_repo.HyperparamsOnDiskRepository">HyperparamsOnDiskRepository</a>​ is also available if you want to use json files to persist trials.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
@@ -1150,8 +1150,8 @@ also available if you want to use json files to persist trials.</p>
 </pre></div>
 </div>
 </div>
-<p>Note: as of now, <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.metaopt.tpe.html#neuraxle.metaopt.tpe.TreeParzenEstimatorHyperparameterSelectionStrategy">TreeParzenEstimatorHyperparameterSelectionStrategy</a> is the first usable Apache 2 public TPE implementation ! Thanks to Éric Hamel for implementing this amazing algorithm.</p>
-<p>Also note that if you don’t define the hyperparams_optimizer argument, <a class="reference external" href="https://www.neuraxle.org/stable/api/neuraxle.metaopt.auto_ml.html?highlight=randomsearchhyperparam#neuraxle.metaopt.auto_ml.RandomSearchHyperparameterSelectionStrategy">RandomSearchHyperparameterSelectionStrategy</a> will be used by default.</p>
+<p>Note: as of now, <a class="reference external" href="https://www.neuraxle.org/stable/api/metaopt/neuraxle.metaopt.tpe.html#neuraxle.metaopt.tpe.TreeParzenEstimatorHyperparameterSelectionStrategy">TreeParzenEstimatorHyperparameterSelectionStrategy</a> is the first usable Apache 2 public TPE implementation ! Thanks to Éric Hamel for implementing this amazing algorithm.</p>
+<p>Also note that if you don’t define the hyperparams_optimizer argument, <a class="reference external" href="https://www.neuraxle.org/stable/api/metaopt/neuraxle.metaopt.auto_ml.html?highlight=randomsearchhyperparam#neuraxle.metaopt.auto_ml.RandomSearchHyperparameterSelectionStrategy">RandomSearchHyperparameterSelectionStrategy</a> will be used by default.</p>
 </section>
 <section id="Create,-and-launch-AutoML-loop">
 <h3>Create, and launch AutoML loop<a class="headerlink" href="#Create,-and-launch-AutoML-loop" title="Permalink to this headline">¶</a></h3>

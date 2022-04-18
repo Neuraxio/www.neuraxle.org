@@ -564,7 +564,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../api/metaopt/data/neuraxle.metaopt.data.json_repo.html">neuraxle.metaopt.data.json_repo</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../api/metaopt/data/neuraxle.metaopt.data.json_repo.html#neuraxle-s-sqlalchemy-hyperparameter-repository-classes">Neuraxle’s SQLAlchemy Hyperparameter Repository Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../api/metaopt/data/neuraxle.metaopt.data.json_repo.html#neuraxle-s-json-hyperparameter-repository-classes">Neuraxle’s JSON Hyperparameter Repository Classes</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../api/metaopt/data/neuraxle.metaopt.data.json_repo.html#examples-using-neuraxle-metaopt-data-json-repo-hyperparamsondiskrepository">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.data.json_repo.HyperparamsOnDiskRepository</span></code></a></li>
 </ul>
 </li>
@@ -708,6 +708,8 @@ model.fit(X, y, **kwargs)
 
 Set parameter alpha to: original_alpha * n_samples.
   warnings.warn(
+/home/gui/Documents/GIT/www.neuraxle.org-builder/venv/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:1483: UserWarning: Setting penalty=&#39;none&#39; will ignore the C and l1_ratio parameters
+  warnings.warn(
 /home/gui/Documents/GIT/www.neuraxle.org-builder/venv/lib/python3.8/site-packages/sklearn/linear_model/_base.py:141: FutureWarning: &#39;normalize&#39; was deprecated in version 1.0 and will be removed in 1.2.
 If you wish to scale the data, use Pipeline with a StandardScaler in a preprocessing stage. To reproduce the previous behavior:
 
@@ -722,7 +724,21 @@ model.fit(X, y, **kwargs)
 
 Set parameter alpha to: original_alpha * n_samples.
   warnings.warn(
-Test accuracy score: 0.9895
+/home/gui/Documents/GIT/www.neuraxle.org-builder/venv/lib/python3.8/site-packages/sklearn/linear_model/_base.py:141: FutureWarning: &#39;normalize&#39; was deprecated in version 1.0 and will be removed in 1.2.
+If you wish to scale the data, use Pipeline with a StandardScaler in a preprocessing stage. To reproduce the previous behavior:
+
+from sklearn.pipeline import make_pipeline
+
+model = make_pipeline(StandardScaler(with_mean=False), RidgeClassifier())
+
+If you wish to pass a sample_weight parameter, you need to pass it as a fit parameter to each step of the pipeline as follows:
+
+kwargs = {s[0] + &#39;__sample_weight&#39;: sample_weight for s in model.steps}
+model.fit(X, y, **kwargs)
+
+Set parameter alpha to: original_alpha * n_samples.
+  warnings.warn(
+Test accuracy score: 1.0
 </pre></div>
 </div>
 <div class="line-block">
@@ -803,7 +819,7 @@ Test accuracy score: 0.9895
     <span class="p">])</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="s1">&#39;RandomForestClassifier&#39;</span><span class="p">)</span>
 
     <span class="c1"># Define a classification pipeline that lets the AutoML loop choose one of the classifier.</span>
-    <span class="c1"># See also ChooseOneStepOf documentation: https://www.neuraxle.org/stable/api/neuraxle.steps.flow.html#neuraxle.steps.flow.ChooseOneStepOf</span>
+    <span class="c1"># See also ChooseOneStepOf documentation: https://www.neuraxle.org/stable/api/steps/neuraxle.steps.flow.html#neuraxle.steps.flow.ChooseOneStepOf</span>
 
     <span class="n">pipeline</span> <span class="o">=</span> <a href="../../api/neuraxle.pipeline.html#neuraxle.pipeline.Pipeline" title="neuraxle.pipeline.Pipeline" class="sphx-glr-backref-module-neuraxle-pipeline sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">Pipeline</span></a><span class="p">([</span>
         <a href="../../api/steps/neuraxle.steps.flow.html#neuraxle.steps.flow.ChooseOneStepOf" title="neuraxle.steps.flow.ChooseOneStepOf" class="sphx-glr-backref-module-neuraxle-steps-flow sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ChooseOneStepOf</span></a><span class="p">([</span>
@@ -816,7 +832,7 @@ Test accuracy score: 0.9895
     <span class="p">])</span>
 
     <span class="c1"># Create the AutoML loop object.</span>
-    <span class="c1"># See also AutoML documentation: https://www.neuraxle.org/stable/api/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML</span>
+    <span class="c1"># See also AutoML documentation: https://www.neuraxle.org/stable/api/metaopt/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML</span>
 
     <span class="n">auto_ml</span> <span class="o">=</span> <a href="../../api/metaopt/neuraxle.metaopt.auto_ml.html#neuraxle.metaopt.auto_ml.AutoML" title="neuraxle.metaopt.auto_ml.AutoML" class="sphx-glr-backref-module-neuraxle-metaopt-auto_ml sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">AutoML</span></a><span class="p">(</span>
         <span class="n">pipeline</span><span class="o">=</span><span class="n">pipeline</span><span class="p">,</span>
@@ -869,7 +885,7 @@ Test accuracy score: 0.9895
     <span class="n">main</span><span class="p">(</span><a href="../../api/neuraxle.base.html#neuraxle.base.ExecutionContext.get_new_cache_folder" title="neuraxle.base.ExecutionContext.get_new_cache_folder" class="sphx-glr-backref-module-neuraxle-base-ExecutionContext sphx-glr-backref-type-py-staticmethod"><span class="n">CX</span><span class="o">.</span><span class="n">get_new_cache_folder</span></a><span class="p">())</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  8.406 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  4.366 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-auto-ml-plot-automl-loop-clean-kata-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/Neuraxio/Neuraxle/master?urlpath=lab/tree/notebooks/examples/auto_ml/plot_automl_loop_clean_kata.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo.png" style="width: 150px;" /></a>
