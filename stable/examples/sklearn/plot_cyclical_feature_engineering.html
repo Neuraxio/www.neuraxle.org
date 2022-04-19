@@ -257,7 +257,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../hyperparameter_tuning.html#Define-your-problem">Define your problem</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../hyperparameter_tuning.html#Define-your-pipeline">Define your pipeline</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../hyperparameter_tuning.html#Choose-a-validation-splitter">Choose a validation splitter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../hyperparameter_tuning.html#Define-a-the-main-scoring-metric-with-ScoringCallback">Define a the main scoring metric with ScoringCallback</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../hyperparameter_tuning.html#Define-a-the-main-scoring-metric-with-a-first-MetricsCallback">Define a the main scoring metric with a first MetricsCallback</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../hyperparameter_tuning.html#Add-other-metric-callbacks-with-MetricCallback-(optional)">Add other metric callbacks with MetricCallback (optional)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../hyperparameter_tuning.html#Select-an-hyperparams-repository">Select an hyperparams repository</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../hyperparameter_tuning.html#Select-an-hyperparams-optimizer">Select an hyperparams optimizer</a></li>
@@ -1978,7 +1978,7 @@ relative demand averaged accross our 5 time-based cross-validation splits:</p>
     ColumnTransformer([
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OrdinalEncoder(...)) object 0x7f1c2c1e20d0&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OrdinalEncoder(...)) object 0x7ff631019550&gt;,
         ], name=&#39;[&#39;weather&#39;, &#39;season&#39;, &#39;holiday&#39;, &#39;workingday&#39;]_OrdinalEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
@@ -1986,7 +1986,7 @@ relative demand averaged accross our 5 time-based cross-validation splits:</p>
         ], name=&#39;[&#39;year&#39;, &#39;month&#39;, &#39;hour&#39;, &#39;weekday&#39;, &#39;temp&#39;, &#39;feel_temp&#39;, &#39;humidity&#39;, &#39;windspeed&#39;]_Identity&#39;),
         NumpyConcatenateInnerFeatures(name=&#39;joiner&#39;),
     ], name=&#39;ColumnTransformer&#39;),
-    &lt;neuraxle.steps.sklearn.SKLearnWrapper(HistGradientBoostingRegressor(...)) object 0x7f1c2c1e2670&gt;,
+    &lt;neuraxle.steps.sklearn.SKLearnWrapper(HistGradientBoostingRegressor(...)) object 0x7ff631019af0&gt;,
 ], name=&#39;Pipeline&#39;):
 
     Mean Absolute Error:     0.043 +/- 0.003
@@ -2029,27 +2029,27 @@ impact the results much because they are already on comparable scales:</p>
     ColumnTransformer([
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1c2c1e29a0&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff6310676a0&gt;,
         ], name=&#39;weather_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1c2c1e2dc0&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff63101b0a0&gt;,
         ], name=&#39;season_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1c2c89c6d0&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff63101b3d0&gt;,
         ], name=&#39;holiday_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1c2c1e9790&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff63101b490&gt;,
         ], name=&#39;workingday_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(MinMaxScaler(...)) object 0x7f1c2c1e9370&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(MinMaxScaler(...)) object 0x7ff63101ba90&gt;,
         ], name=&#39;[&#39;year&#39;, &#39;month&#39;, &#39;hour&#39;, &#39;weekday&#39;, &#39;temp&#39;, &#39;feel_temp&#39;, &#39;humidity&#39;, &#39;windspeed&#39;]_MinMaxScaler&#39;),
         NumpyConcatenateInnerFeatures(name=&#39;joiner&#39;),
     ], name=&#39;ColumnTransformer&#39;),
-    &lt;neuraxle.steps.sklearn.SKLearnWrapper(RidgeCV(...)) object 0x7f1c2c1e99d0&gt;,
+    &lt;neuraxle.steps.sklearn.SKLearnWrapper(RidgeCV(...)) object 0x7ff63101be80&gt;,
 ], name=&#39;Pipeline&#39;):
 
     Mean Absolute Error:     0.139 +/- 0.014
@@ -2104,39 +2104,39 @@ level.</p>
     ColumnTransformer([
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1c2c217280&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff631067eb0&gt;,
         ], name=&#39;weather_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1c2c217220&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff63101d970&gt;,
         ], name=&#39;season_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1c2c217e50&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff63101d8e0&gt;,
         ], name=&#39;holiday_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1c2c2555b0&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff63101d6a0&gt;,
         ], name=&#39;workingday_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1c2c2559d0&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff630fc5f40&gt;,
         ], name=&#39;hour_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1c2c1ef3a0&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff630fdca00&gt;,
         ], name=&#39;weekday_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1c2c1efd90&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff630fdcb80&gt;,
         ], name=&#39;month_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(MinMaxScaler(...)) object 0x7f1c2c1ef7f0&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(MinMaxScaler(...)) object 0x7ff630fdc220&gt;,
         ], name=&#39;[&#39;year&#39;, &#39;temp&#39;, &#39;feel_temp&#39;, &#39;humidity&#39;, &#39;windspeed&#39;]_MinMaxScaler&#39;),
         NumpyConcatenateInnerFeatures(name=&#39;joiner&#39;),
     ], name=&#39;ColumnTransformer&#39;),
-    &lt;neuraxle.steps.sklearn.SKLearnWrapper(RidgeCV(...)) object 0x7f1c2c1ef160&gt;,
+    &lt;neuraxle.steps.sklearn.SKLearnWrapper(RidgeCV(...)) object 0x7ff630fc6220&gt;,
 ], name=&#39;Pipeline&#39;):
 
     Mean Absolute Error:     0.096 +/- 0.010
@@ -2227,51 +2227,51 @@ sine/cosine representation.</p>
     ColumnTransformer([
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1bd8107a00&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff56406a250&gt;,
         ], name=&#39;weather_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1bd809deb0&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff56405d130&gt;,
         ], name=&#39;season_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1bd8094a90&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff5640746a0&gt;,
         ], name=&#39;holiday_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1bd80ab070&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff5640749d0&gt;,
         ], name=&#39;workingday_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(FunctionTransformer(...)) object 0x7f1bd80ab3d0&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(FunctionTransformer(...)) object 0x7ff564074d30&gt;,
         ], name=&#39;month_FunctionTransformer&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(FunctionTransformer(...)) object 0x7f1bd80ab730&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(FunctionTransformer(...)) object 0x7ff564057790&gt;,
         ], name=&#39;month_FunctionTransformer1&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(FunctionTransformer(...)) object 0x7f1bd80aba90&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(FunctionTransformer(...)) object 0x7ff564079280&gt;,
         ], name=&#39;weekday_FunctionTransformer&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(FunctionTransformer(...)) object 0x7f1bd80abdf0&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(FunctionTransformer(...)) object 0x7ff564079610&gt;,
         ], name=&#39;weekday_FunctionTransformer1&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(FunctionTransformer(...)) object 0x7f1bd80aa190&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(FunctionTransformer(...)) object 0x7ff564079940&gt;,
         ], name=&#39;hour_FunctionTransformer&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(FunctionTransformer(...)) object 0x7f1bd80aa4f0&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(FunctionTransformer(...)) object 0x7ff564079ca0&gt;,
         ], name=&#39;hour_FunctionTransformer1&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(MinMaxScaler(...)) object 0x7f1bd80aa850&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(MinMaxScaler(...)) object 0x7ff564079fd0&gt;,
         ], name=&#39;[&#39;year&#39;, &#39;temp&#39;, &#39;feel_temp&#39;, &#39;humidity&#39;, &#39;windspeed&#39;]_MinMaxScaler&#39;),
         NumpyConcatenateInnerFeatures(name=&#39;joiner&#39;),
     ], name=&#39;ColumnTransformer&#39;),
-    &lt;neuraxle.steps.sklearn.SKLearnWrapper(RidgeCV(...)) object 0x7f1bd80aab20&gt;,
+    &lt;neuraxle.steps.sklearn.SKLearnWrapper(RidgeCV(...)) object 0x7ff564081310&gt;,
 ], name=&#39;Pipeline&#39;):
 
     Mean Absolute Error:     0.122 +/- 0.013
@@ -2343,39 +2343,39 @@ while preserving most of the expressivity:</p>
     ColumnTransformer([
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1bd8037e20&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff564081c70&gt;,
         ], name=&#39;weather_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1bd807e910&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff4d478fd30&gt;,
         ], name=&#39;season_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1bd80c6b80&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff4d479ba30&gt;,
         ], name=&#39;holiday_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1bd80e3a60&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff4d479bdc0&gt;,
         ], name=&#39;workingday_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(SplineTransformer(...)) object 0x7f1b79fc00d0&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(SplineTransformer(...)) object 0x7ff631019e20&gt;,
         ], name=&#39;month_SplineTransformer&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(SplineTransformer(...)) object 0x7f1b79fc0460&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(SplineTransformer(...)) object 0x7ff631026250&gt;,
         ], name=&#39;weekday_SplineTransformer&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(SplineTransformer(...)) object 0x7f1b79fc0790&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(SplineTransformer(...)) object 0x7ff631026700&gt;,
         ], name=&#39;hour_SplineTransformer&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(MinMaxScaler(...)) object 0x7f1b79fc0b20&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(MinMaxScaler(...)) object 0x7ff4d47a42e0&gt;,
         ], name=&#39;[&#39;year&#39;, &#39;temp&#39;, &#39;feel_temp&#39;, &#39;humidity&#39;, &#39;windspeed&#39;]_MinMaxScaler&#39;),
         NumpyConcatenateInnerFeatures(name=&#39;joiner&#39;),
     ], name=&#39;ColumnTransformer&#39;),
-    &lt;neuraxle.steps.sklearn.SKLearnWrapper(RidgeCV(...)) object 0x7f1b79fc0df0&gt;,
+    &lt;neuraxle.steps.sklearn.SKLearnWrapper(RidgeCV(...)) object 0x7ff4d47a45b0&gt;,
 ], name=&#39;Pipeline&#39;):
 
     Mean Absolute Error:     0.095 +/- 0.011
@@ -2543,35 +2543,35 @@ by modeling this pairwise interaction explicitly:</p>
         ColumnTransformer([
             Pipeline([
                 ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-                &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1bd8037e20&gt;,
+                &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff564081c70&gt;,
             ], name=&#39;weather_OneHotEncoder&#39;),
             Pipeline([
                 ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-                &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1bd807e910&gt;,
+                &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff4d478fd30&gt;,
             ], name=&#39;season_OneHotEncoder&#39;),
             Pipeline([
                 ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-                &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1bd80c6b80&gt;,
+                &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff4d479ba30&gt;,
             ], name=&#39;holiday_OneHotEncoder&#39;),
             Pipeline([
                 ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-                &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1bd80e3a60&gt;,
+                &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff4d479bdc0&gt;,
             ], name=&#39;workingday_OneHotEncoder&#39;),
             Pipeline([
                 ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-                &lt;neuraxle.steps.sklearn.SKLearnWrapper(SplineTransformer(...)) object 0x7f1b79fc00d0&gt;,
+                &lt;neuraxle.steps.sklearn.SKLearnWrapper(SplineTransformer(...)) object 0x7ff631019e20&gt;,
             ], name=&#39;month_SplineTransformer&#39;),
             Pipeline([
                 ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-                &lt;neuraxle.steps.sklearn.SKLearnWrapper(SplineTransformer(...)) object 0x7f1b79fc0460&gt;,
+                &lt;neuraxle.steps.sklearn.SKLearnWrapper(SplineTransformer(...)) object 0x7ff631026250&gt;,
             ], name=&#39;weekday_SplineTransformer&#39;),
             Pipeline([
                 ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-                &lt;neuraxle.steps.sklearn.SKLearnWrapper(SplineTransformer(...)) object 0x7f1b79fc0790&gt;,
+                &lt;neuraxle.steps.sklearn.SKLearnWrapper(SplineTransformer(...)) object 0x7ff631026700&gt;,
             ], name=&#39;hour_SplineTransformer&#39;),
             Pipeline([
                 ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-                &lt;neuraxle.steps.sklearn.SKLearnWrapper(MinMaxScaler(...)) object 0x7f1b79fc0b20&gt;,
+                &lt;neuraxle.steps.sklearn.SKLearnWrapper(MinMaxScaler(...)) object 0x7ff4d47a42e0&gt;,
             ], name=&#39;[&#39;year&#39;, &#39;temp&#39;, &#39;feel_temp&#39;, &#39;humidity&#39;, &#39;windspeed&#39;]_MinMaxScaler&#39;),
             NumpyConcatenateInnerFeatures(name=&#39;joiner&#39;),
         ], name=&#39;ColumnTransformer&#39;),
@@ -2579,19 +2579,19 @@ by modeling this pairwise interaction explicitly:</p>
             ColumnTransformer([
                 Pipeline([
                     ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-                    &lt;neuraxle.steps.sklearn.SKLearnWrapper(SplineTransformer(...)) object 0x7f1b79f45c70&gt;,
+                    &lt;neuraxle.steps.sklearn.SKLearnWrapper(SplineTransformer(...)) object 0x7ff4d471d190&gt;,
                 ], name=&#39;hour_SplineTransformer&#39;),
                 Pipeline([
                     ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-                    &lt;neuraxle.steps.sklearn.SKLearnWrapper(FunctionTransformer(...)) object 0x7f1b79f4b790&gt;,
+                    &lt;neuraxle.steps.sklearn.SKLearnWrapper(FunctionTransformer(...)) object 0x7ff4d46f6670&gt;,
                 ], name=&#39;workingday_FunctionTransformer&#39;),
                 NumpyConcatenateInnerFeatures(name=&#39;joiner&#39;),
             ], name=&#39;ColumnTransformer&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(PolynomialFeatures(...)) object 0x7f1b79ff3040&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(PolynomialFeatures(...)) object 0x7ff4d4707940&gt;,
         ], name=&#39;Pipeline&#39;),
         NumpyConcatenateInnerFeatures(name=&#39;joiner&#39;),
     ], name=&#39;FeatureUnion&#39;),
-    &lt;neuraxle.steps.sklearn.SKLearnWrapper(RidgeCV(...)) object 0x7f1b79f60a00&gt;,
+    &lt;neuraxle.steps.sklearn.SKLearnWrapper(RidgeCV(...)) object 0x7ff4d4712a00&gt;,
 ], name=&#39;Pipeline&#39;):
 
     Mean Absolute Error:     0.076 +/- 0.008
@@ -2625,40 +2625,40 @@ polynomial kernel expansion. Let us try the latter:</p>
     ColumnTransformer([
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1bd8037e20&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff564081c70&gt;,
         ], name=&#39;weather_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1bd807e910&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff4d478fd30&gt;,
         ], name=&#39;season_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1bd80c6b80&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff4d479ba30&gt;,
         ], name=&#39;holiday_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1bd80e3a60&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff4d479bdc0&gt;,
         ], name=&#39;workingday_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(SplineTransformer(...)) object 0x7f1b79fc00d0&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(SplineTransformer(...)) object 0x7ff631019e20&gt;,
         ], name=&#39;month_SplineTransformer&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(SplineTransformer(...)) object 0x7f1b79fc0460&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(SplineTransformer(...)) object 0x7ff631026250&gt;,
         ], name=&#39;weekday_SplineTransformer&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(SplineTransformer(...)) object 0x7f1b79fc0790&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(SplineTransformer(...)) object 0x7ff631026700&gt;,
         ], name=&#39;hour_SplineTransformer&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(MinMaxScaler(...)) object 0x7f1b79fc0b20&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(MinMaxScaler(...)) object 0x7ff4d47a42e0&gt;,
         ], name=&#39;[&#39;year&#39;, &#39;temp&#39;, &#39;feel_temp&#39;, &#39;humidity&#39;, &#39;windspeed&#39;]_MinMaxScaler&#39;),
         NumpyConcatenateInnerFeatures(name=&#39;joiner&#39;),
     ], name=&#39;ColumnTransformer&#39;),
-    &lt;neuraxle.steps.sklearn.SKLearnWrapper(Nystroem(...)) object 0x7f1bd8094100&gt;,
-    &lt;neuraxle.steps.sklearn.SKLearnWrapper(RidgeCV(...)) object 0x7f1bd80942b0&gt;,
+    &lt;neuraxle.steps.sklearn.SKLearnWrapper(Nystroem(...)) object 0x7ff4d47a4820&gt;,
+    &lt;neuraxle.steps.sklearn.SKLearnWrapper(RidgeCV(...)) object 0x7ff4d47a4670&gt;,
 ], name=&#39;Pipeline&#39;):
 
     Mean Absolute Error:     0.052 +/- 0.002
@@ -2690,31 +2690,31 @@ encoding and kernel approximation:</p>
     ColumnTransformer([
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1b79f70be0&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff4d47a48b0&gt;,
         ], name=&#39;weather_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1b79f70fa0&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff5640f7970&gt;,
         ], name=&#39;season_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1b79f60370&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff5640f7070&gt;,
         ], name=&#39;holiday_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1b79f60c10&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff56404b310&gt;,
         ], name=&#39;workingday_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1b79fcedf0&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff56404b0a0&gt;,
         ], name=&#39;hour_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1bd802f3a0&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff4d4785040&gt;,
         ], name=&#39;weekday_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
-            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7f1bd802fd60&gt;,
+            &lt;neuraxle.steps.sklearn.SKLearnWrapper(OneHotEncoder(...)) object 0x7ff4d4785cd0&gt;,
         ], name=&#39;month_OneHotEncoder&#39;),
         Pipeline([
             ColumnsSelectorND(ColumnSelector2D(name=&#39;ColumnSelector2D&#39;), name=&#39;ColumnsSelectorND&#39;),
@@ -2722,8 +2722,8 @@ encoding and kernel approximation:</p>
         ], name=&#39;[&#39;year&#39;, &#39;temp&#39;, &#39;feel_temp&#39;, &#39;humidity&#39;, &#39;windspeed&#39;]_Identity&#39;),
         NumpyConcatenateInnerFeatures(name=&#39;joiner&#39;),
     ], name=&#39;ColumnTransformer&#39;),
-    &lt;neuraxle.steps.sklearn.SKLearnWrapper(Nystroem(...)) object 0x7f1bd802feb0&gt;,
-    &lt;neuraxle.steps.sklearn.SKLearnWrapper(RidgeCV(...)) object 0x7f1bd802f6a0&gt;,
+    &lt;neuraxle.steps.sklearn.SKLearnWrapper(Nystroem(...)) object 0x7ff4d47858e0&gt;,
+    &lt;neuraxle.steps.sklearn.SKLearnWrapper(RidgeCV(...)) object 0x7ff4d47859a0&gt;,
 ], name=&#39;Pipeline&#39;):
 
     Mean Absolute Error:     0.080 +/- 0.006
@@ -2888,7 +2888,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 1 minutes  1.971 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  32.301 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-sklearn-plot-cyclical-feature-engineering-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/Neuraxio/Neuraxle/master?urlpath=lab/tree/notebooks/examples/sklearn/plot_cyclical_feature_engineering.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo.png" style="width: 150px;" /></a>
