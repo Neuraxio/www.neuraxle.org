@@ -1,0 +1,1807 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+<meta property="og:title" content="neuraxle.metaopt.repositories.db" />
+  
+<meta property="og:type" content="website" />
+  
+<meta property="og:url" content="https://www.neuraxle.org/stable/api/metaopt/repositories/neuraxle.metaopt.repositories.db.html" />
+  
+<meta property="og:site_name" content="Neuraxle" />
+  
+<meta property="og:description" content="Module-level documentation for neuraxle.metaopt.repositories.db. Here is an inheritance diagram, including dependencies to other base modules of Neuraxle:, Neuraxle’s SQLAlchemy Hyperparameter Repo..." />
+  
+<meta property="og:image" content="https://www.neuraxle.org/stable/_static/neuraxle_logo.png" />
+  
+<meta property="og:image:alt" content="Neuraxle logo" />
+  
+<meta property="og:locale" content="en_US" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>neuraxle.metaopt.repositories.db &mdash; Neuraxle 0.8.0 documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://www.neuraxle.org/api/metaopt/repositories/neuraxle.metaopt.repositories.db.html"/>
+  
+
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PWQLPZ3');</script>
+  <!-- End Google Tag Manager -->
+
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/sg_gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/sg_gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/sg_gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/sg_gallery-rendered-html.css" type="text/css" />
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="neuraxle.metaopt.hyperopt.tpe" href="../hyperopt/neuraxle.metaopt.hyperopt.tpe.html" />
+    <link rel="prev" title="neuraxle.metaopt.repositories.json" href="neuraxle.metaopt.repositories.json.html" /> 
+
+  <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search > a {
+      color: #ff6201;
+    }
+    .wy-side-nav-search > div.version {
+      color: #ff6201;
+    }
+    .wy-side-nav-search, .wy-nav-top {
+      color: #ff6201;
+    }
+    /* Sidebar */
+    .wy-nav-side {
+    }
+  </style>
+</head>
+
+<body class="wy-body-for-nav">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWQLPZ3"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #FCFCFC" >
+          
+
+          
+            
+              <a href="https://www.neuraxle.org/" class="icon">
+                <img src="../../../_static/neuraxle_logo.png" class="logo" alt="Logo"/>
+              </a>
+          
+
+          
+            <a href="https://www.neuraxio.com/" class="icon icon-home"> Neuraxio</a>/<a href="../../../index.html" > Neuraxle
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html">About Neuraxle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Neuraxle/README.html">Neuraxle Pipelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Neuraxle/README.html#documentation">Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Neuraxle/README.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Neuraxle/README.html#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Neuraxle/README.html#license">License</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Neuraxle/README.html#citation">Citation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Neuraxle/README.html#contributors">Contributors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Neuraxle/README.html#supported-by">Supported By</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../comparison_to_other_frameworks.html">Comparison to Other Machine Learning Pipeline Frameworks, and Compatibility</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../comparison_to_other_frameworks.html#scikit-learn">scikit-learn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../comparison_to_other_frameworks.html#apache-beam">Apache Beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../comparison_to_other_frameworks.html#spacy">spaCy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../comparison_to_other_frameworks.html#kubeflow">Kubeflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../comparison_to_other_frameworks.html#tensorflow">TensorFlow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../comparison_to_other_frameworks.html#hyperopt">Hyperopt</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../scikit-learn_problems_solutions.html">Solutions to Scikit-Learn’s Biggest Problems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../scikit-learn_problems_solutions.html#definitions">Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../scikit-learn_problems_solutions.html#inability-to-reasonably-do-automatic-machine-learning-automl">Inability to Reasonably do Automatic Machine Learning (AutoML)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../scikit-learn_problems_solutions.html#problem-defining-the-search-space-hyperparameter-distributions">Problem: Defining the Search Space (Hyperparameter Distributions)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../scikit-learn_problems_solutions.html#problem-defining-hyperparameters-in-the-constructor-is-limiting">Problem: Defining Hyperparameters in the Constructor is Limiting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../scikit-learn_problems_solutions.html#problem-different-train-and-test-behavior">Problem: Different Train and Test Behavior</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../scikit-learn_problems_solutions.html#problem-you-trained-a-pipeline-and-you-want-feedback-statistics-on-its-learning">Problem: You trained a Pipeline and You Want Feedback Statistics on its Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../scikit-learn_problems_solutions.html#inability-to-reasonably-do-deep-learning-pipelines">Inability to Reasonably do Deep Learning Pipelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../scikit-learn_problems_solutions.html#problem-scikit-learn-hardly-allows-for-mini-batch-gradient-descent-incremental-fit">Problem: Scikit-Learn Hardly Allows for Mini-Batch Gradient Descent (Incremental Fit)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../scikit-learn_problems_solutions.html#problem-initializing-the-pipeline-and-deallocating-resources">Problem: Initializing the Pipeline and Deallocating Resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../scikit-learn_problems_solutions.html#problem-it-is-difficult-to-use-other-deep-learning-dl-libraries-in-scikit-learn">Problem: It is Difficult to Use Other Deep Learning (DL) Libraries in Scikit-Learn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../scikit-learn_problems_solutions.html#problem-the-ability-to-transform-output-labels">Problem: The Ability to Transform Output Labels</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../scikit-learn_problems_solutions.html#not-ready-for-production-nor-for-complex-pipelines">Not ready for Production nor for Complex Pipelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../scikit-learn_problems_solutions.html#problem-processing-3d-4d-or-nd-data-in-your-pipeline-with-steps-made-for-lower-dimensionnal-data">Problem: Processing 3D, 4D, or ND Data in your Pipeline with Steps Made for Lower-Dimensionnal Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../scikit-learn_problems_solutions.html#problem-modify-a-pipeline-along-the-way-such-as-for-pre-training-or-fine-tuning">Problem: Modify a Pipeline Along the Way, such as for Pre-Training or Fine-Tuning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../scikit-learn_problems_solutions.html#problem-getting-model-attributes-from-scikit-learn-pipeline">Problem: Getting Model Attributes from Scikit-Learn Pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../scikit-learn_problems_solutions.html#problem-you-can-t-parallelize-nor-save-pipelines-using-steps-that-can-t-be-serialized-as-is-by-joblib">Problem: You can’t Parallelize nor Save Pipelines Using Steps that Can’t be Serialized “as-is” by Joblib</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../awesome_neuraxle.html">Awesome Neuraxle </a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../awesome_neuraxle.html#contents">Contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../awesome_neuraxle.html#examples-articles">Examples &amp; Articles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../awesome_neuraxle.html#courses-training">Courses &amp; Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../awesome_neuraxle.html#videos">Videos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../awesome_neuraxle.html#projects">Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../awesome_neuraxle.html#community">Community</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../awesome_neuraxle.html#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Neuraxle/CONTRIBUTING.html">Contributing to Neuraxle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Neuraxle/CONTRIBUTING.html#first-steps">First steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Neuraxle/CONTRIBUTING.html#before-coding">Before coding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Neuraxle/CONTRIBUTING.html#pull-requests">Pull Requests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Neuraxle/CONTRIBUTING.html#code-reviews">Code Reviews</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Neuraxle/CONTRIBUTING.html#reviewing-other-s-code">Reviewing other’s code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Neuraxle/CONTRIBUTING.html#publishing-project-to-pypi">Publishing project to PyPI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Neuraxle/.github/CODE_OF_CONDUCT.html">Code of conduct</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Neuraxle/.github/CODE_OF_CONDUCT.html#respect">Respect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Neuraxle/.github/CODE_OF_CONDUCT.html#politeness">Politeness</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Neuraxle/.github/CODE_OF_CONDUCT.html#code-reviews">Code reviews</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../license.html">License</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../license.html#summary-of-the-license">Summary of the License</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../walkthroughs.html">&gt;&gt;&gt; Hands-On Walkthroughs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../intro.html">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../intro.html#encapsulate-models-and-data-transformers">Encapsulate Models and Data Transformers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../intro.html#pipe-and-filter">Pipe and Filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../intro.html#features">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../intro.html#wrapper-a-k-a-decorator-classes">Wrapper (a.k.a. Decorator) classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../intro.html#pipelines-for-minibatching-and-parallel-processing">Pipelines for Minibatching and Parallel Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../intro.html#repository-for-lazy-data-loading">Repository for lazy data loading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../intro.html#training-your-pipeline">Training your pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../intro.html#serializing-your-pipeline">Serializing your pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../intro.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../classes_and_modules_overview.html">Class diagrams and inheritance charts of Neuraxle objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../classes_and_modules_overview.html#the-mixin-design-pattern-in-machine-learning">The Mixin design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../classes_and_modules_overview.html#steps-containing-other-steps-as-the-composite-design-pattern-in-machine-learning">Steps containing other steps as the composite design pattern in machine learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../classes_and_modules_overview.html#scikit-learn-s-pipeline-pipeline-class-and-how-to-shift-to-parallel-deep-learning">Scikit-learn’s pipeline.Pipeline class and how to shift to parallel deep learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../classes_and_modules_overview.html#examples-using-neuraxle-pipeline-pipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.Pipeline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../classes_and_modules_overview.html#examples-using-neuraxle-distributed-streaming-sequentialqueuedpipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.distributed.streaming.SequentialQueuedPipeline</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../classes_and_modules_overview.html#featureunion-to-compute-steps-in-parallel-and-join-their-results">FeatureUnion to compute steps in parallel and join their results</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../classes_and_modules_overview.html#examples-using-neuraxle-union-featureunion">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.union.FeatureUnion</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../classes_and_modules_overview.html#automl-module-to-automatically-tune-hyperparameters-of-your-pipelines">AutoML module to automatically tune hyperparameters of your pipelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../classes_and_modules_overview.html#examples-using-neuraxle-metaopt-auto-ml-automl">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.AutoML</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../classes_and_modules_overview.html#all-the-base-classes-of-neuraxle-together">All the base classes of Neuraxle together</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../hyperparameter_tuning.html">Automatic Hyperparameter Tuning / AutoML</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../hyperparameter_tuning.html#AutoML-loop">AutoML loop</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../hyperparameter_tuning.html#Define-your-problem">Define your problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../hyperparameter_tuning.html#Define-your-pipeline">Define your pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../hyperparameter_tuning.html#Choose-a-validation-splitter">Choose a validation splitter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../hyperparameter_tuning.html#Define-a-the-main-scoring-metric-with-a-first-MetricsCallback">Define a the main scoring metric with a first MetricsCallback</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../hyperparameter_tuning.html#Add-other-metric-callbacks-with-MetricCallback-(optional)">Add other metric callbacks with MetricCallback (optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../hyperparameter_tuning.html#Select-an-hyperparams-repository">Select an hyperparams repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../hyperparameter_tuning.html#Select-an-hyperparams-optimizer">Select an hyperparams optimizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../hyperparameter_tuning.html#Create,-and-launch-AutoML-loop">Create, and launch AutoML loop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../hyperparameter_tuning.html#Get-best-model-and-measure-test-accuracy">Get best model and measure test accuracy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../hyperparameter_tuning.html#Additional-note-:-model-selection-as-an-hyperparameter">Additional note : model selection as an hyperparameter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../handler_methods.html">Handler Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../handler_methods.html#handle_fit_transform">handle_fit_transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../handler_methods.html#handle_fit">handle_fit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../handler_methods.html#handle_transform">handle_transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../handler_methods.html#When-to-use-handler-methods-?">When to use handler methods ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../handler_methods.html#HandleOnlyMixin">HandleOnlyMixin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../handler_methods.html#ForceHandleMixin">ForceHandleMixin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../handler_methods.html#ForceHandleOnlyMixin">ForceHandleOnlyMixin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../handler_methods.html#Examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../handler_methods.html#ForEach">ForEach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../handler_methods.html#ToNumpy">ToNumpy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../handler_methods.html#Transform-Expected-Outputs">Transform Expected Outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../handler_methods.html#Expand-The-DataContainer">Expand The DataContainer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../handler_methods.html#Reversible-Pipeline">Reversible Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../step_saving_and_lifecycle.html">Step Saving &amp; Lifecycle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../step_saving_and_lifecycle.html#Lifecycle">Lifecycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../step_saving_and_lifecycle.html#Step-Saving">Step Saving</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../step_saving_and_lifecycle.html#Saver">Saver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../step_saving_and_lifecycle.html#Custom-Saver-Example">Custom Saver Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../step_saving_and_lifecycle.html#Saving-Example">Saving Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../step_saving_and_lifecycle.html#Pipeline">Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../step_saving_and_lifecycle.html#Full-Dump-Saving">Full Dump Saving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../step_saving_and_lifecycle.html#Full-Dump-Loading">Full Dump Loading</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../time_series_processing.html">Time Series Processing Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../time_series_processing.html#The-Dataset">The Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../time_series_processing.html#The-task">The task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../time_series_processing.html#Video-dataset-overview">Video dataset overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../time_series_processing.html#Details-about-the-input-data">Details about the input data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../time_series_processing.html#Loading-the-Dataset">Loading the Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../time_series_processing.html#Part-1---How-would-you-code-this-in-a-typical-ML-project-using-Scikit-learn">Part 1 - How would you code this in a typical ML project using Scikit-learn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../time_series_processing.html#Part-2---How-to-code-a-similar-pipeline---but-cleaner---using-Neuraxle">Part 2 - How to code a similar pipeline - but cleaner - using Neuraxle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../random_distributions.html">Random Distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#Plotting-Each-Hyperparameter-Distribution">Plotting Each Hyperparameter Distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#Discrete-Distributions">Discrete Distributions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../random_distributions.html#RandInt">RandInt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../random_distributions.html#Boolean">Boolean</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../random_distributions.html#Choice">Choice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../random_distributions.html#Priority-Choice">Priority Choice</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#Continuous-Distributions">Continuous Distributions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../random_distributions.html#Continuous-Uniform">Continuous Uniform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../random_distributions.html#Continuous-Loguniform">Continuous Loguniform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../random_distributions.html#Continuous-Normal">Continuous Normal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../random_distributions.html#Continuous-Lognormal">Continuous Lognormal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../random_distributions.html#Continuous-Normal-Clipped">Continuous Normal Clipped</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../random_distributions.html#Continuous-Lognormal-Clipped">Continuous Lognormal Clipped</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#Quantized-Hyperparameter-Distributions">Quantized Hyperparameter Distributions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../random_distributions.html#Quantized-Uniform">Quantized Uniform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../random_distributions.html#Repaired-Quantized-Uniform">Repaired Quantized Uniform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../random_distributions.html#Quantized-Log-Uniform">Quantized Log Uniform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../random_distributions.html#Quantized-Normal">Quantized Normal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../random_distributions.html#Quantized-Lognormal">Quantized Lognormal</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#Creating-your-own-distributions">Creating your own distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#Using-Scipy-Distributions">Using Scipy Distributions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../random_distributions.html#Creating-your-own-distributions-using-scipy">Creating your own distributions using scipy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../random_distributions.html#BaseCustomContinuousScipyDistribution">BaseCustomContinuousScipyDistribution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../random_distributions.html#BaseCustomDiscreteScipyDistribution">BaseCustomDiscreteScipyDistribution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../rest_api_serving.html">REST API Serving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../rest_api_serving.html#Import-Packages">Import Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../rest_api_serving.html#Load-your-Dataset">Load your Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../rest_api_serving.html#Create-your-Pipeline">Create your Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../rest_api_serving.html#Let’s-Train-and-Test">Let’s Train and Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../rest_api_serving.html#Deploy-the-Pipeline">Deploy the Pipeline</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../rest_api_serving.html#Write-a-step-to-decode-the-accepted-JSON-as-data-inputs">Write a step to decode the accepted JSON as data inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../rest_api_serving.html#Write-a-step-to-encode-the-returned-JSON-response">Write a step to encode the returned JSON response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../rest_api_serving.html#Finally-Serve-Predictions">Finally Serve Predictions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../rest_api_serving.html#API-Call-Example">API Call Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../rest_api_serving.html#Next-Steps">Next Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../rest_api_serving.html#Pipeline-Serialization">Pipeline Serialization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../rest_api_serving.html#Data-Transformation-Caching">Data Transformation Caching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../rest_api_serving.html#Checkpoints">Checkpoints</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/index.html">&gt;&gt;&gt; Practical Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/index.html#automl">AutoML</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/auto_ml/plot_automl_loop_clean_kata.html">Usage of AutoML loop, and hyperparams with sklearn models.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/index.html#caching">Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/index.html#rest-api-model-serving">REST API Model Serving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/deployment/plot_easy_rest_api_serving.html">Easy REST API Model Serving with Neuraxle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/index.html#getting-started">Getting started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/getting_started/plot_inverse_transform.html">Inverse Transforms in Neuraxle: How to Reverse a Prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/getting_started/plot_nested_pipelines.html">Create Nested Pipelines in Neuraxle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/getting_started/plot_label_encoder_across_multiple_columns.html">Create label encoder across multiple columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/getting_started/plot_non_fittable_mixin.html">Create Pipeline Steps in Neuraxle that doesn’t fit or transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/getting_started/plot_force_handle_mixin.html">Create Pipeline Steps that require implementing only handler methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/index.html#hyperparameters">Hyperparameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/hyperparams/plot_hyperparams.html">Manipulate Hyperparameter Spaces for Hyperparameter Tuning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/index.html#parallel">Parallel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/parallel/plot_streaming_pipeline.html">Parallel processing in Neuraxle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/index.html#neuraxle-hyperparameter-examples">Neuraxle hyperparameter examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/sklearn/plot_boston_housing_regression_with_model_stacking.html">Boston Housing Regression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/sklearn/plot_boston_housing_meta_optimization.html">Boston Housing Regression with Meta Optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../examples/sklearn/plot_cyclical_feature_engineering.html">Time-related feature engineering with scikit-learn</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../examples/sklearn/plot_cyclical_feature_engineering.html#data-exploration-on-the-bike-sharing-demand-dataset">Data exploration on the Bike Sharing Demand dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../examples/sklearn/plot_cyclical_feature_engineering.html#time-based-cross-validation">Time-based cross-validation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../examples/sklearn/plot_cyclical_feature_engineering.html#gradient-boosting">Gradient Boosting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../examples/sklearn/plot_cyclical_feature_engineering.html#naive-linear-regression">Naive linear regression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../examples/sklearn/plot_cyclical_feature_engineering.html#time-steps-as-categories">Time-steps as categories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../examples/sklearn/plot_cyclical_feature_engineering.html#trigonometric-features">Trigonometric features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../examples/sklearn/plot_cyclical_feature_engineering.html#periodic-spline-features">Periodic spline features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../examples/sklearn/plot_cyclical_feature_engineering.html#qualitative-analysis-of-the-impact-of-features-on-linear-model-predictions">Qualitative analysis of the impact of features on linear model predictions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../examples/sklearn/plot_cyclical_feature_engineering.html#modeling-pairwise-interactions-with-splines-and-polynomial-features">Modeling pairwise interactions with splines and polynomial features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../examples/sklearn/plot_cyclical_feature_engineering.html#modeling-non-linear-feature-interactions-with-kernels">Modeling non-linear feature interactions with kernels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../examples/sklearn/plot_cyclical_feature_engineering.html#concluding-remarks">Concluding remarks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../examples/sklearn/plot_cyclical_feature_engineering.html#source">Source</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../api.html">&gt;&gt;&gt; Complete API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../neuraxle.base.html">neuraxle.base</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../neuraxle.base.html#neuraxle-s-base-classes">Neuraxle’s Base Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../neuraxle.base.html#examples-using-neuraxle-base-basestep">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.base.BaseStep</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../neuraxle.base.html#examples-using-neuraxle-base-executioncontext">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.base.ExecutionContext</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../neuraxle.base.html#examples-using-neuraxle-base-forcehandlemixin">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.base.ForceHandleMixin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../neuraxle.base.html#examples-using-neuraxle-base-identity">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.base.Identity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../neuraxle.base.html#examples-using-neuraxle-base-metastep">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.base.MetaStep</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../neuraxle.base.html#examples-using-neuraxle-base-nonfittablemixin">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.base.NonFittableMixin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../neuraxle.base.html#examples-using-neuraxle-base-nontransformablemixin">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.base.NonTransformableMixin</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../neuraxle.pipeline.html">neuraxle.pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../neuraxle.pipeline.html#neuraxle-s-pipeline-classes">Neuraxle’s Pipeline Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../neuraxle.pipeline.html#examples-using-neuraxle-pipeline-basepipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.BasePipeline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../neuraxle.pipeline.html#examples-using-neuraxle-pipeline-minibatchsequentialpipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.MiniBatchSequentialPipeline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../neuraxle.pipeline.html#examples-using-neuraxle-pipeline-pipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.pipeline.Pipeline</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../neuraxle.data_container.html">neuraxle.data_container</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../neuraxle.data_container.html#neuraxle-s-datacontainer-classes">Neuraxle’s DataContainer classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../neuraxle.union.html">neuraxle.union</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../neuraxle.union.html#union-of-features">Union of Features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../neuraxle.union.html#examples-using-neuraxle-union-addfeatures">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.union.AddFeatures</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../neuraxle.union.html#examples-using-neuraxle-union-featureunion">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.union.FeatureUnion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../neuraxle.union.html#examples-using-neuraxle-union-modelstacking">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.union.ModelStacking</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../steps/neuraxle.steps.numpy.html">neuraxle.steps.numpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../steps/neuraxle.steps.numpy.html#pipeline-steps-based-on-numpy">Pipeline Steps Based on NumPy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../steps/neuraxle.steps.numpy.html#examples-using-neuraxle-steps-numpy-multiplybyn">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.numpy.MultiplyByN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../steps/neuraxle.steps.numpy.html#examples-using-neuraxle-steps-numpy-numpyravel">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.numpy.NumpyRavel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../steps/neuraxle.steps.numpy.html#examples-using-neuraxle-steps-numpy-numpyshapeprinter">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.numpy.NumpyShapePrinter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../steps/neuraxle.steps.numpy.html#examples-using-neuraxle-steps-numpy-numpytranspose">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.numpy.NumpyTranspose</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../steps/neuraxle.steps.flow.html">neuraxle.steps.flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../steps/neuraxle.steps.flow.html#neuraxle-s-flow-steps">Neuraxle’s Flow Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../steps/neuraxle.steps.flow.html#examples-using-neuraxle-steps-flow-chooseonestepof">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.flow.ChooseOneStepOf</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../steps/neuraxle.steps.data.html">neuraxle.steps.data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../steps/neuraxle.steps.data.html#data-steps">Data Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../steps/neuraxle.steps.column_transformer.html">neuraxle.steps.column_transformer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../steps/neuraxle.steps.column_transformer.html#neuraxle-s-column-transformer-steps">Neuraxle’s Column Transformer Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../steps/neuraxle.steps.column_transformer.html#examples-using-neuraxle-steps-column-transformer-columntransformer">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.column_transformer.ColumnTransformer</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../steps/neuraxle.steps.features.html">neuraxle.steps.features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../steps/neuraxle.steps.features.html#featurization-steps">Featurization Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../steps/neuraxle.steps.sklearn.html">neuraxle.steps.sklearn</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../steps/neuraxle.steps.sklearn.html#pipeline-steps-based-on-scikit-learn">Pipeline Steps Based on Scikit-Learn</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../steps/neuraxle.steps.sklearn.html#examples-using-neuraxle-steps-sklearn-ridgemodelstacking">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.sklearn.RidgeModelStacking</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../steps/neuraxle.steps.sklearn.html#examples-using-neuraxle-steps-sklearn-sklearnwrapper">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.sklearn.SKLearnWrapper</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../steps/neuraxle.steps.loop.html">neuraxle.steps.loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../steps/neuraxle.steps.loop.html#pipeline-steps-for-looping">Pipeline Steps For Looping</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../steps/neuraxle.steps.loop.html#examples-using-neuraxle-steps-loop-flattenforeach">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.loop.FlattenForEach</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../steps/neuraxle.steps.loop.html#examples-using-neuraxle-steps-loop-foreach">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.loop.ForEach</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../steps/neuraxle.steps.output_handlers.html">neuraxle.steps.output_handlers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../steps/neuraxle.steps.output_handlers.html#output-handlers-steps">Output Handlers Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../steps/neuraxle.steps.output_handlers.html#examples-using-neuraxle-steps-output-handlers-outputtransformerwrapper">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.output_handlers.OutputTransformerWrapper</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../steps/neuraxle.steps.misc.html">neuraxle.steps.misc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../steps/neuraxle.steps.misc.html#miscelaneous-pipeline-steps">Miscelaneous Pipeline Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../steps/neuraxle.steps.misc.html#examples-using-neuraxle-steps-misc-sleep">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.steps.misc.Sleep</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparams/neuraxle.hyperparams.distributions.html">neuraxle.hyperparams.distributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparams/neuraxle.hyperparams.distributions.html#hyperparameter-distributions">Hyperparameter Distributions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../hyperparams/neuraxle.hyperparams.distributions.html#examples-using-neuraxle-hyperparams-distributions-boolean">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.hyperparams.distributions.Boolean</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../hyperparams/neuraxle.hyperparams.distributions.html#examples-using-neuraxle-hyperparams-distributions-choice">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.hyperparams.distributions.Choice</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../hyperparams/neuraxle.hyperparams.distributions.html#examples-using-neuraxle-hyperparams-distributions-loguniform">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.hyperparams.distributions.LogUniform</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../hyperparams/neuraxle.hyperparams.distributions.html#examples-using-neuraxle-hyperparams-distributions-randint">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.hyperparams.distributions.RandInt</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparams/neuraxle.hyperparams.scipy_distributions.html">neuraxle.hyperparams.scipy_distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hyperparams/neuraxle.hyperparams.space.html">neuraxle.hyperparams.space</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../hyperparams/neuraxle.hyperparams.space.html#hyperparameter-dictionary-conversions">Hyperparameter Dictionary Conversions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../hyperparams/neuraxle.hyperparams.space.html#examples-using-neuraxle-hyperparams-space-hyperparameterspace">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.hyperparams.space.HyperparameterSpace</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../neuraxle.metaopt.auto_ml.html">neuraxle.metaopt.auto_ml</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../neuraxle.metaopt.auto_ml.html#neuraxle-s-automl-classes">Neuraxle’s AutoML Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../neuraxle.metaopt.auto_ml.html#examples-using-neuraxle-metaopt-auto-ml-automl">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.AutoML</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../neuraxle.metaopt.callbacks.html">neuraxle.metaopt.callbacks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../neuraxle.metaopt.callbacks.html#neuraxle-s-training-callbacks-classes">Neuraxle’s training callbacks classes.</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../neuraxle.metaopt.callbacks.html#examples-using-neuraxle-metaopt-callbacks-metriccallback">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.callbacks.MetricCallback</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../neuraxle.metaopt.callbacks.html#examples-using-neuraxle-metaopt-callbacks-scoringcallback">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.callbacks.ScoringCallback</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../neuraxle.metaopt.context.html">neuraxle.metaopt.context</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../neuraxle.metaopt.context.html#neuraxle-s-automl-context-management">Neuraxle’s AutoML Context Management</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../neuraxle.metaopt.optimizer.html">neuraxle.metaopt.optimizer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../neuraxle.metaopt.optimizer.html#neuraxle-s-hyperparameter-optimizer-base-classes">Neuraxle’s Hyperparameter Optimizer Base Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../neuraxle.metaopt.validation.html">neuraxle.metaopt.validation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../neuraxle.metaopt.validation.html#validation">Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../data/neuraxle.metaopt.data.vanilla.html">neuraxle.metaopt.data.vanilla</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../data/neuraxle.metaopt.data.vanilla.html#neuraxle-s-base-hyperparameter-repository-classes">Neuraxle’s Base Hyperparameter Repository Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../data/neuraxle.metaopt.data.reporting.html">neuraxle.metaopt.data.reporting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../data/neuraxle.metaopt.data.reporting.html#neuraxle-s-automl-metric-reporting-classes">Neuraxle’s AutoML Metric Reporting classes.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../data/neuraxle.metaopt.data.aggregates.html">neuraxle.metaopt.data.aggregates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../data/neuraxle.metaopt.data.aggregates.html#neuraxle-s-automl-scope-manager-classes">Neuraxle’s AutoML Scope Manager Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.repositories.repo.html">neuraxle.metaopt.repositories.repo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.repositories.repo.html#neuraxle-s-hyperparameter-repository-base-classes">Neuraxle’s Hyperparameter Repository Base Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.repositories.json.html">neuraxle.metaopt.repositories.json</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.repositories.json.html#neuraxle-s-json-hyperparameter-repository-classes">Neuraxle’s JSON Hyperparameter Repository Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="neuraxle.metaopt.repositories.json.html#examples-using-neuraxle-metaopt-repositories-json-hyperparamsondiskrepository">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.repositories.json.HyperparamsOnDiskRepository</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">neuraxle.metaopt.repositories.db</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#neuraxle-s-sqlalchemy-hyperparameter-repository-classes">Neuraxle’s SQLAlchemy Hyperparameter Repository Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../hyperopt/neuraxle.metaopt.hyperopt.tpe.html">neuraxle.metaopt.hyperopt.tpe</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../hyperopt/neuraxle.metaopt.hyperopt.tpe.html#tree-parzen-estimator">Tree parzen estimator</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../distributed/neuraxle.distributed.streaming.html">neuraxle.distributed.streaming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../distributed/neuraxle.distributed.streaming.html#streaming-pipelines-for-parallel-and-queued-data-processing">Streaming Pipelines for Parallel and Queued Data Processing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../distributed/neuraxle.distributed.streaming.html#examples-using-neuraxle-distributed-streaming-sequentialqueuedpipeline">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.distributed.streaming.SequentialQueuedPipeline</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../logging/neuraxle.logging.logging.html">neuraxle.logging.logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../logging/neuraxle.logging.logging.html#neuraxle-s-logging-module">Neuraxle’s Logging module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../logging/neuraxle.logging.warnings.html">neuraxle.logging.warnings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../logging/neuraxle.logging.warnings.html#neuraxle-s-deprecation-warnings">Neuraxle’s Deprecation Warnings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../rest/neuraxle.rest.flask.html">neuraxle.rest.flask</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../rest/neuraxle.rest.flask.html#neuraxle-s-flask-wrapper-classes">Neuraxle’s Flask Wrapper classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../rest/neuraxle.rest.flask.html#examples-using-neuraxle-rest-flask-flaskrestapiwrapper">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.rest.flask.FlaskRestApiWrapper</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../rest/neuraxle.rest.flask.html#examples-using-neuraxle-rest-flask-jsondatabodydecoder">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.rest.flask.JSONDataBodyDecoder</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../rest/neuraxle.rest.flask.html#examples-using-neuraxle-rest-flask-jsondataresponseencoder">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.rest.flask.JSONDataResponseEncoder</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          <li class="toctree-l1">
+            <a class="reference internal" href="https://www.neuraxio.com/blogs/news"
+                                    style="background:#ff6201; color:#fff; text-decoration-line: underline;" target="_blank">
+            Neuraxio Blog Articles [↗️]</a>
+            <a class="reference internal" href="https://www.neuraxio.com/blogs/news/our-top-learning-resources-for-ai-programmers?utm_source=neuraxle_doc"
+                                    style="background:#ffaf00; color:#fff; text-decoration-line: underline;" target="_blank">
+            Learn AI Programming [↗️]</a>
+            <a class="reference internal" href="https://www.jobs.neuraxio.com/"
+                                    style="background:#111; color:#fff; text-decoration-line: underline;" target="_blank">
+            Jobs [↗️]</a>
+          </li>
+
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://www.neuraxio.com/"> Neuraxio</a>/<a href="../../../index.html">Neuraxle</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        <a href="https://github.com/Neuraxio/Neuraxle"><img style="position: absolute; border: 0; top: 0; right: 0;" width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../api.html">&gt;&gt;&gt; Complete API Documentation</a> &raquo;</li>
+        
+      <li>neuraxle.metaopt.repositories.db</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <!-- <a href="../../../_sources/api/metaopt/repositories/neuraxle.metaopt.repositories.db.rst.txt" rel="nofollow"> View page source</a> -->
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="neuraxle-metaopt-repositories-db">
+<h1>neuraxle.metaopt.repositories.db<a class="headerlink" href="#neuraxle-metaopt-repositories-db" title="Permalink to this headline">¶</a></h1>
+<p>Module-level documentation for neuraxle.metaopt.repositories.db. Here is an inheritance diagram,
+including dependencies to other base modules of Neuraxle:</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<span class="target" id="module-neuraxle.metaopt.repositories.db"></span><section id="neuraxle-s-sqlalchemy-hyperparameter-repository-classes">
+<h2>Neuraxle’s SQLAlchemy Hyperparameter Repository Classes<a class="headerlink" href="#neuraxle-s-sqlalchemy-hyperparameter-repository-classes" title="Permalink to this headline">¶</a></h2>
+<p>Data objects and related repositories used by AutoML, SQL version.</p>
+<p class="rubric">Classes</p>
+<table class="longtable docutils align-center">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.metaopt.repositories.db.AutoMLLog" title="neuraxle.metaopt.repositories.db.AutoMLLog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AutoMLLog</span></code></a>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.metaopt.repositories.db.BaseTrialNodeMixin" title="neuraxle.metaopt.repositories.db.BaseTrialNodeMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseTrialNodeMixin</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.metaopt.repositories.db.ClientNode" title="neuraxle.metaopt.repositories.db.ClientNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ClientNode</span></code></a>([_dataclass])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.metaopt.repositories.db.DataClassNode" title="neuraxle.metaopt.repositories.db.DataClassNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataClassNode</span></code></a>([_dataclass])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.metaopt.repositories.db.DataClassTreeNodeUpdater" title="neuraxle.metaopt.repositories.db.DataClassTreeNodeUpdater"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataClassTreeNodeUpdater</span></code></a>(session, scope, deep)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.metaopt.repositories.db.DatabaseHyperparamRepository" title="neuraxle.metaopt.repositories.db.DatabaseHyperparamRepository"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatabaseHyperparamRepository</span></code></a>(engine, session)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.metaopt.repositories.db.MetricResultsNode" title="neuraxle.metaopt.repositories.db.MetricResultsNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MetricResultsNode</span></code></a>([_dataclass])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.metaopt.repositories.db.MetricResultsValuesMixin" title="neuraxle.metaopt.repositories.db.MetricResultsValuesMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MetricResultsValuesMixin</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.metaopt.repositories.db.PostGreSQLHyperparamsRepository" title="neuraxle.metaopt.repositories.db.PostGreSQLHyperparamsRepository"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PostGreSQLHyperparamsRepository</span></code></a>(…[, echo])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.metaopt.repositories.db.ProjectNode" title="neuraxle.metaopt.repositories.db.ProjectNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProjectNode</span></code></a>([_dataclass])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.metaopt.repositories.db.RoundNode" title="neuraxle.metaopt.repositories.db.RoundNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RoundNode</span></code></a>([_dataclass])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.metaopt.repositories.db.SQLLiteHyperparamsRepository" title="neuraxle.metaopt.repositories.db.SQLLiteHyperparamsRepository"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SQLLiteHyperparamsRepository</span></code></a>(sqllite_db_path)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.metaopt.repositories.db.ScopedLocationTreeNode" title="neuraxle.metaopt.repositories.db.ScopedLocationTreeNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScopedLocationTreeNode</span></code></a>(dataclass_node[, parent])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.metaopt.repositories.db.TrainMetricResultsValues" title="neuraxle.metaopt.repositories.db.TrainMetricResultsValues"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrainMetricResultsValues</span></code></a>(value[, _datetime])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.metaopt.repositories.db.TrialNode" title="neuraxle.metaopt.repositories.db.TrialNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrialNode</span></code></a>([_dataclass])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.metaopt.repositories.db.TrialSplitNode" title="neuraxle.metaopt.repositories.db.TrialSplitNode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrialSplitNode</span></code></a>([_dataclass])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.metaopt.repositories.db.ValidMetricResultsValues" title="neuraxle.metaopt.repositories.db.ValidMetricResultsValues"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValidMetricResultsValues</span></code></a>(value[, _datetime])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="class">
+<dt id="neuraxle.metaopt.repositories.db.ScopedLocationTreeNode">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.repositories.db.</code><code class="descname">ScopedLocationTreeNode</code><span class="sig-paren">(</span><em>dataclass_node</em>, <em>parent=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L54"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ScopedLocationTreeNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Base</span></code></p>
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.id">
+<code class="descname">id</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.parent_id">
+<code class="descname">parent_id</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.parent_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.project_name">
+<code class="descname">project_name</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.project_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.client_name">
+<code class="descname">client_name</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.client_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.round_number">
+<code class="descname">round_number</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.round_number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.trial_number">
+<code class="descname">trial_number</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.trial_number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.split_number">
+<code class="descname">split_number</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.split_number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.metric_name">
+<code class="descname">metric_name</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.metric_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.subdataclasses">
+<code class="descname">subdataclasses</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.subdataclasses" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>dataclass_node</em>, <em>parent=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../&lt;string&gt;#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.dataclass_node">
+<code class="descname">dataclass_node</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.dataclass_node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.ScopedLocationTreeNode._set_location_from">
+<code class="descname">_set_location_from</code><span class="sig-paren">(</span><em>dataclass_node: neuraxle.metaopt.repositories.db.DataClassNode</em>, <em>parent=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ScopedLocationTreeNode._set_location_from" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.loc">
+<code class="descname">loc</code><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.loc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.id_attr_value">
+<code class="descname">id_attr_value</code><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.id_attr_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.to_dataclass">
+<code class="descname">to_dataclass</code><span class="sig-paren">(</span><em>deep=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L120"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.to_dataclass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.query">
+<em class="property">static </em><code class="descname">query</code><span class="sig-paren">(</span><em>session: sqlalchemy.orm.session.Session</em>, <em>scope: neuraxle.metaopt.data.vanilla.ScopedLocation</em>, <em>deep=False</em><span class="sig-paren">)</span> &#x2192; Optional[neuraxle.metaopt.repositories.db.ScopedLocationTreeNode]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L145"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ScopedLocationTreeNode.query" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ScopedLocationTreeNode._sa_class_manager">
+<code class="descname">_sa_class_manager</code><em class="property"> = {'client_name': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'dataclass_node': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'id': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'metric_name': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'parent_id': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'project_name': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'round_number': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'split_number': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'subdataclasses': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'trial_number': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;}</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/instrumentation.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ScopedLocationTreeNode._sa_class_manager" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.repositories.db.DataClassTreeNodeUpdater">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.repositories.db.</code><code class="descname">DataClassTreeNodeUpdater</code><span class="sig-paren">(</span><em>session: sqlalchemy.orm.session.Session</em>, <em>scope: neuraxle.metaopt.data.vanilla.ScopedLocation</em>, <em>deep: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L180"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.DataClassTreeNodeUpdater" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.DataClassTreeNodeUpdater.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>session: sqlalchemy.orm.session.Session</em>, <em>scope: neuraxle.metaopt.data.vanilla.ScopedLocation</em>, <em>deep: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L182"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.DataClassTreeNodeUpdater.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.DataClassTreeNodeUpdater.add_or_update_dataclass">
+<code class="descname">add_or_update_dataclass</code><span class="sig-paren">(</span><em>_dataclass: SubDataclassT, parent: Optional[neuraxle.metaopt.repositories.db.ScopedLocationTreeNode]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L189"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.DataClassTreeNodeUpdater.add_or_update_dataclass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add or update a dataclass in the database.</p>
+<p>Possible scenarios:
+- dataclass is not in the database:</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt>add it to the database. Recursively:</dt><dd><ul>
+<li><p>add all subdataclasses</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>dataclass is in the database:</dt><dd><ul>
+<li><dl class="simple">
+<dt>update it in the database. Recursively, for all subdataclasses wheter found or not:</dt><dd><ul>
+<li><p>add all subdataclasses</p></li>
+<li><p>update all subdataclasses</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>This means we have the following methods chaining into each other:
+- add or update dataclass
+- update dataclass
+- add dataclass</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.DataClassTreeNodeUpdater.update_dataclass">
+<code class="descname">update_dataclass</code><span class="sig-paren">(</span><em>_dataclass: SubDataclassT</em>, <em>node: neuraxle.metaopt.repositories.db.ScopedLocationTreeNode</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L217"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.DataClassTreeNodeUpdater.update_dataclass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.DataClassTreeNodeUpdater.add_dataclass">
+<code class="descname">add_dataclass</code><span class="sig-paren">(</span><em>_dataclass: SubDataclassT, parent: Optional[neuraxle.metaopt.repositories.db.ScopedLocationTreeNode]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L235"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.DataClassTreeNodeUpdater.add_dataclass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.repositories.db.DataClassNode">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.repositories.db.</code><code class="descname">DataClassNode</code><span class="sig-paren">(</span><em>_dataclass=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L257"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.DataClassNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Base</span></code></p>
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.DataClassNode.type">
+<code class="descname">type</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.DataClassNode.type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.DataClassNode.tree_id">
+<code class="descname">tree_id</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.DataClassNode.tree_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.DataClassNode.tree">
+<code class="descname">tree</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.DataClassNode.tree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.DataClassNode.logs">
+<code class="descname">logs</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.DataClassNode.logs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.DataClassNode.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>_dataclass=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../&lt;string&gt;#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.DataClassNode.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.DataClassNode.id_attr_value">
+<code class="descname">id_attr_value</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.DataClassNode.id_attr_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.DataClassNode._update_attrs_from_dataclass">
+<code class="descname">_update_attrs_from_dataclass</code><span class="sig-paren">(</span><em>_dataclass: neuraxle.metaopt.data.vanilla.BaseDataclass</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L282"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.DataClassNode._update_attrs_from_dataclass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.DataClassNode.to_empty_dataclass">
+<code class="descname">to_empty_dataclass</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.data.vanilla.RootDataclass<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L285"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.DataClassNode.to_empty_dataclass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.DataClassNode._sa_class_manager">
+<code class="descname">_sa_class_manager</code><em class="property"> = {'id_attr_value': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'logs': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'tree': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'tree_id': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'type': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;}</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/instrumentation.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.DataClassNode._sa_class_manager" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.repositories.db.ProjectNode">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.repositories.db.</code><code class="descname">ProjectNode</code><span class="sig-paren">(</span><em>_dataclass=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L289"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ProjectNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.repositories.db.DataClassNode" title="neuraxle.metaopt.repositories.db.DataClassNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.repositories.db.DataClassNode</span></code></a></p>
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ProjectNode.id">
+<code class="descname">id</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ProjectNode.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ProjectNode.project_name">
+<code class="descname">project_name</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ProjectNode.project_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.ProjectNode._update_attrs_from_dataclass">
+<code class="descname">_update_attrs_from_dataclass</code><span class="sig-paren">(</span><em>_dataclass: neuraxle.metaopt.data.vanilla.ProjectDataclass</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L298"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ProjectNode._update_attrs_from_dataclass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.ProjectNode.to_empty_dataclass">
+<code class="descname">to_empty_dataclass</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.data.vanilla.ProjectDataclass<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L301"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ProjectNode.to_empty_dataclass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.ProjectNode.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>_dataclass=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../&lt;string&gt;#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ProjectNode.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ProjectNode._sa_class_manager">
+<code class="descname">_sa_class_manager</code><em class="property"> = {'id': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'id_attr_value': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'logs': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'project_name': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'tree': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'tree_id': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'type': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;}</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/instrumentation.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ProjectNode._sa_class_manager" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ProjectNode.id_attr_value">
+<code class="descname">id_attr_value</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ProjectNode.id_attr_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ProjectNode.logs">
+<code class="descname">logs</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ProjectNode.logs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ProjectNode.tree">
+<code class="descname">tree</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ProjectNode.tree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ProjectNode.tree_id">
+<code class="descname">tree_id</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ProjectNode.tree_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ProjectNode.type">
+<code class="descname">type</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ProjectNode.type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.repositories.db.ClientNode">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.repositories.db.</code><code class="descname">ClientNode</code><span class="sig-paren">(</span><em>_dataclass=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L305"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ClientNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.repositories.db.DataClassNode" title="neuraxle.metaopt.repositories.db.DataClassNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.repositories.db.DataClassNode</span></code></a></p>
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ClientNode.id">
+<code class="descname">id</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ClientNode.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ClientNode.client_name">
+<code class="descname">client_name</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ClientNode.client_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.ClientNode._update_attrs_from_dataclass">
+<code class="descname">_update_attrs_from_dataclass</code><span class="sig-paren">(</span><em>_dataclass: neuraxle.metaopt.data.vanilla.ClientDataclass</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L314"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ClientNode._update_attrs_from_dataclass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.ClientNode.to_empty_dataclass">
+<code class="descname">to_empty_dataclass</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.data.vanilla.ClientDataclass<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L317"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ClientNode.to_empty_dataclass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.ClientNode.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>_dataclass=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../&lt;string&gt;#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ClientNode.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ClientNode._sa_class_manager">
+<code class="descname">_sa_class_manager</code><em class="property"> = {'client_name': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'id': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'id_attr_value': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'logs': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'tree': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'tree_id': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'type': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;}</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/instrumentation.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ClientNode._sa_class_manager" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ClientNode.id_attr_value">
+<code class="descname">id_attr_value</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ClientNode.id_attr_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ClientNode.logs">
+<code class="descname">logs</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ClientNode.logs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ClientNode.tree">
+<code class="descname">tree</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ClientNode.tree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ClientNode.tree_id">
+<code class="descname">tree_id</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ClientNode.tree_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ClientNode.type">
+<code class="descname">type</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ClientNode.type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.repositories.db.RoundNode">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.repositories.db.</code><code class="descname">RoundNode</code><span class="sig-paren">(</span><em>_dataclass=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L321"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.RoundNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.repositories.db.DataClassNode" title="neuraxle.metaopt.repositories.db.DataClassNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.repositories.db.DataClassNode</span></code></a></p>
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.RoundNode.id">
+<code class="descname">id</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.RoundNode.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.RoundNode.round_number">
+<code class="descname">round_number</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.RoundNode.round_number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.RoundNode.main_metric_name">
+<code class="descname">main_metric_name</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.RoundNode.main_metric_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.RoundNode._update_attrs_from_dataclass">
+<code class="descname">_update_attrs_from_dataclass</code><span class="sig-paren">(</span><em>_dataclass: neuraxle.metaopt.data.vanilla.RoundDataclass</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L332"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.RoundNode._update_attrs_from_dataclass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.RoundNode.to_empty_dataclass">
+<code class="descname">to_empty_dataclass</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.data.vanilla.RoundDataclass<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L336"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.RoundNode.to_empty_dataclass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.RoundNode.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>_dataclass=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../&lt;string&gt;#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.RoundNode.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.RoundNode._sa_class_manager">
+<code class="descname">_sa_class_manager</code><em class="property"> = {'id': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'id_attr_value': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'logs': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'main_metric_name': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'round_number': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'tree': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'tree_id': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'type': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;}</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/instrumentation.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.RoundNode._sa_class_manager" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.RoundNode.id_attr_value">
+<code class="descname">id_attr_value</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.RoundNode.id_attr_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.RoundNode.logs">
+<code class="descname">logs</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.RoundNode.logs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.RoundNode.tree">
+<code class="descname">tree</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.RoundNode.tree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.RoundNode.tree_id">
+<code class="descname">tree_id</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.RoundNode.tree_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.RoundNode.type">
+<code class="descname">type</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.RoundNode.type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.repositories.db.BaseTrialNodeMixin">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.repositories.db.</code><code class="descname">BaseTrialNodeMixin</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L341"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.BaseTrialNodeMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.BaseTrialNodeMixin.hyperparams">
+<code class="descname">hyperparams</code><em class="property"> = Column(None, JSON(), table=None, nullable=False, default=ColumnDefault(&lt;function dict&gt;))</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/sql/schema.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.BaseTrialNodeMixin.hyperparams" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.BaseTrialNodeMixin.status">
+<code class="descname">status</code><em class="property"> = Column(None, String(), table=None, nullable=False, default=ColumnDefault('PLANNED'))</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/sql/schema.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.BaseTrialNodeMixin.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.BaseTrialNodeMixin.created_time">
+<code class="descname">created_time</code><em class="property"> = Column(None, DateTime(), table=None, nullable=False, default=ColumnDefault(&lt;sqlalchemy.sql.functions.now at 0x7f57111b8b80; now&gt;))</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/sql/schema.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.BaseTrialNodeMixin.created_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.BaseTrialNodeMixin.start_time">
+<code class="descname">start_time</code><em class="property"> = Column(None, DateTime(), table=None, default=ColumnDefault(&lt;sqlalchemy.sql.functions.now at 0x7f57111b8f10; now&gt;))</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/sql/schema.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.BaseTrialNodeMixin.start_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.BaseTrialNodeMixin.end_time">
+<code class="descname">end_time</code><em class="property"> = Column(None, DateTime(), table=None)</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/sql/schema.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.BaseTrialNodeMixin.end_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.BaseTrialNodeMixin._update_attrs_from_dataclass">
+<code class="descname">_update_attrs_from_dataclass</code><span class="sig-paren">(</span><em>_dataclass: neuraxle.metaopt.data.vanilla.BaseTrialDataclassMixin</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L348"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.BaseTrialNodeMixin._update_attrs_from_dataclass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.BaseTrialNodeMixin._attrs_for_to_dataclass">
+<code class="descname">_attrs_for_to_dataclass</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L355"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.BaseTrialNodeMixin._attrs_for_to_dataclass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.repositories.db.TrialNode">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.repositories.db.</code><code class="descname">TrialNode</code><span class="sig-paren">(</span><em>_dataclass=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L365"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.repositories.db.BaseTrialNodeMixin" title="neuraxle.metaopt.repositories.db.BaseTrialNodeMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.repositories.db.BaseTrialNodeMixin</span></code></a>, <a class="reference internal" href="#neuraxle.metaopt.repositories.db.DataClassNode" title="neuraxle.metaopt.repositories.db.DataClassNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.repositories.db.DataClassNode</span></code></a></p>
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialNode.id">
+<code class="descname">id</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialNode.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialNode.trial_number">
+<code class="descname">trial_number</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialNode.trial_number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.TrialNode._update_attrs_from_dataclass">
+<code class="descname">_update_attrs_from_dataclass</code><span class="sig-paren">(</span><em>_dataclass: neuraxle.metaopt.data.vanilla.TrialDataclass</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L374"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialNode._update_attrs_from_dataclass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.TrialNode.to_empty_dataclass">
+<code class="descname">to_empty_dataclass</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.data.vanilla.TrialDataclass<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L378"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialNode.to_empty_dataclass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.TrialNode.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>_dataclass=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../&lt;string&gt;#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialNode.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialNode._sa_class_manager">
+<code class="descname">_sa_class_manager</code><em class="property"> = {'created_time': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'end_time': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'hyperparams': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'id': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'id_attr_value': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'logs': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'start_time': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'status': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'tree': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'tree_id': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'trial_number': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'type': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;}</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/instrumentation.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialNode._sa_class_manager" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialNode.created_time">
+<code class="descname">created_time</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialNode.created_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialNode.end_time">
+<code class="descname">end_time</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialNode.end_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialNode.hyperparams">
+<code class="descname">hyperparams</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialNode.hyperparams" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialNode.id_attr_value">
+<code class="descname">id_attr_value</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialNode.id_attr_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialNode.logs">
+<code class="descname">logs</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialNode.logs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialNode.start_time">
+<code class="descname">start_time</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialNode.start_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialNode.status">
+<code class="descname">status</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialNode.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialNode.tree">
+<code class="descname">tree</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialNode.tree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialNode.tree_id">
+<code class="descname">tree_id</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialNode.tree_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialNode.type">
+<code class="descname">type</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialNode.type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.repositories.db.TrialSplitNode">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.repositories.db.</code><code class="descname">TrialSplitNode</code><span class="sig-paren">(</span><em>_dataclass=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L385"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialSplitNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.repositories.db.BaseTrialNodeMixin" title="neuraxle.metaopt.repositories.db.BaseTrialNodeMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.repositories.db.BaseTrialNodeMixin</span></code></a>, <a class="reference internal" href="#neuraxle.metaopt.repositories.db.DataClassNode" title="neuraxle.metaopt.repositories.db.DataClassNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.repositories.db.DataClassNode</span></code></a></p>
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialSplitNode.id">
+<code class="descname">id</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialSplitNode.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialSplitNode.split_number">
+<code class="descname">split_number</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialSplitNode.split_number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.TrialSplitNode._update_attrs_from_dataclass">
+<code class="descname">_update_attrs_from_dataclass</code><span class="sig-paren">(</span><em>_dataclass: neuraxle.metaopt.data.vanilla.TrialSplitDataclass</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L394"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialSplitNode._update_attrs_from_dataclass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.TrialSplitNode.to_empty_dataclass">
+<code class="descname">to_empty_dataclass</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.data.vanilla.TrialSplitDataclass<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L398"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialSplitNode.to_empty_dataclass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.TrialSplitNode.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>_dataclass=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../&lt;string&gt;#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialSplitNode.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialSplitNode._sa_class_manager">
+<code class="descname">_sa_class_manager</code><em class="property"> = {'created_time': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'end_time': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'hyperparams': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'id': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'id_attr_value': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'logs': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'split_number': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'start_time': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'status': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'tree': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'tree_id': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'type': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;}</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/instrumentation.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialSplitNode._sa_class_manager" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialSplitNode.created_time">
+<code class="descname">created_time</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialSplitNode.created_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialSplitNode.end_time">
+<code class="descname">end_time</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialSplitNode.end_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialSplitNode.hyperparams">
+<code class="descname">hyperparams</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialSplitNode.hyperparams" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialSplitNode.id_attr_value">
+<code class="descname">id_attr_value</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialSplitNode.id_attr_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialSplitNode.logs">
+<code class="descname">logs</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialSplitNode.logs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialSplitNode.start_time">
+<code class="descname">start_time</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialSplitNode.start_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialSplitNode.status">
+<code class="descname">status</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialSplitNode.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialSplitNode.tree">
+<code class="descname">tree</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialSplitNode.tree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialSplitNode.tree_id">
+<code class="descname">tree_id</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialSplitNode.tree_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrialSplitNode.type">
+<code class="descname">type</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrialSplitNode.type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.repositories.db.MetricResultsNode">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.repositories.db.</code><code class="descname">MetricResultsNode</code><span class="sig-paren">(</span><em>_dataclass=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L403"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.MetricResultsNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.repositories.db.DataClassNode" title="neuraxle.metaopt.repositories.db.DataClassNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.repositories.db.DataClassNode</span></code></a></p>
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.MetricResultsNode.id">
+<code class="descname">id</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.MetricResultsNode.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.MetricResultsNode.metric_name">
+<code class="descname">metric_name</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.MetricResultsNode.metric_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.MetricResultsNode.valid_values">
+<code class="descname">valid_values</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.MetricResultsNode.valid_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.MetricResultsNode.train_values">
+<code class="descname">train_values</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.MetricResultsNode.train_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.MetricResultsNode.higher_score_is_better">
+<code class="descname">higher_score_is_better</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.MetricResultsNode.higher_score_is_better" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.MetricResultsNode._update_attrs_from_dataclass">
+<code class="descname">_update_attrs_from_dataclass</code><span class="sig-paren">(</span><em>_dataclass: neuraxle.metaopt.data.vanilla.MetricResultsDataclass</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L417"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.MetricResultsNode._update_attrs_from_dataclass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.MetricResultsNode.to_empty_dataclass">
+<code class="descname">to_empty_dataclass</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.data.vanilla.MetricResultsDataclass<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L435"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.MetricResultsNode.to_empty_dataclass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.MetricResultsNode.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>_dataclass=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../&lt;string&gt;#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.MetricResultsNode.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.MetricResultsNode._sa_class_manager">
+<code class="descname">_sa_class_manager</code><em class="property"> = {'higher_score_is_better': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'id': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'id_attr_value': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'logs': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'metric_name': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'train_values': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'tree': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'tree_id': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'type': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'valid_values': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;}</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/instrumentation.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.MetricResultsNode._sa_class_manager" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.MetricResultsNode.id_attr_value">
+<code class="descname">id_attr_value</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.MetricResultsNode.id_attr_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.MetricResultsNode.logs">
+<code class="descname">logs</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.MetricResultsNode.logs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.MetricResultsNode.tree">
+<code class="descname">tree</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.MetricResultsNode.tree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.MetricResultsNode.tree_id">
+<code class="descname">tree_id</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.MetricResultsNode.tree_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.MetricResultsNode.type">
+<code class="descname">type</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.MetricResultsNode.type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.repositories.db.MetricResultsValuesMixin">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.repositories.db.</code><code class="descname">MetricResultsValuesMixin</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L445"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.MetricResultsValuesMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.MetricResultsValuesMixin.id">
+<code class="descname">id</code><em class="property"> = Column(None, Integer(), table=None, primary_key=True, nullable=False, default=Sequence('id_seq', metadata=MetaData()))</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/sql/schema.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.MetricResultsValuesMixin.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.MetricResultsValuesMixin.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L452"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.MetricResultsValuesMixin.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.MetricResultsValuesMixin.value">
+<code class="descname">value</code><em class="property"> = Column(None, Float(), table=None, nullable=False)</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/sql/schema.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.MetricResultsValuesMixin.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.MetricResultsValuesMixin.datetime">
+<code class="descname">datetime</code><em class="property"> = Column(None, DateTime(), table=None, default=ColumnDefault(&lt;sqlalchemy.sql.functions.now at 0x7f57111e1af0; now&gt;))</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/sql/schema.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.MetricResultsValuesMixin.datetime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.repositories.db.TrainMetricResultsValues">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.repositories.db.</code><code class="descname">TrainMetricResultsValues</code><span class="sig-paren">(</span><em>value</em>, <em>_datetime=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L459"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrainMetricResultsValues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.repositories.db.MetricResultsValuesMixin" title="neuraxle.metaopt.repositories.db.MetricResultsValuesMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.repositories.db.MetricResultsValuesMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Base</span></code></p>
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrainMetricResultsValues.metric_results_node_id">
+<code class="descname">metric_results_node_id</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrainMetricResultsValues.metric_results_node_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrainMetricResultsValues.metric_results_node">
+<code class="descname">metric_results_node</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrainMetricResultsValues.metric_results_node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.TrainMetricResultsValues.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>value</em>, <em>_datetime=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../&lt;string&gt;#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrainMetricResultsValues.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrainMetricResultsValues._sa_class_manager">
+<code class="descname">_sa_class_manager</code><em class="property"> = {'datetime': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'id': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'metric_results_node': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'metric_results_node_id': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'value': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;}</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/instrumentation.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrainMetricResultsValues._sa_class_manager" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrainMetricResultsValues.datetime">
+<code class="descname">datetime</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrainMetricResultsValues.datetime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrainMetricResultsValues.id">
+<code class="descname">id</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrainMetricResultsValues.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.TrainMetricResultsValues.value">
+<code class="descname">value</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.TrainMetricResultsValues.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.repositories.db.ValidMetricResultsValues">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.repositories.db.</code><code class="descname">ValidMetricResultsValues</code><span class="sig-paren">(</span><em>value</em>, <em>_datetime=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L465"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ValidMetricResultsValues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.repositories.db.MetricResultsValuesMixin" title="neuraxle.metaopt.repositories.db.MetricResultsValuesMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.repositories.db.MetricResultsValuesMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Base</span></code></p>
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ValidMetricResultsValues.metric_results_node_id">
+<code class="descname">metric_results_node_id</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ValidMetricResultsValues.metric_results_node_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ValidMetricResultsValues.metric_results_node">
+<code class="descname">metric_results_node</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ValidMetricResultsValues.metric_results_node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.ValidMetricResultsValues.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>value</em>, <em>_datetime=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../&lt;string&gt;#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ValidMetricResultsValues.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ValidMetricResultsValues._sa_class_manager">
+<code class="descname">_sa_class_manager</code><em class="property"> = {'datetime': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'id': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'metric_results_node': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'metric_results_node_id': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'value': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;}</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/instrumentation.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ValidMetricResultsValues._sa_class_manager" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ValidMetricResultsValues.datetime">
+<code class="descname">datetime</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ValidMetricResultsValues.datetime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ValidMetricResultsValues.id">
+<code class="descname">id</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ValidMetricResultsValues.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.ValidMetricResultsValues.value">
+<code class="descname">value</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.ValidMetricResultsValues.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.repositories.db.AutoMLLog">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.repositories.db.</code><code class="descname">AutoMLLog</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L486"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.AutoMLLog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Base</span></code></p>
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.AutoMLLog.id">
+<code class="descname">id</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.AutoMLLog.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.AutoMLLog.dataclass_node_id">
+<code class="descname">dataclass_node_id</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.AutoMLLog.dataclass_node_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.AutoMLLog.dataclass_node">
+<code class="descname">dataclass_node</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.AutoMLLog.dataclass_node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.AutoMLLog.datetime">
+<code class="descname">datetime</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.AutoMLLog.datetime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.AutoMLLog.log_text">
+<code class="descname">log_text</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.AutoMLLog.log_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.AutoMLLog.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../&lt;string&gt;#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.AutoMLLog.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.AutoMLLog._sa_class_manager">
+<code class="descname">_sa_class_manager</code><em class="property"> = {'dataclass_node': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'dataclass_node_id': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'datetime': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'id': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;, 'log_text': &lt;sqlalchemy.orm.attributes.InstrumentedAttribute object&gt;}</em><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/../../../venv/lib/python3.8/site-packages/sqlalchemy/orm/instrumentation.py#L"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.AutoMLLog._sa_class_manager" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.repositories.db._DatabaseLoggerHandlerMixin">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.repositories.db.</code><code class="descname">_DatabaseLoggerHandlerMixin</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L496"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db._DatabaseLoggerHandlerMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Mixin to add a in-memory logging handler to a repository.</p>
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db._DatabaseLoggerHandlerMixin.add_logging_handler">
+<code class="descname">add_logging_handler</code><span class="sig-paren">(</span><em>logger: neuraxle.logging.logging.NeuraxleLogger</em>, <em>scope: neuraxle.metaopt.data.vanilla.ScopedLocation</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.repositories.repo.HyperparamsRepository<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L501"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db._DatabaseLoggerHandlerMixin.add_logging_handler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db._DatabaseLoggerHandlerMixin.get_log_from_logging_handler">
+<code class="descname">get_log_from_logging_handler</code><span class="sig-paren">(</span><em>logger: neuraxle.logging.logging.NeuraxleLogger</em>, <em>scope: neuraxle.metaopt.data.vanilla.ScopedLocation</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L505"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db._DatabaseLoggerHandlerMixin.get_log_from_logging_handler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.repositories.db.DatabaseHyperparamRepository">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.repositories.db.</code><code class="descname">DatabaseHyperparamRepository</code><span class="sig-paren">(</span><em>engine</em>, <em>session</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L510"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.DatabaseHyperparamRepository" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.repositories.db._DatabaseLoggerHandlerMixin" title="neuraxle.metaopt.repositories.db._DatabaseLoggerHandlerMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.repositories.db._DatabaseLoggerHandlerMixin</span></code></a>, <a class="reference internal" href="neuraxle.metaopt.repositories.repo.html#neuraxle.metaopt.repositories.repo.HyperparamsRepository" title="neuraxle.metaopt.repositories.repo.HyperparamsRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.repositories.repo.HyperparamsRepository</span></code></a></p>
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.DatabaseHyperparamRepository.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>engine</em>, <em>session</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L511"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.DatabaseHyperparamRepository.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.DatabaseHyperparamRepository.create_db">
+<code class="descname">create_db</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.repositories.db.DatabaseHyperparamRepository<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L515"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.DatabaseHyperparamRepository.create_db" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.DatabaseHyperparamRepository.load">
+<code class="descname">load</code><span class="sig-paren">(</span><em>scope: neuraxle.metaopt.data.vanilla.ScopedLocation</em>, <em>deep=False</em><span class="sig-paren">)</span> &#x2192; SubDataclassT<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L524"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.DatabaseHyperparamRepository.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get metadata from scope.</p>
+<p>The fetched metadata will be the one that is the last item
+that is not a None in the provided scope.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>scope</strong> (<a class="reference internal" href="../data/neuraxle.metaopt.data.vanilla.html#neuraxle.metaopt.data.vanilla.ScopedLocation" title="neuraxle.metaopt.data.vanilla.ScopedLocation"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScopedLocation</span></code></a>) – scope to get metadata from.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>metadata from scope.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.DatabaseHyperparamRepository.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>_dataclass: SubDataclassT</em>, <em>scope: neuraxle.metaopt.data.vanilla.ScopedLocation</em>, <em>deep=False</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.repositories.repo.HyperparamsRepository<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L534"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.DatabaseHyperparamRepository.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save metadata to scope.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>metadata</strong> – metadata to save.</p></li>
+<li><p><strong>scope</strong> (<a class="reference internal" href="../data/neuraxle.metaopt.data.vanilla.html#neuraxle.metaopt.data.vanilla.ScopedLocation" title="neuraxle.metaopt.data.vanilla.ScopedLocation"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScopedLocation</span></code></a>) – scope to save metadata to.</p></li>
+<li><p><strong>deep</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – if True, save metadata’s sublocations recursively.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.DatabaseHyperparamRepository._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.metaopt.repositories.db.DatabaseHyperparamRepository._abc_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.repositories.db.SQLLiteHyperparamsRepository">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.repositories.db.</code><code class="descname">SQLLiteHyperparamsRepository</code><span class="sig-paren">(</span><em>sqllite_db_path</em>, <em>echo=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L545"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.SQLLiteHyperparamsRepository" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.repositories.db.DatabaseHyperparamRepository" title="neuraxle.metaopt.repositories.db.DatabaseHyperparamRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.repositories.db.DatabaseHyperparamRepository</span></code></a></p>
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.SQLLiteHyperparamsRepository.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>sqllite_db_path</em>, <em>echo=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L546"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.SQLLiteHyperparamsRepository.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.SQLLiteHyperparamsRepository._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.metaopt.repositories.db.SQLLiteHyperparamsRepository._abc_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="neuraxle.metaopt.repositories.db.PostGreSQLHyperparamsRepository">
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.repositories.db.</code><code class="descname">PostGreSQLHyperparamsRepository</code><span class="sig-paren">(</span><em>postgresql_db_path</em>, <em>echo=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L560"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.PostGreSQLHyperparamsRepository" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.repositories.db.DatabaseHyperparamRepository" title="neuraxle.metaopt.repositories.db.DatabaseHyperparamRepository"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.repositories.db.DatabaseHyperparamRepository</span></code></a></p>
+<dl class="attribute">
+<dt id="neuraxle.metaopt.repositories.db.PostGreSQLHyperparamsRepository._abc_impl">
+<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.metaopt.repositories.db.PostGreSQLHyperparamsRepository._abc_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.PostGreSQLHyperparamsRepository.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>postgresql_db_path</em>, <em>echo=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L562"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.PostGreSQLHyperparamsRepository.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="neuraxle.metaopt.repositories.db.PostGreSQLHyperparamsRepository.get_database_path">
+<code class="descname">get_database_path</code><span class="sig-paren">(</span><em>user: str</em>, <em>password: str</em>, <em>host: str</em>, <em>dialect: str</em>, <em>driver: str = ''</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/repositories/db.py#L565"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.repositories.db.PostGreSQLHyperparamsRepository.get_database_path" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>password</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>dialect</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – e.g. mysql</p></li>
+<li><p><strong>driver</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – (Optional) e.g. “pymysql”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../hyperopt/neuraxle.metaopt.hyperopt.tpe.html" class="btn btn-neutral float-right" title="neuraxle.metaopt.hyperopt.tpe" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="neuraxle.metaopt.repositories.json.html" class="btn btn-neutral float-left" title="neuraxle.metaopt.repositories.json" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p style="float:left;">
+        &copy; Copyright 2021 The Neuraxle Authors. All rights reserved. Apache License, Version 2.0.
+
+    </p>
+
+    <p style="float:right;">
+      <a href="https://www.neuraxio.com/policies/privacy-policy">Privacy Policy</a>
+    </p>
+
+  </div>
+   
+
+
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-139527241-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

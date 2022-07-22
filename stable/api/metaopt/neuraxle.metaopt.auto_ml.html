@@ -7,17 +7,24 @@
   <meta charset="utf-8">
   <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
-  <meta property="og:title" content="neuraxle.metaopt.auto_ml" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.neuraxle.org/stable/api/metaopt/neuraxle.metaopt.auto_ml.html" />
-  <meta property="og:site_name" content="Neuraxle" />
-  <meta property="og:description" content="Module-level documentation for neuraxle.metaopt.auto_ml. Here is an inheritance diagram, including dependencies to other base modules of Neuraxle: neuraxle.metaopt.auto_ml.Trainer neuraxle.base.Bas..." />
-  <meta property="og:image" content="../../_images/sphx_glr_plot_automl_loop_clean_kata_thumb.png" />
-  <meta property="og:image:alt" content="Usage of AutoML loop, and hyperparams with sklearn models." />
-  <meta property="og:locale" content="en_US" />
+<meta property="og:title" content="neuraxle.metaopt.auto_ml" />
+  
+<meta property="og:type" content="website" />
+  
+<meta property="og:url" content="https://www.neuraxle.org/stable/api/metaopt/neuraxle.metaopt.auto_ml.html" />
+  
+<meta property="og:site_name" content="Neuraxle" />
+  
+<meta property="og:description" content="Module-level documentation for neuraxle.metaopt.auto_ml. Here is an inheritance diagram, including dependencies to other base modules of Neuraxle:, Neuraxle’s AutoML Classes: Classes used to build ..." />
+  
+<meta property="og:image" content="https://www.neuraxle.org/stable/_images/sphx_glr_plot_automl_loop_clean_kata_thumb.png" />
+  
+<meta property="og:image:alt" content="Usage of AutoML loop, and hyperparams with sklearn models." />
+  
+<meta property="og:locale" content="en_US" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>neuraxle.metaopt.auto_ml &mdash; Neuraxle 0.7.0 documentation</title>
+  <title>neuraxle.metaopt.auto_ml &mdash; Neuraxle 0.8.0 documentation</title>
   
 
   
@@ -55,7 +62,6 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
@@ -63,7 +69,7 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="neuraxle.metaopt.validation" href="neuraxle.metaopt.validation.html" />
+    <link rel="next" title="neuraxle.metaopt.callbacks" href="neuraxle.metaopt.callbacks.html" />
     <link rel="prev" title="neuraxle.hyperparams.space" href="../hyperparams/neuraxle.hyperparams.space.html" /> 
 
   <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
@@ -115,7 +121,7 @@
             
             
               <div class="version">
-                0.7.0
+                0.8.0
               </div>
             
           
@@ -350,7 +356,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Import-Packages">Import Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Load-your-Dataset">Load your Dataset</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Create-your-Pipeline">Create your Pipeline</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Let's-Train-and-Test">Let’s Train and Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Let’s-Train-and-Test">Let’s Train and Test</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Deploy-the-Pipeline">Deploy the Pipeline</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../rest_api_serving.html#Write-a-step-to-decode-the-accepted-JSON-as-data-inputs">Write a step to decode the accepted JSON as data inputs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../rest_api_serving.html#Write-a-step-to-encode-the-returned-JSON-response">Write a step to encode the returned JSON response</a></li>
@@ -539,10 +545,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.validation.html">neuraxle.metaopt.validation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.validation.html#validation">Validation</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.callbacks.html">neuraxle.metaopt.callbacks</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.callbacks.html#neuraxle-s-training-callbacks-classes">Neuraxle’s training callbacks classes.</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="neuraxle.metaopt.callbacks.html#examples-using-neuraxle-metaopt-callbacks-metriccallback">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.callbacks.MetricCallback</span></code></a></li>
@@ -551,23 +553,43 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.observable.html">neuraxle.metaopt.observable</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.observable.html#neuraxle-s-observable-classes">Neuraxle’s Observable Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.context.html">neuraxle.metaopt.context</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.context.html#neuraxle-s-automl-context-management">Neuraxle’s AutoML Context Management</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.optimizer.html">neuraxle.metaopt.optimizer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.optimizer.html#neuraxle-s-hyperparameter-optimizer-base-classes">Neuraxle’s Hyperparameter Optimizer Base Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.validation.html">neuraxle.metaopt.validation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.validation.html#validation">Validation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="data/neuraxle.metaopt.data.vanilla.html">neuraxle.metaopt.data.vanilla</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="data/neuraxle.metaopt.data.vanilla.html#neuraxle-s-base-hyperparameter-repository-classes">Neuraxle’s Base Hyperparameter Repository Classes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="data/neuraxle.metaopt.data.reporting.html">neuraxle.metaopt.data.reporting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="data/neuraxle.metaopt.data.reporting.html#neuraxle-s-automl-metric-reporting-classes">Neuraxle’s AutoML Metric Reporting classes.</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="data/neuraxle.metaopt.data.aggregates.html">neuraxle.metaopt.data.aggregates</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="data/neuraxle.metaopt.data.aggregates.html#neuraxle-s-automl-scope-manager-classes">Neuraxle’s AutoML Scope Manager Classes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="data/neuraxle.metaopt.data.json_repo.html">neuraxle.metaopt.data.json_repo</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="data/neuraxle.metaopt.data.json_repo.html#neuraxle-s-json-hyperparameter-repository-classes">Neuraxle’s JSON Hyperparameter Repository Classes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="data/neuraxle.metaopt.data.json_repo.html#examples-using-neuraxle-metaopt-data-json-repo-hyperparamsondiskrepository">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.data.json_repo.HyperparamsOnDiskRepository</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="repositories/neuraxle.metaopt.repositories.repo.html">neuraxle.metaopt.repositories.repo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories/neuraxle.metaopt.repositories.repo.html#neuraxle-s-hyperparameter-repository-base-classes">Neuraxle’s Hyperparameter Repository Base Classes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="repositories/neuraxle.metaopt.repositories.json.html">neuraxle.metaopt.repositories.json</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories/neuraxle.metaopt.repositories.json.html#neuraxle-s-json-hyperparameter-repository-classes">Neuraxle’s JSON Hyperparameter Repository Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="repositories/neuraxle.metaopt.repositories.json.html#examples-using-neuraxle-metaopt-repositories-json-hyperparamsondiskrepository">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.repositories.json.HyperparamsOnDiskRepository</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="repositories/neuraxle.metaopt.repositories.db.html">neuraxle.metaopt.repositories.db</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories/neuraxle.metaopt.repositories.db.html#neuraxle-s-sqlalchemy-hyperparameter-repository-classes">Neuraxle’s SQLAlchemy Hyperparameter Repository Classes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="hyperopt/neuraxle.metaopt.hyperopt.tpe.html">neuraxle.metaopt.hyperopt.tpe</a><ul>
@@ -684,21 +706,7 @@
 <h1>neuraxle.metaopt.auto_ml<a class="headerlink" href="#neuraxle-metaopt-auto-ml" title="Permalink to this headline">¶</a></h1>
 <p>Module-level documentation for neuraxle.metaopt.auto_ml. Here is an inheritance diagram,
 including dependencies to other base modules of Neuraxle:</p>
-<div class="graphviz"><img src="../../_images/inheritance-a44ddc9bc21d9a34c86228c73900877c98ceec8c.png" alt="Inheritance diagram of neuraxle.metaopt.auto_ml" usemap="#inheritanced679390240" class="inheritance graphviz" /></div>
-<map id="inheritanced679390240" name="inheritanced679390240">
-<area shape="rect" id="node6" href="../neuraxle.base.html#neuraxle.base.BaseService" target="_top" title="Base class for all services registred into the :class:`ExecutionContext`." alt="" coords="170,57,291,85"/>
-<area shape="rect" id="node7" href="../neuraxle.base.html#neuraxle.base.BaseStep" target="_top" title="Base class for a transformer step that can also be fitted." alt="" coords="706,161,801,189"/>
-<area shape="rect" id="node8" href="../neuraxle.base.html#neuraxle.base.BaseTransformer" target="_top" title="Base class for a pipeline step that can only be transformed." alt="" coords="420,109,577,137"/>
-<area shape="rect" id="node2" href="#neuraxle.metaopt.auto_ml.AutoML" target="_top" title="This class provides a nice interface to easily use the" alt="" coords="1108,187,1184,215"/>
-<area shape="rect" id="node3" href="#neuraxle.metaopt.auto_ml.ControlledAutoML" target="_top" title="A step to execute Automated Machine Learning (AutoML) algorithms. This step will" alt="" coords="893,187,1060,215"/>
-<area shape="rect" id="node4" href="#neuraxle.metaopt.auto_ml.BaseControllerLoop" target="_top" title="BaseControllerLoop" alt="" coords="661,5,845,33"/>
-<area shape="rect" id="node10" href="#neuraxle.metaopt.auto_ml.DefaultLoop" target="_top" title="DefaultLoop" alt="" coords="916,5,1037,33"/>
-<area shape="rect" id="node5" href="../neuraxle.base.html#neuraxle.base.TruncableService" target="_top" title="TruncableService" alt="" coords="415,5,582,33"/>
-<area shape="rect" id="node12" href="#neuraxle.metaopt.auto_ml.Trainer" target="_top" title="Class used to train a pipeline using various data splits and callbacks for evaluation purposes." alt="" coords="456,57,541,85"/>
-<area shape="rect" id="node9" href="../neuraxle.base.html#neuraxle.base.ForceHandleMixin" target="_top" title="A step that automatically calls handle methods in the transform, fit, and fit_transform methods." alt="" coords="670,213,837,241"/>
-<area shape="rect" id="node11" href="../neuraxle.base.html#neuraxle.base.MixinForBaseTransformer" target="_top" title="Any steps/transformers within a pipeline that inherits of this class should implement BaseStep/BaseTransformer and" alt="" coords="384,213,613,241"/>
-<area shape="rect" id="node13" href="../neuraxle.base.html#neuraxle.base.TruncableServiceMixin" target="_top" title="TruncableServiceMixin" alt="" coords="125,5,336,33"/>
-</map><div class="line-block">
+<div class="line-block">
 <div class="line"><br /></div>
 </div>
 <span class="target" id="module-neuraxle.metaopt.auto_ml"></span><section id="neuraxle-s-automl-classes">
@@ -748,18 +756,18 @@ Hyperparameter selection strategies are used to optimize the hyperparameters of 
 </div>
 <dl class="class">
 <dt id="neuraxle.metaopt.auto_ml.Trainer">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.auto_ml.</code><code class="descname">Trainer</code><span class="sig-paren">(</span><em>validation_splitter: neuraxle.metaopt.validation.BaseValidationSplitter</em>, <em>callbacks: List[neuraxle.metaopt.callbacks.BaseCallback] = None</em>, <em>n_epochs: int = 1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.Trainer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.auto_ml.</code><code class="descname">Trainer</code><span class="sig-paren">(</span><em>validation_splitter: neuraxle.metaopt.validation.BaseValidationSplitter</em>, <em>callbacks: List[neuraxle.metaopt.callbacks.BaseCallback] = None</em>, <em>n_epochs: int = 1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.Trainer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseService" title="neuraxle.base.BaseService"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.BaseService</span></code></a></p>
 <p>Class used to train a pipeline using various data splits and callbacks for evaluation purposes.</p>
 <dl class="method">
 <dt id="neuraxle.metaopt.auto_ml.Trainer.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>validation_splitter: neuraxle.metaopt.validation.BaseValidationSplitter</em>, <em>callbacks: List[neuraxle.metaopt.callbacks.BaseCallback] = None</em>, <em>n_epochs: int = 1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L60"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.Trainer.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>validation_splitter: neuraxle.metaopt.validation.BaseValidationSplitter</em>, <em>callbacks: List[neuraxle.metaopt.callbacks.BaseCallback] = None</em>, <em>n_epochs: int = 1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.Trainer.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.auto_ml.Trainer.train">
-<code class="descname">train</code><span class="sig-paren">(</span><em>pipeline: neuraxle.base.BaseStep</em>, <em>dact: neuraxle.data_container.DataContainer</em>, <em>trial_scope: neuraxle.metaopt.data.aggregates.Trial</em>, <em>return_trained_pipelines: bool = False</em><span class="sig-paren">)</span> &#x2192; Optional[List[neuraxle.base.BaseStep]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.Trainer.train" title="Permalink to this definition">¶</a></dt>
+<code class="descname">train</code><span class="sig-paren">(</span><em>pipeline: neuraxle.base.BaseStep</em>, <em>dact: neuraxle.data_container.DataContainer</em>, <em>trial_scope: neuraxle.metaopt.data.aggregates.Trial</em>, <em>return_trained_pipelines: bool = False</em><span class="sig-paren">)</span> &#x2192; Optional[List[neuraxle.base.BaseStep]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L73"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.Trainer.train" title="Permalink to this definition">¶</a></dt>
 <dd><p>Train pipeline using the validation splitter.
 Track training, and validation metrics for each epoch.
 Note: the present method is just a shortcut to using the <cite>execute_trial</cite> method with less boilerplate code needed. Refer to <cite>execute_trial</cite> for full flexibility</p>
@@ -767,14 +775,14 @@ Note: the present method is just a shortcut to using the <cite>execute_trial</ci
 
 <dl class="method">
 <dt id="neuraxle.metaopt.auto_ml.Trainer.train_split">
-<code class="descname">train_split</code><span class="sig-paren">(</span><em>pipeline: neuraxle.base.BaseStep, train_dact: neuraxle.data_container.DataContainer, val_dact: Optional[neuraxle.data_container.DataContainer], trial_split_scope: neuraxle.metaopt.data.aggregates.TrialSplit</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L99"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.Trainer.train_split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">train_split</code><span class="sig-paren">(</span><em>pipeline: neuraxle.base.BaseStep, train_dact: neuraxle.data_container.DataContainer, val_dact: Optional[neuraxle.data_container.DataContainer], trial_split_scope: neuraxle.metaopt.data.aggregates.TrialSplit</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L101"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.Trainer.train_split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Train a pipeline split. You probably want to use <cite>self.train</cite> instead, to use the validation splitter.
 If validation DACT is None, the evaluation metrics will not save validation results.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.auto_ml.Trainer.refit">
-<code class="descname">refit</code><span class="sig-paren">(</span><em>pipeline: neuraxle.base.BaseStep</em>, <em>dact: neuraxle.data_container.DataContainer</em>, <em>trial_scope: neuraxle.metaopt.data.aggregates.Trial</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L149"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.Trainer.refit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">refit</code><span class="sig-paren">(</span><em>pipeline: neuraxle.base.BaseStep</em>, <em>dact: neuraxle.data_container.DataContainer</em>, <em>trial_scope: neuraxle.metaopt.data.aggregates.Trial</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L151"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.Trainer.refit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Refit the pipeline on the whole dataset (without any validation technique).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -792,11 +800,11 @@ If validation DACT is None, the evaluation metrics will not save validation resu
 
 <dl class="class">
 <dt id="neuraxle.metaopt.auto_ml.BaseControllerLoop">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.auto_ml.</code><code class="descname">BaseControllerLoop</code><span class="sig-paren">(</span><em>trainer: neuraxle.metaopt.auto_ml.Trainer</em>, <em>n_trials: int</em>, <em>hp_optimizer: neuraxle.metaopt.data.vanilla.BaseHyperparameterOptimizer = None</em>, <em>continue_loop_on_error: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L172"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.BaseControllerLoop" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.auto_ml.</code><code class="descname">BaseControllerLoop</code><span class="sig-paren">(</span><em>trainer: neuraxle.metaopt.auto_ml.Trainer</em>, <em>n_trials: int</em>, <em>hp_optimizer: neuraxle.metaopt.optimizer.BaseHyperparameterOptimizer = None</em>, <em>continue_loop_on_error: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L174"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.BaseControllerLoop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.TruncableService" title="neuraxle.base.TruncableService"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.TruncableService</span></code></a></p>
 <dl class="method">
 <dt id="neuraxle.metaopt.auto_ml.BaseControllerLoop.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>trainer: neuraxle.metaopt.auto_ml.Trainer</em>, <em>n_trials: int</em>, <em>hp_optimizer: neuraxle.metaopt.data.vanilla.BaseHyperparameterOptimizer = None</em>, <em>continue_loop_on_error: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L174"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.BaseControllerLoop.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>trainer: neuraxle.metaopt.auto_ml.Trainer</em>, <em>n_trials: int</em>, <em>hp_optimizer: neuraxle.metaopt.optimizer.BaseHyperparameterOptimizer = None</em>, <em>continue_loop_on_error: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L176"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.BaseControllerLoop.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
@@ -807,7 +815,7 @@ If validation DACT is None, the evaluation metrics will not save validation resu
 
 <dl class="method">
 <dt id="neuraxle.metaopt.auto_ml.BaseControllerLoop.run">
-<code class="descname">run</code><span class="sig-paren">(</span><em>pipeline: neuraxle.base.BaseStep</em>, <em>dact: neuraxle.data_container.DataContainer</em>, <em>round_scope: neuraxle.metaopt.data.aggregates.Round</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L195"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.BaseControllerLoop.run" title="Permalink to this definition">¶</a></dt>
+<code class="descname">run</code><span class="sig-paren">(</span><em>pipeline: neuraxle.base.BaseStep</em>, <em>dact: neuraxle.data_container.DataContainer</em>, <em>round_scope: neuraxle.metaopt.data.aggregates.Round</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L197"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.BaseControllerLoop.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run the controller loop.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -821,7 +829,7 @@ If validation DACT is None, the evaluation metrics will not save validation resu
 
 <dl class="method">
 <dt id="neuraxle.metaopt.auto_ml.BaseControllerLoop.loop">
-<code class="descname">loop</code><span class="sig-paren">(</span><em>round_scope: neuraxle.metaopt.data.aggregates.Round</em><span class="sig-paren">)</span> &#x2192; Iterator[neuraxle.metaopt.data.aggregates.Trial]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L215"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.BaseControllerLoop.loop" title="Permalink to this definition">¶</a></dt>
+<code class="descname">loop</code><span class="sig-paren">(</span><em>round_scope: neuraxle.metaopt.data.aggregates.Round</em><span class="sig-paren">)</span> &#x2192; Iterator[neuraxle.metaopt.data.aggregates.Trial]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L217"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.BaseControllerLoop.loop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loop over all trials.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -838,7 +846,7 @@ If validation DACT is None, the evaluation metrics will not save validation resu
 
 <dl class="method">
 <dt id="neuraxle.metaopt.auto_ml.BaseControllerLoop.next_trial">
-<code class="descname">next_trial</code><span class="sig-paren">(</span><em>round_scope: neuraxle.metaopt.data.aggregates.Round</em><span class="sig-paren">)</span> &#x2192; AbstractContextManager[neuraxle.metaopt.data.aggregates.Trial]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L229"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.BaseControllerLoop.next_trial" title="Permalink to this definition">¶</a></dt>
+<code class="descname">next_trial</code><span class="sig-paren">(</span><em>round_scope: neuraxle.metaopt.data.aggregates.Round</em><span class="sig-paren">)</span> &#x2192; AbstractContextManager[neuraxle.metaopt.data.aggregates.Trial]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L231"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.BaseControllerLoop.next_trial" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the next trial to be executed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -852,13 +860,13 @@ If validation DACT is None, the evaluation metrics will not save validation resu
 
 <dl class="method">
 <dt id="neuraxle.metaopt.auto_ml.BaseControllerLoop.refit_best_trial">
-<code class="descname">refit_best_trial</code><span class="sig-paren">(</span><em>pipeline: neuraxle.base.BaseStep</em>, <em>dact: neuraxle.data_container.DataContainer</em>, <em>round_scope: neuraxle.metaopt.data.aggregates.Round</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L238"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.BaseControllerLoop.refit_best_trial" title="Permalink to this definition">¶</a></dt>
+<code class="descname">refit_best_trial</code><span class="sig-paren">(</span><em>pipeline: neuraxle.base.BaseStep</em>, <em>dact: neuraxle.data_container.DataContainer</em>, <em>round_scope: neuraxle.metaopt.data.aggregates.Round</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L240"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.BaseControllerLoop.refit_best_trial" title="Permalink to this definition">¶</a></dt>
 <dd><p>Refit the pipeline on the whole dataset (without any validation technique).</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.auto_ml.BaseControllerLoop.for_refit_only">
-<code class="descname">for_refit_only</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.auto_ml.BaseControllerLoop<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L249"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.BaseControllerLoop.for_refit_only" title="Permalink to this definition">¶</a></dt>
+<code class="descname">for_refit_only</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.auto_ml.BaseControllerLoop<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L251"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.BaseControllerLoop.for_refit_only" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a controller loop configured with zero iterations
 so as to only make the “refit_best_trial” possible.</p>
 </dd></dl>
@@ -872,11 +880,11 @@ so as to only make the “refit_best_trial” possible.</p>
 
 <dl class="class">
 <dt id="neuraxle.metaopt.auto_ml.DefaultLoop">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.auto_ml.</code><code class="descname">DefaultLoop</code><span class="sig-paren">(</span><em>trainer: neuraxle.metaopt.auto_ml.Trainer</em>, <em>n_trials: int</em>, <em>hp_optimizer: neuraxle.metaopt.data.vanilla.BaseHyperparameterOptimizer = None</em>, <em>continue_loop_on_error: bool = False</em>, <em>n_jobs: int = 1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L259"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.DefaultLoop" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.auto_ml.</code><code class="descname">DefaultLoop</code><span class="sig-paren">(</span><em>trainer: neuraxle.metaopt.auto_ml.Trainer</em>, <em>n_trials: int</em>, <em>hp_optimizer: neuraxle.metaopt.optimizer.BaseHyperparameterOptimizer = None</em>, <em>continue_loop_on_error: bool = False</em>, <em>n_jobs: int = 1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L261"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.DefaultLoop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.auto_ml.BaseControllerLoop" title="neuraxle.metaopt.auto_ml.BaseControllerLoop"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.BaseControllerLoop</span></code></a></p>
 <dl class="method">
 <dt id="neuraxle.metaopt.auto_ml.DefaultLoop.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>trainer: neuraxle.metaopt.auto_ml.Trainer</em>, <em>n_trials: int</em>, <em>hp_optimizer: neuraxle.metaopt.data.vanilla.BaseHyperparameterOptimizer = None</em>, <em>continue_loop_on_error: bool = False</em>, <em>n_jobs: int = 1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L261"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.DefaultLoop.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>trainer: neuraxle.metaopt.auto_ml.Trainer</em>, <em>n_trials: int</em>, <em>hp_optimizer: neuraxle.metaopt.optimizer.BaseHyperparameterOptimizer = None</em>, <em>continue_loop_on_error: bool = False</em>, <em>n_jobs: int = 1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L263"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.DefaultLoop.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
@@ -889,7 +897,7 @@ so as to only make the “refit_best_trial” possible.</p>
 
 <dl class="class">
 <dt id="neuraxle.metaopt.auto_ml.ControlledAutoML">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.auto_ml.</code><code class="descname">ControlledAutoML</code><span class="sig-paren">(</span><em>pipeline: BaseStepT</em>, <em>loop: neuraxle.metaopt.auto_ml.BaseControllerLoop</em>, <em>main_metric_name: str</em>, <em>repo: neuraxle.metaopt.data.vanilla.HyperparamsRepository = None</em>, <em>start_new_round: bool = True</em>, <em>refit_best_trial: bool = True</em>, <em>project_name: str = 'default_project'</em>, <em>client_name: str = 'default_client'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L278"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.ControlledAutoML" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.auto_ml.</code><code class="descname">ControlledAutoML</code><span class="sig-paren">(</span><em>pipeline: BaseStepT</em>, <em>loop: neuraxle.metaopt.auto_ml.BaseControllerLoop</em>, <em>main_metric_name: str</em>, <em>repo: neuraxle.metaopt.repositories.repo.HyperparamsRepository = None</em>, <em>start_new_round: bool = True</em>, <em>refit_best_trial: bool = True</em>, <em>project_name: str = 'default_project'</em>, <em>client_name: str = 'default_client'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L280"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.ControlledAutoML" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.ForceHandleMixin" title="neuraxle.base.ForceHandleMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.ForceHandleMixin</span></code></a>, <a class="reference internal" href="../neuraxle.base.html#neuraxle.base._HasChildrenMixin" title="neuraxle.base._HasChildrenMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base._HasChildrenMixin</span></code></a>, <a class="reference internal" href="../neuraxle.base.html#neuraxle.base.BaseStep" title="neuraxle.base.BaseStep"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.base.BaseStep</span></code></a></p>
 <p>A step to execute Automated Machine Learning (AutoML) algorithms. This step will
 automatically split the data into train and validation splits, and execute an
@@ -902,12 +910,11 @@ splits as splitted.</p>
 unsplitted data if desired.</p>
 <dl class="method">
 <dt id="neuraxle.metaopt.auto_ml.ControlledAutoML.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>pipeline: BaseStepT</em>, <em>loop: neuraxle.metaopt.auto_ml.BaseControllerLoop</em>, <em>main_metric_name: str</em>, <em>repo: neuraxle.metaopt.data.vanilla.HyperparamsRepository = None</em>, <em>start_new_round: bool = True</em>, <em>refit_best_trial: bool = True</em>, <em>project_name: str = 'default_project'</em>, <em>client_name: str = 'default_client'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L294"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.ControlledAutoML.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>pipeline: BaseStepT</em>, <em>loop: neuraxle.metaopt.auto_ml.BaseControllerLoop</em>, <em>main_metric_name: str</em>, <em>repo: neuraxle.metaopt.repositories.repo.HyperparamsRepository = None</em>, <em>start_new_round: bool = True</em>, <em>refit_best_trial: bool = True</em>, <em>project_name: str = 'default_project'</em>, <em>client_name: str = 'default_client'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L296"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.ControlledAutoML.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Usage of a multiprocess-safe hyperparams repository is recommended,
 although it is, most of the time, not necessary.
-Beware of the behaviour of HyperparamsRepository’s observers/subscribers.
 Context instances are not shared between trial but copied.
 So is the AutoML loop and the DACTs.</p>
 </div>
@@ -925,7 +932,7 @@ So is the AutoML loop and the DACTs.</p>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.auto_ml.ControlledAutoML.get_children">
-<code class="descname">get_children</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[neuraxle.base.BaseStep]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L334"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.ControlledAutoML.get_children" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_children</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[neuraxle.base.BaseStep]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L336"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.ControlledAutoML.get_children" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the list of all the childs for that step or service.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -941,7 +948,7 @@ So is the AutoML loop and the DACTs.</p>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.auto_ml.ControlledAutoML._fit_transform_data_container">
-<code class="descname">_fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[neuraxle.base.BaseStep, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L341"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.ControlledAutoML._fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_fit_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; Tuple[neuraxle.base.BaseStep, neuraxle.data_container.DataContainer]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L343"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.ControlledAutoML._fit_transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit transform data container.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -958,12 +965,12 @@ So is the AutoML loop and the DACTs.</p>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.auto_ml.ControlledAutoML.to_force_refit_best_trial">
-<code class="descname">to_force_refit_best_trial</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.auto_ml.ControlledAutoML<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L352"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.ControlledAutoML.to_force_refit_best_trial" title="Permalink to this definition">¶</a></dt>
+<code class="descname">to_force_refit_best_trial</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.auto_ml.ControlledAutoML<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L354"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.ControlledAutoML.to_force_refit_best_trial" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.auto_ml.ControlledAutoML._fit_data_container">
-<code class="descname">_fit_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L359"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.ControlledAutoML._fit_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_fit_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.base.BaseStep<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L361"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.ControlledAutoML._fit_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run Auto ML Loop.
 Find the best hyperparams using the hyperparameter optmizer.
 Evaluate the pipeline on each trial using a validation technique.</p>
@@ -982,12 +989,22 @@ Evaluate the pipeline on each trial using a validation technique.</p>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.auto_ml.ControlledAutoML.get_automl_context">
-<code class="descname">get_automl_context</code><span class="sig-paren">(</span><em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.data.vanilla.AutoMLContext<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L388"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.ControlledAutoML.get_automl_context" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_automl_context</code><span class="sig-paren">(</span><em>context: neuraxle.base.ExecutionContext</em>, <em>with_loc=True</em><span class="sig-paren">)</span> &#x2192; neuraxle.metaopt.context.AutoMLContext<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L391"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.ControlledAutoML.get_automl_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.auto_ml.ControlledAutoML.round_number">
+<code class="descname">round_number</code><a class="headerlink" href="#neuraxle.metaopt.auto_ml.ControlledAutoML.round_number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="neuraxle.metaopt.auto_ml.ControlledAutoML.report">
+<code class="descname">report</code><a class="headerlink" href="#neuraxle.metaopt.auto_ml.ControlledAutoML.report" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.auto_ml.ControlledAutoML._transform_data_container">
-<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L393"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.ControlledAutoML._transform_data_container" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_transform_data_container</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; neuraxle.data_container.DataContainer<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L414"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.ControlledAutoML._transform_data_container" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform data container.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -1014,7 +1031,7 @@ Evaluate the pipeline on each trial using a validation technique.</p>
 
 <dl class="class">
 <dt id="neuraxle.metaopt.auto_ml.AutoML">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.auto_ml.</code><code class="descname">AutoML</code><span class="sig-paren">(</span><em>pipeline: neuraxle.base.BaseStep</em>, <em>validation_splitter: Optional[neuraxle.metaopt.validation.BaseValidationSplitter] = None</em>, <em>hyperparams_optimizer: neuraxle.metaopt.data.vanilla.BaseHyperparameterOptimizer = None</em>, <em>scoring_callback: neuraxle.metaopt.callbacks.ScoringCallback = None</em>, <em>callbacks: List[neuraxle.metaopt.callbacks.BaseCallback] = None</em>, <em>hyperparams_repository: neuraxle.metaopt.data.vanilla.HyperparamsRepository = None</em>, <em>n_trials: int = None</em>, <em>refit_best_trial: bool = True</em>, <em>epochs: int = 1</em>, <em>n_jobs=1</em>, <em>continue_loop_on_error=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L402"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.AutoML" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.auto_ml.</code><code class="descname">AutoML</code><span class="sig-paren">(</span><em>pipeline: neuraxle.base.BaseStep</em>, <em>validation_splitter: Optional[neuraxle.metaopt.validation.BaseValidationSplitter] = None</em>, <em>hyperparams_optimizer: neuraxle.metaopt.optimizer.BaseHyperparameterOptimizer = None</em>, <em>scoring_callback: neuraxle.metaopt.callbacks.ScoringCallback = None</em>, <em>callbacks: List[neuraxle.metaopt.callbacks.BaseCallback] = None</em>, <em>hyperparams_repository: neuraxle.metaopt.repositories.repo.HyperparamsRepository = None</em>, <em>n_trials: int = None</em>, <em>refit_best_trial: bool = True</em>, <em>start_new_round=True</em>, <em>epochs: int = 1</em>, <em>n_jobs=1</em>, <em>continue_loop_on_error=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L423"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.AutoML" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.auto_ml.ControlledAutoML" title="neuraxle.metaopt.auto_ml.ControlledAutoML"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.auto_ml.ControlledAutoML</span></code></a></p>
 <p>This class provides a nice interface to easily use the
 ControlledAutoML class and the metaopt module in general.</p>
@@ -1040,12 +1057,11 @@ ControlledAutoML class and the metaopt module in general.</p>
 </dl>
 <dl class="method">
 <dt id="neuraxle.metaopt.auto_ml.AutoML.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>pipeline: neuraxle.base.BaseStep</em>, <em>validation_splitter: Optional[neuraxle.metaopt.validation.BaseValidationSplitter] = None</em>, <em>hyperparams_optimizer: neuraxle.metaopt.data.vanilla.BaseHyperparameterOptimizer = None</em>, <em>scoring_callback: neuraxle.metaopt.callbacks.ScoringCallback = None</em>, <em>callbacks: List[neuraxle.metaopt.callbacks.BaseCallback] = None</em>, <em>hyperparams_repository: neuraxle.metaopt.data.vanilla.HyperparamsRepository = None</em>, <em>n_trials: int = None</em>, <em>refit_best_trial: bool = True</em>, <em>epochs: int = 1</em>, <em>n_jobs=1</em>, <em>continue_loop_on_error=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/auto_ml.py#L421"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.AutoML.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>pipeline: neuraxle.base.BaseStep</em>, <em>validation_splitter: Optional[neuraxle.metaopt.validation.BaseValidationSplitter] = None</em>, <em>hyperparams_optimizer: neuraxle.metaopt.optimizer.BaseHyperparameterOptimizer = None</em>, <em>scoring_callback: neuraxle.metaopt.callbacks.ScoringCallback = None</em>, <em>callbacks: List[neuraxle.metaopt.callbacks.BaseCallback] = None</em>, <em>hyperparams_repository: neuraxle.metaopt.repositories.repo.HyperparamsRepository = None</em>, <em>n_trials: int = None</em>, <em>refit_best_trial: bool = True</em>, <em>start_new_round=True</em>, <em>epochs: int = 1</em>, <em>n_jobs=1</em>, <em>continue_loop_on_error=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/auto_ml.py#L442"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.auto_ml.AutoML.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Usage of a multiprocess-safe hyperparams repository is recommended,
 although it is, most of the time, not necessary.
-Beware of the behaviour of HyperparamsRepository’s observers/subscribers.
 Context instances are not shared between trial but copied.
 So is the AutoML loop and the DACTs.</p>
 </div>
@@ -1080,7 +1096,7 @@ So is the AutoML loop and the DACTs.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="neuraxle.metaopt.validation.html" class="btn btn-neutral float-right" title="neuraxle.metaopt.validation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="neuraxle.metaopt.callbacks.html" class="btn btn-neutral float-right" title="neuraxle.metaopt.callbacks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../hyperparams/neuraxle.hyperparams.space.html" class="btn btn-neutral float-left" title="neuraxle.hyperparams.space" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

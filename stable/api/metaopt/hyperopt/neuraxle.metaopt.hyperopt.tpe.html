@@ -7,17 +7,24 @@
   <meta charset="utf-8">
   <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
-  <meta property="og:title" content="neuraxle.metaopt.hyperopt.tpe" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.neuraxle.org/stable/api/metaopt/hyperopt/neuraxle.metaopt.hyperopt.tpe.html" />
-  <meta property="og:site_name" content="Neuraxle" />
-  <meta property="og:description" content="Module-level documentation for neuraxle.metaopt.hyperopt.tpe. Here is an inheritance diagram, including dependencies to other base modules of Neuraxle: neuraxle.metaopt.hyperopt.tpe.TreeParzenEstim..." />
-  <meta property="og:image" content="https://www.neuraxle.org/stable/_static/neuraxle_logo.png" />
-  <meta property="og:image:alt" content="Neuraxle logo" />
-  <meta property="og:locale" content="en_US" />
+<meta property="og:title" content="neuraxle.metaopt.hyperopt.tpe" />
+  
+<meta property="og:type" content="website" />
+  
+<meta property="og:url" content="https://www.neuraxle.org/stable/api/metaopt/hyperopt/neuraxle.metaopt.hyperopt.tpe.html" />
+  
+<meta property="og:site_name" content="Neuraxle" />
+  
+<meta property="og:description" content="Module-level documentation for neuraxle.metaopt.hyperopt.tpe. Here is an inheritance diagram, including dependencies to other base modules of Neuraxle:, Tree parzen estimator: Code for tree parzen ..." />
+  
+<meta property="og:image" content="https://www.neuraxle.org/stable/_static/neuraxle_logo.png" />
+  
+<meta property="og:image:alt" content="Neuraxle logo" />
+  
+<meta property="og:locale" content="en_US" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>neuraxle.metaopt.hyperopt.tpe &mdash; Neuraxle 0.7.0 documentation</title>
+  <title>neuraxle.metaopt.hyperopt.tpe &mdash; Neuraxle 0.8.0 documentation</title>
   
 
   
@@ -55,7 +62,6 @@
   
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/sg_gallery.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/sg_gallery-binder.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/sg_gallery-dataframe.css" type="text/css" />
@@ -64,7 +70,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="neuraxle.distributed.streaming" href="../../distributed/neuraxle.distributed.streaming.html" />
-    <link rel="prev" title="neuraxle.metaopt.data.json_repo" href="../data/neuraxle.metaopt.data.json_repo.html" /> 
+    <link rel="prev" title="neuraxle.metaopt.repositories.db" href="../repositories/neuraxle.metaopt.repositories.db.html" /> 
 
   <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
   <style>
@@ -115,7 +121,7 @@
             
             
               <div class="version">
-                0.7.0
+                0.8.0
               </div>
             
           
@@ -350,7 +356,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../rest_api_serving.html#Import-Packages">Import Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../rest_api_serving.html#Load-your-Dataset">Load your Dataset</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../rest_api_serving.html#Create-your-Pipeline">Create your Pipeline</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../rest_api_serving.html#Let's-Train-and-Test">Let’s Train and Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../rest_api_serving.html#Let’s-Train-and-Test">Let’s Train and Test</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../rest_api_serving.html#Deploy-the-Pipeline">Deploy the Pipeline</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../rest_api_serving.html#Write-a-step-to-decode-the-accepted-JSON-as-data-inputs">Write a step to decode the accepted JSON as data inputs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../rest_api_serving.html#Write-a-step-to-encode-the-returned-JSON-response">Write a step to encode the returned JSON response</a></li>
@@ -539,10 +545,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../neuraxle.metaopt.validation.html">neuraxle.metaopt.validation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../neuraxle.metaopt.validation.html#validation">Validation</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="../neuraxle.metaopt.callbacks.html">neuraxle.metaopt.callbacks</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../neuraxle.metaopt.callbacks.html#neuraxle-s-training-callbacks-classes">Neuraxle’s training callbacks classes.</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../neuraxle.metaopt.callbacks.html#examples-using-neuraxle-metaopt-callbacks-metriccallback">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.callbacks.MetricCallback</span></code></a></li>
@@ -551,23 +553,43 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../neuraxle.metaopt.observable.html">neuraxle.metaopt.observable</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../neuraxle.metaopt.observable.html#neuraxle-s-observable-classes">Neuraxle’s Observable Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuraxle.metaopt.context.html">neuraxle.metaopt.context</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../neuraxle.metaopt.context.html#neuraxle-s-automl-context-management">Neuraxle’s AutoML Context Management</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../neuraxle.metaopt.optimizer.html">neuraxle.metaopt.optimizer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../neuraxle.metaopt.optimizer.html#neuraxle-s-hyperparameter-optimizer-base-classes">Neuraxle’s Hyperparameter Optimizer Base Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../neuraxle.metaopt.validation.html">neuraxle.metaopt.validation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../neuraxle.metaopt.validation.html#validation">Validation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../data/neuraxle.metaopt.data.vanilla.html">neuraxle.metaopt.data.vanilla</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../data/neuraxle.metaopt.data.vanilla.html#neuraxle-s-base-hyperparameter-repository-classes">Neuraxle’s Base Hyperparameter Repository Classes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../data/neuraxle.metaopt.data.reporting.html">neuraxle.metaopt.data.reporting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../data/neuraxle.metaopt.data.reporting.html#neuraxle-s-automl-metric-reporting-classes">Neuraxle’s AutoML Metric Reporting classes.</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../data/neuraxle.metaopt.data.aggregates.html">neuraxle.metaopt.data.aggregates</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../data/neuraxle.metaopt.data.aggregates.html#neuraxle-s-automl-scope-manager-classes">Neuraxle’s AutoML Scope Manager Classes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../data/neuraxle.metaopt.data.json_repo.html">neuraxle.metaopt.data.json_repo</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../data/neuraxle.metaopt.data.json_repo.html#neuraxle-s-json-hyperparameter-repository-classes">Neuraxle’s JSON Hyperparameter Repository Classes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../data/neuraxle.metaopt.data.json_repo.html#examples-using-neuraxle-metaopt-data-json-repo-hyperparamsondiskrepository">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.data.json_repo.HyperparamsOnDiskRepository</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../repositories/neuraxle.metaopt.repositories.repo.html">neuraxle.metaopt.repositories.repo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../repositories/neuraxle.metaopt.repositories.repo.html#neuraxle-s-hyperparameter-repository-base-classes">Neuraxle’s Hyperparameter Repository Base Classes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../repositories/neuraxle.metaopt.repositories.json.html">neuraxle.metaopt.repositories.json</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../repositories/neuraxle.metaopt.repositories.json.html#neuraxle-s-json-hyperparameter-repository-classes">Neuraxle’s JSON Hyperparameter Repository Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../repositories/neuraxle.metaopt.repositories.json.html#examples-using-neuraxle-metaopt-repositories-json-hyperparamsondiskrepository">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.repositories.json.HyperparamsOnDiskRepository</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../repositories/neuraxle.metaopt.repositories.db.html">neuraxle.metaopt.repositories.db</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../repositories/neuraxle.metaopt.repositories.db.html#neuraxle-s-sqlalchemy-hyperparameter-repository-classes">Neuraxle’s SQLAlchemy Hyperparameter Repository Classes</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">neuraxle.metaopt.hyperopt.tpe</a><ul>
@@ -684,11 +706,7 @@
 <h1>neuraxle.metaopt.hyperopt.tpe<a class="headerlink" href="#neuraxle-metaopt-hyperopt-tpe" title="Permalink to this headline">¶</a></h1>
 <p>Module-level documentation for neuraxle.metaopt.hyperopt.tpe. Here is an inheritance diagram,
 including dependencies to other base modules of Neuraxle:</p>
-<div class="graphviz"><img src="../../../_images/inheritance-8f6ca0466fbedc3a67ae4fc0f4568420d19ad389.png" alt="Inheritance diagram of neuraxle.metaopt.hyperopt.tpe" usemap="#inheritancee10c1d4d11" class="inheritance graphviz" /></div>
-<map id="inheritancee10c1d4d11" name="inheritancee10c1d4d11">
-<area shape="rect" id="node2" href="../data/neuraxle.metaopt.data.vanilla.html#neuraxle.metaopt.data.vanilla.BaseHyperparameterOptimizer" target="_top" title="BaseHyperparameterOptimizer" alt="" coords="125,5,391,33"/>
-<area shape="rect" id="node3" href="#neuraxle.metaopt.hyperopt.tpe.TreeParzenEstimator" target="_top" title="This is a Tree Parzen Estimator (TPE) algorithm as found in Hyperopt," alt="" coords="439,5,632,33"/>
-</map><div class="line-block">
+<div class="line-block">
 <div class="line"><br /></div>
 </div>
 <span class="target" id="module-neuraxle.metaopt.hyperopt.tpe"></span><section id="tree-parzen-estimator">
@@ -711,8 +729,8 @@ including dependencies to other base modules of Neuraxle:</p>
 </div>
 <dl class="class">
 <dt id="neuraxle.metaopt.hyperopt.tpe.TreeParzenEstimator">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.hyperopt.tpe.</code><code class="descname">TreeParzenEstimator</code><span class="sig-paren">(</span><em>number_of_initial_random_step: int = 15</em>, <em>quantile_threshold: float = 0.3</em>, <em>number_good_trials_max_cap: int = 25</em>, <em>number_possible_hyperparams_candidates: int = 100</em>, <em>use_linear_forgetting_weights: bool = False</em>, <em>number_recent_trials_at_full_weights: int = 25</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/hyperopt/tpe.py#L23"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe.TreeParzenEstimator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../data/neuraxle.metaopt.data.vanilla.html#neuraxle.metaopt.data.vanilla.BaseHyperparameterOptimizer" title="neuraxle.metaopt.data.vanilla.BaseHyperparameterOptimizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.data.vanilla.BaseHyperparameterOptimizer</span></code></a></p>
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.hyperopt.tpe.</code><code class="descname">TreeParzenEstimator</code><span class="sig-paren">(</span><em>number_of_initial_random_step: int = 15</em>, <em>quantile_threshold: float = 0.3</em>, <em>number_good_trials_max_cap: int = 25</em>, <em>number_possible_hyperparams_candidates: int = 100</em>, <em>use_linear_forgetting_weights: bool = False</em>, <em>number_recent_trials_at_full_weights: int = 25</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/hyperopt/tpe.py#L24"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe.TreeParzenEstimator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../neuraxle.metaopt.optimizer.html#neuraxle.metaopt.optimizer.BaseHyperparameterOptimizer" title="neuraxle.metaopt.optimizer.BaseHyperparameterOptimizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.optimizer.BaseHyperparameterOptimizer</span></code></a></p>
 <p>This is a Tree Parzen Estimator (TPE) algorithm as found in Hyperopt,
 that is better than the Random Search algorithm and supports supporting
 intelligent exploration v.s. exploitation of the search space over time,
@@ -722,7 +740,7 @@ using Neuraxle hyperparameters.</p>
 to pick the first exploration samples to furthermore explore the space at the beginning.</p>
 <dl class="method">
 <dt id="neuraxle.metaopt.hyperopt.tpe.TreeParzenEstimator.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>number_of_initial_random_step: int = 15</em>, <em>quantile_threshold: float = 0.3</em>, <em>number_good_trials_max_cap: int = 25</em>, <em>number_possible_hyperparams_candidates: int = 100</em>, <em>use_linear_forgetting_weights: bool = False</em>, <em>number_recent_trials_at_full_weights: int = 25</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/hyperopt/tpe.py#L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe.TreeParzenEstimator.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>number_of_initial_random_step: int = 15</em>, <em>quantile_threshold: float = 0.3</em>, <em>number_good_trials_max_cap: int = 25</em>, <em>number_possible_hyperparams_candidates: int = 100</em>, <em>use_linear_forgetting_weights: bool = False</em>, <em>number_recent_trials_at_full_weights: int = 25</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/hyperopt/tpe.py#L36"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe.TreeParzenEstimator.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize the TPE with some configuration.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -740,14 +758,14 @@ to pick the first exploration samples to furthermore explore the space at the be
 
 <dl class="method">
 <dt id="neuraxle.metaopt.hyperopt.tpe.TreeParzenEstimator.find_next_best_hyperparams">
-<code class="descname">find_next_best_hyperparams</code><span class="sig-paren">(</span><em>round_scope: neuraxle.metaopt.data.aggregates.Round</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/hyperopt/tpe.py#L70"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe.TreeParzenEstimator.find_next_best_hyperparams" title="Permalink to this definition">¶</a></dt>
+<code class="descname">find_next_best_hyperparams</code><span class="sig-paren">(</span><em>round: neuraxle.metaopt.data.reporting.RoundReport</em>, <em>hp_space: neuraxle.hyperparams.space.HyperparameterSpace</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/hyperopt/tpe.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe.TreeParzenEstimator.find_next_best_hyperparams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the next best hyperparams using previous trials.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="../../hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code></a></p>
 </dd>
 <dt class="field-even">Parameters</dt>
-<dd class="field-even"><p><strong>round_scope</strong> (<a class="reference internal" href="../data/neuraxle.metaopt.data.aggregates.html#neuraxle.metaopt.data.aggregates.Round" title="neuraxle.metaopt.data.aggregates.Round"><code class="xref py py-class docutils literal notranslate"><span class="pre">Round</span></code></a>) – round scope</p>
+<dd class="field-even"><p><strong>round_scope</strong> – round scope</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>next best hyperparams</p>
@@ -757,12 +775,12 @@ to pick the first exploration samples to furthermore explore the space at the be
 
 <dl class="method">
 <dt id="neuraxle.metaopt.hyperopt.tpe.TreeParzenEstimator._sample_next_hyperparams_from_gaussians_div">
-<code class="descname">_sample_next_hyperparams_from_gaussians_div</code><span class="sig-paren">(</span><em>hp_keys: List[str], divided_good_and_bad_distrs: List[_DividedTPEPosteriors]</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/hyperopt/tpe.py#L89"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe.TreeParzenEstimator._sample_next_hyperparams_from_gaussians_div" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_sample_next_hyperparams_from_gaussians_div</code><span class="sig-paren">(</span><em>hp_keys: List[str], divided_good_and_bad_distrs: List[_DividedTPEPosteriors]</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/hyperopt/tpe.py#L90"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe.TreeParzenEstimator._sample_next_hyperparams_from_gaussians_div" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.hyperopt.tpe.TreeParzenEstimator._sample_one_hp_from_gaussians_div">
-<code class="descname">_sample_one_hp_from_gaussians_div</code><span class="sig-paren">(</span><em>hp_key: List[str], good_bad_posterior_div: neuraxle.metaopt.hyperopt.tpe._DividedTPEPosteriors</em><span class="sig-paren">)</span> &#x2192; Any<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/hyperopt/tpe.py#L105"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe.TreeParzenEstimator._sample_one_hp_from_gaussians_div" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_sample_one_hp_from_gaussians_div</code><span class="sig-paren">(</span><em>hp_key: List[str], good_bad_posterior_div: neuraxle.metaopt.hyperopt.tpe._DividedTPEPosteriors</em><span class="sig-paren">)</span> &#x2192; Any<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/hyperopt/tpe.py#L106"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe.TreeParzenEstimator._sample_one_hp_from_gaussians_div" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -774,59 +792,59 @@ to pick the first exploration samples to furthermore explore the space at the be
 
 <dl class="class">
 <dt id="neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.hyperopt.tpe.</code><code class="descname">_DividedMixturesFactory</code><span class="sig-paren">(</span><em>quantile_threshold: float</em>, <em>number_good_trials_max_cap: int</em>, <em>use_linear_forgetting_weights: bool</em>, <em>number_recent_trials_at_full_weights: int</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/hyperopt/tpe.py#L124"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.hyperopt.tpe.</code><code class="descname">_DividedMixturesFactory</code><span class="sig-paren">(</span><em>quantile_threshold: float</em>, <em>number_good_trials_max_cap: int</em>, <em>use_linear_forgetting_weights: bool</em>, <em>number_recent_trials_at_full_weights: int</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/hyperopt/tpe.py#L125"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="method">
 <dt id="neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>quantile_threshold: float</em>, <em>number_good_trials_max_cap: int</em>, <em>use_linear_forgetting_weights: bool</em>, <em>number_recent_trials_at_full_weights: int</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/hyperopt/tpe.py#L126"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>quantile_threshold: float</em>, <em>number_good_trials_max_cap: int</em>, <em>use_linear_forgetting_weights: bool</em>, <em>number_recent_trials_at_full_weights: int</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/hyperopt/tpe.py#L127"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory.create_from">
-<code class="descname">create_from</code><span class="sig-paren">(</span><em>round_scope: neuraxle.metaopt.data.aggregates.Round</em><span class="sig-paren">)</span> &#x2192; Tuple[List[str], List[neuraxle.metaopt.hyperopt.tpe._DividedTPEPosteriors]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/hyperopt/tpe.py#L138"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory.create_from" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_from</code><span class="sig-paren">(</span><em>round: neuraxle.metaopt.data.reporting.RoundReport</em>, <em>hp_space: neuraxle.hyperparams.space.HyperparameterSpace</em><span class="sig-paren">)</span> &#x2192; Tuple[List[str], List[neuraxle.metaopt.hyperopt.tpe._DividedTPEPosteriors]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/hyperopt/tpe.py#L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory.create_from" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory._split_good_and_bad_trials">
-<code class="descname">_split_good_and_bad_trials</code><span class="sig-paren">(</span><em>round_scope: neuraxle.metaopt.data.aggregates.Round</em><span class="sig-paren">)</span> &#x2192; Tuple[List[neuraxle.metaopt.data.aggregates.Trial], List[neuraxle.metaopt.data.aggregates.Trial]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/hyperopt/tpe.py#L165"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory._split_good_and_bad_trials" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_split_good_and_bad_trials</code><span class="sig-paren">(</span><em>round_report: neuraxle.metaopt.data.reporting.RoundReport</em><span class="sig-paren">)</span> &#x2192; Tuple[List[neuraxle.metaopt.data.reporting.TrialReport], List[neuraxle.metaopt.data.reporting.TrialReport]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/hyperopt/tpe.py#L168"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory._split_good_and_bad_trials" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory._create_posterior">
-<code class="descname">_create_posterior</code><span class="sig-paren">(</span><em>flat_hp_space_tuples: List[Tuple[str, neuraxle.hyperparams.distributions.HyperparameterDistribution]], trials: List[neuraxle.metaopt.data.aggregates.Trial]</em><span class="sig-paren">)</span> &#x2192; List[neuraxle.hyperparams.distributions.HyperparameterDistribution]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/hyperopt/tpe.py#L194"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory._create_posterior" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_create_posterior</code><span class="sig-paren">(</span><em>flat_hp_space_tuples: List[Tuple[str, neuraxle.hyperparams.distributions.HyperparameterDistribution]], trials: List[neuraxle.metaopt.data.reporting.TrialReport]</em><span class="sig-paren">)</span> &#x2192; List[neuraxle.hyperparams.distributions.HyperparameterDistribution]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/hyperopt/tpe.py#L193"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory._create_posterior" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory._reweights_categorical">
-<code class="descname">_reweights_categorical</code><span class="sig-paren">(</span><em>discrete_distribution: neuraxle.hyperparams.distributions.DiscreteHyperparameterDistribution, trial_hyperparameters: List[Any]</em><span class="sig-paren">)</span> &#x2192; Union[neuraxle.hyperparams.distributions.Choice, neuraxle.hyperparams.distributions.PriorityChoice]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/hyperopt/tpe.py#L221"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory._reweights_categorical" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_reweights_categorical</code><span class="sig-paren">(</span><em>discrete_distribution: neuraxle.hyperparams.distributions.DiscreteHyperparameterDistribution, trial_hyperparameters: List[Any]</em><span class="sig-paren">)</span> &#x2192; Union[neuraxle.hyperparams.distributions.Choice, neuraxle.hyperparams.distributions.PriorityChoice]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/hyperopt/tpe.py#L220"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory._reweights_categorical" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory._create_gaussian_mixture">
-<code class="descname">_create_gaussian_mixture</code><span class="sig-paren">(</span><em>continuous_distribution: neuraxle.hyperparams.distributions.HyperparameterDistribution, trial_hyperparameters: List[Any]</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.DistributionMixture<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/hyperopt/tpe.py#L258"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory._create_gaussian_mixture" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_create_gaussian_mixture</code><span class="sig-paren">(</span><em>continuous_distribution: neuraxle.hyperparams.distributions.HyperparameterDistribution, trial_hyperparameters: List[Any]</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.distributions.DistributionMixture<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/hyperopt/tpe.py#L257"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory._create_gaussian_mixture" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory._adaptive_parzen_normal">
-<code class="descname">_adaptive_parzen_normal</code><span class="sig-paren">(</span><em>hyperparam_distribution: neuraxle.hyperparams.distributions.HyperparameterDistribution, distribution_trials: List[Any]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/hyperopt/tpe.py#L292"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory._adaptive_parzen_normal" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_adaptive_parzen_normal</code><span class="sig-paren">(</span><em>hyperparam_distribution: neuraxle.hyperparams.distributions.HyperparameterDistribution, distribution_trials: List[Any]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/hyperopt/tpe.py#L291"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory._adaptive_parzen_normal" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory._compute_distributions_means_stds">
-<code class="descname">_compute_distributions_means_stds</code><span class="sig-paren">(</span><em>hyperparam_distribution: neuraxle.hyperparams.distributions.HyperparameterDistribution, distribution_trials: List[Any]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/hyperopt/tpe.py#L311"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory._compute_distributions_means_stds" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_compute_distributions_means_stds</code><span class="sig-paren">(</span><em>hyperparam_distribution: neuraxle.hyperparams.distributions.HyperparameterDistribution, distribution_trials: List[Any]</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/hyperopt/tpe.py#L310"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory._compute_distributions_means_stds" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory._generate_linear_forget_weights">
-<code class="descname">_generate_linear_forget_weights</code><span class="sig-paren">(</span><em>number_samples: int</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/hyperopt/tpe.py#L333"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory._generate_linear_forget_weights" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_generate_linear_forget_weights</code><span class="sig-paren">(</span><em>number_samples: int</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/hyperopt/tpe.py#L332"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedMixturesFactory._generate_linear_forget_weights" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="neuraxle.metaopt.hyperopt.tpe._DividedTPEPosteriors">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.hyperopt.tpe.</code><code class="descname">_DividedTPEPosteriors</code><span class="sig-paren">(</span><em>good_trials: neuraxle.hyperparams.distributions.HyperparameterDistribution</em>, <em>bad_trials: neuraxle.hyperparams.distributions.HyperparameterDistribution</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/hyperopt/tpe.py#L351"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedTPEPosteriors" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.hyperopt.tpe.</code><code class="descname">_DividedTPEPosteriors</code><span class="sig-paren">(</span><em>good_trials: neuraxle.hyperparams.distributions.HyperparameterDistribution</em>, <em>bad_trials: neuraxle.hyperparams.distributions.HyperparameterDistribution</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/hyperopt/tpe.py#L350"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedTPEPosteriors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Sample possible new hyperparams in the <cite>good_trials</cite>.</p>
 <p>Verify if we use the ratio directly or we use the loglikelihood of b_post under both distribution like hyperopt.
@@ -841,13 +859,13 @@ In hyperopt, they use the following to calculate the log likelihood of b_post un
 <p># TODO: verify is for quantized we do not want to do cdf(value higher) - cdf(value lower) to have pdf.</p>
 <dl class="method">
 <dt id="neuraxle.metaopt.hyperopt.tpe._DividedTPEPosteriors.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>good_trials: neuraxle.hyperparams.distributions.HyperparameterDistribution</em>, <em>bad_trials: neuraxle.hyperparams.distributions.HyperparameterDistribution</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/hyperopt/tpe.py#L382"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedTPEPosteriors.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>good_trials: neuraxle.hyperparams.distributions.HyperparameterDistribution</em>, <em>bad_trials: neuraxle.hyperparams.distributions.HyperparameterDistribution</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/hyperopt/tpe.py#L381"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedTPEPosteriors.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.hyperopt.tpe._DividedTPEPosteriors.rvs_good_with_pdf_division_proba">
-<code class="descname">rvs_good_with_pdf_division_proba</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Tuple[Any, float]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/hyperopt/tpe.py#L386"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedTPEPosteriors.rvs_good_with_pdf_division_proba" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rvs_good_with_pdf_division_proba</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Tuple[Any, float]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/hyperopt/tpe.py#L385"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedTPEPosteriors.rvs_good_with_pdf_division_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample an hyperparameter from the good distribution and return the probability ratio.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -858,7 +876,7 @@ In hyperopt, they use the following to calculate the log likelihood of b_post un
 
 <dl class="method">
 <dt id="neuraxle.metaopt.hyperopt.tpe._DividedTPEPosteriors.rvs_good">
-<code class="descname">rvs_good</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Any<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/hyperopt/tpe.py#L396"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedTPEPosteriors.rvs_good" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rvs_good</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Any<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/hyperopt/tpe.py#L395"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedTPEPosteriors.rvs_good" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample an hyperparameter from the good distribution.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -869,7 +887,7 @@ In hyperopt, they use the following to calculate the log likelihood of b_post un
 
 <dl class="method">
 <dt id="neuraxle.metaopt.hyperopt.tpe._DividedTPEPosteriors.proba_ratio">
-<code class="descname">proba_ratio</code><span class="sig-paren">(</span><em>possible_new_hyperparm: Any</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/hyperopt/tpe.py#L404"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedTPEPosteriors.proba_ratio" title="Permalink to this definition">¶</a></dt>
+<code class="descname">proba_ratio</code><span class="sig-paren">(</span><em>possible_new_hyperparm: Any</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/hyperopt/tpe.py#L403"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.hyperopt.tpe._DividedTPEPosteriors.proba_ratio" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the probability ratio of the sampled good hyperparam.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -894,7 +912,7 @@ In hyperopt, they use the following to calculate the log likelihood of b_post un
         <a href="../../distributed/neuraxle.distributed.streaming.html" class="btn btn-neutral float-right" title="neuraxle.distributed.streaming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../data/neuraxle.metaopt.data.json_repo.html" class="btn btn-neutral float-left" title="neuraxle.metaopt.data.json_repo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../repositories/neuraxle.metaopt.repositories.db.html" class="btn btn-neutral float-left" title="neuraxle.metaopt.repositories.db" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

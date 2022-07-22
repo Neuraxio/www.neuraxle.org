@@ -7,17 +7,24 @@
   <meta charset="utf-8">
   <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
-  <meta property="og:title" content="neuraxle.metaopt.validation" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.neuraxle.org/stable/api/metaopt/neuraxle.metaopt.validation.html" />
-  <meta property="og:site_name" content="Neuraxle" />
-  <meta property="og:description" content="Module-level documentation for neuraxle.metaopt.validation. Here is an inheritance diagram, including dependencies to other base modules of Neuraxle: neuraxle.metaopt.validation.RandomSearchSampler..." />
-  <meta property="og:image" content="https://www.neuraxle.org/stable/_static/neuraxle_logo.png" />
-  <meta property="og:image:alt" content="Neuraxle logo" />
-  <meta property="og:locale" content="en_US" />
+<meta property="og:title" content="neuraxle.metaopt.validation" />
+  
+<meta property="og:type" content="website" />
+  
+<meta property="og:url" content="https://www.neuraxle.org/stable/api/metaopt/neuraxle.metaopt.validation.html" />
+  
+<meta property="og:site_name" content="Neuraxle" />
+  
+<meta property="og:description" content="Module-level documentation for neuraxle.metaopt.validation. Here is an inheritance diagram, including dependencies to other base modules of Neuraxle:, Validation: Classes for hyperparameter tuning,..." />
+  
+<meta property="og:image" content="https://www.neuraxle.org/stable/_static/neuraxle_logo.png" />
+  
+<meta property="og:image:alt" content="Neuraxle logo" />
+  
+<meta property="og:locale" content="en_US" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>neuraxle.metaopt.validation &mdash; Neuraxle 0.7.0 documentation</title>
+  <title>neuraxle.metaopt.validation &mdash; Neuraxle 0.8.0 documentation</title>
   
 
   
@@ -55,7 +62,6 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
@@ -63,8 +69,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="neuraxle.metaopt.callbacks" href="neuraxle.metaopt.callbacks.html" />
-    <link rel="prev" title="neuraxle.metaopt.auto_ml" href="neuraxle.metaopt.auto_ml.html" /> 
+    <link rel="next" title="neuraxle.metaopt.data.vanilla" href="data/neuraxle.metaopt.data.vanilla.html" />
+    <link rel="prev" title="neuraxle.metaopt.optimizer" href="neuraxle.metaopt.optimizer.html" /> 
 
   <link href="https://fonts.googleapis.com/css?family=Share|Share+Tech+Mono" rel="stylesheet">
   <style>
@@ -115,7 +121,7 @@
             
             
               <div class="version">
-                0.7.0
+                0.8.0
               </div>
             
           
@@ -350,7 +356,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Import-Packages">Import Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Load-your-Dataset">Load your Dataset</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Create-your-Pipeline">Create your Pipeline</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Let's-Train-and-Test">Let’s Train and Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Let’s-Train-and-Test">Let’s Train and Test</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../rest_api_serving.html#Deploy-the-Pipeline">Deploy the Pipeline</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../rest_api_serving.html#Write-a-step-to-decode-the-accepted-JSON-as-data-inputs">Write a step to decode the accepted JSON as data inputs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../rest_api_serving.html#Write-a-step-to-encode-the-returned-JSON-response">Write a step to encode the returned JSON response</a></li>
@@ -539,10 +545,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">neuraxle.metaopt.validation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#validation">Validation</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.callbacks.html">neuraxle.metaopt.callbacks</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.callbacks.html#neuraxle-s-training-callbacks-classes">Neuraxle’s training callbacks classes.</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="neuraxle.metaopt.callbacks.html#examples-using-neuraxle-metaopt-callbacks-metriccallback">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.callbacks.MetricCallback</span></code></a></li>
@@ -551,23 +553,43 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.observable.html">neuraxle.metaopt.observable</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.observable.html#neuraxle-s-observable-classes">Neuraxle’s Observable Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.context.html">neuraxle.metaopt.context</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.context.html#neuraxle-s-automl-context-management">Neuraxle’s AutoML Context Management</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="neuraxle.metaopt.optimizer.html">neuraxle.metaopt.optimizer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="neuraxle.metaopt.optimizer.html#neuraxle-s-hyperparameter-optimizer-base-classes">Neuraxle’s Hyperparameter Optimizer Base Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">neuraxle.metaopt.validation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#validation">Validation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="data/neuraxle.metaopt.data.vanilla.html">neuraxle.metaopt.data.vanilla</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="data/neuraxle.metaopt.data.vanilla.html#neuraxle-s-base-hyperparameter-repository-classes">Neuraxle’s Base Hyperparameter Repository Classes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="data/neuraxle.metaopt.data.reporting.html">neuraxle.metaopt.data.reporting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="data/neuraxle.metaopt.data.reporting.html#neuraxle-s-automl-metric-reporting-classes">Neuraxle’s AutoML Metric Reporting classes.</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="data/neuraxle.metaopt.data.aggregates.html">neuraxle.metaopt.data.aggregates</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="data/neuraxle.metaopt.data.aggregates.html#neuraxle-s-automl-scope-manager-classes">Neuraxle’s AutoML Scope Manager Classes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="data/neuraxle.metaopt.data.json_repo.html">neuraxle.metaopt.data.json_repo</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="data/neuraxle.metaopt.data.json_repo.html#neuraxle-s-json-hyperparameter-repository-classes">Neuraxle’s JSON Hyperparameter Repository Classes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="data/neuraxle.metaopt.data.json_repo.html#examples-using-neuraxle-metaopt-data-json-repo-hyperparamsondiskrepository">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.data.json_repo.HyperparamsOnDiskRepository</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="repositories/neuraxle.metaopt.repositories.repo.html">neuraxle.metaopt.repositories.repo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories/neuraxle.metaopt.repositories.repo.html#neuraxle-s-hyperparameter-repository-base-classes">Neuraxle’s Hyperparameter Repository Base Classes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="repositories/neuraxle.metaopt.repositories.json.html">neuraxle.metaopt.repositories.json</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories/neuraxle.metaopt.repositories.json.html#neuraxle-s-json-hyperparameter-repository-classes">Neuraxle’s JSON Hyperparameter Repository Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="repositories/neuraxle.metaopt.repositories.json.html#examples-using-neuraxle-metaopt-repositories-json-hyperparamsondiskrepository">Examples using <code class="docutils literal notranslate"><span class="pre">neuraxle.metaopt.repositories.json.HyperparamsOnDiskRepository</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="repositories/neuraxle.metaopt.repositories.db.html">neuraxle.metaopt.repositories.db</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="repositories/neuraxle.metaopt.repositories.db.html#neuraxle-s-sqlalchemy-hyperparameter-repository-classes">Neuraxle’s SQLAlchemy Hyperparameter Repository Classes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="hyperopt/neuraxle.metaopt.hyperopt.tpe.html">neuraxle.metaopt.hyperopt.tpe</a><ul>
@@ -684,17 +706,7 @@
 <h1>neuraxle.metaopt.validation<a class="headerlink" href="#neuraxle-metaopt-validation" title="Permalink to this headline">¶</a></h1>
 <p>Module-level documentation for neuraxle.metaopt.validation. Here is an inheritance diagram,
 including dependencies to other base modules of Neuraxle:</p>
-<div class="graphviz"><img src="../../_images/inheritance-37ff34cca52d616efa72dee13243c5937a239f28.png" alt="Inheritance diagram of neuraxle.metaopt.validation" usemap="#inheritance0c20d7914b" class="inheritance graphviz" /></div>
-<map id="inheritance0c20d7914b" name="inheritance0c20d7914b">
-<area shape="rect" id="node4" href="data/neuraxle.metaopt.data.vanilla.html#neuraxle.metaopt.data.vanilla.BaseHyperparameterOptimizer" target="_top" title="BaseHyperparameterOptimizer" alt="" coords="112,51,348,76"/>
-<area shape="rect" id="node5" href="#neuraxle.metaopt.validation.BaseValidationSplitter" target="_top" title="BaseValidationSplitter" alt="" coords="132,97,328,122"/>
-<area shape="rect" id="node2" href="#neuraxle.metaopt.validation.AnchoredWalkForwardTimeSeriesCrossValidationSplitter" target="_top" title="An anchored walk forward cross validation works by performing a forward rolling split." alt="" coords="678,97,1115,122"/>
-<area shape="rect" id="node9" href="#neuraxle.metaopt.validation.WalkForwardTimeSeriesCrossValidationSplitter" target="_top" title="Perform a classic walk forward cross validation by performing a forward rolling split." alt="" coords="1158,97,1531,122"/>
-<area shape="rect" id="node3" href="#neuraxle.metaopt.validation.KFoldCrossValidationSplitter" target="_top" title="Create a function that splits data with K&#45;Fold Cross&#45;Validation resampling." alt="" coords="391,97,636,122"/>
-<area shape="rect" id="node6" href="#neuraxle.metaopt.validation.GridExplorationSampler" target="_top" title="This hyperparameter space optimizer is similar to a grid search, however, it does" alt="" coords="415,5,611,30"/>
-<area shape="rect" id="node7" href="#neuraxle.metaopt.validation.RandomSearchSampler" target="_top" title="AutoML Hyperparameter Optimizer that randomly samples the space of random variables." alt="" coords="427,51,599,76"/>
-<area shape="rect" id="node8" href="#neuraxle.metaopt.validation.ValidationSplitter" target="_top" title="Create a function that splits data into a training, and a validation set." alt="" coords="431,144,595,169"/>
-</map><div class="line-block">
+<div class="line-block">
 <div class="line"><br /></div>
 </div>
 <span class="target" id="module-neuraxle.metaopt.validation"></span><section id="validation">
@@ -713,14 +725,8 @@ including dependencies to other base modules of Neuraxle:</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.metaopt.validation.BaseValidationSplitter" title="neuraxle.metaopt.validation.BaseValidationSplitter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseValidationSplitter</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.metaopt.validation.GridExplorationSampler" title="neuraxle.metaopt.validation.GridExplorationSampler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GridExplorationSampler</span></code></a>(expected_n_trials, seed_i)</p></td>
-<td><p>This hyperparameter space optimizer is similar to a grid search, however, it does try to greedily sample maximally different points in the space to explore it.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.metaopt.validation.KFoldCrossValidationSplitter" title="neuraxle.metaopt.validation.KFoldCrossValidationSplitter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KFoldCrossValidationSplitter</span></code></a>(k_fold)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.metaopt.validation.KFoldCrossValidationSplitter" title="neuraxle.metaopt.validation.KFoldCrossValidationSplitter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KFoldCrossValidationSplitter</span></code></a>(k_fold)</p></td>
 <td><p>Create a function that splits data with K-Fold Cross-Validation resampling.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#neuraxle.metaopt.validation.RandomSearchSampler" title="neuraxle.metaopt.validation.RandomSearchSampler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RandomSearchSampler</span></code></a>()</p></td>
-<td><p>AutoML Hyperparameter Optimizer that randomly samples the space of random variables.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#neuraxle.metaopt.validation.ValidationSplitter" title="neuraxle.metaopt.validation.ValidationSplitter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValidationSplitter</span></code></a>(validation_size)</p></td>
 <td><p>Create a function that splits data into a training, and a validation set.</p></td>
@@ -734,154 +740,12 @@ including dependencies to other base modules of Neuraxle:</p>
 <div class="line"><br /></div>
 </div>
 <dl class="class">
-<dt id="neuraxle.metaopt.validation.RandomSearchSampler">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.validation.</code><code class="descname">RandomSearchSampler</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L48"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.RandomSearchSampler" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="data/neuraxle.metaopt.data.vanilla.html#neuraxle.metaopt.data.vanilla.BaseHyperparameterOptimizer" title="neuraxle.metaopt.data.vanilla.BaseHyperparameterOptimizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.data.vanilla.BaseHyperparameterOptimizer</span></code></a></p>
-<p>AutoML Hyperparameter Optimizer that randomly samples the space of random variables.
-Please refer to <code class="xref py py-class docutils literal notranslate"><span class="pre">AutoML</span></code> for a usage example.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><code class="xref py py-class docutils literal notranslate"><span class="pre">Trainer</span></code>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparamsRepository</span></code>,</p>
-</div>
-<dl class="method">
-<dt id="neuraxle.metaopt.validation.RandomSearchSampler.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L58"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.RandomSearchSampler.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.validation.RandomSearchSampler.find_next_best_hyperparams">
-<code class="descname">find_next_best_hyperparams</code><span class="sig-paren">(</span><em>round_scope: neuraxle.metaopt.data.aggregates.Round</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L61"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.RandomSearchSampler.find_next_best_hyperparams" title="Permalink to this definition">¶</a></dt>
-<dd><p>Randomly sample the next hyperparams to try.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="../hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code></a></p>
-</dd>
-<dt class="field-even">Parameters</dt>
-<dd class="field-even"><p><strong>round_scope</strong> (<a class="reference internal" href="data/neuraxle.metaopt.data.aggregates.html#neuraxle.metaopt.data.aggregates.Round" title="neuraxle.metaopt.data.aggregates.Round"><code class="xref py py-class docutils literal notranslate"><span class="pre">Round</span></code></a>) – round scope</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>next random hyperparams</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.validation.RandomSearchSampler._abc_impl">
-<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.metaopt.validation.RandomSearchSampler._abc_impl" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="neuraxle.metaopt.validation.GridExplorationSampler">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.validation.</code><code class="descname">GridExplorationSampler</code><span class="sig-paren">(</span><em>expected_n_trials: int = 0</em>, <em>seed_i: int = 0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.GridExplorationSampler" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="data/neuraxle.metaopt.data.vanilla.html#neuraxle.metaopt.data.vanilla.BaseHyperparameterOptimizer" title="neuraxle.metaopt.data.vanilla.BaseHyperparameterOptimizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.data.vanilla.BaseHyperparameterOptimizer</span></code></a></p>
-<p>This hyperparameter space optimizer is similar to a grid search, however, it does
-try to greedily sample maximally different points in the space to explore it. This space
-optimizer has a fixed pseudorandom exploration method that makes the sampling reproductible.</p>
-<p>When over the expected_n_trials (if sampling too much), the sampler will turn
-to a non-seeded random search.</p>
-<p>It may be good for space exploration before a TPE or for unit tests.</p>
-<p>If the expected_n_trials is not set or set to 0, the sampler will guess its ideal
-sampling count and then switch to random search after that.</p>
-<dl class="method">
-<dt id="neuraxle.metaopt.validation.GridExplorationSampler.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>expected_n_trials: int = 0</em>, <em>seed_i: int = 0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L86"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.GridExplorationSampler.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="neuraxle.metaopt.validation.GridExplorationSampler.estimate_ideal_n_trials">
-<em class="property">static </em><code class="descname">estimate_ideal_n_trials</code><span class="sig-paren">(</span><em>hp_space: neuraxle.hyperparams.space.HyperparameterSpace</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.GridExplorationSampler.estimate_ideal_n_trials" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.validation.GridExplorationSampler._reinitialize_grid">
-<code class="descname">_reinitialize_grid</code><span class="sig-paren">(</span><em>hp_space: neuraxle.hyperparams.space.HyperparameterSpace, previous_trials_hp: List[neuraxle.hyperparams.space.HyperparameterSamples]</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L104"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.GridExplorationSampler._reinitialize_grid" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update the grid exploration sampler.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="../hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code></a></p>
-</dd>
-<dt class="field-even">Parameters</dt>
-<dd class="field-even"><p><strong>round_scope</strong> – round scope</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>next random hyperparams</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.validation.GridExplorationSampler.find_next_best_hyperparams">
-<code class="descname">find_next_best_hyperparams</code><span class="sig-paren">(</span><em>round_scope: neuraxle.metaopt.data.aggregates.Round</em><span class="sig-paren">)</span> &#x2192; neuraxle.hyperparams.space.HyperparameterSamples<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L124"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.GridExplorationSampler.find_next_best_hyperparams" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sample the next hyperparams to try.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="../hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSamples" title="neuraxle.hyperparams.space.HyperparameterSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSamples</span></code></a></p>
-</dd>
-<dt class="field-even">Parameters</dt>
-<dd class="field-even"><p><strong>round_scope</strong> (<a class="reference internal" href="data/neuraxle.metaopt.data.aggregates.html#neuraxle.metaopt.data.aggregates.Round" title="neuraxle.metaopt.data.aggregates.Round"><code class="xref py py-class docutils literal notranslate"><span class="pre">Round</span></code></a>) – round scope</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>next hyperparams</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.validation.GridExplorationSampler._generate_grid">
-<code class="descname">_generate_grid</code><span class="sig-paren">(</span><em>hp_space: neuraxle.hyperparams.space.HyperparameterSpace</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L149"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.GridExplorationSampler._generate_grid" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate the grid of hyperparameters to pick from.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>hp_space</strong> (<a class="reference internal" href="../hyperparams/neuraxle.hyperparams.space.html#neuraxle.hyperparams.space.HyperparameterSpace" title="neuraxle.hyperparams.space.HyperparameterSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">HyperparameterSpace</span></code></a>) – hyperparameter space</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="neuraxle.metaopt.validation.GridExplorationSampler._pseudo_shuffle_list">
-<em class="property">static </em><code class="descname">_pseudo_shuffle_list</code><span class="sig-paren">(</span><em>x: List[T], seed: int = 0</em><span class="sig-paren">)</span> &#x2192; list<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L211"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.GridExplorationSampler._pseudo_shuffle_list" title="Permalink to this definition">¶</a></dt>
-<dd><p>Shuffle a list to create a pseudo-random order that is interesting.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.validation.GridExplorationSampler._gen_keys_for_grid">
-<code class="descname">_gen_keys_for_grid</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[int]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L224"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.GridExplorationSampler._gen_keys_for_grid" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate the keys for the grid.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>i</strong> – index</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>keys</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="neuraxle.metaopt.validation.GridExplorationSampler._reshuffle_grid">
-<code class="descname">_reshuffle_grid</code><span class="sig-paren">(</span><em>new_sample: OrderedDict[str</em>, <em>Any] = None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L236"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.GridExplorationSampler._reshuffle_grid" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reshuffling with pseudo-random seed the hyperparameters’ values:</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="neuraxle.metaopt.validation.GridExplorationSampler._abc_impl">
-<code class="descname">_abc_impl</code><em class="property"> = &lt;_abc_data object&gt;</em><a class="headerlink" href="#neuraxle.metaopt.validation.GridExplorationSampler._abc_impl" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
 <dt id="neuraxle.metaopt.validation.BaseValidationSplitter">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.validation.</code><code class="descname">BaseValidationSplitter</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L272"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.BaseValidationSplitter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.validation.</code><code class="descname">BaseValidationSplitter</code><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.BaseValidationSplitter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
 <dl class="method">
 <dt id="neuraxle.metaopt.validation.BaseValidationSplitter.split_dact">
-<code class="descname">split_dact</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; List[Tuple[neuraxle.data_container.DataContainer[~IDT, ~DIT, ~EOT][IDT, DIT, EOT], neuraxle.data_container.DataContainer[~IDT, ~DIT, ~EOT][IDT, DIT, EOT]]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L273"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.BaseValidationSplitter.split_dact" title="Permalink to this definition">¶</a></dt>
+<code class="descname">split_dact</code><span class="sig-paren">(</span><em>data_container: neuraxle.data_container.DataContainer</em>, <em>context: neuraxle.base.ExecutionContext</em><span class="sig-paren">)</span> &#x2192; List[Tuple[neuraxle.data_container.DataContainer[~IDT, ~DIT, ~EOT][IDT, DIT, EOT], neuraxle.data_container.DataContainer[~IDT, ~DIT, ~EOT][IDT, DIT, EOT]]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L41"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.BaseValidationSplitter.split_dact" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wrap a validation split function with a split data container function.
 A validation split function takes two arguments:  data inputs, and expected outputs.</p>
 <dl class="field-list simple">
@@ -896,7 +760,7 @@ A validation split function takes two arguments:  data inputs, and expected outp
 
 <dl class="method">
 <dt id="neuraxle.metaopt.validation.BaseValidationSplitter.split">
-<code class="descname">split</code><span class="sig-paren">(</span><em>data_inputs: DIT</em>, <em>ids: Optional[IDT] = None</em>, <em>expected_outputs: Optional[EOT] = None</em>, <em>context: Optional[neuraxle.base.ExecutionContext] = None</em><span class="sig-paren">)</span> &#x2192; Tuple[List[DIT], List[EOT], List[IDT], List[DIT], List[EOT], List[IDT]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L307"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.BaseValidationSplitter.split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">split</code><span class="sig-paren">(</span><em>data_inputs: DIT</em>, <em>ids: Optional[IDT] = None</em>, <em>expected_outputs: Optional[EOT] = None</em>, <em>context: Optional[neuraxle.base.ExecutionContext] = None</em><span class="sig-paren">)</span> &#x2192; Tuple[List[DIT], List[EOT], List[IDT], List[DIT], List[EOT], List[IDT]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L75"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.BaseValidationSplitter.split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Train/Test split data inputs and expected outputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -922,7 +786,7 @@ A validation split function takes two arguments:  data inputs, and expected outp
 
 <dl class="class">
 <dt id="neuraxle.metaopt.validation.ValidationSplitter">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.validation.</code><code class="descname">ValidationSplitter</code><span class="sig-paren">(</span><em>validation_size: float</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L327"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.ValidationSplitter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.validation.</code><code class="descname">ValidationSplitter</code><span class="sig-paren">(</span><em>validation_size: float</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L95"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.ValidationSplitter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.validation.BaseValidationSplitter" title="neuraxle.metaopt.validation.BaseValidationSplitter"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.validation.BaseValidationSplitter</span></code></a></p>
 <p>Create a function that splits data into a training, and a validation set.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a validation splitter function with 80% train, and 20% validation</span>
@@ -939,13 +803,13 @@ A validation split function takes two arguments:  data inputs, and expected outp
 </dl>
 <dl class="method">
 <dt id="neuraxle.metaopt.validation.ValidationSplitter.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>validation_size: float</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L341"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.ValidationSplitter.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>validation_size: float</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L109"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.ValidationSplitter.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.validation.ValidationSplitter.split">
-<code class="descname">split</code><span class="sig-paren">(</span><em>data_inputs: DIT</em>, <em>ids: Optional[IDT] = None</em>, <em>expected_outputs: Optional[EOT] = None</em>, <em>context: Optional[neuraxle.base.ExecutionContext] = None</em><span class="sig-paren">)</span> &#x2192; Tuple[List[DIT], List[EOT], List[IDT], List[DIT], List[EOT], List[IDT]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L344"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.ValidationSplitter.split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">split</code><span class="sig-paren">(</span><em>data_inputs: DIT</em>, <em>ids: Optional[IDT] = None</em>, <em>expected_outputs: Optional[EOT] = None</em>, <em>context: Optional[neuraxle.base.ExecutionContext] = None</em><span class="sig-paren">)</span> &#x2192; Tuple[List[DIT], List[EOT], List[IDT], List[DIT], List[EOT], List[IDT]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L112"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.ValidationSplitter.split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Train/Test split data inputs and expected outputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -964,7 +828,7 @@ A validation split function takes two arguments:  data inputs, and expected outp
 
 <dl class="method">
 <dt id="neuraxle.metaopt.validation.ValidationSplitter._full_validation_split">
-<code class="descname">_full_validation_split</code><span class="sig-paren">(</span><em>data_inputs: Optional[DIT] = None</em>, <em>ids: Optional[IDT] = None</em>, <em>expected_outputs: Optional[EOT] = None</em><span class="sig-paren">)</span> &#x2192; Tuple[DIT, EOT, IDT, DIT, EOT, IDT]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L361"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.ValidationSplitter._full_validation_split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_full_validation_split</code><span class="sig-paren">(</span><em>data_inputs: Optional[DIT] = None</em>, <em>ids: Optional[IDT] = None</em>, <em>expected_outputs: Optional[EOT] = None</em><span class="sig-paren">)</span> &#x2192; Tuple[DIT, EOT, IDT, DIT, EOT, IDT]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L129"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.ValidationSplitter._full_validation_split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Split data inputs, and expected outputs into a single training set, and a single validation set.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -983,7 +847,7 @@ A validation split function takes two arguments:  data inputs, and expected outp
 
 <dl class="method">
 <dt id="neuraxle.metaopt.validation.ValidationSplitter._train_split">
-<code class="descname">_train_split</code><span class="sig-paren">(</span><em>data_inputs: Union[IDT, DIT, EOT]</em><span class="sig-paren">)</span> &#x2192; Union[IDT, DIT, EOT]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L385"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.ValidationSplitter._train_split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_train_split</code><span class="sig-paren">(</span><em>data_inputs: Union[IDT, DIT, EOT]</em><span class="sig-paren">)</span> &#x2192; Union[IDT, DIT, EOT]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L153"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.ValidationSplitter._train_split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Split training set.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -997,7 +861,7 @@ A validation split function takes two arguments:  data inputs, and expected outp
 
 <dl class="method">
 <dt id="neuraxle.metaopt.validation.ValidationSplitter._validation_split">
-<code class="descname">_validation_split</code><span class="sig-paren">(</span><em>data_inputs: Union[IDT, DIT, EOT]</em><span class="sig-paren">)</span> &#x2192; Union[IDT, DIT, EOT]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L396"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.ValidationSplitter._validation_split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_validation_split</code><span class="sig-paren">(</span><em>data_inputs: Union[IDT, DIT, EOT]</em><span class="sig-paren">)</span> &#x2192; Union[IDT, DIT, EOT]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L164"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.ValidationSplitter._validation_split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Split validation set.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1011,7 +875,7 @@ A validation split function takes two arguments:  data inputs, and expected outp
 
 <dl class="method">
 <dt id="neuraxle.metaopt.validation.ValidationSplitter._get_index_split">
-<code class="descname">_get_index_split</code><span class="sig-paren">(</span><em>data_inputs: Union[IDT, DIT, EOT]</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L407"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.ValidationSplitter._get_index_split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_get_index_split</code><span class="sig-paren">(</span><em>data_inputs: Union[IDT, DIT, EOT]</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.ValidationSplitter._get_index_split" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1023,7 +887,7 @@ A validation split function takes two arguments:  data inputs, and expected outp
 
 <dl class="class">
 <dt id="neuraxle.metaopt.validation.KFoldCrossValidationSplitter">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.validation.</code><code class="descname">KFoldCrossValidationSplitter</code><span class="sig-paren">(</span><em>k_fold: int</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L413"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.KFoldCrossValidationSplitter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.validation.</code><code class="descname">KFoldCrossValidationSplitter</code><span class="sig-paren">(</span><em>k_fold: int</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L181"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.KFoldCrossValidationSplitter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.validation.BaseValidationSplitter" title="neuraxle.metaopt.validation.BaseValidationSplitter"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.validation.BaseValidationSplitter</span></code></a></p>
 <p>Create a function that splits data with K-Fold Cross-Validation resampling.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a kfold cross validation splitter with 2 kfold</span>
@@ -1040,18 +904,18 @@ A validation split function takes two arguments:  data inputs, and expected outp
 </dl>
 <dl class="method">
 <dt id="neuraxle.metaopt.validation.KFoldCrossValidationSplitter.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>k_fold: int</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L427"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.KFoldCrossValidationSplitter.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>k_fold: int</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L195"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.KFoldCrossValidationSplitter.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.validation.KFoldCrossValidationSplitter._get_k_fold">
-<code class="descname">_get_k_fold</code><span class="sig-paren">(</span><em>dact_data: Union[IDT</em>, <em>DIT</em>, <em>EOT] = None</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L431"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.KFoldCrossValidationSplitter._get_k_fold" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_get_k_fold</code><span class="sig-paren">(</span><em>dact_data: Union[IDT</em>, <em>DIT</em>, <em>EOT] = None</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L199"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.KFoldCrossValidationSplitter._get_k_fold" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.validation.KFoldCrossValidationSplitter.split">
-<code class="descname">split</code><span class="sig-paren">(</span><em>data_inputs: DIT</em>, <em>ids: Optional[IDT] = None</em>, <em>expected_outputs: Optional[EOT] = None</em>, <em>context: Optional[neuraxle.base.ExecutionContext] = None</em><span class="sig-paren">)</span> &#x2192; Tuple[List[DIT], List[EOT], List[IDT], List[DIT], List[EOT], List[IDT]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L434"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.KFoldCrossValidationSplitter.split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">split</code><span class="sig-paren">(</span><em>data_inputs: DIT</em>, <em>ids: Optional[IDT] = None</em>, <em>expected_outputs: Optional[EOT] = None</em>, <em>context: Optional[neuraxle.base.ExecutionContext] = None</em><span class="sig-paren">)</span> &#x2192; Tuple[List[DIT], List[EOT], List[IDT], List[DIT], List[EOT], List[IDT]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L202"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.KFoldCrossValidationSplitter.split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Train/Test split data inputs and expected outputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1070,7 +934,7 @@ A validation split function takes two arguments:  data inputs, and expected outp
 
 <dl class="method">
 <dt id="neuraxle.metaopt.validation.KFoldCrossValidationSplitter._kfold_cv_split">
-<code class="descname">_kfold_cv_split</code><span class="sig-paren">(</span><em>dact_data: Union[IDT, DIT, EOT]</em><span class="sig-paren">)</span> &#x2192; Tuple[List[Union[IDT, DIT, EOT]], List[Union[IDT, DIT, EOT]]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L457"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.KFoldCrossValidationSplitter._kfold_cv_split" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_kfold_cv_split</code><span class="sig-paren">(</span><em>dact_data: Union[IDT, DIT, EOT]</em><span class="sig-paren">)</span> &#x2192; Tuple[List[Union[IDT, DIT, EOT]], List[Union[IDT, DIT, EOT]]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L225"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.KFoldCrossValidationSplitter._kfold_cv_split" title="Permalink to this definition">¶</a></dt>
 <dd><p>Split data with K-Fold Cross-Validation splitting.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1087,12 +951,12 @@ A validation split function takes two arguments:  data inputs, and expected outp
 
 <dl class="method">
 <dt id="neuraxle.metaopt.validation.KFoldCrossValidationSplitter._get_train_val_slices_at_fold_i">
-<code class="descname">_get_train_val_slices_at_fold_i</code><span class="sig-paren">(</span><em>dact_data: Union[IDT, DIT, EOT], fold_i: int</em><span class="sig-paren">)</span> &#x2192; Tuple[Union[IDT, DIT, EOT], Union[IDT, DIT, EOT]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L479"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.KFoldCrossValidationSplitter._get_train_val_slices_at_fold_i" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_get_train_val_slices_at_fold_i</code><span class="sig-paren">(</span><em>dact_data: Union[IDT, DIT, EOT], fold_i: int</em><span class="sig-paren">)</span> &#x2192; Tuple[Union[IDT, DIT, EOT], Union[IDT, DIT, EOT]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.KFoldCrossValidationSplitter._get_train_val_slices_at_fold_i" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.validation.KFoldCrossValidationSplitter._concat_fold_dact_data">
-<code class="descname">_concat_fold_dact_data</code><span class="sig-paren">(</span><em>arr1: Union[IDT, DIT, EOT], arr2: Union[IDT, DIT, EOT]</em><span class="sig-paren">)</span> &#x2192; Union[IDT, DIT, EOT]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L490"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.KFoldCrossValidationSplitter._concat_fold_dact_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_concat_fold_dact_data</code><span class="sig-paren">(</span><em>arr1: Union[IDT, DIT, EOT], arr2: Union[IDT, DIT, EOT]</em><span class="sig-paren">)</span> &#x2192; Union[IDT, DIT, EOT]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L258"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.KFoldCrossValidationSplitter._concat_fold_dact_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1104,7 +968,7 @@ A validation split function takes two arguments:  data inputs, and expected outp
 
 <dl class="class">
 <dt id="neuraxle.metaopt.validation.AnchoredWalkForwardTimeSeriesCrossValidationSplitter">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.validation.</code><code class="descname">AnchoredWalkForwardTimeSeriesCrossValidationSplitter</code><span class="sig-paren">(</span><em>minimum_training_size</em>, <em>validation_window_size=None</em>, <em>padding_between_training_and_validation=0</em>, <em>drop_remainder=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L497"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.AnchoredWalkForwardTimeSeriesCrossValidationSplitter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.validation.</code><code class="descname">AnchoredWalkForwardTimeSeriesCrossValidationSplitter</code><span class="sig-paren">(</span><em>minimum_training_size</em>, <em>validation_window_size=None</em>, <em>padding_between_training_and_validation=0</em>, <em>drop_remainder=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L265"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.AnchoredWalkForwardTimeSeriesCrossValidationSplitter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.validation.KFoldCrossValidationSplitter" title="neuraxle.metaopt.validation.KFoldCrossValidationSplitter"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.validation.KFoldCrossValidationSplitter</span></code></a></p>
 <p>An anchored walk forward cross validation works by performing a forward rolling split.</p>
 <p>All training splits start at the beginning of the time series, and finish time varies.</p>
@@ -1114,7 +978,7 @@ after their corresponding training split.</p>
 It can be N dimensions, such as 3D or more, but the time series axis is currently limited to <cite>axis=1</cite>.</p>
 <dl class="method">
 <dt id="neuraxle.metaopt.validation.AnchoredWalkForwardTimeSeriesCrossValidationSplitter.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>minimum_training_size</em>, <em>validation_window_size=None</em>, <em>padding_between_training_and_validation=0</em>, <em>drop_remainder=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L510"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.AnchoredWalkForwardTimeSeriesCrossValidationSplitter.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>minimum_training_size</em>, <em>validation_window_size=None</em>, <em>padding_between_training_and_validation=0</em>, <em>drop_remainder=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L278"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.AnchoredWalkForwardTimeSeriesCrossValidationSplitter.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a anchored walk forward time series cross validation object.</p>
 <p>The size of the validation split is defined by <cite>validation_window_size</cite>.
 The difference in start position between two consecutive validation split is also equal to
@@ -1136,17 +1000,17 @@ with a full validation_window_size, by default False.</p></li>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.validation.AnchoredWalkForwardTimeSeriesCrossValidationSplitter._get_k_fold">
-<code class="descname">_get_k_fold</code><span class="sig-paren">(</span><em>dact_data: Union[IDT</em>, <em>DIT</em>, <em>EOT] = None</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L539"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.AnchoredWalkForwardTimeSeriesCrossValidationSplitter._get_k_fold" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_get_k_fold</code><span class="sig-paren">(</span><em>dact_data: Union[IDT</em>, <em>DIT</em>, <em>EOT] = None</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L307"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.AnchoredWalkForwardTimeSeriesCrossValidationSplitter._get_k_fold" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.validation.AnchoredWalkForwardTimeSeriesCrossValidationSplitter._get_train_val_slices_at_fold_i">
-<code class="descname">_get_train_val_slices_at_fold_i</code><span class="sig-paren">(</span><em>dact_data: Union[IDT, DIT, EOT], fold_i: int</em><span class="sig-paren">)</span> &#x2192; Tuple[Union[IDT, DIT, EOT], Union[IDT, DIT, EOT]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L549"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.AnchoredWalkForwardTimeSeriesCrossValidationSplitter._get_train_val_slices_at_fold_i" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_get_train_val_slices_at_fold_i</code><span class="sig-paren">(</span><em>dact_data: Union[IDT, DIT, EOT], fold_i: int</em><span class="sig-paren">)</span> &#x2192; Tuple[Union[IDT, DIT, EOT], Union[IDT, DIT, EOT]]<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L317"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.AnchoredWalkForwardTimeSeriesCrossValidationSplitter._get_train_val_slices_at_fold_i" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.validation.AnchoredWalkForwardTimeSeriesCrossValidationSplitter._get_beginning_at_fold_i">
-<code class="descname">_get_beginning_at_fold_i</code><span class="sig-paren">(</span><em>fold_i: int</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L565"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.AnchoredWalkForwardTimeSeriesCrossValidationSplitter._get_beginning_at_fold_i" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_get_beginning_at_fold_i</code><span class="sig-paren">(</span><em>fold_i: int</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L333"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.AnchoredWalkForwardTimeSeriesCrossValidationSplitter._get_beginning_at_fold_i" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the start time of the training split at the given fold index.
 Here in the anchored splitter, it is always zero. This method is overwritten
 in the non-anchored version of the walk forward ts validation splitter</p>
@@ -1161,7 +1025,7 @@ in the non-anchored version of the walk forward ts validation splitter</p>
 
 <dl class="class">
 <dt id="neuraxle.metaopt.validation.WalkForwardTimeSeriesCrossValidationSplitter">
-<em class="property">class </em><code class="descclassname">neuraxle.metaopt.validation.</code><code class="descname">WalkForwardTimeSeriesCrossValidationSplitter</code><span class="sig-paren">(</span><em>training_window_size</em>, <em>validation_window_size=None</em>, <em>padding_between_training_and_validation=0</em>, <em>drop_remainder=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L574"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.WalkForwardTimeSeriesCrossValidationSplitter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">neuraxle.metaopt.validation.</code><code class="descname">WalkForwardTimeSeriesCrossValidationSplitter</code><span class="sig-paren">(</span><em>training_window_size</em>, <em>validation_window_size=None</em>, <em>padding_between_training_and_validation=0</em>, <em>drop_remainder=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L342"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.WalkForwardTimeSeriesCrossValidationSplitter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#neuraxle.metaopt.validation.AnchoredWalkForwardTimeSeriesCrossValidationSplitter" title="neuraxle.metaopt.validation.AnchoredWalkForwardTimeSeriesCrossValidationSplitter"><code class="xref py py-class docutils literal notranslate"><span class="pre">neuraxle.metaopt.validation.AnchoredWalkForwardTimeSeriesCrossValidationSplitter</span></code></a></p>
 <p>Perform a classic walk forward cross validation by performing a forward rolling split.
 As opposed to the AnchoredWalkForwardTimeSeriesCrossValidationSplitter, this class
@@ -1174,7 +1038,7 @@ a certain time delay (if padding is set) after their corresponding training spli
 The array can have an arbitrary number of dimension, but the time series axis is currently limited to <cite>axis=1</cite>.</p>
 <dl class="method">
 <dt id="neuraxle.metaopt.validation.WalkForwardTimeSeriesCrossValidationSplitter.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>training_window_size</em>, <em>validation_window_size=None</em>, <em>padding_between_training_and_validation=0</em>, <em>drop_remainder=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L589"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.WalkForwardTimeSeriesCrossValidationSplitter.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>training_window_size</em>, <em>validation_window_size=None</em>, <em>padding_between_training_and_validation=0</em>, <em>drop_remainder=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L357"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.WalkForwardTimeSeriesCrossValidationSplitter.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a classic walk forward time series cross validation object.</p>
 <p>The difference in start position between two consecutive validation split are equal to one
 <cite>validation_window_size</cite>.</p>
@@ -1195,7 +1059,7 @@ with a full validation_window_size, by default False.</p></li>
 
 <dl class="method">
 <dt id="neuraxle.metaopt.validation.WalkForwardTimeSeriesCrossValidationSplitter._get_beginning_at_fold_i">
-<code class="descname">_get_beginning_at_fold_i</code><span class="sig-paren">(</span><em>fold_i: int</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/9f16596/neuraxle/metaopt/validation.py#L618"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.WalkForwardTimeSeriesCrossValidationSplitter._get_beginning_at_fold_i" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_get_beginning_at_fold_i</code><span class="sig-paren">(</span><em>fold_i: int</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="https://github.com/Neuraxio/Neuraxle/blob/c355500/neuraxle/metaopt/validation.py#L386"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#neuraxle.metaopt.validation.WalkForwardTimeSeriesCrossValidationSplitter._get_beginning_at_fold_i" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the start time of the training split at the given fold index.</p>
 </dd></dl>
 
@@ -1217,10 +1081,10 @@ with a full validation_window_size, by default False.</p></li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="neuraxle.metaopt.callbacks.html" class="btn btn-neutral float-right" title="neuraxle.metaopt.callbacks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="data/neuraxle.metaopt.data.vanilla.html" class="btn btn-neutral float-right" title="neuraxle.metaopt.data.vanilla" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="neuraxle.metaopt.auto_ml.html" class="btn btn-neutral float-left" title="neuraxle.metaopt.auto_ml" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="neuraxle.metaopt.optimizer.html" class="btn btn-neutral float-left" title="neuraxle.metaopt.optimizer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
